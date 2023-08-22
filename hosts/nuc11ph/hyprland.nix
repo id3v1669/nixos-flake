@@ -73,8 +73,8 @@
       xorg.xhost
     ];
     sessionVariables = {
-      EDITOR = "lvim";
-      BROWSER = "librewolf";
+      EDITOR = "nano";
+      BROWSER = "firefox";
       TERMINAL = "alacritty";
       GBM_BACKEND = "nvidia-drm";
       __GLX_VENDOR_LIBRARY_NAME= "nvidia";
