@@ -5,6 +5,7 @@
     ./enviroment/rofi
     ./enviroment/waybar
     ./enviroment/dunst
+    ./enviroment/xdggtk/nuc11phhypr
     ./home.nix
   ];
 

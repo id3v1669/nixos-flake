@@ -20,12 +20,12 @@
   };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7daf0fbc-1da2-498f-8383-d6bc6a1a2d8b";
+    { device = "/dev/disk/by-uuid/f6b97720-d8d6-4cbf-9300-b0d603fd1178";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/B5B6-DE43";
+    { device = "/dev/disk/by-uuid/D8D4-A961";
       fsType = "vfat";
     };
 
@@ -49,6 +49,6 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  #powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

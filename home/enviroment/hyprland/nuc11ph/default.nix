@@ -89,7 +89,7 @@
 
 
     #bind = $mainMod, RETURN, exec, cool-retro-term-zsh
-    bind = $mainMod, Q, exec, kitty
+    bind = $mainMod SHIFT, K, exec, kitty
     bind = $mainMod SHIFT, T, exec, alacritty
     bind = $mainMod SHIFT, B, exec, firefox
     bind = $mainMod SHIFT, Q, killactive,
