@@ -71,6 +71,18 @@
           }
         ];
       };
+      nuc11phgnome = nixpkgs.lib.nixosSystem rec {
+        inherit system;
+        modules = [ 
+          ./hosts/nuc11ph/gnome.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.user = import ./home/homenuc11phgnome.nix ;
+          }
+        ];
+      };
       l14g3gnome = nixpkgs.lib.nixosSystem rec {
         inherit system;
         modules = [ 
