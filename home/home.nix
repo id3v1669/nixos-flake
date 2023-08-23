@@ -33,6 +33,7 @@
     spotify
     ffmpeg
     vlc
+    mpc-cli
 
     #chat
     telegram-desktop

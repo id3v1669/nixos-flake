@@ -9,5 +9,6 @@
         pkgs.obs-studio-plugins.wlrobs
       ];
     };
+    ncmpcpp.enable = true;
   };
 }
