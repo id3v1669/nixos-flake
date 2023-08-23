@@ -7,6 +7,7 @@
     ./enviroment/dunst
     ./enviroment/gtk/nuc11phhypr
     ./enviroment/qt/nuc11phhypr
+    ./enviroment/gnome/nuc11phhypr
     ./home.nix
   ];
 
