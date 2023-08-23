@@ -9,6 +9,7 @@
       rofi-calc 
       rofi-mpd
       rofi-emoji
+      rofi-bluetooth
     ]);
     extraConfig = {
       modi = "drun,emoji,ssh";

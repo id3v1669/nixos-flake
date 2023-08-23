@@ -19,6 +19,7 @@ in
     fish.enable = true;
   };
   services = {
+    blueman.enable = true;
     printing.enable = true;
     flatpak.enable = true;
     xserver = {

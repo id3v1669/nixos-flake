@@ -19,7 +19,7 @@
     bash = {
       interactiveShellInit = ''
         if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-           WLR_NO_HARDWARE_CURSORS=1 Hyprland #prevents cursor disappear when using Nvidia drivers
+          Hyprland
         fi
       '';
     };
@@ -47,9 +47,7 @@
       enable = true;
       wlr.enable = true;
       extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
-        xdg-desktop-portal-hyprland
       ];
     };
   };
@@ -78,7 +76,7 @@
       TERMINAL = "alacritty";
       GBM_BACKEND = "nvidia-drm";
       __GLX_VENDOR_LIBRARY_NAME= "nvidia";
-      LIBVA_DRIVER_NAME = "nvidia"; # hardware acceleration
+      LIBVA_DRIVER_NAME = "nvidia";
       __GL_VRR_ALLOWED = "1";
       WLR_NO_HARDWARE_CURSORS = "1";
       WLR_RENDERER_ALLOW_SOFTWARE = "1";
