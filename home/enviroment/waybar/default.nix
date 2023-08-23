@@ -87,7 +87,7 @@
         };
         "bluetooth" = {
           format = "<span color='#b4befe'></span> {status}";
-          on-click = "rofi-bluetooth --no-startup-id";
+          on-click = "blueman-manager";
           #format-disabled = ""; # an empty format will hide the module
           format-connected = "<span color='#b4befe'></span> {num_connections}";
           tooltip-format = "{device_enumerate}";
