@@ -34,7 +34,7 @@
   networking = {
     useDHCP = lib.mkDefault true;
     #hostName = "nuc11phnix"; #fix fish aliases
-    hostName = "nixos";
+    #hostName = "nixos";
   };
 
   hardware = {
