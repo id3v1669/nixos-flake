@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [ 
+    ./../global.nix
+  ];
   dconf.settings = (with lib.hm.gvariant; 
       {
         "com/raggesilver/BlackBox" = {
@@ -16,7 +19,6 @@
           xkb-options = [ "terminate:ctrl_alt_bksp" ];
         };
         "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
           show-battery-percentage = true;
         };
         "org/gnome/desktop/peripherals/touchpad" = {

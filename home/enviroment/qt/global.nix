@@ -5,7 +5,7 @@
     enable = true;
     style = {
       package = pkgs.adwaita-qt;
-      name = adwaita-dark;
+      name = "adwaita-dark";
     };
   };
 }

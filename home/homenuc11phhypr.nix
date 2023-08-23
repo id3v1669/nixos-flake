@@ -6,6 +6,7 @@
     ./enviroment/waybar
     ./enviroment/dunst
     ./enviroment/gtk/nuc11phhypr
+    ./enviroment/qt/nuc11phhypr
     ./home.nix
   ];
 
