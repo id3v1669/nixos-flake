@@ -9,9 +9,6 @@
         fish_greeting = {
           description = "Greeting to show when starting a fish shell";
           body = ''
-if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-  WLR_NO_HARDWARE_CURSORS=1 NIXOS_OZONE_WL=1 Hyprland
-end
 if test "$hostname" = "nixos"
   alias yay="distrobox enter --name archbox -- yay"
   alias pacman="distrobox enter --name archbox -- sudo pacman"

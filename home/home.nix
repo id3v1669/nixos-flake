@@ -27,6 +27,7 @@
     curl
     wget
     wireshark
+    nm-tray
 
     #vid photo sound etc
     krita
@@ -45,6 +46,7 @@
     usbutils
     lshw
     file
+    gnome.nautilus
     rustdesk
     veracrypt
     btop
