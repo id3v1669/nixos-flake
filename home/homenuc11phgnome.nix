@@ -5,6 +5,10 @@
     ./home.nix
   ];
 
-  home.packages = (with pkgs; [
+  home.packages = (with pkgs.gnomeExtensions; [
+    appindicator
+    notification-banner-reloaded
+    gsconnect
+    quick-settings-tweaker
   ]);
 }

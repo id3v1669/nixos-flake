@@ -3,6 +3,7 @@
   imports = [
     ./enviroment/hyprland/nuc11ph
     ./enviroment/rofi
+    ./enviroment/eww
     ./enviroment/waybar
     ./enviroment/dunst
     ./enviroment/gtk/nuc11phhypr
