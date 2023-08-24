@@ -55,7 +55,7 @@
     git
     gh
     github-desktop
-    iwctl
+    iwd
 
     #hw related
     bluez

@@ -9,8 +9,8 @@
     (workspaces :halign "center" :vexpand true :hexpand false :orientation "v")
 
     (box :valign "end" :hexpand false :vexpand true :orientation "v" :space-evenly false
-      (battery)
-      (wifi)
+      ;;(battery)
+      ;;(wifi)
       (mem :thickness 4 :icon "")
       (cpu :thickness 4 :icon "")
       (disk :thickness 4 :icon "")
@@ -111,30 +111,30 @@
 
 
 ;; ━━━ WIFI ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-(defvar wifi "{}")
-(defpoll wifi :interval "30s" "./scripts/wifi.sh")
+;;(defvar wifi "{}")
+;;(defpoll wifi :interval "30s" "./scripts/wifi.sh")
 
-(defwidget wifi []
- (box :vexpand false :hexpand false :orientation "v"
-   (label :text {wifi.icon}
-          :limit-width 10
-          :tooltip {wifi.status}
-          :class "wifi"
-    )
-  )
-)
+;;(defwidget wifi []
+;; (box :vexpand false :hexpand false :orientation "v"
+;;   (label :text {wifi.icon}
+;;          :limit-width 10
+;;          :tooltip {wifi.status}
+;;          :class "wifi"
+;;    )
+;;  )
+;;)
 
 ;; ━━━ BATTERY ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-(defvar battery "{}")
-(defpoll battery :interval "60s" "./scripts/battery.sh")
+;;(defvar battery "{}")
+;;(defpoll battery :interval "60s" "./scripts/battery.sh")
 
-(defwidget battery []
-   (label :text {battery.icon}
-          :limit-width 10
-          :tooltip "${battery.status}: ${battery.percent}"
-          :class "battery"
-  )
-)
+;;(defwidget battery []
+;;   (label :text {battery.icon}
+;;          :limit-width 10
+;;          :tooltip "${battery.status}: ${battery.percent}"
+;;          :class "battery"
+;;  )
+;;)
 
 
 ;; ━━━ VOLUME ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
