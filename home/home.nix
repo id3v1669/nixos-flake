@@ -35,6 +35,7 @@
     ffmpeg
     vlc
     mpc-cli
+    pamixer
 
     #chat
     telegram-desktop
@@ -54,6 +55,7 @@
     git
     gh
     github-desktop
+    iwctl
 
     #hw related
     bluez
