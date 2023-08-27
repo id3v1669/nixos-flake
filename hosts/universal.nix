@@ -49,7 +49,7 @@ in
   users.users."${uname}" = {
     isNormalUser = true;
     description = "id3v1669";
-    extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "libvirtd" "video" ];
+    extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "libvirtd" "video" "docker" ];
     shell = pkgs.fish;
   };
   fonts.packages  = with pkgs; [
