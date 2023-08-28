@@ -15,16 +15,17 @@ if test "$hostname" = "nuc11phhypr"
   end
 end
 switch "$hostname"
-    case "nuc11phhypr" "nixos" "l14g3gnome"
-        alias yay="distrobox enter --name archbox -- yay"
-        alias pacman="distrobox enter --name archbox -- sudo pacman"
-        #alias vscode="distrobox-enter --name archbox -- code"
-        #alias bpytop="distrobox-enter --name archbox -- sudo bpytop"
-        alias packettracer="distrobox-enter --name archbox -- 'packettracer &'"
-        alias archt="distrobox enter archbox"
-        alias debt="distrobox enter debbox"
-    case '*'
-        # Default case
+  case "nuc11phhypr" "nixos" "l14g3gnome"
+    alias firstinstall="bash /home/user/.scripts/firstinstall.sh"
+    alias yay="distrobox enter --name archbox -- yay"
+    alias pacman="distrobox enter --name archbox -- sudo pacman"
+    #alias vscode="distrobox-enter --name archbox -- code"
+    #alias bpytop="distrobox-enter --name archbox -- sudo bpytop"
+    alias packettracer="distrobox-enter --name archbox -- 'packettracer &'"
+    alias archt="distrobox enter archbox"
+    alias debt="distrobox enter debbox"
+  case '*'
+    # Default case
 end
 
 echo "
