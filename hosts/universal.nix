@@ -79,6 +79,5 @@ in
   environment.systemPackages = with pkgs; [
     fish
   ];
-  
   system.stateVersion = "${curversion}";
 }

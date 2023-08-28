@@ -11,7 +11,12 @@ does_distrobox_exist() {
     distrobox-list | grep -q "$1"
 }
 
-if ! does_distrobox_exist "archbox"; then
+echo "Checking for distrobox images..."
+
+if does_distrobox_exist "archbox"; then
+  echo "archbox already exists"
+else
+  echo "archbox does not exist, creating..."
   distrobox-create --name archbox --image quay.io/toolbx-images/archlinux-toolbox
   distrobox enter --name archbox -- sudo pacman -S --noconfirm git make gcc
   mkdir ~/.tmpscript
@@ -23,7 +28,10 @@ if ! does_distrobox_exist "archbox"; then
   distrobox enter --name archbox -- yay -Syyuu --noconfirm
 fi
 
-if ! does_distrobox_exist "debbox"; then
+if does_distrobox_exist "debbox"; then
+  echo "debbox already exists"
+else
+  echo "debbox does not exist, creating..."
   distrobox-create --name debbox --image quay.io/toolbx-images/debian-toolbox:12 
 fi
 
