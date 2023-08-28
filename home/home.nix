@@ -44,6 +44,7 @@
 
     #utils
     partition-manager
+    qbittorrent
     pciutils
     usbutils
     lshw
@@ -99,4 +100,23 @@
     kitty
     wofi
   ]);
+
+  systemd.user.services.autoInstallFlatpak = {
+    Description = "Autoinstall flatpak packages";
+    WantedBy = [ "default.target" ];
+    PartOf = [ "graphical-session.target" ];
+    Service = {
+      ExecStart = "${pkgs.bash}/bin/bash /home/user/.scripts/flatpak.sh";
+      Restart = "no";
+    };
+  };
+  systemd.user.services.autoInstallDistrobox = {
+    Description = "Autoinstall distrobox";
+    WantedBy = [ "default.target" ];
+    PartOf = [ "graphical-session.target" ];
+    Service = {
+      ExecStart = "${pkgs.bash}/bin/bash /home/user/.scripts/distrobox.sh";
+      Restart = "no";
+    };
+  };
 }
