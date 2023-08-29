@@ -21,7 +21,7 @@
     };
   };
 
-  networking.hostName = "nuc11phhypr";
+  networking.hostName = "l14g3hypr";
 
   systemd = {
   user.services.polkit-gnome-authentication-agent-1 = {
@@ -72,9 +72,6 @@
       EDITOR = "nano";
       BROWSER = "firefox";
       TERMINAL = "alacritty";
-      GBM_BACKEND = "nvidia-drm";
-      __GLX_VENDOR_LIBRARY_NAME= "nvidia";
-      LIBVA_DRIVER_NAME = "nvidia";
       __GL_VRR_ALLOWED = "1";
       WLR_NO_HARDWARE_CURSORS = "1";
       WLR_RENDERER_ALLOW_SOFTWARE = "1";

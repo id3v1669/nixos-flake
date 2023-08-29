@@ -40,8 +40,6 @@
   swapDevices = [ ];
   networking = {
     useDHCP = lib.mkDefault true;
-    #hostName = "l14g3"; #fix fish aliases
-    hostName = "nixos";
     networkmanager.enable = true;
     firewall.enable = false;
     enableIPv6 = false;

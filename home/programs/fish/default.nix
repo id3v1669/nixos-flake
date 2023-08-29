@@ -15,7 +15,7 @@ if test "$hostname" = "nuc11phhypr"
   end
 end
 switch "$hostname"
-    case "nuc11phhypr" "nixos" "l14g3gnome"
+    case "nuc11phhypr" "nixos" "l14g3gnome" "l14g3hypr"
         alias yay="distrobox enter --name archbox -- yay"
         alias pacman="distrobox enter --name archbox -- sudo pacman"
         #alias vscode="distrobox-enter --name archbox -- code"
