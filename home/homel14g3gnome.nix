@@ -1,7 +1,7 @@
 {hyprland, config, lib, pkgs, ...}:
 {
   imports = [
-    ./enviroment/gnome/l14g3
+    ./enviroment/gnome/l14g3gnome
     ./home.nix
   ];
 }

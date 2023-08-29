@@ -6,9 +6,9 @@
     ./enviroment/eww
     ./enviroment/waybar
     ./enviroment/dunst
-    ./enviroment/gtk/nuc11phhypr
-    ./enviroment/qt/nuc11phhypr
-    ./enviroment/gnome/nuc11phhypr
+    ./enviroment/gtk/l14g3hypr
+    ./enviroment/qt/l14g3hypr
+    ./enviroment/gnome/l14g3hypr
     ./home.nix
   ];
 

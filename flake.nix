@@ -86,6 +86,21 @@
           }
         ];
       };
+      l14g3hypr = nixpkgs.lib.nixosSystem rec {
+        inherit system;
+        specialArgs = { inherit hyprland; };
+        modules = [ 
+          ./hosts/l14g3/hyprland.nix
+          hyprland.nixosModules.default
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.user = import ./home/homel14g3hypr.nix ;
+            home-manager.extraSpecialArgs = specialArgs;
+          }
+        ];
+      };
       l14g3gnome = nixpkgs.lib.nixosSystem rec {
         inherit system;
         modules = [ 
