@@ -1,7 +1,8 @@
-{hyprland, config, lib, pkgs, ...}:
+{ hyprland, config, lib, pkgs, ... }:
 {
   imports = [
     ./programs
+    ./../scripts
   ];
   home = {
     stateVersion = "23.05";
@@ -43,6 +44,7 @@
 
     #utils
     partition-manager
+    qbittorrent
     pciutils
     usbutils
     lshw
@@ -64,6 +66,31 @@
 
     #games
     steam
+    #(lutris.override {
+    #  extraLibraries =  pkgs: [
+    #    giflib
+    #    libpng
+    #    gnutls
+    #    mpg123
+    #    openal
+    #    v4l-utils
+    #    libpulseaudio
+    #    libgpg-error
+    #    alsa-lib
+    #    libjpeg
+    #    xorg.libXcomposite
+    #    xorg.libXinerama
+    #    libgcrypt
+    #    gst_all_1.gst-plugins-base
+    #    vulkan-loader
+    #  ];
+    #  extraPkgs = pkgs: [
+    #    alsa-plugins
+    #    gtk3
+    #    sqlite
+    #    winePackages.staging
+    #  ];
+    #})
 
     #other
     openjdk19
