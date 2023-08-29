@@ -76,8 +76,32 @@ in
     #  options = "--delete-older-than 7d";
     #};
   };
-  environment.systemPackages = with pkgs; [
-    fish
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      fish
+    ];
+    etc = {
+	    "wireplumber/bose.lua".text = ''
+local function set_default_sink_and_remove_hsp_hfp()
+    local banned_profiles = {
+        ["Headset Head Unit (HSP/HFP)"] = true,
+        ["Headset Head Unit (HSP/HFP, codec mSBC)"] = true,
+        ["Headset Head Unit (HSP/HFP, codec CVSD)"] = true,
+        ["High Fidelity Playback (A2DP Sink)"] = true
+        -- add as many as you need
+    }
+    for id, node in pairs(nodes_om:enumerate()) do
+        -- For setting the default sink
+        if node["media.class"] == "Audio/Sink" and node["device.name"] == "bluez_card.AC_BF_7>
+            node:send("SESSION_NODE_UPDATE", "u", wp.WP_SESSION_NODE_UPDATE_FLAG_PRIORITY, "i>
+        end
+        if banned_profiles[node["device.profile.description"]] then
+            node:send("DEVICE_PROFILE_UPDATE", "u", wp.WP_DEVICE_PROFILE_UPDATE_FLAG_AVAILABI>
+        end
+    end
+end
+	    '';
+    };
+  };
   system.stateVersion = "${curversion}";
 }

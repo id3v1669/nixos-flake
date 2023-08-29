@@ -17,6 +17,7 @@
 
     #sound
     pamixer
+    pavucontrol
 
     #vm and virt
     virt-manager
