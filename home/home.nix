@@ -52,7 +52,6 @@
     file
     gnome.nautilus
     rustdesk
-    veracrypt
     btop
     neofetch
     git
@@ -61,6 +60,11 @@
     iwd
     zip
     unzip
+
+    #security
+    openssl
+    veracrypt
+    
 
     #hw related
     bluez
