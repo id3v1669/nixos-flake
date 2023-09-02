@@ -11,8 +11,8 @@
     enableNvidiaPatches = true;
     xwayland.enable = true;
     settings = {
-      monitor = "HDMI-A-1,3440x1440@100,0x0,1";
       general = {
+        monitor = "HDMI-A-1,3440x1440@100,0x0,1";
         gaps_in = 5;
         gaps_out = 20;
         border_size = 2;
@@ -61,6 +61,9 @@
       };
     };
     extraConfig =''
+    #monitor = HDMI-A-1,3440x1440@100,0x0,1
+    #monitor = ,highrr,auto,1
+
   # Fix slow startup
     exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -97,7 +100,7 @@
     bind = $mainMod SHIFT, F, exec, dolphin
     bind = $mainMod, V, togglefloating,
     bind = $mainMod, W, exec, wofi --show drun
-    bind = CTRL, SPACE, exec, rofi -show
+    bind = $mainMod, R, exec, rofi -show
     bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, J, togglesplit, # dwindle
 

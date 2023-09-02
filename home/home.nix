@@ -59,6 +59,8 @@
     gh
     github-desktop
     iwd
+    zip
+    unzip
 
     #hw related
     bluez

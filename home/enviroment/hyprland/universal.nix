@@ -94,7 +94,7 @@
     bind = $mainMod SHIFT, F, exec, dolphin
     bind = $mainMod, V, togglefloating,
     bind = $mainMod, W, exec, wofi --show drun
-    bind = CTRL, SPACE, exec, rofi -show
+    bind = $mainMod, R, exec, rofi -show
     bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, J, togglesplit, # dwindle
 
