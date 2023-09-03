@@ -9,6 +9,7 @@
     ./enviroment/gtk/nuc11phhypr
     ./enviroment/qt/nuc11phhypr
     ./enviroment/gnome/nuc11phhypr
+    ./enviroment/xdg
     ./home.nix
   ];
 

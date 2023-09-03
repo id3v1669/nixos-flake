@@ -39,6 +39,7 @@
     vlc
     mpc-cli
     pamixer
+    nomacs
 
     #chat
     telegram-desktop
