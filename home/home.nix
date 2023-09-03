@@ -24,6 +24,7 @@
     distrobox
     docker
     docker-compose
+    egl-wayland
 
     #web
     curl
