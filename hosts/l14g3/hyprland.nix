@@ -79,6 +79,7 @@
       CLUTTER_BACKEND = "wayland";
       WLR_RENDERER = "vulkan";
       GDK_BACKEND = "wayland,x11";
+      GTK_USE_PORTAL="1";
 
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";
