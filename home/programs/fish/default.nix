@@ -11,7 +11,7 @@
           body = ''
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
   switch "$hostname"
-    case "nuc11phhypr" "l14g3hypr"
+    case "nuc11phhypr" "l14g3hypr" "alexhypr"
       Hyprland
     case '*'
       # Default case
