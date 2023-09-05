@@ -18,7 +18,7 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
   end
 end
 switch "$hostname"
-  case "nuc11phhypr" "nixos" "l14g3gnome" "l14g3hypr"
+  case "nuc11phhypr" "nixos" "l14g3gnome" "l14g3hypr" "alexhypr"
     alias firstinstall="bash /home/user/.scripts/firstinstall.sh"
     alias yay="distrobox enter --name archbox -- yay"
     alias pacman="distrobox enter --name archbox -- sudo pacman"
