@@ -9,23 +9,26 @@
         fish_greeting = {
           description = "Greeting to show when starting a fish shell";
           body = ''
-if test "$hostname" = "nuc11phhypr"
-  if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-    Hyprland
-  end
-end
+#switch "$hostname"
+#  case '*'
+#    # Default case
+#end
 switch "$hostname"
-    case "nuc11phhypr" "nixos" "l14g3gnome" "l14g3hypr"
-        alias firstinstall="bash /home/user/.scripts/firstinstall.sh"
-        alias yay="distrobox enter --name archbox -- yay"
-        alias pacman="distrobox enter --name archbox -- sudo pacman"
-        #alias vscode="distrobox-enter --name archbox -- code"
-        alias bpytop="distrobox-enter --name archbox -- sudo bpytop"
-        alias packettracer="distrobox-enter --name archbox -- 'packettracer &'"
-        alias archt="distrobox enter archbox"
-        alias debt="distrobox enter debbox"
-    case '*'
-        # Default case
+  case "nuc11phhypr" "nixos" "l14g3gnome" "l14g3hypr"
+    alias firstinstall="bash /home/user/.scripts/firstinstall.sh"
+    alias yay="distrobox enter --name archbox -- yay"
+    alias pacman="distrobox enter --name archbox -- sudo pacman"
+    #alias vscode="distrobox-enter --name archbox -- code"
+    alias bpytop="distrobox-enter --name archbox -- sudo bpytop"
+    alias packettracer="distrobox-enter --name archbox -- 'packettracer &'"
+    alias archt="distrobox enter archbox"
+    alias debt="distrobox enter debbox"
+  case "nuc11phhypr" "l14g3hypr"
+    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+      Hyprland
+    end
+  case '*'
+    # Default case
 end
 
 echo "
