@@ -1,0 +1,118 @@
+(defwindow bar-test
+  :monitor 0
+  :stacking "bg"
+  :exclusive true
+  :geometry (geometry 
+    :width "99.5%"
+    :anchor "top center")
+  (bar-widget)
+)
+(defwidget bar-widget []
+  (box 
+    :orientation "h"
+    (left)
+    (clock)
+    (right)
+  )
+)
+(defwidget left []
+  (box 
+    :orientation "h" 
+    :space-evenly false  
+    :halign "start"
+    :class "leftModules"
+    (launcher)
+  )
+)
+(defwidget center []
+  (box 
+    :orientation "h" 
+    :space-evenly false  
+    :halign "center"
+    :class "centerModules"
+    (launcher)
+  )
+)
+(defwidget right []
+  (box 
+    :orientation "h" 
+    :space-evenly false  
+    :halign "end"
+    :class "rightModules"
+    (power)
+  )
+)
+
+(defpoll datetime :interval "1s" "date '+%a, %d. %b  %H:%M'")
+
+(defwidget clock []
+  (box 
+    :orientation "h"
+    :space-evenly false
+    :halign "center"
+    (button 
+      ;;:onclick "scripts/widget_apps --nm"
+			(box 
+        :orientation "h" 
+        :spacing 2 
+        :valign "center" 
+        :halign "center" 
+        :space-evenly "false" 
+        :vexpand "false" 
+        :hexpand "false"
+				(label 
+          :class "infotext " 
+          :halign "start")
+				(box 
+          :class "date" 
+          datetime)
+      )
+    )
+	)
+)
+(defwidget launcher []
+  (box 
+    :orientation "h"
+    :space-evenly false
+    :halign "left"
+    (button 
+      :onclick "rofi -show"
+			(box 
+        :orientation "h" 
+        :spacing 2 
+        :valign "center" 
+        :halign "center" 
+        :space-evenly "false" 
+        :vexpand "false" 
+        :hexpand "false"
+				(label :class "infotext" :halign "start")
+				(box 
+          :class "launcher"
+          " ")
+      )
+    )
+	)
+)
+(defwidget power []
+  (box 
+    :orientation "h"
+    :space-evenly false
+    :halign "right"
+    (button 
+      ;;:onclick "scripts/widget_apps --nm"
+			(box 
+        :orientation "h" 
+        :spacing 2 
+        :valign "right" 
+        :halign "right" 
+        :space-evenly "false" 
+        :vexpand "false" 
+        :hexpand "false"
+				(label :class "infotext" :halign "start")
+				(box 
+          :class "power"
+          "pw")
+      )
+    )
+	)
+)
