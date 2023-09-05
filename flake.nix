@@ -32,21 +32,6 @@
     };
   in {
     nixosConfigurations = {
-      nuc11phsway = nixpkgs.lib.nixosSystem rec {
-        inherit system;
-        specialArgs = { inherit hyprland; };
-        modules = [ 
-          ./hosts/nuc11ph/sway.nix
-          hyprland.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.user = import ./home/homenuc11phsway.nix ;
-            home-manager.extraSpecialArgs = specialArgs;
-          }
-        ];
-      };
       nuc11phhypr = nixpkgs.lib.nixosSystem rec {
         inherit system;
         specialArgs = { inherit hyprland; };

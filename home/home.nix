@@ -40,6 +40,7 @@
     mpc-cli
     pamixer
     nomacs
+    gnome.eog
 
     #chat
     telegram-desktop
