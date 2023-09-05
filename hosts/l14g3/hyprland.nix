@@ -77,7 +77,6 @@
       WLR_RENDERER_ALLOW_SOFTWARE = "1";
       CLUTTER_BACKEND = "wayland";
       WLR_RENDERER = "vulkan";
-      NIXOS_OZONE_WL = "1";
       GDK_BACKEND = "wayland,x11";
 
       XDG_CURRENT_DESKTOP = "Hyprland";
