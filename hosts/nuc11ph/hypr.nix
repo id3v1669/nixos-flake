@@ -1,4 +1,4 @@
-{ hyprland, lib, config, pkgs, ... }:
+{ hyprland, lib, config, pkgs, usname, ... }:
 
 {
   imports =[

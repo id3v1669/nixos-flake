@@ -55,21 +55,21 @@
       polkit_gnome
       xorg.xhost
     ];
-    sessionVariables = {
-      EDITOR = "nano";
-      BROWSER = "firefox";
-      TERMINAL = "alacritty";
-      __GL_VRR_ALLOWED = "1";
-      WLR_NO_HARDWARE_CURSORS = "1";
-      WLR_RENDERER_ALLOW_SOFTWARE = "1";
-      CLUTTER_BACKEND = "wayland";
-      WLR_RENDERER = "vulkan";
-      GDK_BACKEND = "wayland,x11";
-      GTK_USE_PORTAL="1";
+    #sessionVariables = {
+    #  EDITOR = "nano";
+    #  BROWSER = "firefox";
+    #  TERMINAL = "alacritty";
+    #   __GL_VRR_ALLOWED = "1";
+    #   WLR_NO_HARDWARE_CURSORS = "1";
+    #   WLR_RENDERER_ALLOW_SOFTWARE = "1";
+    #   CLUTTER_BACKEND = "wayland";
+    #   WLR_RENDERER = "vulkan";
+    #   GDK_BACKEND = "wayland,x11";
+    #   GTK_USE_PORTAL="1";
 
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-    };
+    #   XDG_CURRENT_DESKTOP = "Hyprland";
+    #   XDG_SESSION_DESKTOP = "Hyprland";
+    #   XDG_SESSION_TYPE = "wayland";
+    # };
   };
 }

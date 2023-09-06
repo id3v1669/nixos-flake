@@ -46,7 +46,7 @@ in
       driSupport32Bit = true;
     };
   };
-  users.users."${uname}" = {
+  users.users.${uname} = {
     isNormalUser = true;
     description = "id3v1669";
     extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "libvirtd" "video" "docker" ];
