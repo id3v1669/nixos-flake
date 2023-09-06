@@ -1,0 +1,1 @@
+{ hyprland }: hyprland.nixosModules.default
