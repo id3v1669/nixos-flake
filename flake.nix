@@ -30,12 +30,11 @@
         allowUnfree = true;
       };     
     };
-    mkSystem = pkgs: system: hostname: envir:
+    mkSystem = pkgs: hostname: envir:
       pkgs.lib.nixosSystem {
         inherit system;
         modules = [ 
           (./. + "/hosts/${hostname}/${envir}.nix")
-          (import ./hypr-module.nix { inherit hyprland; })
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -48,16 +47,16 @@
               nur.overlay
             ];
           }
-        ];
+        ] ++ pkgs.lib.lists.optional (envir == "hypr") (import ./hypr.nix { inherit hyprland; });
       };
   in {
     nixosConfigurations = {
-      nuc11phhypr = mkSystem inputs.nixpkgs system "nuc11ph" "hypr";
-      nuc11phgnome = mkSystem inputs.nixpkgs system "nuc11ph" "gnome";
-      nuc11phkde = mkSystem inputs.nixpkgs system "nuc11ph" "kde";
-      l14g3hypr = mkSystem inputs.nixpkgs system "l14g3" "hypr";
-      l14g3gnome = mkSystem inputs.nixpkgs system "l14g3" "gnome";
-      alexpchypr = mkSystem inputs.nixpkgs system "alexpc" "hypr";
+      nuc11phhypr = mkSystem inputs.nixpkgs "nuc11ph" "hypr";
+      nuc11phgnome = mkSystem inputs.nixpkgs "nuc11ph" "gnome";
+      nuc11phkde = mkSystem inputs.nixpkgs "nuc11ph" "kde";
+      l14g3hypr = mkSystem inputs.nixpkgs "l14g3" "hypr";
+      l14g3gnome = mkSystem inputs.nixpkgs "l14g3" "gnome";
+      alexpchypr = mkSystem inputs.nixpkgs "alexpc" "hypr";
     };
   };
 }
