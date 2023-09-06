@@ -1,0 +1,15 @@
+diff --git a/src/pwbypass.cpp b/src/pwbypass.cpp
+index eec8c49..312cf23 100644
+--- a/src/pwbypass.cpp
++++ b/src/pwbypass.cpp
+@@ -122,8 +122,8 @@ void PwBypass::startStream(const QDBusObjectPath& path)
+     const QVariantMap sourcesParameters = {
+         { QLatin1String("handle_token"), m_handleToken },
+         { QLatin1String("types"), iface->availableSourceTypes() },
+-        { QLatin1String("multiple"), false }, //for now?
+-        { QLatin1String("cursor_mode"), uint(Metadata) }
++        { QLatin1String("multiple"), false } //for now?,
++        //{ QLatin1String("cursor_mode"), uint(Metadata) }
+     };
+ 
+     auto reply = iface->SelectSources(m_path, sourcesParameters);

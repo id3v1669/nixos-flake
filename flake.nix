@@ -82,6 +82,16 @@
     };
   };
 }
+# myExtraCMakeModules = extra-cmake-modules.overrideAttrs (oldAttrs: {
+#     version = "unstable-2023-09-05";
+#     src = fetchFromGitLab {
+#       domain = "invent.kde.org";
+#       owner = "frameworks";
+#       repo = "extra-cmake-modules";
+#       rev = "9620f3e9390b2ed4c1eb2a7c37d494de3da6af67";
+#       sha256 = "17l8wdbgwpgr7j019qhhs1nk7rvv1r72n1v4g5xlhnjy65kr24ad";
+#     };
+#   });
 #   let
 #     #myvars = {
 #     usname = "user";
