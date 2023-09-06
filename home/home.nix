@@ -1,17 +1,17 @@
-{ hyprland, config, lib, pkgs, curversion, uservars, envir, ... }:
+{ hyprland, config, lib, pkgs, curversion, uservars, envir, hostname, ... }:
 {
   imports = [
     ./programs
     ./../scripts
+    ./enviroment/qt
     (./. + "/enviroment/gnome/${hostname}${envir}")
+    (./. + "/enviroment/gtk/${hostname}")
   ]++ lib.lists.optionals (envir == "hypr") [
     (./. + "/enviroment/hyprland/${hostname}")
     ./enviroment/rofi
     ./enviroment/eww
     ./enviroment/waybar
     ./enviroment/dunst
-    (./. + "/enviroment/gtk/${hostname}${envir}")
-    (./. + "/enviroment/qt/${hostname}${envir}")
     ./enviroment/xdg
   ] ++ lib.lists.optionals (envir == "gnome") [
   ];

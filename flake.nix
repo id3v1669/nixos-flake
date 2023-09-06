@@ -65,7 +65,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.${uservars.name} = import (./. + "/home/home${hostname}${envir}.nix") ;
+            users.${uservars.name} = import (./. + "/home/home.nix") ;
             extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars; };
           };
         }
