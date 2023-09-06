@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, uservars, ... }: {
 
   programs.firefox = {
     enable = true;
@@ -26,8 +26,8 @@
         };
       };
     };
-    profiles."user" = {
-      name = "user";
+    profiles."${uservars.name}" = {
+      name = "${uservars.name}";
       isDefault = true;
       #extensions = with nur.nixosModules.nur.repos.rycee.firefox-addons; [
       #  ublock-origin

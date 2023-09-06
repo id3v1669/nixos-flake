@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, uservars, ... }:
 
 {
   home.file.".scripts/firstinstall.sh" = {
@@ -6,8 +6,8 @@
     text = ''
 #!/run/current-system/sw/bin/bash
 
-/home/user/.scripts/flatpak.sh
-/home/user/.scripts/distrobox.sh
+/home/${uservars.name}/.scripts/flatpak.sh
+/home/${uservars.name}/.scripts/distrobox.sh
 
     '';
   };

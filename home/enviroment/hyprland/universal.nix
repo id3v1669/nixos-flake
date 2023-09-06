@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, deflocale, uservars, ... }:
 
 {
   imports = [ 
@@ -33,9 +33,9 @@
         
       };
       input = {
-        kb_layout = "us,ru";
-        kb_variant = ",";
-        kb_options = "grp:win_space_toggle";
+        kb_layout = "${deflocale.kblayout}";
+        kb_variant = "${deflocale.kbvariant}";
+        kb_options = "${deflocale.kboptions}";
         follow_mouse = 1;
         touchpad = {
             natural_scroll = true;
@@ -66,10 +66,10 @@
     #exec-once = dunst
     exec-once = waybar
 
-    source = /home/user/.config/hypr/colors
+    source = /home/${uservars.name}/.config/hypr/colors
 #    exec = pkill waybar & sleep 0.5 && waybar
 #    exec-once = swww init
-#    exec = swww img /home/user/Imagens/wallpapers/menhera.jpg
+#    exec = swww img /home/${uservars.name}/Imagens/wallpapers/menhera.jpg
 
     windowrule=float,^(kitty)$
     windowrule=float,^(pavucontrol)$

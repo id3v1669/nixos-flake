@@ -1,4 +1,4 @@
-{ hyprland, lib, config, pkgs, ... }:
+{ hyprland, lib, config, pkgs, uservars, ... }:
 
 {
   security = {
@@ -43,7 +43,7 @@
       enable = true;
       settings = {
         initial_session = {
-          user = "user";
+          user = "${uservars.name}";
           command = "$SHELL -l";
         };
       };

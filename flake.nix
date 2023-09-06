@@ -41,29 +41,33 @@
     mkSyst = { 
       hostname,
       envir,
-      usname ? "user",
-      kblayout ? "us,ru",
-      kbvariant ? ",",
-      kboption ? "grp:win_space_toggle"
+      uservars ? {
+        name = "user";
+        description = "id3v1669";
+      },
+      deflocale ? {
+        kblayout = "us,ru";
+        kbvariant = ",";
+        kboption = "grp:win_space_toggle";
+        timezone = "Australia/Perth";
+        locale = "en_AU.UTF-8";
+      }
     }: inputs.nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit system inputs outputs curversion usname hostname envir kblayout;
+        inherit system inputs outputs curversion uservars hostname envir deflocale;
       };
       modules = [ 
         (./. + "/hosts/${hostname}/${envir}.nix")
-        #nur.nixosModules.nur
+        inputs.nur.nixosModules.nur
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.user = import (./. + "/home/home${hostname}${envir}.nix") ;
-            extraSpecialArgs = { inherit usname inputs; };
+            users.${uservars.name} = import (./. + "/home/home${hostname}${envir}.nix") ;
+            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars; };
           };
-          nixpkgs.overlays = [
-            inputs.nur.overlay
-          ];
         }
       ] ++ inputs.nixpkgs.lib.lists.optional (envir == "hypr") (import ./hypr.nix { inherit inputs; });
     };

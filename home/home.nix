@@ -1,13 +1,13 @@
-{ hyprland, config, lib, pkgs, ... }:
+{ hyprland, config, lib, pkgs, curversion, uservars, ... }:
 {
   imports = [
     ./programs
     ./../scripts
   ];
   home = {
-    stateVersion = "23.05";
-    username = "user";
-    homeDirectory = "/home/user";
+    stateVersion = "${curversion}";
+    username = "${uservars.name}";
+    homeDirectory = "/home/${uservars.name}";
   };
 
   home.packages = (with pkgs; [

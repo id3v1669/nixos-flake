@@ -1,4 +1,4 @@
-{ hyprland, lib, config, pkgs, usname, ... }:
+{ hyprland, lib, config, pkgs, ... }:
 
 {
   imports =[
@@ -6,8 +6,6 @@
     ./../universal.nix
     ./../universalhypr.nix
   ];
-
-  networking.hostName = "nuc11phhypr";
   
   environment = {
     systemPackages = with pkgs; [

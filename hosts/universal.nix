@@ -1,11 +1,14 @@
-{lib, config, pkgs, usname, curversion, kblayout, kbvariant, kboption, ...}: 
+{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, ...}: 
 {
   nixpkgs.config.allowUnfree = true;
   security.rtkit.enable = true;
-  time.timeZone = "Australia/Perth";
-  i18n.defaultLocale = "en_AU.UTF-8";
+  time.timeZone = "${deflocale.timezone}";
+  i18n.defaultLocale = "${deflocale.locale}";
   sound.enable = true;
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager.enable = true;
+    hostName = "${hostname}${envir}";
+  };
   virtualisation = {
     docker.enable = true;
     libvirtd.enable = true;
@@ -20,9 +23,9 @@
     flatpak.enable = true;
     xserver = {
       enable = true;
-      layout = "${kblayout}";
-      xkbVariant = "${kbvariant}";
-      xkbOptions = "${kboption}";
+      layout = "${deflocale.kblayout}";
+      xkbVariant = "${deflocale.kbvariant}";
+      xkbOptions = "${deflocale.kboption}";
     };
     pipewire = {
       enable = true;
@@ -42,9 +45,9 @@
       driSupport32Bit = true;
     };
   };
-  users.users.${usname} = {
+  users.users.${uservars.name} = {
     isNormalUser = true;
-    description = "id3v1669";
+    description = "${uservars.description}";
     extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "libvirtd" "video" "docker" ];
     shell = pkgs.fish;
   };

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, envir, hostname, uservars, ... }: {
   programs.fish = {
     enable = true;
       shellAliases = {    #global aliases
@@ -8,18 +8,11 @@
       functions = {
         fish_greeting = {
           description = "Greeting to show when starting a fish shell";
-          body = ''
-if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-  switch "$hostname"
-    case "nuc11phhypr" "l14g3hypr" "alexhypr"
-      Hyprland
-    case '*'
-      # Default case
-  end
-end
+          body = let
+            commonPart = ''
 switch "$hostname"
-  case "nuc11phhypr" "nixos" "l14g3gnome" "l14g3hypr" "alexhypr"
-    alias firstinstall="bash /home/user/.scripts/firstinstall.sh"
+  case "${hostname}${envir}"
+    alias firstinstall="bash /home/${uservars.name}/.scripts/firstinstall.sh"
     alias yay="distrobox enter --name archbox -- yay"
     alias pacman="distrobox enter --name archbox -- sudo pacman"
     #alias vscode="distrobox-enter --name archbox -- code"
@@ -50,6 +43,14 @@ echo "
                               ░░░░▒▒
 "
         '';
+            conditionalPart = if envir == "hypr" then ''
+if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+  Hyprland
+end
+'' else "";
+          in
+          conditionalPart + commonPart;
+
       };
     };
   };
