@@ -90,6 +90,7 @@
 
     #other
     openjdk19
+    (callPackage ./custom/xwaylandvideobridge.nix {})
 
     #temp
     git

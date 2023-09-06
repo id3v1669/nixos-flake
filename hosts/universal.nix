@@ -78,7 +78,6 @@
   environment = {
     systemPackages = with pkgs; [
       fish
-      (callPackage ./../custom/xwaylandvideobridge.nix {})
     ];
     etc = {
 	    "wireplumber/bose.lua".text = ''
