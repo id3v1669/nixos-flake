@@ -6,7 +6,7 @@
     text = ''
 #!/run/current-system/sw/bin/bash
 
-declare -a apps=("com.spotify.Client"
+declare -a apps=(
                  "de.shorsh.discord-screenaudio"
                  "com.discordapp.Discord"
                  "net.lutris.Lutris"
