@@ -35,7 +35,7 @@
       input = {
         kb_layout = "${deflocale.kblayout}";
         kb_variant = "${deflocale.kbvariant}";
-        kb_options = "${deflocale.kboptions}";
+        kb_options = "${deflocale.kboption}";
         follow_mouse = 1;
         touchpad = {
             natural_scroll = true;

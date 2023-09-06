@@ -1,8 +1,19 @@
-{ hyprland, config, lib, pkgs, curversion, uservars, ... }:
+{ hyprland, config, lib, pkgs, curversion, uservars, envir, ... }:
 {
   imports = [
     ./programs
     ./../scripts
+    (./. + "/enviroment/gnome/${hostname}${envir}")
+  ]++ lib.lists.optionals (envir == "hypr") [
+    (./. + "/enviroment/hyprland/${hostname}")
+    ./enviroment/rofi
+    ./enviroment/eww
+    ./enviroment/waybar
+    ./enviroment/dunst
+    (./. + "/enviroment/gtk/${hostname}${envir}")
+    (./. + "/enviroment/qt/${hostname}${envir}")
+    ./enviroment/xdg
+  ] ++ lib.lists.optionals (envir == "gnome") [
   ];
   home = {
     stateVersion = "${curversion}";
@@ -76,31 +87,6 @@
 
     #games
     steam
-    #(lutris.override {
-    #  extraLibraries =  pkgs: [
-    #    giflib
-    #    libpng
-    #    gnutls
-    #    mpg123
-    #    openal
-    #    v4l-utils
-    #    libpulseaudio
-    #    libgpg-error
-    #    alsa-lib
-    #    libjpeg
-    #    xorg.libXcomposite
-    #    xorg.libXinerama
-    #    libgcrypt
-    #    gst_all_1.gst-plugins-base
-    #    vulkan-loader
-    #  ];
-    #  extraPkgs = pkgs: [
-    #    alsa-plugins
-    #    gtk3
-    #    sqlite
-    #    winePackages.staging
-    #  ];
-    #})
 
     #other
     openjdk19
@@ -109,5 +95,10 @@
     git
     kitty
     wofi
+  ]) ++ lib.lists.optionals (envir == "gnome") (with pkgs.gnomeExtensions;[
+    appindicator
+    notification-banner-reloaded
+    gsconnect
+    quick-settings-tweaker
   ]);
 }
