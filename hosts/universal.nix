@@ -1,8 +1,4 @@
-{lib, config, pkgs, ...}: 
-let
-  curversion = "23.05";
-  uname = "user";
-in
+{lib, config, pkgs, usname, curversion, kblayout, kbvariant, kboption, ...}: 
 {
   nixpkgs.config.allowUnfree = true;
   security.rtkit.enable = true;
@@ -24,9 +20,9 @@ in
     flatpak.enable = true;
     xserver = {
       enable = true;
-      layout = "us,ru";
-      xkbVariant = ",";
-      xkbOptions = "grp:win_space_toggle";
+      layout = "${kblayout}";
+      xkbVariant = "${kbvariant}";
+      xkbOptions = "${kboption}";
     };
     pipewire = {
       enable = true;
@@ -46,7 +42,7 @@ in
       driSupport32Bit = true;
     };
   };
-  users.users.${uname} = {
+  users.users.${usname} = {
     isNormalUser = true;
     description = "id3v1669";
     extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "libvirtd" "video" "docker" ];

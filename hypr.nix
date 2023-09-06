@@ -1,1 +1,1 @@
-{ hyprland }: hyprland.nixosModules.default
+{ inputs }: inputs.hyprland.nixosModules.default
