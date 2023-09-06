@@ -1,11 +1,12 @@
-{ stdenv
-, fetchFromGitLab
-, cmake
-, pkg-config
-, extra-cmake-modules
-, qt5
-, qt6
-, libsForQt5
+{ stdenv,
+  fetchFromGitHub,
+  fetchFromGitLab,
+  cmake,
+  pkg-config,
+  extra-cmake-modules,
+  qt5,
+  qt6,
+  libsForQt5
 }: 
 # let
 #   myExtraCMakeModules = extra-cmake-modules.overrideAttrs (oldAttrs: {
@@ -20,18 +21,27 @@
 #   });
 # in
 stdenv.mkDerivation {
+  # pname = "xwaylandvideobridge";
+  # version = "unstable-2023-09-05";
+#57a3a41ba6b358109e4fc25c6a4706b5f7d93c6b
+  # src = fetchFromGitLab {
+  #   domain = "invent.kde.org";
+  #   owner = "system";
+  #   repo = "xwaylandvideobridge";
+  #   rev = "970e44c54642e1f50222e4cf8109313cb6ea435d";
+  #   sha256 = "0sd87mwjn0n2mscfa0p6jyqq9csgxyypqgc1xvqd51n6flig1j5s";
+  # };
   pname = "xwaylandvideobridge";
-  version = "unstable-2023-09-05";
+  version = "unstablegit-2023-09-05";
 
-  src = fetchFromGitLab {
-    domain = "invent.kde.org";
-    owner = "system";
+  src = fetchFromGitHub {
+    owner = "idev1669";
     repo = "xwaylandvideobridge";
-    rev = "970e44c54642e1f50222e4cf8109313cb6ea435d";
-    sha256 = "0sd87mwjn0n2mscfa0p6jyqq9csgxyypqgc1xvqd51n6flig1j5s";
+    rev = "d6d7aeebe1e073044e2dfe9d8f0047915a312aad";
+    sha256 = "0fc5ba6fdx4sky1d0afw6qaiykb746618qp8q05hwfjsssrc8g8w";
   };
 
-   patches = [ ./xwbr.patch ];
+  #patches = [ ./xwbr.patch ];
 
   nativeBuildInputs = [
     cmake

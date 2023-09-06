@@ -59,8 +59,9 @@
     };
     extraConfig =''
   # Fix slow startup
-    exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    #exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    #exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
     exec-once = hyprctl setcursor Bibata-Modern-Classic 24
     #exec-once = dunst
