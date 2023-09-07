@@ -20,8 +20,9 @@
     6. **- network (wifi icon if wireless, net icon if wired, vpn icon if vpn, nonet icon if not connected)**
         1. **- on hover more info about current connection**
         2. **- on click popup network (write script or download gui)**
-    7. **- apps tray??**
-    8. **+ add power popup**
+    7. **- calendar popup**
+    8. **- apps tray??**
+    9. **+ add power popup**
 
 2. **Rofi style**
 
