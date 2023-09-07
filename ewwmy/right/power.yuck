@@ -11,10 +11,8 @@
         :space-evenly "false" 
         :vexpand "false" 
         :hexpand "false"
-        (label :class "infotext" :halign "start")
         (box 
-          :class "power"
-          ""
+          "󰐥"  ;;""
         )
       )
     )

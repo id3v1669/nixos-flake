@@ -25,15 +25,15 @@
         :orientation "vertical"
         (button 
           :onclick "systemctl suspend"
-          "Suspend"
+          ""
         )
         (button 
           :onclick "reboot"
-          "Reboot"
+          ""
         )
         (button 
           :onclick "shutdown -h now"
-          "Off"
+          "󰐥"
         )
       )
     )
