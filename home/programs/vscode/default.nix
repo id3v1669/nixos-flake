@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }: { 
-#  nixpkgs.config.vscode.commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland";
+  nixpkgs.config.vscode.commandLineArgs = "--enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
   programs.vscode = {
     enable = true;
     package = pkgs.vscode-fhs;
@@ -17,4 +17,7 @@
       ms-python.python
     ];
   };
+  #home.file.".config/code-flags.conf".text = ''
+  #--enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland
+  #'';
 }
