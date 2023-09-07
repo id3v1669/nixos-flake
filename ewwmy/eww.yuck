@@ -1,3 +1,10 @@
+(defpoll hour 	        :interval "1s" `date +%H`)
+(defpoll minute         :interval "1s" `date +%M`)
+(defpoll day 	        :interval "1s" `date "+%A"`)
+(defpoll day-abrev 	    :interval "1s" `date "+%a"`)
+(defpoll day-month 	    :interval "1s" `date "+%d"`)
+(defpoll date 	        :interval "1s" `date "+%D"`)
+
 (defwindow bar-test
   :monitor 0
   :stacking "bg"
@@ -70,14 +77,38 @@
     )
 	)
 )
+;; (defwidget launcher []
+;;   (box 
+;;     :orientation "h"
+;;     :space-evenly false
+;;     :halign "left"
+;;     (button 
+;;       :onclick "rofi -show"
+;; 			(box 
+;;         :orientation "h" 
+;;         :spacing 2 
+;;         :valign "center" 
+;;         :halign "center" 
+;;         :space-evenly "false" 
+;;         :vexpand "false" 
+;;         :hexpand "false"
+;; 				(label :class "infotext" :halign "start")
+;; 				(box 
+;;           :class "launcher"
+;;           " ")
+;;       )
+;;     )
+;; 	)
+;; )
+;; rewriting launcher with wofi launcher
 (defwidget launcher []
   (box 
     :orientation "h"
     :space-evenly false
     :halign "left"
     (button 
-      :onclick "rofi -show"
-			(box 
+      :onclick "wofi --show drun"
+      (box 
         :orientation "h" 
         :spacing 2 
         :valign "center" 
@@ -85,14 +116,16 @@
         :space-evenly "false" 
         :vexpand "false" 
         :hexpand "false"
-				(label :class "infotext" :halign "start")
-				(box 
+        (label :class "infotext" :halign "start")
+        (box 
           :class "launcher"
           " ")
       )
     )
-	)
+  )
 )
+
+
 (defwidget power []
   (box 
     :orientation "h"
