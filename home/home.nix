@@ -15,7 +15,6 @@
     ./enviroment/xdg
   ] ++ lib.lists.optionals (envir == "gnome") [
   ];
-  fonts.fontconfig.enable = true;
   home = {
     stateVersion = "${curversion}";
     username = "${uservars.name}";
