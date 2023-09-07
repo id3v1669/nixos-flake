@@ -15,11 +15,11 @@
     ./enviroment/xdg
   ] ++ lib.lists.optionals (envir == "gnome") [
   ];
+  fonts.fontconfig.enable = true;
   home = {
     stateVersion = "${curversion}";
     username = "${uservars.name}";
     homeDirectory = "/home/${uservars.name}";
-    fonts.fontconfig.enable = true;
     packages = (with pkgs; [
       #screenshots
       grim

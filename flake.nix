@@ -71,7 +71,7 @@
             extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars; };
           };
         }
-      ] ++ inputs.nixpkgs.lib.lists.optional (envir == "hypr") (import ./hypr.nix { inherit inputs; });
+      ] ++ inputs.nixpkgs.lib.lists.optional (envir == "hypr") inputs.hyprland.nixosModules.default;
     };
   in {
     nixosConfigurations = {
