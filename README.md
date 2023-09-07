@@ -4,7 +4,7 @@
 
 1. **Setup eww**
     1. **+ add rofi launcher**
-    2. **- microphone mute/unmute icon in bar**
+    2. **+- microphone mute/unmute icon in bar(fix icon to change onclick)**
     3. **- sound icon with %**
         1. **- on hover show per-app volume control**
         2. **- on click open pavucontrol**
