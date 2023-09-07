@@ -19,9 +19,8 @@
     stateVersion = "${curversion}";
     username = "${uservars.name}";
     homeDirectory = "/home/${uservars.name}";
-  };
-
-  home.packages = (with pkgs; [
+    fonts.fontconfig.enable = true;
+    packages = (with pkgs; [
     #screenshots
     grim
     slurp
