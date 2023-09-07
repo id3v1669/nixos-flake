@@ -72,6 +72,17 @@
 #    exec-once = swww init
 #    exec = swww img /home/${uservars.name}/Imagens/wallpapers/menhera.jpg
 
+
+#------------------screen sharing------------------
+exec-once = xwaylandvideobridge
+windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
+windowrulev2 = noanim,class:^(xwaylandvideobridge)$
+windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
+windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
+#------------------screen sharing------------------
+
+
+
     windowrule=float,^(kitty)$
     windowrule=float,^(pavucontrol)$
     windowrule=center,^(kitty)$

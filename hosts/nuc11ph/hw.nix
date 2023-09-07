@@ -1,5 +1,4 @@
 { config, lib, pkgs, modulesPath, ... }:
-
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
@@ -46,11 +45,15 @@
       prime = {
         intelBusId = "PCI:00:02:0";
         nvidiaBusId = "PCI:01:00:0";
-        sync.enable = true;
+        reverseSync.enable = true;
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
       };
       powerManagement = {
         enable = true;
-        #finegrained = true;
+        finegrained = true;
       };
     };
     opengl = {
@@ -63,14 +66,13 @@
         nvidia-vaapi-driver
         vaapiVdpau
         libvdpau-va-gl
-        vulkan-loader
-        vulkan-validation-layers
-        vulkan-tools
-        libva-utils
-        cudatoolkit
-        #nvidia-offload
-        libva
-        glxinfo
+        #vulkan-loader
+        #vulkan-validation-layers
+        #vulkan-tools
+        #libva-utils
+        #cudatoolkit
+        #libva
+        #glxinfo
       ];
     };
   };

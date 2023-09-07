@@ -36,7 +36,10 @@
       inherit system;
       config = {
         allowUnfree = true;
-      };     
+      };
+      overlays = [
+        #inputs.nur.nixosModules.nur
+      ];
     };
     mkSyst = { 
       hostname,
@@ -55,11 +58,10 @@
     }: inputs.nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit system inputs outputs curversion uservars hostname envir deflocale;
+        inherit system inputs outputs curversion uservars hostname envir deflocale pkgs;
       };
       modules = [ 
         (./. + "/hosts/${hostname}/${envir}.nix")
-        inputs.nur.nixosModules.nur
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -82,55 +84,3 @@
     };
   };
 }
-# myExtraCMakeModules = extra-cmake-modules.overrideAttrs (oldAttrs: {
-#     version = "unstable-2023-09-05";
-#     src = fetchFromGitLab {
-#       domain = "invent.kde.org";
-#       owner = "frameworks";
-#       repo = "extra-cmake-modules";
-#       rev = "9620f3e9390b2ed4c1eb2a7c37d494de3da6af67";
-#       sha256 = "17l8wdbgwpgr7j019qhhs1nk7rvv1r72n1v4g5xlhnjy65kr24ad";
-#     };
-#   });
-#   let
-#     #myvars = {
-#     usname = "user";
-#     system = "x86_64-linux";
-#     pkgs = import nixpkgs {
-#       inherit system;
-#       config = {
-#         allowUnfree = true;
-#       };     
-#     };
-#     mkSystem = pkgs: hostname: envir:
-#       pkgs.lib.nixosSystem {
-#         inherit system;
-#         modules = [ 
-#           (./. + "/hosts/${hostname}/${envir}.nix")
-#           #nur.nixosModules.nur
-#           home-manager.nixosModules.home-manager
-#           {
-#             home-manager = {
-#               useGlobalPkgs = true;
-#               useUserPackages = true;
-#               users.user = import (./. + "/home/home${hostname}${envir}.nix") ;
-#               extraSpecialArgs = { inherit inputs; };
-#             };
-#             nixpkgs.overlays = [
-#               nur.overlay
-#             ];
-#           }
-#         ] ++ pkgs.lib.lists.optional (envir == "hypr") (import ./hypr.nix { inherit hyprland; });
-#       };
-#   in {
-#     nixosConfigurations = {
-#       nuc11phhypr = mkSystem inputs.nixpkgs "nuc11ph" "hypr";
-#       nuc11phgnome = mkSystem inputs.nixpkgs "nuc11ph" "gnome";
-#       nuc11phkde = mkSystem inputs.nixpkgs "nuc11ph" "kde";
-#       l14g3hypr = mkSystem inputs.nixpkgs "l14g3" "hypr";
-#       l14g3gnome = mkSystem inputs.nixpkgs "l14g3" "gnome";
-#       alexpchypr = mkSystem inputs.nixpkgs "alexpc" "hypr";
-      
-#     };
-#   };
-# }
