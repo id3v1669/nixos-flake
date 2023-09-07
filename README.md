@@ -1,4 +1,5 @@
-# nixos-flake
+##nixos-flake
+
 ToDo:
 1) setup eww
     1.1) + add rofi launcher
