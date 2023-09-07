@@ -16,7 +16,6 @@ in
   };
   programs = {
     regreet.enable = true;
-    dconf.enable = true;
   };
 
 

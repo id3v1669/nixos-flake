@@ -50,7 +50,7 @@
       };
       powerManagement = {
         enable = true;
-        finegrained = true;
+        #finegrained = true;
       };
     };
     opengl = {
@@ -68,7 +68,7 @@
         vulkan-tools
         libva-utils
         cudatoolkit
-        nvidia-offload
+        #nvidia-offload
         libva
         glxinfo
       ];

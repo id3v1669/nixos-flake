@@ -16,6 +16,7 @@
   programs = {
     adb.enable = true;
     fish.enable = true;
+    dconf.enable = true;
   };
   services = {
     blueman.enable = true;
