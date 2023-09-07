@@ -1,0 +1,41 @@
+;;local vars
+(defvar show_powerbuttons false)
+
+(defwindow popup-power-window
+  :monitor 0
+  :stacking "overlay"
+  :exclusive false
+  :geometry (geometry 
+    :x "0.25%"
+    :y "0"
+    :anchor "top right")
+  (powerbuttons)
+)
+
+(defwidget powerbuttons []
+  (eventbox 
+    :onhover ""
+    :onhoverlost "eww update show_powerbuttons=false --config ~/myrepos/nixos-flake/ewwmy/"
+    (revealer
+      :transition "slideup"
+      :reveal show_powerbuttons
+      :duration "500ms"
+      (box
+        :halign "start" 
+        :orientation "vertical"
+        (button 
+          :onclick "systemctl suspend"
+          "Suspend"
+        )
+        (button 
+          :onclick "reboot"
+          "Reboot"
+        )
+        (button 
+          :onclick "shutdown -h now"
+          "Off"
+        )
+      )
+    )
+  )
+)

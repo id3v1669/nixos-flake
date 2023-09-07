@@ -1,5 +1,8 @@
 (include "./left/launcher.yuck")
+(include "./right/power.yuck")
 (include "./defvars.yuck")
+(include "./popups/popup-power.yuck")
+(defvar debugvar "0")
 
 (defwindow bar-test
   :monitor 0
@@ -15,6 +18,7 @@
     :orientation "h"
     (left)
     (clock)
+      "Debug: ${debugvar}"
     (right)
   )
 )
@@ -34,6 +38,7 @@
     :halign "center"
     :class "centerModules"
     (launcher)
+    "Debug: ${debugvar}"
   )
 )
 (defwidget right []
@@ -69,30 +74,6 @@
 				(box 
           :class "date" 
           datetime)
-      )
-    )
-	)
-)
-
-(defwidget power []
-  (box 
-    :orientation "h"
-    :space-evenly false
-    :halign "right"
-    (button 
-      ;;:onclick "scripts/widget_apps --nm"
-			(box 
-        :orientation "h" 
-        :spacing 2 
-        :valign "right" 
-        :halign "right" 
-        :space-evenly "false" 
-        :vexpand "false" 
-        :hexpand "false"
-				(label :class "infotext" :halign "start")
-				(box 
-          :class "power"
-          "pw")
       )
     )
 	)

@@ -1,0 +1,22 @@
+(defwidget power []
+  (eventbox
+    :onhover "eww update show_powerbuttons=true --config ~/myrepos/nixos-flake/ewwmy/"
+    :onhoverlost ""
+    (button 
+      (box 
+        :orientation "h" 
+        :spacing 2 
+        :valign "right" 
+        :halign "right" 
+        :space-evenly "false" 
+        :vexpand "false" 
+        :hexpand "false"
+        (label :class "infotext" :halign "start")
+        (box 
+          :class "power"
+          ""
+        )
+      )
+    )
+  )
+)
