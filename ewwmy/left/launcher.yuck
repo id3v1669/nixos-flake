@@ -1,5 +1,3 @@
-(include "./../defvars.yuck")
-
 (defwidget launcher []
     (box 
       :orientation "h"
