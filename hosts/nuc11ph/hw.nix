@@ -44,9 +44,13 @@
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
       prime = {
-        offload.enable = true;
         intelBusId = "PCI:00:02:0";
         nvidiaBusId = "PCI:01:00:0";
+        sync.enable = true;
+      };
+      powerManagement = {
+        enable = true;
+        finegrained = true;
       };
     };
     opengl = {
@@ -59,9 +63,19 @@
         nvidia-vaapi-driver
         vaapiVdpau
         libvdpau-va-gl
+        vulkan-loader
+        vulkan-validation-layers
+        vulkan-tools
+        libva-utils
+        cudatoolkit
+        nvidia-offload
+        libva
+        glxinfo
       ];
     };
   };
+
+  virtualisation.docker.enableNvidia = true;
 
   services.xserver.videoDrivers = ["nvidia"];
 

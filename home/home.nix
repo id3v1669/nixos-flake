@@ -91,6 +91,7 @@
     #other
     openjdk19
     libsForQt5.qt5.qtwayland
+    libsForQt5.qt5ct
     qt6.qtwayland
     (callPackage ./custom/xwaylandvideobridge.nix {})
 
