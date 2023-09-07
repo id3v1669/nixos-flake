@@ -1,2 +1,19 @@
 ;; unlocker mic: 󰍬
 ;; lock mic: 󰍭
+(defwidget microphone []
+    (button 
+      :onclick "bash ~/myrepos/nixos-flake/ewwmy/scripts/mic.sh"
+        (box 
+          :orientation "h" 
+          :spacing 2 
+          :valign "right" 
+          :halign "right" 
+          :space-evenly "false" 
+          :vexpand "false" 
+          :hexpand "false"
+          (box 
+            "󰍬"
+          )
+        )
+      )
+  )

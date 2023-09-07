@@ -1,6 +1,7 @@
 (include "./left/launcher.yuck")
 (include "./right/power.yuck")
 (include "./defvars.yuck")
+(include "./right/microphone.yuck")
 (include "./popups/popup-power.yuck")
 (defvar debugvar "0")
 
@@ -47,6 +48,7 @@
     :space-evenly false  
     :halign "end"
     :class "rightModules"
+    (microphone)
     (power)
   )
 )
