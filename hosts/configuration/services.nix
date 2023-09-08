@@ -9,7 +9,7 @@
       layout = "${deflocale.kblayout}";
       xkbVariant = "${deflocale.kbvariant}";
       xkbOptions = "${deflocale.kboption}";
-      videoDrivers = [] ++ lib.optionalAttrs (gpuvar == "nvidiaprime") [ "nvidia" ];
+      videoDrivers = [] ++ lib.optionalAttrs (gpuvar == "nvidiaprime") [ "nvidia" ] ++ lib.optionalAttrs (gpuvar == "amd") [ "amdgpu" ];
     };
     pipewire = {
       enable = true;

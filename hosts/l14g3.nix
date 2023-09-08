@@ -9,9 +9,6 @@
 
 
   boot = {
-#    extraModulePackages = with config.boot.kernelPackages; [
-#      v4l2loopback
-#    ];
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     initrd = {
