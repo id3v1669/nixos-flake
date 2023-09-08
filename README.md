@@ -29,3 +29,7 @@
 3. **Add background**
 
 4. **Fix workspaces for multimonitor config**
+
+5. **Fix elecron apps on nvidia**
+
+6. **screenshare with sound??**
