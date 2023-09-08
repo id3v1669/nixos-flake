@@ -1,4 +1,15 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, ...}: 
+let
+  hypr-portal = pkgs.xdg-desktop-portal-hyprland.overrideAttrs (oldAttrs: {
+    version = "unstable-2023-09-05";
+    src = pkgs.fetchFromGitHub {
+      owner = "hyprwm";
+      repo = "xdg-desktop-portal-hyprland";
+      rev = "57a3a41ba6b358109e4fc25c6a4706b5f7d93c6b";
+      sha256 = "1xc0lq3ifniny8vzr9izi8cj0smgxngcl8738pkq6n8mygbyc924";
+    };
+  });
+in
 {
   nixpkgs.config.allowUnfree = true;
   security = {
@@ -10,8 +21,11 @@
   i18n.defaultLocale = "${deflocale.locale}";
   sound.enable = true;
   networking = {
+    useDHCP = lib.mkDefault true;
     networkmanager.enable = true;
     hostName = "${hostname}${envir}";
+    firewall.enable = false;
+    enableIPv6 = false;
   };
   virtualisation = {
     docker.enable = true;
@@ -154,25 +168,6 @@
       polkit_gnome
       xorg.xhost
     ]);
-
-    #doesnt work need fix
-#     etc = {
-# 	    "wireplumber/bose.lua".text = ''
-# rule = {
-#   matches = {
-#     {
-#       { "node.name", "equals", "alsa_input.usb-Elgato_Systems_Elgato_Wave_3_BS43J1A04362-00.mono-fallback" },
-#     },
-#   },
-#   apply_properties = {
-#     ["node.nick"] = "ElgatoMic",
-#   },
-# }
-
-# table.insert(alsa_monitor.rules, rule)
-
-# 	    '';
-#     };
   } // lib.optionalAttrs (envir == "gnome") {
     gnome.excludePackages = (with pkgs; [
     gnome-tour
@@ -189,8 +184,37 @@
     ]);
   };
   system.stateVersion = "${curversion}";
+  boot = {
+    loader = {
+      timeout = 15;     
+      efi.canTouchEfiVariables = true;
+      systemd-boot = {
+        enable = true;
+        #configurationLimit = 10; #disabled for now due to unfinished dotfiles
+      };
+    };
+  };
 }
 
+
+#doesnt work need fix
+#     enviroment.etc = {
+# 	    "wireplumber/bose.lua".text = ''
+# rule = {
+#   matches = {
+#     {
+#       { "node.name", "equals", "alsa_input.usb-Elgato_Systems_Elgato_Wave_3_BS43J1A04362-00.mono-fallback" },
+#     },
+#   },
+#   apply_properties = {
+#     ["node.nick"] = "ElgatoMic",
+#   },
+# }
+
+# table.insert(alsa_monitor.rules, rule)
+
+# 	    '';
+#     };
 #sessionVariables = {
     #  EDITOR = "nano";
     #  BROWSER = "firefox";

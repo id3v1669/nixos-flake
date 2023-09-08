@@ -12,14 +12,6 @@
 #    ];
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
-    loader = {
-      timeout = 15;     
-      efi.canTouchEfiVariables = true;
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 10;
-      };
-    };
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
       kernelModules = [ ];
@@ -38,12 +30,6 @@
     };
 
   swapDevices = [ ];
-  networking = {
-    useDHCP = lib.mkDefault true;
-    networkmanager.enable = true;
-    firewall.enable = false;
-    enableIPv6 = false;
-  };
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
   services = {
     auto-cpufreq = {

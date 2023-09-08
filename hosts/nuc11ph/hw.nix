@@ -12,10 +12,6 @@
       availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
       kernelModules = [ "nvidia" ];##
     };
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
   };
 
   fileSystems."/" =
@@ -29,12 +25,6 @@
     };
 
   swapDevices = [ ];
-
-  networking = {
-    useDHCP = lib.mkDefault true;
-    #hostName = "nuc11phnix"; #fix fish aliases
-    #hostName = "nixos";
-  };
 
   hardware = {
     nvidia = {
