@@ -16,7 +16,7 @@
     extraModulePackages = [ ];
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
-      kernelModules = [ ];
+      kernelModules = [ "amdgpu" ];
       luks.devices."luks-cf8f735b-5ddc-4f3c-a720-3479f8588f5a".device = "/dev/disk/by-uuid/cf8f735b-5ddc-4f3c-a720-3479f8588f5a";
     };
   };
