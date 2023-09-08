@@ -1,6 +1,7 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, ...}: 
 {
   programs = {
+    light.enable = true;
     adb.enable = true;
     fish.enable = true;
     dconf.enable = true;
