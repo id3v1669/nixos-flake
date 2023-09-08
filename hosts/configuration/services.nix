@@ -1,4 +1,4 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, ...}: 
+{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, ...}: 
 {
   services = {
     blueman.enable = true;
@@ -9,6 +9,7 @@
       layout = "${deflocale.kblayout}";
       xkbVariant = "${deflocale.kbvariant}";
       xkbOptions = "${deflocale.kboption}";
+      videoDrivers = [] ++ lib.optionalAttrs (gpuvar == "nvidiaprime") [ "nvidia" ];
     };
     pipewire = {
       enable = true;

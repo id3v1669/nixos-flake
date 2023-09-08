@@ -34,6 +34,7 @@
     mkSyst = { 
       hostname,
       envir,
+      gpuvar ? "nvidiaprime",
       system ? "x86_64-linux",
       cpuvar ? "intel",
       uservars ? {
@@ -60,7 +61,7 @@
     in inputs.nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar;
+        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar;
       };
       modules = [ 
         (./. + "/hosts/${hostname}.nix")
