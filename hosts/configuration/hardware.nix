@@ -1,4 +1,4 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, ...}: 
+{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, ...}: 
 {
   hardware = {
     cpu.${cpuvar}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
@@ -16,20 +16,21 @@
         libvdpau-va-gl
       ]);
     };
-  } // lib.optionalAttrs (hostname == "nuc11ph") {
+  } // lib.optionalAttrs (gpuvar == "nvidiaprime") {
     nvidia = {
       modesetting.enable = true;
       open = false;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
       prime = {
-        intelBusId = "PCI:00:02:0";
         nvidiaBusId = "PCI:01:00:0";
         reverseSync.enable = true;
         offload = {
           enable = true;
           enableOffloadCmd = true;
         };
+      } // lib.optionalAttrs (cpuvar == "intel") {
+        intelBusId = "PCI:00:02:0";
       };
       powerManagement = {
         enable = true;
