@@ -1,4 +1,4 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, system, ...}: 
+{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, system, gpuvar, ...}: 
 let
   hypr-portal = pkgs.xdg-desktop-portal-hyprland.overrideAttrs (oldAttrs: {
     version = "unstable-2023-09-05";
@@ -36,7 +36,9 @@ in
     enableIPv6 = false;
   };
   virtualisation = {
-    docker.enable = true;
+    docker = {
+      enable = true;
+    } // lib.optionalAttrs (gpuvar == "nvidiaprime") { enableNvidia = true; };
     libvirtd.enable = true;
   };
   xdg = {
