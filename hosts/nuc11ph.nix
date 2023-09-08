@@ -9,10 +9,10 @@
   boot = {
     kernelModules = [ "kvm-intel" ];
     kernelParams = [ "nomodeset" "ibt=off" ];
-    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback nvidia_x11 ];#[ config.boot.kernelPackages.nvidia_x11 ];
     initrd = {
       availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-      kernelModules = [ "nvidia" ];##
+      kernelModules = [ "nvidia" ];
     };
   };
 
@@ -28,6 +28,5 @@
 
   swapDevices = [ ];
 
-  #virtualisation.docker.enableNvidia = true;
 
 }

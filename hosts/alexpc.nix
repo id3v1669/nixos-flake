@@ -13,7 +13,7 @@
 #      v4l2loopback
 #    ];
     kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
       kernelModules = [ "amdgpu" ];
@@ -36,5 +36,4 @@
 
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
 
-  #nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
