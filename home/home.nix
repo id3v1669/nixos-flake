@@ -101,11 +101,12 @@
       git
       kitty
       wofi
-    ]) ++ lib.lists.optionals (envir == "gnome") (with pkgs.gnomeExtensions;[
-      appindicator
-      notification-banner-reloaded
-      gsconnect
-      quick-settings-tweaker
+    ]) ++ lib.lists.optionals (envir == "gnome") (with pkgs;[
+      gnomeExtensions.appindicator
+      gnomeExtensions.notification-banner-reloaded
+      gnomeExtensions.gsconnect
+      gnomeExtensions.uick-settings-tweaker
+      blackbox
     ]);
   };
 }

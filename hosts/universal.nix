@@ -1,7 +1,11 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, ...}: 
 {
   nixpkgs.config.allowUnfree = true;
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+  } // lib.optionalAttrs (envir == "hypr") {
+    polkit.enable = true;
+  };
   time.timeZone = "${deflocale.timezone}";
   i18n.defaultLocale = "${deflocale.locale}";
   sound.enable = true;
@@ -17,6 +21,13 @@
     adb.enable = true;
     fish.enable = true;
     dconf.enable = true;
+  } // lib.optionalAttrs (envir == "gnome") {
+    kdeconnect = {
+      enable = true;
+      package = pkgs.gnomeExtensions.gsconnect;
+    };
+  } // lib.optionalAttrs (envir == "hypr") {
+    regreet.enable = true;
   };
   services = {
     blueman.enable = true;
@@ -35,6 +46,59 @@
       pulse.enable = true;
       wireplumber.enable = true;
       jack.enable = true;
+    };
+  } // lib.optionalAttrs (envir == "gnome") {
+    power-profiles-daemon.enable = false;
+    xserver = {
+      desktopManager.gnome = {
+        enable = true;
+        debug = false;
+      };
+      displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      };
+    };
+  } // lib.optionalAttrs (envir == "hypr") {
+    gvfs.enable = true; # Mount, trash, and other functionalities
+    mpd.enable = true;
+    greetd = {
+      enable = true;
+      settings = {
+        initial_session = {
+          user = "${uservars.name}";
+          command = "$SHELL -l";
+        };
+      };
+    };
+  };
+  xdg = {
+    #needed?
+  } // lib.optionalAttrs (envir == "hypr") {
+    autostart.enable = true;
+    portal = {
+      enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        hypr-portal
+      ];
+    };
+  };
+  systemd = {
+    #for now
+  } // lib.optionalAttrs (envir == "hypr") {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
     };
   };
   hardware = {
@@ -70,7 +134,7 @@
       mplus-outline-fonts.githubRelease
       dina-font
       proggyfonts
-    ]);
+    ]); # ++ lib.lists.optionals (envir == "gnome") ();
   };
   nix = {
     settings = {
@@ -84,27 +148,62 @@
     #};
   };
   environment = {
-    systemPackages = with pkgs; [
+    systemPackages = (with pkgs; [
       fish
-      #(callPackage ./../home/custom/xwaylandvideobridge.nix {})
-    ];
-    etc = {
-	    "wireplumber/bose.lua".text = ''
-rule = {
-  matches = {
-    {
-      { "node.name", "equals", "alsa_input.usb-Elgato_Systems_Elgato_Wave_3_BS43J1A04362-00.mono-fallback" },
-    },
-  },
-  apply_properties = {
-    ["node.nick"] = "ElgatoMic",
-  },
-}
+    ]) ++ lib.lists.optionals (envir == "hypr") (with pkgs; [
+      polkit_gnome
+      xorg.xhost
+    ]);
 
-table.insert(alsa_monitor.rules, rule)
+    #doesnt work need fix
+#     etc = {
+# 	    "wireplumber/bose.lua".text = ''
+# rule = {
+#   matches = {
+#     {
+#       { "node.name", "equals", "alsa_input.usb-Elgato_Systems_Elgato_Wave_3_BS43J1A04362-00.mono-fallback" },
+#     },
+#   },
+#   apply_properties = {
+#     ["node.nick"] = "ElgatoMic",
+#   },
+# }
 
-	    '';
-    };
+# table.insert(alsa_monitor.rules, rule)
+
+# 	    '';
+#     };
+  } // lib.optionalAttrs (envir == "gnome") {
+    gnome.excludePackages = (with pkgs; [
+    gnome-tour
+    ]) ++ (with pkgs.gnome; [
+      cheese # webcam tool
+      gnome-music
+      gnome-terminal
+      epiphany # web browser
+      geary # email reader
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+    ]);
   };
   system.stateVersion = "${curversion}";
 }
+
+#sessionVariables = {
+    #  EDITOR = "nano";
+    #  BROWSER = "firefox";
+    #  TERMINAL = "alacritty";
+    #   __GL_VRR_ALLOWED = "1";
+    #   WLR_NO_HARDWARE_CURSORS = "1";
+    #   WLR_RENDERER_ALLOW_SOFTWARE = "1";
+    #   CLUTTER_BACKEND = "wayland";
+    #   WLR_RENDERER = "vulkan";
+    #   GDK_BACKEND = "wayland,x11";
+    #   GTK_USE_PORTAL="1";
+
+    #   XDG_CURRENT_DESKTOP = "Hyprland";
+    #   XDG_SESSION_DESKTOP = "Hyprland";
+    #   XDG_SESSION_TYPE = "wayland";
+    # };

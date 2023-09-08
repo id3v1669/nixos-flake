@@ -4,7 +4,6 @@
   imports =[
     ./hw.nix
     ./../universal.nix
-    ./../universalhypr.nix
   ];
 
   networking.hostName = "l14g3hypr";
