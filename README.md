@@ -32,6 +32,6 @@
 
 5. **Fix elecron apps on nvidia**
 
-5. **get rid of hostnames and make variables as laptop, nvidia, intel etc**
+6. **get rid of hostnames and make variables as laptop, nvidia, intel etc**
 
-6. **screenshare with sound??**
+7. **screenshare with sound??**
