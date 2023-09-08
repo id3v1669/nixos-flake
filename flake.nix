@@ -31,19 +31,10 @@
   let
     inherit (self) outputs;
     curversion = "23.11";
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
-      overlays = [
-        #inputs.nur.nixosModules.nur
-      ];
-    };
     mkSyst = { 
       hostname,
       envir,
+      system ? "x86_64-linux",
       cpuvar ? "intel",
       uservars ? {
         name = "user";
@@ -56,10 +47,20 @@
         timezone = "Australia/Perth";
         locale = "en_AU.UTF-8";
       }
-    }: inputs.nixpkgs.lib.nixosSystem 
+    }: let 
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+      };
+      overlays = [
+        #inputs.nur.nixosModules.nur
+      ];
+    };
+    in inputs.nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit system inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar;
+        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar;
       };
       modules = [ 
         (./. + "/hosts/${hostname}.nix")

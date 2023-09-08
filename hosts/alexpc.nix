@@ -36,6 +36,5 @@
 
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  #nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
