@@ -27,6 +27,7 @@
       #sound
       pamixer
       pavucontrol
+      pulseaudio#just lib to use pactl, pipewire is in use
 
       #vm and virt
       virt-manager
@@ -55,6 +56,18 @@
       telegram-desktop
       whatsapp-for-linux
 
+      #security
+      openssl
+      veracrypt
+
+      #hw related
+      bluez
+      mesa
+      mesa-demos
+
+      #games
+      steam
+
       #utils
       partition-manager
       qbittorrent
@@ -73,17 +86,8 @@
       zip
       unzip
 
-      #security
-      openssl
-      veracrypt
-
-      #hw related
-      bluez
-      mesa
-      mesa-demos
-
-      #games
-      steam
+      #nix utils
+      nix-prefetch-git
 
       #other
       openjdk19
