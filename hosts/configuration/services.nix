@@ -1,4 +1,4 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, ...}: 
+{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, desk, ...}: 
 {
   services = {
     blueman.enable = true;
@@ -40,6 +40,22 @@
         initial_session = {
           user = "${uservars.name}";
           command = "$SHELL -l";
+        };
+      };
+    };
+  } // lib.optionalAttrs (desk == "laptop") {
+    auto-cpufreq = {
+      enable = true;
+      settings = {
+        battery = {
+          governor = "powersave";
+          scaling_min_freq = 600000;
+          scaling_max_freq = 1300000;
+          turbo = "never";
+        };
+        charger = {
+          governor = "performance";
+          turbo = "auto";
         };
       };
     };
