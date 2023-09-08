@@ -61,7 +61,7 @@
         inherit system inputs outputs curversion uservars hostname envir deflocale pkgs;
       };
       modules = [ 
-        (./. + "/hosts/${hostname}/${envir}.nix")
+        (./. + "/hosts/${hostname}.nix")
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
