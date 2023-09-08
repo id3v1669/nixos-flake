@@ -28,21 +28,6 @@
 
   swapDevices = [ ];
 
-  hardware = {
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        vaapiIntel
-        nvidia-vaapi-driver
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-    };
-  };
-
   virtualisation.docker.enableNvidia = true;
 
   #services.xserver.videoDrivers = ["nvidia"];
