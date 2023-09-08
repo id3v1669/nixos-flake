@@ -62,7 +62,7 @@
     in inputs.nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk;
+        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system;
       };
       modules = [ 
         (./. + "/hosts/${hostname}.nix")

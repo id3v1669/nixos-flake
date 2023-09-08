@@ -1,4 +1,4 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, ...}: 
+{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, system, ...}: 
 let
   hypr-portal = pkgs.xdg-desktop-portal-hyprland.overrideAttrs (oldAttrs: {
     version = "unstable-2023-09-05";
@@ -16,9 +16,10 @@ in
       ./hardware.nix
       ./services.nix
       ./progs.nix
+      ./boot.nix
     ];
   #nixpkgs.config.allowUnfree = true;
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs.hostPlatform = lib.mkDefault "${system}";
   security = {
     rtkit.enable = true;
   } // lib.optionalAttrs (envir == "hypr") {
@@ -105,16 +106,6 @@ in
     #};
   };
   system.stateVersion = "${curversion}";
-  boot = {
-    loader = {
-      timeout = 15;     
-      efi.canTouchEfiVariables = true;
-      systemd-boot = {
-        enable = true;
-        #configurationLimit = 10; #disabled for now due to unfinished dotfiles
-      };
-    };
-  };
 }
 
 
