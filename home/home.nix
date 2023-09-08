@@ -27,7 +27,8 @@
       #sound
       pamixer
       pavucontrol
-      pulseaudio#just lib to use pactl, pipewire is in use
+      pulseaudio #just lib to use pactl, pipewire is in use
+      qpwgraph #gui for pipewire graph
 
       #vm and virt
       virt-manager

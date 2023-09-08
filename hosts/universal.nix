@@ -58,7 +58,7 @@
       enable = true;
       decompressFonts = true;
     };
-    packages  = with pkgs; [
+    packages = (with pkgs; [
       terminus-nerdfont
       noto-fonts
       nerdfonts
@@ -70,7 +70,7 @@
       mplus-outline-fonts.githubRelease
       dina-font
       proggyfonts
-    ];
+    ]);
   };
   nix = {
     settings = {

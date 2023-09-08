@@ -61,10 +61,11 @@ in
   };
   
   environment = {
-    systemPackages = with pkgs; [
+    systemPackages = (with pkgs; [
       polkit_gnome
       xorg.xhost
-    ];
+    ]);
+    
     #sessionVariables = {
     #  EDITOR = "nano";
     #  BROWSER = "firefox";
