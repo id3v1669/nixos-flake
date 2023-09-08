@@ -1,4 +1,4 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, ...}: 
+{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, ...}: 
 let
   hypr-portal = pkgs.xdg-desktop-portal-hyprland.overrideAttrs (oldAttrs: {
     version = "unstable-2023-09-05";
@@ -11,6 +11,10 @@ let
   });
 in
 {
+  imports =
+    [ 
+      ./hardware.nix
+    ];
   nixpkgs.config.allowUnfree = true;
   security = {
     rtkit.enable = true;
@@ -113,15 +117,6 @@ in
         RestartSec = 1;
         TimeoutStopSec = 10;
       };
-    };
-  };
-  hardware = {
-    pulseaudio.enable = false;
-    bluetooth.enable = true;
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
     };
   };
   users.users.${uservars.name} = {

@@ -30,7 +30,7 @@
     ... }@inputs: 
   let
     inherit (self) outputs;
-    curversion = "23.05";
+    curversion = "23.11";
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
@@ -44,6 +44,7 @@
     mkSyst = { 
       hostname,
       envir,
+      cpuvar ? "intel",
       uservars ? {
         name = "user";
         description = "id3v1669";
@@ -58,7 +59,7 @@
     }: inputs.nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit system inputs outputs curversion uservars hostname envir deflocale pkgs;
+        inherit system inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar;
       };
       modules = [ 
         (./. + "/hosts/${hostname}.nix")
@@ -78,8 +79,8 @@
       nuc11phhypr = mkSyst { hostname = "nuc11ph"; envir = "hypr"; };
       nuc11phgnome = mkSyst { hostname = "nuc11ph"; envir = "gnome"; };
       nuc11phkde = mkSyst { hostname = "nuc11ph"; envir = "kde"; };
-      l14g3hypr = mkSyst { hostname = "l14g3"; envir = "hypr"; };
-      l14g3gnome = mkSyst { hostname = "l14g3"; envir = "gnome"; };
+      l14g3hypr = mkSyst { hostname = "l14g3"; envir = "hypr"; cpuvar = "amd"; };
+      l14g3gnome = mkSyst { hostname = "l14g3"; envir = "gnome"; cpuvar = "amd"; };
       alexpchypr = mkSyst { hostname = "alexpch"; envir = "hypr"; };
     };
   };

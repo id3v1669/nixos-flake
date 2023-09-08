@@ -29,25 +29,6 @@
   swapDevices = [ ];
 
   hardware = {
-    nvidia = {
-      modesetting.enable = true;
-      open = false;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
-      prime = {
-        intelBusId = "PCI:00:02:0";
-        nvidiaBusId = "PCI:01:00:0";
-        reverseSync.enable = true;
-        offload = {
-          enable = true;
-          enableOffloadCmd = true;
-        };
-      };
-      powerManagement = {
-        enable = true;
-        finegrained = true;
-      };
-    };
     opengl = {
       enable = true;
       driSupport = true;
@@ -58,13 +39,6 @@
         nvidia-vaapi-driver
         vaapiVdpau
         libvdpau-va-gl
-        #vulkan-loader
-        #vulkan-validation-layers
-        #vulkan-tools
-        #libva-utils
-        #cudatoolkit
-        #libva
-        #glxinfo
       ];
     };
   };
@@ -75,5 +49,5 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   #powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  #hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
