@@ -4,6 +4,10 @@
     blueman.enable = true;
     printing.enable = true;
     flatpak.enable = true;
+    hardware.openrgb = {
+      enable = true;
+      motherboard = "${cpuvar}";
+    };
     xserver = {
       enable = true;
       layout = "${deflocale.kblayout}";
