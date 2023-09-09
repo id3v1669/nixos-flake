@@ -34,6 +34,7 @@
     mkSyst = { 
       hostname,
       envir,
+      winvar ? false,
       desk ? "desktop",
       gpuvar ? "nvidiaprime",
       system ? "x86_64-linux",
@@ -62,7 +63,7 @@
     in inputs.nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system;
+        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system winvar;
       };
       modules = [ 
         (./. + "/hosts/${hostname}.nix")
@@ -79,7 +80,7 @@
     };
   in {
     nixosConfigurations = {
-      nuc11phhypr = mkSyst { hostname = "nuc11ph"; envir = "hypr"; };
+      nuc11phhypr = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = true; };
       nuc11phgnome = mkSyst { hostname = "nuc11ph"; envir = "gnome"; };
       nuc11phkde = mkSyst { hostname = "nuc11ph"; envir = "kde"; };
       l14g3hypr = mkSyst { hostname = "l14g3"; envir = "hypr"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; };
