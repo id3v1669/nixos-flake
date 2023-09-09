@@ -6,21 +6,7 @@
       efi.canTouchEfiVariables = true;
       systemd-boot = {
         enable = true;
-        
-        #extraEntries = { 
-        #  "shindovs.conf" = ''
-        #    title shindovs
-        #    efi /EFI/Microsoft/Boot/bootmgfw.efi
-        #  ''; 
-        #};
-        #configurationLimit = 10; #disabled for now due to unfinished dotfiles
-      }// lib.optionalAttrs (winvar == true) {
-        #extraEntries = { 
-        # "shindovs.conf" = ''
-        #   title shindovs
-        #   efi /EFI/Microsoft/Boot/bootmgfw.efi
-        # ''; 
-        #};
+      }// lib.optionalAttrs (winvar == true && uservars.description == "id3v1669") {
         extraFiles = {
           "efi/Microsoft/Boot/bootmgfw.efi" = "/home/${uservars.name}/.winloader/Boot/bootmgfw.efi";
           "efi/Microsoft/Boot/bootmgr.efi" = "/home/${uservars.name}/.winloader/Boot/bootmgr.efi";

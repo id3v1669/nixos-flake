@@ -85,7 +85,7 @@
       nuc11phkde = mkSyst { hostname = "nuc11ph"; envir = "kde"; };
       l14g3hypr = mkSyst { hostname = "l14g3"; envir = "hypr"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; };
       l14g3gnome = mkSyst { hostname = "l14g3"; envir = "gnome"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; };
-      alexpchypr = mkSyst { hostname = "alexpch"; envir = "hypr"; gpuvar = "amd"; };
+      alexpchypr = mkSyst { hostname = "alexpch"; envir = "hypr"; gpuvar = "amd"; uservars = { name = "user"; description = "alexp"; }; };
     };
   };
 }
