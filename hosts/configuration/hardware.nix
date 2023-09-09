@@ -1,6 +1,7 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, ...}: 
 {
   hardware = {
+    i2c.enable = true;
     cpu.${cpuvar}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     pulseaudio.enable = false;
     bluetooth.enable = true;
