@@ -3,8 +3,6 @@
   services.udev = {
     enable = true;
     extraRules = ''
-SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="024f", GROUP="nuphy", MODE="0660"
-
 #---------------------------------------------------------------#
 #  OpenRGB udev rules - Git Commit: b5f46e3f                    #
 #---------------------------------------------------------------#

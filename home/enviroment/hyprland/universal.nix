@@ -120,8 +120,8 @@ windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 
     # Functional keybinds
     bind =,XF86AudioMicMute,exec,pamixer --default-source -t
-    bind =,XF86MonBrightnessDown,exec,light -U 20
-    bind =,XF86MonBrightnessUp,exec,light -A 20
+    bind =,XF86MonBrightnessDown,exec,ddcutil setvcp 10 - 5
+    bind =,XF86MonBrightnessUp,exec,ddcutil setvcp 10 + 5
     bind =,XF86AudioMute,exec,pamixer -t
     bind =,XF86AudioLowerVolume,exec,pamixer -d 10
     bind =,XF86AudioRaiseVolume,exec,pamixer -i 10
