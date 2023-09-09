@@ -73,7 +73,7 @@ in
   users.users.${uservars.name} = {
     isNormalUser = true;
     description = "${uservars.description}";
-    extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "libvirtd" "video" "docker" "i2c" ];
+    extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "libvirtd" "video" "docker" "i2c" "openrgb" ];
     shell = pkgs.fish;
   };
   fonts = {
