@@ -29,6 +29,7 @@
       pavucontrol
       pulseaudio #just lib to use pactl, pipewire is in use
       qpwgraph #gui for pipewire graph
+      mpc-cli
 
       #vm and virt
       virt-manager
@@ -48,8 +49,6 @@
       spotify
       ffmpeg
       vlc
-      mpc-cli
-      pamixer
       nomacs
       gnome.eog
 
@@ -86,6 +85,9 @@
       iwd
       zip
       unzip
+      i2c-tools # needed for ddcutil
+      ddcutil # brightness control
+      appimage-run
 
       #nix utils
       nix-prefetch-git

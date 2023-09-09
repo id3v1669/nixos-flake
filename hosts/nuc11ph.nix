@@ -7,7 +7,7 @@
     ];
 
   boot = {
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = [ "kvm-intel" "i2c-dev" ];
     kernelParams = [ "nomodeset" "ibt=off" ];
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback nvidia_x11 ];#[ config.boot.kernelPackages.nvidia_x11 ];
     initrd = {

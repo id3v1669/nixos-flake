@@ -3,6 +3,8 @@
   services.udev = {
     enable = true;
     extraRules = ''
+SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="024f", GROUP="nuphy", MODE="0660"
+
 #---------------------------------------------------------------#
 #  OpenRGB udev rules - Git Commit: b5f46e3f                    #
 #---------------------------------------------------------------#
@@ -11,6 +13,7 @@
 #  User I2C/SMBus Access                                        #
 #---------------------------------------------------------------#
 KERNEL=="i2c-[0-99]*", TAG+="uaccess"
+KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
 
 #---------------------------------------------------------------#
 #  Super I/O Access                                             #
