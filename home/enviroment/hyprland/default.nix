@@ -1,6 +1,10 @@
-{ config, lib, pkgs, deflocale, uservars, ... }:
+{ config, lib, pkgs, deflocale, uservars, hostname, ... }:
 
 {
+  imports = [ 
+    (./. + "/hostsettings/${hostname}.nix")
+    (./. + "/usersettings/${uservars.description}.nix")
+  ];
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;

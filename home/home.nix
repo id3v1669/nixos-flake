@@ -7,7 +7,7 @@
     (./. + "/enviroment/gnome/${hostname}${envir}")
     (./. + "/enviroment/gtk/${hostname}")
   ]++ lib.lists.optionals (envir == "hypr") [
-    (./. + "/enviroment/hyprland/${hostname}")
+    ./enviroment/hyprland
     ./enviroment/rofi
     ./enviroment/eww
     ./enviroment/waybar

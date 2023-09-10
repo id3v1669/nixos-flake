@@ -86,7 +86,7 @@
   } // lib.optionalAttrs (envir == "gnome") {
     power-profiles-daemon.enable = false;
   } // lib.optionalAttrs (envir == "hypr") {
-    gvfs.enable = true; # Mount, trash, and other functionalities
+    gvfs.enable = true; # Mount, trash, etc
     mpd.enable = true;
     # greetd = {
     #   enable = true;

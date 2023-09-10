@@ -1,9 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ 
-    ./../universal.nix
-  ];
 
   wayland.windowManager.hyprland = {
     enableNvidiaPatches = true;
