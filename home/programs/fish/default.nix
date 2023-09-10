@@ -43,7 +43,11 @@ echo "
                               ░░░░▒▒
 "
         '';
-            conditionalPart = if envir == "hypr" then '''' else '''';
+            conditionalPart = if envir == "hypr" then ''
+if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+  Hyprland
+end
+            '' else '''';
           in
           conditionalPart + commonPart;
 

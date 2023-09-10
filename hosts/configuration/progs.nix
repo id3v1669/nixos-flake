@@ -15,8 +15,6 @@
   environment = {
     systemPackages = (with pkgs; [
       fish
-      catppuccin-sddm-corners
-      sddm-chili-theme
     ]) ++ lib.lists.optionals (envir == "hypr") (with pkgs; [
       polkit_gnome
       xorg.xhost

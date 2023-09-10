@@ -56,26 +56,55 @@
         enable = true;
         wayland = true;
       };
-    } // lib.optionalAttrs (envir == "hypr") {
-      displayManager = {
-        defaultSession = "Hyprland";
-        gdm.enable = false;
-        sddm = {
-          enable = true;
-          enableHidpi = false;
-          theme = "sddm-chili-theme";
-        };
-        session = [
-          {
-            manage = "desktop";
-            name = "Hyprland";
-            start = ''
-              exec Hyprland &
-              waitPID=$!
-            '';
-          }
-        ];
-      };
+    # } // lib.optionalAttrs (envir == "hypr") {
+    #   displayManager = {
+    #     defaultSession = "Hyprland";
+    #     gdm = {
+    #       enable = false;
+    #       wayland = true;
+    #       #settings = {
+    #       #  daemon = {
+    #       #    User = "user";
+    #       #    Group = "gdm";
+    #       #  };
+    #       #};
+    #     };
+    #     sddm.enable = false;
+    #     lightdm.enable = false; #{
+    #     #  enable = true;
+    #     #  greeter.enable = true;
+    #       #greeters.gtk = {
+    #       #  enable = true;
+    #         #theme = {
+    #         #  package = pkgs.gnome.gnome-themes-extra;
+    #         #  name = "Adwaita";
+    #         #};
+    #       #};
+    #     #};
+    #     #sddm = {
+    #     #  enable = true;
+    #     #  enableHidpi = false;
+    #     #  theme = "sddm-chili-theme";
+    #     #};
+    #     session = [
+    #       {
+    #         manage = "desktop";
+    #         name = "Hyprland";
+    #         start = ''
+    #           exec Hyprland &
+    #           waitPID=$!
+    #         '';
+    #       }
+    #       {
+    #         manage = "desktop";
+    #         name = "Hyprland2";
+    #         start = ''
+    #           exec Hyprland &
+    #           waitPID=$!
+    #         '';
+    #       }
+    #     ];
+    #   };
     };
     pipewire = {
       enable = true;
@@ -90,15 +119,15 @@
   } // lib.optionalAttrs (envir == "hypr") {
     gvfs.enable = true; # Mount, trash, etc
     mpd.enable = true;
-    # greetd = {
-    #   enable = true;
-    #   settings = {
-    #     initial_session = {
-    #       user = "${uservars.name}";
-    #       command = "$SHELL -l";
-    #     };
-    #   };
-    # };
+    greetd = {
+      enable = true;
+      settings = {
+        initial_session = {
+          user = "${uservars.name}";
+          command = "$SHELL -l";
+        };
+      };
+    };
   } // lib.optionalAttrs (desk == "laptop") {
     auto-cpufreq = {
       enable = true;
