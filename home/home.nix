@@ -107,7 +107,7 @@
       gnomeExtensions.appindicator
       gnomeExtensions.notification-banner-reloaded
       gnomeExtensions.gsconnect
-      gnomeExtensions.uick-settings-tweaker
+      gnomeExtensions.quick-settings-tweaker
       blackbox
     ]);
   };
