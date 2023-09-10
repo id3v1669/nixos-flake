@@ -68,20 +68,22 @@
       #games
       steam
 
-      #utils
+      #gui tools
       partition-manager
       qbittorrent
+      gnome.nautilus
+      rustdesk
+      github-desktop
+
+      #cli tools
       pciutils
       usbutils
       lshw
       file
-      gnome.nautilus
-      rustdesk
       btop
       neofetch
       git
       gh
-      github-desktop
       iwd
       zip
       unzip
@@ -101,7 +103,6 @@
       (callPackage ./custom/xwaylandvideobridge.nix {})
 
       #temp
-      git
       kitty
       wofi
     ]) ++ lib.lists.optionals (envir == "gnome") (with pkgs;[
