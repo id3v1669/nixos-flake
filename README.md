@@ -38,6 +38,6 @@
 
 8. **-fix steam client flickering on nvidia**
 
-9. **-fix sddm resolution and theme**
+9. **-displayManager??**
 
 10. **-fix xrandr warnings during rebuild ??needed??**
