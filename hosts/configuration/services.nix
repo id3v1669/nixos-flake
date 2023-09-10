@@ -15,6 +15,7 @@
     #WLR_RENDERER_ALLOW_SOFTWARE = "1";
     #CLUTTER_BACKEND = "wayland";
     #WLR_RENDERER = "vulkan";
+    DisplayServer="wayland"; #try for sddm
     NIXOS_OZONE_WL = "1"; # needer for electron appps
     #GDK_BACKEND = "wayland,x11";
 
@@ -58,9 +59,10 @@
     } // lib.optionalAttrs (envir == "hypr") {
       displayManager = {
         defaultSession = "Hyprland";
+        gdm.enable = false;
         sddm = {
           enable = true;
-          enableHidpi = true;
+          enableHidpi = false;
           theme = "catppuccin";
         };
         session = [
