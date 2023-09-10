@@ -17,6 +17,7 @@ in
       ./services.nix
       ./progs.nix
       ./boot.nix
+      ./udevrules.nix
     ];
   #nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = lib.mkDefault "${system}";

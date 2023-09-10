@@ -14,6 +14,15 @@
       xkbVariant = "${deflocale.kbvariant}";
       xkbOptions = "${deflocale.kboption}";
       videoDrivers = [] ++ lib.lists.optionals (gpuvar == "nvidiaprime") [ "nvidia" ] ++ lib.lists.optionals (gpuvar == "amd") [ "amdgpu" ];
+    } // lib.optionalAttrs (envir == "gnome") {
+      desktopManager.gnome = {
+        enable = true;
+        debug = false;
+      };
+      displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      };
     };
     pipewire = {
       enable = true;
@@ -25,16 +34,6 @@
     };
   } // lib.optionalAttrs (envir == "gnome") {
     power-profiles-daemon.enable = false;
-    xserver = {
-      desktopManager.gnome = {
-        enable = true;
-        debug = false;
-      };
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
-      };
-    };
   } // lib.optionalAttrs (envir == "hypr") {
     gvfs.enable = true; # Mount, trash, and other functionalities
     mpd.enable = true;
