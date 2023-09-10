@@ -30,7 +30,13 @@
       animations = {
         enabled = true;
         bezier = "ease,0.4,0.02,0.21,1";
-        
+        animation = [
+          "windows, 1, 3.5, ease, slide"
+          "windowsOut, 1, 3.5, ease, slide"
+          "border, 1, 6, default"
+          "fade, 1, 3, ease"
+          "workspaces, 1, 3.5, ease"
+        ];
       };
       input = {
         kb_layout = "${deflocale.kblayout}";
