@@ -18,16 +18,13 @@ in
       ./progs.nix
       ./boot.nix
       ./udevrules.nix
+      ./varssysnix.nix
     ];
-  #nixpkgs.config.allowUnfree = true;
-  nixpkgs.hostPlatform = lib.mkDefault "${system}";
   security = {
     rtkit.enable = true;
   } // lib.optionalAttrs (envir == "hypr") {
     polkit.enable = true;
   };
-  time.timeZone = "${deflocale.timezone}";
-  i18n.defaultLocale = "${deflocale.locale}";
   sound.enable = true;
   networking = {
     useDHCP = lib.mkDefault true;
@@ -97,18 +94,6 @@ in
       proggyfonts
     ]); # ++ lib.lists.optionals (envir == "gnome") ();
   };
-  nix = {
-    settings = {
-      experimental-features = [ "flakes" "nix-command" ];
-    #  auto-optimise-store = true;
-    };
-    #gc = {
-    #  automatic = true;
-    #  dates = "weekly";
-    #  options = "--delete-older-than 7d";
-    #};
-  };
-  system.stateVersion = "${curversion}";
 }
 
 
