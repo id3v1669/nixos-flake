@@ -2,7 +2,7 @@
 
 ## ToDo:
 
-1. **Setup eww**
+1. **-Setup eww**
     1. **+ add rofi launcher**
     2. **+- microphone mute/unmute icon in bar(fix icon to change onclick)**
     3. **- sound icon with %**
@@ -24,14 +24,18 @@
     8. **- apps tray??**
     9. **+ add power popup**
 
-2. **Rofi style**
+2. **-Rofi style**
 
-3. **Add background**
+3. **-Add background**
 
-4. **Fix workspaces for multimonitor config**
+4. **-Fix workspaces for multimonitor config**
 
-5. **Fix elecron apps on nvidia**
+5. **+-Fix elecron apps on nvidia**
 
-6. **get rid of hostnames and make variables as laptop, nvidia, intel etc**
+6. **-get rid of hostnames and make variables as laptop, nvidia, intel etc**
 
-7. **screenshare with sound??**
+7. **-screenshare with sound??**
+
+8. **-fix steam client flickering on nvidia**
+
+9. **-fix sddm resolution and theme**
