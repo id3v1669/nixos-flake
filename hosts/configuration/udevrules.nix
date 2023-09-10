@@ -2,6 +2,7 @@
 {
   services.udev = {
     enable = true;
+    packages = with pkgs; [ openrgb toybox ];
     extraRules = ''
 #---------------------------------------------------------------#
 #  OpenRGB udev rules - Git Commit: b5f46e3f                    #
