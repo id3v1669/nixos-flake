@@ -1,7 +1,4 @@
 { config, lib, pkgs, deflocale, uservars, hostname, ... }:
-let
-  usersettings = import (./. + "/usersettings/${uservars.description}.nix");
-in
 {
   imports = [ 
     (./. + "/hostsettings/${hostname}.nix")
@@ -60,7 +57,7 @@ in
         new_is_master = true;
       };
     };
-    extraConfig =''
+    extraConfig = ''
 
   # Fix slow startup
     #exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -72,10 +69,17 @@ in
     exec-once = waybar
 
     source = /home/${uservars.name}/.config/hypr/colors
-#    exec = pkill waybar & sleep 0.5 && waybar
 #    exec-once = swww init
 #    exec = swww img /home/${uservars.name}/Imagens/wallpapers/menhera.jpg
 
+windowrule=float,^(kitty)$
+windowrule=float,^(pavucontrol)$
+windowrule=center,^(kitty)$
+windowrule=float,^(blueman-manager)$
+windowrule=size 1040 670,^(kitty)$
+windowrule=size 934 525,^(mpv)$
+windowrule=float,^(mpv)$
+windowrule=center,^(mpv)$
 
 #------------------screen sharing------------------
 exec-once = xwaylandvideobridge
@@ -84,9 +88,16 @@ windowrulev2 = noanim,class:^(xwaylandvideobridge)$
 windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
 windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 #------------------screen sharing------------------
-
-${usersettings.extraConfig}
-
+    
+# Functional keybinds
+bind =,XF86AudioMicMute,exec,pamixer --default-source -t
+bind =,XF86MonBrightnessDown,exec,ddcutil setvcp 10 - 5
+bind =,XF86MonBrightnessUp,exec,ddcutil setvcp 10 + 5
+bind =,XF86AudioMute,exec,pamixer -t
+bind =,XF86AudioLowerVolume,exec,pamixer -d 10
+bind =,XF86AudioRaiseVolume,exec,pamixer -i 10
+bind =,XF86AudioPlay,exec,playerctl play-pause
+bind =,XF86AudioPause,exec,playerctl play-pause
     '';
   };
   home.file.".config/hypr/colors".text = ''
