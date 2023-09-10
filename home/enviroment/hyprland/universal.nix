@@ -1,9 +1,6 @@
 { config, lib, pkgs, deflocale, uservars, ... }:
 
 {
-  imports = [ 
-    ./universal-env.nix
-  ];
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
@@ -58,6 +55,9 @@
       };
     };
     extraConfig =''
+
+
+
   # Fix slow startup
     #exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     #exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP

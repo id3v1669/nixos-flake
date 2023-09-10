@@ -88,6 +88,7 @@
       i2c-tools # needed for ddcutil
       ddcutil # brightness control
       appimage-run
+      vulkan-tools
 
       #nix utils
       nix-prefetch-git

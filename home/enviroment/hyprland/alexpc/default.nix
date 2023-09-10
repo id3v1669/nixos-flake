@@ -2,7 +2,6 @@
 
 {
   imports = [ 
-    ./../universal-env.nix
     ./../universal.nix
   ];
   home = {
