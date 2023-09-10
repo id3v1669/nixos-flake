@@ -15,9 +15,9 @@
     #WLR_RENDERER_ALLOW_SOFTWARE = "1";
     #CLUTTER_BACKEND = "wayland";
     #WLR_RENDERER = "vulkan";
-    DisplayServer="wayland"; #try for sddm
+    #DisplayServer="wayland"; #try for sddm
     NIXOS_OZONE_WL = "1"; # needer for electron appps
-    #GDK_BACKEND = "wayland,x11";
+    GDK_BACKEND = "wayland"; #,x11"; #edited 
 
     #XDG_CURRENT_DESKTOP = "Hyprland";
     #XDG_SESSION_DESKTOP = "Hyprland";
@@ -63,7 +63,7 @@
         sddm = {
           enable = true;
           enableHidpi = false;
-          theme = "catppuccin";
+          theme = "sddm-chili-theme";
         };
         session = [
           {
