@@ -51,9 +51,3 @@ echo "
     };
   };
 }
-#if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-#  WLR_NO_HARDWARE_CURSORS=1 NIXOS_OZONE_WL=1 Hyprland
-#end
-#if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-#  Hyprland
-#end
