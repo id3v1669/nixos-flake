@@ -2,8 +2,11 @@
 {
   services.udev = {
     enable = true;
-    #packages = with pkgs; [ openrgb toybox ];
-    extraRules = ''
+    packages = with pkgs; [ openrgb coreutils ];
+    extraRules = let
+      chmodPath = "${pkgs.coreutils}/bin/chmod";
+    in
+    ''
 #---------------------------------------------------------------#
 #  OpenRGB udev rules - Git Commit: b5f46e3f                    #
 #---------------------------------------------------------------#
@@ -22,19 +25,19 @@ KERNEL=="port", TAG+="uaccess"
 #---------------------------------------------------------------#
 #  ASUS TUF Laptops (faustus)                                   #
 #---------------------------------------------------------------#
-ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="/run/current-system/sw/bin/chmod a+w /sys/bus/platform/devices/%k/kbbl/kbbl_blue"
-ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="/run/current-system/sw/bin/chmod a+w /sys/bus/platform/devices/%k/kbbl/kbbl_flags"
-ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="/run/current-system/sw/bin/chmod a+w /sys/bus/platform/devices/%k/kbbl/kbbl_green"
-ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="/run/current-system/sw/bin/chmod a+w /sys/bus/platform/devices/%k/kbbl/kbbl_mode"
-ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="/run/current-system/sw/bin/chmod a+w /sys/bus/platform/devices/%k/kbbl/kbbl_red"
-ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="/run/current-system/sw/bin/chmod a+w /sys/bus/platform/devices/%k/kbbl/kbbl_set"
-ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="/run/current-system/sw/bin/chmod a+w /sys/bus/platform/devices/%k/kbbl/kbbl_speed"
+ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="${chmodPath} a+w /sys/bus/platform/devices/%k/kbbl/kbbl_blue"
+ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="${chmodPath} a+w /sys/bus/platform/devices/%k/kbbl/kbbl_flags"
+ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="${chmodPath} a+w /sys/bus/platform/devices/%k/kbbl/kbbl_green"
+ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="${chmodPath} a+w /sys/bus/platform/devices/%k/kbbl/kbbl_mode"
+ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="${chmodPath} a+w /sys/bus/platform/devices/%k/kbbl/kbbl_red"
+ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="${chmodPath} a+w /sys/bus/platform/devices/%k/kbbl/kbbl_set"
+ACTION=="add", SUBSYSTEM=="platform", KERNEL=="faustus", RUN+="${chmodPath} a+w /sys/bus/platform/devices/%k/kbbl/kbbl_speed"
 
 #---------------------------------------------------------------#
 #  ASUS TUF Laptops (asus-wmi)                                  #
 #---------------------------------------------------------------#
-ACTION=="add", SUBSYSTEM=="leds", KERNEL=="asus::kbd_backlight", RUN+="/run/current-system/sw/bin/chmod a+w /sys%p/kbd_rgb_mode"
-ACTION=="add", SUBSYSTEM=="leds", KERNEL=="asus::kbd_backlight", RUN+="/run/current-system/sw/bin/chmod a+w /sys%p/brightness"
+ACTION=="add", SUBSYSTEM=="leds", KERNEL=="asus::kbd_backlight", RUN+="${chmodPath} a+w /sys%p/kbd_rgb_mode"
+ACTION=="add", SUBSYSTEM=="leds", KERNEL=="asus::kbd_backlight", RUN+="${chmodPath} a+w /sys%p/brightness"
 
 #---------------------------------------------------------------#
 # BloodyMouse - DetectA4TechMouseControllers
