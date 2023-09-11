@@ -112,6 +112,8 @@
       gnomeExtensions.gsconnect
       gnomeExtensions.quick-settings-tweaker
       blackbox
+    ]) ++ lib.lists.optionals (uservars.description == "alexp") (with pkgs;[
+      yandex-browser
     ]);
   };
 }

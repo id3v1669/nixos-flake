@@ -22,6 +22,7 @@ switch "$hostname"
     alias debt="distrobox enter debbox"
     alias vpnup="wg-quick up wg0"
     alias vpndown="wg-quick down wg0"
+    alias vi="vim"
   case '*'
     # Default case
 end
