@@ -40,4 +40,4 @@
 
 9. **-displayManager??**
 
-10. **-fix xrandr warnings during rebuild ??needed??**
+10. **+-fix xrandr warnings during rebuild ??needed?? appear only with displayManager**

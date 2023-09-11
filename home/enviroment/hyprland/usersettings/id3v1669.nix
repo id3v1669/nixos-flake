@@ -4,7 +4,7 @@
     "$mainMod" = "SUPER";
     bind = [
       #screenshot
-      "$mainMod SHIFT, 4, exec, grim -g '$(slurp)'"
+      ''$mainMod SHIFT, 4, exec, grim -g "$(slurp)"''
       #toogle fullscreen
       "$mainMod, G, fullscreen,"
       #move focus
