@@ -1,4 +1,5 @@
 (include "./left/launcher.yuck")
+(include "./left/usageinfo.yuck")
 (include "./right/power.yuck")
 (include "./defvars.yuck")
 (include "./right/microphone.yuck")
@@ -19,7 +20,9 @@
     :orientation "h"
     (left)
     (clock)
-      "Debug: ${debugvar}"
+    "Debug: ${EWW_RAM.total_mem/1073741824}"
+    ;; another debug value but with 0bly one difit after the comma
+    "Debug2: ${round(EWW_RAM.used_mem/1073741824,1)}/${round(EWW_RAM.total_mem/1073741824,1)}Gb"
     (right)
   )
 )
@@ -30,6 +33,7 @@
     :halign "start"
     :class "leftModules"
     (launcher)
+    ;;(usageinfo)
   )
 )
 (defwidget center []
@@ -38,7 +42,6 @@
     :space-evenly false  
     :halign "center"
     :class "centerModules"
-    (launcher)
     "Debug: ${debugvar}"
   )
 )
@@ -80,28 +83,3 @@
     )
 	)
 )
-
-; (defwidget debugwidget []
-;   (box 
-;     :orientation "h"
-;     :space-evenly false
-;     :halign "left"
-;     (button 
-;       :timeout "${deftimeout}"
-;       :onclick "rofi -show"
-;             (box 
-;         :orientation "h" 
-;         :spacing 2 
-;         :valign "center" 
-;         :halign "center" 
-;         :space-evenly "false" 
-;         :vexpand "false" 
-;         :hexpand "false"
-;                 (label :class "infotext" :halign "start")
-;                 (box 
-;           :class "launcher"
-;           "var is: ${deftimeout}")
-;       )
-;     )
-;     )
-; )
