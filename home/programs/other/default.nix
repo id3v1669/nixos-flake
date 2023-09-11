@@ -5,6 +5,7 @@
     #preset = ??
   };
   programs = {
+    traceroute.enable = true;
     direnv.enable = true;
     obs-studio = {
       enable = true;

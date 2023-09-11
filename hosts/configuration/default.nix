@@ -31,7 +31,8 @@ in
     networkmanager.enable = true;
     hostName = "${hostname}${envir}";
     firewall.enable = false;
-    enableIPv6 = false;
+    enableIPv6 = true;
+    wg-quick.interfaces.wg0.configFile = "/home/${uservars.name}/.config/wireguard/wg0.conf";
   };
   virtualisation = {
     docker = {
