@@ -86,7 +86,20 @@
       nuc11phkde = mkSyst { hostname = "nuc11ph"; envir = "kde"; };
       l14g3hypr = mkSyst { hostname = "l14g3"; envir = "hypr"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; tempvar = "/home/user/nixos-flake"; };
       l14g3gnome = mkSyst { hostname = "l14g3"; envir = "gnome"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; };
-      alexpchypr = mkSyst { hostname = "alexpc"; envir = "hypr"; gpuvar = "amd"; uservars = { name = "user"; description = "alexp"; }; tempvar = "/home/user/nixos-flake"; };
+      alexpchypr = mkSyst {
+        hostname = "alexpc";
+        envir = "hypr";
+        gpuvar = "amd";
+        uservars = { name = "user"; description = "alexp"; };
+        tempvar = "/home/user/nixos-flake";
+        deflocale = {
+          kblayout = "us,ru";
+          kbvariant = ",";
+          kboption = "grp:win_space_toggle";
+          timezone = "Russia/Moscow";
+          locale = "ru_RU.UTF-8";
+        };
+      };
     };
   };
 }
