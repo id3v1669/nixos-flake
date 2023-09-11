@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  #wayland.windowManager.hyprland.settings.monitor = "HDMI-A-1,3440x1440@100,0x0,1";
+  wayland.windowManager.hyprland.settings.monitor = [
+    "DP-1,3440x1440@165,2560x0,1"
+    "DP-2,2560x1440@144,0x0,1"
+  ];
 }
