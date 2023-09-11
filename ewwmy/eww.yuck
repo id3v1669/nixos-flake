@@ -1,8 +1,9 @@
 (include "./left/launcher.yuck")
 (include "./left/usageinfo.yuck")
+(include "./center/clock.yuck")
 (include "./right/power.yuck")
-(include "./defvars.yuck")
 (include "./right/microphone.yuck")
+(include "./defvars.yuck")
 (include "./popups/popup-power.yuck")
 (defvar debugvar "0")
 
@@ -19,10 +20,7 @@
   (box 
     :orientation "h"
     (left)
-    (clock)
-    "Debug: ${round(EWW_DISK['/'].free/1073741824,1)}"
-    ;; another debug value but with 0bly one difit after the comma
-    "Debug2: ${round(EWW_RAM.used_mem/1073741824,1)}/${round(EWW_RAM.total_mem/1073741824,1)}Gb"
+    (center)
     (right)
   )
 )
@@ -42,7 +40,8 @@
     :space-evenly false  
     :halign "center"
     :class "centerModules"
-    "Debug: ${debugvar}"
+    (clock)
+    "Debug: ${round(EWW_DISK['/'].free/1073741824,1)}"
   )
 )
 (defwidget right []
@@ -54,32 +53,4 @@
     (microphone)
     (power)
   )
-)
-
-(defpoll datetime :interval "1s" "date '+%a, %d. %b  %H:%M'")
-
-(defwidget clock []
-  (box 
-    :orientation "h"
-    :space-evenly false
-    :halign "center"
-    (button 
-      ;;:onclick "scripts/widget_apps --nm"
-			(box 
-        :orientation "h" 
-        :spacing 2 
-        :valign "center" 
-        :halign "center" 
-        :space-evenly "false" 
-        :vexpand "false" 
-        :hexpand "false"
-				(label 
-          :class "infotext " 
-          :halign "start")
-				(box 
-          :class "date" 
-          datetime)
-      )
-    )
-	)
 )

@@ -1,1 +1,2 @@
 (defvar deftimeout "999999999ms")
+(defpoll datetime :interval "1s" "date '+%a, %d. %b  %H:%M'")

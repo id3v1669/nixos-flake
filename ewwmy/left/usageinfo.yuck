@@ -5,7 +5,7 @@
     :halign "left"
     (button 
       :timeout "${deftimeout}"
-      :onclick ""
+      :onclick "kitty btop"
       (box 
         :orientation "h" 
         :spacing 2 

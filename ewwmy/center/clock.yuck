@@ -1,0 +1,26 @@
+(defwidget clock []
+  (box 
+    :orientation "h"
+    :space-evenly false
+    :halign "center"
+    (button 
+      :onclick ""
+      (box 
+      :orientation "h" 
+      :spacing 2 
+      :valign "center" 
+      :halign "center" 
+      :space-evenly "false" 
+      :vexpand "false" 
+      :hexpand "false"
+      (label 
+        :class "infotext " 
+        :halign "start")
+        (box 
+          :class "date" 
+          datetime
+        )
+      )
+    )
+  )
+)
