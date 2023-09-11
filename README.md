@@ -41,3 +41,5 @@
 9. **-displayManager??**
 
 10. **+-fix xrandr warnings during rebuild ??needed?? appear only with displayManager**
+
+11. **-fix flatpak xdg paths**
