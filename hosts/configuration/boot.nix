@@ -37,7 +37,7 @@
           "efi/Microsoft/Boot/Resources/bootres.dll" = "/home/${uservars.name}/.winloader/Boot/Resources/bootres.dll";
           "efi/Microsoft/Boot/Resources/en-US/bootres.dll.mui" = "/home/${uservars.name}/.winloader/Boot/Resources/en-US/bootres.dll.mui";
         };
-      }// lib.optionalAttrs (winvar == true && uservars.description == "alexp") {
+      } // lib.optionalAttrs (winvar == true && uservars.description == "alexp") {
         extraFiles = {
           "efi/Microsoft/Boot/bootmgfw.efi" = "/home/${uservars.name}/.winloader/Boot/bootmgfw.efi";
           "efi/Microsoft/Boot/bootmgr.efi" = "/home/${uservars.name}/.winloader/Boot/bootmgr.efi";
@@ -67,7 +67,7 @@
           "efi/Microsoft/Boot/en-US/memtest.efi.mui" = "/home/${uservars.name}/.winloader/Boot/en-US/memtest.efi.mui";
           "efi/Microsoft/Boot/Resources/bootres.dll" = "/home/${uservars.name}/.winloader/Boot/Resources/bootres.dll";
           "efi/Microsoft/Boot/Resources/en-US/bootres.dll.mui" = "/home/${uservars.name}/.winloader/Boot/Resources/en-US/bootres.dll.mui";
-          "efi/Microsoft/Boot/Resources/en-US/bootres.dll.mui" = "/home/${uservars.name}/.winloader/Boot/Resources/ru-RU/bootres.dll.mui";
+          "efi/Microsoft/Boot/Resources/ru-RU/bootres.dll.mui" = "/home/${uservars.name}/.winloader/Boot/Resources/ru-RU/bootres.dll.mui";
 
         };
       };
