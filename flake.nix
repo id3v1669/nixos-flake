@@ -34,6 +34,7 @@
     mkSyst = { 
       hostname,
       envir,
+      tempvar,
       winvar ? false,
       desk ? "desktop",
       gpuvar ? "nvidiaprime",
@@ -73,19 +74,19 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${uservars.name} = import (./. + "/home/home.nix") ;
-            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars; };
+            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars tempvar; };
           };
         }
       ] ++ inputs.nixpkgs.lib.lists.optional (envir == "hypr") inputs.hyprland.nixosModules.default;
     };
   in {
     nixosConfigurations = {
-      nuc11phhypr = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = true; };
+      nuc11phhypr = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = true; tempvar = "~/myrepos/nixos-flake"; };
       nuc11phgnome = mkSyst { hostname = "nuc11ph"; envir = "gnome"; };
       nuc11phkde = mkSyst { hostname = "nuc11ph"; envir = "kde"; };
-      l14g3hypr = mkSyst { hostname = "l14g3"; envir = "hypr"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; };
+      l14g3hypr = mkSyst { hostname = "l14g3"; envir = "hypr"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; tempvar = "~/myrepos/nixos-flake"; };
       l14g3gnome = mkSyst { hostname = "l14g3"; envir = "gnome"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; };
-      alexpchypr = mkSyst { hostname = "alexpch"; envir = "hypr"; gpuvar = "amd"; uservars = { name = "user"; description = "alexp"; }; };
+      alexpchypr = mkSyst { hostname = "alexpch"; envir = "hypr"; gpuvar = "amd"; uservars = { name = "user"; description = "alexp"; }; tempvar = "~/nixos-flake"; };
     };
   };
 }

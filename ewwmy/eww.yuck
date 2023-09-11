@@ -9,10 +9,12 @@
 
 (defwindow bar-test
   :monitor 0
-  :stacking "bg"
-  :exclusive true
+  :stacking "fg"
+  :exclusive false
   :geometry (geometry 
     :width "99.5%"
+    :y = "-30"
+    :height "30"
     :anchor "top center")
   (bar-widget)
 )
@@ -41,6 +43,7 @@
     :halign "center"
     :class "centerModules"
     (clock)
+    "...................................................."
     "Debug: ${round(EWW_DISK['/'].free/1073741824,1)}"
   )
 )

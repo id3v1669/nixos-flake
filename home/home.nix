@@ -91,6 +91,7 @@
       ddcutil # brightness control
       appimage-run
       vulkan-tools
+      wireguard-tools
 
       #nix utils
       nix-prefetch-git
