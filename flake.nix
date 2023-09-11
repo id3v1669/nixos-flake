@@ -64,7 +64,7 @@
     in inputs.nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system winvar;
+        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system winvar tempvar;
       };
       modules = [ 
         (./. + "/hosts/${hostname}.nix")
@@ -81,12 +81,12 @@
     };
   in {
     nixosConfigurations = {
-      nuc11phhypr = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = true; tempvar = "~/myrepos/nixos-flake"; };
+      nuc11phhypr = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = true; tempvar = "/home/user/myrepos/nixos-flake"; };
       nuc11phgnome = mkSyst { hostname = "nuc11ph"; envir = "gnome"; };
       nuc11phkde = mkSyst { hostname = "nuc11ph"; envir = "kde"; };
-      l14g3hypr = mkSyst { hostname = "l14g3"; envir = "hypr"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; tempvar = "~/myrepos/nixos-flake"; };
+      l14g3hypr = mkSyst { hostname = "l14g3"; envir = "hypr"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; tempvar = "/home/user/nixos-flake"; };
       l14g3gnome = mkSyst { hostname = "l14g3"; envir = "gnome"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; };
-      alexpchypr = mkSyst { hostname = "alexpch"; envir = "hypr"; gpuvar = "amd"; uservars = { name = "user"; description = "alexp"; }; tempvar = "~/nixos-flake"; };
+      alexpchypr = mkSyst { hostname = "alexpch"; envir = "hypr"; gpuvar = "amd"; uservars = { name = "user"; description = "alexp"; }; tempvar = "/home/user/nixos-flake"; };
     };
   };
 }

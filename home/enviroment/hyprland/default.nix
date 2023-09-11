@@ -63,12 +63,14 @@
     #exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     #exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    exec-once=eww open popup-power-window --config ${tempvar}/ewwmy/
-    exec-once=eww open bar-test --config ${tempvar}/ewwmy/
+    #exec-once=eww open popup-power-window --config ${tempvar}/ewwmy/
+    #exec-once=eww open bar-test --config ${tempvar}/ewwmy/
 
     exec-once = hyprctl setcursor Bibata-Modern-Classic 24
     #exec-once = dunst
-    exec-once = waybar
+    #exec-once = waybar
+    exec-once = eww daemon
+    exec-once = bash /home/${uservars.name}/.scripts/barlaunch.sh
 
     source = /home/${uservars.name}/.config/hypr/colors
 #    exec-once = swww init
