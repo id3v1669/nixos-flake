@@ -20,6 +20,8 @@ switch "$hostname"
     alias packettracer="distrobox-enter --name archbox -- 'packettracer &'"
     alias archt="distrobox enter archbox"
     alias debt="distrobox enter debbox"
+    alias vpnup="wg-quick up wg0"
+    alias vpndown="wg-quick down wg0"
   case '*'
     # Default case
 end
