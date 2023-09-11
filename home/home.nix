@@ -74,6 +74,7 @@
       gnome.nautilus
       rustdesk
       github-desktop
+      jgmenu#temp
 
       #cli tools
       pciutils
@@ -98,6 +99,9 @@
 
       #other
       openjdk19
+      python311
+      python311Packages.pygobject3
+      python311Packages.gst-python
       libsForQt5.qt5.qtwayland
       libsForQt5.qt5ct
       qt6.qtwayland
