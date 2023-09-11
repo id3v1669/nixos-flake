@@ -20,7 +20,7 @@
     :orientation "h"
     (left)
     (clock)
-    "Debug: ${EWW_RAM.total_mem/1073741824}"
+    "Debug: ${round(EWW_DISK['/'].free/1073741824,1)}"
     ;; another debug value but with 0bly one difit after the comma
     "Debug2: ${round(EWW_RAM.used_mem/1073741824,1)}/${round(EWW_RAM.total_mem/1073741824,1)}Gb"
     (right)
@@ -33,7 +33,7 @@
     :halign "start"
     :class "leftModules"
     (launcher)
-    ;;(usageinfo)
+    (usageinfo)
   )
 )
 (defwidget center []

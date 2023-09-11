@@ -81,6 +81,10 @@ windowrule=size 934 525,^(mpv)$
 windowrule=float,^(mpv)$
 windowrule=center,^(mpv)$
 
+windowrule=float,^(btop)$
+windowrule=center,^(btop)$
+windowrule=size 1040 670,^(btop)$
+
 #------------------screen sharing------------------
 exec-once = xwaylandvideobridge
 windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$

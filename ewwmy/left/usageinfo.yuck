@@ -1,0 +1,37 @@
+(defwidget usageinfo []
+  (box 
+    :orientation "h"
+    :space-evenly false
+    :halign "left"
+    (button 
+      :timeout "${deftimeout}"
+      :onclick ""
+      (box 
+        :orientation "h" 
+        :spacing 2 
+        :valign "center" 
+        :halign "center" 
+        :space-evenly "false" 
+        :vexpand "false" 
+        :hexpand "false"
+        (label :class "infotext" :halign "start")
+        (box 
+          :class "ram"
+          "${round(EWW_RAM.used_mem/1073741824,1)}/${round(EWW_RAM.total_mem/1073741824,1)} Gb "
+        )
+        (box 
+          :class "cputemp"
+          " ${EWW_TEMPS.CORETEMP_CORE_0}°C "
+        )
+        (box 
+          :class "disk"
+          " ${round(EWW_DISK['/'].free/1073741824,1)} Gb "
+        )
+        (box 
+          :class "boot"
+          " ${round(EWW_DISK['/boot'].free/1073741824,1)} Gb"
+        )
+      )
+    )
+  )
+)
