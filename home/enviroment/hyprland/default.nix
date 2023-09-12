@@ -13,8 +13,8 @@
         gaps_in = 5;
         gaps_out = 20;
         border_size = 2;
-        "col.active_border" = "rgba(ff0084cc) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(f7add3cc)";
+        "col.active_border" = "rgb(${config.colorScheme.colors.base0C}) rgb(${config.colorScheme.colors.base0B}) 45deg";
+        "col.inactive_border" = "rgb(${config.colorScheme.colors.base01})";
         layout = "dwindle";
         
       };
@@ -113,8 +113,8 @@ bind =,XF86AudioPause,exec,playerctl play-pause
     '';
   };
   home.file.".config/hypr/colors".text = ''
-$background = rgba(1d192bee)
-$foreground = rgba(c3dde7ee)
+$background = rgb(${config.colorScheme.colors.base01})
+$foreground = rgb(${config.colorScheme.colors.base06})
 
 $color0 = rgba(1d192bee)
 $color1 = rgba(465EA7ee)
