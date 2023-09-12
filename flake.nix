@@ -7,6 +7,7 @@
       url = "github:ralismark/eww/tray-3";
       flake = true;
     };
+    nix-colors.url = "github:misterio77/nix-colors";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs"; 
@@ -44,6 +45,7 @@
       gpuvar ? "nvidiaprime",
       system ? "x86_64-linux",
       cpuvar ? "intel",
+      colorsvar ? "uwunicorn",
       uservars ? {
         name = "user";
         description = "id3v1669";
@@ -78,7 +80,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${uservars.name} = import (./. + "/home/home.nix") ;
-            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars tempvar; };
+            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars tempvar colorsvar; };
           };
         }
       ] ++ inputs.nixpkgs.lib.lists.optional (envir == "hypr") inputs.hyprland.nixosModules.default;

@@ -1,4 +1,4 @@
-{ hyprland, config, lib, pkgs, curversion, uservars, envir, hostname, ... }:
+{ hyprland, inputs, config, lib, pkgs, curversion, uservars, envir, hostname, colorsvar,  ... }:
 {
   imports = [
     ./programs
@@ -6,6 +6,7 @@
     ./enviroment/qt
     (./. + "/enviroment/gnome/${hostname}${envir}")
     (./. + "/enviroment/gtk/${hostname}")
+    inputs.nix-colors.homeManagerModules.default
   ]++ lib.lists.optionals (envir == "hypr") [
     ./enviroment/hyprland
     ./enviroment/rofi
@@ -14,6 +15,7 @@
     ./enviroment/xdg
   ] ++ lib.lists.optionals (envir == "gnome") [
   ];
+  colorScheme = inputs.nix-colors.colorScheme.${colorsvar};
   home = {
     stateVersion = "${curversion}";
     username = "${uservars.name}";
