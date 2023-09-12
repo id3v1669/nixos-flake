@@ -69,6 +69,7 @@
 exec-once = eww daemon
 exec-once=eww open popup-power-window --config ${tempvar}/ewwmy/
 exec-once=eww open bar-test --config ${tempvar}/ewwmy/
+exec-once=nm-applet #network manager
 #------------------------------------------------- 
 
 

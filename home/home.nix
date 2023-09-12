@@ -93,6 +93,7 @@
       appimage-run
       vulkan-tools
       wireguard-tools
+      networkmanagerapplet
       cargo-binutils
 
       #nix utils
