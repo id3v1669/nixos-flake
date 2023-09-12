@@ -1,6 +1,7 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, ...}: 
 {
   programs = {
+    light.enable = true;  #temp openrgb fix
     traceroute.enable = true;
     adb.enable = true;
     fish.enable = true;
@@ -18,6 +19,7 @@
       fish
       vim
     ]) ++ lib.lists.optionals (envir == "hypr") (with pkgs; [
+      libnotify #for dunst or mako
       polkit_gnome
       xorg.xhost
     ]);
