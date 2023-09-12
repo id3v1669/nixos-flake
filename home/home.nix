@@ -15,7 +15,7 @@
     ./enviroment/xdg
   ] ++ lib.lists.optionals (envir == "gnome") [
   ];
-  colorScheme = inputs.nix-colors.colorScheme.${colorsvar};
+  colorScheme = inputs.nix-colors.colorSchemes.${colorsvar};
   home = {
     stateVersion = "${curversion}";
     username = "${uservars.name}";
