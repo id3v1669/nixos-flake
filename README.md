@@ -13,15 +13,16 @@
         2. **- on click open blueman-manager**
     5. **Infoblock**
         1. **- show cpu load**
-        2. **- show cpu temp**
-        3. **- show ram load**
+        2. **+ show cpu temp**
+        3. **+ show ram load**
         4. **- on hover show more temperatures**
-        5. **- on click open btop**
-    6. **- network (wifi icon if wireless, net icon if wired, vpn icon if vpn, nonet icon if not connected)**
+        5. **+ on click open btop**
+        6. **+show disk usage**
+    6. **+-network (nm-applet fix icon in tray)**
         1. **- on hover more info about current connection**
         2. **- on click popup network (write script or download gui)**
     7. **- calendar popup**
-    8. **- apps tray??**
+    8. **+ apps tray**
     9. **+ add power popup**
 
 2. **-Rofi style**
