@@ -16,7 +16,6 @@
         "col.active_border" = "rgb(${config.colorScheme.colors.base0C}) rgb(${config.colorScheme.colors.base0B}) 45deg";
         "col.inactive_border" = "rgb(${config.colorScheme.colors.base01})";
         layout = "dwindle";
-        
       };
       decoration = {
         rounding = 5;
