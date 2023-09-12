@@ -10,7 +10,6 @@
     ./enviroment/hyprland
     ./enviroment/rofi
     ./enviroment/eww
-    ./enviroment/waybar
     ./enviroment/dunst
     ./enviroment/xdg
   ] ++ lib.lists.optionals (envir == "gnome") [
