@@ -61,31 +61,35 @@
 
   # Fix slow startup
     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    #exec-once=eww open popup-power-window --config ${tempvar}/ewwmy/
-    #exec-once=eww open bar-test --config ${tempvar}/ewwmy/ 
 
     exec-once = hyprctl setcursor Bibata-Modern-Classic 24
     #exec-once = dunst
-    #exec-once = waybar
-    exec-once = eww daemon
-    exec-once = bash /home/${uservars.name}/.scripts/barlaunch.sh
+
+#----------------------bar------------------------
+exec-once = eww daemon
+exec-once=eww open popup-power-window --config ${tempvar}/ewwmy/
+exec-once=eww open bar-test --config ${tempvar}/ewwmy/
+#------------------------------------------------- 
+
 
     source = /home/${uservars.name}/.config/hypr/colors
 #    exec-once = swww init
 #    exec = swww img /home/${uservars.name}/Imagens/wallpapers/menhera.jpg
 
-windowrule=float,^(kitty)$
+
 windowrule=float,^(pavucontrol)$
-windowrule=center,^(kitty)$
+
 windowrule=float,^(blueman-manager)$
-windowrule=size 1040 670,^(kitty)$
+
 windowrule=size 934 525,^(mpv)$
 windowrule=float,^(mpv)$
 windowrule=center,^(mpv)$
 
-windowrule=float,^(btop)$
-windowrule=center,^(btop)$
-windowrule=size 1040 670,^(btop)$
+#------------------kitty for btop------------------
+windowrule=float,^(kitty)$
+windowrule=center,^(kitty)$
+windowrule=size 1040 670,^(kitty)$
+#--------------------------------------------------
 
 #------------------screen sharing------------------
 exec-once = xwaylandvideobridge
@@ -93,7 +97,7 @@ windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
 windowrulev2 = noanim,class:^(xwaylandvideobridge)$
 windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
 windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
-#------------------screen sharing------------------
+#--------------------------------------------------
     
 # Functional keybinds
 bind =,XF86AudioMicMute,exec,pamixer --default-source -t

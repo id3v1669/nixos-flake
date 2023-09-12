@@ -52,7 +52,7 @@
     :space-evenly false  
     :halign "end"
     :class "rightModules"
-    (systray :pack-direction "down")
+    (systray :pack-direction "left")
     (microphone)
     (power)
   )
