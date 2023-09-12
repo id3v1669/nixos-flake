@@ -32,7 +32,10 @@ in
     hostName = "${hostname}${envir}";
     firewall.enable = false;
     enableIPv6 = true;
-    wg-quick.interfaces.wg0.configFile = "/etc/wireguard/wg0.conf";
+    wg-quick.interfaces.wg0 = {
+      autostart = false;
+      configFile = "/etc/wireguard/wg0.conf";
+    };
   };
   environment.etc."wireguard/wg0.conf".source = "/home/${uservars.name}/.config/wireguard/wg0.conf";
   virtualisation = {

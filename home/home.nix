@@ -93,6 +93,7 @@
       appimage-run
       vulkan-tools
       wireguard-tools
+      cargo-binutils
 
       #nix utils
       nix-prefetch-git

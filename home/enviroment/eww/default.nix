@@ -2,7 +2,7 @@
 {
     programs.eww = {
       enable = true;
-      package = inputs.eww-tray.eww-wayland;
+      package = inputs.eww-tray.packages.x86_64-linux.eww-wayland;
       configDir = ./ewwconf;
     };
 }
