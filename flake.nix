@@ -96,6 +96,7 @@
         hostname = "alexpc";
         envir = "hypr";
         gpuvar = "amd";
+        winvar = true;
         uservars = { name = "user"; description = "alexp"; };
         tempvar = "/home/user/nixos-flake";
         deflocale = {
