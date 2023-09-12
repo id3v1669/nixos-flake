@@ -60,7 +60,7 @@
     extraConfig = ''
 
   # Fix slow startup
-    exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
     exec-once = hyprctl setcursor Bibata-Modern-Classic 24
     #exec-once = dunst
@@ -100,7 +100,7 @@ windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
 windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 #--------------------------------------------------
     
-# Functional keybinds
+#------------------functional keys-----------------
 bind =,XF86AudioMicMute,exec,pamixer --default-source -t
 bind =,XF86MonBrightnessDown,exec,ddcutil setvcp 10 - 5
 bind =,XF86MonBrightnessUp,exec,ddcutil setvcp 10 + 5
@@ -109,6 +109,7 @@ bind =,XF86AudioLowerVolume,exec,pamixer -d 10
 bind =,XF86AudioRaiseVolume,exec,pamixer -i 10
 bind =,XF86AudioPlay,exec,playerctl play-pause
 bind =,XF86AudioPause,exec,playerctl play-pause
+#--------------------------------------------------
     '';
   };
   home.file.".config/hypr/colors".text = ''
