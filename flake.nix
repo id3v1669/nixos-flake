@@ -74,6 +74,7 @@
       };
       modules = [ 
         (./. + "/hosts/${hostname}.nix")
+        
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {

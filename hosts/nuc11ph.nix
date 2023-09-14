@@ -8,11 +8,11 @@
 
   boot = {
     kernelModules = [ "kvm-intel" "i2c-dev" ];
-    kernelParams = [ "nomodeset" "ibt=off" ];
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback nvidia_x11 ];
+    kernelParams = [ ]; 
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     initrd = {
       availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-      kernelModules = [ "nvidia" ];
+      kernelModules = [ ];
     };
   };
 

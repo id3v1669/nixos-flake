@@ -12,6 +12,7 @@
       extraPackages = [
       ] ++ lib.lists.optionals (hostname == "nuc11ph") (with pkgs; 
       [ 
+        libva
         vaapiIntel
         libvdpau-va-gl
         nvidia-vaapi-driver
@@ -31,21 +32,9 @@
       modesetting.enable = true;
       open = false;
       nvidiaSettings = true;
+      forceFullCompositionPipeline = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
-      prime = {
-        nvidiaBusId = "PCI:01:00:0";
-        reverseSync.enable = true;
-        offload = {
-          enable = true;
-          enableOffloadCmd = true;
-        };
-      } // lib.optionalAttrs (cpuvar == "intel") {
-        intelBusId = "PCI:00:02:0";
-      };
-      powerManagement = {
-        enable = true;
-        finegrained = true;
-      };
+      powerManagement.enable = true;
     };
   };
 }

@@ -1,15 +1,4 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, system, gpuvar, ...}: 
-let
-  hypr-portal = pkgs.xdg-desktop-portal-hyprland.overrideAttrs (oldAttrs: {
-    version = "unstable-2023-09-05";
-    src = pkgs.fetchFromGitHub {
-      owner = "hyprwm";
-      repo = "xdg-desktop-portal-hyprland";
-      rev = "57a3a41ba6b358109e4fc25c6a4706b5f7d93c6b";
-      sha256 = "1xc0lq3ifniny8vzr9izi8cj0smgxngcl8738pkq6n8mygbyc924";
-    };
-  });
-in
 {
   imports =
     [ 
@@ -47,12 +36,13 @@ in
   xdg = {
     #needed?
   } // lib.optionalAttrs (envir == "hypr") {
-    autostart.enable = true;
     portal = {
       enable = true;
+      xdgOpenUsePortal = true;
+      wlr.enable = true;
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
-        hypr-portal
+        pkgs.xdg-desktop-portal-wlr
       ];
     };
   };

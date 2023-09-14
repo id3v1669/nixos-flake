@@ -1,4 +1,4 @@
-{ config, lib, pkgs, deflocale, uservars, hostname, tempvar, ... }:
+{ inputs, config, lib, pkgs, deflocale, uservars, hostname, tempvar, ... }:
 {
   imports = [ 
     (./. + "/hostsettings/${hostname}.nix")
@@ -6,6 +6,7 @@
   ];
   wayland.windowManager.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.x86_64-linux.hyprland;
     systemdIntegration = true;
     xwayland.enable = true;
     settings = {

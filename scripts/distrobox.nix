@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, uservars, ... }:
 
 {
   home.file.".scripts/distrobox.sh" = {
@@ -19,11 +19,12 @@ else
   echo "archbox does not exist, creating..."
   distrobox-create --name archbox --image quay.io/toolbx-images/archlinux-toolbox
   distrobox enter --name archbox -- sudo pacman -S --noconfirm git make gcc
-  mkdir ~/.tmpscript
-  cd ~/.tmpscript
+  mkdir /home/${uservars.name}/.tmpscript
+  cd /home/${uservars.name}/.tmpscript
   git clone https://aur.archlinux.org/yay.git
   cd yay
   distrobox enter --name archbox -- makepkg -si --noconfirm
+  cd ../..
   rm -rf ~/.tmpscript
   distrobox enter --name archbox -- yay -Syyuu --noconfirm
 fi

@@ -4,9 +4,12 @@
     blueman.enable = true;
     printing.enable = true;
     flatpak.enable = true;
-    hardware.openrgb = {
-      enable = true;
-      motherboard = "${cpuvar}";
+    hardware = {
+      openrgb = {
+        enable = true;
+        motherboard = "${cpuvar}";
+      };
+      bolt.enable = true;
     };
     xserver = {
       enable = true;
@@ -14,7 +17,7 @@
       xkbVariant = "${deflocale.kbvariant}";
       xkbOptions = "${deflocale.kboption}";
       videoDrivers = [] ++ lib.lists.optionals (gpuvar == "nvidiaprime") [ "nvidia" ] ++ lib.lists.optionals (gpuvar == "amd") [ "amdgpu" ];
-    } // lib.optionalAttrs (envir == "gnome") {
+  } // lib.optionalAttrs (envir == "gnome") {
       desktopManager.gnome = {
         enable = true;
         debug = false;
@@ -23,55 +26,51 @@
         enable = true;
         wayland = true;
       };
-    # } // lib.optionalAttrs (envir == "hypr") {
-    #   displayManager = {
-    #     defaultSession = "Hyprland";
-    #     gdm = {
-    #       enable = false;
-    #       wayland = true;
-    #       #settings = {
-    #       #  daemon = {
-    #       #    User = "user";
-    #       #    Group = "gdm";
-    #       #  };
-    #       #};
-    #     };
-    #     sddm.enable = false;
-    #     lightdm.enable = false; #{
-    #     #  enable = true;
-    #     #  greeter.enable = true;
-    #       #greeters.gtk = {
-    #       #  enable = true;
-    #         #theme = {
-    #         #  package = pkgs.gnome.gnome-themes-extra;
-    #         #  name = "Adwaita";
-    #         #};
-    #       #};
-    #     #};
-    #     #sddm = {
-    #     #  enable = true;
-    #     #  enableHidpi = false;
-    #     #  theme = "sddm-chili-theme";
-    #     #};
-    #     session = [
-    #       {
-    #         manage = "desktop";
-    #         name = "Hyprland";
-    #         start = ''
-    #           exec Hyprland &
-    #           waitPID=$!
-    #         '';
-    #       }
-    #       {
-    #         manage = "desktop";
-    #         name = "Hyprland2";
-    #         start = ''
-    #           exec Hyprland &
-    #           waitPID=$!
-    #         '';
-    #       }
-    #     ];
-    #   };
+    } // lib.optionalAttrs (envir == "hypr") {
+      displayManager = {
+        session = [
+        {
+          manage = "desktop";
+          name = "Hyprland";
+          start = ''
+            exec Hyprland &
+            waitPID=$!
+          '';
+        }];
+        defaultSession = "Hyprland";
+        gdm = {
+          enable = true;
+          wayland = true;
+        };
+      };
+      config = ''
+      Section "Device"
+          Identifier  "Intel Graphics"
+          Driver      "intel"
+          #Option      "AccelMethod"  "sna" # default
+          #Option      "AccelMethod"  "uxa" # fallback
+          Option      "TearFree"        "true"
+          Option      "SwapbuffersWait" "true"
+          BusID       "PCI:0:2:0"
+          #Option      "DRI" "2"             # DRI3 is now default
+      EndSection
+
+      Section "Device"
+          Identifier "nvidia"
+          Driver "nvidia"
+          BusID "PCI:1:0:0"
+          Option "AllowEmptyInitialConfiguration"
+          Option         "TearFree" "true"
+      EndSection
+    '';
+    screenSection = ''
+      Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+      Option         "AllowIndirectGLXProtocol" "off"
+      Option         "TripleBuffer" "on"
+      '';
+    deviceSection = '' 
+    Option "TearFree" "true"
+    '';
     };
     pipewire = {
       enable = true;
@@ -86,15 +85,15 @@
   } // lib.optionalAttrs (envir == "hypr") {
     gvfs.enable = true; # Mount, trash, etc
     mpd.enable = true;
-    greetd = {
-      enable = true;
-      settings = {
-        initial_session = {
-          user = "${uservars.name}";
-          command = "Hyprland";
-        };
-      };
-    };
+    #greetd = {
+    #  enable = true;
+    #  settings = {
+    #    initial_session = {
+    #      user = "${uservars.name}";
+    #      command = "Hyprland";
+    #    };
+    #  };
+    #};
   } // lib.optionalAttrs (desk == "laptop") {
     auto-cpufreq = {
       enable = true;

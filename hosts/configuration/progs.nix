@@ -1,4 +1,4 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, ...}: 
+{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, ...}: 
 {
   programs = {
     light.enable = true;  #temp openrgb fix
@@ -20,6 +20,7 @@
       vim
     ]) ++ lib.lists.optionals (envir == "hypr") (with pkgs; [
       libnotify #for dunst or mako
+      seatd
       polkit_gnome
       xorg.xhost
     ]);
