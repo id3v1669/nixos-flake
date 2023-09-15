@@ -105,7 +105,7 @@
         brightnesctrl = {
           up = "light -A 5";
           down = "light -U 5";
-        }
+        };
       };
       l14g3gnome = mkSyst { hostname = "l14g3"; envir = "gnome"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; };
       alexpchypr = mkSyst {
