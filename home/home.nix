@@ -53,6 +53,7 @@
       nomacs
       gnome.eog
       hyprpicker #color picker
+      ffmpegthumbnailer
 
       #chat
       telegram-desktop
@@ -104,6 +105,7 @@
       nix-prefetch-git
 
       #other
+      
       openjdk19
       libsForQt5.qt5.qtwayland
       libsForQt5.qt5ct
