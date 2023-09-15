@@ -19,8 +19,6 @@
         5. **+ on click open btop**
         6. **+show disk usage**
     6. **+-network (nm-applet fix icon in tray)**
-        1. **- on hover more info about current connection**
-        2. **- on click popup network (write script or download gui)**
     7. **- calendar popup**
     8. **+ apps tray**
     9. **+ add power popup**
@@ -33,7 +31,7 @@
 
 5. **+-Fix elecron apps on nvidia**
 
-6. **-get rid of hostnames and make variables as laptop, nvidia, intel etc**
+6. **+-get rid of hostnames and make variables as laptop, nvidia, intel etc**
 
 7. **-screenshare with sound??**
 
