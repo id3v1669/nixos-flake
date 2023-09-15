@@ -27,24 +27,24 @@
         wayland = true;
       };
     } // lib.optionalAttrs (envir == "hypr") {
-      displayManager = {
-        session = [
-        {
-          manage = "desktop";
-          name = "Hyprland";
-          start = ''
-            exec Hyprland &
-            waitPID=$!
-          '';
-        }];
-        defaultSession = "Hyprland";
-        sddm.enable = false;
-        lightdm.enable = false;
-        gdm = {
-          enable = true;
-          wayland = true;
-        };
-      };
+      #displayManager = {
+      #  session = [
+      #  {
+      #    manage = "desktop";
+      #    name = "Hyprland";
+      #    start = ''
+      #      exec Hyprland &
+      #      waitPID=$!
+      #    '';
+      #  }];
+      #  defaultSession = "Hyprland";
+      #  sddm.enable = false;
+      #  lightdm.enable = false;
+      #  gdm = {
+      #    enable = true;
+      #    wayland = true;
+      #  };
+      #};
       config = ''
       Section "Device"
           Identifier  "Intel Graphics"
@@ -87,15 +87,15 @@
   } // lib.optionalAttrs (envir == "hypr") {
     gvfs.enable = true; # Mount, trash, etc
     mpd.enable = true;
-    #greetd = {
-    #  enable = true;
-    #  settings = {
-    #    initial_session = {
-    #      user = "${uservars.name}";
-    #      command = "Hyprland";
-    #    };
-    #  };
-    #};
+    greetd = {
+     enable = true;
+     settings = {
+       initial_session = {
+         user = "${uservars.name}";
+         command = "Hyprland";
+       };
+     };
+    };
   } // lib.optionalAttrs (desk == "laptop") {
     auto-cpufreq = {
       enable = true;
