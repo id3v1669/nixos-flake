@@ -78,6 +78,7 @@
       jgmenu#temp
 
       #cli tools
+      vim
       pciutils
       usbutils
       lshw

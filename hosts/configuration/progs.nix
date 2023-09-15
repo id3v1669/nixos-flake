@@ -1,7 +1,7 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, ...}: 
 {
   programs = {
-    light.enable = true;  #temp openrgb fix
+    light.enable = true;  #laptop brightness control and fix for openrgb
     traceroute.enable = true;
     adb.enable = true;
     fish.enable = true;
@@ -17,12 +17,9 @@
   environment = {
     systemPackages = (with pkgs; [
       fish
-      vim
     ]) ++ lib.lists.optionals (envir == "hypr") (with pkgs; [
       libnotify #for dunst or mako
-      seatd
       polkit_gnome
-      gnome.gdm
       xorg.xhost
     ]);
   } // lib.optionalAttrs (envir == "gnome") {
