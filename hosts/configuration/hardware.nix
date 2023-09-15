@@ -10,21 +10,21 @@
       driSupport = true;
       driSupport32Bit = true;
       extraPackages = [
-      ] ++ lib.lists.optionals (hostname == "nuc11ph") (with pkgs; 
-      [ 
         libva
-        vaapiIntel
+      ] ++ lib.lists.optionals (gpuvar == "nvidiaprime") (with pkgs; [ 
         libvdpau-va-gl
         nvidia-vaapi-driver
         vaapiVdpau
-        intel-ocl 
+      ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar == "intel") (with pkgs; [
+        intel-ocl
+        vaapiIntel
       ]);
       extraPackages32 = [
-      ] ++ lib.lists.optionals (hostname == "nuc11ph") (with pkgs.pkgsi686Linux; 
-      [
-        vaapiIntel
+      ] ++ lib.lists.optionals (gpuvar == "nvidiaprime") (with pkgs.pkgsi686Linux; [
         libvdpau-va-gl
         vaapiVdpau
+      ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar == "intel") (with pkgs.pkgsi686Linux; [
+        vaapiIntel
       ]);
     };
   } // lib.optionalAttrs (gpuvar == "nvidiaprime") {
