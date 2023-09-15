@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, uservars, ... }:
 
 {
   wayland.windowManager.hyprland.settings.monitor = [

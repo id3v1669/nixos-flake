@@ -22,6 +22,7 @@
       libnotify #for dunst or mako
       seatd
       polkit_gnome
+      gnome.gdm
       xorg.xhost
     ]);
   } // lib.optionalAttrs (envir == "gnome") {

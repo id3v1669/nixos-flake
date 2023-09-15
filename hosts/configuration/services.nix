@@ -38,6 +38,8 @@
           '';
         }];
         defaultSession = "Hyprland";
+        sddm.enable = false;
+        lightdm.enable = false;
         gdm = {
           enable = true;
           wayland = true;
