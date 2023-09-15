@@ -75,7 +75,6 @@
       partition-manager
       qbittorrent
       gnome.nautilus
-      libsForQt5.dolphin
       rustdesk
       github-desktop
       jgmenu#temp
