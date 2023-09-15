@@ -10,7 +10,7 @@
       driSupport = true;
       driSupport32Bit = true;
       extraPackages = [
-        libva
+        pkgs.libva
       ] ++ lib.lists.optionals (gpuvar == "nvidiaprime") (with pkgs; [ 
         libvdpau-va-gl
         nvidia-vaapi-driver
