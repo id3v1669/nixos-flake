@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, deflocale, uservars, hostname, tempvar, ... }:
+{ inputs, config, lib, pkgs, deflocale, uservars, hostname, tempvar, brightnesctrl, ... }:
 {
   imports = [ 
     (./. + "/hostsettings/${hostname}.nix")
@@ -102,8 +102,8 @@ windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
     
 #------------------functional keys-----------------
 bind =,XF86AudioMicMute,exec,pamixer --default-source -t
-bind =,XF86MonBrightnessDown,exec,ddcutil setvcp 10 - 5
-bind =,XF86MonBrightnessUp,exec,ddcutil setvcp 10 + 5
+bind =,XF86MonBrightnessDown,exec,${brightnesctrl.down}
+bind =,XF86MonBrightnessUp,exec,${brightnesctrl.up}
 bind =,XF86AudioMute,exec,pamixer -t
 bind =,XF86AudioLowerVolume,exec,pamixer -d 10
 bind =,XF86AudioRaiseVolume,exec,pamixer -i 10

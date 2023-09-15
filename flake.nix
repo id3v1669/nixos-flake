@@ -46,6 +46,10 @@
       system ? "x86_64-linux",
       cpuvar ? "intel",
       colorsvar ? "uwunicorn",
+      brightnesctrl ? {
+        up = "ddcutil setvcp 10 + 5";
+        down = "ddcutil setvcp 10 - 5";
+      },
       uservars ? {
         name = "user";
         description = "id3v1669";
@@ -81,7 +85,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${uservars.name} = import (./. + "/home/home.nix") ;
-            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars tempvar colorsvar; };
+            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars tempvar colorsvar brightnesctrl; };
           };
         }
       ] ++ inputs.nixpkgs.lib.lists.optional (envir == "hypr") inputs.hyprland.nixosModules.default;
@@ -91,7 +95,18 @@
       nuc11phhypr = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = true; tempvar = "/home/user/myrepos/nixos-flake"; };
       nuc11phgnome = mkSyst { hostname = "nuc11ph"; envir = "gnome"; };
       nuc11phkde = mkSyst { hostname = "nuc11ph"; envir = "kde"; };
-      l14g3hypr = mkSyst { hostname = "l14g3"; envir = "hypr"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; tempvar = "/home/user/nixos-flake"; };
+      l14g3hypr = mkSyst { 
+        hostname = "l14g3";
+        envir = "hypr";
+        cpuvar = "amd";
+        desk = "laptop";
+        gpuvar = "amd";
+        tempvar = "/home/user/nixos-flake"; 
+        brightnesctrl = {
+          up = "light -A 5";
+          down = "light -U 5";
+        }
+      };
       l14g3gnome = mkSyst { hostname = "l14g3"; envir = "gnome"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; };
       alexpchypr = mkSyst {
         hostname = "alexpc";
