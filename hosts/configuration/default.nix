@@ -21,12 +21,12 @@
     hostName = "${hostname}${envir}";
     firewall.enable = false;
     enableIPv6 = true;
-    wg-quick.interfaces.wg0 = {
-      autostart = false;
-      configFile = "/etc/wireguard/wg0.conf";
-    };
+    #wg-quick.interfaces.wg0 = {
+    #  autostart = false;
+    #  configFile = "/etc/wireguard/wg0.conf";
+    #};
   };
-  environment.etc."wireguard/wg0.conf".source = "/home/${uservars.name}/.config/wireguard/wg0.conf";
+  #environment.etc."wireguard/wg0.conf".source = "/home/${uservars.name}/.config/wireguard/wg0.conf";
   virtualisation = {
     docker = {
       enable = true;
@@ -66,7 +66,7 @@
   users.users.${uservars.name} = {
     isNormalUser = true;
     description = "${uservars.description}";
-    extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "libvirtd" "video" "docker" "i2c" "openrgb" "gdm" ];
+    extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "libvirtd" "video" "docker" "i2c" "openrgb" ];
     shell = pkgs.fish;
   };
   fonts = {
