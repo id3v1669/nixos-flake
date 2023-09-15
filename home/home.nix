@@ -52,6 +52,7 @@
       vlc
       nomacs
       gnome.eog
+      hyprpicker #color picker
 
       #chat
       telegram-desktop
