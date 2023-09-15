@@ -21,6 +21,11 @@
     username = "${uservars.name}";
     homeDirectory = "/home/${uservars.name}";
     packages = (with pkgs; [
+      #discord clients
+      abaddon
+      gtkcord4
+      ripcord
+
       #screenshots
       grim
       slurp
@@ -104,7 +109,6 @@
       nix-prefetch-git
 
       #other
-      
       openjdk19
       libsForQt5.qt5.qtwayland
       libsForQt5.qt5ct

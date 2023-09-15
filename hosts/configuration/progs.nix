@@ -2,6 +2,7 @@
 {
   programs = {
     light.enable = true;  #laptop brightness control and fix for openrgb
+    noisetorch.enable = true;
     traceroute.enable = true;
     adb.enable = true;
     fish.enable = true;
