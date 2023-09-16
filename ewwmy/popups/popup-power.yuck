@@ -15,7 +15,7 @@
 (defwidget powerbuttons []
   (eventbox 
     :onhover ""
-    :onhoverlost "eww update show_powerbuttons=false --config ~/myrepos/nixos-flake/ewwmy/"
+    :onhoverlost "${EWW_CMD} update show_powerbuttons=false"
     (revealer
       :transition "slideup"
       :reveal show_powerbuttons

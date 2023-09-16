@@ -1,6 +1,6 @@
 (defwidget power []
   (eventbox
-    :onhover "eww update show_powerbuttons=true --config ~/myrepos/nixos-flake/ewwmy/"
+    :onhover "${EWW_CMD} update show_powerbuttons=true"
     :onhoverlost ""
     (button 
       (box 

@@ -1,5 +1,6 @@
 (include "./left/launcher.yuck")
 (include "./left/usageinfo.yuck")
+(include "./left/workspaces.yuck")
 (include "./center/clock.yuck")
 (include "./right/power.yuck")
 (include "./right/microphone.yuck")
@@ -43,7 +44,7 @@
     :halign "center"
     :class "centerModules"
     (clock)
-    "Debug: ${round(EWW_DISK['/'].free/1073741824,1)}"
+    "Debug: ${debugvar}"
   )
 )
 (defwidget right []
