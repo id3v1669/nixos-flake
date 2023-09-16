@@ -92,7 +92,12 @@
     };
   in {
     nixosConfigurations = {
-      nuc11phhypr = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = true; tempvar = "/home/user/myrepos/nixos-flake"; };
+      #top themes: vulcan, twilight, summercamp, stella, uwunicorn,
+      #spaceduck, seti, selenized-black, rose-pine, rose-pine-moon, 
+      #porple, phd, pasque, pandora, outrun-dark, mountain, material-darker,
+      #lime, kimber, icy, gruvbox-dark-pale, grayscale-dark, darktooth, black-metal
+      #mytop: pandora, stella, lime, gruvbox-dark-pale
+      nuc11phhypr = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = true; colorsvar = "stella"; tempvar = "/home/user/myrepos/nixos-flake"; };
       nuc11phgnome = mkSyst { hostname = "nuc11ph"; envir = "gnome"; };
       nuc11phkde = mkSyst { hostname = "nuc11ph"; envir = "kde"; };
       l14g3hypr = mkSyst { 

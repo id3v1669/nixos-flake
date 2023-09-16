@@ -270,7 +270,7 @@
     "editorGutter.commentRangeForeground" = "#${config.colorScheme.colors.base0D}";
     "debugExceptionWidget.background" = "#${config.colorScheme.colors.base00}";
     "debugExceptionWidget.border" = "#6c3cb2";
-      }
+      };
     };
     extensions = with pkgs.vscode-extensions; [
       github.copilot
