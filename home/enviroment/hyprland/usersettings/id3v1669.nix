@@ -34,8 +34,10 @@
       "$mainMod, 9, exec, bash /home/${uservars.name}/.scripts/eww_ws.sh"
       "$mainMod, 0, workspace, 10"
       "$mainMod, 0, exec, bash /home/${uservars.name}/.scripts/eww_ws.sh"
-      "$mainMod, mouse_down, workspace, e+1"
-      "$mainMod, mouse_up, workspace, e-1"
+      "CTRL, right, workspace, e+1"
+      "CTRL, right, exec, bash /home/${uservars.name}/.scripts/eww_ws.sh"
+      "CTRL, left, workspace, e-1"
+      "CTRL, left, exec, bash /home/${uservars.name}/.scripts/eww_ws.sh"
       #move app to workspace
       "CTRL SHIFT, 1, movetoworkspace, 1"
       "CTRL SHIFT, 2, movetoworkspace, 2"
