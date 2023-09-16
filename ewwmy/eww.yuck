@@ -35,6 +35,7 @@
     :class "leftModules"
     (launcher)
     (usageinfo)
+    (workspaces)
   )
 )
 (defwidget center []
