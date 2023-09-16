@@ -22,9 +22,10 @@
     homeDirectory = "/home/${uservars.name}";
     packages = (with pkgs; [
       #discord clients
-      abaddon
-      gtkcord4
-      ripcord
+      #abaddon
+      #gtkcord4
+      #ripcord
+      #webcord-vencord
 
       #screenshots
       grim
