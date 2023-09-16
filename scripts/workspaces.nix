@@ -1,4 +1,4 @@
-{ config, lib, pkgs, uservars, ... }:
+{ config, lib, pkgs, uservars, tempvar, ... }:
 
 {
   home.file.".scripts/eww_ws.sh" = {
@@ -22,7 +22,7 @@ wss() {
 }
 
 wss
-eww update wss="''${ws[*]}" --config /home/${uservars.name}/myrepos/nixos-flake/ewwmy/
+eww update wss="''${ws[*]}" --config ${tempvar}/ewwmy/
     '';
   };
 }

@@ -6,7 +6,7 @@
       :halign "left"
       (button 
         :timeout "${deftimeout}"
-        :onclick ""
+        :onclick "";;bash /home/${uservars.name}/.scripts/eww_ws.sh"
         (box 
           :orientation "h" 
           :spacing 2 
