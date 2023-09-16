@@ -24,7 +24,7 @@
     9. **+ add power popup**
     10. **+ add workspaces arr**
 
-2. **-Rofi style**
+2. **+Rofi style**
 
 3. **-Add background**
 
