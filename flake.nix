@@ -85,7 +85,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${uservars.name} = import (./. + "/home/home.nix") ;
-            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars tempvar colorsvar brightnesctrl; };
+            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars tempvar colorsvar brightnesctrl gpuvar; };
           };
         }
       ] ++ inputs.nixpkgs.lib.lists.optional (envir == "hypr") inputs.hyprland.nixosModules.default;

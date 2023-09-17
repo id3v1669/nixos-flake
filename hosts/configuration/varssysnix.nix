@@ -6,6 +6,15 @@
     TERMINAL = "alacritty";
   } // lib.optionalAttrs (envir == "hypr") {
     WLR_NO_HARDWARE_CURSORS = "1";
+    XDG_CURRENT_DESKTOP = "Hyprland";
+	  XDG_SESSION_DESKTOP = "Hyprland";
+	  XDG_SESSION_TYPE = "wayland";
+	  GTK_USE_PORTAL = "1";
+	  NIXOS_XDG_OPEN_USE_PORTAL = "1";
+	  XDG_CACHE_HOME = "/home/${uservars.name}/.cache";
+	  XDG_CONFIG_HOME = "/home/${uservars.name}/.config";
+	  XDG_BIN_HOME = "/home/${uservars.name}/.local/bin";
+	  XDG_DATA_HOME = "/home/${uservars.name}/.local/share";
   };
   nixpkgs.hostPlatform = lib.mkDefault "${system}";
   time.timeZone = "${deflocale.timezone}";
