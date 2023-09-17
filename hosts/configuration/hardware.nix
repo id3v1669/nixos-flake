@@ -28,6 +28,11 @@
       ]);
     };
   } // lib.optionalAttrs (gpuvar == "nvidiaprime") {
+    #bumblebee = {
+    #  enable = true;
+    ##  driver = "nvidia";
+     # group = "video";
+    #};
     nvidia = {
       modesetting.enable = true;
       open = false;
@@ -35,6 +40,16 @@
       forceFullCompositionPipeline = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
       powerManagement.enable = true;
+      prime = {
+        #sync.enable = true;
+        reverseSync.enable = true;
+        offload = {
+			    enable = true;
+			    enableOffloadCmd = true;
+		    };
+        nvidiaBusId = "PCI:01:00:0";
+        intelBusId = "PCI:00:02:0";
+      };
     };
   };
 }

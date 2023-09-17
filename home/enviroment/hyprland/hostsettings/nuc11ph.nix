@@ -5,9 +5,9 @@
     enableNvidiaPatches = true;
     #settings.monitor = "HDMI-A-1,3440x1440@100,0x0,1";
     settings.monitor = [
-    #  "DP-3,3440x1440@100,0x0,1"
-		  "HDMI-A-1,3440x1440@100,0x0,1"
-      "DP-3,1920x1080@60,3440x0,1"
+      "DP-3,3440x1440@100,0x0,1"
+		  #"HDMI-A-1,3440x1440@100,0x0,1"
+      "DP-4,1920x1080@60,3440x0,1"
     ];
   };
   home.sessionVariables = {
@@ -34,10 +34,10 @@
 		#nvidia part
 		QT_QPA_PLATFORM = "wayland-egl";#universal?
 		WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
-		__GLX_VENDOR_LIBRARY_NAME = "nvidia";
-	  LIBVA_DRIVER_NAME = "nvidia";
-	  WLR_RENDERER = "vulkan";
-		__NV_PRIME_RENDER_OFFLOAD="1";
+		#__GLX_VENDOR_LIBRARY_NAME = "nvidia";
+	  #LIBVA_DRIVER_NAME = "nvidia";
+	  #WLR_RENDERER = "vulkan";
+		#__NV_PRIME_RENDER_OFFLOAD="1";
 		# GBM_BACKEND = "nvidia-drm";
   };
 }

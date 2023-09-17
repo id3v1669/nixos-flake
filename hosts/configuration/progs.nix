@@ -22,6 +22,9 @@
       libnotify #for dunst or mako
       polkit_gnome
       xorg.xhost
+
+      virtualgl
+      virtualglLib
     ]);
   } // lib.optionalAttrs (envir == "gnome") {
     gnome.excludePackages = (with pkgs; [

@@ -76,6 +76,10 @@
 
       #games
       steam
+      #(steam.override {
+      #  withPrimus = true;
+      #  extraPkgs = pkgs: [ bumblebee glxinfo ];
+      #}).run
 
       #gui tools
       partition-manager
