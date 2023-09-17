@@ -11,7 +11,7 @@
       driSupport32Bit = true;
       extraPackages = [
         pkgs.libva
-      ] ++ lib.lists.optionals (gpuvar == "nvidiaprime") (with pkgs; [ 
+      ] ++ lib.lists.optionals (gpuvar == "nvidiaprimetb" || gpuvar == "nvidiaprimehdmi") (with pkgs; [ 
         libvdpau-va-gl
         nvidia-vaapi-driver
         vaapiVdpau
@@ -20,19 +20,14 @@
         vaapiIntel
       ]);
       extraPackages32 = [
-      ] ++ lib.lists.optionals (gpuvar == "nvidiaprime") (with pkgs.pkgsi686Linux; [
+      ] ++ lib.lists.optionals (gpuvar == "nvidiaprimetb" || gpuvar == "nvidiaprimehdmi") (with pkgs.pkgsi686Linux; [
         libvdpau-va-gl
         vaapiVdpau
       ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar == "intel") (with pkgs.pkgsi686Linux; [
         vaapiIntel
       ]);
     };
-  } // lib.optionalAttrs (gpuvar == "nvidiaprime") {
-    #bumblebee = {
-    #  enable = true;
-    ##  driver = "nvidia";
-     # group = "video";
-    #};
+  } // lib.optionalAttrs (gpuvar == "nvidiaprimetb" || gpuvar == "nvidiaprimehdmi") {
     nvidia = {
       modesetting.enable = true;
       open = false;
@@ -40,8 +35,8 @@
       forceFullCompositionPipeline = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
       powerManagement.enable = true;
+    } // lib.optionalAttrs (gpuvar == "nvidiaprimetb") {
       prime = {
-        #sync.enable = true;
         reverseSync.enable = true;
         offload = {
 			    enable = true;

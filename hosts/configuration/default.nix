@@ -30,7 +30,7 @@
   virtualisation = {
     docker = {
       enable = true;
-    } // lib.optionalAttrs (gpuvar == "nvidiaprime") { enableNvidia = true; };
+    } // lib.optionalAttrs (gpuvar == "nvidiaprimetb" || gpuvar == "nvidiaprimehdmi") { enableNvidia = true; };
     libvirtd.enable = true;
   };
   xdg = {

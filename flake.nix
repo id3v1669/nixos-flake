@@ -42,7 +42,7 @@
       tempvar,
       winvar ? false,
       desk ? "desktop",
-      gpuvar ? "nvidiaprime",
+      gpuvar ? "nvidiaprimetb",
       system ? "x86_64-linux",
       cpuvar ? "intel",
       colorsvar ? "uwunicorn",
@@ -97,7 +97,8 @@
       #porple, phd, pasque, pandora, outrun-dark, mountain, material-darker,
       #lime, kimber, icy, gruvbox-dark-pale, grayscale-dark, darktooth, black-metal
       #mytop: pandora, stella, lime, gruvbox-dark-pale
-      nuc11phhypr = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = true; colorsvar = "uwunicorn"; tempvar = "/home/user/myrepos/nixos-flake"; };
+      nuc11phhyprwork = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = true; colorsvar = "uwunicorn"; tempvar = "/home/user/myrepos/nixos-flake"; };
+      nuc11phhyprgame = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = true; colorsvar = "uwunicorn"; tempvar = "/home/user/myrepos/nixos-flake"; gpuvar = "nvidiaprimehdmi"; };
       nuc11phgnome = mkSyst { hostname = "nuc11ph"; envir = "gnome"; };
       nuc11phkde = mkSyst { hostname = "nuc11ph"; envir = "kde"; };
       l14g3hypr = mkSyst { 
