@@ -3,11 +3,12 @@
 {
   wayland.windowManager.hyprland = {
     enableNvidiaPatches = true;
-    settings.monitor = "HDMI-A-1,3440x1440@100,0x0,1";
-    #settings.monitor = [
+    #settings.monitor = "HDMI-A-1,3440x1440@100,0x0,1";
+    settings.monitor = [
     #  "DP-3,3440x1440@100,0x0,1"
-    #  "DP-4,1920x1080@60,3440x0,1"
-    #];
+		  "HDMI-A-1,3440x1440@100,0x0,1"
+      "DP-3,1920x1080@60,3440x0,1"
+    ];
   };
   home.sessionVariables = {
 		#universal part
