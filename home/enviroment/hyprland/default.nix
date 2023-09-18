@@ -58,26 +58,25 @@
       };
     };
     extraConfig = ''
-
-  # Fix slow startup
-exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=Hyprland
 
     exec-once = hyprctl setcursor Bibata-Modern-Classic 24
     #exec-once = dunst
 
 #----------------------bar------------------------
-exec-once = /home/${uservars.name}/.scripts/ewwlauncher.sh
+exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
 #exec-once = eww daemon
 #exec-once=eww open popup-power-window --config ${tempvar}/ewwmy/
 #exec-once=eww open bar-test --config ${tempvar}/ewwmy/
 exec-once=nm-applet #network manager
 #------------------------------------------------- 
 
-exec-once = ln -sf /var/lib/flatpak/exports/share/applications/* /home/${uservars.name}/.local/share/applications/
-exec-once = ln -sf ln -sf /etc/profiles/per-user/${uservars.name}/share/applications/* /home/${uservars.name}/.local/share/applications/
-    source = /home/${uservars.name}/.config/hypr/colors
+exec-once = ln -sf /var/lib/flatpak/exports/share/applications/* ${config.home.homeDirectory}/.local/share/applications/
+exec-once = ln -sf ln -sf /etc/profiles/per-user/${uservars.name}/share/applications/* ${config.home.homeDirectory}/.local/share/applications/
+    source = ${config.home.homeDirectory}/.config/hypr/colors
 #    exec-once = swww init
-#    exec = swww img /home/${uservars.name}/Imagens/wallpapers/menhera.jpg
+#    exec = swww img ${config.home.homeDirectory}/Imagens/wallpapers/menhera.jpg
 
 
 windowrule=float,^(pavucontrol)$

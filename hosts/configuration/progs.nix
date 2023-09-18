@@ -15,10 +15,12 @@
   } // lib.optionalAttrs (envir == "hypr") {
     regreet.enable = true;
   };
-  environment = {
+  environment = 
+  {
     systemPackages = (with pkgs; [
       fish
-    ]) ++ lib.lists.optionals (envir == "hypr") (with pkgs; [
+    ]) ++ lib.lists.optionals (envir == "hypr")[
+    ] ++ lib.lists.optionals (envir == "hypr") (with pkgs; [
       libnotify #for dunst or mako
       polkit_gnome
       xorg.xhost

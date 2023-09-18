@@ -21,24 +21,19 @@
     hostName = "${hostname}${envir}";
     firewall.enable = false;
     enableIPv6 = true;
-    #wg-quick.interfaces.wg0 = {
-    #  autostart = false;
-    #  configFile = "/etc/wireguard/wg0.conf";
-    #};
   };
-  #environment.etc."wireguard/wg0.conf".source = "/home/${uservars.name}/.config/wireguard/wg0.conf";
   virtualisation = {
     docker = {
       enable = true;
     } // lib.optionalAttrs (gpuvar == "nvidiaprimetb" || gpuvar == "nvidiaprimehdmi") { enableNvidia = true; };
     libvirtd.enable = true;
   };
+  #to check xdg-open http://example.com
   xdg = {
-    #needed?
   } // lib.optionalAttrs (envir == "hypr") {
     portal = {
       enable = true;
-      xdgOpenUsePortal = true;
+      xdgOpenUsePortal = false;
       wlr.enable = true;
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk

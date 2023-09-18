@@ -7,11 +7,10 @@
     cacheHome = "${config.home.homeDirectory}/.cache";
     configHome = "${config.home.homeDirectory}/.config";
     dataHome = "${config.home.homeDirectory}/.local/share";
-    #systemDirs = {
-    #  config = [ "/home/${uservars.name}/.config" ];
-    #  data = [ "/home/${uservars.name}/.local/share" ];
-    #  cache = [ "/home/${uservars.name}/.cache" ];
-    #};
+    systemDirs = {
+      config = [ "/home/${uservars.name}/.config" ];
+      data = [ "/home/${uservars.name}/.local/share" ];
+    };
     userDirs = {
       enable = true;
       createDirectories = true;

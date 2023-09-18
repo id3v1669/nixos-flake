@@ -5,6 +5,5 @@
     ./firstinstall.nix
     ./ewwlauncher.nix
     ./workspaces.nix
-    ./hyprpaper.nix
   ];
 }

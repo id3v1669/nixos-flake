@@ -4,8 +4,8 @@
     ./programs
     ./../scripts
     ./enviroment/qt
-    (./. + "/enviroment/gnome/${hostname}${envir}")
-    (./. + "/enviroment/gtk/${hostname}")
+    ./enviroment/gnome
+    ./enviroment/gtk
     inputs.nix-colors.homeManagerModules.default
   ]++ lib.lists.optionals (envir == "hypr") [
     ./enviroment/hyprland
@@ -21,12 +21,6 @@
     username = "${uservars.name}";
     homeDirectory = "/home/${uservars.name}";
     packages = (with pkgs; [
-      #discord clients
-      #abaddon
-      #gtkcord4
-      #ripcord
-      #webcord-vencord
-
       #screenshots
       grim
       slurp
