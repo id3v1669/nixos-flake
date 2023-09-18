@@ -3,7 +3,6 @@
 {
   wayland.windowManager.hyprland = {
     enableNvidiaPatches = true;
-    #settings.monitor = "HDMI-A-1,3440x1440@100,0x0,1";
     settings.monitor = [
     ] ++ lib.lists.optionals (gpuvar == "nvidiaprimehdmi") [
       "HDMI-A-1,3440x1440@100,0x0,1"
@@ -28,10 +27,6 @@
 	  XDG_SESSION_TYPE = "wayland";
 	  GTK_USE_PORTAL = "1";
 	  NIXOS_XDG_OPEN_USE_PORTAL = "1";
-	  XDG_CACHE_HOME = "/home/${uservars.name}/.cache";
-	  XDG_CONFIG_HOME = "/home/${uservars.name}/.config";
-	  XDG_BIN_HOME = "/home/${uservars.name}/.local/bin";
-	  XDG_DATA_HOME = "/home/${uservars.name}/.local/share";
 
 		#nvidia part
 		QT_QPA_PLATFORM = "wayland-egl";#universal?

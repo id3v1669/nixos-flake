@@ -8,10 +8,9 @@
       flake = true;
     };
     nix-colors.url = "github:misterio77/nix-colors";
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs"; 
-    };
+    nur.url = "github:nix-community/NUR";
+    #  inputs.nixpkgs.follows = "nixpkgs"; 
+    #};
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -85,7 +84,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${uservars.name} = import (./. + "/home/home.nix") ;
-            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars tempvar colorsvar brightnesctrl gpuvar; };
+            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars tempvar colorsvar brightnesctrl gpuvar desk; };
           };
         }
       ] ++ inputs.nixpkgs.lib.lists.optional (envir == "hypr") inputs.hyprland.nixosModules.default;
@@ -97,8 +96,8 @@
       #porple, phd, pasque, pandora, outrun-dark, mountain, material-darker,
       #lime, kimber, icy, gruvbox-dark-pale, grayscale-dark, darktooth, black-metal
       #mytop: pandora, stella, lime, gruvbox-dark-pale
-      nuc11phhyprwork = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = true; colorsvar = "uwunicorn"; tempvar = "/home/user/myrepos/nixos-flake"; };
-      nuc11phhyprgame = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = true; colorsvar = "uwunicorn"; tempvar = "/home/user/myrepos/nixos-flake"; gpuvar = "nvidiaprimehdmi"; };
+      nuc11phhyprwork = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = false; colorsvar = "uwunicorn"; tempvar = "/home/user/myrepos/nixos-flake"; };
+      nuc11phhyprgame = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = false; colorsvar = "uwunicorn"; tempvar = "/home/user/myrepos/nixos-flake"; gpuvar = "nvidiaprimehdmi"; };
       nuc11phgnome = mkSyst { hostname = "nuc11ph"; envir = "gnome"; };
       nuc11phkde = mkSyst { hostname = "nuc11ph"; envir = "kde"; };
       l14g3hypr = mkSyst { 

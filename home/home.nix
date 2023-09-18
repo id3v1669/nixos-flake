@@ -60,6 +60,7 @@
       gnome.eog
       hyprpicker #color picker
       ffmpegthumbnailer
+      hyprpaper #walpapers
 
       #chat
       telegram-desktop
@@ -122,7 +123,6 @@
 
       #temp
       kitty
-      wofi
     ]) ++ lib.lists.optionals (envir == "gnome") (with pkgs;[
       gnomeExtensions.appindicator
       gnomeExtensions.notification-banner-reloaded

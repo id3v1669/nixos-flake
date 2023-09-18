@@ -23,8 +23,10 @@
       polkit_gnome
       xorg.xhost
 
+      xdg-utils
       virtualgl
       virtualglLib
+      desktop-file-utils
     ]);
   } // lib.optionalAttrs (envir == "gnome") {
     gnome.excludePackages = (with pkgs; [
