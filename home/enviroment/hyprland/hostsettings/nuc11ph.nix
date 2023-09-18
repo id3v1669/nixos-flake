@@ -37,4 +37,20 @@
 	  WLR_RENDERER = "vulkan";
 		__NV_PRIME_RENDER_OFFLOAD="1";
 	};
+	home.file.".config/hypr/hyprpaper.conf" = {
+    text = ''
+reload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca1.jpg
+preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca2.jpg
+preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca3.jpg
+preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca4.jpg
+preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca5.jpg
+preload = ${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
+preload = ${config.home.homeDirectory}/Pictures/Wallpapers/furry2.jpg
+
+
+wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/rebecca2.jpg
+wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
+
+    '';
+  };
 }

@@ -84,10 +84,7 @@
     exec-once = [
       
     ] ++ lib.lists.optionals (desk == "desktop") [
-      "${config.home.homeDirectory}/.scripts/hyprpaper.sh"
-      #"hyprpaper &"
-      #"hyprctl hyprpaper wallpaper 'DP-3,/home/user/Pictures/Wallpapers/rebecca2.jpg'"
-      #"hyprctl hyprpaper wallpaper 'DP-4,/home/user/Pictures/Wallpapers/furry1.png'"
+      "hyprpaper &"
     ];
   };
 }
