@@ -36,7 +36,7 @@
       xdgOpenUsePortal = false;
       wlr.enable = true;
       extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
+        (callPackage ./../../home/custom/xdggtk.nix {})
         pkgs.xdg-desktop-portal-wlr
       ];
     };
