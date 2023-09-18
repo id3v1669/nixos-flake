@@ -4,6 +4,7 @@
     EDITOR = "nano";
     BROWSER = "firefox";
     TERMINAL = "alacritty";
+    #GTK_USE_PORTAL="1";
   } // lib.optionalAttrs (envir == "hypr") {
     WLR_NO_HARDWARE_CURSORS = "1";
   };

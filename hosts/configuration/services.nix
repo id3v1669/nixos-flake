@@ -1,6 +1,8 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, desk, ...}: 
 {
   services = {
+    #gnome.gnome-keyring.enable = true;
+
     blueman.enable = true;
     printing.enable = true;
     flatpak.enable = true;

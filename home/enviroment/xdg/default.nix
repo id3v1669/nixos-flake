@@ -9,7 +9,7 @@
     dataHome = "${config.home.homeDirectory}/.local/share";
     systemDirs = {
       config = [ "/home/${uservars.name}/.config" ];
-      data = [ "/home/${uservars.name}/.local/share" ];
+      data = [ "/home/${uservars.name}/.local/share" "/usr/share" "/usr/share/applications/" "/usr/local/share/applications/" ];
     };
     userDirs = {
       enable = true;
@@ -20,6 +20,9 @@
       music = "${config.home.homeDirectory}/Music";
       pictures = "${config.home.homeDirectory}/Pictures";
       videos = "${config.home.homeDirectory}/Videos";
+      extraConfig = {
+        XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
+      };
     };
     desktopEntries = {
       firefox = {

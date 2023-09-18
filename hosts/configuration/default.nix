@@ -33,12 +33,15 @@
   } // lib.optionalAttrs (envir == "hypr") {
     portal = {
       enable = true;
-      xdgOpenUsePortal = false;
-      wlr.enable = true;
-      extraPortals = [
+      #xdgOpenUsePortal = false;
+      #wlr.enable = true;
+      extraPortals = ( with pkgs; [
+        #xdg-desktop-portal-gtk
         (callPackage ./../../home/custom/xdggtk.nix {})
-        pkgs.xdg-desktop-portal-wlr
-      ];
+        (callPackage ./../../home/custom/xdghypr.nix {})
+        #xdg-desktop-portal-wlr
+        #xdg-desktop-portal-hyprland
+      ]);
     };
   };
   systemd = {
