@@ -1,4 +1,4 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, desk, ...}: 
+{lib, config, pkgs, fetchFromGitLab, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, desk, ...}: 
 {
   services = {
     #gnome.gnome-keyring.enable = true;
@@ -60,6 +60,16 @@
     };
     pipewire = {
       enable = true;
+      package = (pkgs.pipewire.overrideAttrs (oldAttrs: {
+        version = "unstable-2023-09-06";
+        src = pkgs.fetchFromGitLab {
+          domain = "gitlab.freedesktop.org";
+          owner = "pipewire";
+          repo = "pipewire";
+          rev = "ee1bb2362d96020d7101d89e7909714bcf1e7ce1";
+          sha256 = "sha256-pqs991pMqz3IQE+NUk0VNzZS4ExwfoZqBQDWBSGdWcs=";
+        };
+      }));
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;

@@ -60,6 +60,7 @@
       telegram-desktop
       whatsapp-for-linux
       (callPackage ./custom/webcord.nix {})
+      (callPackage ./custom/dscr.nix {})
 
       #security
       openssl
