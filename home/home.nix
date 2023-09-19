@@ -47,7 +47,6 @@
 
       #vid photo sound etc
       krita
-      spotify
       ffmpeg
       vlc
       nomacs
@@ -124,7 +123,7 @@
       blackbox
     ]) ++ lib.lists.optionals (uservars.description == "alexp") (with pkgs;[
       yandex-browser
-    ]) ++ lib.lists.optionals (uservars.description == "alexp") (with pkgs;[
+    ]) ++ lib.lists.optionals (uservars.description == "id3v1669") (with pkgs;[
       spotify
     ]);
   };
