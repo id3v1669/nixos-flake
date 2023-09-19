@@ -1,8 +1,9 @@
 (defwidget power []
   (eventbox
-    :onhover "${EWW_CMD} update show_powerbuttons=true"
+    :onhover "" ;;"${EWW_CMD} update show_powerbuttons=true"
     :onhoverlost ""
     (button 
+      :onclick "${EWW_CMD} update show_powerbuttons=true"
       (box 
         :orientation "h" 
         :spacing 2 
