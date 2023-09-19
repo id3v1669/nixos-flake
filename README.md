@@ -26,9 +26,9 @@
 
 2. **+Rofi style**
 
-3. **-Add background**
+3. **+Add background**
 
-4. **-Fix workspaces for multimonitor config**
+4. **+Fix workspaces for multimonitor config**
 
 5. **+-Fix elecron apps on nvidia**
 
@@ -36,7 +36,7 @@
 
 7. **-screenshare with sound??**
 
-8. **-fix steam client flickering on nvidia**
+8. **-+fix steam client flickering on nvidia**
 
 9. **-displayManager??**
 
