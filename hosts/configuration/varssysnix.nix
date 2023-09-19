@@ -4,7 +4,6 @@
     EDITOR = "nano";
     BROWSER = "firefox";
     TERMINAL = "alacritty";
-    #GTK_USE_PORTAL="1";
   } // lib.optionalAttrs (envir == "hypr") {
     WLR_NO_HARDWARE_CURSORS = "1";
   };
@@ -14,13 +13,13 @@
    nix = {
     settings = {
       experimental-features = [ "flakes" "nix-command" ];
-    #  auto-optimise-store = true;
+      auto-optimise-store = true;
     };
-    #gc = {
-    #  automatic = true;
-    #  dates = "weekly";
-    #  options = "--delete-older-than 7d";
-    #};
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
   system.stateVersion = "${curversion}";
 }

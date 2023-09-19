@@ -60,7 +60,6 @@
       telegram-desktop
       whatsapp-for-linux
       (callPackage ./custom/webcord.nix {})
-      (callPackage ./custom/dscr.nix {})
 
       #security
       openssl
@@ -73,10 +72,6 @@
 
       #games
       steam
-      #(steam.override {
-      #  withPrimus = true;
-      #  extraPkgs = pkgs: [ bumblebee glxinfo ];
-      #}).run
 
       #gui tools
       partition-manager
@@ -113,6 +108,7 @@
 
       #other
       openjdk19
+      dracula-theme 
       libsForQt5.qt5.qtwayland
       libsForQt5.qt5ct
       qt6.qtwayland
@@ -128,6 +124,8 @@
       blackbox
     ]) ++ lib.lists.optionals (uservars.description == "alexp") (with pkgs;[
       yandex-browser
+    ]) ++ lib.lists.optionals (uservars.description == "alexp") (with pkgs;[
+      spotify
     ]);
   };
 }

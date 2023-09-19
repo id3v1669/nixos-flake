@@ -23,17 +23,6 @@
       libnotify #for dunst or mako
       polkit_gnome
       xorg.xhost
-      #configure-gtk
-      #xdg-utils
-      #glib # gsettings
-      dracula-theme # gtk theme
-      #gnome.gnome-control-center # Gnome settings
-      #gnome.gnome-disk-utility # Disks manager
-      #gnome.gnome-keyring # Keyring daemon
-      #gnome.gnome-themes-extra # Adwaita GTK theme
-
-      #dbus
-      #dbus-glib
       #virtualgl
       #virtualglLib
       #desktop-file-utils

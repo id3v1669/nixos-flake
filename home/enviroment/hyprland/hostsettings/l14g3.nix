@@ -19,7 +19,5 @@
 	  XDG_CURRENT_DESKTOP = "Hyprland";
 	  XDG_SESSION_DESKTOP = "Hyprland";
 	  XDG_SESSION_TYPE = "wayland";
-	  GTK_USE_PORTAL = "1";
-	  NIXOS_XDG_OPEN_USE_PORTAL = "1";
   };
 }
