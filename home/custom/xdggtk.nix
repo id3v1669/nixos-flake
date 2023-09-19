@@ -45,9 +45,9 @@ stdenv.mkDerivation rec {
     "--enable-screenshot"
     "--enable-screencast"
     "--enable-background"
-    #"--enable-settings"
+    "--enable-settings"
     "--enable-appchooser"
-    "--disable-settings"
+    #"--disable-settings"
     #"--disable-appchooser"
   ];
 

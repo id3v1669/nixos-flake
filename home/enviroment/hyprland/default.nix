@@ -72,10 +72,9 @@ exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
 exec-once=nm-applet #network manager
 #------------------------------------------------- 
 
-exec-once = ln -sf /var/lib/flatpak/exports/share/applications/* ${config.home.homeDirectory}/.local/share/applications/
-exec-once = ln -sf ln -sf /etc/profiles/per-user/${uservars.name}/share/applications/* ${config.home.homeDirectory}/.local/share/applications/
+#exec-once = ln -sf /var/lib/flatpak/exports/share/applications/* ${config.home.homeDirectory}/.local/share/applications/
+#exec-once = ln -sf ln -sf /etc/profiles/per-user/${uservars.name}/share/applications/* ${config.home.homeDirectory}/.local/share/applications/
     source = ${config.home.homeDirectory}/.config/hypr/colors
-#    exec-once = swww init
 #    exec = swww img ${config.home.homeDirectory}/Imagens/wallpapers/menhera.jpg
 
 

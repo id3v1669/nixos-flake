@@ -15,8 +15,7 @@
   } // lib.optionalAttrs (envir == "hypr") {
     regreet.enable = true;
   };
-  environment = 
-  {
+  environment = {
     systemPackages = (with pkgs; [
       fish
     ]) ++ lib.lists.optionals (envir == "hypr")[
@@ -24,7 +23,10 @@
       libnotify #for dunst or mako
       polkit_gnome
       xorg.xhost
-
+      #configure-gtk
+      #xdg-utils
+      #glib # gsettings
+      dracula-theme # gtk theme
       #gnome.gnome-control-center # Gnome settings
       #gnome.gnome-disk-utility # Disks manager
       #gnome.gnome-keyring # Keyring daemon

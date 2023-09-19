@@ -4,19 +4,18 @@
     ./programs
     ./../scripts
     #./enviroment/qt
-    #./enviroment/gnome
-    #./enviroment/gtk
+    ./enviroment/gnome
+    ./enviroment/gtk
     inputs.nix-colors.homeManagerModules.default
   ]++ lib.lists.optionals (envir == "hypr") [
     ./enviroment/hyprland
     ./enviroment/rofi
     ./enviroment/eww
     ./enviroment/dunst
-    #./enviroment/xdg
+    ./enviroment/xdg
   ] ++ lib.lists.optionals (envir == "gnome") [
   ];
   colorScheme = inputs.nix-colors.colorSchemes.${colorsvar};
-  #systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
   home = {
     stateVersion = "${curversion}";
     username = "${uservars.name}";
@@ -60,6 +59,7 @@
       #chat
       telegram-desktop
       whatsapp-for-linux
+      (callPackage ./custom/webcord.nix {})
 
       #security
       openssl

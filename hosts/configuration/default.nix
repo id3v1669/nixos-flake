@@ -28,19 +28,13 @@
     } // lib.optionalAttrs (gpuvar == "nvidiaprimetb" || gpuvar == "nvidiaprimehdmi") { enableNvidia = true; };
     libvirtd.enable = true;
   };
-  #to check xdg-open http://example.com
   xdg = {
   } // lib.optionalAttrs (envir == "hypr") {
     portal = {
       enable = true;
-      #xdgOpenUsePortal = false;
-      #wlr.enable = true;
       extraPortals = ( with pkgs; [
-        #xdg-desktop-portal-gtk
         (callPackage ./../../home/custom/xdggtk.nix {})
-        (callPackage ./../../home/custom/xdghypr.nix {})
-        #xdg-desktop-portal-wlr
-        #xdg-desktop-portal-hyprland
+        xdg-desktop-portal-hyprland
       ]);
     };
   };

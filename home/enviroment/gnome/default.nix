@@ -9,6 +9,7 @@
   {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
+      gtk-theme = "Dracula";
     };
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = ["qemu:///system"];
