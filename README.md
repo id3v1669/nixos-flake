@@ -30,16 +30,15 @@
 
 4. **+Fix workspaces for multimonitor config**
 
-5. **+-Fix elecron apps on nvidia**
+5. **+-Nvidia...(partitialy fixed by adding 2 flake entries hdm1(games but single monitor and flickering) and tb(low game performance but with multimonitor config and no flickering))**
+    1. **+-Fix elecron apps on nvidia**
+    2. **+-get rid of hostnames and make variables as laptop, nvidia, intel etc**
+    3. **-+fix steam client flickering on nvidia**
 
-6. **+-get rid of hostnames and make variables as laptop, nvidia, intel etc**
+6. **-screenshare with sound??**
 
-7. **-screenshare with sound??**
+7. **-displayManager??**
 
-8. **-+fix steam client flickering on nvidia**
+8. **+-fix xrandr warnings during rebuild ??needed?? appear only with displayManager**
 
-9. **-displayManager??**
-
-10. **+-fix xrandr warnings during rebuild ??needed?? appear only with displayManager**
-
-11. **-fix flatpak xdg paths**
+9. **-fix flatpak xdg paths**
