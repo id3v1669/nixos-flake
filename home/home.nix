@@ -19,7 +19,7 @@
   home = {
     stateVersion = "${curversion}";
     username = "${uservars.name}";
-    homeDirectory = "${config.home.homeDirectory}";
+    homeDirectory = "/home/${uservars.name}";
     packages = (with pkgs; [
       #screenshots
       grim
