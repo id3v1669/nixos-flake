@@ -8,8 +8,8 @@
     configHome = "${config.home.homeDirectory}/.config";
     dataHome = "${config.home.homeDirectory}/.local/share";
     systemDirs = {
-      config = [ "/home/${uservars.name}/.config" ];
-      data = [ "/home/${uservars.name}/.local/share" "/usr/share" "/usr/share/applications/" "/usr/local/share/applications/" ];
+      config = [ "${config.home.homeDirectory}/.config" ];
+      data = [ "${config.home.homeDirectory}/.local/share" "/usr/share" "/usr/share/applications/" "/usr/local/share/applications/" ];
     };
     userDirs = {
       enable = true;

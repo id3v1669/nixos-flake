@@ -78,6 +78,7 @@ exec-once=nm-applet #network manager
 #    exec = swww img ${config.home.homeDirectory}/Imagens/wallpapers/menhera.jpg
 
 #windowrulev2 = opacity 0.5,class:^(eww)$
+#windowrulev2 = opacity 0.5,class:^(alacritty)$
 #windowrulev2 = opacity 0.5,class:^(eww-wrapped)$
 windowrule=float,^(pavucontrol)$
 
@@ -117,21 +118,21 @@ bind =,XF86AudioPause,exec,playerctl play-pause
 $background = rgb(${config.colorScheme.colors.base01})
 $foreground = rgb(${config.colorScheme.colors.base06})
 
-$color0 = rgba(1d192bee)
-$color1 = rgba(465EA7ee)
-$color2 = rgba(5A89B6ee)
-$color3 = rgba(6296CAee)
-$color4 = rgba(73B3D4ee)
-$color5 = rgba(7BC7DDee)
-$color6 = rgba(9CB4E3ee)
-$color7 = rgba(c3dde7ee)
-$color8 = rgba(889aa1ee)
-$color9 = rgba(465EA7ee)
-$color10 = rgba(5A89B6ee)
-$color11 = rgba(6296CAee)
-$color12 = rgba(73B3D4ee)
-$color13 = rgba(7BC7DDee)
-$color14 = rgba(9CB4E3ee)
-$color15 = rgba(c3dde7ee)
+$color0 = rgb(${config.colorScheme.colors.base00})  #rgba(1d192bee)
+$color1 = rgb(${config.colorScheme.colors.base01})  #rgba(465EA7ee)
+$color2 = rgb(${config.colorScheme.colors.base02})  #rgba(5A89B6ee)
+$color3 = rgb(${config.colorScheme.colors.base03})  #rgba(6296CAee)
+$color4 = rgb(${config.colorScheme.colors.base04})  #rgba(73B3D4ee)
+$color5 = rgb(${config.colorScheme.colors.base05})  #rgba(7BC7DDee)
+$color6 = rgb(${config.colorScheme.colors.base06})  #rgba(9CB4E3ee)
+$color7 = rgb(${config.colorScheme.colors.base07})  #rgba(c3dde7ee)
+$color8 = rgb(${config.colorScheme.colors.base08})  #rgba(889aa1ee)
+$color9 = rgb(${config.colorScheme.colors.base09})  #rgba(465EA7ee)
+$color10 = rgb(${config.colorScheme.colors.base0A})  #rgba(5A89B6ee)
+$color11 = rgb(${config.colorScheme.colors.base0B})  #rgba(6296CAee)
+$color12 = rgb(${config.colorScheme.colors.base0C})  #rgba(73B3D4ee)
+$color13 = rgb(${config.colorScheme.colors.base0D})  #rgba(7BC7DDee)
+$color14 = rgb(${config.colorScheme.colors.base0E})  #rgba(9CB4E3ee)
+$color15 = rgb(${config.colorScheme.colors.base0F})  #rgba(c3dde7ee)
   '';
 }

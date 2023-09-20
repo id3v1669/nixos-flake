@@ -1,4 +1,4 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, ...}: 
+{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, busvar, ...}: 
 {
   hardware = {
     i2c.enable = true;
@@ -20,6 +20,7 @@
         vaapiIntel
       ]);
       extraPackages32 = [
+        pkgs.pkgsi686Linux.libva
       ] ++ lib.lists.optionals (gpuvar == "nvidiaprimetb" || gpuvar == "nvidiaprimehdmi") (with pkgs.pkgsi686Linux; [
         libvdpau-va-gl
         vaapiVdpau
@@ -42,8 +43,11 @@
 			    enable = true;
 			    enableOffloadCmd = true;
 		    };
-        nvidiaBusId = "PCI:01:00:0";
-        intelBusId = "PCI:00:02:0";
+        nvidiaBusId = "${busvar.nvidia}";
+      } // lib.optionalAttrs (cpuvar == "intel") {
+        intelBusId = "${busvar.intel}";
+      } // lib.optionalAttrs (cpuvar == "amd") {
+        amdBusId = "${busvar.amd}";
       };
     };
   };

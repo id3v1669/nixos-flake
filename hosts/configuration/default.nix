@@ -8,6 +8,7 @@
       ./boot.nix
       ./udevrules.nix
       ./varssysnix.nix
+      ./fonts.nix
     ];
   security = {
     rtkit.enable = true;
@@ -33,7 +34,7 @@
     portal = {
       enable = true;
       extraPortals = ( with pkgs; [
-        (callPackage ./../../home/custom/xdggtk.nix {})
+        xdg-desktop-portal-gtk
         xdg-desktop-portal-hyprland
       ]);
     };
@@ -61,44 +62,4 @@
     extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "libvirtd" "video" "docker" "i2c" "openrgb" ];
     shell = pkgs.fish;
   };
-  fonts = {
-    fontconfig.enable = true;
-    fontDir = {
-      enable = true;
-      decompressFonts = true;
-    };
-    packages = (with pkgs; [
-      terminus-nerdfont
-      noto-fonts
-      nerdfonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-      liberation_ttf
-      fira-code
-      fira-code-symbols
-      mplus-outline-fonts.githubRelease
-      dina-font
-      proggyfonts
-    ]); # ++ lib.lists.optionals (envir == "gnome") ();
-  };
 }
-
-
-#doesnt work need fix
-#     enviroment.etc = {
-# 	    "wireplumber/bose.lua".text = ''
-# rule = {
-#   matches = {
-#     {
-#       { "node.name", "equals", "alsa_input.usb-Elgato_Systems_Elgato_Wave_3_BS43J1A04362-00.mono-fallback" },
-#     },
-#   },
-#   apply_properties = {
-#     ["node.nick"] = "ElgatoMic",
-#   },
-# }
-
-# table.insert(alsa_monitor.rules, rule)
-
-# 	    '';
-#     };

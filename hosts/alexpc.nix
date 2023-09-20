@@ -31,6 +31,4 @@
     [ { device = "/dev/disk/by-uuid/e16bef8b-f19d-4ced-bfda-09321d25ccc8"; }
     ];
 
-  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
-
 }

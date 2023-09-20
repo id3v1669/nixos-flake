@@ -28,7 +28,5 @@
       fsType = "vfat";
     };
 
-  swapDevices = [ ];
-  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
-  
+  swapDevices = [ ]; 
 }

@@ -11,7 +11,6 @@ declare -a apps=(
                  "com.discordapp.Discord"
                  "net.lutris.Lutris"
                  "ch.tlaun.TL"
-                 "net.cozic.joplin_desktop"
                  "org.libreoffice.LibreOffice"
                 )
 

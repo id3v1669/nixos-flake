@@ -3,14 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix-colors.url = "github:misterio77/nix-colors";
+    nur.url = "github:nix-community/NUR";
     eww-tray = {
       url = "github:ralismark/eww/tray-3";
       flake = true;
     };
-    nix-colors.url = "github:misterio77/nix-colors";
-    nur.url = "github:nix-community/NUR";
-    #  inputs.nixpkgs.follows = "nixpkgs"; 
-    #};
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +43,11 @@
       system ? "x86_64-linux",
       cpuvar ? "intel",
       colorsvar ? "uwunicorn",
+      busvar ? {
+        nvidia = "PCI:01:00:0";
+        intel = "PCI:00:02:0";
+        amd = "";
+      },
       brightnesctrl ? {
         up = "ddcutil setvcp 10 + 5";
         down = "ddcutil setvcp 10 - 5";
@@ -73,7 +76,7 @@
     in inputs.nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system winvar tempvar;
+        inherit inputs outputs curversion uservars hostname envir deflocale pkgs busvar cpuvar gpuvar desk system winvar tempvar;
       };
       modules = [ 
         (./. + "/hosts/${hostname}.nix")

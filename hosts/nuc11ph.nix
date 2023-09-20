@@ -9,7 +9,7 @@
   boot = {
     kernelModules = [ "kvm-intel" "i2c-dev" ];
     kernelParams = [ ]; 
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback bbswitch ];
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     initrd = {
       availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
       kernelModules = [ ];

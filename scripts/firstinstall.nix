@@ -6,8 +6,8 @@
     text = ''
 #!/run/current-system/sw/bin/bash
 
-/home/${uservars.name}/.scripts/flatpak.sh
-/home/${uservars.name}/.scripts/distrobox.sh
+${config.home.homeDirectory}/.scripts/flatpak.sh
+${config.home.homeDirectory}/.scripts/distrobox.sh
 
     '';
   };

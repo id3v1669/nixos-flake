@@ -19,7 +19,7 @@
   home = {
     stateVersion = "${curversion}";
     username = "${uservars.name}";
-    homeDirectory = "/home/${uservars.name}";
+    homeDirectory = "${config.home.homeDirectory}";
     packages = (with pkgs; [
       #screenshots
       grim
@@ -58,7 +58,6 @@
       #chat
       telegram-desktop
       whatsapp-for-linux
-      (callPackage ./custom/webcord.nix {})
 
       #security
       openssl
@@ -78,7 +77,7 @@
       gnome.nautilus
       rustdesk
       github-desktop
-      jgmenu#temp
+      joplin-desktop
 
       #cli tools
       vim

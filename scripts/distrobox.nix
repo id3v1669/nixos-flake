@@ -19,8 +19,8 @@ else
   echo "archbox does not exist, creating..."
   distrobox-create --name archbox --image quay.io/toolbx-images/archlinux-toolbox
   distrobox enter --name archbox -- sudo pacman -S --noconfirm git make gcc
-  mkdir /home/${uservars.name}/.tmpscript
-  cd /home/${uservars.name}/.tmpscript
+  mkdir ${config.home.homeDirectory}/.tmpscript
+  cd ${config.home.homeDirectory}/.tmpscript
   git clone https://aur.archlinux.org/yay.git
   cd yay
   distrobox enter --name archbox -- makepkg -si --noconfirm

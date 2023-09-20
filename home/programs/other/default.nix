@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }: 
 {
-  services.easyeffects = {
-    enable = true;
-    #preset = ??
-  };
+  #services.easyeffects = { crashes regularly disabled for now
+  #  enable = true;
+  #  #preset = ??
+  #};
   programs = {
     direnv.enable = true;
     obs-studio = {
