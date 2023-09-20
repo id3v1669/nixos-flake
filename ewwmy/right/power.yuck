@@ -1,21 +1,14 @@
 (defwidget power []
-  (eventbox
-    :onhover "" ;;"${EWW_CMD} update show_powerbuttons=true"
-    :onhoverlost ""
-    (button 
-      :onclick "${EWW_CMD} update show_powerbuttons=true"
-      (box 
-        :orientation "h" 
-        :spacing 2 
-        :valign "right" 
-        :halign "right" 
-        :space-evenly "false" 
-        :vexpand "false" 
-        :hexpand "false"
-        (box 
-          "󰐥"  ;;""
-        )
-      )
+  (button 
+    :orientation "horizontal"
+    :hexpand false
+    :vexpand false
+    :onclick "${EWW_CMD} update show_powerbuttons=true"
+    (box 
+      :orientation "horizontal"
+      :hexpand false
+      :vexpand false
+      "󰐥"
     )
   )
 )

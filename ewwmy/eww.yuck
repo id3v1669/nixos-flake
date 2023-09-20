@@ -13,6 +13,7 @@
   :stacking "fg"
   :exclusive true
   :geometry (geometry 
+    :y "0.5%"
     :width "99.5%"
     :height "30"
     :anchor "top center")
@@ -22,17 +23,18 @@
 (defwidget bar-widget []
   (box 
     :orientation "h"
+    :class "bar"
     (left)
-    (center)
-    (right)
+    ;(center)
+    ;(right)
   )
 )
 (defwidget left []
   (box 
-    :orientation "h" 
-    :space-evenly false  
+    :orientation "h"
+    :space-evenly false
+    :spacing 6
     :halign "start"
-    :class "leftModules"
     (launcher)
     (usageinfo)
     (workspaces)
@@ -40,20 +42,17 @@
 )
 (defwidget center []
   (box 
-    :orientation "h" 
-    :space-evenly false  
-    :halign "center"
-    :class "centerModules"
+    :orientation "horizontal"
+    :hexpand false
+    :vexpand false
     (clock)
-    "Debug: ${debugvar}"
   )
 )
 (defwidget right []
   (box 
-    :orientation "h" 
-    :space-evenly false  
-    :halign "end"
-    :class "rightModules"
+    :orientation "horizontal"
+    :hexpand false
+    :vexpand false
     (systray :pack-direction "left")
     (microphone)
     (power)

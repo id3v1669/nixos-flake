@@ -1,4 +1,26 @@
-.barMain {
-    background-color: #160e1b;
-    border-radius: 10px;
+.bar {
+    //background-color: rgba(0, 0, 0, 0);
+    //background-color: #241b26;
+    //--background-opacity: 100;
+    border-radius: 20;
+}
+
+.left {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.launcher {
+    font-size: 1.3em;
+    border-radius: 12;
+    background-color: #ff0000;
+    color: #eed5d9;
+    &:hover {
+        background-color: #877bb6;
+        color: #eed5d9;
+    }
+}
+
+.usageinfo {
+    border-radius: 12;
+    background-color: #241b26;
 }

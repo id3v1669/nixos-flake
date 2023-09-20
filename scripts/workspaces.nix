@@ -26,3 +26,4 @@ eww update wss="''${ws[*]}" --config ${tempvar}/ewwmy/
     '';
   };
 }
+#maybe later add buttons hyprctl dispatch workspace x

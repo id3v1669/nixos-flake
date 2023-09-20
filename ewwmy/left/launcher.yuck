@@ -1,24 +1,16 @@
 (defwidget launcher []
-  (box 
+  (box
     :orientation "h"
-    :space-evenly false
-    :halign "left"
+    :class "left"
     (button 
+      :class "launcher"
       :timeout "${deftimeout}"
       :onclick "rofi -show"
       (box 
-        :orientation "h" 
-        :spacing 2 
-        :valign "center" 
-        :halign "center" 
-        :space-evenly "false" 
-        :vexpand "false" 
-        :hexpand "false"
-        (label :class "infotext" :halign "start")
-        (box 
-          :class "launcher"
-          " "
-        )
+        :orientation "horizontal"
+        :hexpand false
+        :vexpand false
+        " "
       )
     )
   )

@@ -77,7 +77,8 @@ exec-once=nm-applet #network manager
     source = ${config.home.homeDirectory}/.config/hypr/colors
 #    exec = swww img ${config.home.homeDirectory}/Imagens/wallpapers/menhera.jpg
 
-
+#windowrulev2 = opacity 0.5,class:^(eww)$
+#windowrulev2 = opacity 0.5,class:^(eww-wrapped)$
 windowrule=float,^(pavucontrol)$
 
 windowrule=float,^(blueman-manager)$
