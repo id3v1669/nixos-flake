@@ -1,17 +1,10 @@
 (defvar wss "xxx")
 (defwidget workspaces []
-  (button 
+  (box 
     :orientation "horizontal"
     :hexpand false
     :vexpand false
-    :timeout "${deftimeout}"
-    :onclick "";;bash /home/${uservars.name}/.scripts/eww_ws.sh"
-    (box 
-      :orientation "horizontal"
-      :hexpand false
-      :vexpand false
-      :class "launcher"
-      wss
-    )
-  )  
-)
+    :class "workspaces"
+    wss
+  )
+)  

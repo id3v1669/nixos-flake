@@ -6,9 +6,10 @@
     text = ''
 #!/run/current-system/sw/bin/bash
 
-GTK_THEME=nobg-GTK eww daemon
-GTK_THEME=nobg-GTK eww open popup-power-window --config ${tempvar}/ewwmy/
-GTK_THEME=nobg-GTK eww open bar-test --config ${tempvar}/ewwmy/
+eww daemon
+eww open popup-power-window --config ${tempvar}/ewwmy/
+eww open bar-test --config ${tempvar}/ewwmy/
+bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
     '';
   };
 }

@@ -1,11 +1,8 @@
 (defwidget usageinfo []
   (box
-    :class "left"
     (button 
       :class "usageinfo"
-      :orientation "horizontal"
-      :hexpand false
-      :vexpand false
+      :orientation "h"
       :timeout "${ deftimeout}"
       :onclick "kitty btop"
       (box 
@@ -13,22 +10,22 @@
         :space-evenly false
         :spacing 10
         :halign "start"
-        :orientation "horizontal"
-        :hexpand false
-        :vexpand false
-        (label :class "infotext")
+        :orientation "h"
         (box 
           :class "ram"
           "${round(EWW_RAM.used_mem/1073741824,1)}/${round(EWW_RAM.total_mem/1073741824,1)} Gb "
         )
+        (box :class "spacerh" "|")
         (box 
           :class "cputemp"
           " ${EWW_TEMPS.CORETEMP_CORE_0}°C "
         )
+        (box :class "spacerh" "|")
         (box 
           :class "disk"
           " ${round(EWW_DISK['/'].free/1073741824,1)} Gb "
         )
+        (box :class "spacerh" "|")
         (box 
           :class "boot"
           " ${round(EWW_DISK['/boot'].free/1073741824,1)} Gb"

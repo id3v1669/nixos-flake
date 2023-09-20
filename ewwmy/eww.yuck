@@ -25,16 +25,16 @@
     :orientation "h"
     :class "bar"
     (left)
-    ;(center)
-    ;(right)
+    (center)
+    (right)
   )
 )
 (defwidget left []
   (box 
-    :orientation "h"
-    :space-evenly false
-    :spacing 6
+    :orientation "h" 
+		:space-evenly false  
     :halign "start"
+    :spacing 6
     (launcher)
     (usageinfo)
     (workspaces)
@@ -42,18 +42,25 @@
 )
 (defwidget center []
   (box 
-    :orientation "horizontal"
-    :hexpand false
-    :vexpand false
+    :orientation "h"
+    :space-evenly false
+    :halign "center"
     (clock)
   )
 )
 (defwidget right []
   (box 
-    :orientation "horizontal"
-    :hexpand false
-    :vexpand false
-    (systray :pack-direction "left")
+    :orientation "h" 
+		:space-evenly false
+    :spacing 6
+    :halign "end"
+    (box 
+      :orientation "h"
+      :class "tray"
+      (systray
+        :pack-direction "left"
+      )
+    )
     (microphone)
     (power)
   )

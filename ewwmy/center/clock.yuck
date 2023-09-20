@@ -1,14 +1,15 @@
 (defwidget clock []
-  (button 
-    :orientation "horizontal"
-    :hexpand false
-    :vexpand false
+  (box (button 
+    :class "miniclock" 
+    :orientation "h" 
     :onclick ""
     (box 
-      :orientation "horizontal"
-      :hexpand false
-      :vexpand false
+      :orientation "h"
+      :space-evenly false
+      :spacing 10
+      :halign "start"
+      :orientation "h"
       datetime
     )
-  )
+  ))
 )

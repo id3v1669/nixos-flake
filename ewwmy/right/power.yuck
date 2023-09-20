@@ -1,14 +1,13 @@
 (defwidget power []
-  (button 
-    :orientation "horizontal"
-    :hexpand false
-    :vexpand false
-    :onclick "${EWW_CMD} update show_powerbuttons=true"
-    (box 
-      :orientation "horizontal"
-      :hexpand false
-      :vexpand false
-      "󰐥"
+  (box
+    (button 
+      :class "minipower"
+      :orientation "h"
+      :onclick "${EWW_CMD} update show_powerbuttons=true"
+      (box 
+        :orientation "h"
+        "󰐥"
+      )
     )
   )
 )

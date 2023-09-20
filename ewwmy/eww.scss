@@ -1,20 +1,156 @@
-.background { 
-    color: rgba(0, 0, 0, 0);
-    background-color: rgba(0, 0, 0, 0);
-}
+
 
 .launcher {
     font-size: 1.3em;
     border-radius: 20;
-    background-color: #ee2121;
-    color: #ff002b;
+    padding: 5px 12px 5px 15px; 
+    background-color: #241b26;
+    color: #eed5d9;
     &:hover {
-        background-color: #877bb6;
+        background-color: #2f2a3f;
         color: #eed5d9;
     }
 }
 
 .usageinfo {
-    border-radius: 12;
     background-color: #241b26;
-}
+    color: #eed5d9;
+    border-radius: 20;
+    padding: 5px 15px; 
+    &:hover {
+        background-color: #2f2a3f;
+        color: #d9c2c6;
+        .spacer {  
+            color: #eed5d9;
+          }
+      }
+  }
+
+.ram, .cputemp, .disk, .boot {
+    padding: 5px;
+    border-radius: 3px;
+  }
+
+  .spacerh {
+    color: #c965bf;
+    font-size: 1.4em;
+  }
+  
+  .ram {
+    // Extra styles specific to RAM box, if any
+  }
+  
+  .cputemp {
+    // Extra styles specific to CPU Temp box, if any
+  }
+  
+  .disk {
+    // Extra styles specific to Disk box, if any
+  }
+  
+  .boot {
+    // Extra styles specific to Boot box, if any
+  }
+
+  .workspaces {
+    font-size: 1.3em;
+    border-radius: 20;
+    padding: 5px 20px 5px 15px; 
+    background-color: #241b26;
+    color: #eed5d9;
+  }
+
+  .miniclock {
+    font-size: 1.3em;
+    background-color: #241b26;
+    color: #eed5d9;
+    border-radius: 20;
+    padding: 5px 16px 5px 17px;
+    &:hover {
+        background-color: #2f2a3f;
+        color: #d9c2c6;
+      }
+  }
+
+  .tray {
+    font-size: 1.4em;
+    background-color: #241b26;
+    color: #eed5d9;
+    border-radius: 20;
+    padding: 5px 14px 5px 15px;
+  }
+
+  .mic {
+    font-size: 1.3em;
+    background-color: #241b26;
+    color: #eed5d9;
+    border-radius: 20;
+    padding: 5px 16px 4px 14px;
+    &:hover {
+        background-color: #2f2a3f;
+        color: #d9c2c6;
+      }
+  }
+
+  .minipower {
+    font-size: 1.4em;
+    background-color: #241b26;
+    color: #eed5d9;
+    border-radius: 20;
+    padding: 5px 16px 5px 14px;
+    &:hover {
+        background-color: #2f2a3f;
+        color: #d9c2c6;
+      }
+  }
+
+  .powerpopup {
+    //font-size: 1.4em;
+    //background-color: #241b26;
+    //color: #eed5d9;
+    //border-radius: 20;
+    padding: 5px 0px 0px 0px;
+    // &:hover {
+    //     background-color: #2f2a3f;
+    //     color: #d9c2c6;
+    //   }
+  }
+
+  .suspend {
+    font-size: 1.3em;
+    background-color: #a3a079;
+    color: #eed5d9;
+    border-radius: 20;
+    padding: 4px 16px 5px 9px;
+    &:hover {
+        background-color: #7e5f83;
+        color: #d9c2c6;
+      }
+  }
+  .reboot {
+    font-size: 1.3em;
+    background-color: #6a9eb5;
+    color: #eed5d9;
+    border-radius: 20;
+    padding: 4px 14px 5px 9px;
+    &:hover {
+        background-color: #7e5f83;
+        color: #d9c2c6;
+      }
+  }
+  .shutdown {
+    font-size: 1.4em;
+    background-color: #de5b44;
+    color: #eed5d9;
+    border-radius: 20;
+    padding: 4px 12px 5px 10px;
+    &:hover {
+        background-color: #7e5f83;
+        color: #d9c2c6;
+      }
+  }
+
+  // gtk rules
+    .background {
+        background-color: rgba(0, 0, 0, 0);
+    }

@@ -21,17 +21,22 @@
       :reveal show_powerbuttons
       :duration "500ms"
       (box
+        :class "powerpopup"
         :halign "start" 
+        :spacing 3
         :orientation "vertical"
-        (button 
+        (button
+          :class "suspend" 
           :onclick "systemctl suspend"
           ""
         )
         (button 
+          :class "reboot"
           :onclick "reboot"
           ""
         )
         (button 
+          :class "shutdown"
           :onclick "shutdown -h now"
           "󰐥"
         )

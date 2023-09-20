@@ -1,16 +1,15 @@
 ;; unlocker mic: 󰍬
 ;; lock mic: 󰍭
 (defwidget microphone []
-  (button 
-    :orientation "horizontal"
-    :hexpand false
-    :vexpand false
-    :onclick "bash ~/myrepos/nixos-flake/ewwmy/scripts/mic.sh"
-    (box 
-      :orientation "horizontal"
-      :hexpand false
-      :vexpand false
-      "󰍬"
+  (box
+    (button 
+      :orientation "h"
+      :class "mic"
+      :onclick "bash ~/myrepos/nixos-flake/ewwmy/scripts/mic.sh"
+      (box 
+        :orientation "h"
+        "󰍬"
+      )
     )
   )
 )
