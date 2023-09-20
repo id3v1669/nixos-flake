@@ -7,7 +7,6 @@ Type=X-GNOME-Metatheme
 Name=nobg
 Comment= Dark version
 Encoding=UTF-8
-
 [X-GNOME-Metatheme]
 GtkTheme=nobg
 MetacityTheme=nobg
