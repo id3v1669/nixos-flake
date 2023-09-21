@@ -35,10 +35,14 @@
     2. **+-get rid of hostnames and make variables as laptop, nvidia, intel etc**
     3. **-+fix steam client flickering on nvidia**
 
-6. **-screenshare with sound??**
+6. **-screenshare with sound in all apps with virtmic??**
 
 7. **-displayManager??**
 
 8. **+-fix xrandr warnings during rebuild ??needed?? appear only with displayManager**
 
 9. **-fix flatpak xdg paths**
+
+10. **fix brightness control for multimonitor config**
+
+11. **pack discord-screenautio into nix packages**
