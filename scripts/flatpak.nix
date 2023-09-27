@@ -7,8 +7,6 @@
 #!/run/current-system/sw/bin/bash
 
 declare -a apps=(
-                 "de.shorsh.discord-screenaudio"
-                 "com.discordapp.Discord"
                  "net.lutris.Lutris"
                  "ch.tlaun.TL"
                  "org.libreoffice.LibreOffice"

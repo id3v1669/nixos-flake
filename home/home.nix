@@ -3,7 +3,7 @@
   imports = [
     ./programs
     ./../scripts
-    #./enviroment/qt
+    ./enviroment/qt
     ./enviroment/gnome
     ./enviroment/gtk
     inputs.nix-colors.homeManagerModules.default
@@ -46,7 +46,6 @@
       nm-tray
 
       #vid photo sound etc
-      krita
       ffmpeg
       vlc
       nomacs
@@ -106,13 +105,17 @@
 
       #other
       openjdk19
+      #glaxnimate
       dracula-theme 
       libsForQt5.qt5.qtwayland
       libsForQt5.qt5ct
       qt6.qtwayland
       (callPackage ./custom/xwaylandvideobridge.nix {})
+      #(callPackage ./custom/discord-scr.nix {})
+      #(callPackage ./custom/rohrkabel.nix {})
 
       #temp
+      discord
       kitty
     ]) ++ lib.lists.optionals (envir == "gnome") (with pkgs;[
       gnomeExtensions.appindicator
@@ -124,6 +127,9 @@
       yandex-browser
     ]) ++ lib.lists.optionals (uservars.description == "id3v1669") (with pkgs;[
       spotify
+      #libsForQt5.kdenlive
+      krita
+      gimp
     ]);
   };
 }

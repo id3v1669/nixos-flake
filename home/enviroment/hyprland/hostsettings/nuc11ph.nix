@@ -14,7 +14,7 @@
   home.sessionVariables = {
 		#universal part
     NIXOS_OZONE_WL = "1";
-	  QT_QPA_PLATFORMTHEME = "gtk3";
+	  #QT_QPA_PLATFORMTHEME = "gtk3";
 	  QT_SCALE_FACTOR = "1";
 	  MOZ_ENABLE_WAYLAND = "1";
 	  SDL_VIDEODRIVER = "wayland";
@@ -25,6 +25,11 @@
 	  XDG_CURRENT_DESKTOP = "Hyprland";
 	  XDG_SESSION_DESKTOP = "Hyprland";
 	  XDG_SESSION_TYPE = "wayland";
+		
+		#args for gmaes
+		__GL_THREADED_OPTIMIZATIONS="1";
+		__GL_SHADER_DISK_CACHE="1";
+		__GL_SHADER_DISK_CACHE_SKIP_CLEANUP="1";
 
 		#ps.
 	  #GTK_USE_PORTAL = "0"; #useless
@@ -34,10 +39,10 @@
 		QT_QPA_PLATFORM = "wayland-egl";#universal?
 		WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
   } // lib.optionalAttrs (gpuvar == "nvidiaprimehdmi") {
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-	  LIBVA_DRIVER_NAME = "nvidia";
-	  WLR_RENDERER = "vulkan";
-		__NV_PRIME_RENDER_OFFLOAD="1";
+    #__GLX_VENDOR_LIBRARY_NAME = "nvidia";
+	  #LIBVA_DRIVER_NAME = "nvidia";
+	  #WLR_RENDERER = "vulkan";
+		#__NV_PRIME_RENDER_OFFLOAD="1";
 	};
 	home.file.".config/hypr/hyprpaper.conf" = {
     text = ''
@@ -48,10 +53,13 @@ preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca4.jpg
 preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca5.jpg
 preload = ${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
 preload = ${config.home.homeDirectory}/Pictures/Wallpapers/furry2.jpg
+preload = ${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
+preload = ${config.home.homeDirectory}/Pictures/Wallpapers/gray.jpg
 
-
-wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/rebecca2.jpg
-wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
+wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
+wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
+#wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/rebecca2.jpg
+#wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
 
     '';
   };

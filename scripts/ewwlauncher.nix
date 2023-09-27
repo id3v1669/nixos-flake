@@ -9,7 +9,9 @@
 eww daemon
 eww open popup-power-window --config ${tempvar}/ewwmy/
 eww open bar-test --config ${tempvar}/ewwmy/
-bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
+blueman-applet &
+nm-applet &
+bash ${config.home.homeDirectory}/.scripts/eww_ws.sh
     '';
   };
 }

@@ -64,12 +64,8 @@ exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CUR
     exec-once = hyprctl setcursor Bibata-Modern-Classic 24
     #exec-once = dunst
 
-#----------------------bar------------------------
+#----------------bar and applets------------------
 exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
-#exec-once = eww daemon
-#exec-once=eww open popup-power-window --config ${tempvar}/ewwmy/
-#exec-once=eww open bar-test --config ${tempvar}/ewwmy/
-exec-once=nm-applet #network manager
 #------------------------------------------------- 
 
 #exec-once = ln -sf /var/lib/flatpak/exports/share/applications/* ${config.home.homeDirectory}/.local/share/applications/
