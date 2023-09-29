@@ -12,6 +12,7 @@
         1. **+- show cpu temp(fix for laptop)**
         2. **+- show disk usage(design?)**
     5. **- calendar popup**
+    6. **battery for laptop**
 
 2. **+-Add background(enable for laptop only on power)**
 
@@ -25,6 +26,5 @@
 
 999. **+-Nvidia... partitialy fixed by adding 2 flake entries hdm1(games but single monitor and flickering) and tb(multimonitor config, no flickering, but games have staters due to nvidia-offload and output through igpu)**
     1. **+-Fix elecron apps on nvidia via hdmi**
-    2. **+-get rid of hostnames and make variables as laptop, nvidia, intel etc**
-    3. **-+fix steam client flickering on nvidia hdmi**
-    4. **find good parameters for csgo for tb option**
+    2. **-+fix steam client flickering on nvidia hdmi**
+    3. **find good parameters for csgo for tb option**
