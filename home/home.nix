@@ -105,8 +105,6 @@
 
       #other
       openjdk19
-      #glaxnimate
-      dracula-theme 
       libsForQt5.qt5.qtwayland
       libsForQt5.qt5ct
       qt6.qtwayland
@@ -115,6 +113,7 @@
       #(callPackage ./custom/rohrkabel.nix {})
 
       #temp
+      dconf
       discord
       kitty
     ]) ++ lib.lists.optionals (envir == "gnome") (with pkgs;[

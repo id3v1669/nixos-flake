@@ -1,7 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  dconf.settings = (with lib.hm.gvariant; 
+  dconf = {
+    enable = true;
+    settings = (with lib.hm.gvariant; 
       {
         "com/raggesilver/BlackBox" = {
           opacity = mkUint32 88;
@@ -70,4 +72,5 @@
         };
       }
     );
+  };
 }

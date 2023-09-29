@@ -6,7 +6,6 @@
     traceroute.enable = true;
     adb.enable = true;
     fish.enable = true;
-    dconf.enable = true;
   } // lib.optionalAttrs (envir == "gnome") {
     kdeconnect = {
       enable = true;
@@ -23,6 +22,7 @@
       libnotify #for dunst or mako
       polkit_gnome
       xorg.xhost
+
       #virtualgl
       #virtualglLib
       #desktop-file-utils

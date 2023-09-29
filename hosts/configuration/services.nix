@@ -16,7 +16,12 @@
       layout = "${deflocale.kblayout}";
       xkbVariant = "${deflocale.kbvariant}";
       xkbOptions = "${deflocale.kboption}";
-      videoDrivers = [] ++ lib.lists.optionals (gpuvar == "nvidiaprimetb" || gpuvar == "nvidiaprimehdmi" ) [ "nvidia" ] ++ lib.lists.optionals (gpuvar == "amd") [ "amdgpu" ];
+      videoDrivers = [ 
+      ] ++ lib.lists.optionals (gpuvar.type == "nvidia")[
+        "nvidia"
+      ] ++ lib.lists.optionals (gpuvar.type == "amd") [
+        "amdgpu"
+      ] ;
   } // lib.optionalAttrs (envir == "gnome") {
       desktopManager.gnome = {
         enable = true;
@@ -26,35 +31,6 @@
         enable = true;
         wayland = true;
       };
-    } // lib.optionalAttrs (gpuvar == "nvidiaprimehdmi") {
-      config = ''
-      Section "Device"
-          Identifier  "Intel Graphics"
-          Driver      "intel"
-          #Option      "AccelMethod"  "sna" # default
-          #Option      "AccelMethod"  "uxa" # fallback
-          Option      "TearFree"        "true"
-          Option      "SwapbuffersWait" "true"
-          BusID       "PCI:0:2:0"
-          #Option      "DRI" "2"             # DRI3 is now default
-      EndSection
-
-      Section "Device"
-          Identifier "nvidia"
-          Driver "nvidia"
-          BusID "PCI:1:0:0"
-          Option "AllowEmptyInitialConfiguration"
-          Option         "TearFree" "true"
-      EndSection
-    '';
-    screenSection = ''
-      Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-      Option         "AllowIndirectGLXProtocol" "off"
-      Option         "TripleBuffer" "on"
-      '';
-    deviceSection = '' 
-    Option "TearFree" "true"
-    '';
     };
     pipewire = {
       enable = true;

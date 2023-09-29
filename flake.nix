@@ -32,22 +32,24 @@
     ... }@inputs: 
   let
     inherit (self) outputs;
-    curversion = "23.11";
+    curversion = "23.05";
     mkSyst = { 
       hostname,
       envir,
       tempvar,
       winvar ? false,
       desk ? "desktop",
-      gpuvar ? "nvidiaprimetb",
+      gpuvar ? {
+        type = "nvidia";
+        tech = "prime";
+        busd = "PCI:01:00:0";
+        busi = "PCI:00:02:0";
+        mode = "sync";
+        port = "hdmi";
+      },
       system ? "x86_64-linux",
       cpuvar ? "intel",
       colorsvar ? "uwunicorn",
-      busvar ? {
-        nvidia = "PCI:01:00:0";
-        intel = "PCI:00:02:0";
-        amd = "";
-      },
       brightnesctrl ? {
         up = "ddcutil setvcp 10 + 5";
         down = "ddcutil setvcp 10 - 5";
@@ -76,7 +78,7 @@
     in inputs.nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit inputs outputs curversion uservars hostname envir deflocale pkgs busvar cpuvar gpuvar desk system winvar tempvar;
+        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system winvar tempvar;
       };
       modules = [ 
         (./. + "/hosts/${hostname}.nix")
@@ -99,27 +101,46 @@
       #porple, phd, pasque, pandora, outrun-dark, mountain, material-darker,
       #lime, kimber, icy, gruvbox-dark-pale, grayscale-dark, darktooth, black-metal
       #mytop: pandora, stella, lime, gruvbox-dark-pale, outrun-dark, spaceduck
-      nuc11phhyprtb = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = false; colorsvar = "spaceduck"; tempvar = "/home/user/myrepos/nixos-flake"; };
-      nuc11phhyprhdmi = mkSyst { hostname = "nuc11ph"; envir = "hypr"; winvar = false; colorsvar = "spaceduck"; tempvar = "/home/user/myrepos/nixos-flake"; gpuvar = "nvidiaprimehdmi"; };
-      nuc11phgnome = mkSyst { hostname = "nuc11ph"; envir = "gnome"; };
-      nuc11phkde = mkSyst { hostname = "nuc11ph"; envir = "kde"; };
+      nuc11phhyprtb = mkSyst {
+        hostname = "nuc11ph";
+        envir = "hypr";
+        winvar = false;
+        colorsvar = "spaceduck";
+        tempvar = "/home/user/myrepos/nixos-flake";
+        gpuvar.port = "tb";
+      };
+      nuc11phhyprhdmi = mkSyst {
+        hostname = "nuc11ph";
+        envir = "hypr";
+        winvar = false;
+        colorsvar = "spaceduck";
+        tempvar = "/home/user/myrepos/nixos-flake";
+      };
+      #nuc11phgnome = mkSyst { hostname = "nuc11ph"; envir = "gnome"; };
+      #nuc11phkde = mkSyst { hostname = "nuc11ph"; envir = "kde"; };
       l14g3hypr = mkSyst { 
         hostname = "l14g3";
         envir = "hypr";
         cpuvar = "amd";
         desk = "laptop";
-        gpuvar = "amd";
+        gpuvar.type = "amd";
         tempvar = "/home/user/nixos-flake"; 
         brightnesctrl = {
           up = "light -A 5";
           down = "light -U 5";
         };
       };
-      l14g3gnome = mkSyst { hostname = "l14g3"; envir = "gnome"; cpuvar = "amd"; desk = "laptop"; gpuvar = "amd"; };
+      l14g3gnome = mkSyst {
+        hostname = "l14g3";
+        envir = "gnome";
+        cpuvar = "amd";
+        desk = "laptop";
+        gpuvar.type = "amd";
+      };
       alexpchypr = mkSyst {
         hostname = "alexpc";
         envir = "hypr";
-        gpuvar = "amd";
+        gpuvar.type = "amd";
         winvar = true;
         uservars = { name = "user"; description = "alexp"; };
         tempvar = "/home/user/nixos-flake";

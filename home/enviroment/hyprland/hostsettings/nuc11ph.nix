@@ -1,14 +1,14 @@
 { config, lib, pkgs, uservars, gpuvar, ... }:
-
 {
   wayland.windowManager.hyprland = {
     enableNvidiaPatches = true;
     settings.monitor = [
-    ] ++ lib.lists.optionals (gpuvar == "nvidiaprimehdmi") [
+    ] ++ lib.lists.optionals (gpuvar.port == "hdmi") [
       "HDMI-A-1,3440x1440@100,0x0,1"
-		] ++ lib.lists.optionals (gpuvar == "nvidiaprimetb") [
-			"DP-3,3440x1440@100,0x0,1"
-      "DP-4,1920x1080@60,3440x0,1"
+			"DP-5,1920x1080@60,3440x0,1"
+		] ++ lib.lists.optionals (gpuvar.port == "tb") [
+			"DP-3,2560x1080@120,0x0,1"
+      "DP-4,1920x1080@60,2560x0,1"
 		];
   };
   home.sessionVariables = {
@@ -37,12 +37,9 @@
 
 		#nvidia part
 		QT_QPA_PLATFORM = "wayland-egl";#universal?
-		WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
-  } // lib.optionalAttrs (gpuvar == "nvidiaprimehdmi") {
-    #__GLX_VENDOR_LIBRARY_NAME = "nvidia";
-	  #LIBVA_DRIVER_NAME = "nvidia";
-	  #WLR_RENDERER = "vulkan";
-		#__NV_PRIME_RENDER_OFFLOAD="1";
+
+  } // lib.optionalAttrs (gpuvar.port == "tb") {
+    WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
 	};
 	home.file.".config/hypr/hyprpaper.conf" = {
     text = ''
