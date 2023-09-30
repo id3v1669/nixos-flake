@@ -1,6 +1,7 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, ...}: 
 {
   programs = {
+    gamemode.enable = true;
     light.enable = true;  #laptop brightness control and fix for openrgb
     noisetorch.enable = true;
     traceroute.enable = true;

@@ -3,12 +3,15 @@
   wayland.windowManager.hyprland = {
     enableNvidiaPatches = true;
     settings.monitor = [
-    ] ++ lib.lists.optionals (gpuvar.port == "hdmi") [
+    ] ++ lib.lists.optionals (gpuvar.port == "hdmiqhd") [
       "HDMI-A-1,3440x1440@100,0x0,1"
 			"DP-5,1920x1080@60,3440x0,1"
-		] ++ lib.lists.optionals (gpuvar.port == "tb") [
+		] ++ lib.lists.optionals (gpuvar.port == "tbfhd") [
 			"DP-3,2560x1080@120,0x0,1"
-      "DP-4,1920x1080@60,2560x0,1"
+			"DP-4,1920x1080@100,2560x0,1"
+		] ++ lib.lists.optionals (gpuvar.port == "tbqhd") [
+      "DP-3,3440x1440@100,0x0,1"
+      "DP-4,1920x1080@100,3440x0,1"
 		];
   };
   home.sessionVariables = {
@@ -37,10 +40,8 @@
 
 		#nvidia part
 		QT_QPA_PLATFORM = "wayland-egl";#universal?
-
-  } // lib.optionalAttrs (gpuvar.port == "tb") {
     WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
-	};
+  };
 	home.file.".config/hypr/hyprpaper.conf" = {
     text = ''
 preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca1.jpg

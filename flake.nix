@@ -44,8 +44,7 @@
         tech = "prime";
         busd = "PCI:01:00:0";
         busi = "PCI:00:02:0";
-        mode = "sync";
-        port = "hdmi";
+        port = "tbqhd";
       },
       system ? "x86_64-linux",
       cpuvar ? "intel",
@@ -101,13 +100,26 @@
       #porple, phd, pasque, pandora, outrun-dark, mountain, material-darker,
       #lime, kimber, icy, gruvbox-dark-pale, grayscale-dark, darktooth, black-metal
       #mytop: pandora, stella, lime, gruvbox-dark-pale, outrun-dark, spaceduck
-      nuc11phhyprtb = mkSyst {
+      nuc11phhyprtbqhd = mkSyst {
         hostname = "nuc11ph";
         envir = "hypr";
         winvar = false;
         colorsvar = "spaceduck";
         tempvar = "/home/user/myrepos/nixos-flake";
-        gpuvar.port = "tb";
+      };
+      nuc11phhyprtbfhd = mkSyst {
+        hostname = "nuc11ph";
+        envir = "hypr";
+        winvar = false;
+        colorsvar = "spaceduck";
+        tempvar = "/home/user/myrepos/nixos-flake";
+        gpuvar = {
+          type = "nvidia";
+          tech = "prime";
+          busd = "PCI:01:00:0";
+          busi = "PCI:00:02:0";
+          port = "tbqhd";
+        };
       };
       nuc11phhyprhdmi = mkSyst {
         hostname = "nuc11ph";
@@ -115,6 +127,13 @@
         winvar = false;
         colorsvar = "spaceduck";
         tempvar = "/home/user/myrepos/nixos-flake";
+        gpuvar = {
+          type = "nvidia";
+          tech = "prime";
+          busd = "PCI:01:00:0";
+          busi = "PCI:00:02:0";
+          port = "hdmiqhd";
+        };
       };
       #nuc11phgnome = mkSyst { hostname = "nuc11ph"; envir = "gnome"; };
       #nuc11phkde = mkSyst { hostname = "nuc11ph"; envir = "kde"; };
@@ -123,11 +142,13 @@
         envir = "hypr";
         cpuvar = "amd";
         desk = "laptop";
-        gpuvar.type = "amd";
         tempvar = "/home/user/nixos-flake"; 
         brightnesctrl = {
           up = "light -A 5";
           down = "light -U 5";
+        };
+        gpuvar = {
+          type = "amd";
         };
       };
       l14g3gnome = mkSyst {

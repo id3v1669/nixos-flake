@@ -1,13 +1,4 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, ...}: 
-# let
-#   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
-#     export __NV_PRIME_RENDER_OFFLOAD=1
-#     export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-#     export __GLX_VENDOR_LIBRARY_NAME=nvidia
-#     export __VK_LAYER_NV_optimus=NVIDIA_only
-#     exec -a "$0" "$@"
-#   '';
-# in
+{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, ...}:
 {
   hardware = {
     i2c.enable = true;
@@ -44,26 +35,15 @@
       nvidiaSettings = true;
       forceFullCompositionPipeline = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
-      powerManagement.enable = true;
+      powerManagement.enable = true; 
+    } // lib.optionalAttrs (gpuvar.tech == "prime") {
       prime = {
+        sync.enable = true;
         nvidiaBusId = "${gpuvar.busd}";
       } // lib.optionalAttrs (cpuvar == "intel") {
         intelBusId = "${gpuvar.busi}";
       } // lib.optionalAttrs (cpuvar == "amd") {
         amdBusId = "${gpuvar.busi}";
-      } // lib.optionalAttrs (gpuvar.mode == "revoffload") {
-        reverseSync.enable = true;
-        offload = {
-			    enable = true;
-			    enableOffloadCmd = true;
-		    };
-      } // lib.optionalAttrs (gpuvar.mode == "offload") {
-        offload = {
-			    enable = true;
-			    enableOffloadCmd = true;
-		    };
-      } // lib.optionalAttrs (gpuvar.mode == "sync") {
-        sync.enable = true;
       };
     };
   };
