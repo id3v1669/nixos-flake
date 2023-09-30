@@ -156,12 +156,16 @@
         envir = "gnome";
         cpuvar = "amd";
         desk = "laptop";
-        gpuvar.type = "amd";
+        gpuvar = {
+          type = "amd";
+        };
       };
       alexpchypr = mkSyst {
         hostname = "alexpc";
         envir = "hypr";
-        gpuvar.type = "amd";
+        gpuvar = {
+          type = "amd";
+        };
         winvar = true;
         uservars = { name = "user"; description = "alexp"; };
         tempvar = "/home/user/nixos-flake";
