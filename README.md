@@ -24,6 +24,8 @@
 
 6. **-pack discord-screenautio into nix packages**
 
+7. **-change notifications style**
+
 999. **+-Nvidia... partitialy fixed by adding 2 flake entries hdm1(games but single monitor and flickering) and tb(multimonitor config, no flickering, but games have staters due to nvidia-offload and output through igpu)**
     1. **Fix elecron apps on nvidia via hdmi**
     2. **fix steam client flickering on nvidia hdmi**

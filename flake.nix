@@ -118,7 +118,7 @@
           tech = "prime";
           busd = "PCI:01:00:0";
           busi = "PCI:00:02:0";
-          port = "tbqhd";
+          port = "tbfhd";
         };
       };
       nuc11phhyprhdmi = mkSyst {
