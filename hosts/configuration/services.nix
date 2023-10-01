@@ -16,7 +16,7 @@
       layout = "${deflocale.kblayout}";
       xkbVariant = "${deflocale.kbvariant}";
       xkbOptions = "${deflocale.kboption}";
-      videoDrivers = [ 
+      videoDrivers = [ "i915"
       ] ++ lib.lists.optionals (gpuvar.type == "nvidia")[
         "nvidia"
       ] ++ lib.lists.optionals (gpuvar.type == "amd") [

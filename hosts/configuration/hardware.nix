@@ -2,6 +2,7 @@
 {
   hardware = {
     i2c.enable = true;
+    acpilight.enable = true;
     cpu.${cpuvar}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     pulseaudio.enable = false;
     bluetooth.enable = true;

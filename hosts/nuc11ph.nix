@@ -7,8 +7,8 @@
     ];
 
   boot = {
-    kernelModules = [ "kvm-intel" "i2c-dev" ];
-    kernelParams = [ ]; #"module_blacklist=i915" ];
+    kernelModules = [ "kvm-intel" "i2c-dev" "i2c-piix4" ];
+    kernelParams = [ ]; #"i915.modeset=1" ]; #"module_blacklist=i915" ];
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback config.boot.kernelPackages.nvidia_x11 ];
     initrd = {
