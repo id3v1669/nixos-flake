@@ -5,10 +5,11 @@
     printing.enable = true;
     flatpak.enable = true;
     hardware = {
-      openrgb = {
-        enable = true;
-        motherboard = "${cpuvar}";
-      };
+      #openrgb = { ## broken.    rules and kernel modules install manually
+      #  enable = true;
+      #  motherboard = "${cpuvar}";
+      #  package = pkgs.openrgb-with-all-plugins;
+      #};
       bolt.enable = true;
     };
     xserver = {

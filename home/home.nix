@@ -77,6 +77,7 @@
       rustdesk
       github-desktop
       joplin-desktop
+      openrgb-with-all-plugins
 
       #cli tools
       vim
