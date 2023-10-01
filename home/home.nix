@@ -109,13 +109,13 @@
       libsForQt5.qt5.qtwayland
       libsForQt5.qt5ct
       qt6.qtwayland
+      libnotify #for dunst or mako
       (callPackage ./custom/xwaylandvideobridge.nix {})
       #(callPackage ./custom/discord-scr.nix {})
       #(callPackage ./custom/rohrkabel.nix {})
 
       #temp
       dconf
-      discord
       kitty
     ]) ++ lib.lists.optionals (envir == "gnome") (with pkgs;[
       gnomeExtensions.appindicator
@@ -127,7 +127,6 @@
       yandex-browser
     ]) ++ lib.lists.optionals (uservars.description == "id3v1669") (with pkgs;[
       spotify
-      #libsForQt5.kdenlive
       krita
       gimp
     ]);

@@ -9,7 +9,7 @@
 
 
   boot = {
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [ "kvm-amd" "i2c-dev" "i2c-piix4" ];
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];

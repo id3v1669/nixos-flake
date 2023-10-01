@@ -17,10 +17,12 @@
       layout = "${deflocale.kblayout}";
       xkbVariant = "${deflocale.kbvariant}";
       xkbOptions = "${deflocale.kboption}";
-      videoDrivers = [ "i915"
+      videoDrivers = [ 
+      ] ++ lib.lists.optionals (gpuvar.type == "intel")[
+        "i915"
       ] ++ lib.lists.optionals (gpuvar.type == "nvidia")[
         "nvidia"
-      ] ++ lib.lists.optionals (gpuvar.type == "amd") [
+      ] ++ lib.lists.optionals (gpuvar.type == "amd" || cpuvar == "amd" ) [
         "amdgpu"
       ] ;
   } // lib.optionalAttrs (envir == "gnome") {
