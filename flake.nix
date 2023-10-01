@@ -32,7 +32,7 @@
     ... }@inputs: 
   let
     inherit (self) outputs;
-    curversion = "23.05";
+    curversion = "23.11";
     mkSyst = { 
       hostname,
       envir,

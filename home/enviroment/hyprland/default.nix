@@ -58,8 +58,11 @@
       };
     };
     extraConfig = ''
+#------------------env vars-----------------------
 exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=Hyprland
+#-------------------------------------------------
+
 exec-once = hyprctl setcursor Bibata-Modern-Classic 24
 
 #exec-once = dunst
@@ -110,21 +113,21 @@ bind =,XF86AudioPause,exec,playerctl play-pause
 $background = rgb(${config.colorScheme.colors.base01})
 $foreground = rgb(${config.colorScheme.colors.base06})
 
-$color0 = rgb(${config.colorScheme.colors.base00})  #rgba(1d192bee)
-$color1 = rgb(${config.colorScheme.colors.base01})  #rgba(465EA7ee)
-$color2 = rgb(${config.colorScheme.colors.base02})  #rgba(5A89B6ee)
-$color3 = rgb(${config.colorScheme.colors.base03})  #rgba(6296CAee)
-$color4 = rgb(${config.colorScheme.colors.base04})  #rgba(73B3D4ee)
-$color5 = rgb(${config.colorScheme.colors.base05})  #rgba(7BC7DDee)
-$color6 = rgb(${config.colorScheme.colors.base06})  #rgba(9CB4E3ee)
-$color7 = rgb(${config.colorScheme.colors.base07})  #rgba(c3dde7ee)
-$color8 = rgb(${config.colorScheme.colors.base08})  #rgba(889aa1ee)
-$color9 = rgb(${config.colorScheme.colors.base09})  #rgba(465EA7ee)
-$color10 = rgb(${config.colorScheme.colors.base0A})  #rgba(5A89B6ee)
-$color11 = rgb(${config.colorScheme.colors.base0B})  #rgba(6296CAee)
-$color12 = rgb(${config.colorScheme.colors.base0C})  #rgba(73B3D4ee)
-$color13 = rgb(${config.colorScheme.colors.base0D})  #rgba(7BC7DDee)
-$color14 = rgb(${config.colorScheme.colors.base0E})  #rgba(9CB4E3ee)
-$color15 = rgb(${config.colorScheme.colors.base0F})  #rgba(c3dde7ee)
+$color0 = rgb(${config.colorScheme.colors.base00})
+$color1 = rgb(${config.colorScheme.colors.base01})
+$color2 = rgb(${config.colorScheme.colors.base02})
+$color3 = rgb(${config.colorScheme.colors.base03})
+$color4 = rgb(${config.colorScheme.colors.base04})
+$color5 = rgb(${config.colorScheme.colors.base05})
+$color6 = rgb(${config.colorScheme.colors.base06})
+$color7 = rgb(${config.colorScheme.colors.base07})
+$color8 = rgb(${config.colorScheme.colors.base08})
+$color9 = rgb(${config.colorScheme.colors.base09})
+$color10 = rgb(${config.colorScheme.colors.base0A})
+$color11 = rgb(${config.colorScheme.colors.base0B})
+$color12 = rgb(${config.colorScheme.colors.base0C})
+$color13 = rgb(${config.colorScheme.colors.base0D})
+$color14 = rgb(${config.colorScheme.colors.base0E})
+$color15 = rgb(${config.colorScheme.colors.base0F})
   '';
 }

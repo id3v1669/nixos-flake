@@ -3,7 +3,8 @@
     enable = true;
       shellAliases = {    #global aliases
         me = "echo $hostname";
-        wifi = "sudo bash ~/apps/mywifi";
+        wifi = "sudo bash ${config.home.homeDirectory}/mywifi.sh";
+        vi = "vim";
       };
       functions = {
         fish_greeting = {
@@ -18,7 +19,6 @@ switch "$hostname"
     #alias packettracer="distrobox-enter --name archbox -- 'packettracer &'"
     alias archt="distrobox enter archbox"
     alias debt="distrobox enter debbox"
-    alias vi="vim"
   case '*'
     # Default case
 end
