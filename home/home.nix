@@ -29,8 +29,11 @@
       pamixer
       pavucontrol
       pulseaudio #just lib to use pactl, pipewire is in use
+      helvum
       qpwgraph #gui for pipewire graph
       mpc-cli
+      qjackctl
+      (callPackage ./custom/wineasio.nix {})
 
       #vm and virt
       virt-manager
@@ -44,6 +47,7 @@
       wget
       wireshark
       nm-tray
+      ungoogled-chromium
 
       #vid photo sound etc
       ffmpeg
@@ -69,6 +73,42 @@
 
       #games
       steam
+      
+      (lutris.override {
+        extraPkgs = pkgs: [
+          giflib
+          libpng
+          #libldap #not found
+          gnutls
+          mpg123
+          #libsForQt5.kpipewire
+          #libpulseaudio
+          #pulseaudio
+          #pulseaudioFull
+          #pipewire
+          libgpg-error
+          #alsa-plugins
+          #alsa-lib
+          libjpeg
+          libgcrypt
+          ocl-icd
+          libxslt
+          libva
+          vulkan-loader
+          gst_all_1.gst-plugins-base
+          xorg.libXcomposite
+          xorg.libXinerama
+          #wine-staging
+          wineWowPackages.staging
+          wine64Packages.stagingFull
+          openal
+          v4l-utils
+          sqlite
+          ncurses
+          xdg-desktop-portal
+          jansson
+        ];
+      })
 
       #gui tools
       partition-manager
@@ -105,6 +145,8 @@
       nix-prefetch-git
 
       #other
+      winetricks
+      gtk3
       openjdk19
       libsForQt5.qt5.qtwayland
       libsForQt5.qt5ct
