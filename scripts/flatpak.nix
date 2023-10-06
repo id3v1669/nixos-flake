@@ -6,8 +6,7 @@
     text = ''
 #!/run/current-system/sw/bin/bash
 
-declare -a apps=(
-                 "net.lutris.Lutris"
+declare -a apps=(R
                  "ch.tlaun.TL"
                  "org.libreoffice.LibreOffice"
                 )

@@ -12,6 +12,10 @@
   };
   programs = {
     direnv.enable = true;
+    java = {
+      enable = true;
+      package = pkgs.jdk20;
+    };
     obs-studio = {
       enable = true;
       package = pkgs.obs-studio;

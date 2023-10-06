@@ -49,7 +49,7 @@
       ungoogled-chromium
       wireguard-tools
       networkmanagerapplet
-      iwd
+      #iwd
 
       #vid photo etc
       ffmpeg
@@ -99,14 +99,6 @@
         ];
       })
 
-      #gui tools
-      qbittorrent
-      rustdesk
-      github-desktop
-      joplin-desktop
-      openrgb-with-all-plugins
-      bluez
-
       #files
       gnome.nautilus #gui file manager
       zip
@@ -114,7 +106,15 @@
       file #file type detection
       rar #unfree for rar archives
 
-      #cli utils
+      #other gui tools
+      qbittorrent
+      rustdesk
+      github-desktop
+      joplin-desktop
+      openrgb-with-all-plugins
+      bluez
+
+      #other cli utils
       kitty #may be ported to hm 
       pciutils
       usbutils
@@ -132,14 +132,12 @@
       cargo-binutils
       xdg-utils
       
-
       #nix utils
       nix-prefetch-git
 
       #libs
       gtk3
-      #openjdk19 not found in default nixpkgs
-      jdk20
+      #jdk20
       libsForQt5.qt5.qtwayland
       libsForQt5.qt5ct
       qt6.qtwayland
