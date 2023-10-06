@@ -5,7 +5,7 @@ NixOS flake with most of tools and apps located in home manager
 
 ## Main
 | Environment | Name | Comment | Needed fix |
-|-----|-----|-----|
+|-----|-----|-----|-----|
 | WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel) | - |
 | Launcher | Rofi | works | - |
 | Bar | eww | fork of eww with tray support | ToDo 1 |
