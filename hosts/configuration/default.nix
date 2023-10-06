@@ -24,6 +24,7 @@
     enableIPv6 = true;
   };
   virtualisation = {
+    waydroid.enable = true;
     docker = {
       enable = true;
     } // lib.optionalAttrs (gpuvar.type == "nvidia") { enableNvidia = true; };
@@ -59,7 +60,7 @@
   users.users.${uservars.name} = {
     isNormalUser = true;
     description = "${uservars.description}";
-    extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "libvirtd" "video" "docker" "i2c" "openrgb" ];
+    extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "libvirtd" "video" "docker" "i2c" ];
     shell = pkgs.fish;
   };
 }

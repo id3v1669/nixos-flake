@@ -1,4 +1,4 @@
-{ hyprland, inputs, config, lib, pkgs, curversion, uservars, envir, hostname, colorsvar,  ... }:
+{ hyprland, inputs, config, lib, pkgs, curversion, uservars, envir, hostname, colorsvar, gpuvar,  ... }:
 {
   imports = [
     ./programs
@@ -35,12 +35,11 @@
       qjackctl
       (callPackage ./custom/wineasio.nix {})
 
-      #vm and virt
+      #vm, virt and emulators
       virt-manager
       distrobox
-      docker
+      #docker
       docker-compose
-      egl-wayland
 
       #web
       curl
@@ -48,8 +47,11 @@
       wireshark
       nm-tray
       ungoogled-chromium
+      wireguard-tools
+      networkmanagerapplet
+      iwd
 
-      #vid photo sound etc
+      #vid photo etc
       ffmpeg
       vlc
       nomacs
@@ -57,6 +59,7 @@
       hyprpicker #color picker
       ffmpegthumbnailer
       hyprpaper #walpapers
+      (callPackage ./custom/xwaylandvideobridge.nix {})
 
       #chat
       telegram-desktop
@@ -66,99 +69,89 @@
       openssl
       veracrypt
 
-      #hw related
-      bluez
-      mesa
-      mesa-demos
-
       #games
       steam
-      
       (lutris.override {
         extraPkgs = pkgs: [
           giflib
           libpng
-          #libldap #not found
+          openldap
           gnutls
           mpg123
-          #libsForQt5.kpipewire
-          #libpulseaudio
-          #pulseaudio
-          #pulseaudioFull
-          #pipewire
           libgpg-error
-          #alsa-plugins
-          #alsa-lib
           libjpeg
           libgcrypt
           ocl-icd
           libxslt
-          libva
           vulkan-loader
           gst_all_1.gst-plugins-base
           xorg.libXcomposite
           xorg.libXinerama
-          #wine-staging
-          wineWowPackages.staging
+          winetricks
           wine64Packages.stagingFull
+          wineWowPackages.staging
+          
           openal
           v4l-utils
           sqlite
           ncurses
-          xdg-desktop-portal
           jansson
         ];
       })
 
       #gui tools
-      partition-manager
       qbittorrent
-      gnome.nautilus
       rustdesk
       github-desktop
       joplin-desktop
       openrgb-with-all-plugins
+      bluez
 
-      #cli tools
-      vim
+      #files
+      gnome.nautilus #gui file manager
+      zip
+      unzip
+      file #file type detection
+      rar #unfree for rar archives
+
+      #cli utils
+      kitty #may be ported to hm 
       pciutils
       usbutils
       lshw
-      file
+      mesa-demos
+      vim
       btop
       neofetch
       git
       gh
-      iwd
-      zip
-      unzip
       i2c-tools # needed for ddcutil
       ddcutil # brightness control
       appimage-run
       vulkan-tools
-      wireguard-tools
-      networkmanagerapplet
       cargo-binutils
       xdg-utils
+      
 
       #nix utils
       nix-prefetch-git
 
-      #other
-      winetricks
+      #libs
       gtk3
-      openjdk19
+      #openjdk19 not found in default nixpkgs
+      jdk20
       libsForQt5.qt5.qtwayland
       libsForQt5.qt5ct
       qt6.qtwayland
       libnotify #for dunst or mako
-      (callPackage ./custom/xwaylandvideobridge.nix {})
+      mesa
+
+      #other
+      dconf
+      
       #(callPackage ./custom/discord-scr.nix {})
       #(callPackage ./custom/rohrkabel.nix {})
 
-      #temp
-      dconf
-      kitty
     ]) ++ lib.lists.optionals (envir == "gnome") (with pkgs;[
       gnomeExtensions.appindicator
       gnomeExtensions.notification-banner-reloaded
@@ -171,6 +164,8 @@
       spotify
       krita
       gimp
+    ]) ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [ 
+      egl-wayland #needed for vms on nvidia  hw
     ]);
   };
 }

@@ -2,7 +2,7 @@
 {
   programs.rofi = {
     enable = true;
-    #package = pkgs.rofi-wayland;
+    package = pkgs.rofi-wayland;
     cycle = false;
     location = "center";
     font = "JetBrainsMono Nerd Font Medium 10";

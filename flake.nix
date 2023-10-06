@@ -99,18 +99,18 @@
       #spaceduck, seti, selenized-black, rose-pine, rose-pine-moon, 
       #porple, phd, pasque, pandora, outrun-dark, mountain, material-darker,
       #lime, kimber, icy, gruvbox-dark-pale, grayscale-dark, darktooth, black-metal
-      #mytop: pandora, stella, lime, gruvbox-dark-pale, outrun-dark, spaceduck
+      #mytop: pandora, stella, lime, gruvbox-dark-pale, outrun-dark, spaceduck 
       nuc11phhyprtbqhd = mkSyst {
         hostname = "nuc11ph";
         envir = "hypr";
-        winvar = false;
+        winvar = true;
         colorsvar = "spaceduck";
         tempvar = "/home/user/myrepos/nixos-flake";
       };
       nuc11phhyprtbfhd = mkSyst {
         hostname = "nuc11ph";
         envir = "hypr";
-        winvar = false;
+        winvar = true;
         colorsvar = "spaceduck";
         tempvar = "/home/user/myrepos/nixos-flake";
         gpuvar = {

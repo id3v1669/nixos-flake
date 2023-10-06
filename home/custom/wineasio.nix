@@ -9,13 +9,14 @@
 
 multiStdenv.mkDerivation rec {
   pname = "wineasio";
-  version = "1.2.0";
+  version = "1.1.0";
 
   src = fetchFromGitHub {
     owner = pname;
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-HEnJj9yfXe+NQuPATMpPvseFs+3TkiMLd1L+fIfdd+o=";
+    hash = "sha256-HEnJj9yfXe+NQuPATMpPvseFs+3TkiMLd1L+fIfQd+o=";
+    #hash = "sha256-d5BGJAkaM5XZXyqm6K/UzFE4sD6QVHHGnLi1bcHxiaM="; #1.2.0
     fetchSubmodules = true;
   };
 
