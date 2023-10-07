@@ -2,7 +2,6 @@
 
 NixOS flake with most of tools and apps located in home manager
 
-
 ## Main
 | Environment | Name | Comment | Needed fix |
 |-----|-----|-----|-----|
@@ -53,3 +52,10 @@ NixOS flake with most of tools and apps located in home manager
     2. **fix steam client flickering on nvidia hdmi**
     3. **find good parameters for csgo for tb option**
     4. **Cyberpunk crashes on hdmi, Env vars??**
+
+
+## Notes:
+
+OpenRGB Module is broken and installed manually
+
+
