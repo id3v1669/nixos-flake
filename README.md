@@ -10,7 +10,7 @@ Latest commit to use: 5987f3c59b49108aca8b4535d2234e8fe3383548
 | WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel) | - |
 | Launcher | Rofi | works | - |
 | Bar | eww | fork of eww with tray support | ToDo 1 |
-| background | hyprpaper used | ToDo 2 |
+| background | hyprpaper | - | ToDo 2 |
 | portals | gtk and hyprland | work but many things to fix | ToDo 3+4 |
 | lockscreen | - | not needed for now might install ly later | - |
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 5+8 |
