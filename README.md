@@ -55,6 +55,13 @@ Latest commit to use: 5987f3c59b49108aca8b4535d2234e8fe3383548
     3. **find good parameters for csgo for tb option**
     4. **Cyberpunk crashes on hdmi, Env vars??**
 
+11. **-create update script and alias to rebuild and update archbox**
+
+12. **Kitty config(do not confirm quit)**
+
+13. **fish aliases for git**
+
+14. **declare firefox addons with nur**
 
 ## Notes:
 
