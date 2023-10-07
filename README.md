@@ -35,7 +35,7 @@ Latest commit to use: 5987f3c59b49108aca8b4535d2234e8fe3383548
 
 2. **+-Add background(enable for laptop only on power)**
 
-3. **-[flatpak xdg paths](https://github.com/flatpak/xdg-desktop-portal-gtk/issues/440)**  
+3. **-flatpak xdg paths related to [issue](https://github.com/flatpak/xdg-desktop-portal-gtk/issues/440)**  
 
 4. **-xdg-open for apps in lutris and distrobox**
 
