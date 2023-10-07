@@ -27,6 +27,7 @@ else
   cd ../..
   rm -rf ~/.tmpscript
   distrobox enter --name archbox -- yay -Syyuu --noconfirm
+  distrobox enter --name archbox -- yay -S --noconfirm noto-fonts-emoji ttf-joypixels ttf-twemoji otf-openmoji  ttf-symbola nerd-fonts
 fi
 
 if does_distrobox_exist "debbox"; then

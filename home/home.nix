@@ -160,7 +160,7 @@
       yandex-browser
     ]) ++ lib.lists.optionals (uservars.description == "id3v1669") (with pkgs;[
       spotify
-      krita
+      #krita #not in use for now
       gimp
     ]) ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [ 
       egl-wayland #needed for vms on nvidia  hw
