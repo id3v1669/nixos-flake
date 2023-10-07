@@ -2,6 +2,8 @@
 
 NixOS flake with most of tools and apps located in home manager
 
+Latest commit to use: 5987f3c59b49108aca8b4535d2234e8fe3383548
+
 ## Main
 | Environment | Name | Comment | Needed fix |
 |-----|-----|-----|-----|
