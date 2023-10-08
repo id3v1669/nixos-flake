@@ -4,7 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-colors.url = "github:misterio77/nix-colors";
-    nur.url = "github:nix-community/NUR";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     eww-tray = {
       url = "github:ralismark/eww/tray-3";
       flake = true;
@@ -71,7 +74,7 @@
         allowUnfree = true;
       };
       overlays = [
-        #inputs.nur.nixosModules.nur
+        nur.overlay
       ];
     };
     in inputs.nixpkgs.lib.nixosSystem 
@@ -81,7 +84,6 @@
       };
       modules = [ 
         (./. + "/hosts/${hostname}.nix")
-        
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {

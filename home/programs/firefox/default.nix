@@ -1,4 +1,4 @@
-{ config, lib, pkgs, uservars, ... }: {
+{ config, lib, pkgs, uservars, inputs, ... }: {
 
   programs.firefox = {
     enable = true;
@@ -29,11 +29,12 @@
     profiles."${uservars.name}" = {
       name = "${uservars.name}";
       isDefault = true;
-      #extensions = with nur.nixosModules.nur.repos.rycee.firefox-addons; [
-      #  ublock-origin
-      #  bitwarden
-      #  duckduckgo-privacy-essentials
-      #];
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        ublock-origin
+        bitwarden
+        duckduckgo-privacy-essentials
+        darkreader
+      ];
       search = {
         force = true;
         default = "DuckDuckGo";

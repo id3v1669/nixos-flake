@@ -9,6 +9,10 @@
       enable = true;
       indicator = true;
     };
+    #gammastep = {
+    #  enable = true;
+    #  tray = true;
+    #};
   };
   programs = {
     direnv.enable = true;
