@@ -62,8 +62,6 @@ Latest commit to use: 5987f3c59b49108aca8b4535d2234e8fe3383548
 
 13. **fish aliases for git**
 
-14. **declare firefox addons with nur**
-
 ## Notes:
 
 OpenRGB Module is broken and installed manually
