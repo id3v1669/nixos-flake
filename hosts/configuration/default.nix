@@ -60,7 +60,7 @@
   users.users.${uservars.name} = {
     isNormalUser = true;
     description = "${uservars.description}";
-    extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "qemu-libvirtd" "libvirtd" "video" "docker" "i2c" ];
+    extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "qemu-libvirtd" "libvirtd" "video" "pipewire" "docker" "i2c" ];
     shell = pkgs.fish;
   };
 }

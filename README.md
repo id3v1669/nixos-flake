@@ -66,4 +66,6 @@ Latest commit to use: 5987f3c59b49108aca8b4535d2234e8fe3383548
 
 OpenRGB Module is broken and installed manually
 
+discord-screenaudio (ToDo 6) has broken screenshare(black screen), sound stream and all other functions work
+
 

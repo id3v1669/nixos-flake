@@ -70,7 +70,7 @@
       "$mainMod SHIFT, B, exec, firefox"
       "$mainMod SHIFT, F, exec, nautilus"
       "$mainMod SHIFT, P, exec, hyprpicker -a"
-      "$mainMod, R, exec, rofi -show"
+      "$mainMod, R, exec, rofi -show "
       #other controls
       "$mainMod SHIFT, Q, killactive,"
       "$mainMod, M, exit,"

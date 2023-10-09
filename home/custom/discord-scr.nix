@@ -1,43 +1,63 @@
-# { stdenv,
-#   fetchFromGitHub,
-#   cmake,
-#   pkg-config,
-#   extra-cmake-modules,
-#   qt5,
-#   qt6,
-#   libsForQt5,
-#   pkgs
-# }: stdenv.mkDerivation rec
-# {
-#   pname = "discord-scr";
-#   version = "1.8.1";
+{ stdenv
+, lib
+, fetchFromGitHub
+, cmake
+, extra-cmake-modules
+, libsForQt5
+, pkgs
+, pkg-config
+, makeDesktopItem
+, ...
+}:
 
-#   src = fetchFromGitHub {
-#     owner = "maltejur";
-#     repo = "discord-screenaudio";
-#     rev = "v${version}";
-#     hash = "sha256-aJ0GTekqaO8UvbG3gzYz5stA9r8pqjTHdR1ZkBHPMeo=";
-#     fetchSubmodules = true;
-#   };
+stdenv.mkDerivation rec {
+  pname = "discord-screenaudio";
+  version = "1.8.2";
 
-#   nativeBuildInputs = [
-#     cmake
-#     extra-cmake-modules
-#     pkg-config
-#     qt5.wrapQtAppsHook
-#   ];
+  src = fetchFromGitHub {
+    owner = "maltejur";
+    repo = "discord-screenaudio";
+    rev = "v${version}";
+    sha256 = "sha256-aJ0GTekqaO8UvbG3gzYz5stA9r8pqjTHdR1ZkBHPMeo=";
+    fetchSubmodules = true;
+  };
 
-#   buildInputs = [
-#     qt5.qtbase
-#     qt5.qtquickcontrols2
-#     qt5.qtwebengine
-#     libsForQt5.kwidgetsaddons
-#     libsForQt5.ktextwidgets
-#     libsForQt5.kjobwidgets
-#     libsForQt5.kconfigwidgets
-#     libsForQt5.knotifications
-#     libsForQt5.kxmlgui
-#     pkgs.pipewire
-#     pkgs.git
-#   ];
-# }
+  nativeBuildInputs = [
+    cmake
+    extra-cmake-modules
+    pkg-config
+    libsForQt5.qt5.wrapQtAppsHook
+  ];
+  buildInputs = [
+    libsForQt5.qt5.wrapQtAppsHook
+    libsForQt5.qt5.qtbase
+    libsForQt5.qt5.qtwebengine
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtwayland
+    libsForQt5.kwidgetsaddons
+    libsForQt5.ktextwidgets
+    libsForQt5.kjobwidgets
+    libsForQt5.kconfigwidgets
+    libsForQt5.knotifications
+    libsForQt5.kxmlgui
+    pkgs.pipewire
+  ];
+
+  prePatch = ''
+sed -i -e "59i target_include_directories($\{PROJECT_NAME} SYSTEM PRIVATE ${pkgs.pipewire.dev}/include/pipewire-0.3 ${pkgs.pipewire.dev}/include/spa-0.2)" submodules/rohrkabel/CMakeLists.txt
+  '';
+
+  qtWrapperArgs = [ "--set QT_QPA_PLATFORM wayland" ];
+
+  desktopItems = [
+    (makeDesktopItem {
+      name = "discord-screenaudio";
+      exec = "discord-screenaudio";
+      icon = "discord-screenaudio";
+      desktopName = "discord-screenaudio";
+      comment = "comment";
+      categories = [ "Network" "InstantMessaging" ];
+    })
+  ];
+}
+

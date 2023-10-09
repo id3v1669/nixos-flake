@@ -21,6 +21,10 @@
     username = "${uservars.name}";
     homeDirectory = "/home/${uservars.name}";
     packages = (with pkgs; [
+      #tests
+      #(callPackage ./custom/discord-scr.nix {})
+      #(callPackage ./custom/rohrkabel.nix {})
+
       #screenshots
       grim
       slurp
@@ -33,6 +37,7 @@
       qpwgraph #gui for pipewire graph
       mpc-cli
       qjackctl
+      asio #??
       (callPackage ./custom/wineasio.nix {})
 
       #vm, virt and emulators
@@ -146,10 +151,6 @@
 
       #other
       dconf
-      
-      #(callPackage ./custom/discord-scr.nix {})
-      #(callPackage ./custom/rohrkabel.nix {})
-
     ]) ++ lib.lists.optionals (envir == "gnome") (with pkgs;[
       gnomeExtensions.appindicator
       gnomeExtensions.notification-banner-reloaded
