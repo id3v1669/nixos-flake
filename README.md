@@ -67,5 +67,9 @@ Latest commit to use: 5987f3c59b49108aca8b4535d2234e8fe3383548
 OpenRGB Module is broken and installed manually
 
 discord-screenaudio (ToDo 6) has broken screenshare(black screen), sound stream and all other functions work
+during attempts to start screensharing app searches for libpipewire-0.2.so.1
+if path is set with --set LD_LIBRARY_PATH app starts but crashes during attempts to start screensharing with:
+--- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x10} ---
++++ killed by SIGSEGV (core dumped) +++
 
 

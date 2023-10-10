@@ -38,7 +38,7 @@
       mpc-cli
       qjackctl
       asio #??
-      (callPackage ./custom/wineasio.nix {})
+      wineasio
 
       #vm, virt and emulators
       virt-manager
