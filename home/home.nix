@@ -24,6 +24,7 @@
       #tests
       #(callPackage ./custom/discord-scr.nix {})
       #(callPackage ./custom/rohrkabel.nix {})
+      webcord-vencord
 
       #screenshots
       grim
