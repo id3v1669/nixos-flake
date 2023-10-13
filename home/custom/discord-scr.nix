@@ -15,10 +15,10 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "maltejur";
     repo = "discord-screenaudio";
-    #rev = "372c683ae955ee61970eb89adec3ac7db3b0a803"; works but relogin each launch
-    #hash = "sha256-WBpWxwy462bmUNRv6oCEBp+pDpKFsl+9Wk09fDnd4ss=";
-    rev = "761b40de5b77083388a235c42358adc84aa73bc7";
-    hash = "sha256-59Lax4Mdrpxl7p5162rXIP+mFNmvnktxXKleqC8OGA8=";
+    rev = "372c683ae955ee61970eb89adec3ac7db3b0a803"; #works but relogin each launch
+    hash = "sha256-WBpWxwy462bmUNRv6oCEBp+pDpKFsl+9Wk09fDnd4ss=";
+    #rev = "761b40de5b77083388a235c42358adc84aa73bc7";
+    #hash = "sha256-59Lax4Mdrpxl7p5162rXIP+mFNmvnktxXKleqC8OGA8=";
     fetchSubmodules = true;
   };
 
@@ -36,9 +36,18 @@ stdenv.mkDerivation rec {
     pipewire
   ];
 
+  patches = [
+    ./changes.patch
+  ];
+
   preConfigure = ''
     echo "${version}" > version.txt
   '';
+
+
+#   postPatch = ''
+#     substituteInPlace path/to/file.ext --replace "PLACEHOLDER_PATH" "${pkg}/path"
+#   '';
 
   #qtWrapperArgs = [ "--set QT_QPA_PLATFORM wayland" ];
   qtWrapperArgs = [ "--set QT_QPA_PLATFORM xcb" ];
