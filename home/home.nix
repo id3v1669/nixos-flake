@@ -22,9 +22,8 @@
     homeDirectory = "/home/${uservars.name}";
     packages = (with pkgs; [
       #tests
-      #(callPackage ./custom/discord-scr.nix {})
-      #(callPackage ./custom/rohrkabel.nix {})
-      webcord-vencord
+      arrpc #test for rpc 
+      webcord-vencord #temp to edit css for discord-screenaudio
 
       #screenshots
       grim
@@ -70,6 +69,7 @@
       #chat
       telegram-desktop
       whatsapp-for-linux
+      (callPackage ./custom/discord-scr.nix {})
 
       #security
       openssl

@@ -89,7 +89,25 @@
         #video
         "video/mp4" = "vlc.desktop";
         "video/mov" = "vlc.desktop";
-        #kde connect later
+        #vscode for text etc
+        "text/plain" = "code.desktop";
+        "text/x-c" = "code.desktop";
+        "text/x-c++" = "code.desktop";
+        "text/x-c++src" = "code.desktop";
+        "text/x-chdr" = "code.desktop";
+        "text/x-csrc" = "code.desktop";
+        "text/x-diff" = "code.desktop";
+        "text/x-dsrc" = "code.desktop";
+        "text/x-haskell" = "code.desktop";
+        "text/x-java" = "code.desktop";
+        "text/x-makefile" = "code.desktop";
+        "text/x-moc" = "code.desktop";
+        "text/x-pcs-gcd" = "code.desktop";
+        "text/x-perl" = "code.desktop";
+        "text/x-python" = "code.desktop";
+        "text/x-scala" = "code.desktop";
+        "text/x-scheme" = "code.desktop";
+        "text/css" = "code.desktop";
         
       };
       defaultApplications = {
@@ -116,7 +134,25 @@
         #video
         "video/mp4" = "vlc.desktop";
         "video/mov" = "vlc.desktop";
-        #kde connect later
+        #vscode
+        "text/plain" = "code.desktop";
+        "text/x-c" = "code.desktop";
+        "text/x-c++" = "code.desktop";
+        "text/x-c++src" = "code.desktop";
+        "text/x-chdr" = "code.desktop";
+        "text/x-csrc" = "code.desktop";
+        "text/x-diff" = "code.desktop";
+        "text/x-dsrc" = "code.desktop";
+        "text/x-haskell" = "code.desktop";
+        "text/x-java" = "code.desktop";
+        "text/x-makefile" = "code.desktop";
+        "text/x-moc" = "code.desktop";
+        "text/x-pcs-gcd" = "code.desktop";
+        "text/x-perl" = "code.desktop";
+        "text/x-python" = "code.desktop";
+        "text/x-scala" = "code.desktop";
+        "text/x-scheme" = "code.desktop";
+        "text/css" = "code.desktop";
         
       };
     };
