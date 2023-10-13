@@ -1,0 +1,64 @@
+diff '--color=auto' -Naur discord-screenaudio-old/src/centralwidget.cpp discord-screenaudio/src/centralwidget.cpp
+--- discord-screenaudio-old/src/centralwidget.cpp	2023-10-13 22:54:49.354857242 +0800
++++ discord-screenaudio/src/centralwidget.cpp	2023-10-13 23:46:20.142256496 +0800
+@@ -12,7 +12,7 @@
+ #include <QWebEngineScriptCollection>
+ #include <QWebEngineSettings>
+ 
+-CentralWidget::CentralWidget(QWidget *parent) : QWidget(parent) {
++CentralWidget::CentralWidget(QWidget *parent) : QWidget(parent), m_customProfile(MainWindow::instance()->profile()) {
+   setStyleSheet("background-color:#313338;");
+   m_layout = new QVBoxLayout(this);
+   m_layout->setContentsMargins(0, 0, 0, 0);
+@@ -22,6 +22,7 @@
+ 
+ void CentralWidget::setupWebView() {
+   auto page = new DiscordPage(this);
++    page->setProfile(m_customProfile);  // Use the custom profile for this page
+ 
+   m_webView = new QWebEngineView(this);
+   m_webView->setPage(page);
+diff '--color=auto' -Naur discord-screenaudio-old/src/centralwidget.h discord-screenaudio/src/centralwidget.h
+--- discord-screenaudio-old/src/centralwidget.h	2023-10-13 22:54:49.354857242 +0800
++++ discord-screenaudio/src/centralwidget.h	2023-10-13 23:46:18.556257571 +0800
+@@ -30,4 +30,7 @@
+ 
+ public Q_SLOTS:
+   void setLoadingIndicator(QString text);
++    
++private:
++    QWebEngineProfile *m_customProfile;
+ };
+diff '--color=auto' -Naur discord-screenaudio-old/src/mainwindow.cpp discord-screenaudio/src/mainwindow.cpp
+--- discord-screenaudio-old/src/mainwindow.cpp	2023-10-13 22:54:49.354857242 +0800
++++ discord-screenaudio/src/mainwindow.cpp	2023-10-13 23:46:16.955258684 +0800
+@@ -30,7 +30,8 @@
+     : QMainWindow(parent) {
+   assert(MainWindow::m_instance == nullptr);
+   MainWindow::m_instance = this;
+-  setupSettings();
++  m_customProfile = prepareProfile();
++    setupSettings();
+   m_settings->setValue("useNotifySend", useNotifySend);
+   m_centralWidget = new CentralWidget(this);
+   setCentralWidget(m_centralWidget);
+@@ -109,6 +110,8 @@
+ }
+ 
+ QSettings *MainWindow::settings() const { return m_settings; }
++    
++QWebEngineProfile *MainWindow::profile() const { return m_customProfile; }
+ 
+ void MainWindow::setTrayIcon(bool enabled) {
+   m_settings->setValue("trayIcon", enabled);
+diff '--color=auto' -Naur discord-screenaudio-old/src/mainwindow.h discord-screenaudio/src/mainwindow.h
+--- discord-screenaudio-old/src/mainwindow.h	2023-10-13 22:54:49.354857242 +0800
++++ discord-screenaudio/src/mainwindow.h	2023-10-13 23:46:15.047260047 +0800
+@@ -22,6 +22,7 @@
+   explicit MainWindow(bool useNotifySend = false, QWidget *parent = nullptr);
+   static MainWindow *instance();
+   QSettings *settings() const;
++    QWebEngineProfile *profile() const;
+   static CentralWidget *centralWidget();
+ 
+ private:

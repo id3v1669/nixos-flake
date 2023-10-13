@@ -16,6 +16,9 @@
   ] ++ lib.lists.optionals (envir == "gnome") [
   ];
   colorScheme = inputs.nix-colors.colorSchemes.${colorsvar};
+  #backup.directories = [
+  #  "discord/.config/discord"
+  #];
   home = {
     stateVersion = "${curversion}";
     username = "${uservars.name}";
@@ -24,6 +27,8 @@
       #tests
       arrpc #test for rpc 
       webcord-vencord #temp to edit css for discord-screenaudio
+      (callPackage ./custom/discord-scr.nix {})
+      (callPackage ./custom/xwaylandvideobridge.nix {})
 
       #screenshots
       grim
@@ -64,12 +69,12 @@
       hyprpicker #color picker
       ffmpegthumbnailer
       hyprpaper #walpapers
-      (callPackage ./custom/xwaylandvideobridge.nix {})
+      
 
       #chat
       telegram-desktop
       whatsapp-for-linux
-      (callPackage ./custom/discord-scr.nix {})
+      
 
       #security
       openssl
@@ -146,7 +151,9 @@
       #jdk20
       libsForQt5.qt5.qtwayland
       libsForQt5.qt5ct
-      qt6.qtwayland
+      #qt6Packages.qt6ct
+      #qt6.qtwayland
+      #qt6.qt5compat
       libnotify #for dunst or mako
       mesa
 
