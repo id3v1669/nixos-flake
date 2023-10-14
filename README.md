@@ -42,7 +42,7 @@ Latest commit to use: 5987f3c59b49108aca8b4535d2234e8fe3383548
 
 5. **-fix brightness control for multimonitor config**
 
-6. **-pack discord-screenaudio into nix packages**
+6. **-+pack discord-screenaudio into nix packages**
 
 7. **-change notifications style**
 

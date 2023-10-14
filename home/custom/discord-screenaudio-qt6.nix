@@ -42,6 +42,10 @@ stdenv.mkDerivation rec {
     ./changes.patch
   ];
 
+  preConfigure = ''
+    echo "${version}" > version.txt
+  '';
+
   qtWrapperArgs = [ 
     "--set QT_QPA_PLATFORM wayland"
   ];

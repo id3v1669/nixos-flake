@@ -1,29 +1,56 @@
 diff '--color=auto' -Naur discord-screenaudio-old/src/discordpage.cpp discord-screenaudio/src/discordpage.cpp
---- discord-screenaudio-old/src/discordpage.cpp 2023-10-13 22:54:49.354857242 +0800
-+++ discord-screenaudio/src/discordpage.cpp     2023-10-14 18:37:23.007056094 +0800
-@@ -19,10 +19,13 @@
+--- discord-screenaudio-old/src/discordpage.cpp	2023-10-13 22:54:49.354857242 +0800
++++ discord-screenaudio/src/discordpage.cpp	2023-10-14 21:35:18.354922151 +0800
+@@ -19,15 +19,19 @@
  #include <QWebEngineScript>
  #include <QWebEngineScriptCollection>
  #include <QWebEngineSettings>
 +#include <QWebEngineProfile>
-
+ 
  DiscordPage::DiscordPage(QWidget *parent) : QWebEnginePage(parent) {
    setBackgroundColor(QColor("#313338"));
-
-+  QWebEngineProfile::defaultProfile()->setCachePath("/home/user/.cache/discord-screenaudio/chache");
+ 
++  QWebEngineProfile::defaultProfile()->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
 +
    connect(this, &QWebEnginePage::featurePermissionRequested, this,
            &DiscordPage::featurePermissionRequested);
    connect(this, &DiscordPage::fullScreenRequested, MainWindow::instance(),
+           &MainWindow::fullScreenRequested);
+ 
++  setupCache();
+   setupPermissions();
+ 
+   injectFile(&DiscordPage::injectScript, "qwebchannel.js",
+@@ -319,6 +323,12 @@
+ 
+ UserScript *DiscordPage::userScript() { return &m_userScript; }
+ 
++void DiscordPage::setupCache() {
++    QWebEngineProfile* defaultProfile = QWebEngineProfile::defaultProfile();
++    defaultProfile->setCachePath("/home/user/.cache/discord-screenaudio/chache");
++    defaultProfile->setPersistentStoragePath("/home/user/.cache/discord-screenaudio/chache");
++}
++
+ void DiscordPage::setupArrpc() {
+   QFile nodejs("/usr/bin/node");
+   if (nodejs.exists()) {
 diff '--color=auto' -Naur discord-screenaudio-old/src/discordpage.h discord-screenaudio/src/discordpage.h
---- discord-screenaudio-old/src/discordpage.h   2023-10-13 22:54:49.354857242 +0800
-+++ discord-screenaudio/src/discordpage.h       2023-10-14 18:34:18.988621109 +0800
+--- discord-screenaudio-old/src/discordpage.h	2023-10-13 22:54:49.354857242 +0800
++++ discord-screenaudio/src/discordpage.h	2023-10-14 21:35:21.380943616 +0800
 @@ -16,6 +16,8 @@
  #include <QWebEngineFullScreenRequest>
  #include <QWebEnginePage>
  #include <QWebEngineScript>
 +#include <QWebEngineScriptCollection>
 +#include <QWebEngineProfile>
-
+ 
  class DiscordPage : public QWebEnginePage {
    Q_OBJECT
+@@ -32,6 +34,7 @@
+   QProcess m_arrpcProcess;
+   const QDir m_configLocation =
+       QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
++  void setupCache();
+   void setupPermissions();
+   void setupUserStyles();
+   void setupArrpc();
