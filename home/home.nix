@@ -16,9 +16,6 @@
   ] ++ lib.lists.optionals (envir == "gnome") [
   ];
   colorScheme = inputs.nix-colors.colorSchemes.${colorsvar};
-  #backup.directories = [
-  #  "discord/.config/discord"
-  #];
   home = {
     stateVersion = "${curversion}";
     username = "${uservars.name}";
