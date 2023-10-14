@@ -8,7 +8,6 @@
 , pkg-config
 , makeDesktopItem
 , pipewire
-, pipewire_0_2
 , ...
 }:
 
@@ -32,20 +31,10 @@ stdenv.mkDerivation rec {
   ];
   buildInputs = [
     qt5.qtbase
-    qt5.qtwebengine
-    #qt5.qtquickcontrols2
-    #libsForQt5.kwidgetsaddons
-    #libsForQt5.ktextwidgets
-    #libsForQt5.kjobwidgets
-    #libsForQt5.kconfigwidgets
-    #libsForQt5.knotifications
-    #libsForQt5.kxmlgui
+    qt5.qtwebengine 
     pipewire
     pipewire.lib
     pipewire.dev
-    #pipewire_0_2
-    #pipewire_0_2.lib
-    #pipewire_0_2.dev
   ];
   NIX_CFLAGS_COMPILE = [
     "-I${pipewire.dev}/include/pipewire-0.3"
@@ -54,8 +43,6 @@ stdenv.mkDerivation rec {
   ];
   qtWrapperArgs = [
     "--set QT_QPA_PLATFORM wayland"
-    #"--set QT_PLUGIN_PATH ${qt5.qtbase}/plugins"
-    #"--set QML2_IMPORT_PATH ${qt5.qtbase}/qml"
     #"--set LD_LIBRARY_PATH ${lib.makeLibraryPath buildInputs}"
   ];
 
