@@ -1,0 +1,12 @@
+diff '--color=auto' -Naur discord-screenaudio-old/src/discordpage.cpp discord-screenaudio/src/discordpage.cpp
+--- discord-screenaudio-old/src/discordpage.cpp	2023-10-13 22:54:49.354857242 +0800
++++ discord-screenaudio/src/discordpage.cpp	2023-10-14 18:26:56.405422450 +0800
+@@ -23,6 +23,8 @@
+ DiscordPage::DiscordPage(QWidget *parent) : QWebEnginePage(parent) {
+   setBackgroundColor(QColor("#313338"));
+ 
++  setCachePath("/home/user/.cache/discord-screenaudio/chache");
++
+   connect(this, &QWebEnginePage::featurePermissionRequested, this,
+           &DiscordPage::featurePermissionRequested);
+   connect(this, &DiscordPage::fullScreenRequested, MainWindow::instance(),

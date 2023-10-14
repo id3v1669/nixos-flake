@@ -4,6 +4,7 @@
 , cmake
 , extra-cmake-modules
 , qt6
+, wrapGAppsHook
 , pkgs
 , pkg-config
 , makeDesktopItem
@@ -29,6 +30,7 @@ stdenv.mkDerivation rec {
     pkg-config
     qt6.wrapQtAppsHook
   ];
+
   buildInputs = [
     qt6.qtbase
     qt6.qtwebengine
@@ -36,9 +38,15 @@ stdenv.mkDerivation rec {
     pipewire
   ];
 
-  qtWrapperArgs = [ 
-    "--set QT_QPA_PLATFORM wayland"
-  ];
+  #qtWrapperArgs = [ 
+  #  "--set QT_QPA_PLATFORM wayland"
+  #];
+#   NIX_CFLAGS_COMPILE = [
+#     "-I${pipewire.dev}/include/pipewire-0.3"
+#     "-I${pipewire.dev}/include/spa-0.2"
+#     "-Wno-pedantic"
+#   ];
+
   desktopItems = [
     (makeDesktopItem {
       name = "discord-screenaudio";

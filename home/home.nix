@@ -26,6 +26,7 @@
       webcord-vencord #temp to edit css for discord-screenaudio
       (callPackage ./custom/discord-scr.nix {})
       (callPackage ./custom/xwaylandvideobridge.nix {})
+      qutebrowser
 
       #screenshots
       grim
