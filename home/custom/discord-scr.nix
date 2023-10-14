@@ -3,7 +3,7 @@
 , fetchFromGitHub
 , cmake
 , extra-cmake-modules
-, qt5
+, qt6
 , pkgs
 , pkg-config
 , makeDesktopItem
@@ -42,7 +42,7 @@ stdenv.mkDerivation rec {
   desktopItems = [
     (makeDesktopItem {
       name = "discord-screenaudio";
-      exec = "arrpc && discord-screenaudio";
+      exec = "sh -c \"arrpc && discord-screenaudio\"";
       icon = "discord-screenaudio";
       desktopName = "discord-screenaudio";
       comment = "comment";
