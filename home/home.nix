@@ -148,11 +148,12 @@
       #libs
       gtk3
       #jdk20
-      libsForQt5.qt5.qtwayland
-      libsForQt5.qt5ct
-      #qt6Packages.qt6ct
-      #qt6.qtwayland
+      #libsForQt5.qt5.qtwayland
+      #libsForQt5.qt5ct
+      qt6Packages.qt6ct
+      qt6.qtwayland
       #qt6.qt5compat
+      libpng
       libnotify #for dunst or mako
       mesa
 

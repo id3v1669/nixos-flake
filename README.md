@@ -74,5 +74,5 @@ if path is set with --set LD_LIBRARY_PATH app starts but crashes during attempts
 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x10} ---
 +++ killed by SIGSEGV (core dumped) +++
 with qt6 works, but doesn't save login session, looks like issue is related to lack of premissions to write patch needed to declare [CacheLocation](https://doc.qt.io/qtforpython-6/PySide6/QtWebEngineCore/QWebEngineProfile.html#PySide6.QtWebEngineCore.PySide6.QtWebEngineCore.QWebEngineProfile.defaultProfile)
-
+Update on qt6 version problem is related to \[discord\] \[DatabaseManager\] active user changed (now: undefined, was: null, was: undefined)
 

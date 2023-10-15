@@ -1,6 +1,35 @@
+diff '--color=auto' -Naur discord-screenaudio-old/src/centralwidget.cpp discord-screenaudio/src/centralwidget.cpp
+--- discord-screenaudio-old/src/centralwidget.cpp	2023-10-13 22:54:49.354857242 +0800
++++ discord-screenaudio/src/centralwidget.cpp	2023-10-15 13:14:46.508058663 +0800
+@@ -18,6 +18,14 @@
+   m_layout->setContentsMargins(0, 0, 0, 0);
+   m_layout->setSpacing(0);
+   setupWebView();
++  QWebEngineProfile::defaultProfile()->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
++  setupCache();
++}
++
++void CentralWidget::setupCache() {
++    QWebEngineProfile* defaultProfile = QWebEngineProfile::defaultProfile();
++    defaultProfile->setCachePath("/home/user/.cache/discord-screenaudio/storage/cache");
++    defaultProfile->setPersistentStoragePath("/home/user/.cache/discord-screenaudio/storage");
+ }
+ 
+ void CentralWidget::setupWebView() {
+diff '--color=auto' -Naur discord-screenaudio-old/src/centralwidget.h discord-screenaudio/src/centralwidget.h
+--- discord-screenaudio-old/src/centralwidget.h	2023-10-13 22:54:49.354857242 +0800
++++ discord-screenaudio/src/centralwidget.h	2023-10-15 04:29:21.336183644 +0800
+@@ -19,6 +19,7 @@
+ 
+ private:
+   void setupWebView();
++  void setupCache();
+   QVBoxLayout *m_layout;
+   QWebEngineView *m_webView;
+ #ifdef KNOTIFICATIONS
 diff '--color=auto' -Naur discord-screenaudio-old/src/discordpage.cpp discord-screenaudio/src/discordpage.cpp
 --- discord-screenaudio-old/src/discordpage.cpp	2023-10-13 22:54:49.354857242 +0800
-+++ discord-screenaudio/src/discordpage.cpp	2023-10-14 22:15:26.638158397 +0800
++++ discord-screenaudio/src/discordpage.cpp	2023-10-15 13:14:46.508058663 +0800
 @@ -19,10 +19,14 @@
  #include <QWebEngineScript>
  #include <QWebEngineScriptCollection>
@@ -22,8 +51,8 @@ diff '--color=auto' -Naur discord-screenaudio-old/src/discordpage.cpp discord-sc
  
 +void DiscordPage::setupCache() {
 +    QWebEngineProfile* defaultProfile = QWebEngineProfile::defaultProfile();
-+    defaultProfile->setCachePath("/home/user/.cache/discord-screenaudio/chache");
-+    defaultProfile->setPersistentStoragePath("/home/user/.cache/discord-screenaudio/chache");
++    defaultProfile->setCachePath("/home/user/.cache/discord-screenaudio/storage/cache");
++    defaultProfile->setPersistentStoragePath("/home/user/.cache/discord-screenaudio/storage");
 +}
 +
  void DiscordPage::setupArrpc() {
@@ -51,7 +80,7 @@ diff '--color=auto' -Naur discord-screenaudio-old/src/discordpage.h discord-scre
    void setupArrpc();
 diff '--color=auto' -Naur discord-screenaudio-old/src/mainwindow.cpp discord-screenaudio/src/mainwindow.cpp
 --- discord-screenaudio-old/src/mainwindow.cpp	2023-10-13 22:54:49.354857242 +0800
-+++ discord-screenaudio/src/mainwindow.cpp	2023-10-14 22:15:26.638158397 +0800
++++ discord-screenaudio/src/mainwindow.cpp	2023-10-15 13:14:46.507058671 +0800
 @@ -28,6 +28,10 @@
  
  MainWindow::MainWindow(bool useNotifySend, QWidget *parent)
@@ -70,8 +99,8 @@ diff '--color=auto' -Naur discord-screenaudio-old/src/mainwindow.cpp discord-scr
 +
 +void MainWindow::setupCache() {
 +    QWebEngineProfile* defaultProfile = QWebEngineProfile::defaultProfile();
-+    defaultProfile->setCachePath("/home/user/.cache/discord-screenaudio/chache");
-+    defaultProfile->setPersistentStoragePath("/home/user/.cache/discord-screenaudio/chache");
++    defaultProfile->setCachePath("/home/user/.cache/discord-screenaudio/storage/cache");
++    defaultProfile->setPersistentStoragePath("/home/user/.cache/discord-screenaudio/storage");
 +}
 diff '--color=auto' -Naur discord-screenaudio-old/src/mainwindow.h discord-screenaudio/src/mainwindow.h
 --- discord-screenaudio-old/src/mainwindow.h	2023-10-13 22:54:49.354857242 +0800

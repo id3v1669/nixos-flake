@@ -2,7 +2,6 @@
 , lib
 , fetchFromGitHub
 , cmake
-, extra-cmake-modules
 , qt6
 , pkgs
 , pkg-config
@@ -25,7 +24,6 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     cmake
-    extra-cmake-modules
     pkg-config
     qt6.wrapQtAppsHook
   ];
@@ -33,7 +31,6 @@ stdenv.mkDerivation rec {
   buildInputs = [
     qt6.qtbase
     qt6.qtwebengine
-    qt6.qt5compat
     qt6.qtwayland
     pipewire
   ];
