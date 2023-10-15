@@ -158,6 +158,7 @@
         envir = "gnome";
         cpuvar = "amd";
         desk = "laptop";
+        tempvar = "/home/user/nixos-flake";
         gpuvar = {
           type = "amd";
         };
