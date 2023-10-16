@@ -20,6 +20,10 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    xdghypr = {
+      url = "github:hyprwm/xdg-desktop-portal-hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-compat = {
       url = "github:inclyc/flake-compat";
       flake = false;
@@ -105,14 +109,14 @@
       nuc11phhyprtbqhd = mkSyst {
         hostname = "nuc11ph";
         envir = "hypr";
-        winvar = true;
+        #winvar = true;
         colorsvar = "spaceduck";
         tempvar = "/home/user/myrepos/nixos-flake";
       };
       nuc11phhyprtbfhd = mkSyst {
         hostname = "nuc11ph";
         envir = "hypr";
-        winvar = true;
+        #winvar = true;
         colorsvar = "spaceduck";
         tempvar = "/home/user/myrepos/nixos-flake";
         gpuvar = {

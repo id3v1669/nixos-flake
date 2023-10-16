@@ -1,4 +1,7 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, system, gpuvar, ...}: 
+{lib, config, pkgs, curversion, deflocale, uservars, hostname, inputs, envir, cpuvar, system, gpuvar, ...}: 
+let 
+  xdghypr = inputs.xdghypr.packages.x86_64-linux.xdg-desktop-portal-hyprland;
+in 
 {
   imports =
     [ 
@@ -36,7 +39,8 @@
       enable = true;
       extraPortals = ( with pkgs; [
         xdg-desktop-portal-gtk
-        xdg-desktop-portal-hyprland
+        #xdg-desktop-portal-hyprland
+        xdghypr
       ]);
     };
   };
