@@ -29,6 +29,11 @@
       (callPackage ./custom/xwaylandvideobridge.nix {})
       qutebrowser
 
+      libreoffice-qt
+      hunspell
+      hunspellDicts.en_US-large
+      hunspellDicts.ru_RU
+
       #screenshots
       grim
       slurp
@@ -69,12 +74,10 @@
       ffmpegthumbnailer
       hyprpaper #walpapers
       
-
       #chat
       telegram-desktop
       whatsapp-for-linux
       
-
       #security
       openssl
       veracrypt

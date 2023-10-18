@@ -8,7 +8,6 @@
 
 declare -a apps=(R
                  "ch.tlaun.TL"
-                 "org.libreoffice.LibreOffice"
                 )
 
 is_app_installed() {

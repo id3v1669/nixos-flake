@@ -7,18 +7,19 @@
 , pkg-config
 , makeDesktopItem
 , pipewire
+, nix-update-script
 , ...
 }:
 
 stdenv.mkDerivation rec {
   pname = "discord-screenaudio";
-  version = "1.9.0";
+  version = "1.9.1";
 
   src = fetchFromGitHub {
     owner = "maltejur";
     repo = "discord-screenaudio";
-    rev = "372c683ae955ee61970eb89adec3ac7db3b0a803";
-    hash = "sha256-WBpWxwy462bmUNRv6oCEBp+pDpKFsl+9Wk09fDnd4ss=";
+    rev = "6ea5455c7e5a6127dd62034eadc13ca5effdf49e";
+    hash = "sha256-Pm6p4jssDyDp+REXrYGK6S15pdgC7DliWD1EG83frLM=";
     fetchSubmodules = true;
   };
 
@@ -35,9 +36,11 @@ stdenv.mkDerivation rec {
     pipewire
   ];
 
-  patches = [
-    ./changes.patch
-  ];
+  #patches = [
+  #  ./changes.patch
+  #];
+
+  passthru.updateScript = nix-update-script { };
 
   preConfigure = ''
     echo "${version}" > version.txt
