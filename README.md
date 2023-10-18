@@ -68,7 +68,7 @@ Latest commit to use: 5987f3c59b49108aca8b4535d2234e8fe3383548
 
 OpenRGB Module is broken and installed manually
 
-discord-screenaudio(dscr from now) (ToDo 6) with qt5 has broken screenshare(black screen), sound stream and all other functions work
+discord-screenaudio(dscr from now) (ToDo 6) with qt5 has broken screenshare(black screen), sound stream and all other functions work,
 during attempts to start screensharing app searches for libpipewire-0.2.so.1
 
 If path is set with --set LD_LIBRARY_PATH app starts but crashes during attempts to start screensharing with:
