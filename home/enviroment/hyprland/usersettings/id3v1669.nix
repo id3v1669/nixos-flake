@@ -69,6 +69,7 @@
       "$mainMod SHIFT, T, exec, alacritty"
       "$mainMod SHIFT, B, exec, firefox"
       "$mainMod SHIFT, F, exec, nautilus"
+      "$mainMod SHIFT, S, exec, pavucontrol"
       "$mainMod SHIFT, P, exec, hyprpicker -a"
       "$mainMod, R, exec, rofi -show "
       #other controls

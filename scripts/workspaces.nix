@@ -1,5 +1,4 @@
 { config, lib, pkgs, uservars, tempvar, ... }:
-
 {
   home.file.".scripts/eww_ws.sh" = {
     executable = true;
@@ -9,8 +8,8 @@
 wss() {
 
   ws=("")
-  wsa=($(hyprctl workspaces | grep '(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }'))
-  curindex=($(hyprctl activeworkspace | grep '(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }'))
+  wsa=($(hyprctl workspaces | grep 'workspace ID .*(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }'))
+  curindex=($(hyprctl activeworkspace | grep 'workspace ID .*(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }'))
   max=$(printf "%s\n" "''${wsa[@]}" | sort -n | tail -n 1)
   for (( counter=0; counter<max; counter++ )); do
     ws[counter]=""

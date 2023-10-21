@@ -1,4 +1,3 @@
-(defvar wss "xxx")
 (defwidget workspaces []
   (box 
     :orientation "horizontal"

@@ -1,0 +1,13 @@
+(defwidget sound []
+    (box
+      (button 
+        :class "sound"
+        :orientation "h"
+        :onclick "pavucontrol"
+        (box 
+          :orientation "h"
+          "󰕾 ${soundvol}"
+        )
+      )
+    )
+  )
