@@ -1,6 +1,3 @@
-;;local vars
-(defvar show_powerbuttons false)
-
 (defwindow popup-power-window
   :monitor 0
   :stacking "overlay"

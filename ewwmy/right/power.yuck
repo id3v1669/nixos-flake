@@ -5,7 +5,6 @@
       :orientation "h"
       :onclick "${EWW_CMD} update show_powerbuttons=true"
       (box 
-        :orientation "h"
         "󰐥"
       )
     )

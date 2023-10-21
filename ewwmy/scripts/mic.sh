@@ -17,3 +17,5 @@ for card in $cards; do
     fi
   done <<< "$controls"
 done
+
+#amixer sget Capture | grep -q "\[on\]"

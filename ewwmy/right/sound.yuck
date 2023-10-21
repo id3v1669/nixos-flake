@@ -1,12 +1,19 @@
 (defwidget sound []
     (box
+      :orientation "h"
       (button 
         :class "sound"
-        :orientation "h"
+        :timeout "${deftimeout}"
         :onclick "pavucontrol"
         (box 
-          :orientation "h"
-          "󰕾 ${soundvol}"
+          (box 
+            :class "soundsymb"
+            "󰕾"
+          )
+          (box 
+            :class "soundvol"
+            "${soundvol}"
+          )
         )
       )
     )

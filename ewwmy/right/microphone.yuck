@@ -7,7 +7,6 @@
       :class "mic"
       :onclick "bash ~/myrepos/nixos-flake/ewwmy/scripts/mic.sh"
       (box 
-        :orientation "h"
         "󰍬"
       )
     )

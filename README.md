@@ -24,15 +24,11 @@ Latest commit to use: 5987f3c59b49108aca8b4535d2234e8fe3383548
 
 1. **+-Setup eww**
     1. **-declare eww config**
-    2. **+- microphone mute/unmute icon in bar(fix icon to change onclick)**
     3. **- sound icon with %**
         1. **- on hover show per-app volume control**
         2. **- on click open pavucontrol**
-    4. **+-Infoblock**
-        1. **+- show cpu temp(fix for laptop)**
-        2. **+- show disk usage(design?)**
-    5. **- calendar popup**
-    6. **battery for laptop**
+    4. **- calendar popup**
+    5. **battery for laptop**
 
 2. **+-Add background(enable for laptop only on power)**
 

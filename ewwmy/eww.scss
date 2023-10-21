@@ -93,15 +93,23 @@
   }
 
   .sound {
-    font-size: 1.4em;
+    //font-size: 1.6em;
     background-color: #241b26;
     color: #eed5d9;
     border-radius: 20;
-    padding: 5px 16px 5px 14px;
+    padding: 3px 16px 3px 2px;
     &:hover {
         background-color: #2f2a3f;
         color: #d9c2c6;
       }
+  }
+  .soundsymb {
+    padding: 0px 0px 0px 0px;
+    font-size: 1.7em;
+  }
+  .soundvol {
+    padding: 0px 0px 0px 0px;
+    font-size: 1.3em;
   }
 
   .minipower {
@@ -116,16 +124,20 @@
       }
   }
 
+  .calelndarpop {
+    font-size: 1em;
+    background-color: #241b26;
+    color: #eed5d9;
+    border-radius: 20;
+    padding: 5px 16px 5px 14px;
+  }
+
+  calendar:selected {
+    background-color: #2f2a3f;;
+  }
+
   .powerpopup {
-    //font-size: 1.4em;
-    //background-color: #241b26;
-    //color: #eed5d9;
-    //border-radius: 20;
     padding: 5px 0px 0px 0px;
-    // &:hover {
-    //     background-color: #2f2a3f;
-    //     color: #d9c2c6;
-    //   }
   }
 
   .suspend {

@@ -1,0 +1,40 @@
+(defvar show_calendar true)
+(defwindow calendar-poppup-window
+  :monitor 0
+  :stacking "overlay"
+  :exclusive false
+  :geometry (geometry 
+    ;:x "0.25%"
+    :y "-50"
+    :anchor "center top")
+  (calendarpop)
+)
+
+; (defwidget calendarpop []
+;   (box
+;     "dd"
+;   )
+; )
+
+(defwidget calendarpop []
+  (eventbox 
+    :onhover ""
+    :onhoverlost "${EWW_CMD} update show_calendar=false"
+    (revealer
+      :transition "slideup"
+      :reveal show_calendar
+      :duration "1500ms"
+      (box 
+        :class "calelndarpop"
+        :orientation "v"
+        ;;:space-evenly false
+        (calendar 
+          :class "calelndarpop"
+          :day {formattime(EWW_TIME, "%d")}
+          :month {formattime(EWW_TIME, "%m")}
+          :year {formattime(EWW_TIME, "%Y")}
+        )
+      )
+    )
+  )
+)
