@@ -7,7 +7,6 @@
 , pkg-config
 , makeDesktopItem
 , pipewire
-, nix-update-script
 , ...
 }:
 
@@ -39,8 +38,6 @@ stdenv.mkDerivation rec {
   #patches = [
   #  ./changes.patch
   #];
-
-  passthru.updateScript = nix-update-script { };
 
   preConfigure = ''
     echo "${version}" > version.txt

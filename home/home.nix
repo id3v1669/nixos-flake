@@ -28,11 +28,9 @@
       #(callPackage ./custom/discord-screenaudio-qt5.nix {})
       (callPackage ./custom/xwaylandvideobridge.nix {})
       qutebrowser
-
-      libreoffice-qt
-      hunspell
-      hunspellDicts.en_US-large
-      hunspellDicts.ru_RU
+      protonup-qt
+      libsForQt5.qt5ct
+      qt6Packages.qt6ct
 
       #screenshots
       grim
@@ -119,11 +117,17 @@
       file #file type detection
       rar #unfree for rar archives
 
+      #text & docs
+      joplin-desktop
+      libreoffice-qt
+      hunspell
+      hunspellDicts.en_US-large
+      hunspellDicts.ru_RU
+
       #other gui tools
       qbittorrent
       rustdesk
       github-desktop
-      joplin-desktop
       openrgb-with-all-plugins
       bluez
 
@@ -153,8 +157,8 @@
       #jdk20
       #libsForQt5.qt5.qtwayland
       #libsForQt5.qt5ct
-      qt6Packages.qt6ct
-      qt6.qtwayland
+      #qt6Packages.qt6ct
+      #qt6.qtwayland
       #qt6.qt5compat
       libpng
       libnotify #for dunst or mako

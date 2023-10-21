@@ -17,13 +17,13 @@
   home.sessionVariables = {
 		#universal part
     NIXOS_OZONE_WL = "1";
-	  QT_QPA_PLATFORMTHEME = "gtk3";
-	  QT_SCALE_FACTOR = "1";
+	  #QT_QPA_PLATFORMTHEME = "gtk3";
+	  #QT_SCALE_FACTOR = "1";
 	  MOZ_ENABLE_WAYLAND = "1";
 	  SDL_VIDEODRIVER = "wayland";
 	  _JAVA_AWT_WM_NONREPARENTING = "1";
-	  QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-	  QT_AUTO_SCREEN_SCALE_FACTOR = "1"; 
+	  #QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+	  #QT_AUTO_SCREEN_SCALE_FACTOR = "1"; 
 	  CLUTTER_BACKEND = "wayland";
 	  XDG_CURRENT_DESKTOP = "Hyprland";
 	  XDG_SESSION_DESKTOP = "Hyprland";
@@ -55,10 +55,10 @@ preload = ${config.home.homeDirectory}/Pictures/Wallpapers/furry2.jpg
 preload = ${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
 preload = ${config.home.homeDirectory}/Pictures/Wallpapers/gray.jpg
 
-wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
-wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
-#wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/rebecca2.jpg
-#wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
+#wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
+#wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
+wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/rebecca2.jpg
+wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
 
     '';
   };

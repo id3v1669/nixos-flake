@@ -79,6 +79,7 @@
       };
       overlays = [
         nur.overlay
+        #(import ./scripts/flatpak.nix)
       ];
     };
     in inputs.nixpkgs.lib.nixosSystem 

@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }:
-
 {
   home.file.".scripts/flatpak.sh" = {
     executable = true;
@@ -40,3 +39,14 @@ done
     '';
   };
 }
+
+# self: super: 
+# {
+#   qt5 = super.qt5 // {
+#     qtwebengine = super.qt5.qtwebengine.overrideAttrs (oldAttrs: {
+#       postPatch = oldAttrs.postPatch or "" + ''
+#         echo "Forcing a rebuild"
+#       '';
+#     });
+#   };
+# }
