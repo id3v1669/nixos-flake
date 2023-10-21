@@ -64,6 +64,8 @@ Latest commit to use: 5987f3c59b49108aca8b4535d2234e8fe3383548
 
 14. **fix emojis in distrobox**
 
+15. **setup theme(qt5,qt6,gtk3,gtk4)**
+
 ## Notes:
 
 OpenRGB Module is broken and installed manually
