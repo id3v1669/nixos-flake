@@ -1,4 +1,3 @@
-(defvar show_calendar true)
 (defwindow calendar-poppup-window
   :monitor 0
   :stacking "overlay"
@@ -9,12 +8,6 @@
     :anchor "center top")
   (calendarpop)
 )
-
-; (defwidget calendarpop []
-;   (box
-;     "dd"
-;   )
-; )
 
 (defwidget calendarpop []
   (eventbox 

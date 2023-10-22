@@ -2,7 +2,7 @@
   (box (button 
     :class "miniclock" 
     :orientation "h" 
-    :onclick ""
+    :onclick "${EWW_CMD} update show_calendar=true"
     (box 
       :orientation "h"
       :space-evenly false
