@@ -4,7 +4,8 @@
     ./assets
     ./dist
     #./gresource.nix
-    ./new_gtk_resource_configuration_base64.nix
+    #./new_gtk_resource_configuration_base64.nix
+    ./gtk_resource_configuration.nix
   ];
   home.file.".themes/dynamic-color-theme/gtk-3.20/gtk-dark.css".text = ''
   @import url("resource:///org/numixproject/gtk/dist/gtk-dark.css");
