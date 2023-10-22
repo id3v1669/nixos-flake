@@ -5,7 +5,7 @@
     (button 
       :orientation "h"
       :class "mic"
-      :onclick "bash ~/myrepos/nixos-flake/ewwmy/scripts/mic.sh"
+      :onclick "bash ~/.scripts/microphone.sh"
       (box 
         "󰍬"
       )
