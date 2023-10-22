@@ -1,4 +1,4 @@
-{ config, lib, pkgs, uservars, ... }:
+{ config, lib, pkgs, ... }:
 {
   home.file.".config/eww/eww.scss" = {
     text = ''
@@ -6,24 +6,24 @@
     font-size: 1.3em;
     border-radius: 20;
     padding: 5px 12px 5px 15px; 
-    background-color: #241b26;
-    color: #eed5d9;
+    background-color: #${config.colorScheme.colors.base00};
+    color: #${config.colorScheme.colors.base05};
     &:hover {
-        background-color: #2f2a3f;
-        color: #eed5d9;
+        background-color: #${config.colorScheme.colors.base01};
+        color: #${config.colorScheme.colors.base05};
     }
 }
 
 .usageinfo {
-    background-color: #241b26;
-    color: #eed5d9;
+    background-color: #${config.colorScheme.colors.base00};
+    color: #${config.colorScheme.colors.base05};
     border-radius: 20;
     padding: 5px 15px; 
     &:hover {
-        background-color: #2f2a3f;
-        color: #d9c2c6;
+        background-color: #${config.colorScheme.colors.base01};
+        color: #${config.colorScheme.colors.base06};
         .spacer {  
-            color: #eed5d9;
+            color: #${config.colorScheme.colors.base05};
           }
       }
   }
@@ -34,7 +34,7 @@
   }
 
   .spacerh {
-    color: #c965bf;
+    color: #${config.colorScheme.colors.base0B};
     font-size: 1.4em;
   }
   
@@ -42,51 +42,51 @@
     font-size: 1.3em;
     border-radius: 20;
     padding: 5px 20px 5px 15px; 
-    background-color: #241b26;
-    color: #eed5d9;
+    background-color: #${config.colorScheme.colors.base00};
+    color: #${config.colorScheme.colors.base05};
   }
 
   .miniclock {
     font-size: 1.3em;
-    background-color: #241b26;
-    color: #eed5d9;
+    background-color: #${config.colorScheme.colors.base00};
+    color: #${config.colorScheme.colors.base05};
     border-radius: 20;
     padding: 5px 16px 5px 17px;
     &:hover {
-        background-color: #2f2a3f;
-        color: #d9c2c6;
+        background-color: #${config.colorScheme.colors.base01};
+        color: #${config.colorScheme.colors.base06};
       }
   }
 
   .tray {
     font-size: 1.4em;
-    background-color: #241b26;
-    color: #eed5d9;
+    background-color: #${config.colorScheme.colors.base00};
+    color: #${config.colorScheme.colors.base05};
     border-radius: 20;
     padding: 5px 14px 5px 15px;
   }
 
   .mic {
     font-size: 1.3em;
-    background-color: #241b26;
-    color: #eed5d9;
+    background-color: #${config.colorScheme.colors.base00};
+    color: #${config.colorScheme.colors.base05};
     border-radius: 20;
     padding: 5px 16px 4px 14px;
     &:hover {
-        background-color: #2f2a3f;
-        color: #d9c2c6;
+        background-color: #${config.colorScheme.colors.base01};
+        color: #${config.colorScheme.colors.base06};
       }
   }
 
   .sound {
     //font-size: 1.6em;
-    background-color: #241b26;
-    color: #eed5d9;
+    background-color: #${config.colorScheme.colors.base00};
+    color: #${config.colorScheme.colors.base05};
     border-radius: 20;
     padding: 3px 16px 3px 2px;
     &:hover {
-        background-color: #2f2a3f;
-        color: #d9c2c6;
+        background-color: #${config.colorScheme.colors.base01};
+        color: #${config.colorScheme.colors.base06};
       }
   }
   .soundsymb {
@@ -100,27 +100,27 @@
 
   .minipower {
     font-size: 1.4em;
-    background-color: #241b26;
-    color: #eed5d9;
+    background-color: #${config.colorScheme.colors.base00};
+    color: #${config.colorScheme.colors.base05};
     border-radius: 20;
     padding: 5px 16px 5px 14px;
     &:hover {
-        background-color: #2f2a3f;
-        color: #d9c2c6;
+        background-color: #${config.colorScheme.colors.base01};
+        color: #${config.colorScheme.colors.base06};
       }
   }
 
   .calelndarpop {
     font-size: 1em;
-    background-color: #241b26;
-    color: #eed5d9;
+    background-color: #${config.colorScheme.colors.base00};
+    color: #${config.colorScheme.colors.base05};
     border-radius: 20;
     padding: 5px 16px 5px 14px;
   }
   
 
   calendar:selected {
-    background-color: #2f2a3f;;
+    background-color: #${config.colorScheme.colors.base01};;
   }
 
   .powerpopup {
@@ -129,35 +129,35 @@
 
   .suspend {
     font-size: 1.3em;
-    background-color: #a3a079;
-    color: #eed5d9;
+    background-color: #${config.colorScheme.colors.base0F};
+    color: #${config.colorScheme.colors.base05};
     border-radius: 20;
     padding: 4px 16px 5px 9px;
     &:hover {
-        background-color: #7e5f83;
-        color: #d9c2c6;
+        background-color: #${config.colorScheme.colors.base04};
+        color: #${config.colorScheme.colors.base06};
       }
   }
   .reboot {
     font-size: 1.3em;
-    background-color: #6a9eb5;
-    color: #eed5d9;
+    background-color: #${config.colorScheme.colors.base0D};
+    color: #${config.colorScheme.colors.base05};
     border-radius: 20;
     padding: 4px 14px 5px 9px;
     &:hover {
-        background-color: #7e5f83;
-        color: #d9c2c6;
+        background-color: #${config.colorScheme.colors.base04};
+        color: #${config.colorScheme.colors.base06};
       }
   }
   .shutdown {
     font-size: 1.4em;
-    background-color: #de5b44;
-    color: #eed5d9;
+    background-color: #${config.colorScheme.colors.base09};
+    color: #${config.colorScheme.colors.base05};
     border-radius: 20;
     padding: 4px 12px 5px 10px;
     &:hover {
-        background-color: #7e5f83;
-        color: #d9c2c6;
+        background-color: #${config.colorScheme.colors.base04};
+        color: #${config.colorScheme.colors.base06};
       }
   }
 
@@ -169,8 +169,8 @@
       font-size: 1.3em;
       border-radius: 20;
       padding: 5px 12px 5px 15px; 
-      background-color: #241b26;
-      color: #eed5d9;
+      background-color: #${config.colorScheme.colors.base00};
+      color: #${config.colorScheme.colors.base05};
   }
     '';
   };

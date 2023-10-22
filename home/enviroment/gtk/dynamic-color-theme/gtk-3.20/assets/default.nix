@@ -1,0 +1,44 @@
+{ config, lib, pkgs, uservars, ... }:
+{
+  imports = [
+    ./all-assets-svg.nix
+    ./all-assets-txt.nix
+    ./change_dpi-sh.nix
+    ./checkbox-checked-insensitive-svg.nix
+    ./checkbox-checked-svg.nix
+    ./checkbox-mixed-insensitive-svg.nix
+    ./checkbox-mixed-svg.nix
+    ./grid-selection-checked-svg.nix
+    ./grid-selection-unchecked-svg.nix
+    ./menuitem-checkbox-checked-hover-svg.nix
+    ./menuitem-checkbox-checked-insensitive-svg.nix
+    ./menuitem-checkbox-checked-svg.nix
+    ./menuitem-checkbox-mixed-hover-svg.nix
+    ./menuitem-checkbox-mixed-insensitive-svg.nix
+    ./menuitem-checkbox-mixed-selected-svg.nix
+    ./menuitem-checkbox-mixed-svg.nix
+    ./menuitem-checkbox-unchecked-svg.nix
+    ./menuitem-radio-checked-hover-svg.nix
+    ./menuitem-radio-checked-insensitive-svg.nix
+    ./menuitem-radio-checked-svg.nix
+    ./menuitem-radio-mixed-hover-svg.nix
+    ./menuitem-radio-mixed-insensitive-svg.nix
+    ./menuitem-radio-mixed-selected-svg.nix
+    ./menuitem-radio-mixed-svg.nix
+    ./menuitem-radio-unchecked-svg.nix
+    ./pane-handle2-png.nix
+    ./pane-handle-png.nix
+    ./pane-handle-svg.nix
+    ./pane-handle-vertical-svg.nix
+    ./radio-checked-insensitive-svg.nix
+    ./radio-checked-svg.nix
+    ./radio-mixed-insensitive-svg.nix
+    ./radio-mixed-svg.nix
+    ./radio-selected-insensitive-svg.nix
+    ./radio-selected-svg.nix
+    ./radio-unselected-insensitive-svg.nix
+    ./radio-unselected-svg.nix
+    ./sed-sh.nix
+    ./unsed-sh.nix
+  ];
+}

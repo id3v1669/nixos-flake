@@ -1,7 +1,10 @@
-{ config, lib, pkgs, uservars, ... }:
+{ config, lib, pkgs, desk, ... }:
 {
-  home.file.".config/eww/eww.yuck" = {
-    text = ''
+  home.file.".config/eww/eww.yuck".text = 
+  let
+    battery = if desk == "laptop" then "(battery)" else "";
+  in
+  ''
 (defvar deftimeout "999999999ms")
 (defpoll datetime :interval "1s" "date '+%a, %d. %b  %H:%M'")
 (defvar soundvol "xx")
@@ -12,6 +15,7 @@
 (defwindow bar
   :monitor 0
   :stacking "fg"
+  :class "bar1"
   :exclusive true
   :geometry (geometry 
     :y "0.5%"
@@ -24,7 +28,7 @@
 (defwidget bar-widget []
   (box 
     :orientation "h"
-    :class "bar"
+    :class "bar1"
     (left)
     (center)
     (right)
@@ -64,7 +68,7 @@
     )
     (sound)
     (microphone)
-    (battery)
+    ${battery}
     (power)
   )
 )
@@ -284,6 +288,5 @@
   )
 )
 
-    '';
-  };
+  '';
 }

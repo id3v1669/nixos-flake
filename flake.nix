@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-colors.url = "github:misterio77/nix-colors";
+    nixmox.url = "github:Sorixelle/nixmox";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,6 +37,7 @@
     home-manager,
     hyprland,
     nur,
+    nixmox,
     ... }@inputs: 
   let
     inherit (self) outputs;
@@ -78,6 +80,7 @@
       };
       overlays = [
         nur.overlay
+        nixmox.overlay
         #(import ./scripts/flatpak.nix)
       ];
     };
@@ -111,6 +114,8 @@
         envir = "hypr";
         #winvar = true;
         colorsvar = "spaceduck";
+        #colorsvar = "catppuccin-mocha";
+        #colorsvar = "catppuccin-frappe";
       };
       nuc11phhyprtbfhd = mkSyst {
         hostname = "nuc11ph";

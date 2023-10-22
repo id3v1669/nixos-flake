@@ -32,6 +32,8 @@
       libsForQt5.qt5ct
       qt6Packages.qt6ct
       inputs.eww-tray.packages.x86_64-linux.eww-wayland
+      oomoxFull
+      #dracula-theme
 
       #screenshots
       grim

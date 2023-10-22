@@ -88,7 +88,7 @@
     "editor.background" = "#${config.colorScheme.colors.base01}";
     "editor.foreground" = "#${config.colorScheme.colors.base05}";
     "editorLineNumber.foreground" = "#${config.colorScheme.colors.base05}";
-    "editorCursor.foreground" = "#${config.colorScheme.colors.base00}";
+    "editorCursor.foreground" = "#${config.colorScheme.colors.base06}";
     "editorCursor.background" = "#${config.colorScheme.colors.base05}";
     "editor.selectionBackground" = "#${config.colorScheme.colors.base00}";
     "editor.inactiveSelectionBackground" = "#${config.colorScheme.colors.base00}";
@@ -146,7 +146,7 @@
     "badge.foreground" = "#${config.colorScheme.colors.base05}";
     "terminal.foreground" = "#${config.colorScheme.colors.base05}";
     "terminal.selectionBackground" = "#46354a50";
-    "terminalCursor.background" = "#${config.colorScheme.colors.base02}";
+    "terminalCursor.background" = "#${config.colorScheme.colors.base06}";
     "terminalCursor.foreground" = "#${config.colorScheme.colors.base05}";
     "terminal.border" = "#${config.colorScheme.colors.base03}";
     "terminal.ansiBlack" = "#${config.colorScheme.colors.base00}";
