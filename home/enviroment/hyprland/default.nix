@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, deflocale, uservars, hostname, tempvar, brightnesctrl, ... }:
+{ inputs, config, lib, pkgs, deflocale, uservars, hostname, brightnesctrl, ... }:
 {
   imports = [ 
     (./. + "/hostsettings/${hostname}.nix")
@@ -103,9 +103,9 @@ bind =,XF86MonBrightnessDown,exec,${brightnesctrl.down}
 bind =,XF86MonBrightnessUp,exec,${brightnesctrl.up}
 bind =,XF86AudioMute,exec,pamixer -t
 bind =,XF86AudioLowerVolume,exec,pamixer -d 10
-bind =,XF86AudioLowerVolume,exec,eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)" --config ${tempvar}/ewwmy/
+bind =,XF86AudioLowerVolume,exec,eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)" 
 bind =,XF86AudioRaiseVolume,exec,pamixer -i 10
-bind =,XF86AudioRaiseVolume,exec,eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)" --config ${tempvar}/ewwmy/
+bind =,XF86AudioRaiseVolume,exec,eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)" 
 bind =,XF86AudioPlay,exec,playerctl play-pause
 bind =,XF86AudioPause,exec,playerctl play-pause
 #--------------------------------------------------

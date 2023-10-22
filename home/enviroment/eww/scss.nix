@@ -1,6 +1,8 @@
-
-
-.launcher {
+{ config, lib, pkgs, uservars, ... }:
+{
+  home.file.".config/eww/eww.scss" = {
+    text = ''
+    .launcher {
     font-size: 1.3em;
     border-radius: 20;
     padding: 5px 12px 5px 15px; 
@@ -36,22 +38,6 @@
     font-size: 1.4em;
   }
   
-  .ram {
-    // Extra styles specific to RAM box, if any
-  }
-  
-  .cputemp {
-    // Extra styles specific to CPU Temp box, if any
-  }
-  
-  .disk {
-    // Extra styles specific to Disk box, if any
-  }
-  
-  .boot {
-    // Extra styles specific to Boot box, if any
-  }
-
   .workspaces {
     font-size: 1.3em;
     border-radius: 20;
@@ -175,7 +161,17 @@
       }
   }
 
-  // gtk rules
     .background {
         background-color: rgba(0, 0, 0, 0);
     }
+
+    .battery {
+      font-size: 1.3em;
+      border-radius: 20;
+      padding: 5px 12px 5px 15px; 
+      background-color: #241b26;
+      color: #eed5d9;
+  }
+    '';
+  };
+}

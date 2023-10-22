@@ -1,9 +1,0 @@
-(defwidget workspaces []
-  (box 
-    :orientation "horizontal"
-    :hexpand false
-    :vexpand false
-    :class "workspaces"
-    wss
-  )
-)  

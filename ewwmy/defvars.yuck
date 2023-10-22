@@ -1,6 +1,0 @@
-(defvar deftimeout "999999999ms")
-(defpoll datetime :interval "1s" "date '+%a, %d. %b  %H:%M'")
-(defvar soundvol "xx")
-(defvar wss "xxx")
-(defvar show_powerbuttons false)
-(defvar show_calendar false)

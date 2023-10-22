@@ -43,7 +43,6 @@
     mkSyst = { 
       hostname,
       envir,
-      tempvar,
       winvar ? false,
       desk ? "desktop",
       gpuvar ? {
@@ -85,7 +84,7 @@
     in inputs.nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system winvar tempvar;
+        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system winvar;
       };
       modules = [ 
         (./. + "/hosts/${hostname}.nix")
@@ -95,7 +94,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${uservars.name} = import (./. + "/home/home.nix") ;
-            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars tempvar colorsvar brightnesctrl gpuvar desk; };
+            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars colorsvar brightnesctrl gpuvar desk; };
           };
         }
       ] ++ inputs.nixpkgs.lib.lists.optional (envir == "hypr") inputs.hyprland.nixosModules.default;
@@ -112,14 +111,12 @@
         envir = "hypr";
         #winvar = true;
         colorsvar = "spaceduck";
-        tempvar = "/home/user/myrepos/nixos-flake";
       };
       nuc11phhyprtbfhd = mkSyst {
         hostname = "nuc11ph";
         envir = "hypr";
         #winvar = true;
         colorsvar = "spaceduck";
-        tempvar = "/home/user/myrepos/nixos-flake";
         gpuvar = {
           type = "nvidia";
           tech = "prime";
@@ -133,7 +130,6 @@
         envir = "hypr";
         winvar = false;
         colorsvar = "spaceduck";
-        tempvar = "/home/user/myrepos/nixos-flake";
         gpuvar = {
           type = "nvidia";
           tech = "prime";
@@ -149,7 +145,6 @@
         envir = "hypr";
         cpuvar = "amd";
         desk = "laptop";
-        tempvar = "/home/user/nixos-flake"; 
         brightnesctrl = {
           up = "light -A 5";
           down = "light -U 5";
@@ -163,7 +158,6 @@
         envir = "gnome";
         cpuvar = "amd";
         desk = "laptop";
-        tempvar = "/home/user/nixos-flake";
         gpuvar = {
           type = "amd";
         };
@@ -176,7 +170,6 @@
         };
         winvar = true;
         uservars = { name = "user"; description = "alexp"; };
-        tempvar = "/home/user/nixos-flake";
         deflocale = {
           kblayout = "us,ru";
           kbvariant = ",";

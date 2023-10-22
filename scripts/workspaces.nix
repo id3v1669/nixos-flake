@@ -1,4 +1,4 @@
-{ config, lib, pkgs, uservars, tempvar, ... }:
+{ config, lib, pkgs, uservars, ... }:
 {
   home.file.".scripts/eww_ws.sh" = {
     executable = true;
@@ -21,8 +21,7 @@ wss() {
 }
 
 wss
-eww update wss="''${ws[*]}" --config ${tempvar}/ewwmy/
+eww update wss="''${ws[*]}"
     '';
   };
 }
-#maybe later add buttons hyprctl dispatch workspace x
