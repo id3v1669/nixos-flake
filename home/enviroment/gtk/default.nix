@@ -7,7 +7,7 @@
   gtk = {
     enable = true;
     theme = {
-      name = "dynamic-color-theme";
+      name = "dynamic-color-theme2";
       #package = pkgs.dracula-theme;
     };
     iconTheme = {

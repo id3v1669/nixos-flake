@@ -7431,7 +7431,6 @@ panel-toplevel .gnome-panel-menu-bar:backdrop menuitem {
 PanelSeparator, MatePanelAppletFrameDBus {
   border-width: 0;
   color: transparent;
-  background-image: -gtk-scaled(url("../assets/pane-handle.png"), url("../assets/pane-handle@2.png"));
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: left; }

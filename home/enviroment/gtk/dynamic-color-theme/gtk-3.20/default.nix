@@ -3,6 +3,8 @@
   imports = [
     ./assets
     ./dist
+    #./gresource.nix
+    ./new_gtk_resource_configuration_base64.nix
   ];
   home.file.".themes/dynamic-color-theme/gtk-3.20/gtk-dark.css".text = ''
   @import url("resource:///org/numixproject/gtk/dist/gtk-dark.css");
@@ -40,8 +42,6 @@
                 <file preprocess='to-pixdata'>assets/radio-checked.svg</file>
                 <file preprocess='to-pixdata'>assets/radio-mixed-insensitive.svg</file>
                 <file preprocess='to-pixdata'>assets/radio-mixed.svg</file>
-                <file preprocess='to-pixdata'>assets/pane-handle.png</file>
-                <file preprocess='to-pixdata'>assets/pane-handle@2.png</file>
                 <file>dist/gtk.css</file>
                 <file>dist/gtk-dark.css</file>
         </gresource>

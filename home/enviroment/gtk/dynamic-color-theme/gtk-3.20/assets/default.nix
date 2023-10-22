@@ -26,8 +26,6 @@
     ./menuitem-radio-mixed-selected-svg.nix
     ./menuitem-radio-mixed-svg.nix
     ./menuitem-radio-unchecked-svg.nix
-    ./pane-handle2-png.nix
-    ./pane-handle-png.nix
     ./pane-handle-svg.nix
     ./pane-handle-vertical-svg.nix
     ./radio-checked-insensitive-svg.nix
