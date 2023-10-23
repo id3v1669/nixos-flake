@@ -2,12 +2,13 @@
 {
   imports = [ 
     #(./. + "/hostsettings/${hostname}.nix")
-    ./dynamic-color-theme
+    #./dynamic-color-theme
+    ./dynamic-color-theme/assets
   ];
   gtk = {
     enable = true;
     theme = {
-      name = "dynamic-color-theme2";
+      name = "Dracula";
       #package = pkgs.dracula-theme;
     };
     iconTheme = {

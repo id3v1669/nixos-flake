@@ -113,9 +113,9 @@
         hostname = "nuc11ph";
         envir = "hypr";
         #winvar = true;
-        colorsvar = "spaceduck";
+        #colorsvar = "spaceduck";
         #colorsvar = "catppuccin-mocha";
-        #colorsvar = "catppuccin-frappe";
+        colorsvar = "catppuccin-frappe";
       };
       nuc11phhyprtbfhd = mkSyst {
         hostname = "nuc11ph";
