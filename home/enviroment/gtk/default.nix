@@ -2,8 +2,8 @@
 {
   imports = [ 
     #(./. + "/hostsettings/${hostname}.nix")
-    #./dynamic-color-theme
-    ./dynamic-color-theme/assets
+    ./dynamic-color-theme
+    #./dynamic-color-theme/assets
   ];
   gtk = {
     enable = true;

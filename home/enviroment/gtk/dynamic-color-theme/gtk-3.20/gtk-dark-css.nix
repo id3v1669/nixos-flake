@@ -1,6 +1,6 @@
 { config, lib, pkgs, uservars, ... }:
 {
-  home.file.".themes/dynamic-color-theme/gtk-3.20/gtk.css".text = ''
+  home.file.".themes/dynamic-color-theme/gtk-3.20/gtk-dark.css".text = ''
 /* GTK NAMED COLORS
    ----------------
    use responsibly! */
@@ -5819,7 +5819,7 @@ checkbutton.color-button {
   checkbutton.color-button.none > check {
     background-color: transparent;
     border-radius: 100px;
-    -gtk-icon-source: -gtk-icontheme("close-symbolic"); }
+    -gtk-icon-source: -gtk-icontheme(\"close-symbolic\"); }
 
 radiobutton.color-button > radio {
   -gtk-icon-source: none;
@@ -6397,6 +6397,6 @@ window.thunar toolbar > toolitem > widget > widget.linked.path-bar > button.path
   .caja-pathbar button:hover, .caja-pathbar button:hover label, .caja-pathbar button:active, .caja-pathbar button:active label, .caja-pathbar button:checked, .caja-pathbar button:checked label, .caja-pathbar button:backdrop:active, .caja-pathbar button:backdrop:active label, .caja-pathbar button:backdrop:checked, .caja-pathbar button:backdrop:checked label {
     color: #bd93f9; }
 
-/*# sourceMappingURL=gtk.css.map */
+/*# sourceMappingURL=gtk-dark.css.map */
   '';
 }
