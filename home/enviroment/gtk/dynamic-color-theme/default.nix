@@ -5,6 +5,7 @@
     ./gtk-3.0
     ./gtk-3.20
     ./gtk-4.0
+    ./gnome-shell
   ];
   home.file.".themes/dynamic-color-theme/index.theme".text = ''
 [Desktop Entry]

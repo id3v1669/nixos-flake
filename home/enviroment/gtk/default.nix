@@ -8,7 +8,7 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Dracula";
+      name = "Dracula2";
       #package = pkgs.dracula-theme;
     };
     iconTheme = {
