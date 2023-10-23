@@ -28,13 +28,13 @@
       (callPackage ./custom/discord-screenaudio-qt6.nix {})
       #(callPackage ./custom/discord-screenaudio-qt5.nix {})
       (callPackage ./custom/xwaylandvideobridge.nix {})
+      (callPackage ./custom/vesktop.nix {})
       qutebrowser
       protonup-qt
       libsForQt5.qt5ct
       qt6Packages.qt6ct
       inputs.eww-tray.packages.x86_64-linux.eww-wayland
       oomoxFull
-      customVesktop
   #     vesktop.overrideAttrs (oldAttrs: {
   #   version = "0.4.0";
   # src = fetchFromGitHub {
