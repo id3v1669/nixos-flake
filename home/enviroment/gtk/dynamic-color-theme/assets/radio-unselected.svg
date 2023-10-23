@@ -33,7 +33,7 @@
     <linearGradient
        id="linearGradient4159">
       <stop
-         style="stop-color:#ffffff;stop-opacity:0.50196081"
+         style="stop-color:#${config.colorScheme.colors.base06};stop-opacity:0.50196081"
          offset="0"
          id="stop4161" />
       <stop
@@ -43,7 +43,7 @@
     </linearGradient>
   </defs>
   <sodipodi:namedview
-     pagecolor="#ffffff"
+     pagecolor="#${config.colorScheme.colors.base06}"
      bordercolor="#666666"
      borderopacity="1"
      objecttolerance="10"

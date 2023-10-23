@@ -98,11 +98,11 @@
        id="linearGradient4929-9-0-03-2-2-2-3-9-7-3-7-7-2-6-3-4-7-3-3">
       <stop
          id="stop4931-7-3-3-9-6-4-6-1-9-5-2-4-0-3-4-8-9-6-8"
-         style="stop-color:#ffffff;stop-opacity:1"
+         style="stop-color:#${config.colorScheme.colors.base06};stop-opacity:1"
          offset="0" />
       <stop
          id="stop4933-0-1-2-7-9-6-0-7-8-0-4-1-4-6-6-1-0-2-4"
-         style="stop-color:#ffffff;stop-opacity:0"
+         style="stop-color:#${config.colorScheme.colors.base06};stop-opacity:0"
          offset="1" />
     </linearGradient>
     <linearGradient
@@ -130,7 +130,7 @@
        id="linearGradient4751-5-4-1-2-9-1-2-3-365-589-154-4-7-64-3-8-6-5-3">
       <stop
          id="stop9737-3-0-8-1-8-3-3-0"
-         style="stop-color:#ffffff;stop-opacity:1"
+         style="stop-color:#${config.colorScheme.colors.base06};stop-opacity:1"
          offset="0" />
       <stop
          id="stop9739-4-8-0-7-48-9-7-7"
@@ -180,19 +180,19 @@
        id="linearGradient4011-9-9-70-6-4">
       <stop
          offset="0"
-         style="stop-color:#ffffff;stop-opacity:1"
+         style="stop-color:#${config.colorScheme.colors.base06};stop-opacity:1"
          id="stop4013-5-4-3-4-3" />
       <stop
          offset="0.507761"
-         style="stop-color:#ffffff;stop-opacity:0.23529412"
+         style="stop-color:#${config.colorScheme.colors.base06};stop-opacity:0.23529412"
          id="stop4015-1-5-70-6-7" />
       <stop
          offset="0.83456558"
-         style="stop-color:#ffffff;stop-opacity:0.15686275"
+         style="stop-color:#${config.colorScheme.colors.base06};stop-opacity:0.15686275"
          id="stop4017-7-0-13-7-0" />
       <stop
          offset="1"
-         style="stop-color:#ffffff;stop-opacity:0.39215687"
+         style="stop-color:#${config.colorScheme.colors.base06};stop-opacity:0.39215687"
          id="stop4019-1-12-7-5-0" />
     </linearGradient>
     <linearGradient
@@ -309,7 +309,7 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#${config.colorScheme.colors.base06}"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0.0"

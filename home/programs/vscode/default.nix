@@ -9,7 +9,7 @@
       "window.titleBarStyle" = "custom";
       "window.autoDetectColorScheme" = false;
       "editor.tokenColorCustomizations" = {
-        "comments" = "#${config.colorScheme.colors.base0E}";
+        "comments" = "#${config.colorScheme.colors.base05}";
       };
       "workbench.colorCustomizations" = {
     "foreground" = "#${config.colorScheme.colors.base05}";
@@ -154,13 +154,13 @@
     "terminal.ansiBrightBlack" = "#${config.colorScheme.colors.base00}";
     "terminal.ansiBrightBlue" = "#${config.colorScheme.colors.base0C}";
     "terminal.ansiBrightCyan" = "#${config.colorScheme.colors.base0D}";
-    "terminal.ansiBrightGreen" = "#${config.colorScheme.colors.base0E}";
+    "terminal.ansiBrightGreen" = "#${config.colorScheme.colors.base05}";
     "terminal.ansiBrightMagenta" = "#${config.colorScheme.colors.base0B}";
     "terminal.ansiBrightRed" = "#${config.colorScheme.colors.base09}";
     "terminal.ansiBrightWhite" = "#${config.colorScheme.colors.base05}";
     "terminal.ansiBrightYellow" = "#${config.colorScheme.colors.base0F}";
     "terminal.ansiCyan" = "#${config.colorScheme.colors.base0D}";
-    "terminal.ansiGreen" = "#${config.colorScheme.colors.base0E}";
+    "terminal.ansiGreen" = "#${config.colorScheme.colors.base05}";
     "terminal.ansiMagenta" = "#${config.colorScheme.colors.base0B}";
     "terminal.ansiRed" = "#${config.colorScheme.colors.base09}";
     "terminal.ansiWhite" = "#${config.colorScheme.colors.base05}";
@@ -203,7 +203,7 @@
     "notificationCenterHeader.foreground" = "#${config.colorScheme.colors.base05}";
     "notificationCenterHeader.background" = "#${config.colorScheme.colors.base01}";
     "notifications.border" = "#${config.colorScheme.colors.base03}";
-    "gitDecoration.addedResourceForeground" = "#${config.colorScheme.colors.base0E}";
+    "gitDecoration.addedResourceForeground" = "#${config.colorScheme.colors.base05}";
     "gitDecoration.conflictingResourceForeground" = "#${config.colorScheme.colors.base0D}";
     "gitDecoration.deletedResourceForeground" = "#${config.colorScheme.colors.base09}";
     "gitDecoration.ignoredResourceForeground" = "#${config.colorScheme.colors.base07}";
@@ -211,7 +211,7 @@
     "gitDecoration.stageDeletedResourceForeground" = "#${config.colorScheme.colors.base09}";
     "gitDecoration.stageModifiedResourceForeground" = "#${config.colorScheme.colors.base0A}";
     "gitDecoration.submoduleResourceForeground" = "#${config.colorScheme.colors.base0D}";
-    "gitDecoration.untrackedResourceForeground" = "#${config.colorScheme.colors.base0E}";
+    "gitDecoration.untrackedResourceForeground" = "#${config.colorScheme.colors.base05}";
     "editorMarkerNavigation.background" = "#${config.colorScheme.colors.base00}";
     "editorMarkerNavigationError.background" = "#${config.colorScheme.colors.base09}";
     "editorMarkerNavigationWarning.background" = "#cca700";

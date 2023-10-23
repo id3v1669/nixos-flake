@@ -18,7 +18,7 @@
           green = "#${config.colorScheme.colors.base0B}";
           yellow = "#${config.colorScheme.colors.base0F}";
           blue = "#${config.colorScheme.colors.base0D}";
-          magenta = "#${config.colorScheme.colors.base0E}";
+          magenta = "#${config.colorScheme.colors.base05}";
           cyan = "#${config.colorScheme.colors.base0C}";
           white = "#${config.colorScheme.colors.base06}";
         };
@@ -28,7 +28,7 @@
           green = "#${config.colorScheme.colors.base0B}";
           yellow = "#${config.colorScheme.colors.base0F}";
           blue = "#${config.colorScheme.colors.base0D}";
-          magenta = "#${config.colorScheme.colors.base0E}";
+          magenta = "#${config.colorScheme.colors.base05}";
           cyan = "#${config.colorScheme.colors.base0C}";
           white = "#${config.colorScheme.colors.base07}";
         };

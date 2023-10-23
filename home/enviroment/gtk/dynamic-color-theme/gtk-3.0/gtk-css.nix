@@ -2,27 +2,28 @@
 {
   home.file.".themes/dynamic-colors-theme/gtk-3.0/gtk.css".text = ''
 /* Ant palet */
-@define-color lime #50fa7a;
-@define-color cyan #8be9fd;
-@define-color yellow #f1fa8c;
-@define-color orange #ffb86c;
-@define-color purple #bd93f9;
-@define-color red #ff5555;
+@define-color lime #${config.colorScheme.colors.base0B};
+@define-color cyan #${config.colorScheme.colors.base0C};
+@define-color yellow #${config.colorScheme.colors.base0A};
+@define-color orange ${config.colorScheme.colors.base09};
+@define-color purple #${config.colorScheme.colors.base0D};
+@define-color red #${config.colorScheme.colors.base08};
 
 /* default color scheme */
-@define-color bg_color #1e1f29;
-@define-color fg_color #f8f8f2;
-@define-color base_color #282a36;
-@define-color text_color #f8f8f2;
+@define-color bg_color #${config.colorScheme.colors.base00};
+@define-color fg_color #${config.colorScheme.colors.base06};
+@define-color base_color #${config.colorScheme.colors.base01};
+@define-color text_color #${config.colorScheme.colors.base06};
 @define-color borders transparent;
-@define-color header_bg_color #1e1f29;
-@define-color header_fg_color #f8f8f2;
+@define-color header_bg_color #${config.colorScheme.colors.base00};
+@define-color header_fg_color #${config.colorScheme.colors.base06};
 /*@define-color selected_bg_color #00b0ff;*/
-@define-color selected_bg_color #ff79c6;
-/*@define-color selected_bg_color #33CBBF;
-*/@define-color selected_fg_color #f8f8f8;
-@define-color tooltip_bg_color #f8f8f8;
-@define-color tooltip_fg_color #2d2d2d;
+@define-color selected_bg_color #${config.colorScheme.colors.base02};
+/*@define-color selected_bg_color #${config.colorScheme.colors.base0C};
+*/
+@define-color selected_fg_color #${config.colorScheme.colors.base06};
+@define-color tooltip_bg_color #${config.colorScheme.colors.base06};
+@define-color tooltip_fg_color #${config.colorScheme.colors.base02};
 
 /* colormap actually used by the theme, to be overridden in other css files */
 @define-color theme_bg_color @bg_color;
@@ -40,18 +41,18 @@
 
 /* misc colors used by gtk+ */
 @define-color info_fg_color #31363D;
-@define-color info_bg_color #f3f3f3;
-@define-color warning_fg_color #fefefe;
+@define-color info_bg_color #${config.colorScheme.colors.base06};
+@define-color warning_fg_color #${config.colorScheme.colors.base06};
 @define-color warning_bg_color @orange;
-@define-color question_fg_color #fefefe;
+@define-color question_fg_color #${config.colorScheme.colors.base06};
 @define-color question_bg_color @cyan;
-@define-color error_fg_color #fefefe;
+@define-color error_fg_color #${config.colorScheme.colors.base06};
 @define-color error_bg_color @red;
-@define-color link_color #df253f;
-@define-color success_color #53a93f;
-@define-color warning_color #f57900;
+@define-color link_color #${config.colorScheme.colors.base0C};
+@define-color success_color #${config.colorScheme.colors.base0B};
+@define-color warning_color #${config.colorScheme.colors.base0A};
 @define-color error_color @red;
-@define-color light_grey #dedede;
+@define-color light_grey #${config.colorScheme.colors.base04};
 
 /* widget colors */
 @define-color button_bg_color @theme_base_color;

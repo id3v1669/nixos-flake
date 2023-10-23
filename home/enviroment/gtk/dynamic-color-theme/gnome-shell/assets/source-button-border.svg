@@ -64,7 +64,7 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="opacity:0.8;fill:#ffffff;fill-opacity:1;stroke-width:0.43599999;stroke-miterlimit:4;stroke-dasharray:none"
+       style="opacity:0.8;fill:#${config.colorScheme.colors.base06};fill-opacity:1;stroke-width:0.43599999;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect3796"
        width="19"
        height="2"

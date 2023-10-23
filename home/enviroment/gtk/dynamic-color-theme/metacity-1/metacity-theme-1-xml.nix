@@ -9,11 +9,11 @@
 
 
 <!-- CONSTANTS -->
-<constant name="C_titlebar" value="#1e1f29" />
-<constant name="C_titlebar_unfocused" value="#1e1f29" />
-<constant name="C_border_focused" value="#1e1f29" />
-<constant name="C_border_unfocused" value="#1e1f29" />
-<constant name="C_title_focused" value="#f8f8f2" />
+<constant name="C_titlebar" value="#${config.colorScheme.colors.base00}" />
+<constant name="C_titlebar_unfocused" value="#${config.colorScheme.colors.base00}" />
+<constant name="C_border_focused" value="#${config.colorScheme.colors.base00}" />
+<constant name="C_border_unfocused" value="#${config.colorScheme.colors.base00}" />
+<constant name="C_title_focused" value="#${config.colorScheme.colors.base06}" />
 <constant name="C_title_unfocused" value="#93979f" />
 
 <constant name="C_wm_button_background" value="#fc2" />
