@@ -1,4 +1,4 @@
-{ hyprland, inputs, config, lib, pkgs, curversion, uservars, envir, hostname, colorsvar, gpuvar,  ... }:
+{ hyprland, inputs, config, lib, pkgs, curversion, uservars, envir, hostname, colorsvar, gpuvar, ... }:
 {
   imports = [
     ./programs
@@ -34,6 +34,16 @@
       qt6Packages.qt6ct
       inputs.eww-tray.packages.x86_64-linux.eww-wayland
       oomoxFull
+      customVesktop
+  #     vesktop.overrideAttrs (oldAttrs: {
+  #   version = "0.4.0";
+  # src = fetchFromGitHub {
+  #   owner = "Vencord";
+  #   repo = "Vesktop";
+  #   rev = "cac307d1fc3a8d57bc3bbc826697e07402756c79";
+  #   sha256 = "sha256-A+QXG8Lsyf/WDZQzgDHWxGURyNIIg7XQQ2mxxUrk++k=";
+  # };
+  # })
       #dracula-theme
 
       #screenshots
