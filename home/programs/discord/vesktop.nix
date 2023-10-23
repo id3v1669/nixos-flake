@@ -1,6 +1,7 @@
 { lib
 , stdenv
 , stdenvNoCC
+, gcc13Stdenv
 , fetchFromGitHub
 , substituteAll
 , makeWrapper
@@ -88,11 +89,14 @@ stdenv.mkDerivation rec {
       -c.electronVersion=${electron.version}
   '';
 
-  # this is consistent with other nixpkgs electron packages and upstream, as far as I am aware
-  # yes, upstream really packages it as "vesktop" but uses "vencorddesktop" file names
+
   installPhase =
     let
-      libPath = lib.makeLibraryPath [ pipewire ];
+      libPath = lib.makeLibraryPath [
+        pipewire
+        pipewire.dev
+        gcc13Stdenv.cc.cc.lib
+      ];
     in
     ''
       runHook preInstall

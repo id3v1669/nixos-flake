@@ -22,28 +22,14 @@
     homeDirectory = "/home/${uservars.name}";
     packages = (with pkgs; [
       #tests
-      arrpc #test for rpc 
+      #arrpc #test for rpc 
       webcord
-      #webcord-vencord #temp to edit css for discord-screenaudio
-      (callPackage ./custom/discord-screenaudio-qt6.nix {})
-      #(callPackage ./custom/discord-screenaudio-qt5.nix {})
-      (callPackage ./custom/xwaylandvideobridge.nix {})
-      (callPackage ./custom/vesktop.nix {})
+      (callPackage ./programs/discord/vesktop.nix {}) #later replace with official repo when 0.4.0 upstreamed
       qutebrowser
       protonup-qt
       libsForQt5.qt5ct
       qt6Packages.qt6ct
-      inputs.eww-tray.packages.x86_64-linux.eww-wayland
       oomoxFull
-  #     vesktop.overrideAttrs (oldAttrs: {
-  #   version = "0.4.0";
-  # src = fetchFromGitHub {
-  #   owner = "Vencord";
-  #   repo = "Vesktop";
-  #   rev = "cac307d1fc3a8d57bc3bbc826697e07402756c79";
-  #   sha256 = "sha256-A+QXG8Lsyf/WDZQzgDHWxGURyNIIg7XQQ2mxxUrk++k=";
-  # };
-  # })
       #dracula-theme
 
       #screenshots
@@ -78,6 +64,7 @@
       #iwd
 
       #vid photo etc
+      (callPackage ./programs/other/xwaylandvideobridge.nix {})
       ffmpeg
       vlc
       nomacs
@@ -144,6 +131,7 @@
       github-desktop
       openrgb-with-all-plugins
       bluez
+      inputs.eww-tray.packages.x86_64-linux.eww-wayland
 
       #other cli utils
       kitty #may be ported to hm 

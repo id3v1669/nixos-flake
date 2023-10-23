@@ -3,7 +3,7 @@
   imports = [
     #./assets
   ];
-  home.file.".config/VencordDesktop/VencordDesktop/usertheme.css".text = ''
+  home.file.".config/VencordDesktop/VencordDesktop/themes/usertheme.css".text = ''
 .theme-dark {
   --header-primary: #${config.colorScheme.colors.base06};
   --header-secondary: #${config.colorScheme.colors.base06};
@@ -13,7 +13,7 @@
   --text-link-low-saturation: #ff0000;
   --text-positive: #${config.colorScheme.colors.base0B};
   --text-warning: #${config.colorScheme.colors.base0A};
-  --text-danger: #e33400;
+  --text-danger: #${config.colorScheme.colors.base08};
   --text-brand: #${config.colorScheme.colors.base0C};
   --background-primary: #${config.colorScheme.colors.base01};
   --background-secondary: #${config.colorScheme.colors.base01};
@@ -42,9 +42,9 @@
   --status-positive-text: #${config.colorScheme.colors.base06};
   --status-warning-background: #${config.colorScheme.colors.base09};
   --status-warning-text: #ff0009;
-  --status-danger-background: #ff0010;
+  --status-danger-background: ${config.colorScheme.colors.base08};
   --status-danger-text: #ff0011;
-  --status-danger: #e33400;
+  --status-danger: #${config.colorScheme.colors.base08};
   --status-positive: #ff0012;
   --status-warning: #ff0013;
 
@@ -62,7 +62,7 @@
   --premium-perk-pink: #ff0018;
   --premium-perk-orange: #ff0019;
 
-  --button-danger-background: #e33400;
+  --button-danger-background: #${config.colorScheme.colors.base08};
   --button-danger-background-hover: #${config.colorScheme.colors.base09};
   --button-danger-background-active: #ff0000;
   --button-danger-background-disabled: #ff0000;
@@ -75,8 +75,8 @@
   --button-secondary-background-active: #ff0000;
   --button-secondary-background-disabled: #ff0000;
 
-  --button-outline-danger-text: #e33400;
-  --button-outline-danger-border: #e33400;
+  --button-outline-danger-text: #${config.colorScheme.colors.base08};
+  --button-outline-danger-border: #${config.colorScheme.colors.base08};
   --button-outline-danger-background: #ff0000;
   --button-outline-danger-background-hover: transparent;
   --button-outline-danger-text-hover: #${config.colorScheme.colors.base09};
@@ -151,7 +151,7 @@
   --interactive-muted: #${config.colorScheme.colors.base03};
   --interactive-hover: #${config.colorScheme.colors.base02};
   --interactive-active: #${config.colorScheme.colors.base03};
-  --primary-200: #d33682;
+  --primary-200: #${config.colorScheme.colors.base0E};
 }
 
 
