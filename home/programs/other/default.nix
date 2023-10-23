@@ -1,13 +1,10 @@
-{ config, lib, pkgs, envir, anyrun, ... }: 
+{ config, lib, pkgs, envir, ... }: 
 {
 
   #services.easyeffects = { crashes regularly disabled for now
   #  enable = true;
   #  #preset = ??
   #};
-  imports = [
-    anyrun.homeManagerModules.default
-  ];
   services = {} // lib.optionalAttrs (envir != "gnome") {
     kdeconnect = {
       enable = true;
@@ -20,7 +17,6 @@
   };
   programs = {
     direnv.enable = true;
-    anyrun.enable = true;
     java = {
       enable = true;
       package = pkgs.jdk20;
