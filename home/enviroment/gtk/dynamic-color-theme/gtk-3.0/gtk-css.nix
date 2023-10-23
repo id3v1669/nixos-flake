@@ -1,6 +1,6 @@
 {config, lib, pkgs, ...}:
 {
-  home.file.".themes/dynamic-colors-theme/gtk-3.0/gtk.css".text = ''
+  home.file.".themes/dynamic-color-theme/gtk-3.0/gtk.css".text = ''
 /* Ant palet */
 @define-color lime #${config.colorScheme.colors.base0B};
 @define-color cyan #${config.colorScheme.colors.base0C};
@@ -129,7 +129,7 @@
 @import url("apps/unity.css");
 @import url("apps/mate-applications.css");
   '';
-  home.file.".themes/dynamic-colors-theme/gtk-3.0/gtk-widgets-assets.css".text = ''
+  home.file.".themes/dynamic-color-theme/gtk-3.0/gtk-widgets-assets.css".text = ''
 .selection-mode.titlebar .titlebutton.minimize,
 .titlebar .titlebutton.minimize {
     color: transparent;
@@ -424,7 +424,7 @@ GtkSwitch.slider:active:insensitive {
     background: -gtk-scaled(url("../assets/scale-slider-insensitive.png"),url("../assets/scale-slider-insensitive@2.png"));
 }
   '';
-  home.file.".themes/dynamic-colors-theme/gtk-3.0/gtk-widgets.css".text = ''
+  home.file.".themes/dynamic-color-theme/gtk-3.0/gtk-widgets.css".text = ''
 
 /* default */
 * {

@@ -23,7 +23,8 @@
     packages = (with pkgs; [
       #tests
       arrpc #test for rpc 
-      webcord-vencord #temp to edit css for discord-screenaudio
+      webcord
+      #webcord-vencord #temp to edit css for discord-screenaudio
       (callPackage ./custom/discord-screenaudio-qt6.nix {})
       #(callPackage ./custom/discord-screenaudio-qt5.nix {})
       (callPackage ./custom/xwaylandvideobridge.nix {})

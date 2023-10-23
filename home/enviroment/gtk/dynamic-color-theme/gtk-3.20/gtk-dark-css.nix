@@ -5819,7 +5819,7 @@ checkbutton.color-button {
   checkbutton.color-button.none > check {
     background-color: transparent;
     border-radius: 100px;
-    -gtk-icon-source: -gtk-icontheme(\"close-symbolic\"); }
+    -gtk-icon-source: -gtk-icontheme("close-symbolic"); }
 
 radiobutton.color-button > radio {
   -gtk-icon-source: none;
