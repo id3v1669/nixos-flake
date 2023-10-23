@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
     owner = "Vencord";
     repo = "Vesktop";
     rev = "v${version}";
-    sha256 = "sha256-Njs3tACxUydolYUtS/q2lITIQnUBFXVXWZEfQ66HpPM=";
+    sha256 = "sha256-c/Z1BX3LnxNYl14FnUpR3e7U5/5RuseIkZP67bPCsV8=";
   };
 
   pnpm-deps = stdenvNoCC.mkDerivation {
@@ -51,7 +51,7 @@ stdenv.mkDerivation rec {
 
     dontFixup = true;
     outputHashMode = "recursive";
-    outputHash = "sha256-vInaSLGahRUgvwAeUcI+oV84L+tgNRCmfFpE0aUD4X4=";
+    outputHash = "sha256-lTeL+8QujWzx4ys2T+G55NUP51c8i5lB1vAkUtzkJlA=";
   };
 
   nativeBuildInputs = [
