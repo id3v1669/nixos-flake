@@ -2,5 +2,7 @@
 {
   imports = [
 		./gtk-css.nix
+		./widgets
+		./apps
 	];
 }

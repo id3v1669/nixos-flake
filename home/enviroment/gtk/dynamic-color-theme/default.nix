@@ -2,7 +2,7 @@
 {
   imports = [
     ./assets
-    #./gtk-3.0
+    ./gtk-3.0
     #./gtk-3.20
   ];
   home.file.".themes/dynamic-color-theme/index.theme".text = ''
