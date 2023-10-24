@@ -54,11 +54,17 @@ preload = ${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
 preload = ${config.home.homeDirectory}/Pictures/Wallpapers/furry2.jpg
 preload = ${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
 preload = ${config.home.homeDirectory}/Pictures/Wallpapers/gray.jpg
+#preload = ${config.home.homeDirectory}/back-test.svg
+preload = ${config.home.homeDirectory}/back-test.ppm
 
 #wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
 #wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
-wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/rebecca2.jpg
-wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
+#wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/rebecca2.jpg
+#wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
+#wallpaper = DP-3,${config.home.homeDirectory}/back-test.svg
+#wallpaper = DP-4,${config.home.homeDirectory}/back-test.svg
+#wallpaper = DP-3,${config.home.homeDirectory}/back-test.ppm
+wallpaper = DP-4,${config.home.homeDirectory}/back-test.ppm
 
     '';
   };
