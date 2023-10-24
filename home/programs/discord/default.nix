@@ -43,7 +43,7 @@
   --status-warning-background: #${config.colorScheme.colors.base09};
   --status-warning-text: #ff0009;
   --status-danger-background: ${config.colorScheme.colors.base08};
-  --status-danger-text: #ff0011;
+  --status-danger-text: #${config.colorScheme.colors.base06};
   --status-danger: #${config.colorScheme.colors.base08};
   --status-positive: #ff0012;
   --status-warning: #ff0013;
