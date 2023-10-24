@@ -25,8 +25,6 @@
       #arrpc #test for rpc 
       webcord
       (callPackage ./programs/discord/vesktop.nix {}) #later replace with official repo when 0.4.0 upstreamed
-      #(callPackage ./enviroment/gtk/hostsettings/alexpc.nix {})
-      (callPackage ./enviroment/gtk/hostsettings/nuc11ph.nix {})
       qutebrowser
       protonup-qt
       libsForQt5.qt5ct
@@ -184,6 +182,8 @@
       gimp
     ]) ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [ 
       egl-wayland #needed for vms on nvidia  hw
+    ]) ++ lib.lists.optionals (hostname == "nuc11ph") (with pkgs; [
+      (callPackage ./programs/other/tlauncher.nix {})
     ]);
   };
 }

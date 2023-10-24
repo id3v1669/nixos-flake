@@ -33,17 +33,14 @@ stdenv.mkDerivation rec {
       --prefix PATH : ${lib.makeBinPath runtimeDeps}
   '';
 
-desktopItems = [
-  (makeDesktopItem {
-    name = "tlauncher";
-    exec = "tlauncher";
-    icon = fetchurl {
-      url = "https://styles.redditmedia.com/t5_2o8oax/styles/communityIcon_gu5r5v8eaiq51.png";
-      sha256 = "sha256-ma8zxaUxdAw5VYfOK8i8s1kjwMgs80Eomq43Cb0HZWw=";
-    };
-    comment = "Minecraft launcher";
-    desktopName = "TLauncher";
-    categories = "Game";
+  desktopItems = [
+    (makeDesktopItem {
+      name = "tlauncher";
+      desktopName = "TLauncher";
+      exec = "tlauncher";
+      inherit icon;
+      comment = "Minecraft launcher";
+      keywords = [ "java" "minecraft" "tlauncher" ];
     })
   ];
 }
