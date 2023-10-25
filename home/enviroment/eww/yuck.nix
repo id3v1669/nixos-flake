@@ -210,7 +210,7 @@
   )
 )
 
-(defwindow calendar-poppup-window
+(defwindow calendar-popup-window
   :monitor 0
   :stacking "overlay"
   :exclusive false

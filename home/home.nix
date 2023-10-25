@@ -28,6 +28,9 @@
       protonup-qt
       libsForQt5.qt5ct
       qt6Packages.qt6ct
+      qt6.qtbase
+      qt6.qtwebengine
+      qt6.qtwayland
 
       #screenshots
       grim
@@ -157,6 +160,7 @@
       libpng
       libnotify #for dunst or mako
       mesa
+      vulkan-headers
 
       #other
       dconf

@@ -8,7 +8,7 @@
 
 eww daemon
 eww open popup-power-window
-eww open calendar-poppup-window
+eww open calendar-popup-window
 eww open bar
 blueman-applet &
 nm-applet &

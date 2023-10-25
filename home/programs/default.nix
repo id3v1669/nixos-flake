@@ -5,6 +5,6 @@
     ./fish
     ./firefox
     ./other
-    ./discord
+    #./discord
   ];
 }

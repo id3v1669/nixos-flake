@@ -7,7 +7,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.x86_64-linux.hyprland;
-    systemdIntegration = true;
+    systemd.enable = true;
     xwayland.enable = true;
     settings = {
       general = {
@@ -61,6 +61,8 @@
 #------------------env vars-----------------------
 exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=Hyprland
+#exec-once = dbus-update-activation-environment --systemd --all
+#exec-once = systemctl --user start hyprland-session.target
 #-------------------------------------------------
 
 exec-once = hyprctl setcursor Bibata-Modern-Classic 24
