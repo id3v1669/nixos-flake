@@ -17,13 +17,15 @@
 }:
 stdenv.mkDerivation rec {
   pname = "vesktop";
-  version = "0.4.0";
+  version = "0.4.1"; #white screen
+  #version = "0.4.0";
 
   src = fetchFromGitHub {
     owner = "Vencord";
     repo = "Vesktop";
     rev = "v${version}";
-    sha256 = "sha256-c/Z1BX3LnxNYl14FnUpR3e7U5/5RuseIkZP67bPCsV8=";
+    sha256 = "sha256-jSGad3qMhAdiGdwomQO6BIyHIbKrGLRGniGrJN97gN8="; # 0.4.1
+    #sha256 = "sha256-c/Z1BX3LnxNYl14FnUpR3e7U5/5RuseIkZP67bPCsV8="; #0.4.0
   };
 
   pnpm-deps = stdenvNoCC.mkDerivation {
@@ -36,7 +38,6 @@ stdenv.mkDerivation rec {
       nodePackages.pnpm
     ];
 
-    # https://github.com/NixOS/nixpkgs/blob/763e59ffedb5c25774387bf99bc725df5df82d10/pkgs/applications/misc/pot/default.nix#L56
     installPhase = ''
       export HOME=$(mktemp -d)
 
@@ -82,7 +83,6 @@ stdenv.mkDerivation rec {
 
   postBuild = ''
     pnpm build
-    # using `pnpm exec` here apparently makes it ignore ELECTRON_SKIP_BINARY_DOWNLOAD
     ./node_modules/.bin/electron-builder \
       --dir \
       -c.electronDist=${electron}/libexec/electron \
@@ -94,7 +94,6 @@ stdenv.mkDerivation rec {
     let
       libPath = lib.makeLibraryPath [
         pipewire
-        pipewire.dev
         gcc13Stdenv.cc.cc.lib
       ];
     in
@@ -114,10 +113,11 @@ stdenv.mkDerivation rec {
       makeWrapper ${electron}/bin/electron $out/bin/vencorddesktop \
         --prefix LD_LIBRARY_PATH : ${libPath} \
         --add-flags $out/opt/Vesktop/resources/app.asar \
-        --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
+       
 
       runHook postInstall
     '';
+    # --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
 
   desktopItems = [
     (makeDesktopItem {
@@ -125,9 +125,7 @@ stdenv.mkDerivation rec {
       desktopName = "Vesktop";
       exec = "vencorddesktop %U";
       icon = "vencorddesktop";
-      startupWMClass = "VencordDesktop";
-      genericName = "Internet Messenger";
-      keywords = [ "discord" "vencord" "electron" "chat" ];
+      keywords = [ "discord" "vencord" "electron" ];
     })
   ];
 }

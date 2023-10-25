@@ -24,13 +24,10 @@
       #tests
       #arrpc #test for rpc 
       webcord
-      (callPackage ./programs/discord/vesktop.nix {}) #later replace with official repo when 0.4.0 upstreamed
       qutebrowser
       protonup-qt
       libsForQt5.qt5ct
       qt6Packages.qt6ct
-      oomoxFull
-      #dracula-theme
 
       #screenshots
       grim
@@ -76,6 +73,7 @@
       #chat
       telegram-desktop
       whatsapp-for-linux
+      (callPackage ./programs/discord/vesktop.nix {}) #later replace with official repo when 0.4.0 upstreamed
       
       #security
       openssl
@@ -156,12 +154,6 @@
 
       #libs
       gtk3
-      #jdk20
-      #libsForQt5.qt5.qtwayland
-      #libsForQt5.qt5ct
-      #qt6Packages.qt6ct
-      #qt6.qtwayland
-      #qt6.qt5compat
       libpng
       libnotify #for dunst or mako
       mesa
