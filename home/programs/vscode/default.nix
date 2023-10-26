@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }: { 
-  nixpkgs.config.vscode-fhs.commandLineArgs = "--enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+  nixpkgs.config.vscode.commandLineArgs = "--enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
   programs.vscode = {
     enable = true;
     package = pkgs.vscode-fhs;
@@ -278,7 +278,7 @@
       jnoortheen.nix-ide
       skyapps.fish-vscode
       ms-dotnettools.csharp
-      ms-python.python
+      #ms-python.python
     ];
   };
 }

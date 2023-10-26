@@ -18,12 +18,16 @@
 stdenv.mkDerivation rec {
   pname = "vesktop";
   version = "0.4.1";
+  #version = "0.4.0";
 
   src = fetchFromGitHub {
     owner = "Vencord";
     repo = "Vesktop";
     rev = "v${version}";
-    sha256 = "sha256-jSGad3qMhAdiGdwomQO6BIyHIbKrGLRGniGrJN97gN8=";
+    #rev = "19c3112d52f848494f60d2c1fa6d146be3f72b08"; #com1 26/10
+    #sha256 = "sha256-Y/r6MBXzRIB4vYRx6LpB27ZP+KHlS5rWzDEQZ3iVKew="; #com1 26/10
+    #sha256 = "sha256-c/Z1BX3LnxNYl14FnUpR3e7U5/5RuseIkZP67bPCsV8="; #0.4.0
+    sha256 = "sha256-jSGad3qMhAdiGdwomQO6BIyHIbKrGLRGniGrJN97gN8="; #0.4.1
   };
 
   pnpm-deps = stdenvNoCC.mkDerivation {
@@ -109,7 +113,8 @@ stdenv.mkDerivation rec {
 
       makeWrapper '${lib.getExe electron}' $out/bin/vencorddesktop \
         --prefix LD_LIBRARY_PATH : ${libPath} \
-        --add-flags $out/opt/Vesktop/resources/app.asar
+        --add-flags $out/opt/Vesktop/resources/app.asar \
+        --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
 
       runHook postInstall
     '';

@@ -28,9 +28,8 @@
       protonup-qt
       libsForQt5.qt5ct
       qt6Packages.qt6ct
-      qt6.qtbase
-      qt6.qtwebengine
-      qt6.qtwayland
+
+      alacritty
 
       #screenshots
       grim
@@ -76,7 +75,7 @@
       #chat
       telegram-desktop
       whatsapp-for-linux
-      (callPackage ./programs/discord/vesktop.nix {}) #later replace with official repo when 0.4.0 upstreamed
+      #(callPackage ./programs/discord/vesktop.nix {}) #broken 0.4.1
       
       #security
       openssl
@@ -152,18 +151,18 @@
       cargo-binutils
       xdg-utils
       
-      #nix utils
+    #   #nix utils
       nix-prefetch-git
 
-      #libs
+    #   #libs
       gtk3
       libpng
       libnotify #for dunst or mako
       mesa
       vulkan-headers
 
-      #other
-      dconf
+    #   #other
+       dconf
     ]) ++ lib.lists.optionals (envir == "gnome") (with pkgs;[
       gnomeExtensions.appindicator
       gnomeExtensions.notification-banner-reloaded
@@ -179,7 +178,7 @@
     ]) ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [ 
       egl-wayland #needed for vms on nvidia  hw
     ]) ++ lib.lists.optionals (hostname == "nuc11ph") (with pkgs; [
-      (callPackage ./programs/other/tlauncher.nix {})
+      #(callPackage ./programs/other/tlauncher.nix {})
     ]);
   };
 }

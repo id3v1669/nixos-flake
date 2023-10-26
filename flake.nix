@@ -78,7 +78,8 @@
       config = {
         allowUnfree = true;
       };
-      overlays = [
+      overlays = 
+      [
         nur.overlay
         nixmox.overlay
         #(import ./scripts/flatpak.nix)
@@ -121,7 +122,7 @@
         hostname = "nuc11ph";
         envir = "hypr";
         #winvar = true;
-        colorsvar = "spaceduck";
+        colorsvar = "catppuccin-frappe";
         gpuvar = {
           type = "nvidia";
           tech = "prime";
