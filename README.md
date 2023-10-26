@@ -55,4 +55,4 @@ Latest commit to use: 0f55436e3ebf31ed42e70d31737c6696d19559a8
 
 OpenRGB Module is broken and installed manually
 
-discord-screenaudio abandoned for now as vesktop now has screenaudio
+vesktop broken since 0.4.1 
