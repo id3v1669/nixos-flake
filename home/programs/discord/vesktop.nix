@@ -14,11 +14,14 @@
 , jq
 , moreutils
 , nodePackages
+, pkgs
 }:
+let
+  vencord = pkgs.callPackage ./vencord.nix {};
+in
 stdenv.mkDerivation rec {
   pname = "vesktop";
-  version = "0.4.1";
-  #version = "0.4.0";
+  version = "0.4.2";
 
   src = fetchFromGitHub {
     owner = "Vencord";
@@ -27,7 +30,8 @@ stdenv.mkDerivation rec {
     #rev = "19c3112d52f848494f60d2c1fa6d146be3f72b08"; #com1 26/10
     #sha256 = "sha256-Y/r6MBXzRIB4vYRx6LpB27ZP+KHlS5rWzDEQZ3iVKew="; #com1 26/10
     #sha256 = "sha256-c/Z1BX3LnxNYl14FnUpR3e7U5/5RuseIkZP67bPCsV8="; #0.4.0
-    sha256 = "sha256-jSGad3qMhAdiGdwomQO6BIyHIbKrGLRGniGrJN97gN8="; #0.4.1
+    #sha256 = "sha256-jSGad3qMhAdiGdwomQO6BIyHIbKrGLRGniGrJN97gN8="; #0.4.1
+    sha256 = "sha256-elgoX8z8q0+7uUia9gbcCmpDg+qYRWWUxdRuNV53Puw="; #0.4.2
   };
 
   pnpm-deps = stdenvNoCC.mkDerivation {
@@ -55,7 +59,9 @@ stdenv.mkDerivation rec {
 
     dontFixup = true;
     outputHashMode = "recursive";
-    outputHash = "sha256-lTeL+8QujWzx4ys2T+G55NUP51c8i5lB1vAkUtzkJlA=";
+    #outputHash = "sha256-lTeL+8QujWzx4ys2T+G55NUP51c8i5lB1vAkUtzkJlA="; #0.4.0/1
+    outputHash = "sha256-KDJ8QmpwGb2lOdwWEl5y62pJiqEvpI59StfQZrN1PPE="; #0.4.2
+    
   };
 
   nativeBuildInputs = [

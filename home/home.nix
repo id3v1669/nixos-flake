@@ -75,7 +75,7 @@
       #chat
       telegram-desktop
       whatsapp-for-linux
-      #(callPackage ./programs/discord/vesktop.nix {}) #broken 0.4.1
+      (callPackage ./programs/discord/vesktop.nix {}) #broken 0.4.1
       
       #security
       openssl
