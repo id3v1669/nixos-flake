@@ -55,4 +55,4 @@ Latest commit to use: 0f55436e3ebf31ed42e70d31737c6696d19559a8
 
 OpenRGB Module is broken and installed manually
 
-vesktop broken since 0.4.1 
+vesktop(0.4.2) fixed with updating vencord to 1.6.0
