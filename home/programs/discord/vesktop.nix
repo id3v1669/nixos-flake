@@ -17,7 +17,14 @@
 , pkgs
 }:
 let
-  vencord = pkgs.callPackage ./vencord.nix {};
+  vencord = vencord.overrideAttrs (old: {
+    src = fetchFromGitHub {
+      owner = "Vendicated";
+      repo = "Vencord";
+      rev = "v1.6.0";
+      hash = "sha256-t4+8ybPzqcCtTSukBBgvbD7HiKG4K51WPVnJg0RQbs8=";
+    };
+  });
 in
 stdenv.mkDerivation rec {
   pname = "vesktop";
@@ -27,10 +34,6 @@ stdenv.mkDerivation rec {
     owner = "Vencord";
     repo = "Vesktop";
     rev = "v${version}";
-    #rev = "19c3112d52f848494f60d2c1fa6d146be3f72b08"; #com1 26/10
-    #sha256 = "sha256-Y/r6MBXzRIB4vYRx6LpB27ZP+KHlS5rWzDEQZ3iVKew="; #com1 26/10
-    #sha256 = "sha256-c/Z1BX3LnxNYl14FnUpR3e7U5/5RuseIkZP67bPCsV8="; #0.4.0
-    #sha256 = "sha256-jSGad3qMhAdiGdwomQO6BIyHIbKrGLRGniGrJN97gN8="; #0.4.1
     sha256 = "sha256-elgoX8z8q0+7uUia9gbcCmpDg+qYRWWUxdRuNV53Puw="; #0.4.2
   };
 
