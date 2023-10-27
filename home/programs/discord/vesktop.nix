@@ -17,7 +17,7 @@
 , pkgs
 }:
 let
-  vencord = vencord.overrideAttrs (old: {
+  vencord = pkgs.vencord.overrideAttrs (old: {
     src = fetchFromGitHub {
       owner = "Vendicated";
       repo = "Vencord";
