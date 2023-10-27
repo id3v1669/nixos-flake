@@ -55,7 +55,6 @@
       #web
       curl
       wget
-      wireshark
       nm-tray
       ungoogled-chromium
       wireguard-tools
@@ -159,7 +158,6 @@
       libpng
       libnotify #for dunst or mako
       mesa
-      vulkan-headers
 
     #   #other
        dconf
@@ -178,7 +176,7 @@
     ]) ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [ 
       egl-wayland #needed for vms on nvidia  hw
     ]) ++ lib.lists.optionals (hostname == "nuc11ph") (with pkgs; [
-      #(callPackage ./programs/other/tlauncher.nix {})
+      (callPackage ./programs/other/tlauncher.nix {})
     ]);
   };
 }

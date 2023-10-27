@@ -3,9 +3,7 @@
 {
   qt = {
     enable = true;
-    style = {
-      package = pkgs.adwaita-qt;
-      name = "adwaita-dark";
-    };
+    #platformTheme = "gtk3";
+    style.name = "dynamic-color-theme";
   };
 }

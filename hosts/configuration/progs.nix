@@ -2,6 +2,10 @@
 {
   programs = {
     gamemode.enable = true;
+    wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
     light.enable = true;  #laptop brightness control and fix for openrgb
     noisetorch.enable = true;
     traceroute.enable = true;

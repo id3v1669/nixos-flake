@@ -21,8 +21,8 @@ let
     src = fetchFromGitHub {
       owner = "Vendicated";
       repo = "Vencord";
-      rev = "v1.6.0";
-      hash = "sha256-t4+8ybPzqcCtTSukBBgvbD7HiKG4K51WPVnJg0RQbs8=";
+      rev = "v1.6.1";
+      hash = "sha256-Trm7aUpleltV5iQNk/tEuFZqD9WBzIjkqqJuLc0UN0w=";
     };
   });
 in
@@ -62,7 +62,6 @@ stdenv.mkDerivation rec {
 
     dontFixup = true;
     outputHashMode = "recursive";
-    #outputHash = "sha256-lTeL+8QujWzx4ys2T+G55NUP51c8i5lB1vAkUtzkJlA="; #0.4.0/1
     outputHash = "sha256-KDJ8QmpwGb2lOdwWEl5y62pJiqEvpI59StfQZrN1PPE="; #0.4.2
     
   };
