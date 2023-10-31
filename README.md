@@ -1,15 +1,15 @@
 # NixOS flake on Hyprland + eww + rofi
 
-NixOS flake with most of tools and apps located in home manager
+NixOS flake with home manager
 
-Latest commit to use: 0f55436e3ebf31ed42e70d31737c6696d19559a8
+Latest commit to use: 03742efb27f13fe1e71fb4247733b87a41a74bb7
 
 ## Main
 | Environment | Name | Comment | Needed fix |
 |-----|-----|-----|-----|
 | WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel) | - |
 | launcher | Rofi | works | - |
-| bar | eww | fork of eww with tray support | - |
+| bar | eww | fork of eww with tray support(broken) | ToDo 15 |
 | background | hyprpaper | - | ToDo 1 |
 | portals | gtk and hyprland | work but many things to fix | ToDo 2+3 |
 | lockscreen | - | not needed for now, might install ly later | - |
@@ -50,6 +50,8 @@ Latest commit to use: 0f55436e3ebf31ed42e70d31737c6696d19559a8
 13. **+-setup theme(qt5,qt6,gtk3,gtk4)**
 
 14. **-create one-color background depending on system colors(check svg)**
+
+15. **fix eww buttons** 
 
 ## Notes:
 
