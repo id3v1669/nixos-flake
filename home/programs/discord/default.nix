@@ -1,9 +1,9 @@
 { config, lib, pkgs, uservars, ... }:
 let
-  libx = import ./../../lib/h2rgb.nix { inherit lib; };
+    #libx = import ./../../lib/h2rgb.nix { inherit lib; };
+    inherit (import ./../../lib/h2rgba.nix { inherit lib; }) hexToRgba;
 in
 {
-  inherit (libx) hexToRgb;
   imports = [
     #./assets
     #./../../lib/h2rgb.nix
@@ -67,7 +67,7 @@ html {
 --background-floating: #${config.colorScheme.colors.base01};
 --background-nested-floating: #${config.colorScheme.colors.base02};
 --background-mobile-primary: #${config.colorScheme.colors.base01};
---background-modifier-hover: ${hexToRgb "#FF5733"};
+--background-modifier-hover: ${hexToRgba "${config.colorScheme.colors.base01}" "0.15"};
 --background-modifier-selected: rgba(189, 174, 147, 0.2);
 --background-modifier-accent: rgba(146, 131, 116, 0.26);
 --background-modifier-active: rgba(249, 245, 215, 0.17);
