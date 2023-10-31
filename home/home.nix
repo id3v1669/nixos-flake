@@ -65,6 +65,7 @@
       (callPackage ./programs/other/xwaylandvideobridge.nix {})
       ffmpeg
       vlc
+      mpv
       nomacs
       gnome.eog
       hyprpicker #color picker

@@ -13,8 +13,6 @@ with lib; rec {
   in
     "rgba(${r}, ${g}, ${b}, ${opacity})";
 
-  # general stuff
-
   # functions copied from https://gist.github.com/corpix/f761c82c9d6fdbc1b3846b37e1020e11
   # convert a hex value to an integer
   hexToDec = v: let

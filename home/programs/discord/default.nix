@@ -4,10 +4,6 @@ let
     inherit (import ./../../lib/h2rgba.nix { inherit lib; }) hexToRgba;
 in
 {
-  imports = [
-    #./assets
-    #./../../lib/h2rgb.nix
-  ];
   home.file.".config/VencordDesktop/VencordDesktop/themes/usertheme.css".text = ''
 
 button[class*=emojiButtonNormal] > div > div {
@@ -67,17 +63,17 @@ html {
 --background-floating: #${config.colorScheme.colors.base01};
 --background-nested-floating: #${config.colorScheme.colors.base02};
 --background-mobile-primary: #${config.colorScheme.colors.base01};
---background-modifier-hover: ${hexToRgba "${config.colorScheme.colors.base01}" "0.15"};
---background-modifier-selected: rgba(189, 174, 147, 0.2);
---background-modifier-accent: rgba(146, 131, 116, 0.26);
---background-modifier-active: rgba(249, 245, 215, 0.17);
---info-warning-background: rgba(215, 153, 33, 0.15);
+--background-modifier-hover: ${hexToRgba "${config.colorScheme.colors.base0D}" "0.2"};
+--background-modifier-selected: ${hexToRgba "${config.colorScheme.colors.base05}" "0.3"};
+--background-modifier-accent: ${hexToRgba "${config.colorScheme.colors.base0D}" "0.25"};
+--background-modifier-active: ${hexToRgba "${config.colorScheme.colors.base0D}" "0.1"};
+--info-warning-background: ${hexToRgba "${config.colorScheme.colors.base09}" "0.15"};
 --info-warning-foreground: #${config.colorScheme.colors.base0D};
 --info-warning-text: #${config.colorScheme.colors.base0D};
---info-danger-background: rgba(251, 73, 52, 0.15);
+--info-danger-background: ${hexToRgba "${config.colorScheme.colors.base08}" "0.15"};
 --info-danger-foreground: #${config.colorScheme.colors.base08};
 --info-danger-text: #${config.colorScheme.colors.base08};
---info-help-background: rgba(215, 153, 33, 0.10);
+--info-help-background: ${hexToRgba "${config.colorScheme.colors.base05}" "0.1"};
 --info-help-foreground: #${config.colorScheme.colors.base03};
 --info-help-text: #${config.colorScheme.colors.base06};
 --status-positive-background: #${config.colorScheme.colors.base0D};
@@ -105,22 +101,22 @@ html {
 --button-danger-background: #${config.colorScheme.colors.base0D};
 --button-danger-background-hover: #${config.colorScheme.colors.base0A};
 --button-danger-background-active: #${config.colorScheme.colors.base06};
---button-danger-background-disabled: rgba(250, 189, 47, 0.40);
+--button-danger-background-disabled: ${hexToRgba "${config.colorScheme.colors.base04}" "0.55"};
 --button-positive-background: #${config.colorScheme.colors.base0D};
 --button-positive-background-hover: #${config.colorScheme.colors.base0A};
 --button-positive-background-active: #${config.colorScheme.colors.base06};
---button-positive-background-disabled: rgba(250, 189, 47, 0.40);
+--button-positive-background-disabled: ${hexToRgba "${config.colorScheme.colors.base04}" "0.55"};
 --button-secondary-background: #${config.colorScheme.colors.base02};
 --button-secondary-background-hover: #${config.colorScheme.colors.base04};
 --button-secondary-background-active: #${config.colorScheme.colors.base05};
---button-secondary-background-disabled: #928374;
+--button-secondary-background-disabled: ${hexToRgba "${config.colorScheme.colors.base01}" "0.8"};
 --button-outline-danger-text: #${config.colorScheme.colors.base08};
 --button-outline-danger-border: #${config.colorScheme.colors.base08};
 --button-outline-danger-background: transparent;
 --button-outline-danger-background-hover: #${config.colorScheme.colors.base08};
 --button-outline-danger-text-hover: #${config.colorScheme.colors.base01};
 --button-outline-danger-border-hover: #${config.colorScheme.colors.base08};
---button-outline-danger-background-active: #FF7E6F;
+--button-outline-danger-background-active: ${hexToRgba "${config.colorScheme.colors.base08}" "0.9"};
 --button-outline-danger-text-active: #${config.colorScheme.colors.base08};
 --button-outline-danger-border-active: #${config.colorScheme.colors.base08};
 --button-outline-positive-text: #${config.colorScheme.colors.base06};
@@ -129,7 +125,7 @@ html {
 --button-outline-positive-background-hover: #${config.colorScheme.colors.base0D};
 --button-outline-positive-text-hover: #${config.colorScheme.colors.base01};
 --button-outline-positive-border-hover: #${config.colorScheme.colors.base0D};
---button-outline-positive-background-active: #FFCC57;
+--button-outline-positive-background-active: ${hexToRgba "${config.colorScheme.colors.base0D}" "0.9"};
 --button-outline-positive-text-active: #${config.colorScheme.colors.base01};
 --button-outline-positive-border-active: #${config.colorScheme.colors.base0D};
 --button-outline-brand-text: #${config.colorScheme.colors.base06};
@@ -138,7 +134,7 @@ html {
 --button-outline-brand-background-hover: #${config.colorScheme.colors.base0A};
 --button-outline-brand-text-hover: #${config.colorScheme.colors.base01};
 --button-outline-brand-border-hover: #${config.colorScheme.colors.base0A};
---button-outline-brand-background-active: #FFCC57;
+--button-outline-brand-background-active: ${hexToRgba "${config.colorScheme.colors.base0C}" "0.9"};
 --button-outline-brand-text-active: #${config.colorScheme.colors.base01};
 --button-outline-brand-border-active: #${config.colorScheme.colors.base0A};
 --button-outline-primary-text: #${config.colorScheme.colors.base06};
@@ -147,7 +143,7 @@ html {
 --button-outline-primary-background-hover: #${config.colorScheme.colors.base0A};
 --button-outline-primary-text-hover: #${config.colorScheme.colors.base01};
 --button-outline-primary-border-hover: #${config.colorScheme.colors.base0A};
---button-outline-primary-background-active: #FFCC57;
+--button-outline-primary-background-active: ${hexToRgba "${config.colorScheme.colors.base0D}" "0.9"};
 --button-outline-primary-text-active: #${config.colorScheme.colors.base01};
 --button-outline-primary-border-active: #${config.colorScheme.colors.base0A};
 --modal-background: #${config.colorScheme.colors.base01};
@@ -161,11 +157,11 @@ html {
 --input-placeholder-text: #${config.colorScheme.colors.base05};
 --control-brand-foreground: #${config.colorScheme.colors.base0D};
 --mention-foreground: #${config.colorScheme.colors.base05};
---mention-background: rgba(168, 153, 132, 0.3);
---background-mentioned: rgba(215, 153, 33, 0.1); 
---background-mentioned-hover: rgba(215, 153, 33, 0.2);
---background-message-hover: rgba(80, 73, 69, 0.25);
---background-message-highlight: rgba(80, 73, 69, 0.4);
+--mention-background: ${hexToRgba "${config.colorScheme.colors.base02}" "0.3"};
+--background-mentioned: ${hexToRgba "${config.colorScheme.colors.base00}" "0.1"};
+--background-mentioned-hover: ${hexToRgba "${config.colorScheme.colors.base00}" "0.2"};
+--background-message-hover: ${hexToRgba "${config.colorScheme.colors.base01}" "0.25"};
+--background-message-highlight: ${hexToRgba "${config.colorScheme.colors.base01}" "0.4"};
 --channels-default: #${config.colorScheme.colors.base06};
 --channel-icon: #${config.colorScheme.colors.base05};
 --channel-text-area-placeholder: #${config.colorScheme.colors.base06};
@@ -173,7 +169,7 @@ html {
 /* message input bar */
 --channeltextarea-background: #${config.colorScheme.colors.base00}; 
 
---textbox-markdown-syntax: #928374;
+--textbox-markdown-syntax: ${hexToRgba "${config.colorScheme.colors.base05}" "0.8"};
 --deprecated-card-bg: #${config.colorScheme.colors.base00};
 --deprecated-card-editable-bg: #${config.colorScheme.colors.base00};
 --deprecated-text-input-bg: #${config.colorScheme.colors.base01};
@@ -1466,7 +1462,7 @@ color: #232634;
 }
 .theme-dark div[class|=layerContainer] div[id|=popout_] > div[class*=didRender-] svg[class*=activeIcon] circle,
 .theme-light div[class|=layerContainer] div[id|=popout_] > div[class*=didRender-] svg[class*=activeIcon] circle {
-fill: #;
+fill: #ff0000;
 }
 .theme-dark div[class|=layerContainer] div[id|=popout_] > div[class*=didRender-] svg[class*=activeIcon] g path,
 .theme-light div[class|=layerContainer] div[id|=popout_] > div[class*=didRender-] svg[class*=activeIcon] g path {
