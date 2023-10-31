@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-colors.url = "github:misterio77/nix-colors";
+    flake-utils.url = "github:numtide/flake-utils";
+    nix-rice.url = "github:bertof/nix-rice";
     nixmox.url = "github:Sorixelle/nixmox";
     nur = {
       url = "github:nix-community/NUR";
@@ -38,6 +40,7 @@
     hyprland,
     nur,
     nixmox,
+    nix-rice,
     ... }@inputs: 
   let
     inherit (self) outputs;
@@ -82,6 +85,7 @@
       [
         nur.overlay
         nixmox.overlay
+        nix-rice.overlays.default
         #(import ./scripts/flatpak.nix)
       ];
     };

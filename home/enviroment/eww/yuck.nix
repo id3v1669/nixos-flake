@@ -12,6 +12,28 @@
 (defvar show_powerbuttons false)
 (defvar show_calendar false)
 
+(defwindow popup-power-window
+  :monitor 0
+  :stacking "overlay"
+  :exclusive false
+  :geometry (geometry 
+    :x "0.25%"
+    :y "0"
+    :anchor "top right")
+  (powerbuttons)
+)
+
+(defwindow calendar-popup-window
+  :monitor 0
+  :stacking "overlay"
+  :exclusive false
+  :geometry (geometry 
+    ;:x "0.25%"
+    :y "-50"
+    :anchor "center top")
+  (calendarpop)
+)
+
 (defwindow bar
   :monitor 0
   :stacking "fg"
@@ -30,7 +52,7 @@
     :orientation "h"
     :class "bar1"
     (left)
-    (center)
+    ;;(center)
     (right)
   )
 )
@@ -210,17 +232,6 @@
   )
 )
 
-(defwindow calendar-popup-window
-  :monitor 0
-  :stacking "overlay"
-  :exclusive false
-  :geometry (geometry 
-    ;:x "0.25%"
-    :y "-50"
-    :anchor "center top")
-  (calendarpop)
-)
-
 (defwidget calendarpop []
   (eventbox 
     :onhover ""
@@ -242,17 +253,6 @@
       )
     )
   )
-)
-
-(defwindow popup-power-window
-  :monitor 0
-  :stacking "overlay"
-  :exclusive false
-  :geometry (geometry 
-    :x "0.25%"
-    :y "0"
-    :anchor "top right")
-  (powerbuttons)
 )
 
 (defwidget powerbuttons []
