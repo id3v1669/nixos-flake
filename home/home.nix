@@ -22,11 +22,11 @@
     homeDirectory = "/home/${uservars.name}";
     packages = (with pkgs; [
       #tests
-      #arrpc #test for rpc 
+      #arrpc #test for rpc
       protonup-qt
       libsForQt5.qt5ct
       qt6Packages.qt6ct
-      gtk-layer-shell
+      (callPackage ./programs/other/outline.nix {})
 
       #screenshots
       grim
@@ -87,7 +87,7 @@
           openldap
           gnutls
           mpg123
-          libgpg-error
+          libgpg-errormakeWrapper
           libjpeg
           libgcrypt
           ocl-icd

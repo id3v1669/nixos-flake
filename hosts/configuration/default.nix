@@ -1,7 +1,4 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, inputs, envir, cpuvar, system, gpuvar, ...}: 
-let 
-  xdghypr = inputs.xdghypr.packages.x86_64-linux.xdg-desktop-portal-hyprland;
-in 
 {
   imports =
     [ 
@@ -25,17 +22,6 @@ in
     hostName = "${hostname}${envir}";
     firewall.enable = false;
     enableIPv6 = true;
-    interfaces.ethvirtdebug = {
-      name = "ethvirtdebug";
-      virtual = true;
-    };
-    localCommands = ''
-    ip netns add namespace_virt_debug
-    ip link set ethvirtdebug netns namespace_virt_debug
-    ip netns exec namespace_virt_debug ip addr add 192.168.1.2/24 dev ethvirtdebug
-    ip netns exec namespace_virt_debug ip link set ethvirtdebug up
-    ip netns exec namespace_virt_debug ip route add default via 192.168.1.1
-    '';
   };
   virtualisation = {
     waydroid.enable = true;
@@ -50,8 +36,7 @@ in
       enable = true;
       extraPortals = ( with pkgs; [
         xdg-desktop-portal-gtk
-        #xdg-desktop-portal-hyprland
-        xdghypr
+        over-hypr-portal
       ]);
     };
   };

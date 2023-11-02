@@ -5,7 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-colors.url = "github:misterio77/nix-colors";
     flake-utils.url = "github:numtide/flake-utils";
-    nix-rice.url = "github:bertof/nix-rice";
     nixmox.url = "github:Sorixelle/nixmox";
     nur = {
       url = "github:nix-community/NUR";
@@ -41,7 +40,7 @@
     hyprland,
     nur,
     nixmox,
-    nix-rice,
+    xdghypr,
     eww-tray,
     ... }@inputs: 
   let
@@ -87,10 +86,10 @@
       [
         nur.overlay
         nixmox.overlay
-        nix-rice.overlays.default
         (final: prev: {
           over-eww = eww-tray.packages.${pkgs.system}.default.override { withWayland = true; };
           over-hyprland = hyprland.packages.${pkgs.system}.hyprland;
+          over-hypr-portal = xdghypr.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
           over-vscode = prev.vscode-fhs.overrideAttrs(oldAttrs: rec {
             name = "vscode";
             version = "1.84.0";
