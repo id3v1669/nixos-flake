@@ -2,11 +2,13 @@
   nixpkgs.config.vscode.commandLineArgs = "--enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
   programs.vscode = {
     enable = true;
+    #package = pkgs.over-vscode;
     package = pkgs.vscode-fhs;
-    enableUpdateCheck = false;
+    enableUpdateCheck = true;
     enableExtensionUpdateCheck = true;
     userSettings = {
       "window.titleBarStyle" = "custom";
+      "telemetry.telemetryLevel" = "off";
       "window.autoDetectColorScheme" = false;
       "editor.tokenColorCustomizations" = {
         "comments" = "#${config.colorScheme.colors.base05}";

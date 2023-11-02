@@ -1,7 +1,6 @@
 { config, lib, pkgs, hostname, ... }:
 {
   imports = [ 
-    #(./. + "/hostsettings/${hostname}.nix")
     ./dynamic-color-theme
   ];
   gtk = {

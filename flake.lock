@@ -23,16 +23,16 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1692622179,
-        "narHash": "sha256-vxMGAa/RTsMADPK4dM/28SV2ktCT0DenYvGsHZ4IJ8c=",
-        "owner": "ralismark",
+        "lastModified": 1695999680,
+        "narHash": "sha256-+iu16EVM5dcR5F83EEFjCXVZv1jwPgJq/EqG6M78sAw=",
+        "owner": "hylophile",
         "repo": "eww",
-        "rev": "a82ed62c25ba50f28dc8c3d57efe440d51d6136b",
+        "rev": "485dd6263df6123d41d04886a53715b037cf7aaf",
         "type": "github"
       },
       "original": {
-        "owner": "ralismark",
-        "ref": "tray-3",
+        "owner": "hylophile",
+        "ref": "dynamic-icons",
         "repo": "eww",
         "type": "github"
       }

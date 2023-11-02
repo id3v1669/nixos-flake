@@ -6,7 +6,7 @@
   ];
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.x86_64-linux.hyprland;
+    package = pkgs.over-hyprland;
     systemd.enable = true;
     xwayland.enable = true;
     settings = {

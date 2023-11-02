@@ -52,7 +52,7 @@
     :orientation "h"
     :class "bar1"
     (left)
-    ;;(center)
+    (center)
     (right)
   )
 )

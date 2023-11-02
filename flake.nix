@@ -12,8 +12,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     eww-tray = {
-      url = "github:ralismark/eww/tray-3";
-      flake = true;
+     #url = "github:ralismark/eww/tray-3";
+     url = "github:hylophile/eww/dynamic-icons";
+     flake = true;
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -41,6 +42,7 @@
     nur,
     nixmox,
     nix-rice,
+    eww-tray,
     ... }@inputs: 
   let
     inherit (self) outputs;
@@ -86,6 +88,19 @@
         nur.overlay
         nixmox.overlay
         nix-rice.overlays.default
+        (final: prev: {
+          over-eww = eww-tray.packages.${pkgs.system}.default.override { withWayland = true; };
+          over-hyprland = hyprland.packages.${pkgs.system}.hyprland;
+          over-vscode = prev.vscode-fhs.overrideAttrs(oldAttrs: rec {
+            name = "vscode";
+            version = "1.84.0";
+            src = pkgs.fetchurl {
+              name = "code_x64_${version}.tar.gz";
+              url = "https://update.code.visualstudio.com/${version}/linux-x64/stable";
+              hash = "sha256-joaOovR16QD+W1mj9FmstizMEcEesHdpFzCSxW8DvAc=";
+            };
+          });
+        })
         #(import ./scripts/flatpak.nix)
       ];
     };

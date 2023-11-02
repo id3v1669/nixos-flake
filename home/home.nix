@@ -23,13 +23,10 @@
     packages = (with pkgs; [
       #tests
       #arrpc #test for rpc 
-      webcord
-      qutebrowser
       protonup-qt
       libsForQt5.qt5ct
       qt6Packages.qt6ct
-
-      alacritty
+      gtk-layer-shell
 
       #screenshots
       grim
@@ -131,7 +128,8 @@
       github-desktop
       openrgb-with-all-plugins
       bluez
-      inputs.eww-tray.packages.x86_64-linux.eww-wayland
+      over-eww
+      #inputs.eww-tray.packages.x86_64-linux.eww-wayland
 
       #other cli utils
       kitty #may be ported to hm 

@@ -21,20 +21,24 @@ let
     src = fetchFromGitHub {
       owner = "Vendicated";
       repo = "Vencord";
-      rev = "v1.6.1";
-      hash = "sha256-Trm7aUpleltV5iQNk/tEuFZqD9WBzIjkqqJuLc0UN0w=";
+      rev = "v1.6.2";
+      hash = "sha256-AqyUnDMIASJ/kUTeICdN94W5U0E52RFs6hM2/E8AjXI=";
+      #rev = "v1.6.1";
+      #hash = "sha256-Trm7aUpleltV5iQNk/tEuFZqD9WBzIjkqqJuLc0UN0w=";
     };
   });
 in
 stdenv.mkDerivation rec {
   pname = "vesktop";
+  #version = "0.4.3";
   version = "0.4.2";
 
   src = fetchFromGitHub {
     owner = "Vencord";
     repo = "Vesktop";
     rev = "v${version}";
-    sha256 = "sha256-elgoX8z8q0+7uUia9gbcCmpDg+qYRWWUxdRuNV53Puw="; #0.4.2
+    sha256 = "sha256-wGOyDGY0FpAVS5+MTiKrOpDyd13ng0RLGAENW5tXuR4="; #0.4.3
+    #sha256 = "sha256-elgoX8z8q0+7uUia9gbcCmpDg+qYRWWUxdRuNV53Puw="; #0.4.2
   };
 
   pnpm-deps = stdenvNoCC.mkDerivation {
@@ -62,7 +66,8 @@ stdenv.mkDerivation rec {
 
     dontFixup = true;
     outputHashMode = "recursive";
-    outputHash = "sha256-KDJ8QmpwGb2lOdwWEl5y62pJiqEvpI59StfQZrN1PPE="; #0.4.2
+    outputHash = "sha256-R5/2MSH/jXHrj2x1Ap2OoOFLBLQp3Sq91o01uW8hWOw="; #0.4.3
+    #outputHash = "sha256-KDJ8QmpwGb2lOdwWEl5y62pJiqEvpI59StfQZrN1PPE="; #0.4.2
     
   };
 

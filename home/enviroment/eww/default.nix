@@ -1,8 +1,8 @@
 { config, lib, pkgs, inputs, ... }:
 {
   imports = [ 
-    ./scss.nix
-    ./yuck.nix
+    #./scss.nix
+    #./yuck.nix
   ];
   #programs.eww = {
   #  enable = true;
