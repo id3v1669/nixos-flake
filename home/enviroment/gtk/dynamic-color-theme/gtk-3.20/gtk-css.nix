@@ -1,4 +1,7 @@
 { config, lib, pkgs, uservars, ... }:
+let
+    inherit (import ./../../../../lib/h2rgba.nix { inherit lib; }) hexToRgba;
+in
 {
   home.file.".themes/dynamic-color-theme/gtk-3.20/gtk.css".text = ''
 /* GTK NAMED COLORS

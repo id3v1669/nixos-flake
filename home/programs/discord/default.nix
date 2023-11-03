@@ -1,10 +1,34 @@
 { config, lib, pkgs, uservars, ... }:
 let
-    #libx = import ./../../lib/h2rgb.nix { inherit lib; };
     inherit (import ./../../lib/h2rgba.nix { inherit lib; }) hexToRgba;
 in
 {
   home.file.".config/VencordDesktop/VencordDesktop/themes/usertheme.css".text = ''
+
+.bg__12180 {
+  background: url("https://https://id3v1669.com/snow1.gif") !important; 
+  background-repeat: repeat; 
+}
+
+.childWrapper__01b9c, 
+.wrapper_a7e7a8, 
+.circleIconButton_d8df29, 
+.custom-theme-background .scroller__3d071,  
+.custom-theme-background .withBackgroundOverride_b6a351 {
+  background: transparent !important;
+}
+
+.wordmarkWindows__05c46, 
+.winButtonClose__73489, 
+.winButtonMinMax__72f36,
+.winButtonMinMax__72f36:last-child, 
+.circleIcon__428dd {
+    color: #${config.colorScheme.colors.base06};
+}
+
+body, .appMount_fae9dd /* Overrides Gradient (for Title Bar */ {
+  background: var(--background-tertiary) !important;
+}
 
 button[class*=emojiButtonNormal] > div > div {
   filter: grayscale(0.8) hue-rotate(-50deg) brightness(0.8) opacity(100%) !important;
