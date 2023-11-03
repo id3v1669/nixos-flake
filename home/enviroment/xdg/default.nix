@@ -53,6 +53,8 @@
         categories = [ "Application" "Graphics" "Viewer" ];
         mimeType = [ 
           "image/png" 
+          "image/heic"
+          "image/heif"  
           "image/jpeg" 
           "image/gif" 
           "image/bmp" 
@@ -75,6 +77,8 @@
         "image/tiff" = "nomacs.desktop";
         "image/x-bmp" = "nomacs.desktop";
         "image/x-ico" = "nomacs.desktop";
+        "image/heic" = "nomacs.desktop";
+        "image/heif" = "nomacs.desktop";
         #web
         "text/html" = "firefox.desktop";
         "x-scheme-handler/http" = "firefox.desktop";
@@ -120,6 +124,8 @@
         "image/tiff" = "nomacs.desktop";
         "image/x-bmp" = "nomacs.desktop";
         "image/x-ico" = "nomacs.desktop";
+        "image/heic" = "nomacs.desktop";
+        "image/heif" = "nomacs.desktop";
         #web
         "text/html" = "firefox.desktop";
         "x-scheme-handler/http" = "firefox.desktop";

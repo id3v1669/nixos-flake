@@ -27,6 +27,11 @@
       libsForQt5.qt5ct
       qt6Packages.qt6ct
       #(callPackage ./programs/other/outline.nix {})
+      rustc
+      cargo
+      #rustup
+      #rustup-toolchain-install-master
+      cargo-binutils
 
       #screenshots
       grim
@@ -140,6 +145,7 @@
       vim
       btop
       neofetch
+      uwufetch
       git
       gh
       i2c-tools # needed for ddcutil
