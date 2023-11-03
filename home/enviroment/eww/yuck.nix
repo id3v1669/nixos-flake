@@ -221,7 +221,7 @@
     (button 
       :class "miniclock" 
       :timeout "''${deftimeout}"
-      :onclick "''${EWW_CMD} update showcalendar=true && notify-send 'Hello'"
+      :onclick "''${EWW_CMD} update showcalendar=true"
       (box
         datetime
       )
