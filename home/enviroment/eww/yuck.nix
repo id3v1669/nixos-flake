@@ -9,8 +9,68 @@
 (defpoll datetime :interval "1s" "date '+%a, %d. %b  %H:%M'")
 (defvar soundvol "xx")
 (defvar wss "xxx")
-(defvar show_powerbuttons false)
-(defvar show_calendar false)
+(defvar showpowerbuttons false)
+(defvar showcalendar false)
+
+(defwidget calendarpop []
+  (eventbox 
+    :onhover ""
+    :onhoverlost "''${EWW_CMD} update showcalendar=false"
+    (box
+		:space-evenly false  
+    (revealer
+      :transition "slideup"
+      :reveal showcalendar
+      :duration "1000ms"
+      (box 
+        :class "calelndarpop"
+        :orientation "v"
+        ;;:space-evenly false
+        (calendar 
+          :class "calelndarpop"
+          :day {formattime(EWW_TIME, "%d")}
+          :month {formattime(EWW_TIME, "%m")}
+          :year {formattime(EWW_TIME, "%Y")}
+        )
+      )
+    )"")
+  )
+)
+
+(defwidget powerbuttons []
+  (eventbox 
+    :onhover ""
+    :onhoverlost "''${EWW_CMD} update showpowerbuttons=false"
+    (box
+      :space-evenly false  
+    (revealer
+      :transition "slideup"
+      :reveal showpowerbuttons
+      :duration "500ms"
+      (box
+        :class "powerpopup"
+        :halign "start" 
+        :spacing 3
+        :orientation "vertical"
+        (button
+          :class "suspend" 
+          :onclick "systemctl suspend"
+          ""
+        )
+        (button 
+          :class "reboot"
+          :onclick "reboot"
+          ""
+        )
+        (button 
+          :class "shutdown"
+          :onclick "shutdown -h now"
+          "󰐥"
+        )
+      )
+    )"")
+  )
+)
 
 (defwindow popup-power-window
   :monitor 0
@@ -97,10 +157,10 @@
 
 (defwidget power []
   (box
+    :orientation "h"
     (button 
       :class "minipower"
-      :orientation "h"
-      :onclick "''${EWW_CMD} update show_powerbuttons=true"
+      :onclick "''${EWW_CMD} update showpowerbuttons=true"
       (box 
         "󰐥"
       )
@@ -110,8 +170,8 @@
 
 (defwidget battery []
   (box 
+    :orientation "h"
     (button
-      :orientation "h"
       :class "battery"
       :onclick ""
       (box
@@ -123,8 +183,8 @@
 
 (defwidget microphone []
   (box
+    :orientation "h"
     (button 
-      :orientation "h"
       :class "mic"
       :onclick "bash ~/.scripts/microphone.sh"
       (box 
@@ -156,19 +216,17 @@
 )
 
 (defwidget clock []
-  (box (button 
-    :class "miniclock" 
-    :orientation "h" 
-    :onclick "''${EWW_CMD} update show_calendar=true"
-    (box 
-      :orientation "h"
-      :space-evenly false
-      :spacing 10
-      :halign "start"
-      :orientation "h"
-      datetime
+  (box
+    :orientation "h"
+    (button 
+      :class "miniclock" 
+      :timeout "''${deftimeout}"
+      :onclick "''${EWW_CMD} update showcalendar=true && notify-send 'Hello'"
+      (box
+        datetime
+      )
     )
-  ))
+  )
 )
 
 (defwidget workspaces []
@@ -183,17 +241,15 @@
 
 (defwidget usageinfo []
   (box
+    :orientation "h"
     (button 
       :class "usageinfo"
-      :orientation "h"
       :timeout "''${ deftimeout}"
       :onclick "kitty btop"
       (box 
-        :orientation "h"
         :space-evenly false
         :spacing 10
         :halign "start"
-        :orientation "h"
         (box 
           :class "ram"
           "''${round(EWW_RAM.used_mem/1073741824,1)}/''${round(EWW_RAM.total_mem/1073741824,1)} Gb "
@@ -201,17 +257,17 @@
         (box :class "spacerh" "|")
         (box 
           :class "cputemp"
-          " ''${EWW_TEMPS.CORETEMP_CORE_0}°C "
+          "''${EWW_TEMPS.CORETEMP_CORE_0}°C "
         )
         (box :class "spacerh" "|")
         (box 
           :class "disk"
-          " ''${round(EWW_DISK['/'].free/1073741824,1)} Gb "
+          "''${round(EWW_DISK['/'].free/1073741824,1)} Gb "
         )
         (box :class "spacerh" "|")
         (box 
           :class "boot"
-          " ''${round(EWW_DISK['/boot'].free/1073741824,1)} Gb"
+          "''${round(EWW_DISK['/boot'].free/1073741824,1)} Gb"
         )
       )
     )
@@ -227,62 +283,6 @@
       :onclick "rofi -show"
       (box
         " "
-      )
-    )
-  )
-)
-
-(defwidget calendarpop []
-  (eventbox 
-    :onhover ""
-    :onhoverlost "''${EWW_CMD} update show_calendar=false"
-    (revealer
-      :transition "slideup"
-      :reveal show_calendar
-      :duration "1500ms"
-      (box 
-        :class "calelndarpop"
-        :orientation "v"
-        ;;:space-evenly false
-        (calendar 
-          :class "calelndarpop"
-          :day {formattime(EWW_TIME, "%d")}
-          :month {formattime(EWW_TIME, "%m")}
-          :year {formattime(EWW_TIME, "%Y")}
-        )
-      )
-    )
-  )
-)
-
-(defwidget powerbuttons []
-  (eventbox 
-    :onhover ""
-    :onhoverlost "''${EWW_CMD} update show_powerbuttons=false"
-    (revealer
-      :transition "slideup"
-      :reveal show_powerbuttons
-      :duration "500ms"
-      (box
-        :class "powerpopup"
-        :halign "start" 
-        :spacing 3
-        :orientation "vertical"
-        (button
-          :class "suspend" 
-          :onclick "systemctl suspend"
-          ""
-        )
-        (button 
-          :class "reboot"
-          :onclick "reboot"
-          ""
-        )
-        (button 
-          :class "shutdown"
-          :onclick "shutdown -h now"
-          "󰐥"
-        )
       )
     )
   )

@@ -26,7 +26,7 @@
       protonup-qt
       libsForQt5.qt5ct
       qt6Packages.qt6ct
-      (callPackage ./programs/other/outline.nix {})
+      #(callPackage ./programs/other/outline.nix {})
 
       #screenshots
       grim
@@ -87,7 +87,7 @@
           openldap
           gnutls
           mpg123
-          libgpg-errormakeWrapper
+          libgpg-error
           libjpeg
           libgcrypt
           ocl-icd
