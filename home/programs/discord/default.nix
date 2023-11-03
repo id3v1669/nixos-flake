@@ -6,7 +6,7 @@ in
   home.file.".config/VencordDesktop/VencordDesktop/themes/usertheme.css".text = ''
 
 .bg__12180 {
-  background: url("https://https://id3v1669.com/snow1.gif") !important; 
+  background: url("https://id3v1669.com/snow1.gif") !important; 
   background-repeat: repeat; 
 }
 
