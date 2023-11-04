@@ -27,31 +27,26 @@
       libsForQt5.qt5ct
       qt6Packages.qt6ct
       #(callPackage ./programs/other/outline.nix {})
-      rustc
-      cargo
-      #rustup
-      #rustup-toolchain-install-master
-      cargo-binutils
 
       #screenshots
       grim
       slurp
 
       #sound
-      pamixer
-      pavucontrol
+      pamixer #cli mixer
+      pavucontrol #gui mixer
       pulseaudio #just lib to use pactl, pipewire is in use
-      helvum
+      helvum 
       qpwgraph #gui for pipewire graph
-      mpc-cli
-      qjackctl
+      mpc-cli 
+      qjackctl 
+      soundux #soundpad
       asio #??
       wineasio
 
       #vm, virt and emulators
       virt-manager
       distrobox
-      #docker
       docker-compose
 
       #web
@@ -145,7 +140,6 @@
       vim
       btop
       neofetch
-      uwufetch
       git
       gh
       i2c-tools # needed for ddcutil

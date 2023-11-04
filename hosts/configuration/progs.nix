@@ -26,7 +26,7 @@
     ] ++ lib.lists.optionals (envir == "hypr") (with pkgs; [
       polkit_gnome
       xorg.xhost
-      
+      uwufetch #broken under hm
       #virtualgl
       #virtualglLib
     ]);
