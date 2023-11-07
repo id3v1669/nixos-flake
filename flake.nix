@@ -135,12 +135,26 @@
       srvnet510 = mkSyst {
         hostname = "srvnet510";
         envir = "none";
+        desk = "server";
         bootloader = {
           type = "grub";
           winvar = false;
           device = "/dev/vda";
         };
-
+        gpuvar = {
+          type = "none";
+        };
+        uservars = {
+          name = "user";
+          description = "serverUser510";
+        };
+        deflocale = {
+          kblayout = "au";
+          kbvariant = "";
+          kboption = "";
+          timezone = "Australia/Perth";
+          locale = "en_AU.UTF-8";
+        };
       };
       nuc11phhyprtbqhd = mkSyst {
         hostname = "nuc11ph";
