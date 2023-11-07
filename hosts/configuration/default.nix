@@ -14,6 +14,40 @@
     ] ++ lib.lists.optionals ( hostname == "srvnet510" ) [
       ./srvnet510.nix
     ];
+  sops = {
+    defaultSopsFile = ./../../secrets/secret.enc.yaml;
+    defaultSopsFormat = "yaml";
+    age.keyFile = "/home/${uservars.name}/.config/sops/age/keys.txt";
+    secrets."myservice/my_subdir/my_secret" = {
+      owner = "sometestservice";
+    };
+    secrets.example-key = {
+      mode = "0440";
+      owner = "${uservars.name}";
+    };
+  };
+  systemd.services."sometestservice" = {
+    script = ''
+        echo "
+        Hey bro! I'm a service, and imma send this secure password:
+        $(cat ${config.sops.secrets."myservice/my_subdir/my_secret".path})
+        located in:
+        ${config.sops.secrets."myservice/my_subdir/my_secret".path}
+        to database and hack the mainframe
+        " > /var/lib/sometestservice/testfile
+      '';
+    serviceConfig = {
+      User = "sometestservice";
+      WorkingDirectory = "/var/lib/sometestservice";
+    };
+  };
+  users.users.sometestservice = {
+    home = "/var/lib/sometestservice";
+    createHome = true;
+    isSystemUser = true;
+    group = "sometestservice";
+  };
+  users.groups.sometestservice = { };
   networking = {
     hostName = "${hostname}${envir}";
     useDHCP = lib.mkDefault true;

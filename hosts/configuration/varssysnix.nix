@@ -1,6 +1,7 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, desk, system, testvar, ...}: 
 {
   environment.sessionVariables = {
+    EDITOR = "nano";
   } // lib.optionalAttrs (envir == "hypr") {
     WLR_NO_HARDWARE_CURSORS = "1";
   };

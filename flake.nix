@@ -6,6 +6,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
     flake-utils.url = "github:numtide/flake-utils";
     nixmox.url = "github:Sorixelle/nixmox";
+    sops-nix.url = "github:Mic92/sops-nix";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +43,7 @@
     nixmox,
     xdghypr,
     eww-tray,
+    sops-nix,
     ... }@inputs: 
   let
     inherit (self) outputs;
@@ -114,6 +116,7 @@
       };
       modules = [ 
         (./. + "/hosts/${hostname}.nix")
+        sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {

@@ -32,6 +32,8 @@
       neofetch
       git
       gh
+      age
+      sops
       
     ]) ++ lib.lists.optionals (desk == "server") (with pkgs;[
 

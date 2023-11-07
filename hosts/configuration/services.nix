@@ -31,6 +31,103 @@
         PermitRootLogin = "yes";
       };
     };
+  } // lib.optionalAttrs (desk == "srvnet510") {
+    nextcloud = {
+      enable = true;
+      hostName = "nextcloud.id3v1669.com";
+      https = true;
+      package = pkgs.nextcloud27;
+      defaultPhoneRegion = "AU";
+      nginx.hstsMaxAge = 31536000;
+      database.createLocally = true;
+      configureRedis = true;
+      webfinger = true;
+      maxUploadSize = "5000M";
+      phpExtraExtensions = all: [ all.xdebug ];
+      autoUpdateApps = {
+        enable = true;
+        startAt = "Sun 14:00:00";
+      };
+      caching = {
+        #apcu = true;
+        redis = true;
+        #memcached = true;
+      };
+      config = {
+        dbtype = "pgsql";
+        dbname = "nextcloud";
+        dbtableprefix = "oc_";
+        dbpassFile = config.sops.secrets.nextcloud.db-password.path;
+        dbuser = "nextcloud";
+        dbhost = "/run/postgresql";
+        dbport = "28943";
+        adminuser = "nextcloudadmin";
+        adminpassFile = config.sops.secrets.nextcloud.admin-password.path;
+        #extraTrustedDomains = [
+        #  "pim.devkid.net"
+        #];
+      };
+      phpOptions = {
+        # The OPcache interned strings buffer is nearly full with 8, bump to 16.
+        catch_workers_output = "yes";
+        display_errors = "stderr";
+        error_reporting = "E_ALL & ~E_DEPRECATED & ~E_STRICT";
+        expose_php = "Off";
+        "opcache.enable_cli" = "1";
+        "opcache.fast_shutdown" = "1";
+        "opcache.interned_strings_buffer" = "16";
+        "opcache.max_accelerated_files" = "10000";
+        "opcache.memory_consumption" = "128";
+        "opcache.revalidate_freq" = "1";
+        #"openssl.cafile" = "/etc/ssl/certs/ca-certificates.crt";
+        short_open_tag = "Off";
+
+        "redis.session.locking_enabled" = "1";
+        "redis.session.lock_retries" = "-1";
+        "redis.session.lock_wait_time" = "10000";
+      };
+      poolSettings = {
+        "pm" = "ondemand";
+        "pm.max_children" = 32;
+        "pm.process_idle_timeout" = "10s";
+        "pm.max_requests" = 500;
+      };
+      extraOptions = {
+          redis = {
+            host = "127.0.0.1";
+            port = 31638;
+            dbindex = 0;
+            timeout = 1.5;
+          };
+        };
+    };
+    nginx.virtualHosts."nextcloud.id3v1669.com" = {
+      useACMEHost = "id3v1669.com";
+      forceSSL = true;
+    };
+    postgresql = {
+      enable = true;
+      settings = {
+        max_connections = "50";
+        shared_buffers = "1280MB";
+        effective_cache_size = "3840MB";
+        maintenance_work_mem = "320MB";
+        checkpoint_completion_target = "0.9";
+        wal_buffers = "16MB";
+        default_statistics_target = "100";
+        random_page_cost = "4";
+        effective_io_concurrency = "2";
+        work_mem = "6553kB";
+        huge_pages = "off";
+        min_wal_size = "1GB";
+        max_wal_size = "4GB";
+      };
+    };
+    redis.servers.nextcloud = {
+        enable = true;
+        port = 31638;
+        bind = "127.0.0.1";
+      };
   } // lib.optionalAttrs (desk == "desktop" || desk == "laptop") {
     blueman.enable = true;
     printing.enable = true;
