@@ -1,12 +1,20 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, winvar, ...}: 
+{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, bootloader, ...}: 
 {
   boot = {
     loader = {
+    }// lib.optionalAttrs (desk != "server") {
       timeout = 15;     
       efi.canTouchEfiVariables = true;
+    }// lib.optionalAttrs (bootloader.type == "grub") {
+      grub = {
+        enable = true;
+        useOSProber = true;
+        device = "${bootloader.device}";
+      };
+    }// lib.optionalAttrs (bootloader.type == "systemd-boot") {
       systemd-boot = {
         enable = true;
-      }// lib.optionalAttrs (winvar == true && uservars.description == "id3v1669") {
+      }// lib.optionalAttrs (bootloader.winvar == true && uservars.description == "id3v1669") {
         extraFiles = {
           "efi/Microsoft/Boot/bootmgfw.efi" = "/home/user/.winloader/Boot/bootmgfw.efi";
           "efi/Microsoft/Boot/bootmgr.efi" = "/home/user/.winloader/Boot/bootmgr.efi";
@@ -37,7 +45,7 @@
           "efi/Microsoft/Boot/Resources/bootres.dll" = "/home/user/.winloader/Boot/Resources/bootres.dll";
           "efi/Microsoft/Boot/Resources/en-US/bootres.dll.mui" = "/home/user/.winloader/Boot/Resources/en-US/bootres.dll.mui";
         };
-      } // lib.optionalAttrs (winvar == true && uservars.description == "alexp") {
+      } // lib.optionalAttrs (bootloader.winvar == true && uservars.description == "alexp") {
         extraFiles = {
           "efi/Microsoft/Boot/bootmgfw.efi" = "/home/user/.winloader/Boot/bootmgfw.efi";
           "efi/Microsoft/Boot/bootmgr.efi" = "/home/user/.winloader/Boot/bootmgr.efi";

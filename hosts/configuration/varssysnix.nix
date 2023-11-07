@@ -1,9 +1,6 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, desk, system, testvar, ...}: 
 {
   environment.sessionVariables = {
-    EDITOR = "nano";
-    BROWSER = "firefox";
-    TERMINAL = "alacritty";
   } // lib.optionalAttrs (envir == "hypr") {
     WLR_NO_HARDWARE_CURSORS = "1";
   };

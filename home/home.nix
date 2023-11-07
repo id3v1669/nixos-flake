@@ -1,13 +1,14 @@
-{ hyprland, inputs, config, lib, pkgs, curversion, uservars, envir, hostname, colorsvar, gpuvar, ... }:
+{ hyprland, inputs, config, lib, pkgs, curversion, uservars, envir, hostname, colorsvar, gpuvar, desk, ... }:
 {
   imports = [
     ./programs
+  ] ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
     ./../scripts
     ./enviroment/qt
     ./enviroment/gnome
     ./enviroment/gtk
     inputs.nix-colors.homeManagerModules.default
-  ]++ lib.lists.optionals (envir == "hypr") [
+  ] ++ lib.lists.optionals (envir == "hypr") [
     ./enviroment/hyprland
     ./enviroment/rofi
     ./enviroment/eww
@@ -21,12 +22,28 @@
     username = "${uservars.name}";
     homeDirectory = "/home/${uservars.name}";
     packages = (with pkgs; [
+      #web
+      curl
+      wget
+
+      #cli utils
+      vim
+      btop
+      neofetch
+      git
+      gh
+      
+    ]) ++ lib.lists.optionals (desk == "server") (with pkgs;[
+
+    ]) ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") (with pkgs;[
       #tests
-      #arrpc #test for rpc
+      arrpc #test for rpc
       protonup-qt
       libsForQt5.qt5ct
       qt6Packages.qt6ct
       #(callPackage ./programs/other/outline.nix {})
+      nmap
+      filezilla
 
       #screenshots
       grim
@@ -50,8 +67,6 @@
       docker-compose
 
       #web
-      curl
-      wget
       nm-tray
       ungoogled-chromium
       wireguard-tools
@@ -72,7 +87,7 @@
       #chat
       telegram-desktop
       whatsapp-for-linux
-      (callPackage ./programs/discord/vesktop.nix {}) #broken 0.4.1
+      (callPackage ./programs/discord/vesktop.nix {})
       
       #security
       openssl
@@ -137,11 +152,6 @@
       usbutils
       lshw
       mesa-demos
-      vim
-      btop
-      neofetch
-      git
-      gh
       i2c-tools # needed for ddcutil
       ddcutil # brightness control
       appimage-run

@@ -6,61 +6,34 @@
       ./services.nix
       ./progs.nix
       ./boot.nix
+      ./varssysnix.nix      
+    ] ++ lib.lists.optionals ( desk == "desktop" || desk == "laptop" ) [
       ./udevrules.nix
-      ./varssysnix.nix
       ./fonts.nix
+      ./pcs.nix
+    ] ++ lib.lists.optionals ( hostname == "srvnet510" ) [
+      ./srvnet510.nix
     ];
-  security = {
-    rtkit.enable = true;
-  } // lib.optionalAttrs (envir == "hypr") {
-    polkit.enable = true;
-  };
-  sound.enable = true;
   networking = {
+    hostName = "${hostname}${envir}";
     useDHCP = lib.mkDefault true;
     networkmanager.enable = true;
-    hostName = "${hostname}${envir}";
-    firewall.enable = false;
     enableIPv6 = true;
+  } // lib.optionalAttrs (desk == "desktop" || desk == "laptop") {
+    firewall.enable = false;
   };
   virtualisation = {
-    waydroid.enable = true;
     docker = {
       enable = true;
     } // lib.optionalAttrs (gpuvar.type == "nvidia") { enableNvidia = true; };
+  } // lib.optionalAttrs (desk == "desktop" || desk == "laptop") {
+    waydroid.enable = true;
     libvirtd.enable = true;
-  };
-  xdg = {
-  } // lib.optionalAttrs (envir == "hypr") {
-    portal = {
-      enable = true;
-      extraPortals = ( with pkgs; [
-        xdg-desktop-portal-gtk
-        over-hypr-portal
-      ]);
-    };
-  };
-  systemd = {
-    #for now
-  } // lib.optionalAttrs (envir == "hypr") {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
   };
   users.users.${uservars.name} = {
     isNormalUser = true;
     description = "${uservars.description}";
-    extraGroups = [ "rustdesk" "adbusers" "networkmanager" "wheel" "kvm" "input" "disk" "qemu-libvirtd" "libvirtd" "video" "wireshark" "pipewire" "docker" "i2c" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" ] ++ lib.lists.optionals ( desk != "server" ) [ "rustdesk" "adbusers" "kvm" "input" "disk" "qemu-libvirtd" "libvirtd" "video" "wireshark" "pipewire" "i2c" ];
     shell = pkgs.fish;
   };
 }

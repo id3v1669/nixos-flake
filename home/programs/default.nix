@@ -1,8 +1,9 @@
-{
+{ config, lib, desk, ... }:{
   imports = [
+    ./fish
+  ] ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
     ./alacritty
     ./vscode
-    ./fish
     ./firefox
     ./other
     ./discord

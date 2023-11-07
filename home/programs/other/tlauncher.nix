@@ -14,10 +14,6 @@ stdenv.mkDerivation rec {
     url = "https://tlaun.ch/repo/downloads/TL_mcl.jar";
     sha256 = "0a4gy5ypkj6w477b5r87jn6vacc4d7mb2ypz7234j5nsf8gwpscs";
   };
-  icon = fetchurl {
-    url = "https://launcher.mojang.com/download/minecraft-launcher.svg";
-    sha256 = "0w8z21ml79kblv20wh5lz037g130pxkgs8ll9s3bi94zn2pbrhim";
-  };
 
   dontUnpack = true;
 
@@ -38,7 +34,6 @@ stdenv.mkDerivation rec {
       name = "tlauncher";
       desktopName = "TLauncher";
       exec = "tlauncher";
-      inherit icon;
       comment = "Minecraft launcher";
       keywords = [ "java" "minecraft" "tlauncher" ];
     })

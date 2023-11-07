@@ -1,6 +1,14 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, ...}: 
+{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, desk, ...}: 
 {
   programs = {
+    fish.enable = true;
+  } // lib.optionalAttrs (desk == "server") {
+    mtr.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+  } // lib.optionalAttrs (desk == "desktop" || desk == "laptop") {
     gamemode.enable = true;
     wireshark = {
       enable = true;
@@ -10,7 +18,6 @@
     noisetorch.enable = true;
     traceroute.enable = true;
     adb.enable = true;
-    fish.enable = true;
   } // lib.optionalAttrs (envir == "gnome") {
     kdeconnect = {
       enable = true;
@@ -22,8 +29,7 @@
   environment = {
     systemPackages = (with pkgs; [
       fish
-    ]) ++ lib.lists.optionals (envir == "hypr")[
-    ] ++ lib.lists.optionals (envir == "hypr") (with pkgs; [
+    ]) ++ lib.lists.optionals (envir == "hypr") (with pkgs; [
       polkit_gnome
       xorg.xhost
       uwufetch #broken under hm

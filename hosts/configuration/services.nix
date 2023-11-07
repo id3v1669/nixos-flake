@@ -1,17 +1,6 @@
 {lib, config, pkgs, fetchFromGitLab, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, desk, ...}: 
 {
   services = {
-    blueman.enable = true;
-    printing.enable = true;
-    flatpak.enable = true;
-    hardware = {
-      #openrgb = { ## broken.    rules and kernel modules install manually
-      #  enable = true;
-      #  motherboard = "${cpuvar}";
-      #  package = pkgs.openrgb-with-all-plugins;
-      #};
-      bolt.enable = true;
-    };
     xserver = {
       enable = true;
       layout = "${deflocale.kblayout}";
@@ -34,6 +23,18 @@
         enable = true;
         wayland = true;
       };
+    };
+  } // lib.optionalAttrs (desk == "desktop" || desk == "laptop") {
+    blueman.enable = true;
+    printing.enable = true;
+    flatpak.enable = true;
+    hardware = {
+      #openrgb = { ## broken.    rules and kernel modules install manually
+      #  enable = true;
+      #  motherboard = "${cpuvar}";
+      #  package = pkgs.openrgb-with-all-plugins;
+      #};
+      bolt.enable = true;
     };
     pipewire = {
       enable = true;

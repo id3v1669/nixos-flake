@@ -2,9 +2,9 @@
 , stdenv
 , fetchFromGitHub
 , fetchurl
-, nodejs-16_x
+, nodejs
 , nodePackages
-, electron_12
+, electron
 , makeDesktopItem
 , callPackage
 , runCommand
@@ -36,7 +36,7 @@ stdenv.mkDerivation rec {
   dontStrip = true;
   dontPatchELF = true;
 
-  nativeBuildInputs = [ nodejs-16_x python3 ];
+  nativeBuildInputs = [ nodejs python3 ];
 
     buildPhase = ''
       runHook preBuild
@@ -44,10 +44,10 @@ stdenv.mkDerivation rec {
       tar -xf ${nodeHeaders} -C /build/.node-gyp/12.2.3
       mv /build/.node-gyp/12.2.3/*/include /build/.node-gyp/12.2.3
       echo 9 > /build/.node-gyp/12.2.3/installVersion
-      sed -i -e "s|#!/usr/bin/env node|#! ${nodejs-16_x}/bin/node|" node_modules/webpack/bin/webpack.js
+      sed -i -e "s|#!/usr/bin/env node|#! ${nodejs}/bin/node|" node_modules/webpack/bin/webpack.js
       echo rebuild nya~
       export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-      export ELECTRON_OVERRIDE_DIST_PATH="${electron_12}/bin"
+      export ELECTRON_OVERRIDE_DIST_PATH="${electron}/bin"
       DEBUG=electron-rebuild npm run postinstall --verbose --openssl_fips="" -- -f
       npm run webpack
       runHook postBuild
@@ -80,7 +80,7 @@ stdenv.mkDerivation rec {
   makeDesktopItem
   {
     name = "balena-etcher";
-    exec = "${electron_12}/bin/electron ${app}";
+    exec = "${electron}/bin/electron ${app}";
     comment = "Flash OS images to SD cards and USB drives, safely and easily.";
     desktopName = "BalenaEtcher";
     categories = [ "Utility" ];

@@ -49,8 +49,12 @@
     mkSyst = { 
       hostname,
       envir,
-      winvar ? false,
       desk ? "desktop",
+      bootloader ? {
+        type = "systemd-boot";
+        winvar = false;
+        device = "";
+      },
       gpuvar ? {
         type = "nvidia";
         tech = "prime";
@@ -106,7 +110,7 @@
     in inputs.nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system winvar;
+        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader;
       };
       modules = [ 
         (./. + "/hosts/${hostname}.nix")
@@ -128,6 +132,16 @@
       #porple, phd, pasque, pandora, outrun-dark, mountain, material-darker,
       #lime, kimber, icy, gruvbox-dark-pale, grayscale-dark, darktooth, black-metal
       #mytop: pandora, stella, lime, gruvbox-dark-pale, outrun-dark, spaceduck
+      srvnet510 = mkSyst {
+        hostname = "srvnet510";
+        envir = "none";
+        bootloader = {
+          type = "grub";
+          winvar = false;
+          device = "/dev/vda";
+        };
+
+      };
       nuc11phhyprtbqhd = mkSyst {
         hostname = "nuc11ph";
         envir = "hypr";
@@ -152,7 +166,6 @@
       nuc11phhyprhdmi = mkSyst {
         hostname = "nuc11ph";
         envir = "hypr";
-        winvar = false;
         colorsvar = "spaceduck";
         gpuvar = {
           type = "nvidia";
@@ -192,7 +205,10 @@
         gpuvar = {
           type = "amd";
         };
-        winvar = true;
+        bootloader = {
+          type = "systemd-boot";
+          winvar = true;
+        };
         uservars = { name = "user"; description = "alexp"; };
         deflocale = {
           kblayout = "us,ru";

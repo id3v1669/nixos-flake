@@ -1,4 +1,4 @@
-{ config, lib, pkgs, envir, hostname, uservars, ... }: {
+{ config, lib, pkgs, envir, hostname, uservars, desk, ... }: {
   programs.fish = {
     enable = true;
       shellAliases = {    #global aliases
@@ -11,17 +11,7 @@
           description = "Greeting to show when starting a fish shell";
           body = let
             commonPart = ''
-switch "$hostname"
-  case "${hostname}${envir}"
-    alias firstinstall="bash ${config.home.homeDirectory}/.scripts/firstinstall.sh"
-    alias yay="distrobox enter --name archbox -- yay"
-    alias pacman="distrobox enter --name archbox -- sudo pacman"
-    #alias packettracer="distrobox-enter --name archbox -- 'packettracer &'"
-    alias archt="distrobox enter archbox"
-    alias debt="distrobox enter debbox"
-  case '*'
-    # Default case
-end
+
 
 echo "
                       --- Welcome to $hostname fish ---
@@ -42,8 +32,18 @@ echo "
                               ░░░░▒▒
 "
         '';
-            conditionalPart = if envir == "hypr" then ''
-
+            conditionalPart = if desk != "server" then ''
+switch "$hostname"
+  case "${hostname}${envir}"
+    alias firstinstall="bash ${config.home.homeDirectory}/.scripts/firstinstall.sh"
+    alias yay="distrobox enter --name archbox -- yay"
+    alias pacman="distrobox enter --name archbox -- sudo pacman"
+    #alias packettracer="distrobox-enter --name archbox -- 'packettracer &'"
+    alias archt="distrobox enter archbox"
+    alias debt="distrobox enter debbox"
+  case '*'
+    # Default case
+end
             '' else '''';
           in
           conditionalPart + commonPart;
