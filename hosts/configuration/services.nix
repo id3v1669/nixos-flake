@@ -32,11 +32,12 @@
       };
     };
   } // lib.optionalAttrs (desk == "srvnet510") {
+    environment.etc."nextcloud-admin-pass".text = "test123";
     nextcloud = {
       enable = true;
       package = pkgs.nextcloud27;
       hostName = "localhost";
-      config.adminpassFile = config.sops.secrets.nextcloud.admin-password.path;
+      config.adminpassFile = "/etc/nextcloud-admin-pass"; #config.sops.secrets.nextcloud.admin-password.path;
     };
     # nextcloud = {
     #   enable = true;

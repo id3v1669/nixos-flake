@@ -16,7 +16,6 @@
     ./enviroment/xdg
   ] ++ lib.lists.optionals (envir == "gnome") [
   ];
-  colorScheme = inputs.nix-colors.colorSchemes.${colorsvar};
   home = {
     stateVersion = "${curversion}";
     username = "${uservars.name}";
@@ -190,4 +189,6 @@
       (callPackage ./programs/other/tlauncher.nix {})
     ]);
   };
+} // lib.optionalAttrs (desk != "server") {
+  colorScheme = inputs.nix-colors.colorSchemes.${colorsvar};
 }
