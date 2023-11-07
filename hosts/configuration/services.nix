@@ -24,6 +24,13 @@
         wayland = true;
       };
     };
+  } // lib.optionalAttrs (desk == "server") {
+    openssh = {
+      enable = true;
+      settings = {
+        PermitRootLogin = "yes";
+      };
+    };
   } // lib.optionalAttrs (desk == "desktop" || desk == "laptop") {
     blueman.enable = true;
     printing.enable = true;
