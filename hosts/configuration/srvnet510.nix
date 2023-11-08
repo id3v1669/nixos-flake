@@ -8,68 +8,53 @@
   networking.defaultGateway = "77.91.123.1";
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
-  security.acme = {
-    acceptTerms = true;
-    email = "nico@nico.ni";
-  };
+  virtualisation.oci-containers = {
+    backend = "docker";
 
-  services.nginx = {
-    enable = true;
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-
-    sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
-    virtualHosts = {
-      "nextcloud.id3v1669.com" = {
-        forceSSL = true;
-        enableACME = true;
+    containers = {
+      nginx-proxy-manager = {
+        autoStart = true;
+        extraOptions = [
+          "--health-cmd=/bin/check-health"
+          "--health-interval=10s"
+          "--health-timeout=3s"
+          "--health-start-period=20s"
+        ];
+        image = "docker.io/jc21/nginx-proxy-manager:latest";
+        ports = [ "80:80" "443:443" "81:81" ];
+        volumes = [ "/home/${uservars.name}/ngxmgr/data:/data" "/home/${uservars.name}/ngxmgr/letsencrypt:/etc/letsencrypt" ];
+      };
+      nextcloud = {
+        autoStart = true;
+        bindMounts = {
+        "/var/lib/nextcloud" = {
+          hostPath = "/mnt/data/nextcloud";
+          isReadOnly = false;
+        };
+        "/mnt/musica" = {
+          hostPath = "/mnt/musica";
+          isReadOnly = true;
+        };
+        "/mnt/pentagramma" = {
+          hostPath = "/mnt/data/pentagramma";
+          isReadOnly = false;
+        };
+        "/mnt/websites/emilia" = {
+          hostPath = "/mnt/data/websites/emilia";
+          isReadOnly = false;
+        };
+        "/mnt/websites/azazel" = {
+          hostPath = "/mnt/data/websites/azazel";
+          isReadOnly = false;
+        };
+        "/mnt/websites/viaggi" = {
+          hostPath = "/mnt/data/websites/viaggi";
+          isReadOnly = false;
+        };
+        };
+        config = import ./nextcloud.nix;
       };
     };
   };
-  services.nextcloud = {
-    enable = true;
-    hostName = "nextcloud.id3v1669.com";
-    nginx.enable = true;
-    https = true;
-    autoUpdateApps.enable = true;
-    autoUpdateApps.startAt = "05:00:00";
-
-    config = {
-      overwriteProtocol = "https";
-      dbtype = "pgsql";
-      dbuser = "nextcloud";
-      dbhost = "/run/postgresql";
-      dbname = "nextcloud";
-      dbpassFile = "/etc/nextcloud-admin-pass";
-      adminpassFile = "/etc/nextcloud-admin-pass";
-      adminuser = "admin";
-    };
-  };
-  services.postgresql = {
-    enable = true;
-    ensureDatabases = [ "nextcloud" ];
-    ensureUsers = [{ 
-      name = "nextcloud";
-       ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
-    }];
-  };
-
-  # virtualisation.oci-containers = {
-  #   backend = "docker";
-
-  #   containers.nginx-proxy-manager = {
-  #     extraOptions = [
-  #       "--health-cmd=/bin/check-health"
-  #       "--health-interval=10s"
-  #       "--health-timeout=3s"
-  #       "--health-start-period=20s"
-  #     ];
-  #     image = "docker.io/jc21/nginx-proxy-manager:latest";
-  #     ports = [ "80:80" "443:443" "81:81" ];
-  #     volumes = [ "/home/${uservars.name}/ngxmgr/data:/data" "/home/${uservars.name}/ngxmgr/letsencrypt:/etc/letsencrypt" ];
-  #   };
-  # };
 
 }
