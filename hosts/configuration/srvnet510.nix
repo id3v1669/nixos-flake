@@ -19,6 +19,8 @@
       https = true;
       defaultPhoneRegion = "AU";
       nginx.hstsMaxAge = 31536000;
+      configureRedis = true;
+      caching.redis = true;
       webfinger = true;
       maxUploadSize = "10G";
       autoUpdateApps = {
@@ -30,11 +32,18 @@
       };
       extraAppsEnable = true;
       hostName = "nextcloud.id3v1669.com";
-      configureRedis = true;
       config.adminpassFile = "/etc/nextcloud-admin-pass";
       config.extraTrustedDomains = [
         "nextcloud.id3v1669.com"
       ];
+      extraOptions = {
+        redis = {
+          host = "127.0.0.1";
+          port = 31638;
+          dbindex = 0;
+          timeout = 1.5;
+        };
+      };
     };
     nginx = {
       enable = true;
@@ -47,6 +56,11 @@
         forceSSL = true;
         locations."/".root = pkgs.nextcloud27;
       };
+    };
+    redis.servers.nextcloud = {
+      enable = true;
+      port = 31638;
+      bind = "127.0.0.1";
     };
   };
 
