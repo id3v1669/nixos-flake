@@ -8,6 +8,37 @@
   networking.defaultGateway = "77.91.123.1";
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
+  containers.nextcloud = {
+        autoStart = true;
+        bindMounts = {
+        "/var/lib/nextcloud" = {
+          hostPath = "/mnt/data/nextcloud";
+          isReadOnly = false;
+        };
+        # "/mnt/musica" = {
+        #   hostPath = "/mnt/musica";
+        #   isReadOnly = true;
+        # };
+        # "/mnt/pentagramma" = {
+        #   hostPath = "/mnt/data/pentagramma";
+        #   isReadOnly = false;
+        # };
+        # "/mnt/websites/emilia" = {
+        #   hostPath = "/mnt/data/websites/emilia";
+        #   isReadOnly = false;
+        # };
+        # "/mnt/websites/azazel" = {
+        #   hostPath = "/mnt/data/websites/azazel";
+        #   isReadOnly = false;
+        # };
+        # "/mnt/websites/viaggi" = {
+        #   hostPath = "/mnt/data/websites/viaggi";
+        #   isReadOnly = false;
+        # };
+        };
+        config = import ./nextcloud.nix;
+      };
+
   virtualisation.oci-containers = {
     backend = "docker";
 
@@ -23,36 +54,6 @@
         image = "docker.io/jc21/nginx-proxy-manager:latest";
         ports = [ "80:80" "443:443" "81:81" ];
         volumes = [ "/home/${uservars.name}/ngxmgr/data:/data" "/home/${uservars.name}/ngxmgr/letsencrypt:/etc/letsencrypt" ];
-      };
-      nextcloud = {
-        autoStart = true;
-        bindMounts = {
-        "/var/lib/nextcloud" = {
-          hostPath = "/mnt/data/nextcloud";
-          isReadOnly = false;
-        };
-        "/mnt/musica" = {
-          hostPath = "/mnt/musica";
-          isReadOnly = true;
-        };
-        "/mnt/pentagramma" = {
-          hostPath = "/mnt/data/pentagramma";
-          isReadOnly = false;
-        };
-        "/mnt/websites/emilia" = {
-          hostPath = "/mnt/data/websites/emilia";
-          isReadOnly = false;
-        };
-        "/mnt/websites/azazel" = {
-          hostPath = "/mnt/data/websites/azazel";
-          isReadOnly = false;
-        };
-        "/mnt/websites/viaggi" = {
-          hostPath = "/mnt/data/websites/viaggi";
-          isReadOnly = false;
-        };
-        };
-        config = import ./nextcloud.nix;
       };
     };
   };
