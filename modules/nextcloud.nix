@@ -1,11 +1,8 @@
 {lib, config, pkgs, uservars, ...}:
 {
-  environment.etc."nextcloud-admin-pass".text = "test123";
-  #networking.firewall.allowedTCPPorts = [ 22 80 443 8080 8090 28943 ];
-  networking.firewall.enable = false;
-  security.acme = {
-    defaults.email = "nico@nico.ni";
-    acceptTerms = true;
+  sops.secrets."nextcloud-admin" = {
+    sopsFile = ./../secrets/nextcloud.enc.yaml;
+    owner = "nextcloud";
   };
   services = {
     nextcloud = {
@@ -31,7 +28,7 @@
         overwriteProtocol = "https";
         defaultPhoneRegion = "AU";
         adminuser = "admin-root";
-        adminpassFile = "/etc/nextcloud-admin-pass";
+        adminpassFile = "${config.sops.secrets."nextcloud-admin".path}";
         extraTrustedDomains = [ "nextcloud.id3v1669.com" ];
       };
       phpOptions = {
@@ -52,24 +49,10 @@
         "redis.session.lock_wait_time" = "10000";
       };
     };
-    nginx = {
-      enable = true;
-      virtualHosts = {
-        "nextcloud.id3v1669.com" = {
-          enableACME = true;
-          forceSSL = true;
-        };
-        "onlyoffice.id3v1669.com" = {
-          enableACME = true;
-          forceSSL = true;
-        };
-      };
+    nginx.virtualHosts."nextcloud.id3v1669.com" = {
+      enableACME = true;
+      forceSSL = true;
     };
     mysql.package = lib.mkForce pkgs.mariadb;
-    onlyoffice = {
-      enable = true;
-      hostname = "onlyoffice.id3v1669.com";
-    };
-
   };
 }

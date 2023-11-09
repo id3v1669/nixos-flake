@@ -28,5 +28,7 @@
   ];
   networking.defaultGateway = "77.91.123.1";
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+  #networking.firewall.allowedTCPPorts = [ 22 80 443 8080 8090 28943 ];
+  networking.firewall.enable = false;
   
 }

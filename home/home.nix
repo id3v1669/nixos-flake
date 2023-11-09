@@ -79,7 +79,7 @@
       #iwd
 
       #vid photo etc
-      (callPackage ./programs/other/xwaylandvideobridge.nix {})
+      over-xwalandvideobridge
       ffmpeg
       vlc
       mpv
