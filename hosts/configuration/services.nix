@@ -23,14 +23,7 @@
         enable = true;
         wayland = true;
       };
-    };
-  } // lib.optionalAttrs (desk == "server") {
-    openssh = {
-      enable = true;
-      settings = {
-        PermitRootLogin = "yes";
-      };
-    };
+    };    
   } // lib.optionalAttrs (desk == "desktop" || desk == "laptop") {
     blueman.enable = true;
     printing.enable = true;
@@ -65,22 +58,6 @@
          command = "Hyprland";
        };
      };
-    };
-  } // lib.optionalAttrs (desk == "laptop") {
-    auto-cpufreq = {
-      enable = true;
-      settings = {
-        battery = {
-          governor = "powersave";
-          scaling_min_freq = 600000;
-          scaling_max_freq = 1300000;
-          turbo = "never";
-        };
-        charger = {
-          governor = "performance";
-          turbo = "auto";
-        };
-      };
     };
   };
 }

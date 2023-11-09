@@ -1,9 +1,10 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, uservars, ... }:
 {
   imports =
     [ 
       (modulesPath + "/installer/scan/not-detected.nix")
       ./configuration
+      ./../modules/autocpufreq.nix
     ];
 
 

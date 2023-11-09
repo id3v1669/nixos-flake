@@ -33,12 +33,8 @@
       gh
 
       #crypt
-      #gnupg
-      #pinentry # for gpg
       age
       sops
-      
-    ]) ++ lib.lists.optionals (desk == "server") (with pkgs;[
 
     ]) ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") (with pkgs;[
       #tests
@@ -80,7 +76,6 @@
 
       #vid photo etc
       over-xwalandvideobridge
-      ffmpeg
       vlc
       mpv
       nomacs
@@ -190,7 +185,7 @@
     ]) ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [ 
       egl-wayland #needed for vms on nvidia  hw
     ]) ++ lib.lists.optionals (hostname == "nuc11ph") (with pkgs; [
-      (callPackage ./programs/other/tlauncher.nix {})
+      over-tlauncher
     ]);
   };
 } // lib.optionalAttrs (desk != "server") {

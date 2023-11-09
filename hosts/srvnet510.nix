@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, uservars, ... }:
 {
   imports =
   [ 
@@ -8,6 +8,7 @@
     ./../modules/nginx.nix
     ./../modules/onlyoffice.nix
     ./../modules/sops.nix
+    ./../modules/openssh.nix
     ];
 
   boot = {

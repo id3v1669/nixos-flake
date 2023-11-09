@@ -55,4 +55,8 @@
     };
     mysql.package = lib.mkForce pkgs.mariadb;
   };
+  environment.systemPackages = with pkgs; [
+    effmpeg
+    nodejs
+  ];
 }

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, gpuvar, ... }:
+{ config, lib, pkgs, modulesPath, uservars, ... }:
 {
   imports =
     [ 
