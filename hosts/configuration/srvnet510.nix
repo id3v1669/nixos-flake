@@ -29,7 +29,7 @@
         startAt = "Sun 14:00:00";
       };
       extraApps = with config.services.nextcloud.package.packages.apps; {
-        inherit calendar contacts mail notes onlyoffice tasks;
+        inherit calendar contacts notes onlyoffice tasks;
       };
       config = {
         dbtype = "mysql";
@@ -38,6 +38,23 @@
         adminuser = "admin-root";
         adminpassFile = "/etc/nextcloud-admin-pass";
         extraTrustedDomains = [ "nextcloud.id3v1669.com" ];
+      };
+      phpOptions = {
+        catch_workers_output = "yes";
+        display_errors = "stderr";
+        error_reporting = "E_ALL & ~E_DEPRECATED & ~E_STRICT";
+        expose_php = "Off";
+        short_open_tag = "Off";
+        "opcache.enable_cli" = "1";
+        "opcache.fast_shutdown" = "1";
+        "opcache.interned_strings_buffer" = "16";
+        "opcache.max_accelerated_files" = "10000";
+        "opcache.memory_consumption" = "128";
+        "opcache.revalidate_freq" = "1";
+        
+        "redis.session.locking_enabled" = "1";
+        "redis.session.lock_retries" = "-1";
+        "redis.session.lock_wait_time" = "10000";
       };
     };
     nginx = {
