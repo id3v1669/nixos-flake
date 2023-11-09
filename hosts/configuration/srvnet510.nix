@@ -21,6 +21,7 @@
       https = true;
       nginx.hstsMaxAge = 31536000;
       configureRedis = true;
+      caching.redis = true;
       webfinger = true;
       maxUploadSize = "10G";
       hostName = "nextcloud.id3v1669.com";

@@ -29,31 +29,6 @@
       owner = "${uservars.name}";
     };
   };
-  systemd.services."sometestservice" = {
-    script = ''
-        echo "
-        password1:
-        $(cat ${config.sops.secrets."example-key".path})
-        located in:
-       ${config.sops.secrets."example-key".path}
-        password2:
-        $(cat ${config.sops.secrets."nextcloud/db-password".path})
-        password3:
-        $(cat ${config.sops.secrets."nextcloud/admin-password".path})
-        " > /var/lib/sometestservice/testfile
-      '';
-    serviceConfig = {
-      User = "sometestservice";
-      WorkingDirectory = "/var/lib/sometestservice";
-    };
-  };
-  users.users.sometestservice = {
-    home = "/var/lib/sometestservice";
-    createHome = true;
-    isSystemUser = true;
-    group = "sometestservice";
-  };
-  users.groups.sometestservice = { };
   networking = {
     hostName = "${hostname}${envir}";
     useDHCP = lib.mkDefault true;
