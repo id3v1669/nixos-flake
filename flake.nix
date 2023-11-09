@@ -93,7 +93,7 @@
         nur.overlay
         nixmox.overlay
         (final: prev: {
-          over-xwalandvideobridge = (nixpkgs.callPackage ./overlays/xwaylandvideobridge.nix {});
+          over-xwalandvideobridge = (pkgs.callPackage ./overlays/xwaylandvideobridge.nix {});
           over-eww = eww-tray.packages.${pkgs.system}.default.override { withWayland = true; };
           over-hyprland = hyprland.packages.${pkgs.system}.hyprland;
           over-hypr-portal = xdghypr.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
