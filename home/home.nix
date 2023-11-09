@@ -31,6 +31,10 @@
       neofetch
       git
       gh
+
+      #crypt
+      #gnupg
+      #pinentry # for gpg
       age
       sops
       
