@@ -17,13 +17,11 @@
     nextcloud = {
       enable = true;
       package = pkgs.nextcloud27;
-      #datadir = "/home/${uservars.name}/nextcloud-data";
       database.createLocally = true;
       https = true;
-      #nginx.hstsMaxAge = 31536000;
+      nginx.hstsMaxAge = 31536000;
       configureRedis = true;
-      #caching.redis = true;
-      #webfinger = true;
+      webfinger = true;
       maxUploadSize = "10G";
       hostName = "nextcloud.id3v1669.com";
       autoUpdateApps = {
@@ -34,12 +32,12 @@
         inherit calendar contacts mail notes onlyoffice tasks;
       };
       config = {
-        dbtype = "pgsql";
+        dbtype = "mysql";
         overwriteProtocol = "https";
         defaultPhoneRegion = "AU";
         adminuser = "admin-root";
         adminpassFile = "/etc/nextcloud-admin-pass";
-        #extraTrustedDomains = [ "nextcloud.id3v1669.com" ];
+        extraTrustedDomains = [ "nextcloud.id3v1669.com" ];
       };
     };
     nginx = {
@@ -55,6 +53,7 @@
         };
       };
     };
+    mysql.package = lib.mkForce pkgs.mariadb;
     onlyoffice = {
       enable = true;
       hostname = "onlyoffice.id3v1669.com";
