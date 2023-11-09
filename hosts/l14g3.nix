@@ -1,12 +1,10 @@
 { config, lib, pkgs, modulesPath, uservars, ... }:
 {
-  imports =
-    [ 
-      (modulesPath + "/installer/scan/not-detected.nix")
-      ./configuration
-      ./../modules/autocpufreq.nix
-    ];
-
+  imports = [ 
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ./configuration
+    ./../modules/autocpufreq.nix
+  ];
 
   boot = {
     kernelModules = [ "kvm-amd" "i2c-dev" "i2c-piix4" ];
@@ -18,15 +16,15 @@
     };
   };
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/5230672f-5d6f-4919-a8f6-bf56d691e302";
-      fsType = "ext4";
-    };
+  fileSystems."/" ={ 
+    device = "/dev/disk/by-uuid/5230672f-5d6f-4919-a8f6-bf56d691e302";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3588-1181";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/3588-1181";
+    fsType = "vfat";
+  };
 
   swapDevices = [ ]; 
 

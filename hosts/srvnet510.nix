@@ -1,7 +1,6 @@
 { config, lib, pkgs, modulesPath, uservars, ... }:
 {
-  imports =
-  [ 
+  imports = [ 
     (modulesPath + "/profiles/qemu-guest.nix")
     ./configuration
     ./../modules/nextcloud.nix
@@ -9,7 +8,7 @@
     ./../modules/onlyoffice.nix
     ./../modules/sops.nix
     ./../modules/openssh.nix
-    ];
+  ];
 
   boot = {
     initrd = {
@@ -20,10 +19,10 @@
     extraModulePackages = [ ];
   };
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/73017d40-b827-4948-9470-1c418973abf3";
-      fsType = "ext4";
-    };
+  fileSystems."/" = { 
+    device = "/dev/disk/by-uuid/73017d40-b827-4948-9470-1c418973abf3";
+    fsType = "ext4";
+  };
 
   swapDevices = [ ];
 

@@ -49,7 +49,7 @@
     power-profiles-daemon.enable = false;
   } // lib.optionalAttrs (envir == "hypr") {
     gvfs.enable = true; # Mount, trash, etc
-    mpd.enable = true;
+    mpd.enable = true; # music player daemon
     greetd = {
      enable = true;
      settings = {

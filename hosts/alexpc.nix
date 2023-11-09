@@ -1,11 +1,9 @@
 { config, lib, pkgs, modulesPath, uservars, ... }:
 {
-  imports =
-    [ 
-      (modulesPath + "/installer/scan/not-detected.nix")
-      ./configuration
-    ];
-
+  imports =[ 
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ./configuration
+  ];
 
   boot = {
     kernelModules = [ "kvm-intel" "i2c-dev" "i2c-i801" ];
@@ -16,19 +14,19 @@
     };
   };
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/1f70a523-6311-4785-966c-f929a5f28002";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/1f70a523-6311-4785-966c-f929a5f28002";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/6079-C2CD";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/6079-C2CD";
+    fsType = "vfat";
+  };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/e16bef8b-f19d-4ced-bfda-09321d25ccc8"; }
-    ];
+  swapDevices =[ 
+    { device = "/dev/disk/by-uuid/e16bef8b-f19d-4ced-bfda-09321d25ccc8"; }
+  ];
   
   networking.firewall.enable = false;
   users.users.${uservars.name}.extraGroups = [ 

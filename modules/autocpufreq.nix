@@ -1,6 +1,6 @@
 {lib, config, pkgs, uservars, ...}: 
 {
-  auto-cpufreq = {
+  services.auto-cpufreq = {
     enable = true;
     settings = {
       battery = {
