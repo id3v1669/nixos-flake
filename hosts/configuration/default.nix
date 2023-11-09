@@ -70,7 +70,7 @@
   users.users.${uservars.name} = {
     isNormalUser = true;
     description = "${uservars.description}";
-    extraGroups = [ "wheel" "networkmanager" "docker" ] ++ lib.lists.optionals ( desk != "server" ) [ "rustdesk" "adbusers" "kvm" "input" "disk" "qemu-libvirtd" "libvirtd" "video" "wireshark" "pipewire" "i2c" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "postgres" "nextcloud" ] ++ lib.lists.optionals ( desk != "server" ) [ "rustdesk" "adbusers" "kvm" "input" "disk" "qemu-libvirtd" "libvirtd" "video" "wireshark" "pipewire" "i2c" ];
     shell = pkgs.fish;
   };
 }

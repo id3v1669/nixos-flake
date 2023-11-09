@@ -17,7 +17,7 @@
     nextcloud = {
       enable = true;
       package = pkgs.nextcloud27;
-      datadir = "/home/${usevars.name}/nextcloud-data";
+      datadir = "/home/${uservars.name}/nextcloud-data";
       database.createLocally = true;
       https = true;
       nginx.hstsMaxAge = 31536000;
@@ -36,13 +36,8 @@
       config = {
         dbtype = "pgsql";
         overwriteProtocol = "https";
-        dbuser = "nextcloud";
-        dbtableprefix = "nc_";
-        dbpassFile = "/etc/nextcloud-admin-pass";
-        dbname = "nextcloud";
-        dbhost = "/run/postgresql";
         defaultPhoneRegion = "AU";
-        adminuser = "nextcloudadmin";
+        adminuser = "admin-root";
         adminpassFile = "/etc/nextcloud-admin-pass";
         extraTrustedDomains = [ "nextcloud.id3v1669.com" ];
       };
@@ -56,7 +51,6 @@
         virtualHosts."nextcloud.id3v1669.com" = {
         enableACME = true;
         forceSSL = true;
-        #locations."/".root = pkgs.nextcloud27;
       };
     };
     redis.servers.nextcloud = {
@@ -64,18 +58,5 @@
       port = 31638;
       bind = "127.0.0.1";
     };
-    postgresql = {
-      enable = true;
-      package = pkgs.postgresql;
-      ensureDatabases = [ "nextcloud" ];
-      ensureUsers = [{
-        name = "nextcloud";
-        ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
-      }];
-    };
-  };
-  systemd.services."nextcloud-setup" = {
-    requires = [ "postgresql.service" ];
-    after = [ "postgresql.service" ];
   };
 }
