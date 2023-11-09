@@ -17,13 +17,13 @@
     nextcloud = {
       enable = true;
       package = pkgs.nextcloud27;
-      datadir = "/home/${uservars.name}/nextcloud-data";
+      #datadir = "/home/${uservars.name}/nextcloud-data";
       database.createLocally = true;
       https = true;
-      nginx.hstsMaxAge = 31536000;
+      #nginx.hstsMaxAge = 31536000;
       configureRedis = true;
-      caching.redis = true;
-      webfinger = true;
+      #caching.redis = true;
+      #webfinger = true;
       maxUploadSize = "10G";
       hostName = "nextcloud.id3v1669.com";
       autoUpdateApps = {
@@ -31,7 +31,7 @@
         startAt = "Sun 14:00:00";
       };
       extraApps = with config.services.nextcloud.package.packages.apps; {
-        inherit calendar tasks;
+        inherit calendar contacts mail notes onlyoffice tasks;
       };
       config = {
         dbtype = "pgsql";
@@ -39,24 +39,26 @@
         defaultPhoneRegion = "AU";
         adminuser = "admin-root";
         adminpassFile = "/etc/nextcloud-admin-pass";
-        extraTrustedDomains = [ "nextcloud.id3v1669.com" ];
+        #extraTrustedDomains = [ "nextcloud.id3v1669.com" ];
       };
     };
     nginx = {
       enable = true;
-        recommendedGzipSettings = true;
-        recommendedOptimisation = true;
-        recommendedProxySettings = true;
-        recommendedTlsSettings = true;
-        virtualHosts."nextcloud.id3v1669.com" = {
-        enableACME = true;
-        forceSSL = true;
+      virtualHosts = {
+        "nextcloud.id3v1669.com" = {
+          enableACME = true;
+          forceSSL = true;
+        };
+        "onlyoffice.id3v1669.com" = {
+          enableACME = true;
+          forceSSL = true;
+        };
       };
     };
-    redis.servers.nextcloud = {
+    onlyoffice = {
       enable = true;
-      port = 31638;
-      bind = "127.0.0.1";
+      hostname = "onlyoffice.id3v1669.com";
     };
+
   };
 }
