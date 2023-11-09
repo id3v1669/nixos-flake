@@ -31,8 +31,6 @@
         PermitRootLogin = "yes";
       };
     };
-  } // lib.optionalAttrs (desk == "srvnet510") {
-    
   } // lib.optionalAttrs (desk == "desktop" || desk == "laptop") {
     blueman.enable = true;
     printing.enable = true;

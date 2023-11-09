@@ -1,4 +1,4 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, system, gpuvar, ...}: 
+{lib, config, pkgs, ...}: 
 {
   fonts = {
     fontconfig.enable = true;

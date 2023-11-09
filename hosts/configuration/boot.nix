@@ -2,8 +2,10 @@
 {
   boot = {
     loader = {
+    }// lib.optionalAttrs (desk == "server") {
+      timeout = 1;
     }// lib.optionalAttrs (desk != "server") {
-      timeout = 15;     
+      timeout = 15;
       efi.canTouchEfiVariables = true;
     }// lib.optionalAttrs (bootloader.type == "grub") {
       grub = {

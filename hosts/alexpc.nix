@@ -29,5 +29,23 @@
   swapDevices =
     [ { device = "/dev/disk/by-uuid/e16bef8b-f19d-4ced-bfda-09321d25ccc8"; }
     ];
+  
+  networking.firewall.enable = false;
+  users.users.${uservars.name}.extraGroups = [ 
+    "wheel"
+    "networkmanager"
+    "docker"
+    "rustdesk"
+    "adbusers"
+    "kvm"
+    "input" 
+    "disk" 
+    "qemu-libvirtd"
+    "libvirtd"
+    "video"
+    "wireshark"
+    "pipewire"
+    "i2c" 
+  ];
 
 }

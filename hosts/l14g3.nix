@@ -28,4 +28,22 @@
     };
 
   swapDevices = [ ]; 
+
+  networking.firewall.enable = false;
+  users.users.${uservars.name}.extraGroups = [ 
+    "wheel"
+    "networkmanager"
+    "docker"
+    "rustdesk"
+    "adbusers"
+    "kvm"
+    "input" 
+    "disk" 
+    "qemu-libvirtd"
+    "libvirtd"
+    "video"
+    "wireshark"
+    "pipewire"
+    "i2c" 
+  ];
 }

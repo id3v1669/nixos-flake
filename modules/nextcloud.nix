@@ -15,7 +15,7 @@
       caching.redis = true;
       webfinger = true;
       maxUploadSize = "10G";
-      hostName = "nextcloud.id3v1669.com";
+      hostName = "nextcloud.${uservars.domain}";
       autoUpdateApps = {
         enable = true;
         startAt = "Sun 14:00:00";
@@ -27,9 +27,9 @@
         dbtype = "mysql";
         overwriteProtocol = "https";
         defaultPhoneRegion = "AU";
-        adminuser = "admin-root";
+        adminuser = "${uservars.name}";
         adminpassFile = "${config.sops.secrets."nextcloud-admin".path}";
-        extraTrustedDomains = [ "nextcloud.id3v1669.com" ];
+        extraTrustedDomains = [ "nextcloud.${uservars.domain}" ];
       };
       phpOptions = {
         catch_workers_output = "yes";
@@ -49,7 +49,7 @@
         "redis.session.lock_wait_time" = "10000";
       };
     };
-    nginx.virtualHosts."nextcloud.id3v1669.com" = {
+    nginx.virtualHosts."nextcloud.${uservars.domain}" = {
       enableACME = true;
       forceSSL = true;
     };

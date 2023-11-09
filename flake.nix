@@ -66,7 +66,7 @@
       },
       system ? "x86_64-linux",
       cpuvar ? "intel",
-      colorsvar ? "uwunicorn",
+      colorsvar ? "catppuccin-frappe",
       brightnesctrl ? {
         up = "ddcutil setvcp 10 + 5";
         down = "ddcutil setvcp 10 - 5";
@@ -74,6 +74,7 @@
       uservars ? {
         name = "user";
         description = "id3v1669";
+        domain = "none";
       },
       deflocale ? {
         kblayout = "us,ru";
@@ -93,6 +94,8 @@
         nur.overlay
         nixmox.overlay
         (final: prev: {
+          over-tlauncher = (pkgs.callPackage ./overlays/tlauncher.nix {});
+          over-vesktop = (pkgs.callPackage ./overlays/vesktop.nix {});
           over-xwalandvideobridge = (pkgs.callPackage ./overlays/xwaylandvideobridge.nix {});
           over-eww = eww-tray.packages.${pkgs.system}.default.override { withWayland = true; };
           over-hyprland = hyprland.packages.${pkgs.system}.hyprland;
@@ -149,8 +152,9 @@
           type = "none";
         };
         uservars = {
-          name = "user";
+          name = "srvnet510pq";
           description = "serverUser510";
+          domain = "id3v1669.com";
         };
         deflocale = {
           kblayout = "au";
@@ -172,7 +176,6 @@
         hostname = "nuc11ph";
         envir = "hypr";
         #winvar = true;
-        colorsvar = "catppuccin-frappe";
         gpuvar = {
           type = "nvidia";
           tech = "prime";
@@ -184,7 +187,6 @@
       nuc11phhyprhdmi = mkSyst {
         hostname = "nuc11ph";
         envir = "hypr";
-        colorsvar = "spaceduck";
         gpuvar = {
           type = "nvidia";
           tech = "prime";

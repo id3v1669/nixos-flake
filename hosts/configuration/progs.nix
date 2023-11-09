@@ -2,10 +2,6 @@
 {
   programs = {
     fish.enable = true;
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
   } // lib.optionalAttrs (desk == "server") {
     mtr.enable = true;
     gnupg.agent = {

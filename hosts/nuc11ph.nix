@@ -8,7 +8,7 @@
 
   boot = {
     kernelModules = [ "kvm-intel" "i2c-dev" "i2c-i801" ];
-    kernelParams = [ ]; #"i915.modeset=1" ]; #"module_blacklist=i915" ];
+    kernelParams = [ ];
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback config.boot.kernelPackages.nvidia_x11 ];
     initrd = {
@@ -29,4 +29,21 @@
 
   swapDevices = [ ];
 
+  networking.firewall.enable = false;
+  users.users.${uservars.name}.extraGroups = [ 
+    "wheel"
+    "networkmanager"
+    "docker"
+    "rustdesk"
+    "adbusers"
+    "kvm"
+    "input" 
+    "disk" 
+    "qemu-libvirtd"
+    "libvirtd"
+    "video"
+    "wireshark"
+    "pipewire"
+    "i2c" 
+  ];
 }

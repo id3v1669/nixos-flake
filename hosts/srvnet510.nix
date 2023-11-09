@@ -1,9 +1,13 @@
 { config, lib, pkgs, modulesPath, ... }:
 {
   imports =
-    [ 
-      (modulesPath + "/profiles/qemu-guest.nix")
-      ./configuration
+  [ 
+    (modulesPath + "/profiles/qemu-guest.nix")
+    ./configuration
+    ./../modules/nextcloud.nix
+    ./../modules/nginx.nix
+    ./../modules/onlyoffice.nix
+    ./../modules/sops.nix
     ];
 
   boot = {
@@ -22,13 +26,21 @@
 
   swapDevices = [ ];
 
-  networking.interfaces.ens3.ipv4.addresses = [
-    { address = "77.91.123.39"; prefixLength = 24; }
-    { address = "77.91.123.50"; prefixLength = 24; }
+  networking = {
+    useDHCP = false;
+    interfaces.ens3.ipv4.addresses = [
+      { address = "77.91.123.39"; prefixLength = 24; }
+      { address = "77.91.123.50"; prefixLength = 24; }
+    ];
+    defaultGateway = "77.91.123.1";
+    nameservers = [ "1.1.1.1" "8.8.8.8" ];
+    #firewall.allowedTCPPorts = [ 22 80 443 8080 8090 28943 ];
+    firewall.enable = false;
+  };
+  users.users.${uservars.name}.extraGroups = [ 
+    "wheel"
+    "networkmanager"
+    "nextcloud"
   ];
-  networking.defaultGateway = "77.91.123.1";
-  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
-  #networking.firewall.allowedTCPPorts = [ 22 80 443 8080 8090 28943 ];
-  networking.firewall.enable = false;
   
 }

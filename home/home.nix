@@ -92,7 +92,7 @@
       #chat
       telegram-desktop
       whatsapp-for-linux
-      (callPackage ./programs/discord/vesktop.nix {})
+      over-vesktop
       
       #security
       openssl
