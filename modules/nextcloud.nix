@@ -10,7 +10,7 @@
       package = pkgs.nextcloud27;
       database.createLocally = true;
       https = true;
-      nginx.hstsMaxAge = 31536000;
+      #nginx.hstsMaxAge = 31536000;
       configureRedis = true;
       webfinger = true;
       maxUploadSize = "10G";
@@ -73,6 +73,14 @@
       enableACME = true;
       forceSSL = true;
       locations."/".proxyWebsockets = true;
+      extraConfig = ''
+        add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+        add_header Referrer-Policy "origin-when-cross-origin";
+
+        add_header X-XSS-Protection "1; mode=block";
+        add_header X-Frame-Options "DENY";
+        add_header X-Content-Type-Options "nosniff";
+      '';
     };
     mysql.package = lib.mkForce pkgs.mariadb;
   };
