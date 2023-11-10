@@ -18,12 +18,13 @@
     isNormalUser = true;
     description = "${uservars.description}";
     shell = pkgs.fish;
+    ignoreShellProgramCheck = true;
   };
   environment = {
     sessionVariables = {
       EDITOR = "nano";
     };
-    systemPackages = pkgs.fish;
+    systemPackages = [ pkgs.fish ];
   };
   time.timeZone = "${deflocale.timezone}";
   i18n.defaultLocale = "${deflocale.locale}";
@@ -60,7 +61,7 @@
     };
     light.enable = true;  #laptop brightness control and fix for openrgb
     traceroute.enable = true;
-    #adb.enable = true;
+    adb.enable = true;
   };
   hardware = {
     i2c.enable = true;
