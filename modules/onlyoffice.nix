@@ -8,6 +8,7 @@
     onlyoffice = {
       enable = true;
       hostname = "onlyoffice.id3v1669.com";
+      port = 8089;
     };
   };
 }

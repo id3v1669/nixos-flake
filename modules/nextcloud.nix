@@ -33,6 +33,7 @@
         defaultPhoneRegion = "AU";
         adminuser = "${uservars.name}";
         adminpassFile = "${config.sops.secrets."nextcloud-admin".path}";
+        trustedProxies = [ "127.0.0.1" ];
         extraTrustedDomains = [
           "nextcloud.${uservars.domain}"
         ];
@@ -71,6 +72,7 @@
     nginx.virtualHosts."nextcloud.${uservars.domain}" = {
       enableACME = true;
       forceSSL = true;
+      locations."/".proxyWebsockets = true;
     };
     mysql.package = lib.mkForce pkgs.mariadb;
   };
