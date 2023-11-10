@@ -34,13 +34,19 @@
     ];
     defaultGateway = "77.91.123.1";
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
-    #firewall.allowedTCPPorts = [ 22 80 443 8080 8090 28943 ];
-    firewall.enable = false;
+    firewall.allowedTCPPorts = [ 26783 80 443 ];
+    firewall.enable = true;
   };
   users.users.${uservars.name}.extraGroups = [ 
     "wheel"
     "networkmanager"
-    #"nextcloud"
   ];
+  services.openssh = {
+    enable = true;
+    ports = [ 26783 ];
+    settings = {
+      PermitRootLogin = "no";
+    };
+  };
   
 }
