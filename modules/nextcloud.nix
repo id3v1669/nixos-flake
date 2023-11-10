@@ -35,7 +35,6 @@
         adminpassFile = "${config.sops.secrets."nextcloud-admin".path}";
         extraTrustedDomains = [
           "nextcloud.${uservars.domain}"
-          "onlyoffice.${uservars.domain}"
         ];
       };
       phpOptions = {
@@ -44,7 +43,6 @@
         error_reporting = "E_ALL & ~E_DEPRECATED & ~E_STRICT";
         expose_php = "Off";
         short_open_tag = "Off";
-        allow_local_remote_servers = "true";
         "opcache.enable_cli" = "1";
         "opcache.fast_shutdown" = "1";
         "opcache.interned_strings_buffer" = "16";

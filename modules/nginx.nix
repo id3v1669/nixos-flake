@@ -6,5 +6,13 @@
   };
   services.nginx = {
     enable = true;
+    package = pkgs.nginx;
+    sslProtocols = "TLSv1.3";
+    recommendedTlsSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedGzipSettings = true;
+    recommendedZstdSettings = true;
+    recommendedBrotliSettings = true;
   };
 }
