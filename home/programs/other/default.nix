@@ -5,16 +5,16 @@
   #  enable = true;
   #  #preset = ??
   #};
-  services = {} // lib.optionalAttrs (envir != "gnome") {
-    kdeconnect = {
-      enable = true;
-      indicator = true;
-    };
+  #services = {} // lib.optionalAttrs (envir != "gnome") {
+  #  kdeconnect = {
+  #    enable = true;
+  #    indicator = true;
+  #  };
     #gammastep = {
     #  enable = true;
     #  tray = true;
     #};
-  };
+ # };
   programs = {
     direnv.enable = true;
     java = {

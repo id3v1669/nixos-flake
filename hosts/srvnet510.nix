@@ -2,7 +2,7 @@
 {
   imports = [ 
     (modulesPath + "/profiles/qemu-guest.nix")
-    ./configuration
+    ./configuration.nix
     ./../modules/nextcloud.nix
     ./../modules/nginx.nix
     ./../modules/onlyoffice.nix

@@ -55,6 +55,7 @@
       bootloader ? {
         type = "systemd-boot";
         winvar = false;
+        timeout = 10;
         device = "";
       },
       gpuvar ? {
@@ -146,6 +147,7 @@
         bootloader = {
           type = "grub";
           winvar = false;
+          timeout = 1;
           device = "/dev/vda";
         };
         gpuvar = {

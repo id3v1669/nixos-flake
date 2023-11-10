@@ -2,11 +2,13 @@
 {
   imports = [ 
     (modulesPath + "/installer/scan/not-detected.nix")
-    ./configuration
+    ./configuration.nix
     ./../modules/autocpufreq.nix
     ./../modules/virtualisation.nix
     ./../modules/udevrules.nix
     ./../modules/fonts.nix
+    ./../modules/sound.nix
+    ./../modules/gpu.nix
   ];
 
   boot = {

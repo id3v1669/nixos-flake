@@ -2,10 +2,8 @@
 {
   boot = {
     loader = {
-    }// lib.optionalAttrs (desk == "server") {
-      timeout = 1;
+      timeout = ${bootloader.timeout};
     }// lib.optionalAttrs (desk != "server") {
-      timeout = 15;
       efi.canTouchEfiVariables = true;
     }// lib.optionalAttrs (bootloader.type == "grub") {
       grub = {
@@ -78,7 +76,6 @@
           "efi/Microsoft/Boot/Resources/bootres.dll" = "/home/user/.winloader/Boot/Resources/bootres.dll";
           "efi/Microsoft/Boot/Resources/en-US/bootres.dll.mui" = "/home/user/.winloader/Boot/Resources/en-US/bootres.dll.mui";
           "efi/Microsoft/Boot/Resources/ru-RU/bootres.dll.mui" = "/home/user/.winloader/Boot/Resources/ru-RU/bootres.dll.mui";
-
         };
       };
     };
