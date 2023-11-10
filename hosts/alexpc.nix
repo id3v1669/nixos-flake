@@ -3,6 +3,9 @@
   imports =[ 
     (modulesPath + "/installer/scan/not-detected.nix")
     ./configuration
+    ./../modules/virtualisation.nix
+    ./../modules/udevrules.nix
+    ./../modules/fonts.nix
   ];
 
   boot = {

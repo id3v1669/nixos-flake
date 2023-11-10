@@ -11,7 +11,6 @@
     ./udevrules.nix
     ./fonts.nix
     ./pcs.nix
-    ./virtualisation.nix
   ];
   networking = {
     hostName = "${hostname}${envir}";
