@@ -40,7 +40,7 @@
   users.users.${uservars.name}.extraGroups = [ 
     "wheel"
     "networkmanager"
-    "nextcloud"
+    #"nextcloud"
   ];
   
 }
