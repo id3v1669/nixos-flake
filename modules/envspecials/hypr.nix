@@ -11,7 +11,7 @@
   programs = {
     kdeconnect = {
       enable = true;
-      package = pkgs.libsForQt5.kdeconnect-kde
+      package = pkgs.libsForQt5.kdeconnect-kde;
     };
     regreet.enable = true;
   };

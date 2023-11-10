@@ -2,7 +2,7 @@
 {
   boot = {
     loader = {
-      timeout = ${bootloader.timeout};
+      timeout = bootloader.timeout;
     }// lib.optionalAttrs (desk != "server") {
       efi.canTouchEfiVariables = true;
     }// lib.optionalAttrs (bootloader.type == "grub") {

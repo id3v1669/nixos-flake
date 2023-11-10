@@ -1,11 +1,11 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, inputs, envir, cpuvar, system, gpuvar, desk, ...}: 
 {
   imports = [
-    ./../../modules/bootloader.nix
-  ] ++ lib.lists.optionals ( envir == "none" ) [ ./../../modules/envspecials/none.nix
-  ] ++ lib.lists.optionals ( envir == "hypr" ) [ ./../../modules/envspecials/hypr.nix
-  ] ++ lib.lists.optionals ( envir == "gnome" ) [ ./../../modules/envspecials/gnome.nix
-  ] ++ lib.lists.optionals ( envir == "kde" ) [ ./../../modules/envspecials/kde.nix ];
+    ./../modules/bootloader.nix
+  ] ++ lib.lists.optionals ( envir == "none" ) [ ./../modules/envspecials/none.nix
+  ] ++ lib.lists.optionals ( envir == "hypr" ) [ ./../modules/envspecials/hypr.nix
+  ] ++ lib.lists.optionals ( envir == "gnome" ) [ ./../modules/envspecials/gnome.nix
+  ] ++ lib.lists.optionals ( envir == "kde" ) [ ./../modules/envspecials/kde.nix ];
   networking = {
     hostName = "${hostname}${envir}";
     networkmanager.enable = true;
@@ -27,7 +27,7 @@
   };
   time.timeZone = "${deflocale.timezone}";
   i18n.defaultLocale = "${deflocale.locale}";
-   nix = {
+  nix = {
     settings = {
       experimental-features = [ "flakes" "nix-command" ];
       auto-optimise-store = true;
@@ -60,7 +60,7 @@
     };
     light.enable = true;  #laptop brightness control and fix for openrgb
     traceroute.enable = true;
-    adb.enable = true;
+    #adb.enable = true;
   };
   hardware = {
     i2c.enable = true;
