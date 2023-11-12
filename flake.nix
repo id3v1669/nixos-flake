@@ -120,7 +120,8 @@
         inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader;
       };
       modules = [ 
-        (./. + "/hosts/${hostname}.nix")
+        (./. + "/hosts/${hostname}")
+        ./modules/bootloader.nix
         sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
         {

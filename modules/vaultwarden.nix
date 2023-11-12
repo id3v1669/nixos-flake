@@ -17,6 +17,10 @@
         ROCKET_ADDRESS = "127.0.0.1";
         ROCKET_PORT = 8222;
         ROCKET_LOG = "critical";
+        IP_HEADER = "X-Real-IP";
+        PASSWORD_HINTS_ALLOWED = false;
+        SHOW_PASSWORD_HINT = false;
+        USE_SYSLOG = true;
       };
     };
   };

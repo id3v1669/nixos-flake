@@ -1,15 +1,6 @@
 { config, lib, pkgs, modulesPath, uservars, ... }:
 {
-  imports = [ 
-    (modulesPath + "/installer/scan/not-detected.nix")
-    ./configuration.nix
-    ./../modules/autocpufreq.nix
-    ./../modules/virtualisation.nix
-    ./../modules/udevrules.nix
-    ./../modules/fonts.nix
-    ./../modules/sound.nix
-    ./../modules/gpu.nix
-  ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
     kernelModules = [ "kvm-amd" "i2c-dev" "i2c-piix4" ];
@@ -33,21 +24,5 @@
 
   swapDevices = [ ]; 
 
-  networking.firewall.enable = false;
-  users.users.${uservars.name}.extraGroups = [ 
-    "wheel"
-    "networkmanager"
-    "docker"
-    "rustdesk"
-    "adbusers"
-    "kvm"
-    "input" 
-    "disk" 
-    "qemu-libvirtd"
-    "libvirtd"
-    "video"
-    "wireshark"
-    "pipewire"
-    "i2c" 
-  ];
+  nixpkgs.hostPlatform = lib.mkDefault "${system}";
 }
