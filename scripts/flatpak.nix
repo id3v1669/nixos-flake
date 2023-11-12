@@ -6,7 +6,7 @@
 #!/run/current-system/sw/bin/bash
 
 declare -a apps=(R
-                 "ch.tlaun.TL"
+                 "org.kde.krita"
                 )
 
 is_app_installed() {
