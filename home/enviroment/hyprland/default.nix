@@ -67,6 +67,7 @@ exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CUR
 
 exec-once = hyprctl setcursor Bibata-Modern-Classic 24
 exec-once = arrpc &
+#exec-once = swhks &
 
 #exec-once = dunst
 

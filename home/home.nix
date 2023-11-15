@@ -144,6 +144,7 @@
       openrgb-with-all-plugins
       bluez
       over-eww
+      isoimagewriter
       #inputs.eww-tray.packages.x86_64-linux.eww-wayland
 
       #other cli utils

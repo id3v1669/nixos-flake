@@ -7,6 +7,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     nixmox.url = "github:Sorixelle/nixmox";
     sops-nix.url = "github:Mic92/sops-nix";
+    #swhkd.url = "github:waycrate/swhkd";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -95,8 +96,9 @@
         nur.overlay
         nixmox.overlay
         (final: prev: {
+          over-swhkd = (pkgs.callPackage ./overlays/swhkd {});
           over-tlauncher = (pkgs.callPackage ./overlays/tlauncher.nix {});
-          over-vesktop = (pkgs.callPackage ./overlays/vesktop.nix {});
+          over-vesktop = (pkgs.callPackage ./overlays/vesktop {});
           over-xwalandvideobridge = (pkgs.callPackage ./overlays/xwaylandvideobridge.nix {});
           over-eww = eww-tray.packages.${pkgs.system}.default.override { withWayland = true; };
           over-hyprland = hyprland.packages.${pkgs.system}.hyprland;

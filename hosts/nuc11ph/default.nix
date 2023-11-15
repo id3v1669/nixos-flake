@@ -27,6 +27,5 @@
     "pipewire"
     "i2c" 
   ];
-
   system.stateVersion = "${curversion}";
 }
