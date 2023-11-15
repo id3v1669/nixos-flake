@@ -21,8 +21,8 @@ let
     src = fetchFromGitHub {
       owner = "Vendicated";
       repo = "Vencord";
-      rev = "v1.6.2";
-      hash = "sha256-AqyUnDMIASJ/kUTeICdN94W5U0E52RFs6hM2/E8AjXI=";
+      rev = "v1.6.3";
+      hash = "sha256-86VRDmSY2gGflBg2U0v8syj3vP9LS1IYHENEHHcy//A=";
     };
   });
 in

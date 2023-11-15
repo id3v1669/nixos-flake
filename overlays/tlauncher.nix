@@ -5,9 +5,8 @@
   makeWrapper,
   makeDesktopItem,
   jdk21
-}:
-
-stdenv.mkDerivation rec {
+}:stdenv.mkDerivation rec 
+{
   pname = "tlauncher";
   version = "1.0"; #unknown
 

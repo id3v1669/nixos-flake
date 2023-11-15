@@ -13,9 +13,8 @@
 , bash
 , util-linux
 , darwinHelper
-}:
-
-stdenv.mkDerivation rec {
+}: stdenv.mkDerivation rec
+{
   pname = "outline-client";
   version = "1.7.9";
 
