@@ -59,15 +59,14 @@
     };
     extraConfig = ''
 #------------------env vars-----------------------
-exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=Hyprland
+#exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+#exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=Hyprland
 #exec-once = dbus-update-activation-environment --systemd --all
 #exec-once = systemctl --user start hyprland-session.target
 #-------------------------------------------------
 
 exec-once = hyprctl setcursor Bibata-Modern-Classic 24
 exec-once = arrpc &
-#exec-once = swhks &
 
 #exec-once = dunst
 
@@ -84,9 +83,9 @@ windowrule=float,^(pavucontrol)$
 
 windowrule=float,^(blueman-manager)$
 
-windowrule=size 934 525,^(mpv)$
-windowrule=float,^(mpv)$
-windowrule=center,^(mpv)$
+#windowrule=size 934 525,^(mpv)$
+#windowrule=float,^(mpv)$
+#windowrule=center,^(mpv)$
 
 #------------------kitty for btop------------------
 windowrule=float,^(kitty)$

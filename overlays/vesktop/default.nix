@@ -29,7 +29,6 @@ in
 stdenv.mkDerivation rec {
   pname = "vesktop";
   version = "0.4.3";
-  #version = "0.4.2";
 
   src = fetchFromGitHub {
     owner = "Vencord";

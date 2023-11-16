@@ -14,6 +14,12 @@
     ./enviroment/eww
     ./enviroment/dunst
     ./enviroment/xdg
+  ] ++ lib.lists.optionals (envir == "sway") [
+    ./enviroment/sway
+    ./enviroment/rofi
+    ./enviroment/eww
+    ./enviroment/dunst
+    ./enviroment/xdg
   ] ++ lib.lists.optionals (envir == "gnome") [
   ];
   home = {
@@ -75,7 +81,7 @@
       #iwd
 
       #vid photo etc
-      over-xwalandvideobridge
+      #over-xwalandvideobridge
       vlc
       mpv
       nomacs

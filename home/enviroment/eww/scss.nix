@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 {
-  home.file.".config/eww/eww.scss" = {
-    text = ''
+  home.file.".config/eww/eww.scss".text = ''
     .launcher {
     font-size: 1.3em;
     border-radius: 20;
@@ -172,6 +171,5 @@
       background-color: #${config.colorScheme.colors.base00};
       color: #${config.colorScheme.colors.base05};
   }
-    '';
-  };
+  '';
 }

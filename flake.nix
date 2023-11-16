@@ -169,6 +169,14 @@
           locale = "en_AU.UTF-8";
         };
       };
+      nuc11phswaytbqhd = mkSyst {
+        hostname = "nuc11ph";
+        envir = "sway";
+        #winvar = true;
+        #colorsvar = "spaceduck";
+        #colorsvar = "catppuccin-mocha";
+        colorsvar = "catppuccin-frappe";
+      };
       nuc11phhyprtbqhd = mkSyst {
         hostname = "nuc11ph";
         envir = "hypr";
