@@ -94,7 +94,7 @@ windowrule=size 1040 670,^(kitty)$
 #--------------------------------------------------
 
 #------------------screen sharing------------------
-exec-once = xwaylandvideobridge
+#exec-once = xwaylandvideobridge
 windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
 windowrulev2 = noanim,class:^(xwaylandvideobridge)$
 windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
@@ -106,10 +106,8 @@ bind =,XF86AudioMicMute,exec,pamixer --default-source -t
 bind =,XF86MonBrightnessDown,exec,${brightnesctrl.down}
 bind =,XF86MonBrightnessUp,exec,${brightnesctrl.up}
 bind =,XF86AudioMute,exec,pamixer -t
-bind =,XF86AudioLowerVolume,exec,pamixer -d 10
-bind =,XF86AudioLowerVolume,exec,eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)" 
-bind =,XF86AudioRaiseVolume,exec,pamixer -i 10
-bind =,XF86AudioRaiseVolume,exec,eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)" 
+bind =,XF86AudioLowerVolume,exec,pamixer -d 10 && eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)"
+bind =,XF86AudioRaiseVolume,exec,pamixer -i 10 && eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)" 
 bind =,XF86AudioPlay,exec,playerctl play-pause
 bind =,XF86AudioPause,exec,playerctl play-pause
 #--------------------------------------------------

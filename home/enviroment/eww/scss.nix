@@ -128,7 +128,7 @@
 
   .suspend {
     font-size: 1.3em;
-    background-color: #${config.colorScheme.colors.base0F};
+    background-color: #${config.colorScheme.colors.base0A};
     color: #${config.colorScheme.colors.base05};
     border-radius: 20;
     padding: 4px 16px 5px 9px;
@@ -150,7 +150,7 @@
   }
   .shutdown {
     font-size: 1.4em;
-    background-color: #${config.colorScheme.colors.base09};
+    background-color: #${config.colorScheme.colors.base08};
     color: #${config.colorScheme.colors.base05};
     border-radius: 20;
     padding: 4px 12px 5px 10px;

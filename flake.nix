@@ -142,7 +142,7 @@
       #spaceduck, seti, selenized-black, rose-pine, rose-pine-moon, 
       #porple, phd, pasque, pandora, outrun-dark, mountain, material-darker,
       #lime, kimber, icy, gruvbox-dark-pale, grayscale-dark, darktooth, black-metal
-      #mytop: pandora, stella, lime, gruvbox-dark-pale, outrun-dark, spaceduck
+      #mytop: pandora, stella, lime, gruvbox-dark-pale, outrun-dark, spaceduck, embers
       srvnet510 = mkSyst {
         hostname = "srvnet510";
         envir = "none";
@@ -175,7 +175,8 @@
         #winvar = true;
         #colorsvar = "spaceduck";
         #colorsvar = "catppuccin-mocha";
-        colorsvar = "catppuccin-frappe";
+        #colorsvar = "catppuccin-frappe";
+        colorsvar = "darktooth";
       };
       nuc11phhyprtbqhd = mkSyst {
         hostname = "nuc11ph";

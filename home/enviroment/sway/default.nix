@@ -1,4 +1,4 @@
-{ config, lib, pkgs, deflocale, hostname, ... }:
+{ config, lib, pkgs, deflocale, hostname, brightnesctrl, ... }:
 {
   imports = [
     (./. + "/hosts/${hostname}.nix")
@@ -7,25 +7,13 @@
     enable = true;
     systemd.enable = true;
     config = {
-      # output = {
-      #   "DP-3" = {
-      #     mode = "3440x1440@100Hz";
-      #     pos = "0 0";
-      #     scale = "1";
-      #   };
-      #   "DP-4" = {
-      #     mode = "1920x1080@100Hz";
-      #     pos = "3440 0";
-      #     scale = "1";
-      #   };
-      # };
       #bars = [{ command = "${config.home.homeDirectory}/.scripts/ewwlauncher.sh"; }];
       startup = [
         { command = "${config.home.homeDirectory}/.scripts/ewwlauncher.sh"; always = true; }
         { command = "arrpc &"; always = true; }
       ];
       terminal = "alacritty";
-      gaps.inner = 5;
+      gaps.inner = 7;
       window = {
         border = 2;
         titlebar = false;
@@ -38,6 +26,9 @@
         xkb_numlock = "enabled";
       };
       input."type:touchpad" = {
+        accel_profile = "adaptive";
+        pointer_accel = "0.3";
+        dwt = "disabled";
         tap = "enabled";
         natural_scroll = "enabled";
         scroll_method = "two_finger";
@@ -45,6 +36,17 @@
       keybindings = let
         mod = config.wayland.windowManager.sway.config.modifier;
       in {
+        XF86AudioMicMute = "exec pamixer --default-source -t";
+        XF86AudioMute = "exec pamixer -t";
+        #XF86AudioPlay = "exec ${playerctl}/bin/playerctl play";
+        #XF86AudioPause = "exec ${playerctl}/bin/playerctl pause";
+        #XF86AudioNext = "exec ${playerctl}/bin/playerctl next";
+        #XF86AudioPrev = "exec ${playerctl}/bin/playerctl prev";
+        XF86AudioRaiseVolume = "exec pamixer -i 10 && eww update soundvol=\"$(amixer sget Master | grep -o \"[0-9]*%\" | head -1)\"";
+        XF86AudioLowerVolume = "exec pamixer -d 10 && eww update soundvol=\"$(amixer sget Master | grep -o \"[0-9]*%\" | head -1)\"";
+        XF86MonBrightnessUp = "exec ${brightnesctrl.up}";
+        XF86MonBrightnessDown = "exec ${brightnesctrl.down}";
+        
         "${mod}+Shift+t" = "exec alacritty";
         "${mod}+Shift+b" = "exec firefox";
         "${mod}+Shift+k" = "exec kitty";
@@ -81,7 +83,43 @@
         "Ctrl+Shift+9" = "move container to workspace number 9";
         "Ctrl+Shift+0" = "move container to workspace number 10";
       };
+      colors = {
+        background = "#${config.colorScheme.colors.base00}";
+        focused = {
+          background = "#${config.colorScheme.colors.base00}";
+          border = "#${config.colorScheme.colors.base05}";
+          childBorder = "#${config.colorScheme.colors.base05}";
+          indicator = "#${config.colorScheme.colors.base03}";
+          text = "#${config.colorScheme.colors.base01}";
+        };
+        unfocused = {
+          background = "#${config.colorScheme.colors.base01}";
+          border = "#${config.colorScheme.colors.base01}";
+          childBorder = "#${config.colorScheme.colors.base01}";
+          indicator = "#${config.colorScheme.colors.base03}";
+          text = "#${config.colorScheme.colors.base06}";
+        };
+        urgent = {
+          background = "#${config.colorScheme.colors.base04}";
+          border = "#${config.colorScheme.colors.base01}";
+          childBorder = "#${config.colorScheme.colors.base01}";
+          indicator = "#${config.colorScheme.colors.base03}";
+          text = "#${config.colorScheme.colors.base06}";
+        };
+        placeholder = {
+          background = "#${config.colorScheme.colors.base04}";
+          border = "#${config.colorScheme.colors.base01}";
+          childBorder = "#${config.colorScheme.colors.base01}";
+          indicator = "#${config.colorScheme.colors.base03}";
+          text = "#${config.colorScheme.colors.base06}";
+        };
+      };
     };
+    extraConfig = ''
+      # touchpad gestures
+      bindgesture swipe:3:right workspace prev
+      bindgesture swipe:3:left workspace next
+    '';
     swaynag = {
       enable = true;
       settings = {
@@ -98,35 +136,5 @@
         };
       };
     };
-  };
-  home.sessionVariables = {
-		#universal part
-    NIXOS_OZONE_WL = "1";
-		QT_QPA_PLATFORMTHEME = "gtk3";
-		#QT_STYLE_OVERRIDE = "dynamic-color-theme";
-	  QT_SCALE_FACTOR = "1";
-	  MOZ_ENABLE_WAYLAND = "1";
-	  SDL_VIDEODRIVER = "wayland";
-	  _JAVA_AWT_WM_NONREPARENTING = "1";
-	  #QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-	  #QT_AUTO_SCREEN_SCALE_FACTOR = "1"; 
-	  CLUTTER_BACKEND = "wayland";
-	  XDG_CURRENT_DESKTOP = "Sway";
-	  XDG_SESSION_DESKTOP = "Sway";
-	  XDG_SESSION_TYPE = "wayland";
-
-		
-		#args for gmaes
-		__GL_THREADED_OPTIMIZATIONS="1";
-		__GL_SHADER_DISK_CACHE="1";
-		__GL_SHADER_DISK_CACHE_SKIP_CLEANUP="1";
-
-		#ps.
-	  #GTK_USE_PORTAL = "0"; #useless
-	  #NIXOS_XDG_OPEN_USE_PORTAL = "1"; #breaks xdg-open
-
-		#nvidia part
-		#QT_QPA_PLATFORM = "wayland-egl";#??
-    WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
   };
 }
