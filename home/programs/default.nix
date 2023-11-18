@@ -8,5 +8,6 @@
     ./other
     ./discord
     ./telegram
+    ./kitty
   ];
 }

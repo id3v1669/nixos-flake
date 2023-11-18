@@ -7,13 +7,11 @@
     flake-utils.url = "github:numtide/flake-utils";
     nixmox.url = "github:Sorixelle/nixmox";
     sops-nix.url = "github:Mic92/sops-nix";
-    #swhkd.url = "github:waycrate/swhkd";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     eww-tray = {
-     #url = "github:ralismark/eww/tray-3";
      url = "github:hylophile/eww/dynamic-icons";
      flake = true;
     };
@@ -113,7 +111,6 @@
             };
           });
         })
-        #(import ./scripts/flatpak.nix)
       ];
     };
     in inputs.nixpkgs.lib.nixosSystem 
@@ -172,16 +169,12 @@
       nuc11phswaytbqhd = mkSyst {
         hostname = "nuc11ph";
         envir = "sway";
-        #winvar = true;
-        #colorsvar = "spaceduck";
-        #colorsvar = "catppuccin-mocha";
         #colorsvar = "catppuccin-frappe";
         colorsvar = "darktooth";
       };
       nuc11phhyprtbqhd = mkSyst {
         hostname = "nuc11ph";
         envir = "hypr";
-        #winvar = true;
         #colorsvar = "spaceduck";
         #colorsvar = "catppuccin-mocha";
         colorsvar = "catppuccin-frappe";

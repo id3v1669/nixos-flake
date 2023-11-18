@@ -44,15 +44,8 @@
 
     ]) ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") (with pkgs;[
       #tests
-      arrpc #test for rpc
-      protonup-qt
       libsForQt5.qt5ct
       qt6Packages.qt6ct
-      #(callPackage ./programs/other/outline.nix {})
-      nmap
-      filezilla
-      #xfce.tumbler
-      #xfce.thunar
 
       #screenshots
       grim
@@ -96,12 +89,15 @@
       telegram-desktop
       whatsapp-for-linux
       over-vesktop
+      arrpc #rpc for discord(vesktop)
       
       #security
+      nmap
       openssl
       veracrypt
 
       #games
+      protonup-qt
       steam
       (lutris.override {
         extraPkgs = pkgs: [
@@ -132,7 +128,7 @@
       })
 
       #files
-      #gnome.nautilus #gui file manager
+      filezilla
       zip
       unzip
       file #file type detection
@@ -156,7 +152,6 @@
       #inputs.eww-tray.packages.x86_64-linux.eww-wayland
 
       #other cli utils
-      kitty #may be ported to hm 
       pciutils
       usbutils
       lshw
