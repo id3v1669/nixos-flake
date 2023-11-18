@@ -68,7 +68,7 @@
       "$mainMod SHIFT, E, exec, bash ${config.home.homeDirectory}/.scripts/ewwlauncher.sh" #eww restarter
       "$mainMod SHIFT, T, exec, alacritty"
       "$mainMod SHIFT, B, exec, firefox"
-      "$mainMod SHIFT, F, exec, nautilus"
+      "$mainMod SHIFT, F, exec, thunar"
       "$mainMod SHIFT, P, exec, hyprpicker -a"
       "$mainMod, R, exec, rofi -show "
       #other controls
@@ -81,6 +81,7 @@
     bindm = [
       "$mainMod, mouse:272, movewindow"
       "$mainMod, mouse:273, resizewindow"
+      "ALT, mouse:272, resizewindow"
     ];
     exec-once = [
       

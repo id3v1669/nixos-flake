@@ -51,6 +51,8 @@
       #(callPackage ./programs/other/outline.nix {})
       nmap
       filezilla
+      #xfce.tumbler
+      #xfce.thunar
 
       #screenshots
       grim
@@ -130,7 +132,7 @@
       })
 
       #files
-      gnome.nautilus #gui file manager
+      #gnome.nautilus #gui file manager
       zip
       unzip
       file #file type detection

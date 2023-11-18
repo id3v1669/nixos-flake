@@ -13,6 +13,14 @@
       enable = true;
       package = pkgs.libsForQt5.kdeconnect-kde;
     };
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-volman
+        tumbler
+      ];
+    };
     regreet.enable = true;
   };
   systemd.user.services = { #user here is not a username

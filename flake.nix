@@ -185,6 +185,7 @@
         #colorsvar = "spaceduck";
         #colorsvar = "catppuccin-mocha";
         colorsvar = "catppuccin-frappe";
+        #colorsvar = "darktooth";
       };
       nuc11phhyprtbfhd = mkSyst {
         hostname = "nuc11ph";

@@ -68,7 +68,7 @@
       "$mainMod SHIFT, E, exec, bash ${config.home.homeDirectory}/.scripts/ewwlauncher.sh" #eww restarter
       "$mainMod SHIFT, T, exec, alacritty"
       "$mainMod SHIFT, B, exec, firefox"
-      "$mainMod SHIFT, F, exec, nautilus"
+      "$mainMod SHIFT, F, exec thunar"
       "$mainMod SHIFT, P, exec, hyprpicker -a"
       "$mainMod, W, exec, wofi --show drun"
       "$mainMod, R, exec, rofi -show"

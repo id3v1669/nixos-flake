@@ -50,7 +50,7 @@
         "${mod}+Shift+t" = "exec alacritty";
         "${mod}+Shift+b" = "exec firefox";
         "${mod}+Shift+k" = "exec kitty";
-        "${mod}+Shift+f" = "exec nautilus";
+        "${mod}+Shift+f" = "exec thunar";
         "${mod}+r" = "exec rofi -show";
 
         "Ctrl+Right" = "workspace next";

@@ -7,5 +7,6 @@
     ./firefox
     ./other
     ./discord
+    ./telegram
   ];
 }

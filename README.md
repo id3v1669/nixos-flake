@@ -11,39 +11,33 @@ Latest commit to use: 66085aabf10815b5cc919df688a2482fe23f1fc4
 | launcher | Rofi | works | - |
 | bar | eww | fork of eww with tray support | - |
 | background | hyprpaper | - | ToDo 1 |
-| portals | gtk and hyprland | work but many things to fix | ToDo 2+3 |
+| portals | gtk and hyprland | - | - |
 | lockscreen | - | not needed for now, might install ly later | - |
-| brightness | light and ddcutil | Cable and monior must support DDC | ToDo 4+6 |
-| notifications | dunst | works, need to change style | ToDo 5 |
-| shell | fish | works | ToDo 10 |
+| brightness | light and ddcutil | Cable and monior must support DDC | ToDo 2+4 |
+| notifications | dunst | works, need to change style | ToDo 3 |
+| shell | fish | works | ToDo 8 |
 
 ## ToDo:
 
 1. **+-Add background(enable for laptop only on power)**
 
-2. **-flatpak xdg paths related to [issue](https://github.com/flatpak/xdg-desktop-portal-gtk/issues/440)**  
+2. **-fix brightness control for multimonitor config**
 
-3. **-xdg-open for apps in lutris and distrobox**
+3. **-change notifications style**
 
-4. **-fix brightness control for multimonitor config**
+4. **-find gamma tool for unsupported brightness monitors and cables**
 
-5. **-change notifications style**
+5. **-fix audio input in windows apps like yousician(lutris) and rocksmith(steam)**
 
-6. **-find gamma tool for unsupported brightness monitors and cables**
+6. **-create update script and alias to rebuild and update archbox**
 
-7. **-fix audio input in windows apps like yousician(lutris) and rocksmith(steam)**
+7. **-Kitty config(do not confirm quit)**
 
-8. **-create update script and alias to rebuild and update archbox**
+8. **-fish aliases for git**
 
-9. **-Kitty config(do not confirm quit)**
+9. **+-setup theme(qt5,qt6,gtk3,gtk4)**
 
-10. **-fish aliases for git**
-
-11. **-fix emojis in distrobox**
-
-12. **+-setup theme(qt5,qt6,gtk3,gtk4)**
-
-13. **-create one-color background depending on system colors(check svg)**
+10. **-create one-color background depending on system colors**
 
 ## Notes:
 
