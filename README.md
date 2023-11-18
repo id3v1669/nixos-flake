@@ -8,14 +8,14 @@ Latest commit to use: cc05609255b12b0d7d46b16f19f61e9b60b43dc4
 | Environment | Name | Comment | Needed fix |
 |-----|-----|-----|-----|
 | WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel) | - |
-| launcher | Rofi | works | - |
+| launcher | Rofi | - | - |
 | bar | eww | fork of eww with tray support | - |
 | background | hyprpaper | - | ToDo 1 |
 | portals | gtk and hyprland | - | - |
 | lockscreen | - | not needed for now, might install ly later | - |
-| brightness | light and ddcutil | Cable and monior must support DDC | ToDo 2+4 |
-| notifications | dunst | works, need to change style | ToDo 3 |
-| shell | fish | works | ToDo 8 |
+| brightness | light and ddcutil | Cable and monior must support DDC | ToDo 2+3 |
+| notifications | dunst | - | - |
+| shell | fish | works | ToDo 6 |
 
 ## ToDo:
 
@@ -23,19 +23,15 @@ Latest commit to use: cc05609255b12b0d7d46b16f19f61e9b60b43dc4
 
 2. **-fix brightness control for multimonitor config**
 
-3. **-change notifications style**
+3. **-find gamma tool for unsupported brightness monitors and cables**
 
-4. **-find gamma tool for unsupported brightness monitors and cables**
+4. **-fix audio input in windows apps like yousician(lutris) and rocksmith(steam)**
 
-5. **-fix audio input in windows apps like yousician(lutris) and rocksmith(steam)**
+5. **-create update script and alias to rebuild and update archbox**
 
-6. **-create update script and alias to rebuild and update archbox**
+6. **-fish aliases for git**
 
-7. **-Kitty config(do not confirm quit)**
-
-8. **-fish aliases for git**
-
-9. **-create one-color background depending on system colors**
+7. **-create one-color background depending on system colors**
 
 ## Notes:
 
