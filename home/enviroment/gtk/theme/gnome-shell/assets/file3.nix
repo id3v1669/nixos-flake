@@ -1,0 +1,1 @@
+{ config, lib, pkgs, uservars, ... }:{home.file.".themes/dynamic-color-theme/gnome-shell/assets/calendar-arrow-right.svg".text = ''<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="#FFFFFF" opacity="0.7"> <path d="m6 3v10l5-5z"/> </svg>'';}
