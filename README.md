@@ -2,7 +2,7 @@
 
 NixOS flake with home manager
 
-Latest commit to use: 24ae6a08aae649e9b0fd8503839bf27b4bb997d2
+Latest commit to use: cc05609255b12b0d7d46b16f19f61e9b60b43dc4
 
 ## Main
 | Environment | Name | Comment | Needed fix |
@@ -35,9 +35,7 @@ Latest commit to use: 24ae6a08aae649e9b0fd8503839bf27b4bb997d2
 
 8. **-fish aliases for git**
 
-9. **+-setup theme(qt5,qt6,gtk3,gtk4)**
-
-10. **-create one-color background depending on system colors**
+9. **-create one-color background depending on system colors**
 
 ## Notes:
 
