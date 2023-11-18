@@ -9,5 +9,6 @@
     ./discord
     ./telegram
     ./kitty
+    ./btop
   ];
 }

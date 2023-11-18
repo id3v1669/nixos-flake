@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }: {
-  home.file.".config/telegram/colors.tdesktop-theme" = {
-    executable = false;
-    text = ''
- windowBg: #${config.colorScheme.colors.base00}; // white: fallback for background
+  home.file.".config/telegram/colors.tdesktop-theme".text = ''
+windowBg: #${config.colorScheme.colors.base00}; // white: fallback for background
 windowFg: #${config.colorScheme.colors.base06}; // black: fallback for text
 windowBgOver: #${config.colorScheme.colors.base04}; // light gray: fallback for background with mouse over
 windowBgRipple: #${config.colorScheme.colors.base05}; // darker gray: fallback for ripple effect
@@ -469,7 +467,5 @@ sideBarBadgeBg: #5eb5f7; // filters side bar badge background
 sideBarBadgeBgMuted: #768c9e; // filters side bar unimportant badge background
 statisticsChartInactive: #313d4cc8; // inactive area in footer of statistic charts
 statisticsChartActive: #526679d8; // sides in footer of statistic charts
-  
-    '';
-  };
+  '';
 }
