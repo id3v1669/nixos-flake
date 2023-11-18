@@ -169,8 +169,8 @@
       nuc11phswaytbqhd = mkSyst {
         hostname = "nuc11ph";
         envir = "sway";
-        #colorsvar = "catppuccin-frappe";
-        colorsvar = "darktooth";
+        colorsvar = "catppuccin-frappe";
+        #colorsvar = "darktooth";
       };
       nuc11phhyprtbqhd = mkSyst {
         hostname = "nuc11ph";

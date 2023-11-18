@@ -3,19 +3,19 @@
 	home.file.".themes/dynamic-color-theme/gnome-shell/pad-osd.css".text = ''
 .Leader {
   stroke-width: 0.5 !important;
-  stroke: #51576d;
+  stroke: #${config.colorScheme.colors.base03};
   fill: none !important;
 }
 
 .Button {
   stroke-width: 0.25;
-  stroke: #f2d5cf;
-  fill: #f2d5cf;
+  stroke: #${config.colorScheme.colors.base06};
+  fill: #${config.colorScheme.colors.base06};
 }
 
 .Ring {
   stroke-width: 0.5 !important;
-  stroke: #51576d !important;
+  stroke: #${config.colorScheme.colors.base03} !important;
   fill: none !important;
 }
 
@@ -29,8 +29,8 @@
 .TouchStrip,
 .TouchRing {
   stroke-width: 0.1 !important;
-  stroke: #f2d5cf !important;
-  fill: #51576d !important;
+  stroke: #${config.colorScheme.colors.base06} !important;
+  fill: #${config.colorScheme.colors.base03} !important;
 }
   '';
 }
