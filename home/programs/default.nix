@@ -10,5 +10,6 @@
     ./telegram
     ./kitty
     ./btop
+    ./joplin
   ];
 }

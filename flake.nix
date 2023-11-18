@@ -177,9 +177,9 @@
         envir = "hypr";
         #colorsvar = "spaceduck";
         #colorsvar = "catppuccin-mocha";
-        #colorsvar = "catppuccin-frappe";
+        colorsvar = "catppuccin-frappe";
         #colorsvar = "darktooth";
-        colorsvar = "gruvbox-dark-pale";
+        #colorsvar = "gruvbox-dark-pale";
       };
       nuc11phhyprtbfhd = mkSyst {
         hostname = "nuc11ph";

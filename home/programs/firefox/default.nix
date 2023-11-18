@@ -34,6 +34,8 @@
         bitwarden
         duckduckgo-privacy-essentials
         darkreader
+      ] ++ [
+        pkgs.nur.repos.bandithedoge.firefoxAddons.stylus
       ];
       search = {
         force = true;
