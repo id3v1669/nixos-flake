@@ -1,7 +1,6 @@
 { config, lib, pkgs, hostname, ... }:
 {
   imports = [ 
-    #./dynamic-color-theme
     ./theme
   ];
   gtk = {
@@ -9,14 +8,14 @@
     theme = {
       name = "dynamic-color-theme";
     };
-    #iconTheme = {
-    #  name = "Adwaita";
-    #  package = pkgs.gnome.adwaita-icon-theme;
-    #};
-    #cursorTheme = {
-    #  name = "Adwaita";
-    #  package = pkgs.gnome.adwaita-icon-theme;
-    #};
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme.override { color = "black"; };
+    };
+    cursorTheme = {
+      name = "Catppuccin";
+      package = pkgs.catppuccin-cursors;
+    };
     #gtk3.extraConfig = {
     #  gtk-application-prefer-dark-theme=1;
     #};

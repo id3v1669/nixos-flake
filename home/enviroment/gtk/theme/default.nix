@@ -19,8 +19,6 @@ Encoding=UTF-8
 [X-GNOME-Metatheme]
 GtkTheme=dynamic-color-theme
 MetacityTheme=dynamic-color-theme
-IconTheme=Catppuccin-Mocha
-CursorTheme=Catppuccin-cursors
 ButtonLayout=menu:minimize,maximize,close
   '';
 

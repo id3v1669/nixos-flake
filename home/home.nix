@@ -44,14 +44,6 @@
 
     ]) ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") (with pkgs;[
       #tests
-      libsForQt5.qt5ct
-      qt6Packages.qt6ct
-      xarchiver
-      mate.engrampa
-      libsForQt5.ark
-      gnome.file-roller
-      libsForQt5.dolphin
-      cinnamon.nemo-with-extensions
 
       #screenshots
       grim
@@ -134,6 +126,7 @@
       })
 
       #files
+      cinnamon.nemo-with-extensions
       filezilla
       zip
       unzip
@@ -177,6 +170,8 @@
       libpng
       libnotify #for dunst or mako
       mesa
+      libsForQt5.qt5ct
+      qt6Packages.qt6ct
 
     #   #other
        dconf

@@ -33,6 +33,8 @@ Latest commit to use: cc05609255b12b0d7d46b16f19f61e9b60b43dc4
 
 7. **-create one-color background depending on system colors**
 
+8. **create dynamic-icon-theme on color-vars**
+
 ## Notes:
 
 OpenRGB Module is broken and installed manually
