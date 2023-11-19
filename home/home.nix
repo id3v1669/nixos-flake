@@ -46,6 +46,12 @@
       #tests
       libsForQt5.qt5ct
       qt6Packages.qt6ct
+      xarchiver
+      mate.engrampa
+      libsForQt5.ark
+      gnome.file-roller
+      libsForQt5.dolphin
+      cinnamon.nemo-with-extensions
 
       #screenshots
       grim

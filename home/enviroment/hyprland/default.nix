@@ -65,7 +65,7 @@
 #exec-once = systemctl --user start hyprland-session.target
 #-------------------------------------------------
 
-exec-once = hyprctl setcursor Bibata-Modern-Classic 24
+#exec-once = hyprctl setcursor Bibata-Modern-Classic 24
 exec-once = arrpc &
 
 
@@ -73,9 +73,6 @@ exec-once = arrpc &
 exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
 #------------------------------------------------- 
 
-#exec-once = ln -sf /var/lib/flatpak/exports/share/applications/* ${config.home.homeDirectory}/.local/share/applications/
-#exec-once = ln -sf ln -sf /etc/profiles/per-user/${uservars.name}/share/applications/* ${config.home.homeDirectory}/.local/share/applications/
-#exec-once = ln -s /mythemes ${config.home.homeDirectory}/.themes
 source = ${config.home.homeDirectory}/.config/hypr/colors
 
 windowrule=float,^(pavucontrol)$
