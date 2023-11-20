@@ -1,6 +1,7 @@
 { config, lib, pkgs, uservars, ... }:
 let
     inherit (import ./../../../lib/h2rgba.nix { inherit lib; }) hexToRgba;
+    inherit (import ./../../../lib/h2rgb.nix { inherit lib; }) hexToRgb;
 in
 {
   home.file.".config/VencordDesktop/VencordDesktop/themes/usertheme.css".text = ''
