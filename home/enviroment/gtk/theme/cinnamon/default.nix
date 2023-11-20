@@ -215,7 +215,7 @@ StScrollBar StBin#trough {
 StScrollBar StButton#vhandle,
 StScrollBar StButton#hhandle {
   border-radius: 9999px;
-  background-color: #737994;
+  background-color: #${config.colorScheme.colors.base04};
   border: 0px solid;
   margin: 0px;
 }
@@ -787,7 +787,7 @@ StScrollBar StButton#hhandle:active {
 
 .about-uuid {
   font-size: 10px;
-  color: #737994;
+  color: #${config.colorScheme.colors.base04};
 }
 
 .about-icon {
@@ -817,7 +817,7 @@ StScrollBar StButton#hhandle:active {
 .about-version {
   padding-left: 7px;
   font-size: 10px;
-  color: #737994;
+  color: #${config.colorScheme.colors.base04};
 }
 
 .calendar {

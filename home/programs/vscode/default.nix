@@ -241,7 +241,7 @@
     "dropdown.background" = "#${config.colorScheme.colors.base02}";
     "dropdown.foreground" = "#${config.colorScheme.colors.base05}";
     "dropdown.border" = "#00000000";
-    "disabledForeground" = "#a5adce";
+    "disabledForeground" = "#${config.colorScheme.colors.base07}";
     "minimapGutter.addedBackground" = "#${config.colorScheme.colors.base0B}";
     "minimapGutter.modifiedBackground" = "#${config.colorScheme.colors.base07}";
     "minimapGutter.deletedBackground" = "#${config.colorScheme.colors.base08}";

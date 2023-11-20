@@ -887,7 +887,7 @@ StWidget.focused .app-well-app-running-dot {
 
 .modal-dialog-linked-button:active:last-child {
   color: #${config.colorScheme.colors.base06};
-  background-color: #ea999c;
+  background-color: #${config.colorScheme.colors.base08};
 }
 
 .modal-dialog-linked-button:insensitive:last-child {
@@ -2701,7 +2701,7 @@ StEntry StLabel.hint-text,
 .popup-menu .popup-menu-item:checked:hover,
 .popup-menu .popup-menu-item.selected:checked {
   color: rgba(0, 0, 0, 0.87) !important;
-  background-color: #a5adce !important;
+  background-color: #${config.colorScheme.colors.base07} !important;
 }
 
 .popup-menu .popup-menu-item:checked:active {
