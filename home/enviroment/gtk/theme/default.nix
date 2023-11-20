@@ -21,7 +21,4 @@ GtkTheme=dynamic-color-theme
 MetacityTheme=dynamic-color-theme
 ButtonLayout=menu:minimize,maximize,close
   '';
-
-#IconTheme=Catppuccin-Mocha
-#CursorTheme=Catppuccin-cursors
 }

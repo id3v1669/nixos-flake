@@ -178,7 +178,6 @@
         #colorsvar = "spaceduck";
         #colorsvar = "catppuccin-mocha";
         colorsvar = "catppuccin-frappe";
-        #colorsvar = "darktooth";
         #colorsvar = "gruvbox-dark-hard";
       };
       nuc11phhyprtbfhd = mkSyst {

@@ -44,6 +44,7 @@
 
     ]) ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") (with pkgs;[
       #tests
+      gnome.nautilus
 
       #screenshots
       grim

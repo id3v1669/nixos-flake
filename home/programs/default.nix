@@ -11,5 +11,6 @@
     ./kitty
     ./btop
     ./joplin
+    ./obs
   ];
 }

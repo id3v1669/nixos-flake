@@ -78,7 +78,7 @@
   :exclusive false
   :geometry (geometry 
     :x "0.25%"
-    :y "0"
+    :y "0%"
     :anchor "top right")
   (powerbuttons)
 )
@@ -88,8 +88,8 @@
   :stacking "overlay"
   :exclusive false
   :geometry (geometry 
-    ;:x "0.25%"
-    :y "-50"
+    :x "0.25%"
+    :y "0.5%"
     :anchor "center top")
   (calendarpop)
 )

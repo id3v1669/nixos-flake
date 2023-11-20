@@ -74,19 +74,23 @@ exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
 #------------------------------------------------- 
 
 source = ${config.home.homeDirectory}/.config/hypr/colors
+source = ${config.home.homeDirectory}/.config/hypr/test.conf
 
 windowrule=float,^(pavucontrol)$
+windowrule = opacity 0.8,^(pavucontrol)$
 
-windowrule=float,^(blueman-manager)$
+windowrule = float,^(nm-connection-editor)$
+windowrule = opacity 0.8,^(nm-connection-editor)$
 
-#windowrule=size 934 525,^(mpv)$
-#windowrule=float,^(mpv)$
-#windowrule=center,^(mpv)$
+windowrule = float, blueman-manager
+windowrule = opacity 0.8, blueman-manager
+
 
 #------------------kitty for btop------------------
-windowrule=float,^(kitty)$
-windowrule=center,^(kitty)$
-windowrule=size 1040 670,^(kitty)$
+windowrule = float,^(kitty)$
+windowrule = center,^(kitty)$
+windowrule = size 1040 670,^(kitty)$
+windowrule = opacity 0.8,^(kitty)
 #--------------------------------------------------
 
 #------------------screen sharing------------------

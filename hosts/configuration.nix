@@ -22,7 +22,7 @@
     ignoreShellProgramCheck = true;
   };
   environment = {
-    sessionVariables = {
+    variables = {
       EDITOR = "nano";
     };
     systemPackages = [ pkgs.fish ];
