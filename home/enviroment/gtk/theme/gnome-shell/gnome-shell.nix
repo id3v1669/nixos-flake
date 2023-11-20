@@ -3695,7 +3695,7 @@ StScrollBar StButton#hhandle:active {
 }
 
 #overviewGroup {
-  background-color: #11111b;
+  background-color: #${config.colorScheme.colors.base01};
 }
 
 .osd-window {

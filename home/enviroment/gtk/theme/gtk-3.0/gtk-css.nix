@@ -1,4 +1,7 @@
 {config, lib, pkgs, ...}:
+let
+    inherit (import ./../../../../../lib/h2rgba.nix { inherit lib; }) hexToRgba;
+in
 {
   home.file.".themes/dynamic-color-theme/gtk-3.0/gtk.css".text = ''
 /* GTK NAMED COLORS -- USE RESPONSIBLY! */
@@ -57,7 +60,7 @@ read if you used those and something break with a version upgrade you're on your
 @define-color content_view_bg #${config.colorScheme.colors.base00};
 @define-color placeholder_text_color silver;
 /* Very contrasty background for text views (@theme_text_color foreground) */
-@define-color text_view_bg #1d1d1d;
+@define-color text_view_bg #${config.colorScheme.colors.base01};
 @define-color budgie_tasklist_indicator_color #${config.colorScheme.colors.base06};
 @define-color budgie_tasklist_indicator_color_active #${config.colorScheme.colors.base06};
 @define-color budgie_tasklist_indicator_color_active_window #999999;
@@ -77,16 +80,16 @@ read if you used those and something break with a version upgrade you're on your
 @define-color BANANA_500 #FFCE51;
 @define-color BANANA_700 #D1A023;
 @define-color BANANA_900 #A27100;
-@define-color LIME_100 #A2F3BE;
-@define-color LIME_300 #8ADBA6;
-@define-color LIME_500 #73C48F;
-@define-color LIME_700 #479863;
-@define-color LIME_900 #1C6D38;
-@define-color BLUEBERRY_100 #94A6FF;
-@define-color BLUEBERRY_300 #6A7CE0;
-@define-color BLUEBERRY_500 #3F51B5;
-@define-color BLUEBERRY_700 #213397;
-@define-color BLUEBERRY_900 #031579;
+@define-color LIME_100 ${hexToRgba "${config.colorScheme.colors.base0B}" "0.8"};
+@define-color LIME_300 ${hexToRgba "${config.colorScheme.colors.base0B}" "0.85"};
+@define-color LIME_500 ${hexToRgba "${config.colorScheme.colors.base0B}" "0.9"};
+@define-color LIME_700 ${hexToRgba "${config.colorScheme.colors.base0B}" "0.95"};
+@define-color LIME_900 ${hexToRgba "${config.colorScheme.colors.base0B}" "1"};
+@define-color BLUEBERRY_100 ${hexToRgba "${config.colorScheme.colors.base0D}" "0.8"};
+@define-color BLUEBERRY_300 ${hexToRgba "${config.colorScheme.colors.base0D}" "0.85"};
+@define-color BLUEBERRY_500 ${hexToRgba "${config.colorScheme.colors.base0D}" "0.9"};
+@define-color BLUEBERRY_700 ${hexToRgba "${config.colorScheme.colors.base0D}" "0.95"};
+@define-color BLUEBERRY_900 ${hexToRgba "${config.colorScheme.colors.base0D}" "1"};
 @define-color GRAPE_100 #D25DE6;
 @define-color GRAPE_300 #B84ACB;
 @define-color GRAPE_500 #9C27B0;
@@ -107,11 +110,11 @@ read if you used those and something break with a version upgrade you're on your
 @define-color SLATE_500 #444;
 @define-color SLATE_700 #222;
 @define-color SLATE_900 #111;
-@define-color BLACK_100 #474341;
-@define-color BLACK_300 #403C3A;
-@define-color BLACK_500 #393634;
-@define-color BLACK_700 #33302F;
-@define-color BLACK_900 #2B2928;
+@define-color BLACK_100 ${hexToRgba "${config.colorScheme.colors.base01}" "0.8"};
+@define-color BLACK_300 ${hexToRgba "${config.colorScheme.colors.base01}" "0.85"};
+@define-color BLACK_500 ${hexToRgba "${config.colorScheme.colors.base01}" "0.9"};
+@define-color BLACK_700 ${hexToRgba "${config.colorScheme.colors.base01}" "0.95"};
+@define-color BLACK_900 ${hexToRgba "${config.colorScheme.colors.base01}" "1"};
 
 /* GTK LIBADWAITA NAMED COLORS -- USE RESPONSIBLY! */
 @define-color accent_bg_color #${config.colorScheme.colors.base0F};
@@ -315,7 +318,7 @@ widget.view:selected,
 }
 
 .gtkstyle-fallback {
-  background-color: #11111b;
+  background-color: #${config.colorScheme.colors.base01};
   color: #${config.colorScheme.colors.base06};
 }
 
@@ -325,7 +328,7 @@ widget.view:selected,
 }
 
 .gtkstyle-fallback:active {
-  background-color: #11111b;
+  background-color: #${config.colorScheme.colors.base01};
   color: #${config.colorScheme.colors.base06};
 }
 
@@ -9593,7 +9596,7 @@ window.background.chromium menu menuitem {
 }
 
 tooltip.background.chromium {
-  background-color: #191919;
+  background-color: #${config.colorScheme.colors.base01};
 }
 
 /***********

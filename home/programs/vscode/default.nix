@@ -206,7 +206,7 @@
     "editorMarkerNavigationError.background" = "#${config.colorScheme.colors.base08}";
     "editorMarkerNavigationWarning.background" = "#${config.colorScheme.colors.base0A}";
     "editorMarkerNavigationInfo.background" = "#${config.colorScheme.colors.base0D}";
-    "merge.currentHeaderBackground" = "#158472";
+    "merge.currentHeaderBackground" = "#${config.colorScheme.colors.base0C}";
     "merge.currentContentBackground" = "#27403B";
     "merge.incomingHeaderBackground" = "#395F8F";
     "merge.incomingContentBackground" = "#243A5E";

@@ -700,7 +700,7 @@ StScrollBar StButton#hhandle:active {
 }
 
 .expo-background {
-  background-color: #191919;
+  background-color: #${config.colorScheme.colors.base01};
 }
 
 .workspace-thumbnails {
@@ -2020,7 +2020,7 @@ StScrollBar StButton#hhandle:active {
   border: 0px solid rgba(5, 5, 5, 0.9);
   border-bottom: 1px;
   -slider-height: 0.5em;
-  -slider-background-color: #1f1f1f;
+  -slider-background-color: #${config.colorScheme.colors.base01};
   -slider-border-color: rgba(0, 0, 0, 0);
   -slider-active-background-color: #949cbb;
   -slider-active-border-color: rgba(0, 0, 0, 0);
