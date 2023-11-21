@@ -12,8 +12,6 @@ for _prs in "''${_ps[@]}"; do
 	fi
 done
 
-${pkgs.over-hypr-portal}/bin/xdg-desktop-portal-hyprland &
-
     '';
   };
 }

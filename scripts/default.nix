@@ -5,5 +5,8 @@
     ./firstinstall.nix
     ./ewwlauncher.nix
     ./workspaces.nix
+    ./killportals.nix
+    ./mywifi.nix
+    ./microphone.nix
   ];
 }

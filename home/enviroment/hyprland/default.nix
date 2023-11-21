@@ -3,6 +3,7 @@
   imports = [ 
     (./. + "/hostsettings/${hostname}.nix")
     (./. + "/usersettings/${uservars.description}.nix")
+    ./colors.nix
   ];
   wayland.windowManager.hyprland = {
     enable = true;
@@ -56,6 +57,10 @@
       master = {
         new_is_master = true;
       };
+      source = [
+        "${config.home.homeDirectory}/.config/hypr/colors"
+        "${config.home.homeDirectory}/.config/hypr/test.conf"
+      ];
     };
     extraConfig = ''
 #------------------env vars-----------------------
@@ -72,22 +77,8 @@ exec-once = arrpc &
 exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
 #------------------------------------------------- 
 
-#---------------------portals---------------------
-exec-once = ${config.home.homeDirectory}/.scripts/portals.sh
-#------------------------------------------------- 
-
-source = ${config.home.homeDirectory}/.config/hypr/colors
-source = ${config.home.homeDirectory}/.config/hypr/test.conf
-
-windowrule=float,^(pavucontrol)$
-windowrule = opacity 0.8,^(pavucontrol)$
-
-windowrule = float,^(nm-connection-editor)$
-windowrule = opacity 0.8,^(nm-connection-editor)$
-
-windowrule = float, blueman-manager
-windowrule = opacity 0.8, blueman-manager
-
+#source = ${config.home.homeDirectory}/.config/hypr/colors
+#source = ${config.home.homeDirectory}/.config/hypr/test.conf
 
 #------------------kitty for btop------------------
 windowrule = float,^(kitty)$
@@ -103,6 +94,17 @@ windowrulev2 = noanim,class:^(xwaylandvideobridge)$
 windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
 windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 #--------------------------------------------------
+
+#--------------other windowrules-------------------
+windowrule=float,^(pavucontrol)$
+windowrule = opacity 0.8,^(pavucontrol)$
+
+windowrule = float,^(nm-connection-editor)$
+windowrule = opacity 0.8,^(nm-connection-editor)$
+
+windowrule = float, blueman-manager
+windowrule = opacity 0.8, blueman-manager
+#--------------------------------------------------
     
 #------------------functional keys-----------------
 bind =,XF86AudioMicMute,exec,pamixer --default-source -t
@@ -116,25 +118,4 @@ bind =,XF86AudioPause,exec,playerctl play-pause
 #--------------------------------------------------
     '';
   };
-  home.file.".config/hypr/colors".text = ''
-$background = rgb(${config.colorScheme.colors.base01})
-$foreground = rgb(${config.colorScheme.colors.base06})
-
-$color0 = rgb(${config.colorScheme.colors.base00})
-$color1 = rgb(${config.colorScheme.colors.base01})
-$color2 = rgb(${config.colorScheme.colors.base02})
-$color3 = rgb(${config.colorScheme.colors.base03})
-$color4 = rgb(${config.colorScheme.colors.base04})
-$color5 = rgb(${config.colorScheme.colors.base05})
-$color6 = rgb(${config.colorScheme.colors.base06})
-$color7 = rgb(${config.colorScheme.colors.base07})
-$color8 = rgb(${config.colorScheme.colors.base08})
-$color9 = rgb(${config.colorScheme.colors.base09})
-$color10 = rgb(${config.colorScheme.colors.base0A})
-$color11 = rgb(${config.colorScheme.colors.base0B})
-$color12 = rgb(${config.colorScheme.colors.base0C})
-$color13 = rgb(${config.colorScheme.colors.base0D})
-$color14 = rgb(${config.colorScheme.colors.base0E})
-$color15 = rgb(${config.colorScheme.colors.base0F})
-  '';
 }
