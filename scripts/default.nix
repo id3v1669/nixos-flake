@@ -8,5 +8,6 @@
     ./killportals.nix
     ./mywifi.nix
     ./microphone.nix
+    ./wallpapergen.nix
   ];
 }

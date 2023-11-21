@@ -3,6 +3,7 @@
   imports = [
     ./programs
   ] ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
+    ./wallpapers
     ./../scripts
     ./enviroment/qt
     ./enviroment/gnome
@@ -44,6 +45,8 @@
 
     ]) ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") (with pkgs;[
       #tests
+      lutgen
+      swaybg
 
       #screenshots
       grim
@@ -129,6 +132,7 @@
       cinnamon.nemo-with-extensions
       filezilla
       zip
+      p7zip
       unzip
       file #file type detection
       rar #unfree for rar archives

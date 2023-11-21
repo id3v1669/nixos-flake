@@ -75,6 +75,8 @@
         name = "user";
         description = "id3v1669";
         domain = "none";
+        wp1 = "default1.png";
+        wp2 = "default2.png";
       },
       deflocale ? {
         kblayout = "us,ru";
@@ -178,6 +180,13 @@
         #colorsvar = "spaceduck";
         colorsvar = "catppuccin-frappe";
         #colorsvar = "gruvbox-dark-hard";
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          domain = "none";
+          wp1 = "rebecca2.jpg";
+          wp2 = "furry1.png";
+        };
       };
       nuc11phhyprtbfhd = mkSyst {
         hostname = "nuc11ph";

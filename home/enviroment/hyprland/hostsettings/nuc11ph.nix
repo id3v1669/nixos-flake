@@ -1,4 +1,4 @@
-{ config, lib, pkgs, uservars, gpuvar, ... }:
+{ config, lib, pkgs, uservars, gpuvar, colorsvar, ... }:
 {
   wayland.windowManager.hyprland = {
     enableNvidiaPatches = true;
@@ -27,54 +27,42 @@
   home.sessionVariables = {
 		#universal part
     NIXOS_OZONE_WL = "1";
-	  QT_SCALE_FACTOR = "1";
 	  MOZ_ENABLE_WAYLAND = "1";
 	  SDL_VIDEODRIVER = "wayland";
 	  _JAVA_AWT_WM_NONREPARENTING = "1";
-	  #QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-	  #QT_AUTO_SCREEN_SCALE_FACTOR = "1"; 
 	  CLUTTER_BACKEND = "wayland";
 	  XDG_CURRENT_DESKTOP = "Hyprland";
 	  XDG_SESSION_DESKTOP = "Hyprland";
 	  XDG_SESSION_TYPE = "wayland";
 
-		
 		#args for gmaes
 		__GL_THREADED_OPTIMIZATIONS="1";
 		__GL_SHADER_DISK_CACHE="1";
 		__GL_SHADER_DISK_CACHE_SKIP_CLEANUP="1";
 
 		#ps.
-	  #GTK_USE_PORTAL = "0"; #useless
 	  #NIXOS_XDG_OPEN_USE_PORTAL = "1"; #breaks xdg-open
 
 		#nvidia part
-		#QT_QPA_PLATFORM = "wayland-egl";#??
     WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
   };
-	home.file.".config/hypr/hyprpaper.conf" = {
-    text = ''
-preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca1.jpg
-preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca2.jpg
-preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca3.jpg
-preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca4.jpg
-preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca5.jpg
-preload = ${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
-preload = ${config.home.homeDirectory}/Pictures/Wallpapers/furry2.jpg
-preload = ${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
-preload = ${config.home.homeDirectory}/Pictures/Wallpapers/gray.jpg
-#preload = ${config.home.homeDirectory}/back-test.svg
-#preload = ${config.home.homeDirectory}/back-test.ppm
+	home.file.".config/hypr/hyprpaper.conf".text = ''
+preload = ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp1}
+preload = ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp2}
+#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca3.jpg
+#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca4.jpg
+#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca5.jpg
+#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
+#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/furry2.jpg
+#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
+#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/gray.jpg
 
 #wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
 #wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
-wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/rebecca2.jpg
-wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
-#wallpaper = DP-3,${config.home.homeDirectory}/back-test.svg
-#wallpaper = DP-4,${config.home.homeDirectory}/back-test.svg
-#wallpaper = DP-3,${config.home.homeDirectory}/back-test.ppm
-#wallpaper = DP-4,${config.home.homeDirectory}/back-test.ppm
+wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/rebecca2.jpg
+wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/furry1.png
+#wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp1}
+#wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp2}
 
-    '';
-  };
+  '';
 }

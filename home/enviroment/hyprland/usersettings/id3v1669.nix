@@ -86,7 +86,7 @@
     exec-once = [
       
     ] ++ lib.lists.optionals (desk == "desktop") [
-      "hyprpaper"
+      "hyprpaper &"
     ];
   };
 }
