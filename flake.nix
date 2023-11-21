@@ -176,7 +176,6 @@
         hostname = "nuc11ph";
         envir = "hypr";
         #colorsvar = "spaceduck";
-        #colorsvar = "catppuccin-mocha";
         colorsvar = "catppuccin-frappe";
         #colorsvar = "gruvbox-dark-hard";
       };

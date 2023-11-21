@@ -3,7 +3,7 @@
   home.file.".scripts/eww_ws.sh" = {
     executable = true;
     text = ''
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 wss() {
 

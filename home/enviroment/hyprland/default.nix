@@ -68,9 +68,12 @@
 #exec-once = hyprctl setcursor Bibata-Modern-Classic 24
 exec-once = arrpc &
 
-
 #----------------bar and applets------------------
 exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
+#------------------------------------------------- 
+
+#---------------------portals---------------------
+exec-once = ${config.home.homeDirectory}/.scripts/portals.sh
 #------------------------------------------------- 
 
 source = ${config.home.homeDirectory}/.config/hypr/colors

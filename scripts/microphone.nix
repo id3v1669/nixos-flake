@@ -3,7 +3,7 @@
   home.file.".scripts/microphone.sh" = {
     executable = true;
     text = ''
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 cards=$(aplay -l | grep card | awk -F: '{print $1}' | awk '{print $2}' | sort -u)
 

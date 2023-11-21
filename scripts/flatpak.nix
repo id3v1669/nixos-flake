@@ -3,7 +3,7 @@
   home.file.".scripts/flatpak.sh" = {
     executable = true;
     text = ''
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 declare -a apps=(R
                  "org.kde.krita"

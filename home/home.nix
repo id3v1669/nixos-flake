@@ -44,7 +44,6 @@
 
     ]) ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") (with pkgs;[
       #tests
-      gnome.nautilus
 
       #screenshots
       grim
@@ -152,6 +151,7 @@
       #inputs.eww-tray.packages.x86_64-linux.eww-wayland
 
       #other cli utils
+      onefetch
       pciutils
       usbutils
       lshw

@@ -4,7 +4,7 @@
   home.file.".scripts/ewwlauncher.sh" = {
     executable = true;
     text = ''
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 eww daemon
 eww open popup-power-window

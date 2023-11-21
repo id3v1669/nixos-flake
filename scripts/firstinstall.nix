@@ -3,7 +3,7 @@
   home.file.".scripts/firstinstall.sh" = {
     executable = true;
     text = ''
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 ${config.home.homeDirectory}/.scripts/flatpak.sh
 ${config.home.homeDirectory}/.scripts/distrobox.sh

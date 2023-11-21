@@ -5,6 +5,7 @@
         me = "echo $hostname";
         wifi = "sudo bash ${config.home.homeDirectory}/mywifi.sh";
         vi = "vim";
+        ewwr = "kill $(pidof eww) && bash ${config.home.homeDirectory}/.scripts/ewwlauncher.sh";
       };
       functions = {
         fish_greeting = {

@@ -4,7 +4,7 @@
   home.file.".scripts/distrobox.sh" = {
     executable = true;
     text = ''
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 
 does_distrobox_exist() {
