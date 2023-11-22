@@ -1,6 +1,5 @@
 { config, lib, pkgs, uservars, colorsvar, ... }:
 {
-  #imgs=(${lib.concatMapStrings (item: ''${item} '') uservars.wallpapers})
   home.file.".scripts/wallpapergen.sh" = {
     executable = true;
     text = ''

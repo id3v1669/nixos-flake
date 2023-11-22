@@ -84,7 +84,6 @@
       "ALT, mouse:272, resizewindow"
     ];
     exec-once = [
-      
     ] ++ lib.lists.optionals (desk == "desktop") [
       "hyprpaper &"
     ];

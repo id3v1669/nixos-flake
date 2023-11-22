@@ -1,8 +1,15 @@
-{ config, lib, pkgs, desk, ... }:
+{ config, lib, pkgs, desk, cpuvar, ... }:
 {
   home.file.".config/eww/eww.yuck".text = 
   let
     battery = if desk == "laptop" then "(battery)" else "";
+    cputemp = if cpuvar == "intel" then ''
+(box 
+  :class "cputemp"
+  "''${EWW_TEMPS.CORETEMP_CORE_0}°C "
+)
+(box :class "spacerh" "|")
+    '' else '''';
   in
   ''
 (defvar deftimeout "999999999ms")
@@ -255,11 +262,7 @@
           "''${round(EWW_RAM.used_mem/1073741824,1)}/''${round(EWW_RAM.total_mem/1073741824,1)} Gb "
         )
         (box :class "spacerh" "|")
-        (box 
-          :class "cputemp"
-          "''${EWW_TEMPS.CORETEMP_CORE_0}°C "
-        )
-        (box :class "spacerh" "|")
+        ${cputemp}
         (box 
           :class "disk"
           "''${round(EWW_DISK['/'].free/1073741824,1)} Gb "

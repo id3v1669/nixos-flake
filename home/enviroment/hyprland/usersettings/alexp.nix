@@ -83,5 +83,9 @@
       "$mainMod, mouse:272, movewindow"
       "$mainMod, mouse:273, resizewindow"
     ];
+    exec-once = [
+    ] ++ lib.lists.optionals (desk == "desktop") [
+      "hyprpaper &"
+    ];
   };
 }

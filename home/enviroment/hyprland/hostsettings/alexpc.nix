@@ -19,4 +19,10 @@
 	  XDG_SESSION_DESKTOP = "Hyprland";
 	  XDG_SESSION_TYPE = "wayland";
   };
+	home.file.".config/hypr/hyprpaper.conf".text = ''
+preload = ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp1}
+preload = ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp2}
+wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp1}
+wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp2}
+  '';
 }
