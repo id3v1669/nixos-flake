@@ -2,7 +2,6 @@
 {
   imports = [
     ./envs/${envir}.nix
-    ./users/${uservars.description}.nix
     ./hosts/${hostname}.nix
   ] ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
     ./pcs.nix
