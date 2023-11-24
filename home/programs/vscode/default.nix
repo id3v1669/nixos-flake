@@ -277,6 +277,7 @@
       jnoortheen.nix-ide
       skyapps.fish-vscode
       ms-dotnettools.csharp
+      dotjoshjohnson.xml
       #ms-python.python
     ];
   };

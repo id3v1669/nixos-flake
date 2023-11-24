@@ -1,10 +1,15 @@
 { config, lib, pkgs, uservars, ... }:
 
 {
-  wayland.windowManager.hyprland.settings.monitor = [
-    "DP-1,3440x1440@165,2560x0,1"
-    "DP-2,2560x1440@144,0x0,1"
-  ];
+  wayland.windowManager.hyprland.settings = {
+		monitor = [
+      "DP-1,3440x1440@165,2560x0,1"
+      "DP-2,2560x1440@144,0x0,1"
+    ];
+		exec-once = [
+      "hyprpaper &"
+    ];
+	};
   home.sessionVariables = {
 		#universal part
     NIXOS_OZONE_WL = "1";
@@ -22,7 +27,7 @@
 	home.file.".config/hypr/hyprpaper.conf".text = ''
 preload = ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp1}
 preload = ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp2}
-wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp1}
-wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp2}
+wallpaper = DP-1,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp1}
+wallpaper = DP-2,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp2}
   '';
 }

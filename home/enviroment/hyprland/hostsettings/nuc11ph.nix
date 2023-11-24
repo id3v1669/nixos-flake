@@ -22,6 +22,9 @@
 				"move 81.25% 4.25%, blueman-manager"
         "size 18.5% 55%, blueman-manager"
 			];
+			exec-once = [
+        "hyprpaper &"
+      ];
 		};
   };
   home.sessionVariables = {

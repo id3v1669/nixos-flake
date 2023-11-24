@@ -93,6 +93,7 @@
     hunspellDicts.ru_RU           # needed for libreoffice
 
     # other gui tools
+    gnome.gnome-disk-utility      # disk manager(gparted is broken)
     qbittorrent                   # torrent client
     rustdesk                      # remote desktop (had wayland problems, check for later versions and patches)
     github-desktop                # github desktop
@@ -118,13 +119,13 @@
     nix-prefetch-git              # git hash for nixpkgs
 
     # libs
-    gtk3
-    libpng
+    gtk3                          # gtk lib
+    libpng                        # png lib
     libnotify                     # for dunst or mako
-    mesa           
+    mesa                          # vulkan
 
     # other
-    dconf                        # settings for gnome apps
+    dconf                         # settings for gnome apps
   ]) ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [ 
     egl-wayland                   # needed for vms on nvidia hw
   ]);
