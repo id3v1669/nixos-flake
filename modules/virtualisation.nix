@@ -1,5 +1,6 @@
 {lib, config, pkgs, gpuvar, ...}: 
 {
+  security.virtualisation.flushL1DataCache = "always";
   virtualisation = {
     docker = {
       enable = true;

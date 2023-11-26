@@ -3,7 +3,11 @@
   security.polkit.enable = true;
   xdg.portal = {
     enable = true;
-    config.common.default = "*";
+    config.common = {
+      default = "gtk";
+      "org.freedesktop.impl.portal.Screencast" = "hyprland";
+      "org.freedesktop.impl.portal.Screenshot" = "hyprland";
+    };
     extraPortals = ( with pkgs; [
       over-hypr-portal
       xdg-desktop-portal-gtk

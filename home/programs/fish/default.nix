@@ -7,6 +7,7 @@
         vi = "vim";
         ewwr = "kill $(pidof eww) && bash ${config.home.homeDirectory}/.scripts/ewwlauncher.sh";
         xdgr = "bash ${config.home.homeDirectory}/.scripts/portals.sh";
+        ncb = "bash ${pkgs.nix}/bin/nix-collect-garbage";
       };
       functions = {
         fish_greeting = {

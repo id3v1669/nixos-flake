@@ -8,6 +8,7 @@
     ./../../modules/fonts.nix
     ./../../modules/sound.nix
     ./../../modules/gpu.nix
+    ./../../modules/sudo.nix
   ];
   
   networking.firewall.enable = false;
