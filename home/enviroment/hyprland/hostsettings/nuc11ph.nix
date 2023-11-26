@@ -1,7 +1,7 @@
 { config, lib, pkgs, uservars, gpuvar, colorsvar, ... }:
 {
   wayland.windowManager.hyprland = {
-    enableNvidiaPatches = true;
+    #enableNvidiaPatches = true;
     settings = {
 			monitor = [
       ] ++ lib.lists.optionals (gpuvar.port == "hdmiqhd") [

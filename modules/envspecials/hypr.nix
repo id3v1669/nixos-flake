@@ -3,9 +3,10 @@
   security.polkit.enable = true;
   xdg.portal = {
     enable = true;
+    config.common.default = "*";
     extraPortals = ( with pkgs; [
-      xdg-desktop-portal-gtk
       over-hypr-portal
+      xdg-desktop-portal-gtk
     ]);
   };
   programs = {
