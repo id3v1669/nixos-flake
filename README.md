@@ -2,14 +2,14 @@
 
 NixOS flake with home manager
 
-Latest commit to use: cc05609255b12b0d7d46b16f19f61e9b60b43dc4
+Latest commit to use: d9d451e86645ffe4cadb26d5843b57aa35642e50
 
 ## Main
 | Environment | Name | Comment | Needed fix |
 |-----|-----|-----|-----|
 | WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel) | - |
 | launcher | Rofi | - | - |
-| bar | eww | fork of eww with tray support | - |
+| bar | eww | fork of eww with tray support | ToDo 7+8 |
 | background | swaybg | - | - |
 | portals | gtk and hyprland | - | - |
 | lockscreen | - | not needed for now, might install ly later | - |
@@ -26,6 +26,14 @@ Latest commit to use: cc05609255b12b0d7d46b16f19f61e9b60b43dc4
 3. **-fix audio input in windows apps like yousician(lutris) and rocksmith(steam)**
 
 4. **rewrite readme**
+
+5. **migrate krita from flatpak to nixpkgs**
+
+6. **heic support**
+
+7. **edit scripts to update eww sound and workspaces after hyprland loads**
+
+8. **fix eww glitch on launcher button**
 
 ## Notes:
 
