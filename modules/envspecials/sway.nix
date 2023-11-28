@@ -1,5 +1,6 @@
 {lib, config, pkgs, uservars, ...}: 
 {
+  # add env var WLR_NO_HARDWARE_CURSORS = "1"; for hdmi connection later
   security.polkit.enable = true;
   xdg.portal = {
     enable = true;

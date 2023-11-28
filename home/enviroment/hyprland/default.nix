@@ -73,7 +73,7 @@
 #exec-once = hyprctl setcursor Bibata-Modern-Classic 24
 exec-once = arrpc &
 
-exec-once = ${config.home.homeDirectory}/.scripts/wallpapergen.sh
+exec-once = ${config.home.homeDirectory}/.scripts/wallpaper.sh
 
 #----------------bar and applets------------------
 exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh

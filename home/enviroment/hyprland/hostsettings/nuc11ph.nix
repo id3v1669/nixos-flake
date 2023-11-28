@@ -23,7 +23,6 @@
         "size 18.5% 55%, blueman-manager"
 			];
 			exec-once = [
-        "hyprpaper &"
       ];
 		};
   };
@@ -50,23 +49,4 @@
 		#nvidia part
     WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
   };
-	home.file.".config/hypr/hyprpaper.conf".text = ''
-preload = ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp1}
-preload = ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp2}
-#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca3.jpg
-#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca4.jpg
-#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/rebecca5.jpg
-#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/furry1.png
-#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/furry2.jpg
-#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
-#preload = ${config.home.homeDirectory}/Pictures/Wallpapers/gray.jpg
-
-#wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
-#wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/black.jpg
-wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/rebecca2.jpg
-wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/furry1.png
-#wallpaper = DP-3,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp1}
-#wallpaper = DP-4,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp2}
-
-  '';
 }

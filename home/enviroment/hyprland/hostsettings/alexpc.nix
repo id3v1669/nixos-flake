@@ -7,7 +7,6 @@
       "DP-2,2560x1440@144,0x0,1"
     ];
 		exec-once = [
-      "hyprpaper &"
     ];
 	};
   home.sessionVariables = {
@@ -24,10 +23,4 @@
 	  XDG_SESSION_DESKTOP = "Hyprland";
 	  XDG_SESSION_TYPE = "wayland";
   };
-	home.file.".config/hypr/hyprpaper.conf".text = ''
-preload = ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp1}
-preload = ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp2}
-wallpaper = DP-1,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp1}
-wallpaper = DP-2,${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp2}
-  '';
 }

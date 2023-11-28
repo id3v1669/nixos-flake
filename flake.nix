@@ -75,8 +75,7 @@
         name = "user";
         description = "id3v1669";
         domain = "none";
-        wp1 = "default1.png";
-        wp2 = "default2.png";
+        wp = "default1.png";
       },
       deflocale ? {
         kblayout = "us,ru";
@@ -153,14 +152,12 @@
           name = "user";
           description = "id3v1669";
           domain = "none";
-          wp1 = "rebecca2.jpg";
-          wp2 = "furry1.png";
+          wp = "rebecca2.jpg";
         };
       };
       nuc11phhyprtbfhd = mkSyst {
         hostname = "nuc11ph";
         envir = "hypr";
-        #winvar = true;
         gpuvar = {
           type = "nvidia";
           tech = "prime";
