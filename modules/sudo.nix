@@ -6,6 +6,7 @@
       enable = true;
       execWheelOnly = true;
       extraRules = [
+        # allow wheel group to run nix-collect-garbage and nixos-rebuild without password
         {
           groups = [ "wheel" ];
           commands = [

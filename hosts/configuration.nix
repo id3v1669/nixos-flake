@@ -24,6 +24,7 @@
   environment = {
     variables = {
       EDITOR = "nano";
+      WLR_NO_HARDWARE_CURSORS = "1";
     };
     systemPackages = [ pkgs.fish ];
   };
