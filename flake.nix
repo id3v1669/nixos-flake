@@ -152,7 +152,7 @@
           name = "user";
           description = "id3v1669";
           domain = "none";
-          wp = "rebecca2.jpg";
+          wp = "sound.png";
         };
       };
       nuc11phhyprtbfhd = mkSyst {
