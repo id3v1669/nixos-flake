@@ -13,9 +13,9 @@ Latest commit to use: cc05609255b12b0d7d46b16f19f61e9b60b43dc4
 | background | swaybg | - | - |
 | portals | gtk and hyprland | - | - |
 | lockscreen | - | not needed for now, might install ly later | - |
-| brightness | light and ddcutil | Cable and monior must support DDC | ToDo 2+3 |
+| brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
 | notifications | dunst | - | - |
-| shell | fish | works | ToDo 6 |
+| shell | fish | - | - |
 
 ## ToDo:
 
@@ -25,13 +25,7 @@ Latest commit to use: cc05609255b12b0d7d46b16f19f61e9b60b43dc4
 
 3. **-fix audio input in windows apps like yousician(lutris) and rocksmith(steam)**
 
-4. **-create update script and alias to rebuild and update archbox**
-
-5. **-fish aliases for git**
-
-6. **-create one-color background depending on system colors**
-
-7. **create dynamic-icon-theme on color-vars**
+4. **rewrite readme**
 
 ## Notes:
 
