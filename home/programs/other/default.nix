@@ -23,4 +23,5 @@
     };
     ncmpcpp.enable = true;
   };
+  services.playerctld.enable = true;
 }
