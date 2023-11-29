@@ -124,6 +124,7 @@
     libpng                        # png lib
     libnotify                     # for dunst or mako
     mesa                          # vulkan
+    libheif                       # heif lib
 
     # other
     dconf                         # settings for gnome apps
