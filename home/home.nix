@@ -3,6 +3,7 @@
   imports = [
     ./programs
     ./pkgs
+    ./. + "/hosts/${hostname}"
   ] ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
     ./wallpapers
     ./../scripts
