@@ -38,6 +38,12 @@
     workspace = if envir=="hypr" then "bash -c 'hyprctl dispatch workspace \"$@\" && ${config.home.homeDirectory}/.scripts/eww_ws.sh' -- "
       else if envir == "sway" then "swaymsg workspace"
       else "";
+    movefocus = if envir=="hypr" then "hyprctl dispatch movefocus "
+      else if envir == "sway" then "bash -c 'if [ \"$@\" == \"r\" ]; then swaymsg focus right; elif [ \"$@\" == \"l\" ]; then swaymsg focus left; elif [ \"$@\" == \"d\" ]; then swaymsg focus down; elif [ \"$@\" == \"u\" ]; then swaymsg focus up; fi' -- "
+      else "";
+    exit = if envir=="hypr" then "hyprctl dispatch exit"
+      else if envir == "sway" then "swaymsg exit"
+      else "";
   in ''
 
 super + shift + q
@@ -54,6 +60,9 @@ super + g
 
 super + p
   ${pseudo}
+
+super + m
+  ${exit}
 
 super + tab
   ${nextactivewindow}
@@ -75,5 +84,8 @@ ctrl + shift + left
 
 ctrl + shift + {1-9, 0}
   ${movetoworkspace} {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+super + {right, left, down, up}
+  ${movefocus} {r, l, d, u}
   '';
 }

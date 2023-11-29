@@ -2,7 +2,6 @@
 {
   imports = [ 
     (./. + "/hostsettings/${hostname}.nix")
-    (./. + "/usersettings/${uservars.description}.nix")
     ./colors.nix
   ];
   wayland.windowManager.hyprland = {
@@ -61,6 +60,11 @@
         "${config.home.homeDirectory}/.config/hypr/colors"
         "${config.home.homeDirectory}/.config/hypr/test.conf"
       ];
+      bindm = [
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
+        "ALT, mouse:272, resizewindow"
+      ];
     };
     extraConfig = ''
 #------------------env vars-----------------------
@@ -107,17 +111,6 @@ windowrule = opacity 0.8,^(nm-connection-editor)$
 
 windowrule = float, blueman-manager
 windowrule = opacity 0.8, blueman-manager
-#--------------------------------------------------
-    
-#------------------functional keys-----------------
-#bind =,XF86AudioMicMute,exec,pamixer --default-source -t
-#bind =,XF86MonBrightnessDown,exec,${brightnesctrl.down}
-#bind =,XF86MonBrightnessUp,exec,${brightnesctrl.up}
-#bind =,XF86AudioMute,exec,pamixer -t
-#bind =,XF86AudioLowerVolume,exec,pamixer -d 10 && eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)"
-#bind =,XF86AudioRaiseVolume,exec,pamixer -i 10 && eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)" 
-#bind =,XF86AudioPlay,exec,playerctl play-pause
-#bind =,XF86AudioPause,exec,playerctl play-pause
 #--------------------------------------------------
     '';
   };

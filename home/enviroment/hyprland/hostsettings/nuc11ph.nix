@@ -1,7 +1,6 @@
 { config, lib, pkgs, uservars, gpuvar, colorsvar, ... }:
 {
   wayland.windowManager.hyprland = {
-    #enableNvidiaPatches = true;
     settings = {
 			monitor = [
       ] ++ lib.lists.optionals (gpuvar.port == "hdmiqhd") [
@@ -22,13 +21,10 @@
 				"move 81.25% 4.25%, blueman-manager"
         "size 18.5% 55%, blueman-manager"
 			];
-			exec-once = [
-      ];
 		};
   };
   home.sessionVariables = {
 		#universal part
-	  WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
 	  MOZ_ENABLE_WAYLAND = "1";
 	  SDL_VIDEODRIVER = "wayland";
@@ -42,9 +38,6 @@
 		__GL_THREADED_OPTIMIZATIONS="1";
 		__GL_SHADER_DISK_CACHE="1";
 		__GL_SHADER_DISK_CACHE_SKIP_CLEANUP="1";
-
-		#ps.
-	  #NIXOS_XDG_OPEN_USE_PORTAL = "1"; #breaks xdg-open
 
 		#nvidia part
     WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";

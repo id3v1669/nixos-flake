@@ -48,7 +48,6 @@ rustPlatform.buildRustPackage rec {
 </policyconfig>
 EOF
   '';
-  #install -Dm 644 ./com.github.swhkd.pkexec.policy -t $out/share/polkit-1/actions
   postFixup = ''
     wrapProgram $out/bin/swhkd --prefix PATH : ${
       lib.makeBinPath [ polkit ]
