@@ -60,6 +60,7 @@
         "${config.home.homeDirectory}/.config/hypr/colors"
         "${config.home.homeDirectory}/.config/hypr/test.conf"
       ];
+      "$mainMod" = "SUPER";
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"

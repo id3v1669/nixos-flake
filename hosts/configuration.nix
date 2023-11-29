@@ -21,12 +21,7 @@
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
   };
-  environment = {
-    variables = {
-      EDITOR = "nano";
-    };
-    systemPackages = [ pkgs.fish ];
-  };
+  environment.systemPackages = [ pkgs.fish ];
   time.timeZone = "${deflocale.timezone}";
   i18n.defaultLocale = "${deflocale.locale}";
   nix = {

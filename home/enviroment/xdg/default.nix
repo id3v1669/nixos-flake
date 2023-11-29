@@ -45,10 +45,10 @@
           "application/x-extension-xht"
         ];
       };
-      nomacs = {
-        name = "nomacs";
+      eog = {
+        name = "eog";
         genericName = "Image Viewer";
-        exec = "nomacs %U";
+        exec = "eog %U";
         terminal = false;
         categories = [ "Application" "Graphics" "Viewer" ];
         mimeType = [ 
@@ -69,16 +69,16 @@
       enable = true;
       associations.added = {
         #images
-        "image/png" = "nomacs.desktop";
-        "image/jpeg" = "nomacs.desktop";
-        "image/gif" = "nomacs.desktop";
-        "image/bmp" = "nomacs.desktop";
-        "image/jpg" = "nomacs.desktop";
-        "image/tiff" = "nomacs.desktop";
-        "image/x-bmp" = "nomacs.desktop";
-        "image/x-ico" = "nomacs.desktop";
-        "image/heic" = "nomacs.desktop";
-        "image/heif" = "nomacs.desktop";
+        "image/png" = "eog.desktop";
+        "image/jpeg" = "eog.desktop";
+        "image/gif" = "eog.desktop";
+        "image/bmp" = "eog.desktop";
+        "image/jpg" = "eog.desktop";
+        "image/tiff" = "eog.desktop";
+        "image/x-bmp" = "eog.desktop";
+        "image/x-ico" = "eog.desktop";
+        "image/heic" = "eog.desktop";
+        "image/heif" = "eog.desktop";
         #web
         "text/html" = "firefox.desktop";
         "x-scheme-handler/http" = "firefox.desktop";
@@ -116,16 +116,16 @@
       };
       defaultApplications = {
         #images
-        "image/png" = "nomacs.desktop";
-        "image/jpeg" = "nomacs.desktop";
-        "image/gif" = "nomacs.desktop";
-        "image/bmp" = "nomacs.desktop";
-        "image/jpg" = "nomacs.desktop";
-        "image/tiff" = "nomacs.desktop";
-        "image/x-bmp" = "nomacs.desktop";
-        "image/x-ico" = "nomacs.desktop";
-        "image/heic" = "nomacs.desktop";
-        "image/heif" = "nomacs.desktop";
+        "image/png" = "eog.desktop";
+        "image/jpeg" = "eog.desktop";
+        "image/gif" = "eog.desktop";
+        "image/bmp" = "eog.desktop";
+        "image/jpg" = "eog.desktop";
+        "image/tiff" = "eog.desktop";
+        "image/x-bmp" = "eog.desktop";
+        "image/x-ico" = "eog.desktop";
+        "image/heic" = "eog.desktop";
+        "image/heif" = "eog.desktop";
         #web
         "text/html" = "firefox.desktop";
         "x-scheme-handler/http" = "firefox.desktop";

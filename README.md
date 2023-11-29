@@ -9,7 +9,7 @@ Latest commit to use: d9d451e86645ffe4cadb26d5843b57aa35642e50
 |-----|-----|-----|-----|
 | WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel) | - |
 | launcher | Rofi | - | - |
-| bar | eww | fork of eww with tray support | ToDo 7+8 |
+| bar | eww | fork of eww with tray support | ToDo 7+6 |
 | background | swaybg | - | - |
 | portals | gtk and hyprland | - | - |
 | lockscreen | - | not needed for now, might install ly later | - |
@@ -29,11 +29,9 @@ Latest commit to use: d9d451e86645ffe4cadb26d5843b57aa35642e50
 
 5. **migrate krita from flatpak to nixpkgs**
 
-6. **heic support**
+6. **edit scripts to update eww sound and workspaces after hyprland loads**
 
-7. **edit scripts to update eww sound and workspaces after hyprland loads**
-
-8. **fix eww glitch on launcher button**
+7. **fix eww glitch on launcher button**
 
 ## Notes:
 
