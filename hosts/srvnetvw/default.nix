@@ -30,6 +30,9 @@
       PermitRootLogin = "yes";
     };
   };
-  
+  environment.variables = {
+    #system vars
+    EDITOR = "nano";
+  };
   system.stateVersion = "${curversion}";
 }
