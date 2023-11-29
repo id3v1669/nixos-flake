@@ -146,8 +146,8 @@
         hostname = "nuc11ph";
         envir = "hypr";
         #colorsvar = "spaceduck";
-        colorsvar = "catppuccin-frappe";
-        #colorsvar = "gruvbox-dark-hard";
+        #colorsvar = "catppuccin-frappe";
+        colorsvar = "gruvbox-dark-pale";
         uservars = {
           name = "user";
           description = "id3v1669";

@@ -72,6 +72,7 @@
 
 #exec-once = hyprctl setcursor Bibata-Modern-Classic 24
 exec-once = arrpc &
+exec-once = swhks &
 
 exec-once = ${config.home.homeDirectory}/.scripts/wallpaper.sh
 
@@ -109,14 +110,14 @@ windowrule = opacity 0.8, blueman-manager
 #--------------------------------------------------
     
 #------------------functional keys-----------------
-bind =,XF86AudioMicMute,exec,pamixer --default-source -t
-bind =,XF86MonBrightnessDown,exec,${brightnesctrl.down}
-bind =,XF86MonBrightnessUp,exec,${brightnesctrl.up}
-bind =,XF86AudioMute,exec,pamixer -t
-bind =,XF86AudioLowerVolume,exec,pamixer -d 10 && eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)"
-bind =,XF86AudioRaiseVolume,exec,pamixer -i 10 && eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)" 
-bind =,XF86AudioPlay,exec,playerctl play-pause
-bind =,XF86AudioPause,exec,playerctl play-pause
+#bind =,XF86AudioMicMute,exec,pamixer --default-source -t
+#bind =,XF86MonBrightnessDown,exec,${brightnesctrl.down}
+#bind =,XF86MonBrightnessUp,exec,${brightnesctrl.up}
+#bind =,XF86AudioMute,exec,pamixer -t
+#bind =,XF86AudioLowerVolume,exec,pamixer -d 10 && eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)"
+#bind =,XF86AudioRaiseVolume,exec,pamixer -i 10 && eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)" 
+#bind =,XF86AudioPlay,exec,playerctl play-pause
+#bind =,XF86AudioPause,exec,playerctl play-pause
 #--------------------------------------------------
     '';
   };

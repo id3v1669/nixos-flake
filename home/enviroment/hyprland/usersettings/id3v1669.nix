@@ -65,12 +65,12 @@
       "CTRL SHIFT, left, exec, bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
       #launchers
       "$mainMod SHIFT, K, exec, kitty"
-      "$mainMod SHIFT, E, exec, bash ${config.home.homeDirectory}/.scripts/ewwlauncher.sh" #eww restarter
-      "$mainMod SHIFT, T, exec, alacritty"
-      "$mainMod SHIFT, B, exec, firefox"
-      "$mainMod SHIFT, F, exec, thunar"
-      "$mainMod SHIFT, P, exec, hyprpicker -a"
-      "$mainMod, R, exec, rofi -show "
+      # "$mainMod SHIFT, E, exec, bash ${config.home.homeDirectory}/.scripts/ewwlauncher.sh" #eww restarter
+      # "$mainMod SHIFT, T, exec, alacritty"
+      # "$mainMod SHIFT, B, exec, firefox"
+      # "$mainMod SHIFT, F, exec, thunar"
+      # "$mainMod SHIFT, P, exec, hyprpicker -a"
+      # "$mainMod, R, exec, rofi -show "
       #other controls
       "$mainMod SHIFT, Q, killactive,"
       "$mainMod, M, exit,"
