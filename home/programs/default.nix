@@ -12,5 +12,6 @@
     ./btop
     ./joplin
     ./obs
+    ./swhkd
   ];
 }

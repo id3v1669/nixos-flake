@@ -31,37 +31,7 @@
   ];
   #etc file
   environment.etc."swhkd/swhkdrc".text = ''
-super + shift + t
-  alacritty
-
-super + shift + b
-  firefox
-
-super + shift + f
-  nemo
-    
-super + shift + p
-  hyprpicker -a
-
-super + shift + e
-  bash /home/${uservars.name}/.scripts/ewwlauncher.sh
-
-super + r
-  rofi -show
-
-xf86monbrightnessdown
-  ${brightnesctrl.down}
-xf86monbrightnessup
-  ${brightnesctrl.up}
-xf86audiomicmute
-  pamixer --default-source -t
-xf86audiolowervolume
-  pamixer -d 10 && eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)"
-xf86audioraisevolume
-  pamixer -i 10 && eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)" 
-xf86audiomute 
-  pamixer -t
-
+include /home/${uservars.name}/.config/swhkd/swhkdrc
   '';
   system.stateVersion = "${curversion}";
 }
