@@ -3,11 +3,13 @@
   imports =[ 
     ./hardware-configuration.nix
     ./../configuration.nix
-    ./../../modules/gpu.nix
     ./../../modules/virtualisation.nix
     ./../../modules/udevrules.nix
     ./../../modules/fonts.nix
     ./../../modules/sound.nix
+    ./../../modules/gpu.nix
+    ./../../modules/sudo.nix
+    ./../../modules/swhkd.nix
   ];
 
   networking.firewall.enable = false;

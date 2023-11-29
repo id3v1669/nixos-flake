@@ -9,8 +9,10 @@
     ./../../modules/fonts.nix
     ./../../modules/sound.nix
     ./../../modules/gpu.nix
+    ./../../modules/sudo.nix
+    ./../../modules/swhkd.nix
   ];
-
+  
   networking.firewall.enable = false;
   users.users.${uservars.name}.extraGroups = [ 
     "wheel"

@@ -22,4 +22,7 @@
     flatpak.enable = true;
     hardware.bolt.enable = true;
   };
+  environment.etc."swhkd/swhkdrc".text = ''
+include /home/${uservars.name}/.config/swhkd/swhkdrc
+  '';
 }

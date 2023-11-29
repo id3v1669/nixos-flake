@@ -29,10 +29,6 @@
     "pipewire"
     "i2c" 
   ];
-  #etc file
-  environment.etc."swhkd/swhkdrc".text = ''
-include /home/${uservars.name}/.config/swhkd/swhkdrc
-  '';
   environment.variables = {
     #system vars
     EDITOR = "nano";
