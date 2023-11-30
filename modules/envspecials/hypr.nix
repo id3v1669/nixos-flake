@@ -19,7 +19,6 @@
       enable = true;
       package = pkgs.libsForQt5.kdeconnect-kde;
     };
-    regreet.enable = true;
   };
   systemd.user.services = { #user here is not a username
     polkit-gnome-authentication-agent-1 = {
@@ -37,22 +36,24 @@
     };
   };
   environment.systemPackages = (with pkgs; [
-    polkit_gnome
-    xorg.xhost
+    polkit_gnome                        # polkit agent
+    xorg.xhost                          # xhost
+
+    libsForQt5.qt5.qtgraphicaleffects   # sddm theme dep
+    libsForQt5.qt5.qtsvg                # sddm theme dep
+    libsForQt5.qt5.qtquickcontrols2     # sddm theme dep
+    sddm-chili-theme
   ]);
   services = {
-    gvfs.enable = true; # Mount, trash, etc
-    mpd.enable = true; # music player daemon
-    greetd = let 
-      gtkgreetCfg = pkgs.writeText "gtkgreet.conf" ''
-exec-once = ${pkgs.greetd.gtkgreet}/bin/gtkgreet --layer-shell --command=Hyprland
-      '';
-    in{
+    gvfs.enable = true;                 # Mount, trash, etc
+    mpd.enable = true;                  # music player daemon
+    xserver.displayManager.sddm = {
       enable = true;
+      wayland.enable = true;
+      theme = "chili";
       settings = {
-        default_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland --config ${gtkgreetCfg}";
-        };
+        #Theme.ThemeDir = "/home/${uservars.name}/.config/sddm/themes";
+        Wayland.SessionDir = "${pkgs.over-hyprland}/share/wayland-sessions";
       };
     };
   };

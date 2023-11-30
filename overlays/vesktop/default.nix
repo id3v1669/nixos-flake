@@ -130,7 +130,7 @@ stdenv.mkDerivation rec {
     (makeDesktopItem {
       name = "vencorddesktop";
       desktopName = "Vesktop";
-      exec = "vencorddesktop %U";
+      exec = "vencorddesktop %U --disable-gpu";
       icon = "vencorddesktop";
       startupWMClass = "VencordDesktop";
       genericName = "Internet Messenger";
