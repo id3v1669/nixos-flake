@@ -1,7 +1,6 @@
 { hyprland, inputs, config, lib, pkgs, curversion, uservars, envir, hostname, colorsvar, gpuvar, desk, ... }:
 {
   imports = [
-    ./envs/${envir}.nix
     ./hosts/${hostname}.nix
   ] ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
     ./pcs.nix

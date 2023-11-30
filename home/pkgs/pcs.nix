@@ -35,6 +35,7 @@
     gnome.eog                     # image viewer
     ffmpegthumbnailer             # thumbnails for video files
     lutgen                        # image with filter generator
+    swaybg                        # wallpapers
       
     # chat
     telegram-desktop              # telegram client
@@ -78,7 +79,8 @@
     })
 
     # files
-    filezilla
+    cinnamon.nemo-with-extensions # file manager(as nautilus has incorrect behavior with gtk themes)
+    filezilla                     # ftp client
     zip                           # create .zip arcs
     p7zip                         # .7z arcs
     unzip                         # unzip .zip arcs
@@ -103,6 +105,7 @@
     isoimagewriter                # kde iso writer (as ventoy is bad for bios updated)
 
     # other cli utils
+    hyprpicker                    # color picker
     onefetch                      # fetch for git repos
     pciutils                      # lspci
     usbutils                      # lsusb
