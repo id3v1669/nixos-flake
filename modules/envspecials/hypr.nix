@@ -43,14 +43,17 @@
   services = {
     gvfs.enable = true; # Mount, trash, etc
     mpd.enable = true; # music player daemon
-    greetd = {
-     enable = true;
-     settings = {
-       initial_session = {
-         user = "${uservars.name}";
-         command = "Hyprland";
-       };
-     };
+    greetd = let 
+      gtkgreetCfg = pkgs.writeText "gtkgreet.conf" ''
+exec-once = ${pkgs.greetd.gtkgreet}/bin/gtkgreet --layer-shell --command=Hyprland
+      '';
+    in{
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.hyprland}/bin/Hyprland --config ${gtkgreetCfg}";
+        };
+      };
     };
   };
 }
