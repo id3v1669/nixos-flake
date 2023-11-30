@@ -1,10 +1,6 @@
 { config, lib, pkgs, uservars, hostname, envir, ... }:
 
 {
-  imports = [ 
-    (./. + "/hostsettings/${hostname}${envir}.nix")
-  ];
-
   dconf = {
     enable = true;
     settings = (with lib.hm.gvariant; 

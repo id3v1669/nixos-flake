@@ -190,11 +190,15 @@
           type = "amd";
         };
       };
-      l14g3gnome = mkSyst {
+      l14g3sway = mkSyst { 
         hostname = "l14g3";
-        envir = "gnome";
+        envir = "sway";
         cpuvar = "amd";
         desk = "laptop";
+        brightnesctrl = {
+          up = "light -A 5";
+          down = "light -U 5";
+        };
         gpuvar = {
           type = "amd";
         };
