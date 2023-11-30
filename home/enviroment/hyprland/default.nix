@@ -56,10 +56,6 @@
       master = {
         new_is_master = true;
       };
-      source = [
-        "${config.home.homeDirectory}/.config/hypr/colors"
-        "${config.home.homeDirectory}/.config/hypr/test.conf"
-      ];
       "$mainMod" = "SUPER";
       bindm = [
         "$mainMod, mouse:272, movewindow"
@@ -85,8 +81,7 @@ exec-once = ${config.home.homeDirectory}/.scripts/wallpaper.sh
 exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
 #------------------------------------------------- 
 
-#source = ${config.home.homeDirectory}/.config/hypr/colors
-#source = ${config.home.homeDirectory}/.config/hypr/test.conf
+source = ${config.home.homeDirectory}/.config/hypr/colors
 
 #------------------kitty for btop------------------
 windowrule = float,^(kitty)$
