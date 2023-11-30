@@ -8,22 +8,18 @@
     ./wallpapers
     ./../scripts
     ./enviroment/qt
-    ./enviroment/gnome
+    ./enviroment/dconf
     ./enviroment/gtk
+    ./enviroment/rofi
+    ./enviroment/eww
+    ./enviroment/dunst
+    ./enviroment/xdg
+    ./enviroment/swhkd
     inputs.nix-colors.homeManagerModules.default
   ] ++ lib.lists.optionals (envir == "hypr") [
     ./enviroment/hyprland
-    ./enviroment/rofi
-    ./enviroment/eww
-    ./enviroment/dunst
-    ./enviroment/xdg
   ] ++ lib.lists.optionals (envir == "sway") [
     ./enviroment/sway
-    ./enviroment/rofi
-    ./enviroment/eww
-    ./enviroment/dunst
-    ./enviroment/xdg
-  ] ++ lib.lists.optionals (envir == "gnome") [
   ];
   home = {
     stateVersion = "${curversion}";
