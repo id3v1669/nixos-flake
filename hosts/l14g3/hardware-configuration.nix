@@ -8,17 +8,17 @@
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
       kernelModules = [ "amdgpu" ];
-      luks.devices."luks-cf8f735b-5ddc-4f3c-a720-3479f8588f5a".device = "/dev/disk/by-uuid/cf8f735b-5ddc-4f3c-a720-3479f8588f5a";
+      luks.devices."luks-9eb807dd-c147-47d9-8865-8c8281f401f4".device = "/dev/disk/by-uuid/9eb807dd-c147-47d9-8865-8c8281f401f4";
     };
   };
 
   fileSystems."/" ={ 
-    device = "/dev/disk/by-uuid/5230672f-5d6f-4919-a8f6-bf56d691e302";
+    device = "/dev/disk/by-uuid/ba2ca1b8-635e-4182-b540-5a991aed0c5c";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/3588-1181";
+    device = "/dev/disk/by-uuid/0438-5961";
     fsType = "vfat";
   };
 
