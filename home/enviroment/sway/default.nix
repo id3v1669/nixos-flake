@@ -36,27 +36,9 @@
       keybindings = let
         mod = config.wayland.windowManager.sway.config.modifier;
       in {
-        XF86AudioMicMute = "exec pamixer --default-source -t";
-        XF86AudioMute = "exec pamixer -t";
-        #XF86AudioPlay = "exec ${playerctl}/bin/playerctl play";
-        #XF86AudioPause = "exec ${playerctl}/bin/playerctl pause";
-        #XF86AudioNext = "exec ${playerctl}/bin/playerctl next";
-        #XF86AudioPrev = "exec ${playerctl}/bin/playerctl prev";
-        XF86AudioRaiseVolume = "exec pamixer -i 10 && eww update soundvol=\"$(amixer sget Master | grep -o \"[0-9]*%\" | head -1)\"";
-        XF86AudioLowerVolume = "exec pamixer -d 10 && eww update soundvol=\"$(amixer sget Master | grep -o \"[0-9]*%\" | head -1)\"";
-        XF86MonBrightnessUp = "exec ${brightnesctrl.up}";
-        XF86MonBrightnessDown = "exec ${brightnesctrl.down}";
-        
-        "${mod}+Shift+t" = "exec alacritty";
-        "${mod}+Shift+b" = "exec firefox";
-        "${mod}+Shift+k" = "exec kitty";
-        "${mod}+Shift+f" = "exec thunar";
-        "${mod}+r" = "exec rofi -show";
 
         "Ctrl+Right" = "workspace next";
         "Ctrl+Left" = "workspace prev";
-
-        "${mod}+Shift+4" = "exec grim ${config.home.homeDirectory}/Pictures/screenshot-$(date '+%s').png";
 
         "${mod}+1" = "workspace number 1";
         "${mod}+2" = "workspace number 2";
