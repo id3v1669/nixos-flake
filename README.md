@@ -7,7 +7,7 @@ Latest commit to use: d9d451e86645ffe4cadb26d5843b57aa35642e50
 ## Main
 | Environment | Name | Comment | Needed fix |
 |-----|-----|-----|-----|
-| WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel) | - |
+| WM | Hyprland/Sway | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel) | - |
 | launcher | Rofi | - | - |
 | bar | eww | fork of eww with tray support | ToDo 7+6 |
 | background | swaybg | - | - |
@@ -40,3 +40,5 @@ OpenRGB Module is broken and installed manually
 vesktop(0.4.2) fixed with updating vencord to 1.6.0
 
 eww buttons fixet by box with empty element, later find better approach
+
+swhkd works, but has a dirty patch. Check if issue in desctiption to [commit](https://github.com/waycrate/swhkd/commit/6877854183dce2dbd583cf4be82a890ccd7b1f4e) still exists as error was ioctl(15, RFKILL_IOCTL_NOINPUT, 0)      = -1 ENOSYS (Function not implemented)
