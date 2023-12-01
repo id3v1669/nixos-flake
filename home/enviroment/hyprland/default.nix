@@ -67,20 +67,13 @@
       ];
     };
     extraConfig = ''
-#------------------env vars-----------------------
-#exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-#exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=Hyprland
-#exec-once = dbus-update-activation-environment --systemd --all
-#exec-once = systemctl --user start hyprland-session.target
-#-------------------------------------------------
-
-#exec-once = hyprctl setcursor Bibata-Modern-Classic 24
+#----------------startup programs-----------------
 exec-once = arrpc &
 exec-once = swhks &
+#-------------------------------------------------
 
+#-----------------startup scripts-----------------
 exec-once = ${config.home.homeDirectory}/.scripts/wallpaper.sh
-
-#----------------bar and applets------------------
 exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
 #------------------------------------------------- 
 
