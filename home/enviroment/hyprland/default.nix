@@ -62,6 +62,9 @@
         "$mainMod, mouse:273, resizewindow"
         "ALT, mouse:272, resizewindow"
       ];
+      bind = [
+        "$mainMod SHIFT, R, exec, rofi -show"
+      ];
     };
     extraConfig = ''
 #------------------env vars-----------------------
