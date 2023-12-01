@@ -1,8 +1,8 @@
-# NixOS flake on Hyprland + eww + rofi
+# NixOS flake on Hyprland/Sway + eww + rofi
 
 NixOS flake with home manager
 
-Latest commit to use: d9d451e86645ffe4cadb26d5843b57aa35642e50
+Latest commit to use: 70f4f3581b88d3ded10d9e70c618ef0f97bd2966
 
 ## Main
 | Environment | Name | Comment | Needed fix |
