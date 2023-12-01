@@ -15,6 +15,7 @@
     ./enviroment/dunst
     ./enviroment/xdg
     ./enviroment/swhkd
+    ./enviroment/swaylock
     inputs.nix-colors.homeManagerModules.default
   ] ++ lib.lists.optionals (envir == "hypr") [
     ./enviroment/hyprland

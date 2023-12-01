@@ -1,6 +1,9 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, inputs, envir, cpuvar, system, gpuvar, desk, ...}: 
 {
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    pam.services.swaylock = {};
+  };
   programs = {
     gamemode.enable = true;
     wireshark = {

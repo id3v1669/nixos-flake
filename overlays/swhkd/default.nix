@@ -4,12 +4,6 @@
 , makeWrapper
 , pkg-config
 , udev
-, tokio-console
-, polkit
-, gnumake
-, bash
-, psmisc
-, runtimeShell
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -25,8 +19,8 @@ rustPlatform.buildRustPackage rec {
   patches = [
     ./rmrfkill.patch
   ];
-  nativeBuildInputs = [ pkg-config makeWrapper tokio-console udev ];
-  buildInputs = [ gnumake polkit tokio-console udev ];
+  nativeBuildInputs = [ pkg-config makeWrapper ];
+  buildInputs = [ udev ];
   postInstall = ''
     mkdir -p $out/share/polkit-1/actions
     cat > $out/share/polkit-1/actions/com.github.swhkd.pkexec.policy <<EOF
