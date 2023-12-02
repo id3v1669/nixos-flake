@@ -102,6 +102,7 @@
           over-eww = eww-tray.packages.${pkgs.system}.default.override { withWayland = true; };
           over-hyprland = hyprland.packages.${pkgs.system}.hyprland;
           over-hypr-portal = xdghypr.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+          over-joplin = (pkgs.callPackage ./overlays/joplin.nix {});
           over-vscode = prev.vscode-fhs.overrideAttrs(oldAttrs: rec {
             name = "vscode";
             version = "1.84.0";

@@ -88,7 +88,8 @@
     rar                           # unfree for rar archives
 
     # text & docs
-    joplin-desktop                # notes app with sync
+    #joplin-desktop                # notes app with sync
+    over-joplin
     libreoffice-qt                # opensource office apps
     hunspell                      # needed for libreoffice
     hunspellDicts.en_US-large     # needed for libreoffice
