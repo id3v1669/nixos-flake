@@ -1,13 +1,13 @@
 { config, lib, pkgs, uservars, brightnesctrl, ... }:
 {
-  programs.swayidle = {
+  services.swayidle = {
     enable = true;
     package = pkgs.swayidle;
     events = [
       { event = "before-sleep"; command = "${pkgs.swaylock-effects}/bin/swaylock"; }
     ];
-    timeout = [
-      { timeout = 300; command = "${pkgs.swaylock-effects}/bin/swaylock"; }
+    timeouts = [
+      { timeout = 1200; command = "${pkgs.swaylock-effects}/bin/swaylock"; }
     ];
     
   };

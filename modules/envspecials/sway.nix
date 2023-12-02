@@ -42,21 +42,34 @@
 
     # for sway
     wdisplays
-    swaylock
-    swayidle
     wl-clipboard
+
+    # for sddm
+    libsForQt5.qt5.qtgraphicaleffects   # sddm theme dep
+    libsForQt5.qt5.qtsvg                # sddm theme dep
+    libsForQt5.qt5.qtquickcontrols2     # sddm theme dep
+    sddm-chili-theme
   ]);
   services = {
-    gvfs.enable = true; # Mount, trash, etc
-    mpd.enable = true; # music player daemon
-    greetd = {
-     enable = true;
-     settings = {
-       initial_session = {
-         user = "${uservars.name}";
-         command = "sway --unsupported-gpu";
-       };
-     };
+    gvfs.enable = true;                 # Mount, trash, etc
+    mpd.enable = true;                  # music player daemon
+    xserver.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      theme = "chili";
+      settings = {
+        #Theme.ThemeDir = "/home/${uservars.name}/.config/sddm/themes";
+        Wayland.SessionDir = "${pkgs.swayfx}/share/wayland-sessions";
+      };
     };
+    # greetd = {       
+    #  enable = true;
+    #  settings = {
+    #    initial_session = {
+    #      user = "${uservars.name}";
+    #      command = "sway --unsupported-gpu";
+    #    };
+    #  };
+    # };
   };
 }

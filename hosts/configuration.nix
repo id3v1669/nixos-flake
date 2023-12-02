@@ -1,12 +1,8 @@
 {lib, config, pkgs, curversion, deflocale, uservars, hostname, inputs, envir, cpuvar, system, gpuvar, desk, ...}: 
 {
-  imports = [
-  ] ++ lib.lists.optionals ( desk == "desktop" || desk == "laptop" ) [ ./pcsconf.nix
-  ] ++ lib.lists.optionals ( envir == "none" ) [ ./../modules/envspecials/none.nix
-  ] ++ lib.lists.optionals ( envir == "hypr" ) [ ./../modules/envspecials/hypr.nix
-  ] ++ lib.lists.optionals ( envir == "sway" ) [ ./../modules/envspecials/sway.nix
-  ] ++ lib.lists.optionals ( envir == "gnome" ) [ ./../modules/envspecials/gnome.nix
-  ] ++ lib.lists.optionals ( envir == "kde" ) [ ./../modules/envspecials/kde.nix ];
+  imports = [ 
+    ./../modules/envspecials/${envir}.nix 
+  ];
   networking = {
     hostName = "${hostname}${envir}";
     networkmanager.enable = true;

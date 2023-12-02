@@ -10,7 +10,7 @@ wss() {
 
   ws=("")
       '';
-      env = if envir == "hypr" then ''
+      env = if envir == "Hyprland" then ''
   wsa=($(hyprctl workspaces | grep 'workspace ID .*(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }'))
   curindex=($(hyprctl activeworkspace | grep 'workspace ID .*(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }'))
       '' else  if envir == "sway" then ''

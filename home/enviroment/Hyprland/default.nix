@@ -68,13 +68,13 @@
     };
     extraConfig = ''
 #----------------startup programs-----------------
-exec-once = arrpc &
-exec-once = swhks &
+exec-once = arrpc &                                              # rpc server for discord
+exec-once = swhks &                                              # shortcut daemon
 #-------------------------------------------------
 
 #-----------------startup scripts-----------------
-exec-once = ${config.home.homeDirectory}/.scripts/wallpaper.sh
-exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
+exec-once = ${config.home.homeDirectory}/.scripts/wallpaper.sh   # swaybg and lutgen
+exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh # eww restarter and applets
 #------------------------------------------------- 
 
 source = ${config.home.homeDirectory}/.config/hypr/colors
@@ -83,7 +83,7 @@ source = ${config.home.homeDirectory}/.config/hypr/colors
 windowrule = float,^(kitty)$
 windowrule = center,^(kitty)$
 windowrule = size 1040 670,^(kitty)$
-windowrule = opacity 0.8,^(kitty)
+windowrule = opacity 0.8,^(kitty)$
 #--------------------------------------------------
 
 #------------------screen sharing------------------
@@ -95,14 +95,23 @@ windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 #--------------------------------------------------
 
 #--------------other windowrules-------------------
-windowrule=float,^(pavucontrol)$
-windowrule = opacity 0.8,^(pavucontrol)$
+windowrule=float,^(pavucontrol)$                                 # sound controls
+windowrule = opacity 0.8,^(pavucontrol)$                         # sound controls
 
-windowrule = float,^(nm-connection-editor)$
-windowrule = opacity 0.8,^(nm-connection-editor)$
+windowrule = float,^(nm-connection-editor)$                      # network manager
+windowrule = opacity 0.8,^(nm-connection-editor)$                # network manager
 
-windowrule = float, blueman-manager
-windowrule = opacity 0.8, blueman-manager
+windowrule = float, blueman-manager                              # bluetooth manager
+windowrule = opacity 0.8, blueman-manager                        # bluetooth manager
+#--------------------------------------------------
+
+#--------------other windowrules2------------------
+windowrulev2 = opacity 0.95 0.9,class:^(Spotify)$                # spotify
+windowrulev2 = opacity 0.95 0.95,class:^(firefox)$               # firefox
+windowrulev2 = opacity 0.95 0.9,class:^(VencordDesktop)$         # discord client
+windowrulev2 = opacity 0.95 0.85,class:^(Alacritty)$             # terminal
+windowrulev2 = opacity 0.95 0.9,class:^(nemo)$                   # file manager
+windowrulev2 = opacity 0.95 0.9,class:^(code-url-handler)$       # vscode
 #--------------------------------------------------
     '';
   };

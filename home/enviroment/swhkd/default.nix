@@ -27,6 +27,9 @@ super + shift + e
 super + r
   rofi -show
 
+super + shift + l
+  swaylock
+
 xf86monbrightnessdown
   ${brightnesctrl.down}
 xf86monbrightnessup

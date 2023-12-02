@@ -2,46 +2,46 @@
 {
 
   home.file.".config/swhkd/env-controls".text = let 
-    killactive = if envir=="hypr" then "hyprctl dispatch killactive"
+    killactive = if envir=="Hyprland" then "hyprctl dispatch killactive"
       else if envir == "sway" then "swaymsg kill"
       else "";
-    togglesplit = if envir=="hypr" then "hyprctl dispatch togglesplit"
+    togglesplit = if envir=="Hyprland" then "hyprctl dispatch togglesplit"
       else if envir == "sway" then "swaymsg layout toggle split"
       else "echo 'no envir'";
-    togglefloating = if envir=="hypr" then "hyprctl dispatch togglefloating"
+    togglefloating = if envir=="Hyprland" then "hyprctl dispatch togglefloating"
       else if envir == "sway" then "swaymsg floating toggle"
       else "";
-    pseudo = if envir=="hypr" then "hyprctl dispatch pseudo"
+    pseudo = if envir=="Hyprland" then "hyprctl dispatch pseudo"
       else if envir == "sway" then "swaymsg pseudo"
       else "";
-    nextworkspace = if envir=="hypr" then "hyprctl dispatch workspace e+1 && bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
+    nextworkspace = if envir=="Hyprland" then "hyprctl dispatch workspace e+1 && bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
       else if envir == "sway" then "swaymsg workspace next"
       else "";
-    prevworkspace = if envir=="hypr" then "hyprctl dispatch workspace e-1 && bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
+    prevworkspace = if envir=="Hyprland" then "hyprctl dispatch workspace e-1 && bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
       else if envir == "sway" then "swaymsg workspace prev"
       else "";
-    movenextworkspace = if envir=="hypr" then "hyprctl dispatch movetoworkspace e+1 && bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
+    movenextworkspace = if envir=="Hyprland" then "hyprctl dispatch movetoworkspace e+1 && bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
       else if envir == "sway" then "swaymsg move container to workspace next"
       else "";
-    moveprevworkspace = if envir=="hypr" then "hyprctl dispatch movetoworkspace e-1 && bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
+    moveprevworkspace = if envir=="Hyprland" then "hyprctl dispatch movetoworkspace e-1 && bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
       else if envir == "sway" then "swaymsg move container to workspace prev"
       else "";
-    fullscreen = if envir=="hypr" then "hyprctl dispatch fullscreen"
+    fullscreen = if envir=="Hyprland" then "hyprctl dispatch fullscreen"
       else if envir == "sway" then "swaymsg fullscreen toggle"
       else "";
-    nextactivewindow = if envir=="hypr" then "hyprctl dispatch cyclenext"
+    nextactivewindow = if envir=="Hyprland" then "hyprctl dispatch cyclenext"
       else if envir == "sway" then "swaymsg focus next"
       else "";
-    movetoworkspace = if envir=="hypr" then "bash -c 'hyprctl dispatch movetoworkspace \"$@\" && ${config.home.homeDirectory}/.scripts/eww_ws.sh' -- "
+    movetoworkspace = if envir=="Hyprland" then "bash -c 'hyprctl dispatch movetoworkspace \"$@\" && ${config.home.homeDirectory}/.scripts/eww_ws.sh' -- "
       else if envir == "sway" then "swaymsg move container to workspace"
       else "";
-    workspace = if envir=="hypr" then "bash -c 'hyprctl dispatch workspace \"$@\" && ${config.home.homeDirectory}/.scripts/eww_ws.sh' -- "
+    workspace = if envir=="Hyprland" then "bash -c 'hyprctl dispatch workspace \"$@\" && ${config.home.homeDirectory}/.scripts/eww_ws.sh' -- "
       else if envir == "sway" then "swaymsg workspace"
       else "";
-    movefocus = if envir=="hypr" then "hyprctl dispatch movefocus "
+    movefocus = if envir=="Hyprland" then "hyprctl dispatch movefocus "
       else if envir == "sway" then "bash -c 'if [ \"$@\" == \"r\" ]; then swaymsg focus right; elif [ \"$@\" == \"l\" ]; then swaymsg focus left; elif [ \"$@\" == \"d\" ]; then swaymsg focus down; elif [ \"$@\" == \"u\" ]; then swaymsg focus up; fi' -- "
       else "";
-    exit = if envir=="hypr" then "hyprctl dispatch exit"
+    exit = if envir=="Hyprland" then "hyprctl dispatch exit"
       else if envir == "sway" then "swaymsg exit"
       else "";
   in ''

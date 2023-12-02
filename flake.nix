@@ -132,7 +132,7 @@
             extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars colorsvar brightnesctrl gpuvar cpuvar desk; };
           };
         }
-      ] ++ inputs.nixpkgs.lib.lists.optional (envir == "hypr") inputs.hyprland.nixosModules.default;
+      ] ++ inputs.nixpkgs.lib.lists.optional (envir == "Hyprland") inputs.hyprland.nixosModules.default;
     };
   in {
     nixosConfigurations = {
@@ -144,9 +144,7 @@
       
       nuc11phhyprtbqhd = mkSyst {
         hostname = "nuc11ph";
-        envir = "hypr";
-        #colorsvar = "spaceduck";
-        #colorsvar = "catppuccin-frappe";
+        envir = "Hyprland";
         colorsvar = "gruvbox-dark-pale";
         uservars = {
           name = "user";
@@ -157,7 +155,8 @@
       };
       nuc11phhyprtbfhd = mkSyst {
         hostname = "nuc11ph";
-        envir = "hypr";
+        envir = "Hyprland";
+        colorsvar = "gruvbox-dark-pale";
         gpuvar = {
           type = "nvidia";
           tech = "prime";
@@ -168,7 +167,7 @@
       };
       nuc11phhyprhdmi = mkSyst {
         hostname = "nuc11ph";
-        envir = "hypr";
+        envir = "Hyprland";
         gpuvar = {
           type = "nvidia";
           tech = "prime";
@@ -179,9 +178,10 @@
       };
       l14g3hypr = mkSyst { 
         hostname = "l14g3";
-        envir = "hypr";
+        envir = "Hyprland";
         cpuvar = "amd";
         desk = "laptop";
+        colorsvar = "gruvbox-dark-pale";
         brightnesctrl = {
           up = "light -A 5";
           down = "light -U 5";
@@ -195,6 +195,7 @@
         envir = "sway";
         cpuvar = "amd";
         desk = "laptop";
+        colorsvar = "gruvbox-dark-pale";
         brightnesctrl = {
           up = "light -A 5";
           down = "light -U 5";
@@ -205,7 +206,8 @@
       };
       alexpchypr = mkSyst {
         hostname = "alexpc";
-        envir = "hypr";
+        envir = "Hyprland";
+        colorsvar = "gruvbox-dark-pale";
         gpuvar = {
           type = "amd";
         };

@@ -23,4 +23,8 @@
     serviceConfig.Restart = "always";
     wantedBy = ["default.target"];
   };
+
+  environment.etc."swhkd/swhkdrc".text = ''
+include /home/${uservars.name}/.config/swhkd/swhkdrc
+  '';
 }

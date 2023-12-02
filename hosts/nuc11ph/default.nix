@@ -3,6 +3,7 @@
   imports =[ 
     ./hardware-configuration.nix
     ./../configuration.nix
+    ./../pcsconf.nix
     ./../../modules/virtualisation.nix
     ./../../modules/udevrules.nix
     ./../../modules/fonts.nix
@@ -32,6 +33,7 @@
   environment.variables = {
     #system vars
     EDITOR = "nano";
+    WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
   };
   system.stateVersion = "${curversion}";
 }

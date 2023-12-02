@@ -20,7 +20,7 @@
       package = pkgs.libsForQt5.kdeconnect-kde;
     };
   };
-  systemd.user.services = { #user here is not a username
+  systemd.user.services = {
     polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
       wantedBy = [ "graphical-session.target" ];
@@ -39,6 +39,7 @@
     polkit_gnome                        # polkit agent
     xorg.xhost                          # xhost
 
+    # for sddm
     libsForQt5.qt5.qtgraphicaleffects   # sddm theme dep
     libsForQt5.qt5.qtsvg                # sddm theme dep
     libsForQt5.qt5.qtquickcontrols2     # sddm theme dep
