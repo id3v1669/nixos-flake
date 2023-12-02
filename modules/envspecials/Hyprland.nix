@@ -44,6 +44,8 @@
     libsForQt5.qt5.qtsvg                # sddm theme dep
     libsForQt5.qt5.qtquickcontrols2     # sddm theme dep
     sddm-chili-theme
+
+    #over-outline-client
   ]);
   services = {
     gvfs.enable = true;                 # Mount, trash, etc

@@ -96,6 +96,7 @@
         nixmox.overlay
         (final: prev: {
           over-swhkd = (pkgs.callPackage ./overlays/swhkd {});
+          over-outline-client = (pkgs.callPackage ./overlays/outline.nix {});
           over-tlauncher = (pkgs.callPackage ./overlays/tlauncher.nix {});
           over-vesktop = (pkgs.callPackage ./overlays/vesktop {});
           over-xwalandvideobridge = (pkgs.callPackage ./overlays/xwaylandvideobridge.nix {}); # currently off as vesktop doesn't need it

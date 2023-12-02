@@ -52,7 +52,7 @@ super + shift + q
 super + s
   ${togglesplit}
 
-super + f
+super + j
   ${togglefloating}
 
 super + g
