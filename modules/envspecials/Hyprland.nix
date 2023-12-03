@@ -45,8 +45,7 @@
     libsForQt5.qt5.qtquickcontrols2     # sddm theme dep
     sddm-chili-theme
 
-    #over-outline-client
-    over-tun2socks
+    #over-shadowsocks-gtk-rs             # shadowsocks gui
   ]);
   services = {
     gvfs.enable = true;                 # Mount, trash, etc

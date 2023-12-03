@@ -97,6 +97,7 @@
         (final: prev: {
           over-swhkd = (pkgs.callPackage ./overlays/swhkd {});
           over-tun2socks = (pkgs.callPackage ./overlays/tun2socks.nix {});
+          over-shadowsocks-gtk-rs = (pkgs.callPackage ./overlays/shdowsocks-gtk-rs.nix {});
           over-outline-client1 = (pkgs.callPackage ./overlays/outline-client1.nix {});
           over-outline-client2 = (pkgs.callPackage ./overlays/outline-client2.nix {});
           over-tlauncher = (pkgs.callPackage ./overlays/tlauncher.nix {});

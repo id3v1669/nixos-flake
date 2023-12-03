@@ -74,7 +74,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Outline Client vpn(proxy)";
     homepage = "https://github.com//Jigsaw-Code/outline-client";
-    #broken = true; 
+    broken = true; 
     maintainers = with maintainers; [ id3v1669 ];
     platforms = [ "x86_64-linux" ];
   };
