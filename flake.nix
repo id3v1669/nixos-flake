@@ -96,6 +96,7 @@
         nixmox.overlay
         (final: prev: {
           over-swhkd = (pkgs.callPackage ./overlays/swhkd {});
+          over-tun2socks = (pkgs.callPackage ./overlays/tun2socks.nix {});
           over-outline-client = (pkgs.callPackage ./overlays/outline.nix {});
           over-tlauncher = (pkgs.callPackage ./overlays/tlauncher.nix {});
           over-vesktop = (pkgs.callPackage ./overlays/vesktop {});

@@ -46,6 +46,7 @@
     sddm-chili-theme
 
     #over-outline-client
+    over-tun2socks
   ]);
   services = {
     gvfs.enable = true;                 # Mount, trash, etc
