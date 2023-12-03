@@ -28,7 +28,8 @@
     "video"
     "wireshark"
     "pipewire"
-    "i2c" 
+    "i2c"
+    "outlinevpn"
   ];
   environment.variables = {
     #system vars

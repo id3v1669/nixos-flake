@@ -97,7 +97,8 @@
         (final: prev: {
           over-swhkd = (pkgs.callPackage ./overlays/swhkd {});
           over-tun2socks = (pkgs.callPackage ./overlays/tun2socks.nix {});
-          over-outline-client = (pkgs.callPackage ./overlays/outline.nix {});
+          over-outline-client1 = (pkgs.callPackage ./overlays/outline-client1.nix {});
+          over-outline-client2 = (pkgs.callPackage ./overlays/outline-client2.nix {});
           over-tlauncher = (pkgs.callPackage ./overlays/tlauncher.nix {});
           over-vesktop = (pkgs.callPackage ./overlays/vesktop {});
           over-xwalandvideobridge = (pkgs.callPackage ./overlays/xwaylandvideobridge.nix {}); # currently off as vesktop doesn't need it
