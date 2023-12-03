@@ -1,7 +1,7 @@
-{ hyprland, inputs, config, lib, pkgs, curversion, uservars, envir, hostname, colorsvar, gpuvar, desk, ... }:
+{ config, lib, pkgs, ... }:
 {
-  home.packages = (with pkgs; [
+  home.packages = with pkgs; [
     spotify     # music
     gimp        # image editing
-  ]);
+  ];
 }

@@ -1,9 +1,9 @@
-{ hyprland, inputs, config, lib, pkgs, curversion, uservars, envir, hostname, colorsvar, gpuvar, desk, ... }:
+{ config, lib, pkgs, ... }:
 {
-  home.packages = (with pkgs; [
+  home.packages = with pkgs; [
     over-tlauncher # launcher for minecraft
     spotify        # music
     #krita         # video editing currently installed via flatpak(fix needed)
     gimp           # image editing
-  ]);
+  ];
 }
