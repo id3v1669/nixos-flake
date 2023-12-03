@@ -28,13 +28,13 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "vesktop";
-  version = "0.4.3";
+  version = "0.4.4";
 
   src = fetchFromGitHub {
     owner = "Vencord";
     repo = "Vesktop";
     rev = "v${version}";
-    sha256 = "sha256-wGOyDGY0FpAVS5+MTiKrOpDyd13ng0RLGAENW5tXuR4="; #0.4.3
+    sha256 = "sha256-Ot2O5J1wUZAWgdpJNaEUSwtbcNqDdGhzuCtx8Qg+4gg=";
   };
 
   pnpm-deps = stdenvNoCC.mkDerivation {
