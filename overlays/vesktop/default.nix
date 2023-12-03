@@ -14,6 +14,7 @@
 , jq
 , moreutils
 , nodePackages
+, cacert
 , pkgs
 }:
 let
@@ -45,6 +46,7 @@ stdenv.mkDerivation rec {
       jq
       moreutils
       nodePackages.pnpm
+      cacert
     ];
 
     installPhase = ''
@@ -62,7 +64,7 @@ stdenv.mkDerivation rec {
 
     dontFixup = true;
     outputHashMode = "recursive";
-    outputHash = "sha256-R5/2MSH/jXHrj2x1Ap2OoOFLBLQp3Sq91o01uW8hWOw="; #0.4.3
+    outputHash = "sha256-kBf2eZmKqs2FKsdCB5ZBqIy/2tQ7UEfNW45oA4Gqhoc=";
   };
 
   nativeBuildInputs = [
