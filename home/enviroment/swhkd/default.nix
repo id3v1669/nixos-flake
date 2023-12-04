@@ -30,6 +30,12 @@ super + r
 super + shift + l
   swaylock
 
+super + shift + 4
+  grim -g "$(slurp)"
+
+super + shift + 5
+  grim -g "$(slurp)" - | wl-copy
+
 xf86monbrightnessdown
   ${brightnesctrl.down}
 xf86monbrightnessup

@@ -34,6 +34,16 @@
         TimeoutStopSec = 10;
       };
     };
+    outline_proxy_controller = {
+  description = "Outline Proxy Routing Controller";
+  wantedBy = [ "multi-user.target" ];
+  wants = [ "network.target" ];
+  after = [ "network.target" ];
+  serviceConfig = {
+    Type = "simple";
+    ExecStart = "${pkgs.over-outline-client2}/bin/OutlineProxyController --socket-filename=/var/run/outline_controller --owning-user-id=1000";
+  };
+};
   };
   environment.systemPackages = (with pkgs; [
     polkit_gnome                        # polkit agent
@@ -45,6 +55,8 @@
     libsForQt5.qt5.qtquickcontrols2     # sddm theme dep
     sddm-chili-theme
 
+    shadowsocks-rust
+    over-outline-client2
     #over-shadowsocks-gtk-rs             # shadowsocks gui
   ]);
   services = {
