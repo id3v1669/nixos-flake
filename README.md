@@ -12,7 +12,8 @@ Latest commit to use: 70f4f3581b88d3ded10d9e70c618ef0f97bd2966
 | bar | eww | fork of eww with tray support | ToDo 7+6 |
 | background | swaybg | - | - |
 | portals | gtk and hyprland | - | - |
-| lockscreen | - | not needed for now, might install ly later | - |
+| session manager | sddm | - | - |
+| lockscreen | swaylock | - | ToDo 12 |
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
 | notifications | dunst | - | - |
 | shell | fish | - | - |
@@ -41,7 +42,7 @@ Latest commit to use: 70f4f3581b88d3ded10d9e70c618ef0f97bd2966
 
 11. **create script to connect/disconnect to shadowsocks and add button to eww(replacement for [outline-client](https://github.com/Jigsaw-Code/outline-client/))**
 
-12. **find what causes pc freeze after long await time in swaybg**
+12. **find what causes pc freeze after long await time in swaylock**
 
 ## Notes:
 
