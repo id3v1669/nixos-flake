@@ -33,6 +33,16 @@ Latest commit to use: 70f4f3581b88d3ded10d9e70c618ef0f97bd2966
 
 7. **fix eww glitch on launcher button**
 
+8. **fix adb udev rules(overwrite or manual install instead of module)**
+
+9. **fix swhkd(sddm: The value for the SHELL variable was not found): either start after sddm of fix SHELL variable**
+
+10. **patch dsdt for nuc11ph(acpi errors)**
+
+11. **create script to connect/disconnect to shadowsocks and add button to eww(replacement for [outline-client](https://github.com/Jigsaw-Code/outline-client/))**
+
+12. **find what causes pc freeze after long await time in swaybg**
+
 ## Notes:
 
 OpenRGB Module is broken and installed manually
