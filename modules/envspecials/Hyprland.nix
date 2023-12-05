@@ -57,7 +57,6 @@
 
     shadowsocks-rust
     #over-outline-client2
-    over-tun2socks
     #over-shadowsocks-gtk-rs             # shadowsocks gui
   ]);
   services = {

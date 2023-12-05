@@ -23,6 +23,7 @@
     docker-compose                # docker-compose for tests
 
     # web
+    over-tun2socks                # socks proxy for outline(shadowsocks)
     networkmanagerapplet          # network manager applet
     nm-tray                       # network manager tray
     ungoogled-chromium            # backup browser
@@ -118,7 +119,7 @@
     vulkan-tools                  # vulkan utils
     cargo-binutils                # rust tools
     xdg-utils                     # xdg-open and other xdg utils
-    wl-clipboard                  # wayland clipboard
+    #wl-clipboard                  # wayland clipboard
       
     # nix utils
     nix-prefetch-git              # git hash for nixpkgs

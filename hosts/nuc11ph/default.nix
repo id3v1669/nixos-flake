@@ -13,66 +13,8 @@
     ./../../modules/sudo.nix
   ];
   
-  networking = {
-    enableIPv6 = true;
-    firewall = {
-      enable = false;
-      checkReversePath = "loose";
-    };
-    # interfaces =
-    #  {
-    #   tun0 = {
-    #     name = "tun0";
-    #     virtual = true;
-    #     virtualOwner = "${uservars.name}";
-    #     virtualType = "tun";
-    #     ipv4 = {
-    #       addresses = [
-    #       {
-    #         address = "198.18.0.1";
-    #         prefixLength = 15;
-    #       }];
-    #       routes = [{
-    #         address = "default";
-    #         via = "198.18.0.1";
-    #         prefixLength = 15;
-    #         options = {
-    #           metric = "1";
-    #         };
-    #       }];
-    #     };
-    #     ipv6 = {
-    #       addresses = [
-    #       {
-    #         address = "fd00:0000:0000:0000:0000:0000:0000:0001";
-    #         prefixLength = 64;
-    #       }];
-    #       routes = [{
-    #         address = "default";
-    #         via = "fd00:0000:0000:0000:0000:0000:0000:0001";
-    #         prefixLength = 64;
-    #         options = {
-    #           metric = "1";
-    #         };
-    #       }];
-    #     };
-    #   };
-    #   # enp89s0 = {
-    #   #   name = "enp89s0";
-    #   #   ipv4 = {
-    #   #     addresses = [{
-    #   #       address = "192.168.0.72";
-    #   #       prefixLength = 24;
-    #   #     }];
-    #   #     routes = [{
-    #   #       address = "default";
-    #   #       via = "192.168.0.1";
-    #   #       prefixLength = 24;
-    #   #     }];
-    #   #   };
-    #   # };
-    # };
-  };
+  networking.firewall.enable = false;
+  
   users.users.${uservars.name}.extraGroups = [ 
     "wheel"
     "networkmanager"
