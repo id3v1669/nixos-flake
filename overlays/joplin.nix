@@ -25,8 +25,7 @@ in appimageTools.wrapType2 {
     mv $out/bin/{${pname}-${version},${pname}}
     source "${makeWrapper}/nix-support/setup-hook"
     wrapProgram $out/bin/${pname} \
-    --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland --enable-features=WaylandWindowDecorations}}" \
-    --add-flags "--disable-gpu"
+    --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland --enable-features=WaylandWindowDecorations}}"
     install -Dm444 ${appimageContents}/@joplinapp-desktop.desktop -t $out/share/applications
     install -Dm444 ${appimageContents}/@joplinapp-desktop.png -t $out/share/pixmaps
     substituteInPlace $out/share/applications/@joplinapp-desktop.desktop \

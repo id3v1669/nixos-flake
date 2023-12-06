@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }: { 
-  nixpkgs.config.vscode.commandLineArgs = "--enable-features=UseOzonePlatform;WaylandWindowDecorations --ozone-platform=wayland";
+  nixpkgs.config.over-vscode.commandLineArgs = "--enable-features=UseOzonePlatform;WaylandWindowDecorations --ozone-platform=wayland";
   programs.vscode = {
     enable = true;
-    #package = pkgs.over-vscode;
-    package = pkgs.vscode-fhs;
+    package = pkgs.over-vscode;
+    #package = pkgs.vscode-fhs;
     enableUpdateCheck = true;
     enableExtensionUpdateCheck = true;
     userSettings = {

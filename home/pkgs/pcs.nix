@@ -127,7 +127,6 @@
     gtk3                          # gtk lib
     libpng                        # png lib
     libnotify                     # for dunst or mako
-    mesa                          # vulkan
     libheif                       # heif lib
 
     # other

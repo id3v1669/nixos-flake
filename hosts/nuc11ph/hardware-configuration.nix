@@ -4,7 +4,7 @@
 
   boot = {
     kernelModules = [ "kvm-intel" "i2c-dev" "i2c-i801" ];
-    kernelParams = [ ];
+    kernelParams = [ "i915.force_probe=9a49" ];
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback config.boot.kernelPackages.nvidia_x11 ];
     initrd = {

@@ -41,7 +41,6 @@
     #system vars
     EDITOR = "nano";
     WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
-    ELECTRON_DISABLE_GPU = "1";
   };
   system.stateVersion = "${curversion}";
 }

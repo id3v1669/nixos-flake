@@ -24,16 +24,15 @@
     printing.enable = true;
     flatpak.enable = true;
     hardware.bolt.enable = true;
+    xserver.displayManager.gdm = {      # gdm is used instead of sddm as sddm causes electron apps to crash
+      enable = true;
+      wayland = true;
+    };
   };
+  
   environment.systemPackages = with pkgs; [
     polkit_gnome                        # polkit agent
     xorg.xhost                          # xhost
-
-    # for sddm
-    libsForQt5.qt5.qtgraphicaleffects   # sddm theme dep
-    libsForQt5.qt5.qtsvg                # sddm theme dep
-    libsForQt5.qt5.qtquickcontrols2     # sddm theme dep
-    sddm-chili-theme
 
     shadowsocks-rust
     over-tun2socks                       # socks proxy for outline(shadowsocks)

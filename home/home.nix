@@ -34,6 +34,7 @@
 	    XDG_SESSION_TYPE = "wayland";
       XDG_CURRENT_DESKTOP = "${envir}";
 	    XDG_SESSION_DESKTOP = "${envir}";
+      LIBVA_DRIVER_NAME="iHD";
 
 		  #args for gmaes
 		  __GL_THREADED_OPTIMIZATIONS="1";

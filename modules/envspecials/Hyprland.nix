@@ -40,14 +40,8 @@
   services = {
     gvfs.enable = true;                 # Mount, trash, etc
     mpd.enable = true;                  # music player daemon
-    xserver.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      theme = "chili";
-      settings = {
-        #Theme.ThemeDir = "/home/${uservars.name}/.config/sddm/themes";
-        Wayland.SessionDir = "${pkgs.over-hyprland}/share/wayland-sessions";
-      };
-    };
+    xserver.displayManager.sessionPackages = [
+      pkgs.over-hyprland
+    ];
   };
 }

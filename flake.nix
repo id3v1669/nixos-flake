@@ -110,11 +110,11 @@
           over-joplin = (pkgs.callPackage ./overlays/joplin.nix {});
           over-vscode = prev.vscode-fhs.overrideAttrs(oldAttrs: rec {
             name = "vscode";
-            version = "1.84.0";
+            version = "1.84.2";
             src = pkgs.fetchurl {
               name = "code_x64_${version}.tar.gz";
               url = "https://update.code.visualstudio.com/${version}/linux-x64/stable";
-              hash = "sha256-joaOovR16QD+W1mj9FmstizMEcEesHdpFzCSxW8DvAc=";
+              hash = "sha256-Xjo4YfOKxSD1/9zWTVFRQibuAXSttIOcFjJqbythr+0=";
             };
           });
         })

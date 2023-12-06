@@ -5,21 +5,23 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = [
-        pkgs.libva
-      ] ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [ 
+      extraPackages = with pkgs; [
+        mesa
+        libva
         libvdpau-va-gl
-        nvidia-vaapi-driver
         vaapiVdpau
+      ] ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [ 
+        nvidia-vaapi-driver
       ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar.type == "intel") (with pkgs; [
+        intel-media-driver
         intel-ocl
         vaapiIntel
       ]);
-      extraPackages32 = [
-        pkgs.pkgsi686Linux.libva
-      ] ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs.pkgsi686Linux; [
+      extraPackages32 = with pkgs.pkgsi686Linux; [
+        libva
         libvdpau-va-gl
         vaapiVdpau
+      ] ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs.pkgsi686Linux; [
       ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar == "intel") (with pkgs.pkgsi686Linux; [
         vaapiIntel
       ]);
