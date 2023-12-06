@@ -13,7 +13,7 @@ Latest commit to use: 70f4f3581b88d3ded10d9e70c618ef0f97bd2966
 | background | swaybg | - | - |
 | portals | gtk and hyprland | - | - |
 | session manager | sddm | - | - |
-| lockscreen | swaylock | - | ToDo 12 |
+| lockscreen | swaylock | - | ToDo 11 |
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
 | notifications | dunst | - | - |
 | shell | fish | - | - |
@@ -40,9 +40,7 @@ Latest commit to use: 70f4f3581b88d3ded10d9e70c618ef0f97bd2966
 
 10. **patch dsdt for nuc11ph(acpi errors)**
 
-11. **create script to connect/disconnect to shadowsocks and add button to eww(replacement for [outline-client](https://github.com/Jigsaw-Code/outline-client/))**
-
-12. **find what causes pc freeze after long await time in swaylock**
+11. **find what causes pc freeze after long await time in swaylock**
 
 ## Notes:
 
