@@ -45,20 +45,8 @@
 #   };
 # };
   };
-  environment.systemPackages = (with pkgs; [
-    polkit_gnome                        # polkit agent
-    xorg.xhost                          # xhost
-
-    # for sddm
-    libsForQt5.qt5.qtgraphicaleffects   # sddm theme dep
-    libsForQt5.qt5.qtsvg                # sddm theme dep
-    libsForQt5.qt5.qtquickcontrols2     # sddm theme dep
-    sddm-chili-theme
-
-    shadowsocks-rust
-    #over-outline-client2
-    #over-shadowsocks-gtk-rs             # shadowsocks gui
-  ]);
+  environment.systemPackages = with pkgs; [
+  ];
   services = {
     gvfs.enable = true;                 # Mount, trash, etc
     mpd.enable = true;                  # music player daemon

@@ -23,7 +23,6 @@
     docker-compose                # docker-compose for tests
 
     # web
-    over-tun2socks                # socks proxy for outline(shadowsocks)
     networkmanagerapplet          # network manager applet
     nm-tray                       # network manager tray
     ungoogled-chromium            # backup browser
