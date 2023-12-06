@@ -11,9 +11,14 @@
     ./../../modules/gpu.nix
     ./../../modules/swhkd.nix
     ./../../modules/sudo.nix
+    ./../../modules/sops.nix
   ];
   
   networking.firewall.enable = false;
+  sops.secrets."outline" = {
+    sopsFile = ./. + "/../../secrets/${uservars.description}.enc.yaml";
+    owner = "${uservars.name}";
+  };
   
   users.users.${uservars.name}.extraGroups = [ 
     "wheel"

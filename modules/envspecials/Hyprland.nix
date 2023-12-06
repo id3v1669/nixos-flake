@@ -34,16 +34,6 @@
         TimeoutStopSec = 10;
       };
     };
-#     outline_proxy_controller = {
-#   description = "Outline Proxy Routing Controller";
-#   wantedBy = [ "multi-user.target" ];
-#   wants = [ "network.target" ];
-#   after = [ "network.target" ];
-#   serviceConfig = {
-#     Type = "simple";
-#     ExecStart = "/home/user/tmpmy/OutlineProxyController --socket-filename=/var/run/outline_controller --owning-user-id=1000";
-#   };
-# };
   };
   environment.systemPackages = with pkgs; [
   ];

@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 {
   home.file.".config/eww/eww.scss".text = ''
-    .launcher {
-    font-size: 1.3em;
+.launcher {
+    font-size: 1.5em;
     border-radius: 20;
-    padding: 5px 12px 5px 15px; 
+    padding: 5px 12px 5px 13px; 
     background-color: #${config.colorScheme.colors.base00};
     color: #${config.colorScheme.colors.base05};
     &:hover {
@@ -63,6 +63,18 @@
     color: #${config.colorScheme.colors.base05};
     border-radius: 20;
     padding: 5px 14px 5px 15px;
+  }
+
+  .proxy {
+    font-size: 1.5em;
+    background-color: #${config.colorScheme.colors.base00};
+    color: #${config.colorScheme.colors.base05};
+    border-radius: 20;
+    padding: 4px 18px 4px 13px;
+    &:hover {
+        background-color: #${config.colorScheme.colors.base01};
+        color: #${config.colorScheme.colors.base06};
+      }
   }
 
   .mic {

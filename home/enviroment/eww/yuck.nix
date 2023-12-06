@@ -1,8 +1,9 @@
-{ config, lib, pkgs, desk, cpuvar, ... }:
+{ config, lib, pkgs, desk, cpuvar, uservars, ... }:
 {
   home.file.".config/eww/eww.yuck".text = 
   let
     battery = if desk == "laptop" then "(battery)" else "";
+    proxy = if uservars.proxy then "(proxy)" else "";
     cputemp = if cpuvar == "intel" then ''
 (box 
   :class "cputemp"
@@ -14,6 +15,7 @@
   ''
 (defvar deftimeout "999999999ms")
 (defpoll datetime :interval "1s" "date '+%a, %d. %b  %H:%M'")
+(defvar proxystatus "󰱟")
 (defvar soundvol "xx")
 (defvar wss "xxx")
 (defvar showpowerbuttons false)
@@ -148,6 +150,7 @@
 		:space-evenly false
     :spacing 6
     :halign "end"
+    ${proxy}
     (box 
       :orientation "h"
       :class "tray"
@@ -161,6 +164,20 @@
     (power)
   )
 )
+
+(defwidget proxy []
+    (box
+      :orientation "h"
+      (button 
+        :class "proxy"
+        :timeout "''${deftimeout}"
+        :onclick "bash ~/.scripts/ss.sh"
+        (box 
+          "''${proxystatus}"
+        )
+      )
+    )
+  )
 
 (defwidget power []
   (box

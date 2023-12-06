@@ -75,6 +75,7 @@
         name = "user";
         description = "id3v1669";
         domain = "none";
+        proxy = false;
         wp = "default1.png";
       },
       deflocale ? {
@@ -134,7 +135,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${uservars.name} = import (./. + "/home/home.nix") ;
-            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars colorsvar brightnesctrl gpuvar cpuvar desk; };
+            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars colorsvar brightnesctrl gpuvar cpuvar desk sops-nix; };
           };
         }
       ] ++ inputs.nixpkgs.lib.lists.optional (envir == "Hyprland") inputs.hyprland.nixosModules.default;
@@ -154,6 +155,7 @@
         uservars = {
           name = "user";
           description = "id3v1669";
+          proxy = true;
           domain = "none";
           wp = "sound.png";
         };
@@ -162,6 +164,13 @@
         hostname = "nuc11ph";
         envir = "Hyprland";
         colorsvar = "gruvbox-dark-pale";
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          proxy = true;
+          domain = "none";
+          wp = "sound.png";
+        };
         gpuvar = {
           type = "nvidia";
           tech = "prime";
@@ -187,6 +196,13 @@
         cpuvar = "amd";
         desk = "laptop";
         colorsvar = "gruvbox-dark-pale";
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          proxy = true;
+          domain = "none";
+          wp = "default1.png";
+        };
         brightnesctrl = {
           up = "light -A 5";
           down = "light -U 5";
@@ -201,6 +217,13 @@
         cpuvar = "amd";
         desk = "laptop";
         colorsvar = "gruvbox-dark-pale";
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          proxy = true;
+          domain = "none";
+          wp = "default1.png";
+        };
         brightnesctrl = {
           up = "light -A 5";
           down = "light -U 5";
@@ -220,7 +243,13 @@
           type = "systemd-boot";
           winvar = true;
         };
-        uservars = { name = "user"; description = "alexp"; };
+        uservars = {
+          name = "user";
+          description = "alexp";
+          proxy = false;
+          domain = "none";
+          wp = "default1.png";
+        };
         deflocale = {
           kblayout = "us,ru";
           kbvariant = ",";

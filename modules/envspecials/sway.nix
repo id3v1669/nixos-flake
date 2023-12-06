@@ -21,7 +21,7 @@
     };
     regreet.enable = true;
   };
-  systemd.user.services = { #user here is not a username
+  systemd.user.services = {
     polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
       wantedBy = [ "graphical-session.target" ];
@@ -53,14 +53,5 @@
         Wayland.SessionDir = "${pkgs.swayfx}/share/wayland-sessions";
       };
     };
-    # greetd = {       
-    #  enable = true;
-    #  settings = {
-    #    initial_session = {
-    #      user = "${uservars.name}";
-    #      command = "sway --unsupported-gpu";
-    #    };
-    #  };
-    # };
   };
 }
