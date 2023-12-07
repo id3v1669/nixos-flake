@@ -3,7 +3,6 @@
   programs.vscode = {
     enable = true;
     package = pkgs.over-vscode;
-    #package = pkgs.vscode-fhs;
     enableUpdateCheck = true;
     enableExtensionUpdateCheck = true;
     userSettings = {

@@ -16,11 +16,5 @@
       name = "Catppuccin";
       package = pkgs.catppuccin-cursors;
     };
-    #gtk3.extraConfig = {
-    #  gtk-application-prefer-dark-theme=1;
-    #};
-    #gtk4.extraConfig = {
-    #  gtk-application-prefer-dark-theme=1;
-    #};
   };
 }

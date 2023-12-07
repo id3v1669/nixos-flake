@@ -43,6 +43,7 @@
     xdghypr,
     eww-tray,
     sops-nix,
+    nix-colors,
     ... }@inputs: 
   let
     inherit (self) outputs;
@@ -95,19 +96,17 @@
         nur.overlay
         nixmox.overlay
         (final: prev: {
-          over-swhkd = (pkgs.callPackage ./overlays/swhkd {});
-          over-tun2socks = (pkgs.callPackage ./overlays/tun2socks.nix {});
-          over-shadowsocks-gtk-rs = (pkgs.callPackage ./overlays/shdowsocks-gtk-rs.nix {});
-          over-outline-client1 = (pkgs.callPackage ./overlays/outline-client1.nix {});
-          over-outline-client2 = (pkgs.callPackage ./overlays/outline-client2 {});
-          over-tlauncher = (pkgs.callPackage ./overlays/tlauncher.nix {});
-          over-vesktop = (pkgs.callPackage ./overlays/vesktop {});
-          over-xwalandvideobridge = (pkgs.callPackage ./overlays/xwaylandvideobridge.nix {}); # currently off as vesktop doesn't need it
-          over-eww = eww-tray.packages.${pkgs.system}.default.override { withWayland = true; };
-          over-hyprland = hyprland.packages.${pkgs.system}.hyprland;
-          over-hypr-portal = xdghypr.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-          over-joplin = (pkgs.callPackage ./overlays/joplin.nix {});
-          over-vscode = prev.vscode-fhs.overrideAttrs(oldAttrs: rec {
+          over-swhkd = (pkgs.callPackage ./overlays/swhkd {});                                  # hotkey daemon as official repo doesn't have it
+          over-tun2socks = (pkgs.callPackage ./overlays/tun2socks.nix {});                      # tun2socks as official package is not up to date
+          over-outline-manager = (pkgs.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
+          over-tlauncher = (pkgs.callPackage ./overlays/tlauncher.nix {});                      # minecraft launcher as it was removed from nixpkgs
+          over-vesktop = (pkgs.callPackage ./overlays/vesktop {});                              # vesktop overlay as official package is not up to date
+          over-xwalandvideobridge = (pkgs.callPackage ./overlays/xwaylandvideobridge.nix {});   # currently off as vesktop doesn't need it
+          over-eww = eww-tray.packages.${pkgs.system}.default.override { withWayland = true; }; # overlay of eww(bar & widgets) with dynamic icons tray support
+          over-hyprland = hyprland.packages.${pkgs.system}.hyprland;                            # hyprland overlay
+          over-hypr-portal = xdghypr.packages.${pkgs.system}.xdg-desktop-portal-hyprland;       # hyprland portal overlay
+          over-joplin = (pkgs.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
+          over-vscode = prev.vscode-fhs.overrideAttrs(oldAttrs: rec {                           # vscode overlay as official package is not up to date
             name = "vscode";
             version = "1.84.2";
             src = pkgs.fetchurl {
@@ -134,7 +133,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${uservars.name} = import (./. + "/home/home.nix") ;
-            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars colorsvar brightnesctrl gpuvar cpuvar desk sops-nix; };
+            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars colorsvar brightnesctrl gpuvar cpuvar desk sops-nix nix-colors; };
           };
         }
       ] ++ inputs.nixpkgs.lib.lists.optional (envir == "Hyprland") inputs.hyprland.nixosModules.default;

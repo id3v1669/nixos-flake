@@ -40,6 +40,7 @@
   environment.variables = {
     #system vars
     EDITOR = "nano";
+    LIBVA_DRIVER_NAME="iHD";
     WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
   };
   system.stateVersion = "${curversion}";

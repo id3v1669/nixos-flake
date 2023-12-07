@@ -7,7 +7,7 @@
   ] ++ lib.lists.optionals (desk == "srv") [
     ./srvs.nix
   ];
-  home.packages = (with pkgs; [
+  home.packages = with pkgs; [
     # web
     curl                          # url cli interactions
     wget                          # url cli interactions
@@ -22,5 +22,5 @@
     # crypt
     age                           # cli encryption
     sops                          # sops for secrets
-  ]);
+  ];
 }

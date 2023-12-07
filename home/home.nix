@@ -1,4 +1,4 @@
-{ hyprland, inputs, config, lib, pkgs, curversion, uservars, envir, hostname, colorsvar, gpuvar, desk, ... }:
+{ inputs, config, lib, pkgs, curversion, uservars, envir, colorsvar, desk, nix-colors, ... }:
 {
   imports = [
     ./programs
@@ -17,7 +17,7 @@
     ./enviroment/swayidle
     ./enviroment/swaylock
     ./enviroment/${envir}
-    inputs.nix-colors.homeManagerModules.default
+    nix-colors.homeManagerModules.default
   ];
   home = {
     stateVersion = "${curversion}";
@@ -26,7 +26,7 @@
     sessionVariables = {
 		  #wayland vars
       NIXOS_OZONE_WL = "1";
-	    MOZ_ENABLE_WAYLAND = "1";
+	    MOZ_ENABLE_WAYLAND = "1";            
 	    _JAVA_AWT_WM_NONREPARENTING = "1";
       SDL_VIDEODRIVER = "wayland";
 	    CLUTTER_BACKEND = "wayland";
@@ -34,7 +34,6 @@
 	    XDG_SESSION_TYPE = "wayland";
       XDG_CURRENT_DESKTOP = "${envir}";
 	    XDG_SESSION_DESKTOP = "${envir}";
-      LIBVA_DRIVER_NAME="iHD";
 
 		  #args for gmaes
 		  __GL_THREADED_OPTIMIZATIONS="1";

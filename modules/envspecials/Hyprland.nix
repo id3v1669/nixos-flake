@@ -4,15 +4,16 @@
   security.polkit.enable = true;
   xdg.portal = {
     enable = true;
+    wlr.enable = true;
     config.common = {
       default = "gtk";
       "org.freedesktop.impl.portal.Screencast" = "hyprland";
       "org.freedesktop.impl.portal.Screenshot" = "hyprland";
     };
-    extraPortals = ( with pkgs; [
+    extraPortals = with pkgs; [
       over-hypr-portal                          # hyprland portal
       xdg-desktop-portal-gtk                    # for gtk apps
-    ]);
+    ];
   };
   programs = {
     kdeconnect = {

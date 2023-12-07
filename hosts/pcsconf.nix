@@ -10,9 +10,9 @@
       enable = true;
       package = pkgs.wireshark;
     };
-    light.enable = true;  #laptop brightness control and fix for openrgb
-    traceroute.enable = true;
-    adb.enable = true;
+    light.enable = true;                # laptop brightness control and fix for openrgb
+    traceroute.enable = true;           # traceroute
+    adb.enable = true;                  # android debug bridge
   };
   hardware = {
     i2c.enable = true;

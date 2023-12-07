@@ -88,8 +88,7 @@
     rar                           # unfree for rar archives
 
     # text & docs
-    #joplin-desktop                # notes app with sync
-    over-joplin
+    over-joplin                   # note taking app
     libreoffice-qt                # opensource office apps
     hunspell                      # needed for libreoffice
     hunspellDicts.en_US-large     # needed for libreoffice
@@ -106,7 +105,8 @@
     isoimagewriter                # kde iso writer (as ventoy is bad for bios updated)
 
     # other cli utils
-    hyprpicker                    # color picker
+    #hyprpicker                    # color picker(broken after nixos xdg config update)
+    wl-color-picker               # color picker(temp replacement for hyprpicker)
     onefetch                      # fetch for git repos
     pciutils                      # lspci
     usbutils                      # lsusb
@@ -118,10 +118,11 @@
     vulkan-tools                  # vulkan utils
     cargo-binutils                # rust tools
     xdg-utils                     # xdg-open and other xdg utils
-    #wl-clipboard                  # wayland clipboard
+    wl-clipboard                 # wayland clipboard
       
     # nix utils
     nix-prefetch-git              # git hash for nixpkgs
+
 
     # libs
     gtk3                          # gtk lib
