@@ -10,14 +10,14 @@
       "org.freedesktop.impl.portal.Screenshot" = "hyprland";
     };
     extraPortals = ( with pkgs; [
-      over-hypr-portal
-      xdg-desktop-portal-gtk
+      over-hypr-portal                          # hyprland portal
+      xdg-desktop-portal-gtk                    # for gtk apps
     ]);
   };
   programs = {
     kdeconnect = {
       enable = true;
-      package = pkgs.libsForQt5.kdeconnect-kde;
+      package = pkgs.libsForQt5.kdeconnect-kde; # kdeconnect-kde
     };
   };
   systemd.user.services = {
@@ -38,10 +38,10 @@
   environment.systemPackages = with pkgs; [
   ];
   services = {
-    gvfs.enable = true;                 # Mount, trash, etc
-    mpd.enable = true;                  # music player daemon
+    gvfs.enable = true;                         # Mount, trash, etc
+    mpd.enable = true;                          # music player daemon
     xserver.displayManager.sessionPackages = [
-      pkgs.over-hyprland
+      pkgs.over-hyprland                        # hyprland session to be recognized by gdm
     ];
   };
 }

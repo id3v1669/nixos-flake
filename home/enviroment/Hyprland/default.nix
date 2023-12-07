@@ -111,7 +111,9 @@ windowrulev2 = opacity 0.95 0.95,class:^(firefox)$               # firefox
 windowrulev2 = opacity 0.95 0.9,class:^(VencordDesktop)$         # discord client
 windowrulev2 = opacity 0.95 0.85,class:^(Alacritty)$             # terminal
 windowrulev2 = opacity 0.95 0.9,class:^(nemo)$                   # file manager
-windowrulev2 = opacity 0.95 0.9,class:^(code-url-handler)$       # vscode
+windowrulev2 = opacity 0.95 0.9,class:^(code-url-handler)$       # vscode1
+windowrulev2 = opacity 0.95 0.9,class:^(Code)$                   # vscode2
+windowrulev2 = opacity 0.95 0.9,class:^(org.telegram.desktop)$   # telegram
 #--------------------------------------------------
     '';
   };

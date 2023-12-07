@@ -52,10 +52,9 @@
       envir,
       desk ? "desktop",
       bootloader ? {
-        type = "systemd-boot";
         winvar = false;
         timeout = 10;
-        device = "";
+        device = "nodev";
       },
       gpuvar ? {
         type = "nvidia";
@@ -240,7 +239,6 @@
           type = "amd";
         };
         bootloader = {
-          type = "systemd-boot";
           winvar = true;
         };
         uservars = {
@@ -263,7 +261,6 @@
         envir = "none";
         desk = "server";
         bootloader = {
-          type = "grub";
           winvar = false;
           timeout = 1;
           device = "/dev/vda";
