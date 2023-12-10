@@ -67,7 +67,7 @@
       },
       system ? "x86_64-linux",
       cpuvar ? "intel",
-      colorsvar ? "catppuccin-frappe",
+      colorsvar ? "gruvbox-dark-pale",
       brightnesctrl ? {
         up = "ddcutil setvcp 10 + 5";
         down = "ddcutil setvcp 10 - 5";
@@ -151,7 +151,7 @@
       nuc11phhyprtbqhd = mkSyst {
         hostname = "nuc11ph";
         envir = "Hyprland";
-        colorsvar = "gruvbox-dark-pale";
+        #colorsvar = "gruvbox-dark-pale";
         uservars = {
           name = "user";
           description = "id3v1669";
@@ -164,7 +164,6 @@
       nuc11phhyprtbfhd = mkSyst {
         hostname = "nuc11ph";
         envir = "Hyprland";
-        colorsvar = "gruvbox-dark-pale";
         uservars = {
           name = "user";
           description = "id3v1669";
@@ -197,7 +196,6 @@
         envir = "Hyprland";
         cpuvar = "amd";
         desk = "laptop";
-        colorsvar = "gruvbox-dark-pale";
         bootloader = {
           type = "opencore";
           defconf = false;
@@ -223,7 +221,6 @@
         envir = "sway";
         cpuvar = "amd";
         desk = "laptop";
-        colorsvar = "gruvbox-dark-pale";
         bootloader = {
           type = "opencore";
           defconf = false;
@@ -248,7 +245,6 @@
       alexpchypr = mkSyst {
         hostname = "alexpc";
         envir = "Hyprland";
-        colorsvar = "gruvbox-dark-pale";
         gpuvar = {
           type = "amd";
         };
