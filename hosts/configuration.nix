@@ -1,7 +1,8 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, inputs, envir, cpuvar, system, gpuvar, desk, ...}: 
+{lib, config, pkgs, deflocale, uservars, hostname, envir, cpuvar, gpuvar, bootloader, ...}: 
 {
   imports = [ 
     ./../modules/envspecials/${envir}.nix 
+    ./../modules/bootloaders/${bootloader.type}.nix
   ];
   networking = {
     hostName = "${hostname}${envir}";

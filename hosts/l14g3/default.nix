@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ./../configuration.nix
     ./../pcsconf.nix
+    ./../../modules/bootloaders/opencore.nix
     ./../../modules/autocpufreq.nix
     ./../../modules/virtualisation.nix
     ./../../modules/udevrules.nix

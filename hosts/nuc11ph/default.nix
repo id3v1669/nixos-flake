@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ./../configuration.nix
     ./../pcsconf.nix
+    ./../../modules/bootloaders/opencore.nix
     ./../../modules/virtualisation.nix
     ./../../modules/udevrules.nix
     ./../../modules/fonts.nix
@@ -16,7 +17,7 @@
   
   networking.firewall.enable = false;
   sops.secrets."outline" = {
-    sopsFile = ./. + "/../../secrets/${uservars.description}.enc.yaml";
+    sopsFile = ./. + "/../../secrets/${uservars.owner}.enc.yaml";
     owner = "${uservars.name}";
   };
   

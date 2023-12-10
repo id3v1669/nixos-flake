@@ -3,18 +3,15 @@
   imports = [ 
     ./hardware-configuration.nix
     ./../configuration.nix
+    ./../../modules/bootloaders/grub.nix
     #./../../modules/nginx.nix
   ];
 
   networking = {
     useDHCP = false;
     interfaces.ens3.ipv4.addresses = [
-      { address = "193.38.54.30"; prefixLength = 24; }
-      { address = "193.38.54.47"; prefixLength = 24; }
-      { address = "193.38.54.49"; prefixLength = 24; }
-      { address = "193.38.54.60"; prefixLength = 24; }
     ];
-    defaultGateway = "193.38.54.1";
+    #defaultGateway = "x.x.x.x";
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
     #firewall.allowedTCPPorts = [ 26783 80 443 ];
     firewall.enable = false;

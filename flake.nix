@@ -53,9 +53,11 @@
       envir,
       desk ? "desktop",
       bootloader ? {
-        winvar = false;
+        type = "opencore";
+        defconf = true;
         timeout = 10;
         device = "nodev";
+        repo = "ryzentosh-l14g3";
       },
       gpuvar ? {
         type = "nvidia";
@@ -74,6 +76,7 @@
       uservars ? {
         name = "user";
         description = "id3v1669";
+        owner = "id3v1669";
         domain = "none";
         proxy = false;
         wp = "default1.png";
@@ -96,6 +99,7 @@
         nur.overlay
         nixmox.overlay
         (final: prev: {
+          over-opencore = (pkgs.callPackage ./overlays/opencore.nix {});                                # test overlay
           over-swhkd = (pkgs.callPackage ./overlays/swhkd {});                                  # hotkey daemon as official repo doesn't have it
           over-tun2socks = (pkgs.callPackage ./overlays/tun2socks.nix {});                      # tun2socks as official package is not up to date
           over-outline-manager = (pkgs.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
@@ -125,7 +129,6 @@
       };
       modules = [ 
         (./. + "/hosts/${hostname}")
-        ./modules/bootloader.nix
         sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
         {
@@ -156,6 +159,7 @@
           proxy = true;
           domain = "none";
           wp = "sound.png";
+          owner = "id3v1669";
         };
       };
       nuc11phhyprtbfhd = mkSyst {
@@ -168,6 +172,7 @@
           proxy = true;
           domain = "none";
           wp = "sound.png";
+          owner = "id3v1669";
         };
         gpuvar = {
           type = "nvidia";
@@ -194,6 +199,11 @@
         cpuvar = "amd";
         desk = "laptop";
         colorsvar = "gruvbox-dark-pale";
+        bootloader = {
+          type = "opencore";
+          defconf = false;
+          timeout = 10;
+        };
         uservars = {
           name = "user";
           description = "id3v1669";
@@ -215,12 +225,18 @@
         cpuvar = "amd";
         desk = "laptop";
         colorsvar = "gruvbox-dark-pale";
+        bootloader = {
+          type = "opencore";
+          defconf = false;
+          timeout = 10;
+        };
         uservars = {
           name = "user";
           description = "id3v1669";
           proxy = true;
           domain = "none";
           wp = "default1.png";
+          owner = "id3v1669";
         };
         brightnesctrl = {
           up = "light -A 5";
@@ -237,15 +253,13 @@
         gpuvar = {
           type = "amd";
         };
-        bootloader = {
-          winvar = true;
-        };
         uservars = {
           name = "user";
           description = "alexp";
           proxy = false;
           domain = "none";
           wp = "default1.png";
+          owner = "";          #add later
         };
         deflocale = {
           kblayout = "us,ru";
@@ -260,7 +274,7 @@
         envir = "none";
         desk = "server";
         bootloader = {
-          winvar = false;
+          type = "grub";
           timeout = 1;
           device = "/dev/vda";
         };
@@ -271,6 +285,7 @@
           name = "srvnet510pq";
           description = "serverUser510";
           domain = "id3v1669.com";
+          owner = "id3v1669";
         };
         deflocale = {
           kblayout = "au";
