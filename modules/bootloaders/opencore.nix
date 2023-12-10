@@ -29,7 +29,7 @@ in
 				"EFI/OC/Tools/CleanNvram.efi" = "${ocp}/OC/Tools/CleanNvram.efi";
 				"EFI/OC/config.plist" = ./config.plist;
 			};
-		  #${pkgs.toybox}/bin/rm -rf ${mb}/EFI/systemd
+		  #${pkgs.toybox}/bin/rm -rf ${mb}/EFI/systemdQ
       extraInstallCommands = if bootloader.defconf then ''
 ${pkgs.toybox}/bin/rm -rf ${mb}/EFI/BOOT/*
 ${pkgs.toybox}/bin/cp ${ocp}/BOOT/* ${mb}/EFI/BOOT/
