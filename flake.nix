@@ -57,7 +57,6 @@
         defconf = true;
         timeout = 10;
         device = "nodev";
-        repo = "ryzentosh-l14g3";
       },
       gpuvar ? {
         type = "nvidia";

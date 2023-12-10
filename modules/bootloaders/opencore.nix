@@ -1,4 +1,4 @@
-{lib, config, pkgs, bootloader, ...}: 
+{lib, config, pkgs, bootloader, hostname, ...}: 
 let
   mb = "/boot";
   ocp = "${pkgs.over-opencore}/ocpkg/X64/EFI";
@@ -38,7 +38,7 @@ ${pkgs.toybox}/bin/mkdir -p ${mb}/EFI/OC/Kexts
 ${pkgs.toybox}/bin/cp -r ${ocb}/Resources/* ${mb}/EFI/OC/Resources
 			'' 
 			else let
-	      ocpc = "${pkgs.callPackage ./../../overlays/ocpc.nix {}}/ocpc/EFI";
+	      ocpc = "${pkgs.callPackage ./../../hosts/${hostname}/ocpc.nix {}}/ocpc/EFI";
       in ''
 ${pkgs.toybox}/bin/mkdir -p ${mb}/EFI/OC
 ${pkgs.toybox}/bin/rm -rf ${mb}/EFI/BOOT/*
