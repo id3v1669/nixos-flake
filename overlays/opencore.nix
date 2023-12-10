@@ -17,8 +17,8 @@
   bdata = fetchFromGitHub ({
     owner = "acidanthera";
     repo = "OcBinaryData";
-    rev = "4e7e1b7465aae297d706afe5de5c4d1572d86917";
-    hash = "sha256-TIIHa74LJB3vNUJNH/j2yuPJPMo+yYQD/EklzefksZ8=";
+    rev = "ab68b5c9e263589c309e3ac310776da99f9917b9";
+    hash = "sha256-q9klX1UUX0F20DNW8hD7riK/LvLAlVBvlBJQxHJEEpI=";
   });
 
   dontUnpack = true;

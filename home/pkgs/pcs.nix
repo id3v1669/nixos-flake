@@ -123,7 +123,6 @@
     # nix utils
     nix-prefetch-git              # git hash for nixpkgs
 
-
     # libs
     gtk3                          # gtk lib
     libpng                        # png lib
