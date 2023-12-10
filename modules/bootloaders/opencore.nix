@@ -28,8 +28,8 @@ in
 				"EFI/OC/Tools/CleanNvram.efi" = "${ocp}/OC/Tools/CleanNvram.efi";
 				"EFI/OC/config.plist" = ./config.plist;
 			};
-			##${pkgs.toybox}/bin/rm -rf ${mb}/EFI/systemd
       extraInstallCommands = if bootloader.defconf then ''
+${pkgs.toybox}/bin/rm -rf ${mb}/EFI/systemd
 ${pkgs.toybox}/bin/rm -rf ${mb}/EFI/BOOT/*
 ${pkgs.toybox}/bin/cp ${ocp}/BOOT/* ${mb}/EFI/BOOT/
 ${pkgs.toybox}/bin/mkdir -p ${mb}/EFI/OC/Resources
@@ -40,6 +40,7 @@ ${pkgs.toybox}/bin/cp -r ${ocb}/Resources/* ${mb}/EFI/OC/Resources
 			else let
 	      ocpc = "${pkgs.callPackage ./../../hosts/${hostname}/ocpc.nix {}}/ocpc/EFI";
       in ''
+${pkgs.toybox}/bin/rm -rf ${mb}/EFI/systemd
 ${pkgs.toybox}/bin/mkdir -p ${mb}/EFI/OC
 ${pkgs.toybox}/bin/rm -rf ${mb}/EFI/BOOT/*
 ${pkgs.toybox}/bin/cp ${ocpc}/BOOT/* ${mb}/EFI/BOOT/

@@ -12,8 +12,8 @@
   src = fetchFromGitHub ({
     owner = "id3v1669";
     repo = "ryzentosh-l14g3";
-    rev = "d22958ab9252f8b79031bf28b488d96f688be1e6";
-    hash = "sha256-OEsPPiD+Bs6StrGjBtln0iORXwPlmhCxbQftSRaLD0w=";
+    rev = "ab68b5c9e263589c309e3ac310776da99f9917b9";
+    hash = "sha256-q9klX1UUX0F20DNW8hD7riK/LvLAlVBvlBJQxHJEEpI=";
   });
 
   installPhase = ''
