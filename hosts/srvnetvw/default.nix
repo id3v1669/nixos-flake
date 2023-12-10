@@ -3,7 +3,6 @@
   imports = [ 
     ./hardware-configuration.nix
     ./../configuration.nix
-    ./../../modules/bootloaders/grub.nix
     #./../../modules/nginx.nix
   ];
 

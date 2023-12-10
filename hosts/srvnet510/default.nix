@@ -3,7 +3,6 @@
   imports = [ 
     ./hardware-configuration.nix
     ./../configuration.nix
-    ./../../modules/bootloaders/grub.nix
     ./../../modules/nextcloud.nix
     ./../../modules/nginx.nix
     ./../../modules/onlyoffice.nix #starts but doesn't connect to nextcloud
