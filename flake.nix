@@ -127,6 +127,7 @@
         inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader;
       };
       modules = [ 
+        #./modules/ocmodule.nix
         (./. + "/hosts/${hostname}")
         sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
