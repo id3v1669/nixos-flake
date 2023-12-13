@@ -1,4 +1,6 @@
-{ inputs, config, lib, pkgs, deflocale, uservars, hostname, brightnesctrl, ... }:
+{ config
+, ...
+}:
 {
   home.file.".config/hypr/colors".text = ''
 $background = rgb(${config.colorScheme.colors.base01})

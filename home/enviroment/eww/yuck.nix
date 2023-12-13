@@ -1,4 +1,9 @@
-{ config, lib, pkgs, desk, cpuvar, uservars, ... }:
+{ config
+, desk
+, cpuvar
+, uservars
+, ...
+}:
 {
   home.file.".config/eww/eww.yuck".text = 
   let

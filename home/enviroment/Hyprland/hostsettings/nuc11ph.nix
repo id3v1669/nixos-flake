@@ -1,4 +1,8 @@
-{ config, lib, pkgs, uservars, gpuvar, colorsvar, ... }:
+{ config
+, lib
+, gpuvar
+, ...
+}:
 {
   wayland.windowManager.hyprland.settings = {
 		monitor = [

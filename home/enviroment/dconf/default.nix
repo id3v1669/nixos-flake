@@ -1,5 +1,6 @@
-{ config, lib, pkgs, uservars, hostname, envir, ... }:
-
+{ lib
+, ...
+}:
 {
   dconf = {
     enable = true;

@@ -1,4 +1,6 @@
-{ config, lib, pkgs, uservars, brightnesctrl, ... }:
+{ pkgs
+, ...
+}:
 {
   services.swayidle = {
     enable = true;

@@ -1,4 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ config
+, ...
+}:
 {
   home.file.".config/eww/eww.scss".text = ''
 .launcher {

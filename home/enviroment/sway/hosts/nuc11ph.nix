@@ -1,4 +1,7 @@
-{ config, lib, pkgs, deflocale, gpuvar, ... }:
+{ config
+, gpuvar
+, ...
+}:
 {
   wayland.windowManager.sway = {
     config = let 

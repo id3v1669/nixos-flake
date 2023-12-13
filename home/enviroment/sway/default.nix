@@ -1,4 +1,9 @@
-{ config, lib, pkgs, deflocale, hostname, brightnesctrl, ... }:
+{ config
+, pkgs
+, deflocale
+, hostname
+, ...
+}:
 {
   imports = [
     (./. + "/hosts/${hostname}.nix")

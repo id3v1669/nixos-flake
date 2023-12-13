@@ -1,4 +1,6 @@
-{ config, lib, pkgs, deflocale, gpuvar, ... }:
+{ config
+, ...
+}:
 {
   wayland.windowManager.sway.config = {
     output = {
