@@ -1,12 +1,17 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, inputs, envir, cpuvar, system, gpuvar, desk, ...}: 
+{ lib
+, config
+, pkgs
+, cpuvar
+, ...
+}: 
 {
   security = {
     rtkit.enable = true;
-    pam.services.swaylock = {};
+    pam.services.swaylock = {};         # swaylock pam service for screen lock
   };
   programs = {
-    gamemode.enable = true;
-    wireshark = {
+    gamemode.enable = true;             # gamemode for lutris and steam
+    wireshark = {                       # wireshark with root privileges
       enable = true;
       package = pkgs.wireshark;
     };
@@ -15,28 +20,16 @@
     adb.enable = true;                  # android debug bridge
   };
   hardware = {
-    i2c.enable = true;
     cpu.${cpuvar}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    bluetooth.enable = true;
+    i2c.enable = true;                  # i2c devices support
+    bluetooth.enable = true;            # bluetooth
   };
   services = {
-    blueman.enable = true;
-    printing.enable = true;
-    flatpak.enable = true;
-    hardware.bolt.enable = true;
-    # greetd = let
-    #   gtkgreetCfg = pkgs.writeText "gtkgreet.conf" ''
-    #     exec-once = ${pkgs.greetd.gtkgreet}/bin/gtkgreet --layer-shell --command=Hyprland
-    #   '';
-    # in {
-    #   enable = true;
-    #   settings = {
-    #     default_session = {
-    #       command = "${pkgs.over-hyprland}/bin/Hyprland --config ${gtkgreetCfg}";
-    #     };
-    #   };
-    # };
-    xserver.displayManager.gdm = {
+    blueman.enable = true;              # bluetooth manager
+    printing.enable = true;             # needed for printing and pdf export
+    flatpak.enable = true;              # crap to be removed later
+    hardware.bolt.enable = true;        # thunderbolt support
+    xserver.displayManager.gdm = {      # gdm is used as sddm and greetd take too long to load and sddm sometimes fails to start session
       enable = true;
       wayland = true;
     };
@@ -45,7 +38,7 @@
     polkit_gnome                        # polkit agent
     xorg.xhost                          # xhost
 
-    libva-utils                          # vaapi test
+    libva-utils                         # vaapi test
   ];
   systemd.user.services = {
     polkit-gnome-authentication-agent-1 = {

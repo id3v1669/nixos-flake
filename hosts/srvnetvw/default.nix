@@ -1,4 +1,8 @@
-{ config, lib, pkgs, modulesPath, uservars, curversion, ... }:
+{ pkgs
+, uservars
+, curversion
+, ...
+}:
 {
   imports = [ 
     ./hardware-configuration.nix

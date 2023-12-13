@@ -1,4 +1,14 @@
-{lib, config, pkgs, deflocale, uservars, hostname, envir, cpuvar, gpuvar, bootloader, ...}: 
+{ lib
+, pkgs
+, deflocale
+, uservars
+, hostname
+, envir
+, cpuvar
+, gpuvar
+, bootloader
+, ...
+}: 
 {
   imports = [ 
     ./../modules/envspecials/${envir}.nix 
@@ -11,7 +21,7 @@
     useDHCP = lib.mkDefault true;
     enableIPv6 = lib.mkDefault true;
   };
-  programs.fish.enable = true;
+  programs.fish.enable = true;                  
   users.users.${uservars.name} = {
     isNormalUser = true;
     description = "${uservars.description}";
@@ -38,10 +48,6 @@
       layout = "${deflocale.kblayout}";
       xkbVariant = "${deflocale.kbvariant}";
       xkbOptions = "${deflocale.kboption}";
-      videoDrivers = [
-      ] ++ lib.lists.optionals (gpuvar.type == "intel")[ "i915"
-      ] ++ lib.lists.optionals (gpuvar.type == "nvidia")[ "nvidia"
-      ] ++ lib.lists.optionals (gpuvar.type == "amd" || cpuvar == "amd" ) [ "amdgpu" ];
     };
   };
 }

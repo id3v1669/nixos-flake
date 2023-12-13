@@ -12,20 +12,17 @@
       driSupport = true;
       driSupport32Bit = true;
       extraPackages = with pkgs; [
-        mesa
         libva
-        libvdpau-va-gl
         vaapiVdpau
-      ] ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [ 
-        nvidia-vaapi-driver
+        libvdpau-va-gl
+      ] ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [
       ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar.type == "intel") (with pkgs; [
         intel-media-driver
         over-intel-vaapi-driver
       ]);
       extraPackages32 = with pkgs.pkgsi686Linux; [
-        libva
-        libvdpau-va-gl
         vaapiVdpau
+        libvdpau-va-gl
       ] ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs.pkgsi686Linux; [
       ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar == "intel") (with pkgs.pkgsi686Linux; [
         intel-media-driver
@@ -51,4 +48,8 @@
       };
     };
   };
+  services.xserver.videoDrivers = [
+  ] ++ lib.lists.optionals (gpuvar.type == "intel")[ "intel"
+  ] ++ lib.lists.optionals (gpuvar.type == "nvidia")[ "nvidia"
+  ] ++ lib.lists.optionals (gpuvar.type == "amd" || cpuvar == "amd" ) [ "amdgpu" ];
 }

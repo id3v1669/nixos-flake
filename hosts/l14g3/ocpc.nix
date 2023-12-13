@@ -1,7 +1,4 @@
-{ lib
-, stdenv
-, fetchurl
-, unzip
+{ stdenv
 , fetchFromGitHub
 , ...
 }:stdenv.mkDerivation rec 

@@ -1,6 +1,6 @@
 { pkgs
 , ...
-}: pkgs.vscode.fhs.overrideAttrs (oldAttrs: rec {
+}: pkgs.vscode.overrideAttrs (oldAttrs: rec {
   name = "vscode";
   version = "1.85.0";
   src = pkgs.fetchurl {

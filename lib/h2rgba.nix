@@ -1,4 +1,6 @@
-{ lib, ... }:
+{ lib
+, ...
+}:
 with lib; rec {
   # color-related functions
 

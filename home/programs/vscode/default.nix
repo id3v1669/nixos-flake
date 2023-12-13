@@ -1,16 +1,7 @@
-{ config, lib, pkgs, ... }: { 
-  #nixpkgs.config.over-vscode.commandLineArgs = "--ozone-platform=wayland --enable-features=WaylandWindowDecorations";
+{ config, lib, pkgs, ... }: {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode-fhs.overrideAttrs(oldAttrs: rec {                           # vscode overlay as official package is not up to date
-            name = "vscode";
-            version = "1.85.0";
-            src = pkgs.fetchurl {
-              name = "code_x64_${version}.tar.gz";
-              url = "https://update.code.visualstudio.com/${version}/linux-x64/stable";
-              hash = "sha256-ri5t3CLDLn+GX6oGoA0XEZQdzx2ykHlMbtZZ1aFBOXc=";
-            };
-          });
+    package = pkgs.over-vscode;
     enableUpdateCheck = true;
     enableExtensionUpdateCheck = true;
     userSettings = {
