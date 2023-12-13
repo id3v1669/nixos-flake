@@ -114,25 +114,25 @@
         })
       ];
     };
-    in inputs.nixpkgs.lib.nixosSystem 
+    in nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit inputs outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader;
+        inherit outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader;
       };
       modules = [ 
         #./modules/ocmodule.nix
         (./. + "/hosts/${hostname}")
         sops-nix.nixosModules.sops
-        inputs.home-manager.nixosModules.home-manager
+        home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${uservars.name} = import (./. + "/home/home.nix") ;
-            extraSpecialArgs = { inherit inputs curversion hostname envir deflocale uservars colorsvar brightnesctrl gpuvar cpuvar desk sops-nix nix-colors; };
+            extraSpecialArgs = { inherit curversion hostname envir deflocale uservars colorsvar brightnesctrl gpuvar cpuvar desk sops-nix nix-colors; };
           };
         }
-      ] ++ inputs.nixpkgs.lib.lists.optional (envir == "Hyprland") inputs.hyprland.nixosModules.default;
+      ] ++ nixpkgs.lib.lists.optional (envir == "Hyprland") hyprland.nixosModules.default;
     };
   in {
     nixosConfigurations = {
