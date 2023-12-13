@@ -2,7 +2,7 @@
 
 NixOS flake with home manager
 
-Latest commit to use: 70f4f3581b88d3ded10d9e70c618ef0f97bd2966
+Latest commit to use: 6ca1540da6eecba37afa40a8591b32532bff27cc
 
 ## Main
 | Environment | Name | Comment | Needed fix |
@@ -11,14 +11,15 @@ Latest commit to use: 70f4f3581b88d3ded10d9e70c618ef0f97bd2966
 | launcher | Rofi | - | - |
 | bar | eww | fork of eww with tray support | ToDo 7+6 |
 | background | swaybg | - | - |
-| portals | gtk and hyprland | - | - |
-| session manager | sddm | - | - |
+| portals | gtk and hyprland/wlr(sway) | - | - |
+| login manager | gdm | - | - |
 | lockscreen | swaylock | - | ToDo 11 |
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
 | notifications | dunst | - | - |
 | shell | fish | - | - |
+| bootloader | opencore(systemd mod) | extra folder OC reated, reads systemd entries | ToDo 12 |
 
-## ToDo:
+## ToDo
 
 1. **-fix brightness control for multimonitor config**
 
@@ -42,6 +43,8 @@ Latest commit to use: 70f4f3581b88d3ded10d9e70c618ef0f97bd2966
 
 11. **find what causes pc freeze after long await time in swaylock**
 
+12. **Create module to use opencore as bootloader**
+
 ## Notes:
 
 OpenRGB Module is broken and installed manually
@@ -51,3 +54,5 @@ vesktop(0.4.2) fixed with updating vencord to 1.6.0
 eww buttons fixet by box with empty element, later find better approach
 
 swhkd works, but has a dirty patch. Check if issue in desctiption to [commit](https://github.com/waycrate/swhkd/commit/6877854183dce2dbd583cf4be82a890ccd7b1f4e) still exists as error was ioctl(15, RFKILL_IOCTL_NOINPUT, 0)      = -1 ENOSYS (Function not implemented)
+
+vscode is used instead of vscode-fhs as last one has problems on wayland + iGPU and wayland + nvidia
