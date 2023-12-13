@@ -1,4 +1,8 @@
-{ config, lib, pkgs, uservars, brightnesctrl, ... }:
+{ config
+, pkgs
+, brightnesctrl
+, ...
+}:
 {
   imports = [
     ./env-controls.nix

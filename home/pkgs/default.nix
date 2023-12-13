@@ -1,4 +1,8 @@
-{ hyprland, inputs, config, lib, pkgs, curversion, uservars, envir, hostname, colorsvar, gpuvar, desk, ... }:
+{ pkgs
+, hostname
+, desk
+, ...
+}:
 {
   imports = [
     ./hosts/${hostname}.nix

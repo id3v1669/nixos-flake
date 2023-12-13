@@ -1,4 +1,8 @@
-{ config, lib, pkgs, ... }: {
+{ config
+, pkgs
+, ...
+}:
+{
   programs.vscode = {
     enable = true;
     package = pkgs.over-vscode;

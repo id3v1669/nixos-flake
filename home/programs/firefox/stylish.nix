@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }: {
+{ config
+, ...
+}:
+{
   home.file.".config/stylish/bak.json".text = ''
 [
    {

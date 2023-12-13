@@ -1,5 +1,6 @@
-{ config, lib, pkgs, uservars, ... }:
-
+{ config
+, ...
+}:
 {
   xdg = {
     enable = true;
@@ -159,7 +160,6 @@
         "text/x-scala" = "code.desktop";
         "text/x-scheme" = "code.desktop";
         "text/css" = "code.desktop";
-        
       };
     };
   };

@@ -1,7 +1,11 @@
-{ config, lib, pkgs, uservars, inputs, ... }: {
-imports = [
-  ./stylish.nix
-];
+{ pkgs
+, uservars
+, ...
+}:
+{
+  imports = [
+    ./stylish.nix
+  ];
   programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {

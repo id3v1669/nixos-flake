@@ -1,4 +1,6 @@
-{ hyprland, inputs, config, lib, pkgs, curversion, uservars, envir, hostname, colorsvar, gpuvar, desk, ... }:
+{ pkgs
+, ...
+}:
 {
   home.packages = with pkgs; [
     shadowsocks-rust

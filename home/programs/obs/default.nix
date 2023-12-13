@@ -1,4 +1,8 @@
-{ config, lib, pkgs, envir, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 let
     inherit (import ./../../../lib/h2rgb.nix { inherit lib; }) hexToRgb;
 in

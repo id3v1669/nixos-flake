@@ -1,4 +1,12 @@
-{ inputs, config, lib, pkgs, curversion, uservars, envir, colorsvar, desk, nix-colors, ... }:
+{ lib
+, curversion
+, uservars
+, envir
+, colorsvar
+, desk
+, nix-colors
+, ...
+}:
 {
   imports = [
     ./programs
@@ -43,5 +51,5 @@
 	  };
   };
 } // lib.optionalAttrs (desk != "server") {
-  colorScheme = inputs.nix-colors.colorSchemes.${colorsvar};
+  colorScheme = nix-colors.colorSchemes.${colorsvar};
 }

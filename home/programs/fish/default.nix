@@ -1,4 +1,11 @@
-{ config, lib, pkgs, envir, hostname, uservars, desk, ... }: {
+{ config
+, pkgs
+, envir
+, hostname
+, desk
+, ...
+}:
+{
   programs.fish = {
     enable = true;
       shellAliases = {    #global aliases

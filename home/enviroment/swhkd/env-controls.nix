@@ -1,4 +1,7 @@
-{ config, lib, pkgs, uservars, brightnesctrl, envir, ... }:
+{ config
+, envir
+, ...
+}:
 {
 
   home.file.".config/swhkd/env-controls".text = let 

@@ -1,4 +1,8 @@
-{ config, lib, desk, ... }:{
+{ lib
+, desk
+, ...
+}:
+{
   imports = [
     ./fish
   ] ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [

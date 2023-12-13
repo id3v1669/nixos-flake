@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }: {
+{ config
+, ...
+}:
+{
   home.file.".config/joplin-desktop/userchrome.css".text = ''
 :root {
 	--ctp-frappe-rosewater: #${config.colorScheme.colors.base06};

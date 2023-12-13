@@ -1,6 +1,9 @@
-{ config, lib, pkgs, envir, ... }: 
+{ lib
+, pkgs
+, envir
+, ...
+}: 
 {
-
   #services.easyeffects = { crashes regularly disabled for now
   #  enable = true;
   #  #preset = ??

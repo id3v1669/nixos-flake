@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }: {
+{ config
+, ...
+}:
+{
   home.file.".config/telegram/colors.tdesktop-theme".text = ''
 dark: true;
 crust: #${config.colorScheme.colors.base01}e6;
