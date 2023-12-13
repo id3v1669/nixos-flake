@@ -25,6 +25,7 @@
     # web
     networkmanagerapplet          # network manager applet
     nm-tray                       # network manager tray
+    over-tun2socks                # socks proxy for outline(shadowsocks)
     ungoogled-chromium            # backup browser
     wireguard-tools               # wireguard tools for experiments with vpn
 
@@ -97,7 +98,7 @@
     # other gui tools
     gnome.gnome-disk-utility      # disk manager(gparted is broken)
     qbittorrent                   # torrent client
-    rustdesk                      # remote desktop (had wayland problems, check for later versions and patches)
+    #rustdesk                      # remote desktop (had wayland problems, check for later versions and patches)
     github-desktop                # github desktop
     openrgb-with-all-plugins      # rgb control as nixos module is broken
     bluez                         # bluetooth
@@ -131,7 +132,5 @@
 
     # other
     dconf                         # settings for gnome apps
-  ]) ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [ 
-    egl-wayland                   # needed for vms on nvidia hw
   ]);
 }

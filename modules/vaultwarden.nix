@@ -1,4 +1,7 @@
-{lib, config, pkgs, uservars, ...}:
+{ config
+, uservars
+, ...
+}:
 {
   services = {
     nginx.virtualHosts."vw.${uservars.domain}" = {

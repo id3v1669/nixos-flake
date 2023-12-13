@@ -1,4 +1,5 @@
-{ config, lib, pkgs, uservars, ... }:
+{ ...
+}:
 {
   home.file.".scripts/microphone.sh" = {
     executable = true;

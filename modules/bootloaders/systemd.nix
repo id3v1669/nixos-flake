@@ -1,4 +1,6 @@
-{lib, config, pkgs, bootloader, ...}: 
+{ bootloader
+, ...
+}: 
 {
   boot.loader = {
     timeout = bootloader.timeout;

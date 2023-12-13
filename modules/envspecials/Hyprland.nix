@@ -1,6 +1,8 @@
-{lib, config, pkgs, uservars, ...}: 
+{ config
+, pkgs
+, ...
+}: 
 {
-  # add env var WLR_NO_HARDWARE_CURSORS = "1"; for hdmi connection later
   security.polkit.enable = true;
   xdg.portal = {
     enable = true;
@@ -21,28 +23,13 @@
       package = pkgs.libsForQt5.kdeconnect-kde; # kdeconnect-kde
     };
   };
-  systemd.user.services = {
-    polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
-  };
   environment.systemPackages = with pkgs; [
   ];
   services = {
     gvfs.enable = true;                         # Mount, trash, etc
     mpd.enable = true;                          # music player daemon
     xserver.displayManager.sessionPackages = [
-      pkgs.over-hyprland                        # hyprland session to be recognized by gdm
+     pkgs.over-hyprland                         # hyprland session to be recognized by login managers
     ];
   };
 }

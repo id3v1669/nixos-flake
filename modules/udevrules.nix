@@ -1,4 +1,6 @@
-{lib, config, pkgs, curversion, deflocale, uservars, hostname, envir, cpuvar, gpuvar, desk, ...}: 
+{ pkgs
+, ...
+}: 
 {
   services.udev = {
     enable = true;
@@ -1585,6 +1587,5 @@ SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="2ea8", ATTRS{idProduct}=="2125", TAG
 #---------------------------------------------------------------#
 SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1c57", ATTRS{idProduct}=="7ed0", TAG+="uaccess", TAG+="Zalman_Z_Sync"
     '';
-    #extraRules =  builtins.readFile openrgb-rules;
   };
 }

@@ -1,5 +1,6 @@
-{ config, lib, pkgs, uservars, ... }:
-
+{ config
+, ...
+}:
 {
   home.file.".scripts/distrobox.sh" = {
     executable = true;

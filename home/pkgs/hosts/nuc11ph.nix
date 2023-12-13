@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   home.packages = with pkgs; [
+    egl-wayland          # for nvidia vms
     over-tlauncher       # launcher for minecraft
     spotify              # music
     #krita               # video editing currently installed via flatpak(fix needed)

@@ -1,4 +1,6 @@
-{lib, config, pkgs, uservars, ...}:
+{ pkgs
+, ...
+}:
 {
   security.acme = {
     defaults.email = "nico@nico.ni";

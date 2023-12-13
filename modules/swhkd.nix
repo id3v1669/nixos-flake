@@ -1,4 +1,7 @@
-{lib, config, pkgs, uservars, ...}:
+{ pkgs
+, uservars
+, ...
+}:
 {
   security.polkit.enable = true;
   security.polkit.extraConfig = ''

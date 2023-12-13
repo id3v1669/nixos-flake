@@ -1,4 +1,8 @@
-{ config, lib, pkgs, uservars, colorsvar, ... }:
+{ config
+, uservars
+, colorsvar
+, ...
+}:
 {
   home.file.".scripts/wallpaper.sh" = {
     executable = true;

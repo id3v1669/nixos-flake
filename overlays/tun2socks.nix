@@ -1,4 +1,6 @@
-{ lib, fetchFromGitHub, buildGoModule }:
+{ fetchFromGitHub
+, buildGoModule
+}:
 
 buildGoModule rec {
   pname = "tun2socks";

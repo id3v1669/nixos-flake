@@ -1,4 +1,5 @@
-{lib, config, pkgs, uservars, ...}:
+{ ...
+}:
 {
   services = {
     nginx.virtualHosts."onlyoffice.id3v1669.com" = {

@@ -1,4 +1,5 @@
-{ config, lib, pkgs, ... }:
+{ ...
+}:
 {
   home.file.".scripts/flatpak.sh" = {
     executable = true;

@@ -45,3 +45,4 @@
   };
   system.stateVersion = "${curversion}";
 }
+# WLR_NO_HARDWARE_CURSORS = "1";

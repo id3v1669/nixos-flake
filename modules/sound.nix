@@ -1,4 +1,6 @@
-{lib, config, pkgs, uservars, ...}: 
+{ pkgs
+, ...
+}: 
 {
   sound.enable = true;
   hardware.pulseaudio.enable = false;

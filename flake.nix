@@ -98,7 +98,8 @@
         nur.overlay
         nixmox.overlay
         (final: prev: {
-          over-opencore = (pkgs.callPackage ./overlays/opencore.nix {});                                # test overlay
+          over-intel-vaapi-driver = prev.vaapiIntel.override { enableHybridCodec = true; };     # intel vaapi driver with hybrid codec support
+          over-opencore = (pkgs.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
           over-swhkd = (pkgs.callPackage ./overlays/swhkd {});                                  # hotkey daemon as official repo doesn't have it
           over-tun2socks = (pkgs.callPackage ./overlays/tun2socks.nix {});                      # tun2socks as official package is not up to date
           over-outline-manager = (pkgs.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
@@ -109,15 +110,7 @@
           over-hyprland = hyprland.packages.${pkgs.system}.hyprland;                            # hyprland overlay
           over-hypr-portal = xdghypr.packages.${pkgs.system}.xdg-desktop-portal-hyprland;       # hyprland portal overlay
           over-joplin = (pkgs.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
-          over-vscode = prev.vscode-fhs.overrideAttrs(oldAttrs: rec {                           # vscode overlay as official package is not up to date
-            name = "vscode";
-            version = "1.84.2";
-            src = pkgs.fetchurl {
-              name = "code_x64_${version}.tar.gz";
-              url = "https://update.code.visualstudio.com/${version}/linux-x64/stable";
-              hash = "sha256-Xjo4YfOKxSD1/9zWTVFRQibuAXSttIOcFjJqbythr+0=";
-            };
-          });
+          over-vscode = (import ./overlays/vscode.nix { inherit pkgs; });                       # vscode overlay as official package is not up to date
         })
       ];
     };
@@ -160,6 +153,11 @@
           domain = "none";
           wp = "sound.png";
           owner = "id3v1669";
+        };
+        bootloader = {
+          type = "opencore";
+          defconf = true;
+          timeout = 10;
         };
       };
       nuc11phhyprtbfhd = mkSyst {

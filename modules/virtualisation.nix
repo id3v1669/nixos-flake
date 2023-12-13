@@ -1,4 +1,7 @@
-{lib, config, pkgs, gpuvar, ...}: 
+{ lib
+, gpuvar
+, ...
+}: 
 {
   security.virtualisation.flushL1DataCache = "always";
   virtualisation = {

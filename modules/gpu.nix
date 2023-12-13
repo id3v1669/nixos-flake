@@ -1,4 +1,10 @@
-{lib, config, pkgs, cpuvar, gpuvar, desk, ...}:
+{ lib
+, config
+, pkgs
+, cpuvar
+, gpuvar
+, ...
+}:
 {
   hardware = {
     opengl = {
@@ -14,8 +20,7 @@
         nvidia-vaapi-driver
       ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar.type == "intel") (with pkgs; [
         intel-media-driver
-        intel-ocl
-        vaapiIntel
+        over-intel-vaapi-driver
       ]);
       extraPackages32 = with pkgs.pkgsi686Linux; [
         libva
@@ -23,7 +28,8 @@
         vaapiVdpau
       ] ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs.pkgsi686Linux; [
       ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar == "intel") (with pkgs.pkgsi686Linux; [
-        vaapiIntel
+        intel-media-driver
+        over-intel-vaapi-driver
       ]);
     };
   } // lib.optionalAttrs (gpuvar.type == "nvidia") {

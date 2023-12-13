@@ -1,4 +1,5 @@
-{ config, lib, pkgs, uservars, ... }:
+{ ...
+}:
 {
   home.file.".scripts/portals.sh" = {
     executable = true;

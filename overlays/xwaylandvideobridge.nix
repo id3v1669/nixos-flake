@@ -1,11 +1,10 @@
-{ stdenv,
-  fetchpatch,
-  fetchFromGitLab,
-  cmake,
-  pkg-config,
-  extra-cmake-modules,
-  qt5,
-  libsForQt5
+{ stdenv
+, fetchFromGitLab
+, cmake
+, pkg-config
+, extra-cmake-modules
+, qt5
+, libsForQt5
 }: stdenv.mkDerivation 
 {
   pname = "xwaylandvideobridge";

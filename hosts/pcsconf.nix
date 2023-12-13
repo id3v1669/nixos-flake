@@ -24,19 +24,42 @@
     printing.enable = true;
     flatpak.enable = true;
     hardware.bolt.enable = true;
-    xserver.displayManager.gdm = {      # gdm is used instead of sddm as sddm causes electron apps to crash
+    # greetd = let
+    #   gtkgreetCfg = pkgs.writeText "gtkgreet.conf" ''
+    #     exec-once = ${pkgs.greetd.gtkgreet}/bin/gtkgreet --layer-shell --command=Hyprland
+    #   '';
+    # in {
+    #   enable = true;
+    #   settings = {
+    #     default_session = {
+    #       command = "${pkgs.over-hyprland}/bin/Hyprland --config ${gtkgreetCfg}";
+    #     };
+    #   };
+    # };
+    xserver.displayManager.gdm = {
       enable = true;
       wayland = true;
     };
   };
-  
   environment.systemPackages = with pkgs; [
     polkit_gnome                        # polkit agent
     xorg.xhost                          # xhost
 
-    shadowsocks-rust
-    over-tun2socks                       # socks proxy for outline(shadowsocks)
-    #over-outline-client2
-    #over-shadowsocks-gtk-rs             # shadowsocks gui
+    libva-utils                          # vaapi test
   ];
+  systemd.user.services = {
+    polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+  };
 }

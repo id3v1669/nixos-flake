@@ -1,10 +1,9 @@
-{
-  lib,
-  stdenv,
-  fetchurl,
-  makeWrapper,
-  makeDesktopItem,
-  jdk21
+{ lib
+, stdenv
+, fetchurl
+, makeWrapper
+, makeDesktopItem
+, jdk21
 }:stdenv.mkDerivation rec 
 {
   pname = "tlauncher";

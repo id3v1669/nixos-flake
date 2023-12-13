@@ -1,4 +1,6 @@
-{ config, lib, pkgs, uservars, ... }:
+{ config
+, ...
+}:
 {
   home.file.".scripts/firstinstall.sh" = {
     executable = true;

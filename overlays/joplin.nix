@@ -1,4 +1,7 @@
-{ lib, stdenv, appimageTools, fetchurl, makeWrapper, undmg }:
+{ appimageTools
+, fetchurl
+, makeWrapper
+}:
 let
   pname = "joplin-desktop";
   version = "2.13.6";

@@ -1,4 +1,9 @@
-{lib, config, pkgs, uservars, ...}:
+{ lib
+, config
+, pkgs
+, uservars
+, ...
+}:
 {
   sops.secrets."nextcloud-admin" = {
     sopsFile = ./../secrets/nextcloud.enc.yaml;

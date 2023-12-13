@@ -1,4 +1,9 @@
-{lib, config, pkgs, bootloader, hostname, ...}: 
+{ lib
+, pkgs
+, bootloader
+, hostname
+, ...
+}: 
 let
   mb = "/boot";
   ocp = "${pkgs.over-opencore}/ocpkg/X64/EFI";

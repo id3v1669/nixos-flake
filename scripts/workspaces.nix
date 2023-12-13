@@ -1,4 +1,6 @@
-{ config, lib, pkgs, uservars, envir, ... }:
+{ envir
+, ...
+}:
 {
   home.file.".scripts/eww_ws.sh" = {
     executable = true;

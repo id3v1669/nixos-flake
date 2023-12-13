@@ -1,4 +1,5 @@
-{ config, lib, pkgs, uservars, colorsvar, ... }:
+{ ...
+}:
 {
   #Script to connect to shadowsocks.
   #Was split into 3 files due to issue with eww daemon recognition with 

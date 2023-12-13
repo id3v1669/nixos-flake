@@ -22,7 +22,6 @@
       videos = "${config.home.homeDirectory}/Videos";
       extraConfig = {
         XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
-        
       };
     };
     desktopEntries = {
