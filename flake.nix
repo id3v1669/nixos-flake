@@ -121,8 +121,7 @@
       specialArgs = {
         inherit outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader;
       };
-      modules = [ 
-        #./modules/ocmodule.nix
+      modules = [
         (./. + "/hosts/${hostname}")
         sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
