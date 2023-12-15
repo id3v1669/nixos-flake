@@ -16,6 +16,7 @@
     # web
     curl                          # url cli interactions
     wget                          # url cli interactions
+    inetutils                     # ping, telnet, traceroute, etc
 
     # cli utils
     vim                           # text editor

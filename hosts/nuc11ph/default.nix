@@ -22,7 +22,11 @@
     sopsFile = ./. + "/../../secrets/${uservars.owner}.enc.yaml";
     owner = "${uservars.name}";
   };
-  
+
+  virtualisation.vmware = {
+    guest.enable = true;
+    host.enable = true;
+  };
   users.users.${uservars.name}.extraGroups = [ 
     "wheel"
     "networkmanager"
@@ -39,6 +43,7 @@
     "pipewire"
     "i2c"
     "outlinevpn"
+    "veracrypt"
   ];
   environment.variables = {
     #system vars

@@ -51,5 +51,5 @@
   services.xserver.videoDrivers = [
   ] ++ lib.lists.optionals (gpuvar.type == "intel")[ "intel"
   ] ++ lib.lists.optionals (gpuvar.type == "nvidia")[ "nvidia"
-  ] ++ lib.lists.optionals (gpuvar.type == "amd" || cpuvar == "amd" ) [ "amdgpu" ];
+  ] ++ lib.lists.optionals (gpuvar.type == "amd" || cpuvar == "amd" ) [ "amdgpu" "radeon" ];
 }

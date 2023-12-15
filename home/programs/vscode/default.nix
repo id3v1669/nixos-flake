@@ -280,6 +280,8 @@
       skyapps.fish-vscode
       ms-dotnettools.csharp
       dotjoshjohnson.xml
+      davidanson.vscode-markdownlint
+      ms-vscode.makefile-tools
       #ms-python.python
     ];
   };

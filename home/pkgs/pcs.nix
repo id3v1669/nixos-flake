@@ -49,37 +49,13 @@
     # security
     nmap                          # network scanner
     openssl                       # cli encryption
-    veracrypt                     # graphical encription app
+    #veracrypt                     # graphical encription app
+    over-veracrypt
 
     # games
     protonup-qt                   # proton and wine updater
     steam                         # game launcher
-    (lutris.override {            # game launcher
-      extraPkgs = pkgs: [
-        giflib
-        libpng
-        openldap
-        gnutls
-        mpg123
-        libgpg-error
-        libjpeg
-        libgcrypt
-        ocl-icd
-        libxslt
-        vulkan-loader
-        gst_all_1.gst-plugins-base
-        xorg.libXcomposite
-        xorg.libXinerama
-        winetricks
-        wine64Packages.stagingFull
-        wineWowPackages.staging  
-        openal
-        v4l-utils
-        sqlite
-        ncurses
-        jansson
-      ];
-    })
+    over-lutris
 
     # files
     cinnamon.nemo-with-extensions # file manager(as nautilus has incorrect behavior with gtk themes)
