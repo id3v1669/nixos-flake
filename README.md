@@ -2,7 +2,7 @@
 
 NixOS flake with home manager
 
-Latest commit to use: 6ca1540da6eecba37afa40a8591b32532bff27cc
+Latest commit to use: fcf72d8bcacb996991f6190d78d92938d61cdb3c
 
 ## Main
 | Environment | Name | Comment | Needed fix |
@@ -37,11 +37,11 @@ Latest commit to use: 6ca1540da6eecba37afa40a8591b32532bff27cc
 
 8. **fix adb udev rules(overwrite or manual install instead of module)**
 
-9. **fix swhkd(sddm: The value for the SHELL variable was not found): either start after sddm of fix SHELL variable**
+9. **patch invoke-ai(pytorch) to clean vram after error "CUDA error: out of memory"**
 
 10. **patch dsdt for nuc11ph(acpi errors)**
 
-11. **find what causes pc freeze after long await time in swaylock**
+11. **find what causes pc freeze after long await time in swaylock(guess swhkd problem)**
 
 12. **Create module to use opencore as bootloader**
 
