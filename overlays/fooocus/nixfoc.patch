@@ -1,0 +1,197 @@
+diff '--color=auto' --color --unified --recursive --text a/launch.py b/launch.py
+--- a/launch.py	2023-12-17 23:27:33.349964422 +0800
++++ b/launch.py	2023-12-17 23:29:55.555037502 +0800
+@@ -25,43 +25,6 @@
+     checkpoint_downloads, path_embeddings, embeddings_downloads, lora_downloads
+ 
+ 
+-REINSTALL_ALL = False
+-TRY_INSTALL_XFORMERS = False
+-
+-
+-def prepare_environment():
+-    torch_index_url = os.environ.get('TORCH_INDEX_URL', "https://download.pytorch.org/whl/cu121")
+-    torch_command = os.environ.get('TORCH_COMMAND',
+-                                   f"pip install torch==2.1.0 torchvision==0.16.0 --extra-index-url {torch_index_url}")
+-    requirements_file = os.environ.get('REQS_FILE', "requirements_versions.txt")
+-
+-    print(f"Python {sys.version}")
+-    print(f"Fooocus version: {fooocus_version.version}")
+-
+-    if REINSTALL_ALL or not is_installed("torch") or not is_installed("torchvision"):
+-        run(f'"{python}" -m {torch_command}', "Installing torch and torchvision", "Couldn't install torch", live=True)
+-
+-    if TRY_INSTALL_XFORMERS:
+-        if REINSTALL_ALL or not is_installed("xformers"):
+-            xformers_package = os.environ.get('XFORMERS_PACKAGE', 'xformers==0.0.20')
+-            if platform.system() == "Windows":
+-                if platform.python_version().startswith("3.10"):
+-                    run_pip(f"install -U -I --no-deps {xformers_package}", "xformers", live=True)
+-                else:
+-                    print("Installation of xformers is not supported in this version of Python.")
+-                    print(
+-                        "You can also check this and build manually: https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Xformers#building-xformers-on-windows-by-duckness")
+-                    if not is_installed("xformers"):
+-                        exit(0)
+-            elif platform.system() == "Linux":
+-                run_pip(f"install -U -I --no-deps {xformers_package}", "xformers")
+-
+-    if REINSTALL_ALL or not requirements_met(requirements_file):
+-        run_pip(f"install -r \"{requirements_file}\"", "requirements")
+-
+-    return
+-
+-
+ vae_approx_filenames = [
+     ('xlvaeapp.pth', 'https://huggingface.co/lllyasviel/misc/resolve/main/xlvaeapp.pth'),
+     ('vaeapp_sd15.pth', 'https://huggingface.co/lllyasviel/misc/resolve/main/vaeapp_sd15.pt'),
+@@ -94,7 +57,6 @@
+     return args
+ 
+ 
+-prepare_environment()
+ build_launcher()
+ args = ini_args()
+ 
+diff '--color=auto' --color --unified --recursive --text a/ldm_patched/utils/path_utils.py b/ldm_patched/utils/path_utils.py
+--- a/ldm_patched/utils/path_utils.py	2023-12-17 23:27:33.352964268 +0800
++++ b/ldm_patched/utils/path_utils.py	2023-12-17 23:39:09.834036290 +0800
+@@ -5,7 +5,7 @@
+ 
+ folder_names_and_paths = {}
+ 
+-base_path = os.getcwd()
++base_path = os.path.expanduser("~/Fooocus")
+ models_dir = os.path.join(base_path, "models")
+ folder_names_and_paths["checkpoints"] = ([os.path.join(models_dir, "checkpoints")], supported_pt_extensions)
+ folder_names_and_paths["configs"] = ([os.path.join(models_dir, "configs")], [".yaml"])
+@@ -31,9 +31,9 @@
+ 
+ folder_names_and_paths["classifiers"] = ([os.path.join(models_dir, "classifiers")], {""})
+ 
+-output_directory = os.path.join(os.getcwd(), "output")
+-temp_directory = os.path.join(os.getcwd(), "temp")
+-input_directory = os.path.join(os.getcwd(), "input")
++output_directory = os.path.join(base_path, "output")
++temp_directory = os.path.join(base_path, "temp")
++input_directory = os.path.join(base_path, "input")
+ 
+ filename_list_cache = {}
+ 
+diff '--color=auto' --color --unified --recursive --text a/modules/config.py b/modules/config.py
+--- a/modules/config.py	2023-12-17 23:27:33.354964164 +0800
++++ b/modules/config.py	2023-12-17 23:36:53.508942356 +0800
+@@ -10,8 +10,8 @@
+ from modules.util import get_files_from_folder
+ 
+ 
+-config_path = os.path.abspath("./config.txt")
+-config_example_path = os.path.abspath("config_modification_tutorial.txt")
++config_path = os.path.expanduser("~/Fooocus/config.json")
++config_example_path = os.path.expanduser("~/Fooocus/config_example.json")
+ config_dict = {}
+ always_save_keys = []
+ visited_keys = []
+@@ -30,55 +30,6 @@
+     print('4. All key/value formats are correct.')
+ 
+ 
+-def try_load_deprecated_user_path_config():
+-    global config_dict
+-
+-    if not os.path.exists('user_path_config.txt'):
+-        return
+-
+-    try:
+-        deprecated_config_dict = json.load(open('user_path_config.txt', "r", encoding="utf-8"))
+-
+-        def replace_config(old_key, new_key):
+-            if old_key in deprecated_config_dict:
+-                config_dict[new_key] = deprecated_config_dict[old_key]
+-                del deprecated_config_dict[old_key]
+-
+-        replace_config('modelfile_path', 'path_checkpoints')
+-        replace_config('lorafile_path', 'path_loras')
+-        replace_config('embeddings_path', 'path_embeddings')
+-        replace_config('vae_approx_path', 'path_vae_approx')
+-        replace_config('upscale_models_path', 'path_upscale_models')
+-        replace_config('inpaint_models_path', 'path_inpaint')
+-        replace_config('controlnet_models_path', 'path_controlnet')
+-        replace_config('clip_vision_models_path', 'path_clip_vision')
+-        replace_config('fooocus_expansion_path', 'path_fooocus_expansion')
+-        replace_config('temp_outputs_path', 'path_outputs')
+-
+-        if deprecated_config_dict.get("default_model", None) == 'juggernautXL_version6Rundiffusion.safetensors':
+-            os.replace('user_path_config.txt', 'user_path_config-deprecated.txt')
+-            print('Config updated successfully in silence. '
+-                  'A backup of previous config is written to "user_path_config-deprecated.txt".')
+-            return
+-
+-        if input("Newer models and configs are available. "
+-                 "Download and update files? [Y/n]:") in ['n', 'N', 'No', 'no', 'NO']:
+-            config_dict.update(deprecated_config_dict)
+-            print('Loading using deprecated old models and deprecated old configs.')
+-            return
+-        else:
+-            os.replace('user_path_config.txt', 'user_path_config-deprecated.txt')
+-            print('Config updated successfully by user. '
+-                  'A backup of previous config is written to "user_path_config-deprecated.txt".')
+-            return
+-    except Exception as e:
+-        print('Processing deprecated config failed')
+-        print(e)
+-    return
+-
+-
+-try_load_deprecated_user_path_config()
+-
+ preset = args_manager.args.preset
+ 
+ if isinstance(preset, str):
+@@ -110,22 +61,22 @@
+     else:
+         if v is not None:
+             print(f'Failed to load config key: {json.dumps({key:v})} is invalid or does not exist; will use {json.dumps({key:default_value})} instead.')
+-        dp = os.path.abspath(os.path.join(os.path.dirname(__file__), default_value))
++        dp = os.path.abspath(os.path.join(os.path.expanduser("~/Fooocus"), default_value))
+         os.makedirs(dp, exist_ok=True)
+         config_dict[key] = dp
+         return dp
+ 
+ 
+-path_checkpoints = get_dir_or_set_default('path_checkpoints', '../models/checkpoints/')
+-path_loras = get_dir_or_set_default('path_loras', '../models/loras/')
+-path_embeddings = get_dir_or_set_default('path_embeddings', '../models/embeddings/')
+-path_vae_approx = get_dir_or_set_default('path_vae_approx', '../models/vae_approx/')
+-path_upscale_models = get_dir_or_set_default('path_upscale_models', '../models/upscale_models/')
+-path_inpaint = get_dir_or_set_default('path_inpaint', '../models/inpaint/')
+-path_controlnet = get_dir_or_set_default('path_controlnet', '../models/controlnet/')
+-path_clip_vision = get_dir_or_set_default('path_clip_vision', '../models/clip_vision/')
+-path_fooocus_expansion = get_dir_or_set_default('path_fooocus_expansion', '../models/prompt_expansion/fooocus_expansion')
+-path_outputs = get_dir_or_set_default('path_outputs', '../outputs/')
++path_checkpoints = get_dir_or_set_default('path_checkpoints', 'models/checkpoints/')
++path_loras = get_dir_or_set_default('path_loras', 'models/loras/')
++path_embeddings = get_dir_or_set_default('path_embeddings', 'models/embeddings/')
++path_vae_approx = get_dir_or_set_default('path_vae_approx', 'models/vae_approx/')
++path_upscale_models = get_dir_or_set_default('path_upscale_models', 'models/upscale_models/')
++path_inpaint = get_dir_or_set_default('path_inpaint', 'models/inpaint/')
++path_controlnet = get_dir_or_set_default('path_controlnet', 'models/controlnet/')
++path_clip_vision = get_dir_or_set_default('path_clip_vision', 'models/clip_vision/')
++path_fooocus_expansion = get_dir_or_set_default('path_fooocus_expansion', 'models/prompt_expansion/fooocus_expansion')
++path_outputs = get_dir_or_set_default('path_outputs', 'outputs/')
+ 
+ 
+ def get_config_item_or_set_default(key, default_value, validator, disable_empty_as_none=False):
+@@ -364,12 +315,6 @@
+ 
+ # Always write tutorials.
+ with open(config_example_path, "w", encoding="utf-8") as json_file:
+-    cpa = config_path.replace("\\", "\\\\")
+-    json_file.write(f'You can modify your "{cpa}" using the below keys, formats, and examples.\n'
+-                    f'Do not modify this file. Modifications in this file will not take effect.\n'
+-                    f'This file is a tutorial and example. Please edit "{cpa}" to really change any settings.\n'
+-                    + 'Remember to split the paths with "\\\\" rather than "\\", '
+-                      'and there is no "," before the last "}". \n\n\n')
+     json.dump({k: config_dict[k] for k in visited_keys}, json_file, indent=4)
+ 
+ 

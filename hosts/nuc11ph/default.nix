@@ -1,5 +1,8 @@
-{ uservars
+{ pkgs
+, system
+, uservars
 , curversion
+, nixified-ai
 , ...
 }:
 {
@@ -15,6 +18,7 @@
     ./../../modules/swhkd.nix
     ./../../modules/sudo.nix
     ./../../modules/sops.nix
+    nixified-ai.nixosModules.invokeai
   ];
   
   networking.firewall.enable = false;
@@ -45,10 +49,42 @@
     "outlinevpn"
     "veracrypt"
   ];
-  environment.variables = {
-    #system vars
-    EDITOR = "nano";
-    WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
+  environment = {
+    variables = {
+      #system vars
+      EDITOR = "nano";
+      WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
+    };
+    systemPackages = (with pkgs; [
+      nixified-ai.packages.${system}.invokeai-nvidia
+    ]) ++ (with pkgs.cudaPackages; [
+      nccl
+      saxpy
+      cudnn
+      libnpp
+      libcufft
+      cuda_gdb
+      nvidia_fs
+      libnvjpeg
+      libcurand
+      libcufile
+      libcublas
+      cudnn_8_8
+      cuda_nvvp
+      cuda_nvtx
+      cuda_nvcc
+      cuda_cccl
+      cuda_nvrtc
+      cuda_cupti
+      libcusparse
+      libcusolver
+      cudatoolkit
+      #cuda_opencl # for cuda12
+      cuda_nvprof
+      cuda_nsight
+      cuda_cudart
+      setupCudaHook
+    ]);
   };
   system.stateVersion = "${curversion}";
 }

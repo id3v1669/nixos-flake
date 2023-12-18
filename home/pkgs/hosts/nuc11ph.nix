@@ -9,7 +9,7 @@
     #krita                      # video editing currently installed via flatpak(fix needed)
     gimp                        # image editing
     over-outline-manager        # outline manager vpn(proxy)
-    cudaPackages_12.cudatoolkit # cuda for AI
-    over-fooocus
+
+    over-fooocus                # images ai
   ];
 }

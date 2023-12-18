@@ -1,4 +1,5 @@
 { pkgs
+, uservars
 , ...
 }:
 {
@@ -9,7 +10,7 @@
       { event = "before-sleep"; command = "${pkgs.swaylock-effects}/bin/swaylock"; }
     ];
     timeouts = [
-      { timeout = 1200; command = "${pkgs.swaylock-effects}/bin/swaylock"; }
+      { timeout = uservars.sleeptimeout; command = "${pkgs.swaylock-effects}/bin/swaylock"; }
     ];
     
   };

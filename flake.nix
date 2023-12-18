@@ -7,6 +7,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     nixmox.url = "github:Sorixelle/nixmox";
     sops-nix.url = "github:Mic92/sops-nix";
+    nixified-ai.url = "github:nixified-ai/flake";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +45,7 @@
     eww-tray,
     sops-nix,
     nix-colors,
+    nixified-ai,
     ... }@inputs: 
   let
     inherit (self) outputs;
@@ -79,6 +81,7 @@
         domain = "none";
         proxy = false;
         wp = "default1.png";
+        sleeptimeout = 1200;
       },
       deflocale ? {
         kblayout = "us,ru";
@@ -113,14 +116,14 @@
           over-vscode = (import ./overlays/vscode.nix { inherit pkgs; });                       # vscode overlay as official package is not up to date
           over-lutris = (import ./overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
           over-veracrypt = (pkgs.callPackage ./overlays/veracrypt {});                          # veracrypt overlay as official package is not up to date(later patch to run with sudo-rs instead of sudo)
-          over-fooocus = (pkgs.callPackage ./overlays/fooocus {});
+          over-fooocus = (pkgs.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
         })
       ];
     };
     in nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader;
+        inherit outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader nixified-ai;
       };
       modules = [
         (./. + "/hosts/${hostname}")
@@ -155,6 +158,7 @@
           domain = "none";
           wp = "sound.png";
           owner = "id3v1669";
+          sleeptimeout = 99000;
         };
         bootloader = {
           type = "opencore";
@@ -172,6 +176,7 @@
           domain = "none";
           wp = "sound.png";
           owner = "id3v1669";
+          sleeptimeout = 1200;
         };
         gpuvar = {
           type = "nvidia";
@@ -208,6 +213,7 @@
           proxy = true;
           domain = "none";
           wp = "default1.png";
+          sleeptimeout = 1200;
         };
         brightnesctrl = {
           up = "light -A 5";
@@ -234,6 +240,7 @@
           domain = "none";
           wp = "default1.png";
           owner = "id3v1669";
+          sleeptimeout = 1200;
         };
         brightnesctrl = {
           up = "light -A 5";
@@ -256,6 +263,7 @@
           domain = "none";
           wp = "default1.png";
           owner = "";          #add later
+          sleeptimeout = 1200;
         };
         deflocale = {
           kblayout = "us,ru";
