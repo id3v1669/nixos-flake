@@ -35,7 +35,7 @@
       open = false;
       nvidiaSettings = true;
       forceFullCompositionPipeline = true;
-      package = config.boot.kernelPackages.nvidiaPackages.production;
+      package = config.boot.kernelPackages.nvidiaPackages.beta; #production;
       powerManagement.enable = true; 
     } // lib.optionalAttrs (gpuvar.tech == "prime") {
       prime = {

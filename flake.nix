@@ -117,6 +117,57 @@
           over-lutris = (import ./overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
           over-veracrypt = (pkgs.callPackage ./overlays/veracrypt {});                          # veracrypt overlay as official package is not up to date(later patch to run with sudo-rs instead of sudo)
           over-fooocus = (pkgs.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
+          over-accelerate = (pkgs.python311Packages.accelerate.override {
+            torch = pkgs.python311Packages.torchWithCuda;
+          });
+          over-pytorch-lightning = (pkgs.python311Packages.pytorch-lightning.override {
+            torch = pkgs.python311Packages.torchWithCuda;
+          });
+          over-torchsde = (pkgs.python311Packages.torchsde.override {
+            torch = pkgs.python311Packages.torchWithCuda;
+          });
+          over-torchvision = (pkgs.python311Packages.torchvision.override {
+            torch = pkgs.python311Packages.torchWithCuda;
+          });
+          over-torchgpipe = (pkgs.python311Packages.torchgpipe.override {
+            torch = pkgs.python311Packages.torchWithCuda;
+          });
+          over-pytorch-metric-learning = (pkgs.python311Packages.pytorch-metric-learning.override {
+            torch = pkgs.python311Packages.torchWithCuda;
+            torchvision = (pkgs.python311Packages.torchvision.override {
+              torch = pkgs.python311Packages.torchWithCuda;
+            });
+            # FAILED tests/losses/test_histogram_loss.py::TestHistogramLoss::test_histogram_loss 
+          }).overrideAttrs (oldAttrs: rec {
+            disabledTests = [
+              "TestDistributedLossWrapper"
+              "TestInference"
+              "test_histogram_loss"
+              "test_get_nearest_neighbors"
+              "test_tuplestoweights_sampler"
+              "test_untrained_indexer"
+              "test_metric_loss_only"
+              "test_pca"
+              "test_distributed_classifier_loss_and_miner"
+              "test_global_embedding_space_tester"
+              "test_with_same_parent_label_tester"
+            ];
+          });
+          over-bitsandbytes = (pkgs.python311Packages.bitsandbytes.override {
+            torch = pkgs.python311Packages.torchWithCuda;
+          });
+          over-timm = (pkgs.python311Packages.timm.override {
+            torch = pkgs.python311Packages.torchWithCuda;
+            torchvision = (pkgs.python311Packages.torchvision.override {
+              torch = pkgs.python311Packages.torchWithCuda;
+            });
+          });
+          over-opencv4 = (pkgs.python311Packages.opencv4.override {
+            enableCuda = true;
+            enableCublas = true;
+            enableCudnn = true;
+            enableCufft = true;
+          });
         })
       ];
     };
