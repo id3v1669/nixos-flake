@@ -2,7 +2,7 @@
 
 NixOS flake with home manager
 
-Latest commit to use: fcf72d8bcacb996991f6190d78d92938d61cdb3c
+Latest commit to use: 0f7589e2ec860f2d90da45ea8ee1d6d659b8a7b2
 
 ## Main
 | Environment | Name | Comment | Needed fix |
@@ -48,8 +48,6 @@ Latest commit to use: fcf72d8bcacb996991f6190d78d92938d61cdb3c
 ## Notes:
 
 OpenRGB Module is broken and installed manually
-
-vesktop(0.4.2) fixed with updating vencord to 1.6.0
 
 eww buttons fixet by box with empty element, later find better approach
 
