@@ -17,16 +17,6 @@
 , cacert
 , pkgs
 }:
-let
-  vencord = pkgs.vencord.overrideAttrs (old: {
-    src = fetchFromGitHub {
-      owner = "Vendicated";
-      repo = "Vencord";
-      rev = "v1.6.4";
-      hash = "sha256-JL6UwxI4lSkxWfrps1Z2Q97LrzU4Hp6zs8kK2MdqXs8=";
-    };
-  });
-in
 stdenv.mkDerivation rec {
   pname = "vesktop";
   version = "0.4.4";
@@ -40,7 +30,7 @@ stdenv.mkDerivation rec {
 
   pnpm-deps = stdenvNoCC.mkDerivation {
     pname = "${pname}-pnpm-deps";
-    inherit src version patches ELECTRON_SKIP_BINARY_DOWNLOAD;
+    inherit src version ELECTRON_SKIP_BINARY_DOWNLOAD;
 
     nativeBuildInputs = [
       jq
@@ -72,10 +62,6 @@ stdenv.mkDerivation rec {
     nodePackages.pnpm
     nodePackages.nodejs
     makeWrapper
-  ];
-
-  patches = [
-    (substituteAll { inherit vencord; src = ./use_system_vencord.patch; })
   ];
 
   ELECTRON_SKIP_BINARY_DOWNLOAD = 1;

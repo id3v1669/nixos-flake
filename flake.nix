@@ -107,7 +107,7 @@
           over-tun2socks = (pkgs.callPackage ./overlays/tun2socks.nix {});                      # tun2socks as official package is not up to date
           over-outline-manager = (pkgs.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
           over-tlauncher = (pkgs.callPackage ./overlays/tlauncher.nix {});                      # minecraft launcher as it was removed from nixpkgs
-          over-vesktop = (pkgs.callPackage ./overlays/vesktop {});                              # vesktop overlay as official package is not up to date
+          over-vesktop = (pkgs.callPackage ./overlays/vesktop.nix {});                          # vesktop overlay as official package is not up to date
           over-xwalandvideobridge = (pkgs.callPackage ./overlays/xwaylandvideobridge.nix {});   # currently off as vesktop doesn't need it
           over-eww = eww-tray.packages.${pkgs.system}.default.override { withWayland = true; }; # overlay of eww(bar & widgets) with dynamic icons tray support
           over-hyprland = hyprland.packages.${pkgs.system}.hyprland;                            # hyprland overlay
@@ -116,6 +116,8 @@
           over-vscode = (import ./overlays/vscode.nix { inherit pkgs; });                       # vscode overlay as official package is not up to date
           over-lutris = (import ./overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
           over-veracrypt = (pkgs.callPackage ./overlays/veracrypt {});                          # veracrypt overlay as official package is not up to date(later patch to run with sudo-rs instead of sudo)
+          
+          #-------------------------------------------------------------------------------------ai cuda stuff
           over-fooocus = (pkgs.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
           over-accelerate = (pkgs.python311Packages.accelerate.override {
             torch = pkgs.python311Packages.torchWithCuda;
@@ -168,6 +170,7 @@
             enableCudnn = true;
             enableCufft = true;
           });
+          #--------------------------------------------------------------------------------------
         })
       ];
     };
