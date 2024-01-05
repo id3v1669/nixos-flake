@@ -16,5 +16,6 @@
     ./btop
     ./joplin
     ./obs
+    ./neofetch
   ];
 }

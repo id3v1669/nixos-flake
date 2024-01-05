@@ -38,11 +38,19 @@ pythonEnv = pkgs.python3.withPackages (ps: with ps; [
 in
 {
   home.packages = with pkgs; [
+    # text & docs
+    over-joplin                   # note taking app
+
+    # other gui tools
+    github-desktop                # github desktop
+
+    # files
+    filezilla                     # ftp client
+
     egl-wayland                 # for nvidia vms
-    #over-tlauncher              # launcher for minecraft
-    prismlauncher
+    prismlauncher               # minecraft launcher
     spotify                     # music
-    #krita                      # video editing currently installed via flatpak(fix needed)
+    #libsForQt5.kdenlive        # video editing currently installed via flatpak(fix needed)
     gimp                        # image editing
     over-outline-manager        # outline manager vpn(proxy)
 

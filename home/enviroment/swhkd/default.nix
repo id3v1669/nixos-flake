@@ -23,7 +23,7 @@ super + shift + f
   nemo
     
 super + shift + p
-  wl-color-picker clipboard
+  hyprpicker -a
 
 super + shift + e
   bash ${config.home.homeDirectory}.scripts/ewwlauncher.sh

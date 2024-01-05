@@ -43,7 +43,7 @@
     # chat
     telegram-desktop              # telegram client
     whatsapp-for-linux            # whatsapp client
-    over-vesktop                  # vesktop(unofficial discord app)
+    vesktop                       # vesktop(unofficial discord app)
     arrpc                         # rpc for discord(vesktop)
       
     # security
@@ -59,7 +59,6 @@
 
     # files
     cinnamon.nemo-with-extensions # file manager(as nautilus has incorrect behavior with gtk themes)
-    filezilla                     # ftp client
     zip                           # create .zip arcs
     p7zip                         # .7z arcs
     unzip                         # unzip .zip arcs
@@ -67,7 +66,6 @@
     rar                           # unfree for rar archives
 
     # text & docs
-    over-joplin                   # note taking app
     libreoffice-qt                # opensource office apps
     hunspell                      # needed for libreoffice
     hunspellDicts.en_US-large     # needed for libreoffice
@@ -76,16 +74,13 @@
     # other gui tools
     gnome.gnome-disk-utility      # disk manager(gparted is broken)
     qbittorrent                   # torrent client
-    #rustdesk                      # remote desktop (had wayland problems, check for later versions and patches)
-    github-desktop                # github desktop
     openrgb-with-all-plugins      # rgb control as nixos module is broken
     bluez                         # bluetooth
     over-eww                      # overlay of eww(bar) with tray and dynamic tray icons
     isoimagewriter                # kde iso writer (as ventoy is bad for bios updated)
 
     # other cli utils
-    #hyprpicker                    # color picker(broken after nixos xdg config update)
-    wl-color-picker               # color picker(temp replacement for hyprpicker)
+    hyprpicker                    # color picker(broken after nixos xdg config update)
     onefetch                      # fetch for git repos
     pciutils                      # lspci
     usbutils                      # lsusb
@@ -97,7 +92,7 @@
     vulkan-tools                  # vulkan utils
     cargo-binutils                # rust tools
     xdg-utils                     # xdg-open and other xdg utils
-    wl-clipboard                 # wayland clipboard
+    wl-clipboard                  # wayland clipboard
       
     # nix utils
     nix-prefetch-git              # git hash for nixpkgs

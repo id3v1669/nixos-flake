@@ -107,7 +107,6 @@
           over-tun2socks = (pkgs.callPackage ./overlays/tun2socks.nix {});                      # tun2socks as official package is not up to date
           over-outline-manager = (pkgs.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
           over-tlauncher = (pkgs.callPackage ./overlays/tlauncher.nix {});                      # minecraft launcher as it was removed from nixpkgs
-          over-vesktop = (pkgs.callPackage ./overlays/vesktop.nix {});                          # vesktop overlay as official package is not up to date
           over-xwalandvideobridge = (pkgs.callPackage ./overlays/xwaylandvideobridge.nix {});   # currently off as vesktop doesn't need it
           over-eww = eww-tray.packages.${pkgs.system}.default.override { withWayland = true; }; # overlay of eww(bar & widgets) with dynamic icons tray support
           over-hyprland = hyprland.packages.${pkgs.system}.hyprland;                            # hyprland overlay
