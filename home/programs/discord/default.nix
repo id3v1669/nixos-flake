@@ -7,7 +7,7 @@ let
     inherit (import ./../../../lib/h2rgb.nix { inherit lib; }) hexToRgb;
 in
 {
-  home.file.".config/VencordDesktop/VencordDesktop/themes/usertheme.css".text = ''
+  home.file.".config/vesktop/themes/usertheme.css".text = ''
 
 button[class*=emojiButtonNormal] > div > div {
     filter: grayscale(0.77) hue-rotate(185deg) brightness(1.015) opacity(100%) !important;

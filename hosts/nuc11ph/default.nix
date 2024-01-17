@@ -26,6 +26,11 @@
     sopsFile = ./. + "/../../secrets/${uservars.owner}.enc.yaml";
     owner = "${uservars.name}";
   };
+  hardware.bluetooth.settings = {
+    General = {
+      ControllerMode = "dual";
+    };
+  };
 
   virtualisation.vmware = {
     guest.enable = true;

@@ -102,41 +102,42 @@
         nixmox.overlay
         (final: prev: {
           over-intel-vaapi-driver = prev.vaapiIntel.override { enableHybridCodec = true; };     # intel vaapi driver with hybrid codec support
-          over-opencore = (pkgs.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
-          over-swhkd = (pkgs.callPackage ./overlays/swhkd {});                                  # hotkey daemon as official repo doesn't have it
-          over-tun2socks = (pkgs.callPackage ./overlays/tun2socks.nix {});                      # tun2socks as official package is not up to date
-          over-outline-manager = (pkgs.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
-          over-tlauncher = (pkgs.callPackage ./overlays/tlauncher.nix {});                      # minecraft launcher as it was removed from nixpkgs
-          over-xwalandvideobridge = (pkgs.callPackage ./overlays/xwaylandvideobridge.nix {});   # currently off as vesktop doesn't need it
-          over-eww = eww-tray.packages.${pkgs.system}.default.override { withWayland = true; }; # overlay of eww(bar & widgets) with dynamic icons tray support
-          over-hyprland = hyprland.packages.${pkgs.system}.hyprland;                            # hyprland overlay
-          over-hypr-portal = xdghypr.packages.${pkgs.system}.xdg-desktop-portal-hyprland;       # hyprland portal overlay
-          over-joplin = (pkgs.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
+          over-opencore = (prev.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
+          over-swhkd = (prev.callPackage ./overlays/swhkd {});                                  # hotkey daemon as official repo doesn't have it
+          over-tun2socks = (prev.callPackage ./overlays/tun2socks.nix {});                      # tun2socks as official package is not up to date
+          over-outline-manager = (prev.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
+          over-tlauncher = (prev.callPackage ./overlays/tlauncher.nix {});                      # minecraft launcher as it was removed from nixpkgs
+          over-xwalandvideobridge = (prev.callPackage ./overlays/xwaylandvideobridge.nix {});   # currently off as vesktop doesn't need it
+          over-eww = eww-tray.packages.${prev.system}.default.override { withWayland = true; }; # overlay of eww(bar & widgets) with dynamic icons tray support
+          over-hyprland = hyprland.packages.${prev.system}.hyprland;                            # hyprland overlay
+          over-hypr-portal = xdghypr.packages.${prev.system}.xdg-desktop-portal-hyprland;       # hyprland portal overlay
+          over-joplin = (prev.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
           over-vscode = (import ./overlays/vscode.nix { inherit pkgs; });                       # vscode overlay as official package is not up to date
           over-lutris = (import ./overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
-          over-veracrypt = (pkgs.callPackage ./overlays/veracrypt {});                          # veracrypt overlay as official package is not up to date(later patch to run with sudo-rs instead of sudo)
-          
+          over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                          # veracrypt overlay as official package is not up to date(later patch to run with sudo-rs instead of sudo)
+          over-vesktop = (prev.callPackage ./overlays/vesktop {});                              # vesktop as official package is not up to date
+          over-spotify = (prev.callPackage ./overlays/spot.nix {});                             # spotify with adblocker
           #-------------------------------------------------------------------------------------ai cuda stuff
-          over-fooocus = (pkgs.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
-          over-accelerate = (pkgs.python311Packages.accelerate.override {
-            torch = pkgs.python311Packages.torchWithCuda;
+          over-fooocus = (prev.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
+          over-accelerate = (prev.python311Packages.accelerate.override {
+            torch = prev.python311Packages.torchWithCuda;
           });
-          over-pytorch-lightning = (pkgs.python311Packages.pytorch-lightning.override {
-            torch = pkgs.python311Packages.torchWithCuda;
+          over-pytorch-lightning = (prev.python311Packages.pytorch-lightning.override {
+            torch = prev.python311Packages.torchWithCuda;
           });
-          over-torchsde = (pkgs.python311Packages.torchsde.override {
-            torch = pkgs.python311Packages.torchWithCuda;
+          over-torchsde = (prev.python311Packages.torchsde.override {
+            torch = prev.python311Packages.torchWithCuda;
           });
-          over-torchvision = (pkgs.python311Packages.torchvision.override {
-            torch = pkgs.python311Packages.torchWithCuda;
+          over-torchvision = (prev.python311Packages.torchvision.override {
+            torch = prev.python311Packages.torchWithCuda;
           });
-          over-torchgpipe = (pkgs.python311Packages.torchgpipe.override {
-            torch = pkgs.python311Packages.torchWithCuda;
+          over-torchgpipe = (prev.python311Packages.torchgpipe.override {
+            torch = prev.python311Packages.torchWithCuda;
           });
-          over-pytorch-metric-learning = (pkgs.python311Packages.pytorch-metric-learning.override {
-            torch = pkgs.python311Packages.torchWithCuda;
-            torchvision = (pkgs.python311Packages.torchvision.override {
-              torch = pkgs.python311Packages.torchWithCuda;
+          over-pytorch-metric-learning = (prev.python311Packages.pytorch-metric-learning.override {
+            torch = prev.python311Packages.torchWithCuda;
+            torchvision = (prev.python311Packages.torchvision.override {
+              torch = prev.python311Packages.torchWithCuda;
             });
             # FAILED tests/losses/test_histogram_loss.py::TestHistogramLoss::test_histogram_loss 
           }).overrideAttrs (oldAttrs: rec {
@@ -154,16 +155,16 @@
               "test_with_same_parent_label_tester"
             ];
           });
-          over-bitsandbytes = (pkgs.python311Packages.bitsandbytes.override {
-            torch = pkgs.python311Packages.torchWithCuda;
+          over-bitsandbytes = (prev.python311Packages.bitsandbytes.override {
+            torch = prev.python311Packages.torchWithCuda;
           });
-          over-timm = (pkgs.python311Packages.timm.override {
-            torch = pkgs.python311Packages.torchWithCuda;
-            torchvision = (pkgs.python311Packages.torchvision.override {
-              torch = pkgs.python311Packages.torchWithCuda;
+          over-timm = (prev.python311Packages.timm.override {
+            torch = prev.python311Packages.torchWithCuda;
+            torchvision = (prev.python311Packages.torchvision.override {
+              torch = prev.python311Packages.torchWithCuda;
             });
           });
-          over-opencv4 = (pkgs.python311Packages.opencv4.override {
+          over-opencv4 = (prev.python311Packages.opencv4.override {
             enableCuda = true;
             enableCublas = true;
             enableCudnn = true;

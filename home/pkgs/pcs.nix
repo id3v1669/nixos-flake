@@ -18,6 +18,7 @@
     soundux                       # soundpad
     asio                          # ?? 
     wineasio                      #asio for wine
+    over-spotify                  # music player
 
     # vm, virt and emulators
     virt-manager                  # gui for libvirt
@@ -43,7 +44,7 @@
     # chat
     telegram-desktop              # telegram client
     whatsapp-for-linux            # whatsapp client
-    vesktop                       # vesktop(unofficial discord app)
+    over-vesktop                  # vesktop(unofficial discord app)
     arrpc                         # rpc for discord(vesktop)
       
     # security

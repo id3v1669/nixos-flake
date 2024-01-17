@@ -43,16 +43,16 @@ in
 
     # other gui tools
     github-desktop                # github desktop
+    jetbrains.rider               # c# ide
 
     # files
     filezilla                     # ftp client
 
-    egl-wayland                 # for nvidia vms
-    prismlauncher               # minecraft launcher
-    spotify                     # music
-    #libsForQt5.kdenlive        # video editing currently installed via flatpak(fix needed)
-    gimp                        # image editing
-    over-outline-manager        # outline manager vpn(proxy)
+    egl-wayland                   # for nvidia vms
+    prismlauncher                 # minecraft launcher
+    #libsForQt5.kdenlive          # video editing currently installed via flatpak(fix needed)
+    gimp                          # image editing
+    over-outline-manager          # outline manager vpn(proxy)
 
     #over-fooocus                # images ai
     #pythonEnv

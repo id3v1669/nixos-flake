@@ -3,7 +3,7 @@
 }:
 {
   home.packages = with pkgs; [
-    spotify              # music
+    # gui
     gimp                 # image editing
     over-outline-manager # outline manager vpn(proxy)
 

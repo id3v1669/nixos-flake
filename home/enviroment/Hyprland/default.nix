@@ -113,7 +113,7 @@ windowrule = opacity 0.8, blueman-manager                        # bluetooth man
 #--------------other windowrules2------------------
 windowrulev2 = opacity 0.95 0.9,class:^(Spotify)$                # spotify
 windowrulev2 = opacity 0.95 0.95,class:^(firefox)$               # firefox
-windowrulev2 = opacity 0.95 0.9,class:^(VencordDesktop)$         # discord client
+windowrulev2 = opacity 0.95 0.9,class:^(vesktop)$                # discord client
 windowrulev2 = opacity 0.95 0.85,class:^(Alacritty)$             # terminal
 windowrulev2 = opacity 0.95 0.9,class:^(nemo)$                   # file manager
 windowrulev2 = opacity 0.95 0.9,class:^(code-url-handler)$       # vscode1
