@@ -117,6 +117,7 @@
           over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                          # veracrypt overlay as official package is not up to date(later patch to run with sudo-rs instead of sudo)
           over-vesktop = (prev.callPackage ./overlays/vesktop {});                              # vesktop as official package is not up to date
           over-spotify = (prev.callPackage ./overlays/spot.nix {});                             # spotify with adblocker
+          over-soundux = (prev.callPackage ./overlays/soundux.nix {});                          # soundux as official package is broken
           #-------------------------------------------------------------------------------------ai cuda stuff
           over-fooocus = (prev.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
           over-accelerate = (prev.python311Packages.accelerate.override {
