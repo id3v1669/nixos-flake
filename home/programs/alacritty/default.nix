@@ -23,6 +23,11 @@
           text = "#${config.colorScheme.colors.base00}"; # base
           cursor = "#${config.colorScheme.colors.base07}"; # lavender
         };
+        # footer bar
+        footer_bar = {
+          foreground = "#${config.colorScheme.colors.base00}"; # base
+          background = "#${config.colorScheme.colors.base02}"; # subtext0
+        };
         # Search colors
         search = {
           matches = {
@@ -32,10 +37,6 @@
           focused_match = {
             foreground = "#${config.colorScheme.colors.base00}"; # base
             background = "#${config.colorScheme.colors.base0B}"; # green
-          };
-          footer_bar = {
-            foreground = "#${config.colorScheme.colors.base00}"; # base
-            background = "#${config.colorScheme.colors.base02}"; # subtext0
           };
         };
         # Keyboard regex hints
