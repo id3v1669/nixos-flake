@@ -3,6 +3,15 @@
 , ...
 }:
 {
+  xdg.desktopEntries = {
+    code8 = {
+      name = "code8";
+      genericName = "code8 IDE";
+      exec = "nix-shell ${config.home.homeDirectory}/.scripts/dotnet8.nix --run code";
+      terminal = false;
+      categories = [ "Development" "IDE" ];
+    };
+  };
   programs.vscode = {
     enable = true;
     package = pkgs.over-vscode;

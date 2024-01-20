@@ -17,5 +17,6 @@
     ./joplin
     ./obs
     ./neofetch
+    ./rider
   ];
 }

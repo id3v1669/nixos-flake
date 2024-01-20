@@ -10,5 +10,6 @@
     ./mywifi.nix
     ./microphone.nix
     ./wallpapergen.nix
+    ./dotnet.nix
   ];
 }
