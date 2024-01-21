@@ -13,12 +13,12 @@
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
       kernelModules = [ "amdgpu" ];
-      luks.devices."luks-85970870-984a-4a67-9cf4-8e11c38a7cac".device = "/dev/disk/by-uuid/85970870-984a-4a67-9cf4-8e11c38a7cac";
+      luks.devices."luks-390609de-20b1-43018077-2f800181933d".device = "/dev/disk/by-uuid/390609de-20b1-4301-8077-2f800181933d";
     };
   };
 
   fileSystems."/" ={ 
-    device = "/dev/disk/by-uuid/4e32d86d-ac91-4a86-a433-0ed7bda6050d";
+    device = "/dev/disk/by-uuid/25557ebf-27f1-48d8-80e5-2d97d0a4e133";
     fsType = "ext4";
   };
 
