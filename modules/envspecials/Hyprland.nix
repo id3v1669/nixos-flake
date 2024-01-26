@@ -29,7 +29,7 @@
     gvfs.enable = true;                         # Mount, trash, etc
     mpd.enable = true;                          # music player daemon
     xserver.displayManager.sessionPackages = [
-      pkgs.over-hyprland                         # hyprland session to be recognized by login managers
+      pkgs.over-hyprland                        # hyprland session to be recognized by login managers
     ];
   };
 }

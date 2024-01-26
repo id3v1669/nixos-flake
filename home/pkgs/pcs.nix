@@ -82,7 +82,8 @@
     isoimagewriter                # kde iso writer (as ventoy is bad for bios updated)
 
     # other cli utils
-    hyprpicker                    # color picker(broken after nixos xdg config update)
+    over-hyprpicker
+    #hyprpicker                    # color picker(broken after nixos xdg config update)
     onefetch                      # fetch for git repos
     pciutils                      # lspci
     usbutils                      # lsusb

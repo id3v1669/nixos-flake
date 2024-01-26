@@ -41,9 +41,10 @@ in
     # text & docs
     over-joplin                   # note taking app
 
-    # other gui tools
+    # dev
     github-desktop                # github desktop
     jetbrains.rider               # c# ide
+    over-bootstrap-studio              # web design (front-end)
 
     # files
     filezilla                     # ftp client
