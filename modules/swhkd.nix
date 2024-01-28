@@ -20,15 +20,10 @@
     bindsTo = ["default.target"];
     script = ''
       /run/wrappers/bin/pkexec ${pkgs.over-swhkd}/bin/swhkd \
+        --config $XDG_CONFIG_HOME/swhkd/swhkdrc \
         --cooldown 250
       '';
     serviceConfig.Restart = "always";
     wantedBy = ["default.target"];
   };
-
-  environment.etc."swhkd/swhkdrc".text = ''
-include /home/${uservars.name}/.config/swhkd/swhkdrc
-  '';
 }
-# for future testing
-# --debug > /home/user/log4.txt 2>&1
