@@ -62,6 +62,7 @@
       WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
     };
     systemPackages = (with pkgs; [
+      #pkgs.over-swhkd
       libimobiledevice
       ifuse
       fuzzel

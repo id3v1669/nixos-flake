@@ -9,15 +9,15 @@ rustPlatform.buildRustPackage rec {
   pname = "swhkd";
   version = "1.3.0";
   src = fetchFromGitHub {
-    owner = "waycrate";
+    owner = "id3v1669";
     repo = pname;
-    rev = "30f25b5bf99df5f16d91b51a7bd397c1de075085";
-    hash = "sha256-K05v2xw7G/ZJsf62g696TOSZHMAOWf24sT9JcvvBNx0=";
+    rev = "084d80ad579ebda65ab97b3ecba5660d7e0a3229";
+    hash = "sha256-louv/pRWjczTd81L30N8JYyD1L+/3GLrQ9bnRQr2BBg=";
   };
   cargoLock = { lockFile = "${src}/Cargo.lock"; };
-  patches = [
-    ./rmrfkill.patch
-  ];
+  # patches = [
+  #   ./rmrfkill.patch
+  # ];
   nativeBuildInputs = [ pkg-config makeWrapper ];
   buildInputs = [ udev ];
   postInstall = ''
@@ -34,6 +34,8 @@ rustPlatform.buildRustPackage rec {
       <allow_active>yes</allow_active>
     </defaults>
     <annotate key="org.freedesktop.policykit.exec.path">$out/bin/swhkd</annotate>
+    <annotate key="org.freedesktop.policykit.exec.env">XDG_CONFIG_HOME</annotate>
+    <annotate key="org.freedesktop.policykit.exec.env">XDG_RUNTIME_DIR</annotate>
   </action>
 </policyconfig>
 EOF

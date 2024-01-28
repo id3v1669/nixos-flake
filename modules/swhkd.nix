@@ -20,7 +20,6 @@
     bindsTo = ["default.target"];
     script = ''
       /run/wrappers/bin/pkexec ${pkgs.over-swhkd}/bin/swhkd \
-        --config /etc/swhkd/swhkdrc \
         --cooldown 250
       '';
     serviceConfig.Restart = "always";
@@ -31,3 +30,5 @@
 include /home/${uservars.name}/.config/swhkd/swhkdrc
   '';
 }
+# for future testing
+# --debug > /home/user/log4.txt 2>&1

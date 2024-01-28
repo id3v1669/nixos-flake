@@ -44,7 +44,7 @@ in
     # dev
     github-desktop                # github desktop
     jetbrains.rider               # c# ide
-    over-bootstrap-studio              # web design (front-end)
+    over-bootstrap-studio         # web design (front-end)
 
     # files
     filezilla                     # ftp client
