@@ -49,6 +49,9 @@ in
     # files
     filezilla                     # ftp client
 
+    # security
+    over-veracrypt                # gui encryption
+
     egl-wayland                   # for nvidia vms
     prismlauncher                 # minecraft launcher
     #libsForQt5.kdenlive          # video editing currently installed via flatpak(fix needed)

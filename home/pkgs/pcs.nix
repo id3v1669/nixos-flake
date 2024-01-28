@@ -51,8 +51,6 @@
     # security
     nmap                          # network scanner
     openssl                       # cli encryption
-    #veracrypt                     # graphical encription app
-    over-veracrypt
 
     # games
     protonup-qt                   # proton and wine updater

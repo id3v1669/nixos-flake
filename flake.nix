@@ -318,7 +318,7 @@
           description = "alexp";
           proxy = false;
           domain = "none";
-          wp = "default1.png";
+          wp = "tyan_1.jpg";
           owner = "MorphDevC";
           sleeptimeout = 1200;
         };
