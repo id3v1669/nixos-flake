@@ -319,8 +319,13 @@
           proxy = false;
           domain = "none";
           wp = "default1.png";
-          owner = "";          #add later
+          owner = "MorphDevC";
           sleeptimeout = 1200;
+        };
+        bootloader = {
+          type = "opencore";
+          defconf = true;
+          timeout = 10;
         };
         deflocale = {
           kblayout = "us,ru";
