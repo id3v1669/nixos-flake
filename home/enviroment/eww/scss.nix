@@ -5,7 +5,7 @@
   home.file.".config/eww/eww.scss".text = ''
 .launcher {
     font-size: 1.5em;
-    border-radius: 20;
+    border-radius: 20px;
     padding: 5px 12px 5px 13px; 
     background-color: #${config.colorScheme.colors.base00};
     color: #${config.colorScheme.colors.base05};
@@ -18,7 +18,7 @@
 .usageinfo {
     background-color: #${config.colorScheme.colors.base00};
     color: #${config.colorScheme.colors.base05};
-    border-radius: 20;
+    border-radius: 20px;
     padding: 5px 15px; 
     &:hover {
         background-color: #${config.colorScheme.colors.base01};
@@ -41,7 +41,7 @@
   
   .workspaces {
     font-size: 1.3em;
-    border-radius: 20;
+    border-radius: 20px;
     padding: 5px 20px 5px 15px; 
     background-color: #${config.colorScheme.colors.base00};
     color: #${config.colorScheme.colors.base05};
@@ -51,7 +51,7 @@
     font-size: 1.3em;
     background-color: #${config.colorScheme.colors.base00};
     color: #${config.colorScheme.colors.base05};
-    border-radius: 20;
+    border-radius: 20px;
     padding: 5px 16px 5px 17px;
     &:hover {
         background-color: #${config.colorScheme.colors.base01};
@@ -63,7 +63,7 @@
     font-size: 1.4em;
     background-color: #${config.colorScheme.colors.base00};
     color: #${config.colorScheme.colors.base05};
-    border-radius: 20;
+    border-radius: 20px;
     padding: 5px 14px 5px 15px;
   }
 
@@ -71,7 +71,7 @@
     font-size: 1.5em;
     background-color: #${config.colorScheme.colors.base00};
     color: #${config.colorScheme.colors.base05};
-    border-radius: 20;
+    border-radius: 20px;
     padding: 4px 18px 4px 13px;
     &:hover {
         background-color: #${config.colorScheme.colors.base01};
@@ -83,7 +83,7 @@
     font-size: 1.3em;
     background-color: #${config.colorScheme.colors.base00};
     color: #${config.colorScheme.colors.base05};
-    border-radius: 20;
+    border-radius: 20px;
     padding: 5px 16px 4px 14px;
     &:hover {
         background-color: #${config.colorScheme.colors.base01};
@@ -95,7 +95,7 @@
     //font-size: 1.6em;
     background-color: #${config.colorScheme.colors.base00};
     color: #${config.colorScheme.colors.base05};
-    border-radius: 20;
+    border-radius: 20px;
     padding: 3px 16px 3px 2px;
     &:hover {
         background-color: #${config.colorScheme.colors.base01};
@@ -115,7 +115,7 @@
     font-size: 1.4em;
     background-color: #${config.colorScheme.colors.base00};
     color: #${config.colorScheme.colors.base05};
-    border-radius: 20;
+    border-radius: 20px;
     padding: 5px 16px 5px 14px;
     &:hover {
         background-color: #${config.colorScheme.colors.base01};
@@ -127,7 +127,7 @@
     font-size: 1em;
     background-color: #${config.colorScheme.colors.base00};
     color: #${config.colorScheme.colors.base05};
-    border-radius: 20;
+    border-radius: 20px;
     padding: 5px 16px 5px 14px;
   }
   
@@ -144,7 +144,7 @@
     font-size: 1.3em;
     background-color: #${config.colorScheme.colors.base0A};
     color: #${config.colorScheme.colors.base05};
-    border-radius: 20;
+    border-radius: 20px;
     padding: 4px 16px 5px 9px;
     &:hover {
         background-color: #${config.colorScheme.colors.base04};
@@ -155,7 +155,7 @@
     font-size: 1.3em;
     background-color: #${config.colorScheme.colors.base0D};
     color: #${config.colorScheme.colors.base05};
-    border-radius: 20;
+    border-radius: 20px;
     padding: 4px 14px 5px 9px;
     &:hover {
         background-color: #${config.colorScheme.colors.base04};
@@ -166,7 +166,7 @@
     font-size: 1.4em;
     background-color: #${config.colorScheme.colors.base08};
     color: #${config.colorScheme.colors.base05};
-    border-radius: 20;
+    border-radius: 20px;
     padding: 4px 12px 5px 10px;
     &:hover {
         background-color: #${config.colorScheme.colors.base04};
@@ -180,7 +180,7 @@
 
     .battery {
       font-size: 1.3em;
-      border-radius: 20;
+      border-radius: 20px;
       padding: 5px 12px 5px 15px; 
       background-color: #${config.colorScheme.colors.base00};
       color: #${config.colorScheme.colors.base05};

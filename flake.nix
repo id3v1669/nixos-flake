@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     eww-tray = {
-     url = "github:hylophile/eww/dynamic-icons";
+     url = "github:ralismark/eww/tray-3";
      flake = true;
     };
     home-manager = {

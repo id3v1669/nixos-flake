@@ -26,7 +26,7 @@ super + shift + p
   hyprpicker -a
 
 super + shift + e
-  bash ${config.home.homeDirectory}.scripts/ewwlauncher.sh
+  bash ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
 
 super + r
   rofi -show

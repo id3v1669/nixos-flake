@@ -8,16 +8,9 @@
   #  enable = true;
   #  #preset = ??
   #};
-  #services = {} // lib.optionalAttrs (envir != "gnome") {
-  #  kdeconnect = {
-  #    enable = true;
-  #    indicator = true;
-  #  };
-    #gammastep = {
-    #  enable = true;
-    #  tray = true;
-    #};
- # };
+  services = {
+    playerctld.enable = true;
+ };
   programs = {
     direnv.enable = true;
     java = {
@@ -26,5 +19,4 @@
     };
     ncmpcpp.enable = true;
   };
-  services.playerctld.enable = true;
 }

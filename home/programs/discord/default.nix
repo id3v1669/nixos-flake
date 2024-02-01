@@ -9,6 +9,21 @@ in
 {
   home.file.".config/vesktop/themes/usertheme.css".text = ''
 
+.wrapper__7bcde .link__95dc0 /* channels */,
+.container__4f20e /* members */,
+.channel_c21703 /* dms */,
+.side_b4b3f6 .item__48dda /* settings */ {
+    transition: margin-left 0.2s ease;
+}
+.wrapper__7bcde:hover .link__95dc0,
+.side_b4b3f6 .item__48dda:hover {
+    margin-left: 10px;
+}
+.container__4f20e:hover,
+.channel_c21703:hover {
+    margin-left: 18px;
+}
+
 button[class*=emojiButtonNormal] > div > div {
     filter: grayscale(0.77) hue-rotate(185deg) brightness(1.015) opacity(100%) !important;
   }
