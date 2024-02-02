@@ -49,7 +49,7 @@
     ... }@inputs: 
   let
     inherit (self) outputs;
-    curversion = "23.11";
+    curversion = "24.05";
     mkSyst = { 
       hostname,
       envir,
@@ -103,7 +103,7 @@
         (final: prev: {
           over-intel-vaapi-driver = prev.vaapiIntel.override { enableHybridCodec = true; };     # intel vaapi driver with hybrid codec support
           over-opencore = (prev.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
-          over-swhkd = (prev.callPackage ./overlays/swhkd.nix {});                                  # hotkey daemon as official repo doesn't have it
+          over-swhkd = (prev.callPackage ./overlays/swhkd.nix {});                              # hotkey daemon as official repo doesn't have it
           over-tun2socks = (prev.callPackage ./overlays/tun2socks.nix {});                      # tun2socks as official package is not up to date
           over-outline-manager = (prev.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
           over-tlauncher = (prev.callPackage ./overlays/tlauncher.nix {});                      # minecraft launcher as it was removed from nixpkgs

@@ -32,10 +32,10 @@
     };
   };
 
-  virtualisation.vmware = {
-    guest.enable = true;
-    host.enable = true;
-  };
+  # virtualisation.vmware = {
+  #   guest.enable = true;
+  #   host.enable = true;
+  # };
   users.users.${uservars.name}.extraGroups = [ 
     "wheel"
     "networkmanager"
@@ -59,10 +59,9 @@
     variables = {
       #system vars
       EDITOR = "nano";
-      WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
+      WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";   # output with intel, nvidia sync mode
     };
     systemPackages = (with pkgs; [
-      #pkgs.over-swhkd
       libimobiledevice
       ifuse
       fuzzel
@@ -103,4 +102,3 @@
     trusted-public-keys = ["ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="];
   };
 }
-# WLR_NO_HARDWARE_CURSORS = "1";

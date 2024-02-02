@@ -10,7 +10,10 @@
     pam.services.swaylock = {};         # swaylock pam service for screen lock
   };
   programs = {
-    virt-manager.enable = true;         # virtual machine manager
+    virt-manager = {                    # virtual machine manager
+      enable = true;
+      package = pkgs.virt-manager;
+    };
     gamemode.enable = true;             # gamemode for lutris and steam
     wireshark = {                       # wireshark with root privileges
       enable = true;
