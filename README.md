@@ -2,7 +2,7 @@
 
 NixOS flake with home manager
 
-Latest commit to use: 0f7589e2ec860f2d90da45ea8ee1d6d659b8a7b2
+Latest commit to use: 02ffa51362050c45fd24ab3f3a631f0df9132dbd
 
 ## Main
 | Environment | Name | Comment | Needed fix |
@@ -13,11 +13,11 @@ Latest commit to use: 0f7589e2ec860f2d90da45ea8ee1d6d659b8a7b2
 | background | swaybg | - | - |
 | portals | gtk and hyprland/wlr(sway) | - | - |
 | login manager | gdm | - | - |
-| lockscreen | swaylock | - | ToDo 11 |
+| lockscreen | swaylock | - | - |
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
 | notifications | dunst | - | - |
 | shell | fish | - | - |
-| bootloader | opencore(systemd mod) | extra folder OC reated, reads systemd entries | ToDo 12 |
+| bootloader | opencore(systemd mod) | extra folder OC reated, reads systemd entries | - |
 
 ## ToDo
 
@@ -41,16 +41,16 @@ Latest commit to use: 0f7589e2ec860f2d90da45ea8ee1d6d659b8a7b2
 
 10. **patch dsdt for nuc11ph(acpi errors)**
 
-11. **find what causes pc freeze after long await time in swaylock(guess swhkd problem)**
+11. **rewrite gtk theme**
 
-12. **Create module to use opencore as bootloader**
+12. **fix of frind alternative to swayidle as it doesn't react to gamepad**
+
+13. **add notification widget with notififcation history(eww?)**
 
 ## Notes:
 
 OpenRGB Module is broken and installed manually
 
-eww buttons fixet by box with empty element, later find better approach
-
-swhkd works, but has a dirty patch. Check if issue in desctiption to [commit](https://github.com/waycrate/swhkd/commit/6877854183dce2dbd583cf4be82a890ccd7b1f4e) still exists as error was ioctl(15, RFKILL_IOCTL_NOINPUT, 0)      = -1 ENOSYS (Function not implemented)
+eww buttons fixed by box with empty element, later find better approach
 
 vscode is used instead of vscode-fhs as last one has problems on wayland + iGPU and wayland + nvidia
