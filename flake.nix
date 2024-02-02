@@ -270,6 +270,7 @@
           proxy = true;
           domain = "none";
           wp = "default1.png";
+          owner = "id3v1669";
           sleeptimeout = 1200;
         };
         brightnesctrl = {
