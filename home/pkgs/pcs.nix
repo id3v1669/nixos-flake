@@ -22,7 +22,6 @@
     over-spotify                  # music player
 
     # vm, virt and emulators
-    virt-manager                  # gui for libvirt
     distrobox                     # archbox for apps that are not in nixpkgs
     docker-compose                # docker-compose for tests
 
