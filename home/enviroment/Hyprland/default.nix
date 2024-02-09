@@ -72,7 +72,8 @@
       ];
     };
     extraConfig = ''
-#----------------startup programs-----------------
+#----------------startup commands-----------------
+exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 15   # set cursor as hyprland doesn't respect gtk
 exec-once = arrpc &                                              # rpc server for discord
 exec-once = swhks &                                              # shortcut daemon
 #-------------------------------------------------

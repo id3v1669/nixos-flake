@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    stable-nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nix-colors.url = "github:misterio77/nix-colors";
     flake-utils.url = "github:numtide/flake-utils";
     nixmox.url = "github:Sorixelle/nixmox";
@@ -37,6 +38,7 @@
   outputs = { 
     self,
     nixpkgs,
+    stable-nixpkgs,
     home-manager,
     hyprland,
     nur,
@@ -90,7 +92,13 @@
         timezone = "Australia/Perth";
         locale = "en_AU.UTF-8";
       }
-    }: let 
+    }: let
+    stable-pkgs = import stable-nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+      };
+    };
     pkgs = import nixpkgs {
       inherit system;
       config = {
@@ -180,7 +188,7 @@
     in nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader nixified-ai;
+        inherit outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader nixified-ai stable-pkgs;
       };
       modules = [
         (./. + "/hosts/${hostname}")

@@ -45,9 +45,11 @@
   services = {
     xserver = {
       enable = true;
-      layout = "${deflocale.kblayout}";
-      xkbVariant = "${deflocale.kbvariant}";
-      xkbOptions = "${deflocale.kboption}";
+      xkb = {
+        variant = "${deflocale.kbvariant}";
+        options = "${deflocale.kboption}";
+        layout = "${deflocale.kblayout}";
+      };
     };
   };
 }

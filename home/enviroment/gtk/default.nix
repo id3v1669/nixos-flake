@@ -13,8 +13,9 @@
       package = pkgs.papirus-icon-theme.override { color = "black"; };
     };
     cursorTheme = {
-      name = "Catppuccin";
-      package = pkgs.catppuccin-cursors;
+      name = "Capitaine Cursors (Gruvbox)";
+      package = pkgs.capitaine-cursors-themed;
+      size = 15;
     };
   };
 }

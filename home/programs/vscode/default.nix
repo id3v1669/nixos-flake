@@ -291,7 +291,8 @@
       dotjoshjohnson.xml
       davidanson.vscode-markdownlint
       ms-vscode.makefile-tools
-      #ms-python.python
+      rust-lang.rust-analyzer
+      #ms-python.python # breaks vscode
     ];
   };
 }

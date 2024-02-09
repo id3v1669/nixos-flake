@@ -1,4 +1,5 @@
 { pkgs
+, stable-pkgs
 , system
 , uservars
 , curversion
@@ -31,11 +32,6 @@
       ControllerMode = "dual";
     };
   };
-
-  # virtualisation.vmware = {
-  #   guest.enable = true;
-  #   host.enable = true;
-  # };
   users.users.${uservars.name}.extraGroups = [ 
     "wheel"
     "networkmanager"

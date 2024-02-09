@@ -4,7 +4,7 @@
 }:
 {
   services.swayidle = {
-    enable = true;
+    enable = false;
     package = pkgs.swayidle;
     events = [
       { event = "before-sleep"; command = "${pkgs.swaylock-effects}/bin/swaylock"; }

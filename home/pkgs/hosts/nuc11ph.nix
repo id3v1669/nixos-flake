@@ -44,6 +44,7 @@ in
     # dev
     github-desktop                # github desktop
     jetbrains.rider               # c# ide
+    jetbrains.rust-rover          # rust ide
     over-bootstrap-studio         # web design (front-end)
 
     # files
