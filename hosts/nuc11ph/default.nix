@@ -4,6 +4,7 @@
 , uservars
 , curversion
 , nixified-ai
+, lib
 , ...
 }:
 {
@@ -15,12 +16,13 @@
     ./../../modules/udevrules.nix
     ./../../modules/fonts.nix
     ./../../modules/sound.nix
-    ./../../modules/gpu.nix
+    #./../../modules/gpu.nix
     ./../../modules/swhkd.nix
     ./../../modules/sudo.nix
     ./../../modules/sops.nix
     nixified-ai.nixosModules.invokeai
   ];
+
   services.usbmuxd.enable = true;
   networking.firewall.enable = false;
   sops.secrets."outline" = {
@@ -56,6 +58,8 @@
       #system vars
       EDITOR = "nano";
       WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";   # output with intel, nvidia sync mode
+      #NVK_I_WANT_A_BROKEN_VULKAN_DRIVER = "1";
+      #MESA_VK_VERSION_OVERRIDE = "1.3";
     };
     systemPackages = (with pkgs; [
       libimobiledevice

@@ -9,8 +9,13 @@
   imports =[ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
-    kernelModules = [ "kvm-intel" "i2c-dev" "i2c-i801" ];
-    kernelParams = [ "i915.force_probe=9a49" ];
+    blacklistedKernelModules = [ "nvidia" "nvidia_uvm" ];
+    kernelModules = [ "kvm-intel" "i2c-dev" "i2c-i801" "nouveau" ];
+    kernelParams = [
+      "nouveau.config=NvGspRm=1"
+      "nouveau.debug=info,VBIOS=info,gsp=debug"
+      "i915.force_probe=9a49"
+    ];
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     initrd = {

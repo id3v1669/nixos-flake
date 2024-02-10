@@ -36,19 +36,19 @@
   };
 
   outputs = { 
-    self,
-    nixpkgs,
-    stable-nixpkgs,
-    home-manager,
-    hyprland,
-    nur,
-    nixmox,
-    xdghypr,
-    eww-tray,
-    sops-nix,
-    nix-colors,
-    nixified-ai,
-    ... }@inputs: 
+  self
+, nixpkgs
+, stable-nixpkgs
+, home-manager
+, hyprland
+, nur
+, nixmox
+, xdghypr
+, eww-tray
+, sops-nix
+, nix-colors
+, nixified-ai
+, ... }@inputs: 
   let
     inherit (self) outputs;
     curversion = "24.05";

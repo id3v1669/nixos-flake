@@ -16,6 +16,7 @@
         vaapiVdpau
         libvdpau-va-gl
       ] ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [
+        nvidia-vaapi-driver
       ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar.type == "intel") (with pkgs; [
         intel-media-driver
         over-intel-vaapi-driver
@@ -31,7 +32,7 @@
     };
   } // lib.optionalAttrs (gpuvar.type == "nvidia") {
     nvidia = {
-      open = false;
+      open = true;
       nvidiaSettings = true;
       forceFullCompositionPipeline = true;
       package = config.boot.kernelPackages.nvidiaPackages.production;
