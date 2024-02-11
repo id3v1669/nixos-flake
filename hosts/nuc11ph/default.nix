@@ -2,6 +2,7 @@
 , stable-pkgs
 , system
 , uservars
+, gpuvar
 , curversion
 , nixified-ai
 , lib
@@ -16,7 +17,7 @@
     ./../../modules/udevrules.nix
     ./../../modules/fonts.nix
     ./../../modules/sound.nix
-    #./../../modules/gpu.nix
+    ./../../modules/gpu.nix
     ./../../modules/swhkd.nix
     ./../../modules/sudo.nix
     ./../../modules/sops.nix
@@ -58,8 +59,9 @@
       #system vars
       EDITOR = "nano";
       WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";   # output with intel, nvidia sync mode
-      #NVK_I_WANT_A_BROKEN_VULKAN_DRIVER = "1";
-      #MESA_VK_VERSION_OVERRIDE = "1.3";
+    } // lib.optionalAttrs (gpuvar.type == "nvk") {
+      NVK_I_WANT_A_BROKEN_VULKAN_DRIVER = "1";             # prep for nvk
+      MESA_VK_VERSION_OVERRIDE = "1.3";                    # prep for nvk
     };
     systemPackages = (with pkgs; [
       libimobiledevice

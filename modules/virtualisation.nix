@@ -14,7 +14,7 @@
     virtio-win
     win-spice
   ];
-  virtualisation = let notsrv = desk!="server"{
+  virtualisation = let notsrv = desk!="server"; in {
     spiceUSBRedirection.enable = notsrv;                               # USB redirection to vm
     libvirtd = {
       enable = notsrv;                                                 # libvirtd for virt-manager
