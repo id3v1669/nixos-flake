@@ -128,6 +128,7 @@
           over-soundux = (prev.callPackage ./overlays/soundux.nix {});                          # soundux as official package is broken
           over-bootstrap-studio = (prev.callPackage ./overlays/bootstrap-studio.nix {});        # bootstrap-studio as official package is not up to date
           over-hyprpicker = (import ./overlays/hyprpicker { inherit pkgs; });                   # hyprpicker overlay as official package is broken on my configuration
+          over-sherlock = (import ./overlays/sherlock.nix { inherit pkgs; });                   # sherlock overlay as official package is not up to date
           #-------------------------------------------------------------------------------------ai cuda stuff
           over-fooocus = (prev.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
           over-accelerate = (prev.python311Packages.accelerate.override {

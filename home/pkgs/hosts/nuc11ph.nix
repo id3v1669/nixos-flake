@@ -52,6 +52,7 @@ in
 
     # security
     over-veracrypt                # gui encryption
+    over-sherlock                 # find accounts by username
 
     egl-wayland                   # for nvidia vms
     prismlauncher                 # minecraft launcher
