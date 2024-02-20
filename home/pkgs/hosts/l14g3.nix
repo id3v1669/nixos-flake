@@ -13,6 +13,8 @@
     # dev
     jetbrains.rider               # c# ide
     bootstrap-studio              # web design (front-end)
+    rstudio                       # r ide
+    
 
     # text & docs
     over-joplin                   # note taking app

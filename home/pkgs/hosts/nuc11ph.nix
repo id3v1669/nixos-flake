@@ -46,6 +46,7 @@ in
     jetbrains.rider               # c# ide
     jetbrains.rust-rover          # rust ide
     over-bootstrap-studio         # web design (front-end)
+    rstudio                       # r ide
 
     # files
     filezilla                     # ftp client
