@@ -11,21 +11,22 @@
   imports = [
     ./programs
     ./pkgs
-  ] ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
+  ] ++ lib.lists.optionals (envir != "none") [
     ./assets
     ./../scripts
     ./enviroment/qt
     ./enviroment/dconf
     ./enviroment/gtk
     ./enviroment/rofi
-    ./enviroment/eww
-    ./enviroment/dunst
     ./enviroment/xdg
     ./enviroment/swhkd
-    ./enviroment/swayidle
-    ./enviroment/swaylock
     ./enviroment/${envir}
     nix-colors.homeManagerModules.default
+  ] ++ lib.lists.optionals (envir != "plasma5") [
+    ./enviroment/eww
+    ./enviroment/dunst
+    ./enviroment/swayidle
+    ./enviroment/swaylock
   ];
   home = {
     stateVersion = "${curversion}";

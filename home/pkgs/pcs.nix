@@ -40,6 +40,7 @@
     ffmpegthumbnailer             # thumbnails for video files
     lutgen                        # image with filter generator
     swaybg                        # wallpapers
+    imagemagickBig                # image manipulation(convert etc)
       
     # chat
     telegram-desktop              # telegram client

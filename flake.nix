@@ -213,6 +213,42 @@
       #lime, kimber, icy, gruvbox-dark-pale, grayscale-dark, darktooth, black-metal
       #mytop: pandora, stella, lime, gruvbox-dark-pale, outrun-dark, spaceduck, embers
       
+      nuc11phplasma5tbqhd = mkSyst {
+        hostname = "nuc11ph";
+        envir = "plasma5";
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          proxy = true;
+          domain = "none";
+          wp = "sound.png";
+          owner = "id3v1669";
+          sleeptimeout = 99000;
+        };
+        bootloader = {
+          type = "opencore";
+          defconf = true;
+          timeout = 10;
+        };
+      };
+      nuc11phswaytbqhd = mkSyst {
+        hostname = "nuc11ph";
+        envir = "sway";
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          proxy = true;
+          domain = "none";
+          wp = "sound.png";
+          owner = "id3v1669";
+          sleeptimeout = 99000;
+        };
+        bootloader = {
+          type = "opencore";
+          defconf = true;
+          timeout = 10;
+        };
+      };
       nuc11phhyprtbqhd = mkSyst {
         hostname = "nuc11ph";
         envir = "Hyprland";

@@ -28,11 +28,8 @@
   services = {
     gvfs.enable = true;                         # Mount, trash, etc
     mpd.enable = true;                          # music player daemon
-    xserver = {
-      #desktopManager.plasma5.enable = true;    # plasma5
-      displayManager.sessionPackages = [
-        pkgs.over-hyprland                      # hyprland session to be recognized by login managers
-      ];
-    };
+    xserver.displayManager.sessionPackages = [
+      pkgs.over-hyprland                        # hyprland session to be recognized by login managers
+    ];
   };
 }
