@@ -3,10 +3,10 @@
 , ...
 }:
 {
-  sops.secrets."shadowsocks" = {
-    sopsFile = ./../secrets/shadowsocks.enc.yaml;
-    owner = "shadowsocks";
-  };
+  #sops.secrets."shadowsocks" = {
+  #  sopsFile = ./../secrets/shadowsocks.enc.yaml;
+  #  owner = "shadowsocks";
+  #};
 
   services.shadowsocks = {
     enable = true;

@@ -34,13 +34,8 @@
       };
       config = {
         dbtype = "mysql";
-        overwriteProtocol = "https";
-        defaultPhoneRegion = "AU";
         adminuser = "${uservars.name}";
         adminpassFile = "${config.sops.secrets."nextcloud-admin".path}";
-        extraTrustedDomains = [
-          "nextcloud.${uservars.domain}"
-        ];
       };
       phpOptions = {
         catch_workers_output = "yes";
@@ -59,19 +54,26 @@
         "redis.session.lock_retries" = "-1";
         "redis.session.lock_wait_time" = "10000";
       };
-      extraOptions.enabledPreviewProviders = [
-        "OC\\Preview\\BMP"
-        "OC\\Preview\\GIF"
-        "OC\\Preview\\JPEG"
-        "OC\\Preview\\Krita"
-        "OC\\Preview\\MarkDown"
-        "OC\\Preview\\MP3"
-        "OC\\Preview\\OpenDocument"
-        "OC\\Preview\\PNG"
-        "OC\\Preview\\TXT"
-        "OC\\Preview\\XBitmap"
-        "OC\\Preview\\HEIC"
-      ];
+      settings = {
+        overwriteProtocol = "https";
+        defaultPhoneRegion = "AU";
+        trusted_domains = [
+          "nextcloud.${uservars.domain}"
+        ];
+        enabledPreviewProviders = [
+          "OC\\Preview\\BMP"
+          "OC\\Preview\\GIF"
+          "OC\\Preview\\JPEG"
+          "OC\\Preview\\Krita"
+          "OC\\Preview\\MarkDown"
+          "OC\\Preview\\MP3"
+          "OC\\Preview\\OpenDocument"
+          "OC\\Preview\\PNG"
+          "OC\\Preview\\TXT"
+          "OC\\Preview\\XBitmap"
+          "OC\\Preview\\HEIC"
+        ];
+      };
     };
     nginx.virtualHosts."nextcloud.${uservars.domain}" = {
       enableACME = true;

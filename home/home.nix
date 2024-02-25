@@ -22,7 +22,7 @@
     ./enviroment/swhkd
     ./enviroment/${envir}
     nix-colors.homeManagerModules.default
-  ] ++ lib.lists.optionals (envir != "plasma5") [
+  ] ++ lib.lists.optionals (envir != "plasma5" && envir != "none") [
     ./enviroment/eww
     ./enviroment/dunst
     ./enviroment/swayidle
