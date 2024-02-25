@@ -7,9 +7,8 @@
     systemd-boot.enable = false;
     efi.canTouchEfiVariables = true;
     grub = {
-      device = [ "${bootloader.device}" ];
+      device = "${bootloader.device}";
       enable = true;
-      #efiSupport = true;
       useOSProber = true;
     };
   };
