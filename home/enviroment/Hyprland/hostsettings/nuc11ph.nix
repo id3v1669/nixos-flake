@@ -10,10 +10,10 @@
       "HDMI-A-1,3440x1440@100,0x0,1"
 			"DP-5,1920x1080@60,3440x0,1"
 		] ++ lib.lists.optionals (gpuvar.port == "tbfhd") [
-			"DP-3,2560x1080@120,0x0,1"
+			"DP-3,2560x1080@144,0x0,1"
 			"DP-4,1920x1080@100,2560x0,1"
 		] ++ lib.lists.optionals (gpuvar.port == "tbqhd") [
-      "DP-3,3440x1440@100,0x0,1"
+      "DP-3,3440x1440@144,0x0,1"
       "DP-4,1920x1080@100,3440x0,1"
 		];
 		windowrule = [

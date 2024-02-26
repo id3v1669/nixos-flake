@@ -258,7 +258,7 @@
           description = "id3v1669";
           proxy = true;
           domain = "none";
-          wp = "sound.png";
+          wp = "skeleton.png";
           owner = "id3v1669";
           sleeptimeout = 99000;
         };
@@ -276,7 +276,7 @@
           description = "id3v1669";
           proxy = true;
           domain = "none";
-          wp = "sound.png";
+          wp = "skeleton.png";
           owner = "id3v1669";
           sleeptimeout = 1200;
         };

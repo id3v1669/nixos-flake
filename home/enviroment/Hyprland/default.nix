@@ -2,6 +2,8 @@
 , pkgs
 , deflocale
 , hostname
+, colorsvar
+, uservars
 , ...
 }:
 {
@@ -73,14 +75,14 @@
     };
     extraConfig = ''
 #----------------startup commands-----------------
-exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 15   # set cursor as hyprland doesn't respect gtk
-exec-once = arrpc &                                              # rpc server for discord
-exec-once = swhks &                                              # shortcut daemon
+exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 15    # set cursor as hyprland doesn't respect gtk
+exec-once = arrpc &                                               # rpc server for discord
+exec-once = swhks &                                               # shortcut daemon
 #-------------------------------------------------
 
 #-----------------startup scripts-----------------
-exec-once = ${config.home.homeDirectory}/.scripts/wallpaper.sh   # swaybg and lutgen
-exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh # eww restarter and applets
+exec-once = ${config.home.homeDirectory}/.scripts/wallpaper.sh    # lutgen and wallpaper starter
+exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh  # eww restarter and applets
 #------------------------------------------------- 
 
 source = ${config.home.homeDirectory}/.config/hypr/colors
@@ -101,26 +103,31 @@ windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 #--------------------------------------------------
 
 #--------------other windowrules-------------------
-windowrule=float,^(pavucontrol)$                                 # sound controls
-windowrule = opacity 0.8,^(pavucontrol)$                         # sound controls
+windowrule=float,^(pavucontrol)$                                  # sound controls
+windowrule = opacity 0.8,^(pavucontrol)$                          # sound controls
 
-windowrule = float,^(nm-connection-editor)$                      # network manager
-windowrule = opacity 0.8,^(nm-connection-editor)$                # network manager
+windowrule = float,^(nm-connection-editor)$                       # network manager
+windowrule = opacity 0.8,^(nm-connection-editor)$                 # network manager
 
-windowrule = float, blueman-manager                              # bluetooth manager
-windowrule = opacity 0.8, blueman-manager                        # bluetooth manager
+windowrule = float, blueman-manager                               # bluetooth manager
+windowrule = opacity 0.8, blueman-manager                         # bluetooth manager
 #--------------------------------------------------
 
 #--------------other windowrules2------------------
-windowrulev2 = opacity 0.95 0.9,class:^(Spotify)$                # spotify
-windowrulev2 = opacity 0.95 0.95,class:^(firefox)$               # firefox
-windowrulev2 = opacity 0.95 0.9,class:^(vesktop)$                # discord client
-windowrulev2 = opacity 0.95 0.85,class:^(Alacritty)$             # terminal
-windowrulev2 = opacity 0.95 0.9,class:^(nemo)$                   # file manager
-windowrulev2 = opacity 0.95 0.9,class:^(code-url-handler)$       # vscode1
-windowrulev2 = opacity 0.95 0.9,class:^(Code)$                   # vscode2
-windowrulev2 = opacity 0.95 0.9,class:^(org.telegram.desktop)$   # telegram
+windowrulev2 = opacity 0.95 0.9,class:^(Spotify)$                 # spotify
+windowrulev2 = opacity 0.95 0.95,class:^(firefox)$                # firefox
+windowrulev2 = opacity 0.95 0.9,class:^(vesktop)$                 # discord client
+windowrulev2 = opacity 0.95 0.85,class:^(Alacritty)$              # terminal
+windowrulev2 = opacity 0.95 0.9,class:^(nemo)$                    # file manager
+windowrulev2 = opacity 0.95 0.9,class:^(code-url-handler)$        # vscode1
+windowrulev2 = opacity 0.95 0.9,class:^(Code)$                    # vscode2
+windowrulev2 = opacity 0.95 0.9,class:^(org.telegram.desktop)$    # telegram
 #--------------------------------------------------
     '';
   };
+
+  home.file.".config/hypr/hyprpaper.conf".text = ''
+    preload = ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp}
+    wallpaper = , ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp}
+  '';
 }
