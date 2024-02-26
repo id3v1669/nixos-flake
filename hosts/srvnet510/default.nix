@@ -10,6 +10,7 @@
     ./../../modules/nginx.nix
     ./../../modules/onlyoffice.nix #starts but doesn't connect to nextcloud
     ./../../modules/sops.nix
+    ./../../modules/vaultwarden.nix
     #./../../modules/shadowsocks.nix
   ];
 
