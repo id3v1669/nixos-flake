@@ -8,22 +8,27 @@
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+        proxyPass = "http://127.0.0.1:1669";
       };
     };
-    vaultwarden = {
-      enable = true;
-      dbBackend = "postgresql";
-      config = {
-        DOMAIN = "https://vw.${uservars.domain}";
-        SIGNUPS_ALLOWED = false;
-        ROCKET_ADDRESS = "127.0.0.1";
-        ROCKET_PORT = 8222;
-        ROCKET_LOG = "critical";
-        IP_HEADER = "X-Real-IP";
-        PASSWORD_HINTS_ALLOWED = false;
-        SHOW_PASSWORD_HINT = false;
-        USE_SYSLOG = true;
+  };
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers."vaultwarden" = {
+      autoStart = true;
+      image = "vaultwarden/server:latest";
+      ports = [
+        "1669:80"
+      ];
+      volumes = [
+        "/home/${uservars.name}/vaultwarden/vw-data/:/data/"
+      ];
+      environment = {
+        EMERGENCY_ACCESS_ALLOWED = "false";
+        SIGNUPS_ALLOWED = "false";
+        DISABLE_ADMIN_TOKEN = "true";
+        PASSWORD_HINTS_ALLOWED = "false";
+        SHOW_PASSWORD_HINT = "false";
       };
     };
   };
