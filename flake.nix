@@ -267,6 +267,13 @@
           defconf = true;
           timeout = 10;
         };
+        gpuvar = {
+          type = "nvidia";
+          tech = "prime";
+          busd = "PCI:01:00:0";
+          busi = "PCI:00:02:0";
+          port = "tbqhd";
+        };
       };
       nuc11phhyprtbfhd = mkSyst {
         hostname = "nuc11ph";
@@ -278,7 +285,12 @@
           domain = "none";
           wp = "skeleton.png";
           owner = "id3v1669";
-          sleeptimeout = 1200;
+          sleeptimeout = 99000;
+        };
+        bootloader = {
+          type = "opencore";
+          defconf = true;
+          timeout = 10;
         };
         gpuvar = {
           type = "nvidia";

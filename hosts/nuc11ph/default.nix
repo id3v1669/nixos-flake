@@ -67,6 +67,10 @@
       libimobiledevice
       ifuse
       fuzzel
+    #winePackages.waylandFull
+    #wineWowPackages.waylandFull
+    #wine64Packages.waylandFull
+    #wineWow64Packages.waylandFull
     #   nixified-ai.packages.${system}.invokeai-nvidia
     #   #nixified-ai.packages.${system}.textgen-nvidia
     # ]) ++ (with pkgs.cudaPackages; [

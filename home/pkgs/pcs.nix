@@ -17,8 +17,6 @@
     qjackctl                      # gui for jack
     #soundux                      # soundpad broken after webkitgtk update
     #over-soundux                 # soundpad broken after webkitgtk update
-    asio                          # ?? 
-    wineasio                      #asio for wine
     over-spotify                  # music player
 
     # vm, virt and emulators
@@ -56,7 +54,8 @@
     # games
     protonup-qt                   # proton and wine updater
     steam                         # game launcher
-    over-lutris
+    over-lutris                   # game launcher
+    mangohud                      # overlay for games & apps
 
     # files
     cinnamon.nemo-with-extensions # file manager(as nautilus has incorrect behavior with gtk themes)
