@@ -22,6 +22,7 @@
     # vm, virt and emulators
     distrobox                     # archbox for apps that are not in nixpkgs
     docker-compose                # docker-compose for tests
+    virtiofsd                     # virtiofsd for qemu
 
     # web
     networkmanagerapplet          # network manager applet
@@ -29,6 +30,7 @@
     over-tun2socks                # socks proxy for outline(shadowsocks)
     ungoogled-chromium            # backup browser
     wireguard-tools               # wireguard tools for experiments with vpn
+    tor-browser                   # tor browser for research
 
     # vid photo etc
     vlc                           # video player
