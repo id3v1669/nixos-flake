@@ -2,7 +2,7 @@
 , lib
 , pkgs
 , ...
-}: 
+}:
 {
   programs.rofi = {
     enable = true;
@@ -11,10 +11,9 @@
     location = "center";
     font = "JetBrainsMono Nerd Font Medium 10";
     plugins = (with pkgs; [
-      rofi-calc 
+      over-rofi-calc
       rofi-mpd
-      rofi-emoji
-      rofi-bluetooth
+      over-rofi-emoji
     ]);
     theme = let inherit (config.lib.formats.rasi) mkLiteral; in  
     {
@@ -78,7 +77,7 @@
       };
     };
     extraConfig = {
-      modi = "drun,emoji,ssh";
+      modi = "drun,calc,ssh";
       kb-primary-paste = "Control+V,Shift+Insert";
       kb-secondary-paste = "Control+v,Insert";
       display-drun = "Applications:";
