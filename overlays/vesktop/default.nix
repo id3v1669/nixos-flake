@@ -138,7 +138,7 @@ stdenv.mkDerivation rec {
         install -Dm0644 $file $out/share/icons/hicolor/''${file_suffix//x32.png}/apps/vencorddesktop.png
       done
 
-      makeWrapper ${electron}/bin/electron $out/bin/vencorddesktop \
+      makeWrapper ${electron}/bin/electron $out/bin/vesktop \
         --prefix LD_LIBRARY_PATH : ${libPath} \
         --add-flags $out/opt/Vesktop/resources/app.asar \
         --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
@@ -148,9 +148,9 @@ stdenv.mkDerivation rec {
 
   desktopItems = [
     (makeDesktopItem {
-      name = "vencorddesktop";
+      name = "vesktop";
       desktopName = "Vesktop";
-      exec = "vencorddesktop %U";
+      exec = "vesktop %U";
       icon = "vencorddesktop";
       startupWMClass = "VencordDesktop";
       genericName = "Internet Messenger";
