@@ -21,8 +21,8 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "rgb(${config.colorScheme.colors.base0C}) rgb(${config.colorScheme.colors.base0B}) 45deg";
-        "col.inactive_border" = "rgb(${config.colorScheme.colors.base01})";
+        "col.active_border" = "rgb(${config.colorScheme.palette.base0C}) rgb(${config.colorScheme.palette.base0B}) 45deg";
+        "col.inactive_border" = "rgb(${config.colorScheme.palette.base01})";
         layout = "dwindle";
       };
       decoration = {

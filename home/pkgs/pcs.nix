@@ -52,6 +52,7 @@
     # security
     nmap                          # network scanner
     openssl                       # cli encryption
+    rustdesk                      # remote desktop
 
     # games
     protonup-qt                   # proton and wine updater
@@ -105,6 +106,8 @@
     libpng                        # png lib
     libnotify                     # for dunst or mako
     libheif                       # heif lib
+    vulkan-headers                # vulkan lib
+    vulkan-loader                 # vulkan lib
 
     # other
     dconf                         # settings for gnome apps

@@ -11,28 +11,28 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
+      extraPackages = (with pkgs; [
         libva
         vaapiVdpau
         libvdpau-va-gl
-      ] ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [
+      ]) ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") (with pkgs; [
         nvidia-vaapi-driver
       ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar.type == "intel") (with pkgs; [
         intel-media-driver
         vaapi-intel-hybrid
         over-intel-vaapi-driver
       ]);
-      extraPackages32 = with pkgs.pkgsi686Linux; [
+      extraPackages32 = (with pkgs.pkgsi686Linux; [
         vaapiVdpau
         libvdpau-va-gl
-      ] ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs.pkgsi686Linux; [
+      ]) ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") (with pkgs.pkgsi686Linux; [
         nvidia-vaapi-driver
       ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar == "intel") (with pkgs.pkgsi686Linux; [
         intel-media-driver
         over-intel-vaapi-driver
       ]);
     };
-  } // lib.optionalAttrs (gpuvar.type == "nvidia") {
+  } // lib.optionalAttrs (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") {
     nvidia = {
       open = false;
       nvidiaSettings = true;
@@ -69,6 +69,6 @@
   };
   services.xserver.videoDrivers = [
   ] ++ lib.lists.optionals (gpuvar.type == "intel")[ "intel"
-  ] ++ lib.lists.optionals (gpuvar.type == "nvidia")[ "nvidia"
+  ] ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk")[ "nvidia"
   ] ++ lib.lists.optionals (gpuvar.type == "amd" || cpuvar == "amd" ) [ "amdgpu" "radeon" ];
 }

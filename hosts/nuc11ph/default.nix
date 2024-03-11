@@ -58,8 +58,11 @@
     variables = {
       #system vars
       EDITOR = "nano";
+    } // lib.optionalAttrs (gpuvar.tech == "native" || gpuvar.tech == "nvk") {
+      WLR_DRM_DEVICES = "/dev/dri/card0";                  # output with nvidia only
+    } // lib.optionalAttrs (gpuvar.tech == "prime") {
       WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";   # output with intel, nvidia sync mode
-    } // lib.optionalAttrs (gpuvar.type == "nvk") {
+    } // lib.optionalAttrs (gpuvar.tech == "nvk") {
       NVK_I_WANT_A_BROKEN_VULKAN_DRIVER = "1";             # prep for nvk
       MESA_VK_VERSION_OVERRIDE = "1.3";                    # prep for nvk
     };

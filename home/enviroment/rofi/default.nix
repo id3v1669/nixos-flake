@@ -19,11 +19,11 @@
     theme = let inherit (config.lib.formats.rasi) mkLiteral; in  
     {
       "*" = {
-        bg = mkLiteral "#${config.colorScheme.colors.base00}66";
-        bg-alt = mkLiteral "#${config.colorScheme.colors.base02}66";
-        bg-selected = mkLiteral "#${config.colorScheme.colors.base01}66";
-        fg = mkLiteral "#${config.colorScheme.colors.base05}";
-        fg-alt = mkLiteral "#${config.colorScheme.colors.base08}";
+        bg = mkLiteral "#${config.colorScheme.palette.base00}66";
+        bg-alt = mkLiteral "#${config.colorScheme.palette.base02}66";
+        bg-selected = mkLiteral "#${config.colorScheme.palette.base01}66";
+        fg = mkLiteral "#${config.colorScheme.palette.base05}";
+        fg-alt = mkLiteral "#${config.colorScheme.palette.base08}";
         border = 0;
         margin = 0;
         padding = 0;

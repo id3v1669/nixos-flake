@@ -29,7 +29,7 @@
     };
     docker = {
       enable = true;
-    } // lib.optionalAttrs (gpuvar.type == "nvidia") { enableNvidia = true; };
+    } // lib.optionalAttrs (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") { enableNvidia = true; };
   };
 }
 

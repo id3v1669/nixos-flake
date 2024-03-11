@@ -5,6 +5,7 @@
 , colorsvar
 , desk
 , nix-colors
+, gpuvar
 , ...
 }:
 {
@@ -35,7 +36,7 @@
     sessionVariables = {
       WLR_RENDERER="vulkan";
       NIXOS_OZONE_WL = "1";
-	    MOZ_ENABLE_WAYLAND = "1";            
+	    MOZ_ENABLE_WAYLAND = "1";
 	    _JAVA_AWT_WM_NONREPARENTING = "1";
       SDL_VIDEODRIVER = "wayland";
 	    CLUTTER_BACKEND = "wayland";
@@ -44,12 +45,12 @@
 	    XDG_SESSION_TYPE = "wayland";
       XDG_CURRENT_DESKTOP = "${envir}";
 	    XDG_SESSION_DESKTOP = "${envir}";
-
-		  #args for gmaes
-		  __GL_THREADED_OPTIMIZATIONS="1";
-		  __GL_SHADER_DISK_CACHE="1";
-		  __GL_SHADER_DISK_CACHE_SKIP_CLEANUP="1";
-	  };
+	  } // lib.optionalAttrs (gpuvar.tech == "native") {
+      LIBVA_DRIVER_NAME = "nvidia";
+      GBM_BACKEND = "nvidia-drm";
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      #WLR_NO_HARDWARE_CURSORS = "1";
+    };
   };
 } // lib.optionalAttrs (desk != "server") {
   colorScheme = nix-colors.colorSchemes.${colorsvar};

@@ -21,43 +21,43 @@ OBSThemeMeta {
 }
 
 OBSTheme {
-    window: ${hexToRgb "${config.colorScheme.colors.base00}"};
-    windowText: ${hexToRgb "${config.colorScheme.colors.base07}"};
-    base: ${hexToRgb "${config.colorScheme.colors.base01}"};
-    alternateBase: ${hexToRgb "${config.colorScheme.colors.base01}"};
-    text: ${hexToRgb "${config.colorScheme.colors.base05}"};
-    button: ${hexToRgb "${config.colorScheme.colors.base02}"};
-    buttonText: ${hexToRgb "${config.colorScheme.colors.base07}"};
-    brightText: ${hexToRgb "${config.colorScheme.colors.base07}"};
+    window: ${hexToRgb "${config.colorScheme.palette.base00}"};
+    windowText: ${hexToRgb "${config.colorScheme.palette.base07}"};
+    base: ${hexToRgb "${config.colorScheme.palette.base01}"};
+    alternateBase: ${hexToRgb "${config.colorScheme.palette.base01}"};
+    text: ${hexToRgb "${config.colorScheme.palette.base05}"};
+    button: ${hexToRgb "${config.colorScheme.palette.base02}"};
+    buttonText: ${hexToRgb "${config.colorScheme.palette.base07}"};
+    brightText: ${hexToRgb "${config.colorScheme.palette.base07}"};
 
-    light: ${hexToRgb "${config.colorScheme.colors.base02}"};
-    mid: ${hexToRgb "${config.colorScheme.colors.base00}"};
-    dark: ${hexToRgb "${config.colorScheme.colors.base01}"};
-    shadow: ${hexToRgb "${config.colorScheme.colors.base01}"};
+    light: ${hexToRgb "${config.colorScheme.palette.base02}"};
+    mid: ${hexToRgb "${config.colorScheme.palette.base00}"};
+    dark: ${hexToRgb "${config.colorScheme.palette.base01}"};
+    shadow: ${hexToRgb "${config.colorScheme.palette.base01}"};
 
-    highlight: ${hexToRgb "${config.colorScheme.colors.base0D}"};
-    highlightedText: ${hexToRgb "${config.colorScheme.colors.base07}"};
+    highlight: ${hexToRgb "${config.colorScheme.palette.base0D}"};
+    highlightedText: ${hexToRgb "${config.colorScheme.palette.base07}"};
 
-    link: ${hexToRgb "${config.colorScheme.colors.base06}"};
-    linkVisited: ${hexToRgb "${config.colorScheme.colors.base0F}"};
+    link: ${hexToRgb "${config.colorScheme.palette.base06}"};
+    linkVisited: ${hexToRgb "${config.colorScheme.palette.base0F}"};
 }
 
 OBSTheme::disabled {
-    text: ${hexToRgb "${config.colorScheme.colors.base04}"};
-    buttonText: ${hexToRgb "${config.colorScheme.colors.base04}"};
-    brightText: ${hexToRgb "${config.colorScheme.colors.base01}"};
+    text: ${hexToRgb "${config.colorScheme.palette.base04}"};
+    buttonText: ${hexToRgb "${config.colorScheme.palette.base04}"};
+    brightText: ${hexToRgb "${config.colorScheme.palette.base01}"};
 }
 
 OBSTheme::inactive {
-    highlight: ${hexToRgb "${config.colorScheme.colors.base01}"};
-    highlightedText: ${hexToRgb "${config.colorScheme.colors.base05}"};
+    highlight: ${hexToRgb "${config.colorScheme.palette.base01}"};
+    highlightedText: ${hexToRgb "${config.colorScheme.palette.base05}"};
 }
 
 QWidget {
     background-color: palette(window);
     alternate-background-color: palette(base);
     color: palette(text);
-    selection-background-color: ${hexToRgb "${config.colorScheme.colors.base03}"};
+    selection-background-color: ${hexToRgb "${config.colorScheme.palette.base03}"};
     selection-color: palette(text);
 }
 
@@ -86,7 +86,7 @@ QMenuBar::item {
 QListView::item:selected:!active,
 SourceTree::item:selected:!active {
     color: palette(text);
-    background-color: ${hexToRgb "${config.colorScheme.colors.base03}"};
+    background-color: ${hexToRgb "${config.colorScheme.palette.base03}"};
 }
 
 QListView QLineEdit,
@@ -241,7 +241,7 @@ QToolButton:last-child {
 
 QPushButton[toolButton="true"]:hover,
 QToolButton:hover {
-    background-color: ${hexToRgb "${config.colorScheme.colors.base03}"}; 
+    background-color: ${hexToRgb "${config.colorScheme.palette.base03}"}; 
     border-radius: none;
 }
 
@@ -331,7 +331,7 @@ QTabBar::tab:selected {
 }
 
 QTabBar::tab:hover {
-    background-color: ${hexToRgb "${config.colorScheme.colors.base03}"};
+    background-color: ${hexToRgb "${config.colorScheme.palette.base03}"};
 }
 
 QTabBar::tab:pressed {
@@ -344,7 +344,7 @@ QComboBox {
     border-style: solid;
     border: 1px;
     border-radius: 3px;
-    border-color: ${hexToRgb "${config.colorScheme.colors.base01}"};
+    border-color: ${hexToRgb "${config.colorScheme.palette.base01}"};
     padding: 2px;
     padding-left: 10px;
 }
@@ -433,7 +433,7 @@ QSpinBox::down-button, QDoubleSpinBox::down-button {
 }
 
 QSpinBox::up-button:hover, QSpinBox::down-button:hover, QDoubleSpinBox::up-button:hover, QDoubleSpinBox::down-button:hover {
-    background-color: ${hexToRgb "${config.colorScheme.colors.base03}"};
+    background-color: ${hexToRgb "${config.colorScheme.palette.base03}"};
 }
 
 QSpinBox::up-button:pressed, QSpinBox::down-button:pressed, QDoubleSpinBox::up-button:pressed, QDoubleSpinBox::down-button:pressed {
@@ -477,7 +477,7 @@ QPushButton:checked {
 }
 
 QPushButton:hover {
-    background-color: ${hexToRgb "${config.colorScheme.colors.base03}"};
+    background-color: ${hexToRgb "${config.colorScheme.palette.base03}"};
 }
 
 QPushButton:pressed {
@@ -485,7 +485,7 @@ QPushButton:pressed {
 }
 
 QPushButton:disabled {
-    background-color: ${hexToRgb "${config.colorScheme.colors.base01}"};
+    background-color: ${hexToRgb "${config.colorScheme.palette.base01}"};
     
 }
 
@@ -561,19 +561,19 @@ QSlider::handle:hover {
 }
 
 QSlider::handle:disabled {
-    background-color: ${hexToRgb "${config.colorScheme.colors.base03}"};
+    background-color: ${hexToRgb "${config.colorScheme.palette.base03}"};
 }
 
 VolumeMeter {
-    qproperty-backgroundNominalColor: ${hexToRgb "${config.colorScheme.colors.base0B}"};
-    qproperty-backgroundWarningColor: ${hexToRgb "${config.colorScheme.colors.base09}"};
-    qproperty-backgroundErrorColor: ${hexToRgb "${config.colorScheme.colors.base08}"};
-    qproperty-foregroundNominalColor: ${hexToRgb "${config.colorScheme.colors.base01}"};
-    qproperty-foregroundWarningColor: ${hexToRgb "${config.colorScheme.colors.base01}"};
-    qproperty-foregroundErrorColor: ${hexToRgb "${config.colorScheme.colors.base01}"};
-    qproperty-magnitudeColor: ${hexToRgb "${config.colorScheme.colors.base0C}"};
-    qproperty-majorTickColor: ${hexToRgb "${config.colorScheme.colors.base05}"};
-    qproperty-minorTickColor: ${hexToRgb "${config.colorScheme.colors.base04}"};
+    qproperty-backgroundNominalColor: ${hexToRgb "${config.colorScheme.palette.base0B}"};
+    qproperty-backgroundWarningColor: ${hexToRgb "${config.colorScheme.palette.base09}"};
+    qproperty-backgroundErrorColor: ${hexToRgb "${config.colorScheme.palette.base08}"};
+    qproperty-foregroundNominalColor: ${hexToRgb "${config.colorScheme.palette.base01}"};
+    qproperty-foregroundWarningColor: ${hexToRgb "${config.colorScheme.palette.base01}"};
+    qproperty-foregroundErrorColor: ${hexToRgb "${config.colorScheme.palette.base01}"};
+    qproperty-magnitudeColor: ${hexToRgb "${config.colorScheme.palette.base0C}"};
+    qproperty-majorTickColor: ${hexToRgb "${config.colorScheme.palette.base05}"};
+    qproperty-minorTickColor: ${hexToRgb "${config.colorScheme.palette.base04}"};
     qproperty-meterThickness: 3;
     qproperty-meterFontScaling: 0.7;
 }
@@ -606,7 +606,7 @@ MuteCheckBox::indicator:unchecked {
 }
 
 OBSHotkeyLabel[hotkeyPairHover=true] {
-    color: ${hexToRgb "${config.colorScheme.colors.base0D}"};
+    color: ${hexToRgb "${config.colorScheme.palette.base0D}"};
 }
 
 SourceTreeSubItemCheckBox {
@@ -628,27 +628,27 @@ SourceTreeSubItemCheckBox::indicator:unchecked {
 }
 
 QLabel#warningLabel {
-    color: ${hexToRgb "${config.colorScheme.colors.base09}"};
+    color: ${hexToRgb "${config.colorScheme.palette.base09}"};
     font-weight: bold;
 }
 
 QLabel#errorLabel {
-    color: ${hexToRgb "${config.colorScheme.colors.base08}"};
+    color: ${hexToRgb "${config.colorScheme.palette.base08}"};
     font-weight: bold;
 }
 
 * [themeID="warning"] {
-    color: ${hexToRgb "${config.colorScheme.colors.base09}"};
+    color: ${hexToRgb "${config.colorScheme.palette.base09}"};
     font-weight: bold;
 }
 
 * [themeID="error"] {
-    color: ${hexToRgb "${config.colorScheme.colors.base08}"};
+    color: ${hexToRgb "${config.colorScheme.palette.base08}"};
     font-weight: bold;
 }
 
 * [themeID="good"] {
-    color: ${hexToRgb "${config.colorScheme.colors.base0B}"};
+    color: ${hexToRgb "${config.colorScheme.palette.base0B}"};
     font-weight: bold;
 }
 
@@ -677,7 +677,7 @@ OBSQTDisplay {
 * [themeID="previewProgramLabels"] {
     font-size: 18px;
     font-weight: bold;
-    color: ${hexToRgb "${config.colorScheme.colors.base07}"};
+    color: ${hexToRgb "${config.colorScheme.palette.base07}"};
 }
 
 OBSBasicSettings {
@@ -731,7 +731,7 @@ QPushButton#extraPanelDelete {
 }
 
 QPushButton#extraPanelDelete:hover {
-    background-color: ${hexToRgb "${config.colorScheme.colors.base03}"};
+    background-color: ${hexToRgb "${config.colorScheme.palette.base03}"};
 }
 
 QPushButton#extraPanelDelete:pressed {
@@ -778,11 +778,11 @@ SceneTree {
 }
 
 *[gridMode="true"] SceneTree::item:selected {
-    background-color: ${hexToRgb "${config.colorScheme.colors.base03}"};
+    background-color: ${hexToRgb "${config.colorScheme.palette.base03}"};
 }
 
 *[gridMode="true"] SceneTree::item:hover {
-    background-color: ${hexToRgb "${config.colorScheme.colors.base03}"};
+    background-color: ${hexToRgb "${config.colorScheme.palette.base03}"};
 }
 
 *[gridMode="true"] SceneTree::item:pressed {
@@ -790,7 +790,7 @@ SceneTree {
 }
 
 *[gridMode="true"] SceneTree::item:checked {
-    background-color: ${hexToRgb "${config.colorScheme.colors.base03}"};
+    background-color: ${hexToRgb "${config.colorScheme.palette.base03}"};
 }
 
 * [themeID="replayIconSmall"] {
@@ -847,7 +847,7 @@ OBSYoutubeActions {
 }
 
 #ytEventList QLabel {
-    color: ${hexToRgb "${config.colorScheme.colors.base07}"}; 
+    color: ${hexToRgb "${config.colorScheme.palette.base07}"}; 
     background-color: palette(light);
     border: none;
     border-radius: 3px;
@@ -855,11 +855,11 @@ OBSYoutubeActions {
 }
 
 #ytEventList QLabel:hover {
-    background: ${hexToRgb "${config.colorScheme.colors.base02}"};
+    background: ${hexToRgb "${config.colorScheme.palette.base02}"};
 }
 
 #ytEventList QLabel[isSelectedEvent=true] {
-    background: ${hexToRgb "${config.colorScheme.colors.base03}"};
+    background: ${hexToRgb "${config.colorScheme.palette.base03}"};
     border: none;
 }
 
@@ -905,19 +905,19 @@ QCalendarWidget #qt_calendar_nextmonth {
 }
 
 QCalendarWidget QToolButton:hover {
-    background-color: ${hexToRgb "${config.colorScheme.colors.base03}"};
+    background-color: ${hexToRgb "${config.colorScheme.palette.base03}"};
     border-radius: 3px;
 }
 
 QCalendarWidget QToolButton:pressed {
-    background-color: ${hexToRgb "${config.colorScheme.colors.base01}"};
+    background-color: ${hexToRgb "${config.colorScheme.palette.base01}"};
 }
 
 QCalendarWidget QMenu {
 
 }
 QCalendarWidget QSpinBox {
-    background-color: ${hexToRgb "${config.colorScheme.colors.base01}"};
+    background-color: ${hexToRgb "${config.colorScheme.palette.base01}"};
     border: none;
     border-radius: 3px;
     margin: 0px 3px 0px 0px;
@@ -933,12 +933,12 @@ QCalendarWidget QWidget { alternate-background-color: palette(base); }
 QCalendarWidget QAbstractItemView:enabled {
     background-color: palette(base);
     color: palette(text);
-    selection-background-color: ${hexToRgb "${config.colorScheme.colors.base01}"};
+    selection-background-color: ${hexToRgb "${config.colorScheme.palette.base01}"};
     selection-color: palette(text);
 }
 
 QCalendarWidget QAbstractItemView:disabled {
-    color: ${hexToRgb "${config.colorScheme.colors.base03}"};
+    color: ${hexToRgb "${config.colorScheme.palette.base03}"};
 }
 QDialogButtonBox {
     dialogbuttonbox-buttons-have-icons: 0;

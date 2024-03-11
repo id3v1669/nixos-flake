@@ -46,34 +46,34 @@
         "${mod}+Shift+r" = "exec rofi -show";
       };
       colors = {
-        background = "#${config.colorScheme.colors.base00}";
+        background = "#${config.colorScheme.palette.base00}";
         focused = {
-          background = "#${config.colorScheme.colors.base00}";
-          border = "#${config.colorScheme.colors.base05}";
-          childBorder = "#${config.colorScheme.colors.base05}";
-          indicator = "#${config.colorScheme.colors.base03}";
-          text = "#${config.colorScheme.colors.base01}";
+          background = "#${config.colorScheme.palette.base00}";
+          border = "#${config.colorScheme.palette.base05}";
+          childBorder = "#${config.colorScheme.palette.base05}";
+          indicator = "#${config.colorScheme.palette.base03}";
+          text = "#${config.colorScheme.palette.base01}";
         };
         unfocused = {
-          background = "#${config.colorScheme.colors.base01}";
-          border = "#${config.colorScheme.colors.base01}";
-          childBorder = "#${config.colorScheme.colors.base01}";
-          indicator = "#${config.colorScheme.colors.base03}";
-          text = "#${config.colorScheme.colors.base06}";
+          background = "#${config.colorScheme.palette.base01}";
+          border = "#${config.colorScheme.palette.base01}";
+          childBorder = "#${config.colorScheme.palette.base01}";
+          indicator = "#${config.colorScheme.palette.base03}";
+          text = "#${config.colorScheme.palette.base06}";
         };
         urgent = {
-          background = "#${config.colorScheme.colors.base04}";
-          border = "#${config.colorScheme.colors.base01}";
-          childBorder = "#${config.colorScheme.colors.base01}";
-          indicator = "#${config.colorScheme.colors.base03}";
-          text = "#${config.colorScheme.colors.base06}";
+          background = "#${config.colorScheme.palette.base04}";
+          border = "#${config.colorScheme.palette.base01}";
+          childBorder = "#${config.colorScheme.palette.base01}";
+          indicator = "#${config.colorScheme.palette.base03}";
+          text = "#${config.colorScheme.palette.base06}";
         };
         placeholder = {
-          background = "#${config.colorScheme.colors.base04}";
-          border = "#${config.colorScheme.colors.base01}";
-          childBorder = "#${config.colorScheme.colors.base01}";
-          indicator = "#${config.colorScheme.colors.base03}";
-          text = "#${config.colorScheme.colors.base06}";
+          background = "#${config.colorScheme.palette.base04}";
+          border = "#${config.colorScheme.palette.base01}";
+          childBorder = "#${config.colorScheme.palette.base01}";
+          indicator = "#${config.colorScheme.palette.base03}";
+          text = "#${config.colorScheme.palette.base06}";
         };
       };
     };

@@ -10,11 +10,21 @@
   imports =[ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
-    blacklistedKernelModules = [ ] ++ lib.lists.optionals (gpuvar.type == "nvk") ["nvidia" "nvidia_uvm" ];
-    kernelModules = [ "kvm-intel" "i2c-dev" "i2c-i801" ] ++ lib.lists.optionals (gpuvar.type == "nvk") [ "nouveau" ];
+    blacklistedKernelModules = [ ] ++ lib.lists.optionals (gpuvar.tech == "nvk") ["nvidia" "nvidia_uvm" ];
+    kernelModules = [ 
+      "kvm-intel"
+      "i2c-dev"
+      "i2c-i801"
+    ] ++ lib.lists.optionals (gpuvar.tech == "nvk") [
+      #"nouveau"
+      #"nouveau-experimental"
+    ];
     kernelParams = [
+    ] ++ lib.lists.optionals (gpuvar.tech == "prime") [
       "i915.force_probe=9a49"
-    ] ++ lib.lists.optionals (gpuvar.type == "nvk") [
+    ] ++ lib.lists.optionals (gpuvar.tech == "native") [
+      "nvidia_drm.modeset=1"
+    ] ++ lib.lists.optionals (gpuvar.tech == "nvk") [
       "nouveau.config=NvGspRm=1"
       "nouveau.debug=info,VBIOS=info,gsp=debug"
     ];

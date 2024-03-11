@@ -28,7 +28,7 @@
         font = "Source Sans Pro 10";
         line_height = 0;
         markup = "full";
-        format = "<span foreground='#${config.colorScheme.colors.base06}'><b>%s %p</b></span>\n%b";
+        format = "<span foreground='#${config.colorScheme.palette.base06}'><b>%s %p</b></span>\n%b";
         alignment = "left";
         vertical_alignment = "center";
         show_age_threshold = 60;
@@ -47,10 +47,10 @@
         mouse_middle_click = "close_current";
         mouse_right_click = "close_all";
         notification_limit = 5;
-        frame_color = "#${config.colorScheme.colors.base05}";
-        separator_color = "#${config.colorScheme.colors.base05}";
-        background = "#${config.colorScheme.colors.base02}";
-        foreground = "#${config.colorScheme.colors.base05}";
+        frame_color = "#${config.colorScheme.palette.base05}";
+        separator_color = "#${config.colorScheme.palette.base05}";
+        background = "#${config.colorScheme.palette.base02}";
+        foreground = "#${config.colorScheme.palette.base05}";
       };
     };
   };
