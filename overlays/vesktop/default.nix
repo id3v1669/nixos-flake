@@ -23,20 +23,20 @@ let
     src = fetchFromGitHub {
       owner = "Vendicated";
       repo = "Vencord";
-      rev = "v1.7.1";
-      hash = "sha256-lNFQxg1sDWPH/a9APqnToHYhO+XGCFhGjjz7tiyf3/w=";
+      rev = "v1.7.2";
+      hash = "sha256-+5IGO8ogD6tvRu67AQJMPg5uHWbLRlLR/bseeoN2HKs=";
     };
   });
 in
 stdenv.mkDerivation rec {
   pname = "vesktop";
-  version = "1.5.0";
+  version = "1.5.1";
 
   src = fetchFromGitHub {
     owner = "Vencord";
     repo = "Vesktop";
     rev = "v${version}";
-    hash = "sha256-27998q9wbaNP1xYY+KHTBeJRfR6Q/K0LNdbRb3YHC6c=";
+    hash = "sha256-OyAGzlwwdEKBbJJ7h3glwx/THy2VvUn/kA/Df3arWQU=";
   };
 
   pnpmDeps =
@@ -80,7 +80,7 @@ stdenv.mkDerivation rec {
       dontBuild = true;
       dontFixup = true;
       outputHashMode = "recursive";
-      outputHash = "sha256-cnk+KFdvsgG1wGDib7zgIS6/RkrR5EYAHtHcrFSU0Es=";
+      outputHash = "sha256-JLjJZYFMH4YoIFuyXbGUp6lIy+VlYZtmwk2+oUwtTxQ=";
     };
 
   nativeBuildInputs = [
@@ -135,7 +135,7 @@ stdenv.mkDerivation rec {
       ${libicns}/bin/icns2png -x icon.icns
       for file in icon_*x32.png; do
         file_suffix=''${file//icon_}
-        install -Dm0644 $file $out/share/icons/hicolor/''${file_suffix//x32.png}/apps/vencorddesktop.png
+        install -Dm0644 $file $out/share/icons/hicolor/''${file_suffix//x32.png}/apps/vesktop.png
       done
 
       makeWrapper ${electron}/bin/electron $out/bin/vesktop \
@@ -145,14 +145,13 @@ stdenv.mkDerivation rec {
 
       runHook postInstall
     '';
-
   desktopItems = [
     (makeDesktopItem {
       name = "vesktop";
       desktopName = "Vesktop";
       exec = "vesktop %U";
-      icon = "vencorddesktop";
-      startupWMClass = "VencordDesktop";
+      icon = "vesktop";
+      startupWMClass = "Vesktop";
       genericName = "Internet Messenger";
       keywords = [ "discord" "vencord" "electron" "chat" ];
       categories = [ "Network" "InstantMessaging" "Chat" ];
