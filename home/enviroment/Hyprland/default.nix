@@ -86,6 +86,7 @@ exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh  # eww restarte
 #------------------------------------------------- 
 
 source = ${config.home.homeDirectory}/.config/hypr/colors
+source = ${config.home.homeDirectory}/.config/hypr/test.conf
 
 #------------------kitty for btop------------------
 windowrule = float,^(kitty)$
@@ -116,12 +117,17 @@ windowrule = opacity 0.8, blueman-manager                         # bluetooth ma
 #--------------other windowrules2------------------
 windowrulev2 = opacity 0.95 0.9,class:^(Spotify)$                 # spotify
 windowrulev2 = opacity 0.95 0.95,class:^(firefox)$                # firefox
-windowrulev2 = opacity 0.95 0.9,class:^(vesktop)$                 # discord client
 windowrulev2 = opacity 0.95 0.85,class:^(Alacritty)$              # terminal
 windowrulev2 = opacity 0.95 0.9,class:^(nemo)$                    # file manager
 windowrulev2 = opacity 0.95 0.9,class:^(code-url-handler)$        # vscode1
 windowrulev2 = opacity 0.95 0.9,class:^(Code)$                    # vscode2
 windowrulev2 = opacity 0.95 0.9,class:^(org.telegram.desktop)$    # telegram
+#Polkit
+windowrulev2 = float, class:(polkit-gnome-authentication-agent-1)
+windowrulev2 = center, class:(polkit-gnome-authentication-agent-1)
+#Discord client
+windowrulev2 = opacity 0.95 0.9,class:^(vesktop)$
+windowrulev2 = workspace 2, class:(vesktop)
 #--------------------------------------------------
     '';
   };

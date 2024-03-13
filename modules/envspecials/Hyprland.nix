@@ -6,7 +6,7 @@
   security.polkit.enable = true;
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
+    wlr.enable = false;
     config.common = {
       default = "gtk";
       "org.freedesktop.impl.portal.Screencast" = "hyprland";
