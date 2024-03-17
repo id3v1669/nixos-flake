@@ -52,7 +52,7 @@
     # security
     nmap                          # network scanner
     openssl                       # cli encryption
-    rustdesk                      # remote desktop
+    #rustdesk                      # remote desktop
 
     # games
     protonup-qt                   # proton and wine updater
