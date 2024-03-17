@@ -8,6 +8,8 @@
     ./../configuration.nix
     ./../../modules/nextcloud.nix
     ./../../modules/nginx.nix
+    ./../../modules/httpd.nix
+    ./../../modules/web.nix
     ./../../modules/onlyoffice.nix #starts but doesn't connect to nextcloud
     ./../../modules/sops.nix
     ./../../modules/vaultwarden.nix
