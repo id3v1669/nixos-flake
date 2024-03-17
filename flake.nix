@@ -441,6 +441,7 @@
         };
         gpuvar = {
           type = "none";
+          tech = "none";
         };
         uservars = {
           name = "srvnet510pq";
