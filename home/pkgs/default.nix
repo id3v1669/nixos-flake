@@ -26,6 +26,7 @@
     gh                            # github auth helper
 
     # crypt
+    openssl                       # cert generation
     age                           # cli encryption
     sops                          # sops for secrets
   ];

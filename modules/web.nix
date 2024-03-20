@@ -17,10 +17,17 @@
         ];
       };
     };
-    nginx.virtualHosts."${uservars.domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://127.0.0.1:8081";
+    nginx.virtualHosts = {
+      "${uservars.domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/".proxyPass = "http://127.0.0.1:8081";
+      };
+      "nico.ni" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/".proxyPass = "http://127.0.0.1:8081";
+      };
     };
   };
 }
