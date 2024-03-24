@@ -10,6 +10,7 @@
 , vencord
 , electron
 , pipewire
+, libpulseaudio
 , libicns
 , libnotify
 , jq
@@ -23,8 +24,8 @@ let
     src = fetchFromGitHub {
       owner = "Vendicated";
       repo = "Vencord";
-      rev = "v1.7.2";
-      hash = "sha256-+5IGO8ogD6tvRu67AQJMPg5uHWbLRlLR/bseeoN2HKs=";
+      rev = "v1.7.3";
+      hash = "sha256-BsM7Gt1NEsZu/rxK58+Tix1xIJr6RvgbdjxVnro2soA=";
     };
   });
 in
@@ -117,12 +118,15 @@ stdenv.mkDerivation rec {
       -c.electronVersion=${electron.version}
   '';
 
+  # this is consistent with other nixpkgs electron packages and upstream, as far as I am aware
   installPhase =
     let
+      # this is mainly required for venmic
       libPath = lib.makeLibraryPath [
+        libpulseaudio
         libnotify
         pipewire
-        gcc13Stdenv.cc.cc.lib
+        stdenv.cc.cc.lib
       ];
     in
     ''
@@ -145,6 +149,7 @@ stdenv.mkDerivation rec {
 
       runHook postInstall
     '';
+
   desktopItems = [
     (makeDesktopItem {
       name = "vesktop";
