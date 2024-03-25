@@ -379,6 +379,7 @@
         };
         gpuvar = {
           type = "amd";
+          tech = "amd";
         };
       };
       l14g3sway = mkSyst { 
