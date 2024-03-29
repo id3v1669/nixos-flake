@@ -56,8 +56,9 @@ in
     over-sherlock                 # find accounts by username
 
     egl-wayland                   # for nvidia vms
-    prismlauncher                 # minecraft launcher
-    #libsForQt5.kdenlive          # video editing currently installed via flatpak(fix needed)
+    over-prismlauncher            # minecraft launcher
+    
+    libsForQt5.kdenlive           # video editing
     gimp                          # image editing
     over-outline-manager          # outline manager vpn(proxy)
 

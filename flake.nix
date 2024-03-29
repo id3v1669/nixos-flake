@@ -9,10 +9,8 @@
     nixmox.url = "github:Sorixelle/nixmox";
     sops-nix.url = "github:Mic92/sops-nix";
     nixified-ai.url = "github:nixified-ai/flake";
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    prism-launcher.url = "github:PrismLauncher/PrismLauncher";
+    nur.url = "github:nix-community/NUR";
     eww-tray = {
      url = "github:ralismark/eww/tray-3";
      flake = true;
@@ -21,12 +19,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.37.1";
+      url = "github:hyprwm/Hyprland"; # "github:hyprwm/Hyprland/v0.37.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xdghypr = {
@@ -52,6 +46,7 @@
 , sops-nix
 , nix-colors
 , nixified-ai
+, prism-launcher
 , ... }@inputs: 
   let
     inherit (self) outputs;
@@ -112,6 +107,7 @@
       [
         nur.overlay
         nixmox.overlay
+        prism-launcher.overlays.default
         (final: prev: {
           over-intel-vaapi-driver = prev.vaapiIntel.override { enableHybridCodec = true; };     # intel vaapi driver with hybrid codec support
           over-opencore = (prev.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
@@ -137,6 +133,7 @@
           over-rofi-calc = (import ./overlays/rofi-calc.nix { inherit pkgs; });                 # rofi-calc overlay as package has non-wayland build input
           over-rofi-emoji = (import ./overlays/rofi-emoji.nix { inherit pkgs; });               # rofi-emoji overlay as package has non-wayland build input
           over-discord = (import ./overlays/discord.nix { inherit pkgs; });                     # discord for testing
+          over-prismlauncher = (import ./overlays/prismlauncher.nix { inherit pkgs; });         # minecraft launcher with java replacement
           #-------------------------------------------------------------------------------------ai cuda stuff
           over-fooocus = (prev.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
           over-accelerate = (prev.python311Packages.accelerate.override {
@@ -227,7 +224,7 @@
         uservars = {
           name = "user";
           description = "id3v1669";
-          proxy = true;
+          proxy = false;
           domain = "none";
           wp = "sound.png";
           owner = "id3v1669";
@@ -264,7 +261,7 @@
         uservars = {
           name = "user";
           description = "id3v1669";
-          proxy = true;
+          proxy = false;
           domain = "none";
           wp = "skeleton.png";
           owner = "id3v1669";
@@ -289,7 +286,7 @@
         uservars = {
           name = "user";
           description = "id3v1669";
-          proxy = true;
+          proxy = false;
           domain = "none";
           wp = "skeleton.png";
           owner = "id3v1669";

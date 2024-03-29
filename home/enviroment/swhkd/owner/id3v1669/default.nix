@@ -51,9 +51,9 @@ xf86audioprev
 xf86audionext
   ${pkgs.playerctl}/bin/playerctl next
 xf86audiolowervolume
-  pamixer -d 10 && eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)"
+  pamixer -d 10
 xf86audioraisevolume
-  pamixer -i 10 && eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)"  
+  pamixer -i 10
 xf86audiomute 
   pamixer -t
 xf86audiomicmute

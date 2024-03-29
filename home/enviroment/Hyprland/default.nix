@@ -86,7 +86,6 @@ exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh  # eww restarte
 #------------------------------------------------- 
 
 source = ${config.home.homeDirectory}/.config/hypr/colors
-source = ${config.home.homeDirectory}/.config/hypr/test.conf
 
 #------------------kitty for btop------------------
 windowrule = float,^(kitty)$

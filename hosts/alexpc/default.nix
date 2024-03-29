@@ -3,7 +3,7 @@
 , ...
 }:
 {
-  imports =[ 
+  imports = [ 
     ./hardware-configuration.nix
     ./../configuration.nix
     ./../pcsconf.nix
@@ -14,6 +14,7 @@
     ./../../modules/gpu.nix
     ./../../modules/sudo.nix
     ./../../modules/swhkd.nix
+    ./../../modules/bluetooth.nix
   ];
 
   networking.firewall.enable = false;

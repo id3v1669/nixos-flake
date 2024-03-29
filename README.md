@@ -9,7 +9,7 @@ Latest commit to use: 02ffa51362050c45fd24ab3f3a631f0df9132dbd
 |-----|-----|-----|-----|
 | WM | Hyprland/Sway | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel) | - |
 | launcher | Rofi | - | - |
-| bar | eww | fork of eww with tray support | ToDo 7+6 |
+| bar | eww | fork of eww with tray support | - |
 | background | swaybg | - | - |
 | portals | gtk and hyprland/wlr(sway) | - | - |
 | login manager | gdm | - | - |
@@ -29,23 +29,17 @@ Latest commit to use: 02ffa51362050c45fd24ab3f3a631f0df9132dbd
 
 4. **rewrite readme**
 
-5. **migrate krita from flatpak to nixpkgs**
+5. **fix adb udev rules(overwrite or manual install instead of module)**
 
-6. **edit scripts to update eww sound and workspaces after hyprland loads**
+6. **patch invoke-ai(pytorch) to clean vram after error "CUDA error: out of memory"**
 
-7. **fix eww glitch on launcher button**
+7. **patch dsdt for nuc11ph(acpi errors)**
 
-8. **fix adb udev rules(overwrite or manual install instead of module)**
+8. **rewrite gtk theme**
 
-9. **patch invoke-ai(pytorch) to clean vram after error "CUDA error: out of memory"**
+9. **fix of frind alternative to swayidle as it doesn't react to gamepad**
 
-10. **patch dsdt for nuc11ph(acpi errors)**
-
-11. **rewrite gtk theme**
-
-12. **fix of frind alternative to swayidle as it doesn't react to gamepad**
-
-13. **add notification widget with notififcation history(eww?)**
+10. **add notification widget with notififcation history(eww?)**
 
 ## Notes:
 

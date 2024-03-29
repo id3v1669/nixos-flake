@@ -17,16 +17,16 @@
     pseudo = if envir=="Hyprland" then "hyprctl dispatch pseudo"
       else if envir == "sway" then "swaymsg pseudo"
       else "";
-    nextworkspace = if envir=="Hyprland" then "hyprctl dispatch workspace e+1 && bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
+    nextworkspace = if envir=="Hyprland" then "hyprctl dispatch workspace e+1"
       else if envir == "sway" then "swaymsg workspace next"
       else "";
-    prevworkspace = if envir=="Hyprland" then "hyprctl dispatch workspace e-1 && bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
+    prevworkspace = if envir=="Hyprland" then "hyprctl dispatch workspace e-1"
       else if envir == "sway" then "swaymsg workspace prev"
       else "";
-    movenextworkspace = if envir=="Hyprland" then "hyprctl dispatch movetoworkspace e+1 && bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
+    movenextworkspace = if envir=="Hyprland" then "hyprctl dispatch movetoworkspace e+1"
       else if envir == "sway" then "swaymsg move container to workspace next"
       else "";
-    moveprevworkspace = if envir=="Hyprland" then "hyprctl dispatch movetoworkspace e-1 && bash ${config.home.homeDirectory}/.scripts/eww_ws.sh"
+    moveprevworkspace = if envir=="Hyprland" then "hyprctl dispatch movetoworkspace e-1"
       else if envir == "sway" then "swaymsg move container to workspace prev"
       else "";
     fullscreen = if envir=="Hyprland" then "hyprctl dispatch fullscreen"
@@ -35,10 +35,10 @@
     nextactivewindow = if envir=="Hyprland" then "hyprctl dispatch cyclenext"
       else if envir == "sway" then "swaymsg focus next"
       else "";
-    movetoworkspace = if envir=="Hyprland" then "bash -c 'hyprctl dispatch movetoworkspace \"$@\" && ${config.home.homeDirectory}/.scripts/eww_ws.sh' -- "
+    movetoworkspace = if envir=="Hyprland" then "hyprctl dispatch movetoworkspace"
       else if envir == "sway" then "swaymsg move container to workspace"
       else "";
-    workspace = if envir=="Hyprland" then "bash -c 'hyprctl dispatch workspace \"$@\" && ${config.home.homeDirectory}/.scripts/eww_ws.sh' -- "
+    workspace = if envir=="Hyprland" then "hyprctl dispatch workspace"
       else if envir == "sway" then "swaymsg workspace"
       else "";
     movefocus = if envir=="Hyprland" then "hyprctl dispatch movefocus "
@@ -77,7 +77,7 @@ ctrl + left
   ${prevworkspace}
 
 super + {1-9, 0}
-  ${workspace} {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} 
+  ${workspace} {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
 ctrl + shift + right
   ${movenextworkspace}

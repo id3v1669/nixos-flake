@@ -36,6 +36,7 @@
     nvidia = {
       open = false;
       nvidiaSettings = true;
+      modesetting.enable = true;
       forceFullCompositionPipeline = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest; 
       # rtx 2060(laptop)-----------------

@@ -8,7 +8,7 @@
 , makeDesktopItem
 , copyDesktopItems
 , vencord
-, electron
+, electron_27
 , pipewire
 , libpulseaudio
 , libicns
@@ -24,8 +24,8 @@ let
     src = fetchFromGitHub {
       owner = "Vendicated";
       repo = "Vencord";
-      rev = "v1.7.3";
-      hash = "sha256-BsM7Gt1NEsZu/rxK58+Tix1xIJr6RvgbdjxVnro2soA=";
+      rev = "v1.7.4";
+      hash = "sha256-Ub8VzeTkka0oq0CYN/UHjOIH2y3F7Oy9QZpTi6glehI=";
     };
   });
 in
@@ -114,8 +114,8 @@ stdenv.mkDerivation rec {
     # using `pnpm exec` here apparently makes it ignore ELECTRON_SKIP_BINARY_DOWNLOAD
     ./node_modules/.bin/electron-builder \
       --dir \
-      -c.electronDist=${electron}/libexec/electron \
-      -c.electronVersion=${electron.version}
+      -c.electronDist=${electron_27}/libexec/electron \
+      -c.electronVersion=${electron_27.version}
   '';
 
   # this is consistent with other nixpkgs electron packages and upstream, as far as I am aware
@@ -142,7 +142,7 @@ stdenv.mkDerivation rec {
         install -Dm0644 $file $out/share/icons/hicolor/''${file_suffix//x32.png}/apps/vesktop.png
       done
 
-      makeWrapper ${electron}/bin/electron $out/bin/vesktop \
+      makeWrapper ${electron_27}/bin/electron $out/bin/vesktop \
         --prefix LD_LIBRARY_PATH : ${libPath} \
         --add-flags $out/opt/Vesktop/resources/app.asar \
         --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"

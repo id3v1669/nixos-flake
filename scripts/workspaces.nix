@@ -1,4 +1,5 @@
 { envir
+, pkgs
 , ...
 }:
 {
@@ -14,24 +15,29 @@ wss() {
       '';
       env = if envir == "Hyprland" then ''
   wsa=($(hyprctl workspaces | grep 'workspace ID .*(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }'))
-  curindex=($(hyprctl activeworkspace | grep 'workspace ID .*(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }'))
       '' else  if envir == "sway" then ''
   wsa=($(swaymsg -t get_workspaces | grep -o '"num":\s*[0-9]\+' | awk '{print $2}'))
-  curindex=($(swaymsg -t get_workspaces -p | grep "focused" | awk '{print $2}'))
       '' else '''';
       end = ''
-  max=$(printf "%s\n" "''${wsa[@]}" | sort -n | tail -n 1)
-  for (( counter=0; counter<max; counter++ )); do
-    ws[counter]=""
-  done
-  for index2 in "''${wsa[@]}"; do
-    ws[index2-1]=""
-  done
-  ws[curindex-1]=""
+    curindex="$1"
+    max=$(printf "%s\n" "''${wsa[@]}" | sort -n | tail -n 1)
+    for (( counter=0; counter<max; counter++ )); do
+        ws[counter]=""
+    done
+    for index2 in "''${wsa[@]}"; do
+        ws[index2-1]=""
+    done
+    ws[curindex-1]=""
+    eww update wss="''${ws[*]}"
 }
 
 wss
-eww update wss="''${ws[*]}"
+
+${pkgs.socat}/bin/socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | \
+stdbuf -o0 ${pkgs.gawk}/bin/awk -F '>>|,' -e '/^workspace>>/ {print $2}' -e '/^focusedmon>>/ {print $3}' | \
+while IFS= read -r line; do
+    wss "$line"
+done
       '';
       in
         start + env + end;

@@ -4,10 +4,9 @@
 , ...
 }: 
 {
-  #services.easyeffects = { crashes regularly disabled for now
-  #  enable = true;
-  #  #preset = ??
-  #};
+  services.easyeffects = {
+   enable = true;
+  };
   services = {
     playerctld.enable = true;
  };

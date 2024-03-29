@@ -11,5 +11,6 @@
     ./microphone.nix
     ./wallpapergen.nix
     ./dotnet.nix
+    ./volume.nix
   ];
 }

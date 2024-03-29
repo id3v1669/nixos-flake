@@ -15,6 +15,7 @@
     ./../../modules/gpu.nix
     ./../../modules/sudo.nix
     ./../../modules/swhkd.nix
+    ./../../modules/bluetooth.nix
   ];
   
   networking.firewall.enable = false;

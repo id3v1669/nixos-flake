@@ -21,15 +21,12 @@
     ./../../modules/swhkd.nix
     ./../../modules/sudo.nix
     ./../../modules/sops.nix
+    ./../../modules/bluetooth.nix
     nixified-ai.nixosModules.invokeai
   ];
 
   services.usbmuxd.enable = true;
   networking.firewall.enable = false;
-  sops.secrets."outline" = {
-    sopsFile = ./. + "/../../secrets/${uservars.owner}.enc.yaml";
-    owner = "${uservars.name}";
-  };
   hardware.bluetooth.settings = {
     General = {
       ControllerMode = "dual";
@@ -56,7 +53,6 @@
   ];
   environment = {
     variables = {
-      #system vars
       EDITOR = "nano";
     } // lib.optionalAttrs (gpuvar.tech == "native" || gpuvar.tech == "nvk") {
       WLR_DRM_DEVICES = "/dev/dri/card0";                  # output with nvidia only
@@ -70,39 +66,8 @@
       libimobiledevice
       ifuse
       fuzzel
-    #winePackages.waylandFull
-    #wineWowPackages.waylandFull
-    #wine64Packages.waylandFull
-    #wineWow64Packages.waylandFull
-    #   nixified-ai.packages.${system}.invokeai-nvidia
-    #   #nixified-ai.packages.${system}.textgen-nvidia
-    # ]) ++ (with pkgs.cudaPackages; [
-    #   nccl
-    #   saxpy
-    #   cudnn
-    #   libnpp
-    #   libcufft
-    #   cuda_gdb
-    #   nvidia_fs
-    #   libnvjpeg
-    #   libcurand
-    #   libcufile
-    #   libcublas
-    #   cudnn_8_8
-    #   cuda_nvvp
-    #   cuda_nvtx
-    #   cuda_nvcc
-    #   cuda_cccl
-    #   cuda_nvrtc
-    #   cuda_cupti
-    #   libcusparse
-    #   libcusolver
-    #   cudatoolkit
-    #   #cuda_opencl # for cuda12
-    #   cuda_nvprof
-    #   cuda_nsight
-    #   cuda_cudart
-    #   setupCudaHook
+      # nixified-ai.packages.${system}.invokeai-nvidia
+      # #nixified-ai.packages.${system}.textgen-nvidia
     ]);
   };
   system.stateVersion = "${curversion}";

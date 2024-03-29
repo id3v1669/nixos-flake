@@ -78,13 +78,11 @@
     gnome.gnome-disk-utility      # disk manager(gparted is broken)
     qbittorrent                   # torrent client
     openrgb-with-all-plugins      # rgb control as nixos module is broken
-    bluez                         # bluetooth
     over-eww                      # overlay of eww(bar) with tray and dynamic tray icons
     isoimagewriter                # kde iso writer (as ventoy is bad for bios updated)
 
     # other cli utils
-    over-hyprpicker
-    #hyprpicker                    # color picker(broken after nixos xdg config update)
+    over-hyprpicker               # color picker
     onefetch                      # fetch for git repos
     pciutils                      # lspci
     usbutils                      # lsusb

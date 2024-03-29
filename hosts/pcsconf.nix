@@ -26,10 +26,8 @@
   hardware = {
     cpu.${cpuvar}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     i2c.enable = true;                  # i2c devices support
-    bluetooth.enable = true;            # bluetooth
   };
   services = {
-    blueman.enable = true;              # bluetooth manager
     printing.enable = true;             # needed for printing and pdf export
     flatpak.enable = true;              # crap to be removed later
     hardware.bolt.enable = true;        # thunderbolt support
