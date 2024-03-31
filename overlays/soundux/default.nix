@@ -36,7 +36,7 @@
 , sqlite
 , libsysprof-capture
 , libremidi
-, gtk3
+, wrapGAppsHook
 }:
 let 
   fancypp = (pkgs.callPackage ./fancypp.nix {});
@@ -59,6 +59,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     cmake
     pkg-config
+    wrapGAppsHook
     makeBinaryWrapper
   ];
 
@@ -99,7 +100,6 @@ stdenv.mkDerivation rec {
     libsysprof-capture
     libremidi
     guardpp
-    gtk3
   ];
 
   postPatch = ''
@@ -142,7 +142,7 @@ stdenv.mkDerivation rec {
   '';
 
   postFixup = let
-    rpaths = lib.makeLibraryPath [libwnck pipewire libpulseaudio gtk3];
+    rpaths = lib.makeLibraryPath [libwnck pipewire libpulseaudio];
   in ''
     # Wnck, PipeWire, and PulseAudio are dlopen-ed by Soundux, so they do
     # not end up on the RPATH during the build process.
@@ -150,7 +150,8 @@ stdenv.mkDerivation rec {
 
     # Work around upstream bug https://github.com/Soundux/Soundux/issues/435
     wrapProgram "$out/bin/soundux" \
-      --set GSETTINGS_SCHEMA_DIR "${gtk3}/share/gsettings-schemas/gtk+3-3.24.41/glib-2.0/schemas/" \
       --prefix PATH : ${lib.makeBinPath [ yt-dlp ffmpeg lsb-release ]} \
   '';
 }
+#prefix if without wrapGAppsHook 
+#--prefix XDG_DATA_DIRS : "${gtk3}/share/gsettings-schemas/${gtk3.name}" \
