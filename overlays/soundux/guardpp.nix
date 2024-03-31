@@ -8,7 +8,7 @@ let
 in
 stdenvNoCC.mkDerivation rec {
   pname = "guardpp";
-  version = "unstable-2021-04-08";
+  version = "unstable-2022-04-05";
 
   src = fetchFromGitHub {
     owner = "Soundux";

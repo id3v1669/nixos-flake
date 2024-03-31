@@ -5,7 +5,7 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "expected";
-  version = "exu1";
+  version = "unstable-2023-04-26";
 
   src = fetchFromGitHub {
     owner = "TartanLlama";
