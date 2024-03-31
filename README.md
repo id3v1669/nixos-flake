@@ -2,7 +2,7 @@
 
 NixOS flake with home manager
 
-Latest commit to use: 02ffa51362050c45fd24ab3f3a631f0df9132dbd
+Latest commit to use: 3e55c699ba3c64dad1ef9b33a4c42da28d5fbd73
 
 ## Main
 | Environment | Name | Comment | Needed fix |
