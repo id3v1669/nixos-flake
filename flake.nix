@@ -126,7 +126,7 @@
           over-vesktop = (prev.callPackage ./overlays/vesktop {});                              # vesktop as official package is not up to date
           #over-vesktop = (import ./overlays/vesktop/new.nix { inherit pkgs; });
           over-spotify = (prev.callPackage ./overlays/spot.nix {});                             # spotify with adblocker
-          over-soundux = (prev.callPackage ./overlays/soundux.nix {});                          # soundux as official package is broken
+          over-soundux = (prev.callPackage ./overlays/soundux {});                          # soundux as official package is broken
           over-bootstrap-studio = (prev.callPackage ./overlays/bootstrap-studio.nix {});        # bootstrap-studio as official package is not up to date
           over-hyprpicker = (import ./overlays/hyprpicker { inherit pkgs; });                   # hyprpicker overlay as official package is broken on my configuration
           over-sherlock = (import ./overlays/sherlock.nix { inherit pkgs; });                   # sherlock overlay as official package is not up to date

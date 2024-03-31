@@ -15,8 +15,7 @@
     qpwgraph                      # gui for pipewire graph
     mpc-cli                       # cli for mpd
     qjackctl                      # gui for jack
-    #soundux                      # soundpad broken after webkitgtk update
-    #over-soundux                 # soundpad broken after webkitgtk update
+    over-soundux                  # soundpad broken after webkitgtk update
     over-spotify                  # music player
 
     # vm, virt and emulators
