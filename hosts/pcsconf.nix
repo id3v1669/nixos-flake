@@ -28,9 +28,16 @@
     printing.enable = true;             # needed for printing and pdf export
     flatpak.enable = true;              # crap to be removed later
     hardware.bolt.enable = true;        # thunderbolt support
-    xserver.displayManager.gdm = {      # gdm is used as sddm and greetd take too long to load and sddm sometimes fails to start session
+    # xserver.displayManager.gdm = {      # gdm is used as sddm and greetd take too long to load and sddm sometimes fails to start session
+    #   enable = true;
+    #   wayland = true;
+    # };
+    xserver.displayManager.sddm = {
       enable = true;
-      wayland = true;
+      wayland.enable = true;
+      extraPackages = with pkgs; [
+        libsForQt5.qt5.qtgraphicaleffects
+      ];
     };
   };
   environment.systemPackages = with pkgs; [
