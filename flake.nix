@@ -23,6 +23,10 @@
       url = "github:hyprwm/Hyprland"; # "github:hyprwm/Hyprland/v0.37.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     xdghypr = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +46,7 @@
 , nur
 , nixmox
 , xdghypr
+, hyprlock
 , eww-tray
 , sops-nix
 , nix-colors
@@ -119,6 +124,7 @@
           over-eww = eww-tray.packages.${prev.system}.default.override { withWayland = true; }; # overlay of eww(bar & widgets) with dynamic icons tray support
           over-hyprland = hyprland.packages.${prev.system}.hyprland;                            # hyprland overlay
           over-hypr-portal = xdghypr.packages.${prev.system}.xdg-desktop-portal-hyprland;       # hyprland portal overlay
+          over-hyprlock = hyprlock.packages.${prev.system}.hyprlock;                            # hyprlock overlay
           over-joplin = (prev.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
           over-vscode = (import ./overlays/vscode.nix { inherit pkgs; });                       # vscode overlay as official package is not up to date
           over-lutris = (import ./overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages

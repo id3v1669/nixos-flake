@@ -13,7 +13,7 @@ Latest commit to use: 3e55c699ba3c64dad1ef9b33a4c42da28d5fbd73
 | background | swaybg | - | - |
 | portals | gtk and hyprland/wlr(sway) | - | - |
 | login manager | gdm | - | - |
-| lockscreen | swaylock | - | - |
+| lockscreen | hyprlock | - | - |
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
 | notifications | dunst | - | - |
 | shell | fish | - | - |

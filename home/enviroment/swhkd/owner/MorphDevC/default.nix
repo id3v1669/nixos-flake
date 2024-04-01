@@ -32,7 +32,7 @@ super + r
   rofi -show
 
 super + shift + l
-  swaylock
+  hyprlock
 
 super + shift + 4
   grim -g "$(slurp)"

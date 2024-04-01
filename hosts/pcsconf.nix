@@ -5,10 +5,7 @@
 , ...
 }: 
 {
-  security = {
-    rtkit.enable = true;
-    pam.services.swaylock = {};         # swaylock pam service for screen lock
-  };
+  security.rtkit.enable = true;
   programs = {
     gamemode.enable = true;             # gamemode for lutris and steam
     virt-manager = {                    # virt-manager

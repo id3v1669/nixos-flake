@@ -4,8 +4,8 @@
 {
   home.packages = with pkgs; [
     # gui
-    gimp                 # image editing
-    over-outline-manager # outline manager vpn(proxy)
+    gimp                          # image editing
+    over-outline-manager          # outline manager vpn(proxy)
 
     # security
     over-veracrypt                # gui encryption

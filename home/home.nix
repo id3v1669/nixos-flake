@@ -27,7 +27,7 @@
     ./enviroment/eww
     ./enviroment/dunst
     ./enviroment/swayidle
-    ./enviroment/swaylock
+    ./enviroment/hyprlock
   ];
   home = {
     stateVersion = "${curversion}";
