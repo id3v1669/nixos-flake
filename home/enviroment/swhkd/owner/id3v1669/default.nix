@@ -31,6 +31,9 @@ super + shift + e
 super + r
   rofi -show
 
+super + shift + c
+  cliphist list | rofi -dmenu | cliphist decode | wl-copy
+
 super + shift + l
   hyprlock
 

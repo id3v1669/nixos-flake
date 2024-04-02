@@ -26,7 +26,6 @@
   environment.systemPackages = with pkgs; [
     # for sway
     wdisplays
-    wl-clipboard
   ];
   services = {
     gvfs.enable = true;                 # Mount, trash, etc

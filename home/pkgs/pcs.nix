@@ -94,7 +94,8 @@
     cargo-binutils                # rust tools
     xdg-utils                     # xdg-open and other xdg utils
     wl-clipboard                  # wayland clipboard
-      
+    cliphist                      # clipboard history
+    
     # nix utils
     nix-prefetch-git              # git hash for nixpkgs
 

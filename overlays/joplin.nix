@@ -4,11 +4,11 @@
 }:
 let
   pname = "joplin-desktop";
-  version = "2.13.6";
+  version = "2.14.20";
 
   src = fetchurl {
     url = "https://github.com/laurent22/joplin/releases/download/v${version}/Joplin-${version}.AppImage";
-    sha256 = "07pnp7ykwb0ww8d3hv4j598lyq4h30z7g92af67hlbfiggdsxwhn";
+    hash = "sha256-LVN4HHLQqU8/RznFyhsAICr50YUKljIoO9ulsW9ohiA=";
   };
 
   appimageContents = appimageTools.extractType2 {
