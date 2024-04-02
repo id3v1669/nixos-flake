@@ -31,6 +31,10 @@
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ndct-sddm = {
+      url = "github:id3v1669/ndct-sddm-corners";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-compat = {
       url = "github:inclyc/flake-compat";
       flake = false;
@@ -52,6 +56,7 @@
 , nix-colors
 , nixified-ai
 , prism-launcher
+, ndct-sddm
 , ... }@inputs: 
   let
     inherit (self) outputs;
@@ -132,7 +137,7 @@
           over-vesktop = (prev.callPackage ./overlays/vesktop {});                              # vesktop as official package is not up to date
           #over-vesktop = (import ./overlays/vesktop/new.nix { inherit pkgs; });
           over-spotify = (prev.callPackage ./overlays/spot.nix {});                             # spotify with adblocker
-          over-soundux = (prev.callPackage ./overlays/soundux {});                          # soundux as official package is broken
+          over-soundux = (prev.callPackage ./overlays/soundux {});                              # soundux as official package is broken
           over-bootstrap-studio = (prev.callPackage ./overlays/bootstrap-studio.nix {});        # bootstrap-studio as official package is not up to date
           over-hyprpicker = (import ./overlays/hyprpicker { inherit pkgs; });                   # hyprpicker overlay as official package is broken on my configuration
           over-sherlock = (import ./overlays/sherlock.nix { inherit pkgs; });                   # sherlock overlay as official package is not up to date
@@ -140,6 +145,7 @@
           over-rofi-emoji = (import ./overlays/rofi-emoji.nix { inherit pkgs; });               # rofi-emoji overlay as package has non-wayland build input
           over-discord = (import ./overlays/discord.nix { inherit pkgs; });                     # discord for testing
           over-prismlauncher = (import ./overlays/prismlauncher.nix { inherit pkgs; });         # minecraft launcher with java replacement
+          over-ndct-sddm = ndct-sddm.packages.${prev.system}.ndct-sddm-corners;                 # sddm theme
           #-------------------------------------------------------------------------------------ai cuda stuff
           over-fooocus = (prev.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
           over-accelerate = (prev.python311Packages.accelerate.override {
