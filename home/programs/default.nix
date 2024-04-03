@@ -18,5 +18,6 @@
     ./obs
     ./neofetch
     ./rider
+    ./swappy
   ];
 }

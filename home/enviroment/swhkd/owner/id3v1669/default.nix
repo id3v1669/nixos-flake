@@ -38,7 +38,7 @@ super + shift + l
   hyprlock
 
 super + shift + 4
-  grim -g "$(slurp)"
+  grim -g "$(slurp)" $HOME/Pictures/Screenshots/shot_$(date '+%Y-%m-%d_%H:%M:%S').png
 
 super + shift + 5
   grim -g "$(slurp)" - | swappy -f -

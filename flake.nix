@@ -32,7 +32,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ndct-sddm = {
-      url = "github:id3v1669/ndct-sddm-corners";
+     url = "github:id3v1669/ndct-sddm-corners";
+     inputs.nixpkgs.follows = "nixpkgs";
+    };
+    swhkd = {
+      url = "github:id3v1669/swhkd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-compat = {
@@ -57,6 +61,7 @@
 , nixified-ai
 , prism-launcher
 , ndct-sddm
+, swhkd
 , ... }@inputs: 
   let
     inherit (self) outputs;
@@ -120,32 +125,31 @@
         prism-launcher.overlays.default
         (final: prev: {
           over-intel-vaapi-driver = prev.vaapiIntel.override { enableHybridCodec = true; };     # intel vaapi driver with hybrid codec support
-          over-opencore = (prev.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
-          over-swhkd = (prev.callPackage ./overlays/swhkd.nix {});                              # hotkey daemon as official repo doesn't have it
-          over-tun2socks = (prev.callPackage ./overlays/tun2socks.nix {});                      # tun2socks as official package is not up to date
-          over-outline-manager = (prev.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
-          over-tlauncher = (prev.callPackage ./overlays/tlauncher.nix {});                      # minecraft launcher as it was removed from nixpkgs
-          over-xwalandvideobridge = (prev.callPackage ./overlays/xwaylandvideobridge.nix {});   # currently off as vesktop doesn't need it
+          over-swhkd = swhkd.packages.${prev.system}.swhkd;                                     # hotkey daemon
           over-eww = eww-tray.packages.${prev.system}.default.override { withWayland = true; }; # overlay of eww(bar & widgets) with dynamic icons tray support
           over-hyprland = hyprland.packages.${prev.system}.hyprland;                            # hyprland overlay
           over-hypr-portal = xdghypr.packages.${prev.system}.xdg-desktop-portal-hyprland;       # hyprland portal overlay
           over-hyprlock = hyprlock.packages.${prev.system}.hyprlock;                            # hyprlock overlay
-          over-joplin = (prev.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
+          over-ndct-sddm = ndct-sddm.packages.${prev.system}.ndct-sddm-corners;                 # sddm theme
           over-vscode = (import ./overlays/vscode.nix { inherit pkgs; });                       # vscode overlay as official package is not up to date
           over-lutris = (import ./overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
-          over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                          # veracrypt overlay as official package is not up to date(later patch to run with sudo-rs instead of sudo)
-          over-vesktop = (prev.callPackage ./overlays/vesktop {});                              # vesktop as official package is not up to date
-          #over-vesktop = (import ./overlays/vesktop/new.nix { inherit pkgs; });
-          over-spotify = (prev.callPackage ./overlays/spot.nix {});                             # spotify with adblocker
-          over-soundux = (prev.callPackage ./overlays/soundux {});                              # soundux as official package is broken
-          over-bootstrap-studio = (prev.callPackage ./overlays/bootstrap-studio.nix {});        # bootstrap-studio as official package is not up to date
           over-hyprpicker = (import ./overlays/hyprpicker { inherit pkgs; });                   # hyprpicker overlay as official package is broken on my configuration
           over-sherlock = (import ./overlays/sherlock.nix { inherit pkgs; });                   # sherlock overlay as official package is not up to date
           over-rofi-calc = (import ./overlays/rofi-calc.nix { inherit pkgs; });                 # rofi-calc overlay as package has non-wayland build input
           over-rofi-emoji = (import ./overlays/rofi-emoji.nix { inherit pkgs; });               # rofi-emoji overlay as package has non-wayland build input
           over-discord = (import ./overlays/discord.nix { inherit pkgs; });                     # discord for testing
           over-prismlauncher = (import ./overlays/prismlauncher.nix { inherit pkgs; });         # minecraft launcher with java replacement
-          over-ndct-sddm = ndct-sddm.packages.${prev.system}.ndct-sddm-corners;                 # sddm theme
+          over-opencore = (prev.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
+          over-tun2socks = (prev.callPackage ./overlays/tun2socks.nix {});                      # tun2socks as official package is not up to date
+          over-outline-manager = (prev.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
+          over-tlauncher = (prev.callPackage ./overlays/tlauncher.nix {});                      # minecraft launcher as it was removed from nixpkgs
+          over-xwalandvideobridge = (prev.callPackage ./overlays/xwaylandvideobridge.nix {});   # currently off as vesktop doesn't need it
+          over-joplin = (prev.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
+          over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                          # veracrypt overlay as official package is not up to date(later patch to run with sudo-rs instead of sudo)
+          over-vesktop = (prev.callPackage ./overlays/vesktop {});                              # vesktop as official package is not up to date
+          over-spotify = (prev.callPackage ./overlays/spot.nix {});                             # spotify with adblocker
+          over-soundux = (prev.callPackage ./overlays/soundux {});                              # soundux as official package is broken
+          over-bootstrap-studio = (prev.callPackage ./overlays/bootstrap-studio.nix {});        # bootstrap-studio as official package is not up to date
           #-------------------------------------------------------------------------------------ai cuda stuff
           over-fooocus = (prev.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
           over-accelerate = (prev.python311Packages.accelerate.override {
@@ -225,11 +229,10 @@
   in {
     nixosConfigurations = {
       #top themes: vulcan, twilight, summercamp, stella, uwunicorn,
-      #spaceduck, seti, selenized-black, rose-pine, rose-pine-moon, 
+      #spaceduck, seti, selenized-black, rose-pine, rose-pine-moon,
       #porple, phd, pasque, pandora, outrun-dark, mountain, material-darker,
       #lime, kimber, icy, gruvbox-dark-pale, grayscale-dark, darktooth, black-metal
       #mytop: pandora, stella, lime, gruvbox-dark-pale, outrun-dark, spaceduck, embers
-      
       nuc11phplasma5tbqhd = mkSyst {
         hostname = "nuc11ph";
         envir = "plasma5";
@@ -269,7 +272,6 @@
       nuc11phhyprtbqhd = mkSyst {
         hostname = "nuc11ph";
         envir = "Hyprland";
-        #colorsvar = "gruvbox-dark-pale";
         uservars = {
           name = "user";
           description = "id3v1669";
