@@ -41,7 +41,9 @@
     swaybg                        # wallpapers
     hyprpaper                     # wallpapers
     imagemagickBig                # image manipulation(convert etc)
-      
+    swappy
+    
+
     # chat
     telegram-desktop              # telegram client
     whatsapp-for-linux            # whatsapp client

@@ -38,7 +38,7 @@ super + shift + 4
   grim -g "$(slurp)"
 
 super + shift + 5
-  grim -g "$(slurp)" - | wl-copy
+  grim -g "$(slurp)" - | swappy -f -
 
 xf86monbrightnessdown
   ${brightnesctrl.down}
