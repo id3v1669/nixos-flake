@@ -4,7 +4,7 @@
 {
   home.packages = (with pkgs;[
     # screenshots
-    grim                          # cli screenshot
+    wayshot                       # cli screenshot
     slurp                         # select area for screenshot
 
     # sound

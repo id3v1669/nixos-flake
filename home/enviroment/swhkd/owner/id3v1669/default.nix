@@ -37,11 +37,14 @@ super + shift + c
 super + shift + l
   hyprlock
 
+super + shift + 3
+  wayshot -s "$(slurp)" --stdout | swappy -f -
+
 super + shift + 4
-  grim -g "$(slurp)" $HOME/Pictures/Screenshots/shot_$(date '+%Y-%m-%d_%H:%M:%S').png
+  wayshot -s "$(slurp)" -f $HOME/Pictures/Screenshots/shot_$(date '+%Y-%m-%d_%H:%M:%S').png
 
 super + shift + 5
-  grim -g "$(slurp)" - | swappy -f -
+  wayshot -s "$(slurp)" --stdout | wl-copy
 
 xf86monbrightnessdown
   ${brightnesctrl.down}
