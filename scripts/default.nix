@@ -1,6 +1,6 @@
 {
   imports = [
-    ./ss.nix
+    #./ss.nix
     ./flatpak.nix
     ./distrobox.nix
     ./firstinstall.nix

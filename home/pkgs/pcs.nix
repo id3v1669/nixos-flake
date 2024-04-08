@@ -4,7 +4,8 @@
 {
   home.packages = (with pkgs;[
     # screenshots
-    wayshot                       # cli screenshot
+    #wayshot                       # cli screenshot
+    over-wayshot
     slurp                         # select area for screenshot
 
     # sound
@@ -100,6 +101,7 @@
     
     # nix utils
     nix-prefetch-git              # git hash for nixpkgs
+    nixpkgs-review                # review utility for nixpkgs
 
     # libs
     gtk3                          # gtk lib

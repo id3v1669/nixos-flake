@@ -34,10 +34,10 @@ stdenv.mkDerivation rec {
   version = "1.5.1";
 
   src = fetchFromGitHub {
-    owner = "Vencord";
+    owner = "kaitlynkittyy"; #"Vencord";
     repo = "Vesktop";
-    rev = "v${version}";
-    hash = "sha256-OyAGzlwwdEKBbJJ7h3glwx/THy2VvUn/kA/Df3arWQU=";
+    rev = "ae9b4b52cf2d784fa8f68a526855ad4ebafe8784"; #"v${version}";
+    hash = "sha256-KbIWk2p/mxzyv1ovLHZ3d3+FtaTWwLnnyGEigcw2ts4="; #"sha256-OyAGzlwwdEKBbJJ7h3glwd/THy2VvUn/kA/Df3arWQU=";
   };
 
   pnpmDeps =
