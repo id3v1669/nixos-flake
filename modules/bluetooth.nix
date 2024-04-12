@@ -8,8 +8,10 @@
     settings = {
       General = {
         AutoEnable = true;
+        FastConnectable = true;
+        #Privacy = "device";
         Experimental = true;
-        Enable = "Sink,Media,Socket";
+        #Enable = "Sink,Media,Socket";
       };
     };
   };

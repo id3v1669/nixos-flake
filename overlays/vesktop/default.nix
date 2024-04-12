@@ -8,7 +8,7 @@
 , makeDesktopItem
 , copyDesktopItems
 , vencord
-, electron_27
+, electron
 , pipewire
 , libpulseaudio
 , libicns
@@ -24,8 +24,8 @@ let
     src = fetchFromGitHub {
       owner = "Vendicated";
       repo = "Vencord";
-      rev = "v1.7.4";
-      hash = "sha256-Ub8VzeTkka0oq0CYN/UHjOIH2y3F7Oy9QZpTi6glehI=";
+      rev = "v1.7.5";
+      hash = "sha256-jkbXLTjKPPxOxVQiPvchP9/EhVxzeomDDRUaP0QDvfE=";
     };
   });
 in
@@ -36,8 +36,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "kaitlynkittyy"; #"Vencord";
     repo = "Vesktop";
-    rev = "ae9b4b52cf2d784fa8f68a526855ad4ebafe8784"; #"v${version}";
-    hash = "sha256-KbIWk2p/mxzyv1ovLHZ3d3+FtaTWwLnnyGEigcw2ts4="; #"sha256-OyAGzlwwdEKBbJJ7h3glwd/THy2VvUn/kA/Df3arWQU=";
+    rev = "b68e4d12684bf11d64ca95685d26d974eecba67e"; #"v${version}";
+    hash = "sha256-weRtJMa9auhAGhpjHkF131i8gPBWnkmUNPfTdMWFyd8="; #"sha256-OyAGzlwwdEKBbJJ7h3glwd/THy2VvUn/kA/Df3arWQU=";
   };
 
   pnpmDeps =
@@ -81,7 +81,7 @@ stdenv.mkDerivation rec {
       dontBuild = true;
       dontFixup = true;
       outputHashMode = "recursive";
-      outputHash = "sha256-JLjJZYFMH4YoIFuyXbGUp6lIy+VlYZtmwk2+oUwtTxQ=";
+      outputHash = "sha256-U+74O3TrwmqKDi68sr/uHv5pimPAJyR/gF6tlPMCy5A=";
     };
 
   nativeBuildInputs = [
@@ -114,8 +114,8 @@ stdenv.mkDerivation rec {
     # using `pnpm exec` here apparently makes it ignore ELECTRON_SKIP_BINARY_DOWNLOAD
     ./node_modules/.bin/electron-builder \
       --dir \
-      -c.electronDist=${electron_27}/libexec/electron \
-      -c.electronVersion=${electron_27.version}
+      -c.electronDist=${electron}/libexec/electron \
+      -c.electronVersion=${electron.version}
   '';
 
   # this is consistent with other nixpkgs electron packages and upstream, as far as I am aware
@@ -142,7 +142,7 @@ stdenv.mkDerivation rec {
         install -Dm0644 $file $out/share/icons/hicolor/''${file_suffix//x32.png}/apps/vesktop.png
       done
 
-      makeWrapper ${electron_27}/bin/electron $out/bin/vesktop \
+      makeWrapper ${electron}/bin/electron $out/bin/vesktop \
         --prefix LD_LIBRARY_PATH : ${libPath} \
         --add-flags $out/opt/Vesktop/resources/app.asar \
         --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"

@@ -29,7 +29,7 @@
   networking.firewall.enable = false;
   hardware.bluetooth.settings = {
     General = {
-      ControllerMode = "dual";
+      ControllerMode = "bredr";
     };
   };
   users.users.${uservars.name}.extraGroups = [ 
