@@ -19,6 +19,7 @@ nm-applet &
 eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)"
 bash ${config.home.homeDirectory}/.scripts/eww_ws.sh &
 bash ${config.home.homeDirectory}/.scripts/volume.sh &
+bash ${config.home.homeDirectory}/.scripts/lang.sh &
     '';
   };
 }

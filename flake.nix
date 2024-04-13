@@ -96,7 +96,7 @@
         owner = "id3v1669";
         domain = "none";
         proxy = false;
-        wp = "default1.png";
+        wp = "default3.png";
         sleeptimeout = 1200;
       },
       deflocale ? {
@@ -242,25 +242,7 @@
           description = "id3v1669";
           proxy = false;
           domain = "none";
-          wp = "sound.png";
-          owner = "id3v1669";
-          sleeptimeout = 99000;
-        };
-        bootloader = {
-          type = "opencore";
-          defconf = true;
-          timeout = 10;
-        };
-      };
-      nuc11phswaytbqhd = mkSyst {
-        hostname = "nuc11ph";
-        envir = "sway";
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          proxy = true;
-          domain = "none";
-          wp = "sound.png";
+          wp = "default3.png";
           owner = "id3v1669";
           sleeptimeout = 99000;
         };
@@ -278,7 +260,7 @@
           description = "id3v1669";
           proxy = false;
           domain = "none";
-          wp = "skeleton.png";
+          wp = "default3.png";
           owner = "id3v1669";
           sleeptimeout = 99000;
         };
@@ -303,7 +285,7 @@
           description = "id3v1669";
           proxy = false;
           domain = "none";
-          wp = "skeleton.png";
+          wp = "default3.png";
           owner = "id3v1669";
           sleeptimeout = 99000;
         };
@@ -320,29 +302,6 @@
           port = "tbfhd";
         };
       };
-      nuc11phhyprhdmi = mkSyst {
-        hostname = "nuc11ph";
-        envir = "Hyprland";
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          proxy = true;
-          domain = "none";
-          wp = "skeleton.png";
-          owner = "id3v1669";
-          sleeptimeout = 99000;
-        };
-        bootloader = {
-          type = "opencore";
-          defconf = true;
-          timeout = 10;
-        };
-        gpuvar = {
-          type = "nvidia";
-          tech = "native";
-          port = "hdmiqhd";
-        };
-      };
       nuc11phhyprhdminvk = mkSyst {
         hostname = "nuc11ph";
         envir = "Hyprland";
@@ -351,7 +310,7 @@
           description = "id3v1669";
           proxy = true;
           domain = "none";
-          wp = "skeleton.png";
+          wp = "default3.png";
           owner = "id3v1669";
           sleeptimeout = 99000;
         };
@@ -381,7 +340,7 @@
           description = "id3v1669";
           proxy = true;
           domain = "none";
-          wp = "default1.png";
+          wp = "default3.png";
           owner = "id3v1669";
           sleeptimeout = 1200;
         };
@@ -392,33 +351,6 @@
         gpuvar = {
           type = "amd";
           tech = "amd";
-        };
-      };
-      l14g3sway = mkSyst { 
-        hostname = "l14g3";
-        envir = "sway";
-        cpuvar = "amd";
-        desk = "laptop";
-        bootloader = {
-          type = "opencore";
-          defconf = false;
-          timeout = 10;
-        };
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          proxy = true;
-          domain = "none";
-          wp = "default1.png";
-          owner = "id3v1669";
-          sleeptimeout = 1200;
-        };
-        brightnesctrl = {
-          up = "light -A 5";
-          down = "light -U 5";
-        };
-        gpuvar = {
-          type = "amd";
         };
       };
       alexpchypr = mkSyst {
@@ -432,7 +364,7 @@
           description = "alexp";
           proxy = false;
           domain = "none";
-          wp = "tyan_1.jpg";
+          wp = "default3.png";
           owner = "MorphDevC";
           sleeptimeout = 1200;
         };

@@ -1,4 +1,5 @@
 { config
+, pkgs
 , desk
 , cpuvar
 , uservars
@@ -23,8 +24,11 @@
 (defvar proxystatus "󰱟")
 (defvar soundvol "xx")
 (defvar wss "xxx")
+(defvar langvar "tt")
 (defvar showpowerbuttons false)
 (defvar showcalendar false)
+(deflisten songname :initial "None"
+      "${pkgs.playerctl}/bin/playerctl --follow metadata --format '{{ artist }}-{{ title }}' || true")
 
 (defwidget calendarpop []
   (eventbox 
@@ -137,6 +141,7 @@
     :halign "start"
     :spacing 6
     (launcher)
+    (lang)
     (usageinfo)
     (workspaces)
   )
@@ -156,6 +161,7 @@
     :spacing 6
     :halign "end"
     ${proxy}
+    (music)
     (box 
       :orientation "h"
       :class "tray"
@@ -169,6 +175,46 @@
     (power)
   )
 )
+
+  (defwidget music []
+    (box
+      :orientation "h"
+      :space-evenly false
+      :class "music-controls"
+      (button
+        :timeout "''${deftimeout}"
+        :onclick "playerctl previous"
+        :class "previoussong"
+        (box 
+          :class "symb"
+          "󰙤"
+        )
+      )
+      (button
+        :timeout "''${deftimeout}"
+        :class "playpause"
+        :onclick "playerctl play-pause"
+        (box 
+          :class "symb"
+          "󰐎"
+        )
+      )
+      (button
+        :timeout "''${deftimeout}"
+        :onclick "playerctl next"
+        :class "nextsong"
+        (box 
+          :class "symb"
+          "󰙢"
+        )
+      )
+      (box :class "spacerh" "|")
+      (box
+        :class "songname"
+        "''${songname}"
+      )
+    )
+  )
 
 (defwidget proxy []
     (box
@@ -219,6 +265,22 @@
       (box 
         "󰍬"
       )
+    )
+  )
+)
+
+(defwidget lang []
+  (box 
+    :orientation "h"
+    :space-evenly false
+    :class "lang"
+    (box 
+      :class "langsymb"
+      "󰇧"
+    )
+    (box 
+      :class "langvar"
+      "''${langvar}"
     )
   )
 )

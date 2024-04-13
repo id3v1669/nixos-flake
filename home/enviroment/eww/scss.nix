@@ -29,7 +29,7 @@
       }
   }
 
-.ram, .cputemp, .disk, .boot {
+  .ram, .cputemp, .disk, .boot {
     padding: 5px;
     border-radius: 3px;
   }
@@ -47,6 +47,23 @@
     color: #${config.colorScheme.palette.base05};
   }
 
+  .lang {
+    border-radius: 20px;
+    padding: 5px 10px 5px 10px; 
+    background-color: #${config.colorScheme.palette.base00};
+    color: #${config.colorScheme.palette.base05};
+  }
+
+  .langsymb {
+    font-size: 1.2em;
+    padding: 0px 10px 0px 0px; 
+  }
+
+  .langvar {
+    font-size: 1.2em;
+    min-width: 23px;
+  }
+
   .miniclock {
     font-size: 1.3em;
     background-color: #${config.colorScheme.palette.base00};
@@ -57,6 +74,41 @@
         background-color: #${config.colorScheme.palette.base01};
         color: #${config.colorScheme.palette.base06};
       }
+  }
+
+  .music-controls {
+    background-color: #${config.colorScheme.palette.base00};
+    border-radius: 20px;
+    padding: 0px 4px 0px 2px;
+  }
+  
+  .playpause {
+    border-radius: 55px;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  
+  .previoussong {
+    border-radius: 55px;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  
+  .nextsong {
+    border-radius: 55px;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  
+  .symb{
+    font-size: 1.3em;
+  }
+
+  .testmus {
+    border-radius: 20px;
+    padding: 0px 0px 0px 0px; 
+  }
+  
+  .songname {
+    font-size: 1.1em;
+    padding: 0px 7px 0px 7px; 
   }
 
   .tray {

@@ -12,5 +12,6 @@
     ./wallpapergen.nix
     ./dotnet.nix
     ./volume.nix
+    ./lang.nix
   ];
 }
