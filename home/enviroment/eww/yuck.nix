@@ -27,8 +27,7 @@
 (defvar langvar "tt")
 (defvar showpowerbuttons false)
 (defvar showcalendar false)
-(deflisten songname :initial "None"
-      "${pkgs.playerctl}/bin/playerctl --follow metadata --format '{{ artist }}-{{ title }}' || true")
+(defvar songname "None")
 
 (defwidget calendarpop []
   (eventbox 
@@ -183,7 +182,7 @@
       :class "music-controls"
       (button
         :timeout "''${deftimeout}"
-        :onclick "playerctl previous"
+        :onclick "${pkgs.playerctl}/bin/playerctl previous"
         :class "previoussong"
         (box 
           :class "symb"
@@ -193,7 +192,7 @@
       (button
         :timeout "''${deftimeout}"
         :class "playpause"
-        :onclick "playerctl play-pause"
+        :onclick "${pkgs.playerctl}/bin/playerctl play-pause"
         (box 
           :class "symb"
           "󰐎"
@@ -201,7 +200,7 @@
       )
       (button
         :timeout "''${deftimeout}"
-        :onclick "playerctl next"
+        :onclick "${pkgs.playerctl}/bin/playerctl next"
         :class "nextsong"
         (box 
           :class "symb"

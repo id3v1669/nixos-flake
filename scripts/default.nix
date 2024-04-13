@@ -13,5 +13,6 @@
     ./dotnet.nix
     ./volume.nix
     ./lang.nix
+    ./songname.nix
   ];
 }
