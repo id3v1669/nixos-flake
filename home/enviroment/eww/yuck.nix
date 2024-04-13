@@ -181,7 +181,7 @@
       :space-evenly false
       :class "music-controls"
       (button
-        :timeout "''${deftimeout}"
+        :timeout "300ms"
         :onclick "${pkgs.playerctl}/bin/playerctl previous"
         :class "previoussong"
         (box 
@@ -190,7 +190,7 @@
         )
       )
       (button
-        :timeout "''${deftimeout}"
+        :timeout "300ms"
         :class "playpause"
         :onclick "${pkgs.playerctl}/bin/playerctl play-pause"
         (box 
@@ -199,7 +199,7 @@
         )
       )
       (button
-        :timeout "''${deftimeout}"
+        :timeout "300ms"
         :onclick "${pkgs.playerctl}/bin/playerctl next"
         :class "nextsong"
         (box 
