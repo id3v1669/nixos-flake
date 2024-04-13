@@ -108,7 +108,12 @@
   
   .songname {
     font-size: 1.1em;
-    padding: 0px 7px 0px 7px; 
+    padding: 0px 8px 0px 7px; 
+  }
+  
+  .songbtn {
+    font-size: 1.3em;
+    padding: 0px 15px 0px 7px; 
   }
 
   .tray {

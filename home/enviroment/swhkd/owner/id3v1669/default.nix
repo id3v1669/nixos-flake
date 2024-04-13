@@ -28,6 +28,9 @@ super + shift + p
 super + shift + e
   bash ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
 
+super + shift + y
+  bash ${config.home.homeDirectory}/.scripts/moveeww.sh
+
 super + r
   rofi -show
 

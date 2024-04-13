@@ -14,5 +14,6 @@
     ./volume.nix
     ./lang.nix
     ./songname.nix
+    ./moveeww.nix
   ];
 }

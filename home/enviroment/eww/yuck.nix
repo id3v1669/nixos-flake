@@ -28,6 +28,9 @@
 (defvar showpowerbuttons false)
 (defvar showcalendar false)
 (defvar songname "None")
+(defvar songunfolded false)
+(defvar songfolded true)
+(defvar defaultscreen 0)
 
 (defwidget calendarpop []
   (eventbox 
@@ -125,7 +128,7 @@
     
 )
 (defwidget bar-widget []
-  (box 
+  (centerbox 
     :orientation "h"
     :class "bar1"
     (left)
@@ -208,9 +211,37 @@
         )
       )
       (box :class "spacerh" "|")
-      (box
-        :class "songname"
-        "''${songname}"
+      (eventbox 
+        :onclick "''${EWW_CMD} update songfolded=''${songfolded? false : true} && ''${EWW_CMD} update songunfolded=''${songunfolded? false : true}"
+        (box
+		      :space-evenly false  
+          (revealer
+            :transition "slideleft"
+            :reveal songfolded
+            :duration "1000ms"
+            (box
+              :class "songbtn"
+              "󰫔"
+            )
+          )
+          ""
+        )
+      )
+      (eventbox 
+        :onclick "''${EWW_CMD} update songunfolded=''${songunfolded? false : true} && ''${EWW_CMD} update songfolded=''${songfolded? false : true}"
+        (box
+		      :space-evenly false  
+          (revealer
+            :transition "slideright"
+            :reveal songunfolded
+            :duration "1000ms"
+            (box
+              :class "songname"
+              "''${songname}"
+            )
+          )
+          ""
+        )
       )
     )
   )
