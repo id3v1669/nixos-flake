@@ -353,34 +353,6 @@
           tech = "amd";
         };
       };
-      alexpchypr = mkSyst {
-        hostname = "alexpc";
-        envir = "Hyprland";
-        gpuvar = {
-          type = "amd";
-        };
-        uservars = {
-          name = "user";
-          description = "alexp";
-          proxy = false;
-          domain = "none";
-          wp = "default3.png";
-          owner = "MorphDevC";
-          sleeptimeout = 1200;
-        };
-        bootloader = {
-          type = "opencore";
-          defconf = true;
-          timeout = 10;
-        };
-        deflocale = {
-          kblayout = "us,ru";
-          kbvariant = ",";
-          kboption = "grp:win_space_toggle";
-          timezone = "Russia/Moscow";
-          locale = "ru_RU.UTF-8";
-        };
-      };
       srvnet510 = mkSyst {
         hostname = "srvnet510";
         envir = "none";
