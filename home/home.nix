@@ -26,7 +26,6 @@
   ] ++ lib.lists.optionals (envir != "plasma5" && envir != "none") [
     ./enviroment/eww
     ./enviroment/dunst
-    ./enviroment/swayidle
     ./enviroment/hyprlock
   ];
   home = {

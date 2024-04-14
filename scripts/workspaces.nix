@@ -15,8 +15,6 @@ wss() {
       '';
       env = if envir == "Hyprland" then ''
   wsa=($(hyprctl workspaces | grep 'workspace ID .*(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }'))
-      '' else  if envir == "sway" then ''
-  wsa=($(swaymsg -t get_workspaces | grep -o '"num":\s*[0-9]\+' | awk '{print $2}'))
       '' else '''';
       end = ''
     curindex="$1"

@@ -8,9 +8,6 @@ let
   launch = if (envir == "Hyprland") then ''
 kill $(pidof hyprpaper)
 hyprpaper &
-  '' else if (envir == "sway") then ''
-kill $(pidof swaybg)
-swaybg -i ~/Pictures/Wallpapers/${colorsvar}/$_image -m fill &
   '' else '''';
 in
 {

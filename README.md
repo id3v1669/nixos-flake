@@ -1,4 +1,4 @@
-# NixOS flake on Hyprland/Sway + eww + rofi
+# NixOS flake on Hyprland + eww + rofi
 
 NixOS flake with home manager
 
@@ -7,11 +7,11 @@ Latest commit to use: 3e55c699ba3c64dad1ef9b33a4c42da28d5fbd73
 ## Main
 | Environment | Name | Comment | Needed fix |
 |-----|-----|-----|-----|
-| WM | Hyprland/Sway | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel) | - |
+| WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel) | - |
 | launcher | Rofi | - | - |
 | bar | eww | fork of eww with tray support | - |
-| background | swaybg | - | - |
-| portals | gtk and hyprland/wlr(sway) | - | - |
+| background | hyprpaper | - | - |
+| portals | gtk and hyprland | - | - |
 | login manager | gdm | - | - |
 | lockscreen | hyprlock | - | - |
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
@@ -37,7 +37,7 @@ Latest commit to use: 3e55c699ba3c64dad1ef9b33a4c42da28d5fbd73
 
 8. **rewrite gtk theme**
 
-9. **fix of frind alternative to swayidle as it doesn't react to gamepad**
+9. **find idler that works with gamepad**
 
 10. **add notification widget with notififcation history(eww?)**
 
