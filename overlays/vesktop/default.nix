@@ -36,8 +36,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "kaitlynkittyy"; #"Vencord";
     repo = "Vesktop";
-    rev = "a582eec640ff183b2b8cfd621d4cbd305a18d278"; #"v${version}";
-    hash = "sha256-AEV8y3S9ebYN/HkqyvY6PQcdjs2nDTARDWOgzvp5S7s="; #"sha256-OyAGzlwwdEKBbJJ7h3glwd/THy2VvUn/kA/Df3arWQU=";
+    rev = "3fdc55a47e48d0bfd0bfa5cc9f9f566a57d99417"; #"v${version}";
+    hash = "sha256-K6+G82yIQgi5NhYOobDYlqvPzFhPSg4NDdmPy8PHwVI="; #"sha256-OyAGzlwwdEKBbJJ7h3glwd/THy2VvUn/kA/Df3arWQU=";
   };
 
   pnpmDeps =

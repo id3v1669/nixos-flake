@@ -47,7 +47,6 @@
     "wireshark"
     "pipewire"
     "i2c"
-    "outlinevpn"
     "veracrypt"
     "usbmux"
   ];

@@ -7,7 +7,10 @@
 {
   security.rtkit.enable = true;
   programs = {
-    gamemode.enable = true;             # gamemode for lutris and steam
+    steam = {                           # games...
+      enable = true;
+      package = pkgs.over-steam;
+    };
     virt-manager = {                    # virt-manager
       enable = true;
       package = pkgs.virt-manager;
@@ -28,7 +31,7 @@
     printing.enable = true;             # needed for printing and pdf export
     flatpak.enable = true;              # crap to be removed later
     hardware.bolt.enable = true;        # thunderbolt support
-    xserver.displayManager.sddm = {
+    displayManager.sddm = {
       enable = true;
       wayland.enable = true;
       extraPackages = with pkgs; [
@@ -38,9 +41,13 @@
     };
   };
   environment.systemPackages = with pkgs; [
+    #over-steam
     over-ndct-sddm
     polkit_gnome                        # polkit agent
     xorg.xhost                          # xhost
+    vulkan-headers
+    vulkan-tools
+    vulkan-loader
 
     libva-utils                         # vaapi test
   ];

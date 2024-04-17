@@ -133,6 +133,7 @@
           over-ndct-sddm = ndct-sddm.packages.${prev.system}.ndct-sddm-corners;                 # sddm theme
           over-vscode = (import ./overlays/vscode.nix { inherit pkgs; });                       # vscode overlay as official package is not up to date
           over-lutris = (import ./overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
+          over-steam = (import ./overlays/steam.nix { inherit pkgs; });                         # steam overlay with extra packages
           over-hyprpicker = (import ./overlays/hyprpicker { inherit pkgs; });                   # hyprpicker overlay as official package is broken on my configuration
           over-sherlock = (import ./overlays/sherlock.nix { inherit pkgs; });                   # sherlock overlay as official package is not up to date
           over-rofi-calc = (import ./overlays/rofi-calc.nix { inherit pkgs; });                 # rofi-calc overlay as package has non-wayland build input
@@ -141,10 +142,7 @@
           over-prismlauncher = (import ./overlays/prismlauncher.nix { inherit pkgs; });         # minecraft launcher with java replacement
           over-opencore = (prev.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
           over-wayshot = (prev.callPackage ./overlays/wayshot.nix {});                          # wayshot as official package is not up to date
-          over-tun2socks = (prev.callPackage ./overlays/tun2socks.nix {});                      # tun2socks as official package is not up to date
           over-outline-manager = (prev.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
-          over-tlauncher = (prev.callPackage ./overlays/tlauncher.nix {});                      # minecraft launcher as it was removed from nixpkgs
-          over-xwalandvideobridge = (prev.callPackage ./overlays/xwaylandvideobridge.nix {});   # currently off as vesktop doesn't need it
           over-joplin = (prev.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
           over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                          # veracrypt overlay as official package is not up to date(later patch to run with sudo-rs instead of sudo)
           over-vesktop = (prev.callPackage ./overlays/vesktop {});                              # vesktop as official package is not up to date
@@ -153,57 +151,15 @@
           over-bootstrap-studio = (prev.callPackage ./overlays/bootstrap-studio.nix {});        # bootstrap-studio as official package is not up to date
           #-------------------------------------------------------------------------------------ai cuda stuff
           over-fooocus = (prev.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
-          over-accelerate = (prev.python311Packages.accelerate.override {
-            torch = prev.python311Packages.torchWithCuda;
-          });
-          over-pytorch-lightning = (prev.python311Packages.pytorch-lightning.override {
-            torch = prev.python311Packages.torchWithCuda;
-          });
-          over-torchsde = (prev.python311Packages.torchsde.override {
-            torch = prev.python311Packages.torchWithCuda;
-          });
-          over-torchvision = (prev.python311Packages.torchvision.override {
-            torch = prev.python311Packages.torchWithCuda;
-          });
-          over-torchgpipe = (prev.python311Packages.torchgpipe.override {
-            torch = prev.python311Packages.torchWithCuda;
-          });
-          over-pytorch-metric-learning = (prev.python311Packages.pytorch-metric-learning.override {
-            torch = prev.python311Packages.torchWithCuda;
-            torchvision = (prev.python311Packages.torchvision.override {
-              torch = prev.python311Packages.torchWithCuda;
-            });
-            # FAILED tests/losses/test_histogram_loss.py::TestHistogramLoss::test_histogram_loss 
-          }).overrideAttrs (oldAttrs: rec {
-            disabledTests = [
-              "TestDistributedLossWrapper"
-              "TestInference"
-              "test_histogram_loss"
-              "test_get_nearest_neighbors"
-              "test_tuplestoweights_sampler"
-              "test_untrained_indexer"
-              "test_metric_loss_only"
-              "test_pca"
-              "test_distributed_classifier_loss_and_miner"
-              "test_global_embedding_space_tester"
-              "test_with_same_parent_label_tester"
-            ];
-          });
-          over-bitsandbytes = (prev.python311Packages.bitsandbytes.override {
-            torch = prev.python311Packages.torchWithCuda;
-          });
-          over-timm = (prev.python311Packages.timm.override {
-            torch = prev.python311Packages.torchWithCuda;
-            torchvision = (prev.python311Packages.torchvision.override {
-              torch = prev.python311Packages.torchWithCuda;
-            });
-          });
-          over-opencv4 = (prev.python311Packages.opencv4.override {
-            enableCuda = true;
-            enableCublas = true;
-            enableCudnn = true;
-            enableCufft = true;
-          });
+          over-accelerate = (import ./overlays/accelerate.nix { inherit pkgs; });               # with cuda torch
+          over-pytorch-lightning = (import ./overlays/pytorch-lightning.nix { inherit pkgs; }); # with cuda torch
+          over-torchsde = (import ./overlays/torchsde.nix { inherit pkgs; });                   # with cuda torch
+          over-torchvision = (import ./overlays/torchvision.nix { inherit pkgs; });             # with cuda torch
+          over-torchgpipe = (import ./overlays/torchgpipe.nix { inherit pkgs; });               # with cuda torch
+          over-ptml = (import ./overlays/pytorch-metric-learning.nix { inherit pkgs; });        # with cuda torch and fix for broken tests
+          over-bitsandbytes = (import ./overlays/bitsandbytes.nix { inherit pkgs; });           # with cuda torch
+          over-timm = (import ./overlays/timm.nix { inherit pkgs; });                           # with cuda torch
+          over-opencv4 = (import ./overlays/opencv4.nix { inherit pkgs; });                     # with cuda
           #--------------------------------------------------------------------------------------
         })
       ];

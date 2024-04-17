@@ -1,7 +1,6 @@
 { pkgs
 , ...
 }: pkgs.vscode.overrideAttrs (oldAttrs: rec {
-  name = "vscode";
   version = "1.88.1";
   src = pkgs.fetchurl {
     name = "code_x64_${version}.tar.gz";

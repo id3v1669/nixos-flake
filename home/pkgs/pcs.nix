@@ -27,7 +27,6 @@
     # web
     networkmanagerapplet          # network manager applet
     nm-tray                       # network manager tray
-    #over-tun2socks                # socks proxy for outline(shadowsocks)
     ungoogled-chromium            # backup browser
     wireguard-tools               # wireguard tools for experiments with vpn
     tor-browser                   # tor browser for research
@@ -57,7 +56,6 @@
 
     # games
     protonup-qt                   # proton and wine updater
-    steam                         # game launcher
     over-lutris                   # game launcher
     mangohud                      # overlay for games & apps
 

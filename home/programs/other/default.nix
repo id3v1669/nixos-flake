@@ -17,5 +17,6 @@
       package = pkgs.jdk20;
     };
     ncmpcpp.enable = true;
+    
   };
 }
