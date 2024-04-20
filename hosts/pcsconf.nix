@@ -19,6 +19,10 @@
       enable = true;
       package = pkgs.wireshark;
     };
+    kdeconnect = {
+      enable = true;                    # kdeconnect for android integration
+      package = pkgs.libsForQt5.kdeconnect-kde;
+    };
     light.enable = true;                # laptop brightness control and fix for openrgb
     traceroute.enable = true;           # traceroute
     adb.enable = true;                  # android debug bridge

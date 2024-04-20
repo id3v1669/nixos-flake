@@ -18,11 +18,13 @@
     theme = let inherit (config.lib.formats.rasi) mkLiteral; in  
     {
       "*" = {
-        bg = mkLiteral "#${config.colorScheme.palette.base00}66";
-        bg-alt = mkLiteral "#${config.colorScheme.palette.base02}66";
+        bg = mkLiteral "#${config.colorScheme.palette.base00}6B";
+        bg-alt = mkLiteral "#${config.colorScheme.palette.base02}6B";
         bg-selected = mkLiteral "#${config.colorScheme.palette.base01}66";
         fg = mkLiteral "#${config.colorScheme.palette.base05}";
         fg-alt = mkLiteral "#${config.colorScheme.palette.base08}";
+        fg-green = mkLiteral "#${config.colorScheme.palette.base0B}";
+        cian = mkLiteral "#${config.colorScheme.palette.base0C}";
         border = 0;
         margin = 0;
         padding = 0;
@@ -31,14 +33,15 @@
       "window" = {
         width = mkLiteral "30%";
         background-color = mkLiteral "@bg";
+        border-radius = 20;
       };
       "element" = {
         padding = mkLiteral "8 12";
-        background-color = mkLiteral "transparent";
-        text-color = mkLiteral "@fg-alt";
+        background-color = mkLiteral "@bg-alt";
+        text-color = mkLiteral "@fg-green";
       };
       "element selected" = {
-        text-color = mkLiteral "@fg";
+        text-color = mkLiteral "@cian";
         background-color = mkLiteral "@bg-selected";
       };
       "element-text" = {
@@ -47,9 +50,9 @@
         vertical-align = mkLiteral "0.5";
       };
       "element-icon" = {
-        size = 14;
-        padding = mkLiteral "0 10 0 0";
+        padding = mkLiteral "2 5";
         background-color = mkLiteral "transparent";
+        size = mkLiteral "1.2em";
       };
       "entry" = {
         padding = 12;
@@ -57,8 +60,18 @@
         text-color = mkLiteral "@fg";
       };
       "inputbar" = {
-        children = map mkLiteral ["prompt" "entry"];
+        children = map mkLiteral ["icon-search" "prompt" "entry"];
+        border = 3;
+        border-radius = 10;
         background-color = mkLiteral "@bg";
+        border-color = mkLiteral "@cian";
+      };
+      "icon-search" =  {
+        padding = mkLiteral "2 5";
+        expand = false;
+        filename = "search";
+        background-color = mkLiteral "@bg-alt";
+        vertical-align = mkLiteral "0.5";
       };
       "listview" = {
         background-color = mkLiteral "@bg";
@@ -66,8 +79,10 @@
         lines = 10;
       };
       "mainbox" = {
+        padding = 12;
         children = map mkLiteral ["inputbar" "listview"];
         background-color = mkLiteral "@bg";
+        border-color = mkLiteral "@bg-alt";
       };
       "prompt" = {
       enabled = true;
@@ -77,6 +92,7 @@
       };
     };
     extraConfig = {
+      show-icons = true;
       modi = "drun,calc,ssh";
       kb-primary-paste = "Control+V,Shift+Insert";
       kb-secondary-paste = "Control+v,Insert";

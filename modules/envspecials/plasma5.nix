@@ -7,12 +7,6 @@
   xdg.portal = {
     enable = true;
   };
-  programs = {
-    kdeconnect = {
-      enable = true;
-      package = pkgs.libsForQt5.kdeconnect-kde; # kdeconnect-kde
-    };
-  };
   environment.systemPackages = with pkgs; [
   ];
   services = {
