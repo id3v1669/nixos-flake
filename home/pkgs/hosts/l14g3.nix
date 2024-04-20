@@ -8,7 +8,7 @@
     over-outline-manager          # outline manager vpn(proxy)
 
     # security
-    over-veracrypt                # gui encryption
+    veracrypt                # gui encryption
 
     # dev
     jetbrains.rider               # c# ide

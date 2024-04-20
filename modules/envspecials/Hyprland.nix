@@ -27,7 +27,6 @@
   ];
   services = {
     gvfs.enable = true;                         # Mount, trash, etc
-    mpd.enable = true;                          # music player daemon
     displayManager.sessionPackages = [
       pkgs.over-hyprland                        # hyprland session to be recognized by login managers
     ];

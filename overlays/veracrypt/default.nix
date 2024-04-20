@@ -5,24 +5,24 @@
 , makeself
 , yasm
 , fuse
-, wxGTK31
+, wxGTK32
 , lvm2
 , substituteAll
-, pcsclite
 , e2fsprogs
 , exfat
 , ntfs3g
 , btrfs-progs
+, pcsclite
 , wrapGAppsHook
 }:
 
 stdenv.mkDerivation rec {
   pname = "veracrypt";
   version = "1.26.7";
-  
+
   src = fetchurl {
-    url = "https://launchpad.net/${pname}/trunk/${version}/+download/VeraCrypt_${version}_Source.tar.bz2";
-    hash = "sha256-920nsYJBTg1P2ba1n76iiyXbb6afK7z/ouwmmxqGX2U=";
+    url = "https://launchpad.net/${pname}/trunk/${lib.toLower version}/+download/VeraCrypt_${version}_Source.tar.bz2";
+    sha256 = "sha256-920nsYJBTg1P2ba1n76iiyXbb6afK7z/ouwmmxqGX2U=";
   };
 
   patches = [
@@ -35,12 +35,12 @@ stdenv.mkDerivation rec {
       ntfs = "${ntfs3g}/bin/mkfs.ntfs";
       btrfs = "${btrfs-progs}/bin/mkfs.btrfs";
     })
-  ];
+  ] ++ (lib.singleton ./sudo-rs.patch);
 
   sourceRoot = "src";
 
   nativeBuildInputs = [ makeself pkg-config yasm wrapGAppsHook ];
-  buildInputs = [ fuse lvm2 wxGTK31 pcsclite ];
+  buildInputs = [ fuse lvm2 wxGTK32 pcsclite ];
 
   enableParallelBuilding = true;
 
@@ -58,7 +58,8 @@ stdenv.mkDerivation rec {
     description = "Free Open-Source filesystem on-the-fly encryption";
     homepage = "https://www.veracrypt.fr/";
     license = with licenses; [ asl20 /* and */ unfree /* TrueCrypt License version 3.0 */ ];
-    maintainers = with maintainers; [ dsferruzza id3v1669 ];
+    maintainers = with maintainers; [ dsferruzza ];
     platforms = platforms.linux;
   };
 }
+

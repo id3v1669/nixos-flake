@@ -22,25 +22,25 @@
         }
       ];
     };
-    sudo-rs = {                # safe implementation of sudo but abandoned for now as veracrypt doesn't run with it
+    sudo-rs = {
       enable = false;
-      # execWheelOnly = true;
-      # extraRules = [
-      #   # allow wheel group to run nix-collect-garbage and nixos-rebuild without password
-      #   {
-      #     groups = [ "wheel" ];
-      #     commands = [
-      #       {
-      #         command = "/run/current-system/sw/bin/nix-collect-garbage";
-      #         options = ["NOPASSWD"];
-      #       }
-      #       {
-      #         command = "/run/current-system/sw/bin/nixos-rebuild";
-      #         options = ["NOPASSWD"];
-      #       }
-      #     ];
-      #   }
-      # ];
+      execWheelOnly = true;
+      extraRules = [
+        # allow wheel group to run nix-collect-garbage and nixos-rebuild without password
+        {
+          groups = [ "wheel" ];
+          commands = [
+            {
+              command = "/run/current-system/sw/bin/nix-collect-garbage";
+              options = ["NOPASSWD"];
+            }
+            {
+              command = "/run/current-system/sw/bin/nixos-rebuild";
+              options = ["NOPASSWD"];
+            }
+          ];
+        }
+      ];
     };
   };
 }

@@ -15,6 +15,8 @@
 		] ++ lib.lists.optionals (gpuvar.port == "tbqhd") [
       "DP-3,3440x1440@144,0x0,1"
       "DP-4,1920x1080@100,3440x0,1"
+		] ++ lib.lists.optionals (gpuvar.port == "tbsfhd") [
+			"DP-3,2560x1080@144,0x0,1"
 		];
 		windowrule = [
 			"move 84.75% 4.25%,^(pavucontrol)$"

@@ -48,3 +48,10 @@ OpenRGB Module is broken and installed manually
 eww buttons fixed by box with empty element, later find better approach
 
 vscode is used instead of vscode-fhs as last one has problems on wayland + iGPU and wayland + nvidia
+
+Usable colorshemes:
+vulcan, twilight, summercamp, stella, uwunicorn,
+spaceduck, seti, selenized-black, rose-pine, rose-pine-moon,
+porple, phd, pasque, pandora, outrun-dark, mountain, material-darker,
+lime, kimber, icy, gruvbox-dark-pale, grayscale-dark, darktooth, black-metal
+mytop: pandora, stella, lime, gruvbox-dark-pale, outrun-dark, spaceduck, embers

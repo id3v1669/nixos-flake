@@ -52,7 +52,7 @@ in
     filezilla                     # ftp client
 
     # security
-    over-veracrypt                # gui encryption
+    over-veracrypt                     # gui encryption
     over-sherlock                 # find accounts by username
 
     egl-wayland                   # for nvidia vms

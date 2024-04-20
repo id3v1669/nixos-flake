@@ -134,18 +134,17 @@
           over-vscode = (import ./overlays/vscode.nix { inherit pkgs; });                       # vscode overlay as official package is not up to date
           over-lutris = (import ./overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
           over-steam = (import ./overlays/steam.nix { inherit pkgs; });                         # steam overlay with extra packages
-          over-hyprpicker = (import ./overlays/hyprpicker { inherit pkgs; });                   # hyprpicker overlay as official package is broken on my configuration
           over-sherlock = (import ./overlays/sherlock.nix { inherit pkgs; });                   # sherlock overlay as official package is not up to date
           over-rofi-calc = (import ./overlays/rofi-calc.nix { inherit pkgs; });                 # rofi-calc overlay as package has non-wayland build input
           over-rofi-emoji = (import ./overlays/rofi-emoji.nix { inherit pkgs; });               # rofi-emoji overlay as package has non-wayland build input
           over-discord = (import ./overlays/discord.nix { inherit pkgs; });                     # discord for testing
           over-prismlauncher = (import ./overlays/prismlauncher.nix { inherit pkgs; });         # minecraft launcher with java replacement
+          over-vesktop = (import ./overlays/vesktop.nix { inherit pkgs; });                     # vesktop overlay as official package is not up to date
           over-opencore = (prev.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
           over-wayshot = (prev.callPackage ./overlays/wayshot.nix {});                          # wayshot as official package is not up to date
+          over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                      # veracrypt overlay due to sudo-rs glitch
           over-outline-manager = (prev.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
           over-joplin = (prev.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
-          over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                          # veracrypt overlay as official package is not up to date(later patch to run with sudo-rs instead of sudo)
-          over-vesktop = (prev.callPackage ./overlays/vesktop {});                              # vesktop as official package is not up to date
           over-spotify = (prev.callPackage ./overlays/spot.nix {});                             # spotify with adblocker
           over-soundux = (prev.callPackage ./overlays/soundux {});                              # soundux as official package is broken
           over-bootstrap-studio = (prev.callPackage ./overlays/bootstrap-studio.nix {});        # bootstrap-studio as official package is not up to date
@@ -185,11 +184,6 @@
     };
   in {
     nixosConfigurations = {
-      #top themes: vulcan, twilight, summercamp, stella, uwunicorn,
-      #spaceduck, seti, selenized-black, rose-pine, rose-pine-moon,
-      #porple, phd, pasque, pandora, outrun-dark, mountain, material-darker,
-      #lime, kimber, icy, gruvbox-dark-pale, grayscale-dark, darktooth, black-metal
-      #mytop: pandora, stella, lime, gruvbox-dark-pale, outrun-dark, spaceduck, embers
       nuc11phplasma5tbqhd = mkSyst {
         hostname = "nuc11ph";
         envir = "plasma5";
@@ -231,6 +225,31 @@
           busd = "PCI:01:00:0";
           busi = "PCI:00:02:0";
           port = "tbqhd";
+        };
+      };
+      nuc11phhyprtbsfhd = mkSyst {
+        hostname = "nuc11ph";
+        envir = "Hyprland";
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          proxy = false;
+          domain = "none";
+          wp = "default3.png";
+          owner = "id3v1669";
+          sleeptimeout = 99000;
+        };
+        bootloader = {
+          type = "opencore";
+          defconf = true;
+          timeout = 10;
+        };
+        gpuvar = {
+          type = "nvidia";
+          tech = "prime";
+          busd = "PCI:01:00:0";
+          busi = "PCI:00:02:0";
+          port = "tbsfhd";
         };
       };
       nuc11phhyprtbfhd = mkSyst {

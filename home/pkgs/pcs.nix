@@ -81,7 +81,7 @@
     isoimagewriter                # kde iso writer (as ventoy is bad for bios updated)
 
     # other cli utils
-    over-hyprpicker               # color picker
+    hyprpicker                    # color picker
     onefetch                      # fetch for git repos
     pciutils                      # lspci
     usbutils                      # lsusb

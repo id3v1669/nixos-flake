@@ -1,7 +1,7 @@
-diff '--color=auto' --color --unified --recursive --text a/Core/VolumeCreator.h b/Core/VolumeCreator.h
---- a/Core/VolumeCreator.h	2023-12-14 12:39:52.277642570 +0800
-+++ b/Core/VolumeCreator.h	2023-12-14 13:20:14.647256227 +0800
-@@ -78,12 +78,12 @@
+diff --color --unified --recursive --text a/Core/VolumeCreator.h b/Core/VolumeCreator.h
+--- a/Core/VolumeCreator.h	2021-06-20 20:54:50.725210056 +0300
++++ b/Core/VolumeCreator.h	2021-06-20 20:58:46.117742419 +0300
+@@ -77,12 +77,12 @@
  				switch (fsType)
  				{
  	#if defined (TC_LINUX)

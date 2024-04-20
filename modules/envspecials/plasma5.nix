@@ -17,7 +17,6 @@
   ];
   services = {
     gvfs.enable = true;                         # Mount, trash, etc
-    mpd.enable = true;                          # music player daemon
     xserver = {
       desktopManager.plasma5.enable = true;     # plasma5
     };
