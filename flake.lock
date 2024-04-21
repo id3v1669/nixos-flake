@@ -493,6 +493,26 @@
         "type": "github"
       }
     },
+    "hyprpicker": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1713196199,
+        "narHash": "sha256-ifdAQO9wcw/zlAyg8fCpf5I0TtufdRS6YZoTVk1VzLM=",
+        "owner": "hyprwm",
+        "repo": "hyprpicker",
+        "rev": "e2472f499d67568edb1b727736c587b877e85344",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprpicker",
+        "type": "github"
+      }
+    },
     "invokeai-src": {
       "flake": false,
       "locked": {
@@ -837,6 +857,7 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "hyprlock": "hyprlock",
+        "hyprpicker": "hyprpicker",
         "ndct-sddm": "ndct-sddm",
         "nix-colors": "nix-colors",
         "nixified-ai": "nixified-ai",

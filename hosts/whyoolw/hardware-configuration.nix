@@ -13,7 +13,6 @@
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
       kernelModules = [ "amdgpu" ];
-      luks.devices."luks-38a6644b-b8ab-4752-b768-7a402b2ff207".device = "/dev/disk/by-uuid/38a6644b-b8ab-4752-b768-7a402b2ff207";
     };
   };
 
