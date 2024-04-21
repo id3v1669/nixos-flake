@@ -9,8 +9,8 @@
       name = "dynamic-color-theme";
     };
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme.override { color = "black"; };
+      name = "Gruvbox-Plus-Dark"; #"Papirus-Dark";
+      package = pkgs.over-gruv-icons; #pkgs.papirus-icon-theme.override { color = "black"; };
     };
     cursorTheme = {
       name = "Capitaine Cursors (Gruvbox)";

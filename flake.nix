@@ -27,6 +27,10 @@
       url = "github:hyprwm/hyprlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprpicker = {
+      url = "github:hyprwm/hyprpicker";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     xdghypr = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -62,6 +66,7 @@
 , prism-launcher
 , ndct-sddm
 , swhkd
+, hyprpicker
 , ... }@inputs: 
   let
     inherit (self) outputs;
@@ -130,6 +135,7 @@
           over-hyprland = hyprland.packages.${prev.system}.hyprland;                            # hyprland overlay
           over-hypr-portal = xdghypr.packages.${prev.system}.xdg-desktop-portal-hyprland;       # hyprland portal overlay
           over-hyprlock = hyprlock.packages.${prev.system}.hyprlock;                            # hyprlock overlay
+          over-hyprpicker = hyprpicker.packages.${prev.system}.hyprpicker;                      # hyprpicker overlay
           over-ndct-sddm = ndct-sddm.packages.${prev.system}.ndct-sddm-corners;                 # sddm theme
           over-vscode = (import ./overlays/vscode.nix { inherit pkgs; });                       # vscode overlay as official package is not up to date
           over-lutris = (import ./overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
@@ -148,6 +154,7 @@
           over-spotify = (prev.callPackage ./overlays/spot.nix {});                             # spotify with adblocker
           over-soundux = (prev.callPackage ./overlays/soundux {});                              # soundux as official package is broken
           over-bootstrap-studio = (prev.callPackage ./overlays/bootstrap-studio.nix {});        # bootstrap-studio as official package is not up to date
+          over-gruv-icons = (prev.callPackage ./overlays/gruv-icons.nix {});                    # gruv-icons as official package is not up to date
           #-------------------------------------------------------------------------------------ai cuda stuff
           over-fooocus = (prev.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
           over-accelerate = (import ./overlays/accelerate.nix { inherit pkgs; });               # with cuda torch
@@ -317,6 +324,33 @@
           domain = "none";
           wp = "default3.png";
           owner = "id3v1669";
+          sleeptimeout = 1200;
+        };
+        brightnesctrl = {
+          up = "light -A 5";
+          down = "light -U 5";
+        };
+        gpuvar = {
+          type = "amd";
+          tech = "amd";
+        };
+      };
+      whyoolw = mkSyst { 
+        hostname = "whyoolw";
+        envir = "Hyprland";
+        cpuvar = "amd";
+        desk = "laptop";
+        bootloader = {
+          type = "systemd";
+          timeout = 10;
+        };
+        uservars = {
+          name = "user";
+          description = "whyoolw";
+          proxy = true;
+          domain = "none";
+          wp = "default3.png";
+          owner = "whyoolw";
           sleeptimeout = 1200;
         };
         brightnesctrl = {
