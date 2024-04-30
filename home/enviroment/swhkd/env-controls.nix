@@ -1,37 +1,38 @@
 { config
 , envir
+, pkgs
 , ...
 }:
 {
 
   home.file.".config/swhkd/env-controls".text = let 
-    killactive = if envir=="Hyprland" then "hyprctl dispatch killactive"
+    killactive = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch killactive"
       else "";
-    togglesplit = if envir=="Hyprland" then "hyprctl dispatch togglesplit"
+    togglesplit = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch togglesplit"
       else "echo 'no envir'";
-    togglefloating = if envir=="Hyprland" then "hyprctl dispatch togglefloating"
+    togglefloating = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch togglefloating"
       else "";
-    pseudo = if envir=="Hyprland" then "hyprctl dispatch pseudo"
+    pseudo = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch pseudo"
       else "";
-    nextworkspace = if envir=="Hyprland" then "hyprctl dispatch workspace e+1"
+    nextworkspace = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch workspace e+1"
       else "";
-    prevworkspace = if envir=="Hyprland" then "hyprctl dispatch workspace e-1"
+    prevworkspace = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch workspace e-1"
       else "";
-    movenextworkspace = if envir=="Hyprland" then "hyprctl dispatch movetoworkspace e+1"
+    movenextworkspace = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch movetoworkspace e+1"
       else "";
-    moveprevworkspace = if envir=="Hyprland" then "hyprctl dispatch movetoworkspace e-1"
+    moveprevworkspace = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch movetoworkspace e-1"
       else "";
-    fullscreen = if envir=="Hyprland" then "hyprctl dispatch fullscreen"
+    fullscreen = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch fullscreen"
       else "";
-    nextactivewindow = if envir=="Hyprland" then "hyprctl dispatch cyclenext"
+    nextactivewindow = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch cyclenext"
       else "";
-    movetoworkspace = if envir=="Hyprland" then "hyprctl dispatch movetoworkspace"
+    movetoworkspace = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch movetoworkspace"
       else "";
-    workspace = if envir=="Hyprland" then "hyprctl dispatch workspace"
+    workspace = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch workspace"
       else "";
-    movefocus = if envir=="Hyprland" then "hyprctl dispatch movefocus "
+    movefocus = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch movefocus "
       else "";
-    exit = if envir=="Hyprland" then "hyprctl dispatch exit"
+    exit = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch exit"
       else "";
   in ''
 

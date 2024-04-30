@@ -52,7 +52,7 @@ stdenv.mkDerivation rec {
     owner = "Soundux";
     repo = "Soundux";
     rev = "fca05c9251f7d69dd9b201cb4bbb5f262f9ed07f";
-    hash = "sha256-OLbkCATQM9lXyHOhYWKYgBbZ/3mCl+D0Yg9nN0HRCPk=";
+    hash = "sha256-uqvnIGc6jbmlPBb3tbUU4XEgHejuruouxe8eUTz51+0=";
     fetchSubmodules = true;
   };
 

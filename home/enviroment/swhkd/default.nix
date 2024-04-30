@@ -1,4 +1,5 @@
-{ config
+{ lib
+, config
 , pkgs
 , brightnesctrl
 , ...
@@ -26,7 +27,7 @@ super + shift + p
   hyprpicker -a
 
 super + shift + e
-  bash ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
+  eww reload
 
 super + shift + y
   bash ${config.home.homeDirectory}/.scripts/moveeww.sh

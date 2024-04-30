@@ -11,10 +11,6 @@
       enable = true;
       package = pkgs.over-steam;
     };
-    virt-manager = {                    # virt-manager
-      enable = true;
-      package = pkgs.virt-manager;
-    };
     wireshark = {                       # wireshark for network analysis
       enable = true;
       package = pkgs.wireshark;
@@ -45,7 +41,6 @@
     };
   };
   environment.systemPackages = with pkgs; [
-    #over-steam
     over-ndct-sddm
     polkit_gnome                        # polkit agent
     xorg.xhost                          # xhost

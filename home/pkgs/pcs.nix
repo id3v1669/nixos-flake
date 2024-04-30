@@ -4,8 +4,7 @@
 {
   home.packages = (with pkgs;[
     # screenshots
-    #wayshot                       # cli screenshot
-    over-wayshot
+    wayshot                       # cli screenshot
     slurp                         # select area for screenshot
 
     # sound
@@ -16,7 +15,7 @@
     qpwgraph                      # gui for pipewire graph
     mpc-cli                       # cli for mpd
     qjackctl                      # gui for jack
-    over-soundux                  # soundpad broken after webkitgtk update
+    #over-soundux                  # soundpad broken after webkitgtk update
     over-spotify                  # music player
 
     # vm, virt and emulators

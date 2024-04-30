@@ -8,9 +8,9 @@
     text = ''
 #!/usr/bin/env bash
 
-pactl subscribe | grep --line-buffered 'sink' | while read -r line; do
-    default_sink=$(pactl get-default-sink)
-    eww update soundvol=$(pactl get-sink-volume $default_sink | grep -oP '\d+%' | head -1)
+${pkgs.pulseaudio}/bin/pactl subscribe | ${pkgs.gnugrep}/bin/grep --line-buffered 'sink' | while read -r line; do
+    default_sink=$(${pkgs.pulseaudio}/bin/pactl get-default-sink)
+    ${pkgs.over-eww}/bin/eww update soundvol=$(${pkgs.pulseaudio}/bin/pactl get-sink-volume $default_sink | ${pkgs.gnugrep}/bin/grep -oP '\d+%' | head -1)
 done
     '';
   };

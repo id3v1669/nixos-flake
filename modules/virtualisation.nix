@@ -6,6 +6,10 @@
 }: 
 {
   security.virtualisation.flushL1DataCache = "always";                         # flush L1 data cache on context switch
+  programs.virt-manager = {                                                    # gui for managing vms       
+    enable = true;
+    package = pkgs.virt-manager;
+  };
   environment.systemPackages = with pkgs; [
     spice
     spice-gtk

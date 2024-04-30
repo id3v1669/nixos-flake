@@ -1,4 +1,5 @@
-{ ...
+{ pkgs
+, ...
 }:
 {
   home.file.".scripts/microphone.sh" = {
@@ -6,7 +7,7 @@
     text = ''
 #!/usr/bin/env bash
 
-cards=$(aplay -l | grep card | awk -F: '{print $1}' | awk '{print $2}' | sort -u)
+cards=$(aplay -l | ${pkgs.gnugrep}/bin/grep card | ${pkgs.gawk}/bin/awk -F: '{print $1}' | ${pkgs.gawk}/bin/awk '{print $2}' | sort -u)
 
 for card in $cards; do
   controls=$(amixer -c $card scontrols)
@@ -14,7 +15,7 @@ for card in $cards; do
     echo "Line before if: $line"
     if [[ $line == *Mic* ]]; then
       echo "Line after if: $line"
-      control=$(echo "$line" | awk -F"'" '{print $2}')
+      control=$(echo "$line" | ${pkgs.gawk}/bin/awk -F"'" '{print $2}')
       echo "Control: $control"
       for i in 0 1; do
         echo "amixer -c $card sset \"$control,$i\" toggle"
@@ -24,7 +25,7 @@ for card in $cards; do
   done <<< "$controls"
 done
 
-#amixer sget Capture | grep -q "\[on\]"
+#amixer sget Capture | ${pkgs.gnugrep}/bin/grep -q "\[on\]"
     '';
   };
 }

@@ -74,17 +74,17 @@
         :orientation "vertical"
         (button
           :class "suspend" 
-          :onclick "systemctl suspend"
+          :onclick "${pkgs.systemd}/bin/systemctl suspend"
           ""
         )
         (button 
           :class "reboot"
-          :onclick "reboot"
+          :onclick "${pkgs.systemd}/bin/reboot"
           ""
         )
         (button 
           :class "shutdown"
-          :onclick "shutdown -h now"
+          :onclick "${pkgs.systemd}/bin/shutdown -h now"
           "󰐥"
         )
       )
@@ -252,7 +252,7 @@
       (button 
         :class "proxy"
         :timeout "''${deftimeout}"
-        :onclick "bash ~/.scripts/ss.sh"
+        :onclick "${pkgs.bash}/bin/bash ~/.scripts/ss.sh"
         (box 
           "''${proxystatus}"
         )
@@ -291,7 +291,7 @@
     :orientation "h"
     (button 
       :class "mic"
-      :onclick "bash ~/.scripts/microphone.sh"
+      :onclick "${pkgs.bash}/bin/bash ~/.scripts/microphone.sh"
       (box 
         "󰍬"
       )
@@ -321,7 +321,7 @@
       (button 
         :class "sound"
         :timeout "''${deftimeout}"
-        :onclick "pavucontrol"
+        :onclick "${pkgs.pavucontrol}/bin/pavucontrol"
         (box 
           (box 
             :class "soundsymb"
@@ -366,7 +366,7 @@
     (button 
       :class "usageinfo"
       :timeout "''${ deftimeout}"
-      :onclick "kitty btop"
+      :onclick "${pkgs.kitty}/bin/kitty ${pkgs.btop}/bin/btop"
       (box 
         :space-evenly false
         :spacing 10
@@ -397,7 +397,7 @@
     (button 
       :class "launcher"
       :timeout "''${deftimeout}"
-      :onclick "rofi -show"
+      :onclick "${config.programs.rofi.finalPackage}/bin/rofi -show"
       (box
         " "
       )

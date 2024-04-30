@@ -1,4 +1,5 @@
 { config
+, pkgs
 , ...
 }:
 {
@@ -9,7 +10,7 @@
 
 
 does_distrobox_exist() {
-    distrobox-list | grep -q "$1"
+    distrobox-list | ${pkgs.gnugrep}/bin/grep -q "$1"
 }
 
 echo "Checking for distrobox images..."

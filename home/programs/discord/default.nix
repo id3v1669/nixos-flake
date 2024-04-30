@@ -1,5 +1,7 @@
 { config
 , lib
+, pkgs
+, desk
 , ...
 }:
 let
@@ -7,6 +9,19 @@ let
     inherit (import ./../../../lib/h2rgb.nix { inherit lib; }) hexToRgb;
 in
 {
+  systemd.user.services = {} // lib.optionalAttrs (desk == "desktop") {
+    arrpc = {
+		  Unit = {
+        Description = "arrpc service";
+   	    After = ["default.target" ];
+      };
+		  Service = {
+			  ExecStart = "${pkgs.arrpc}/bin/arrpc";
+        Restart = "on-failure";
+		  };
+		  Install = { WantedBy = [ "default.target" ]; };
+    };
+  };
   home.file.".config/vesktop/themes/usertheme.css".text = ''
 
 .wrapper__7bcde .link__95dc0 /* channels */,

@@ -1,4 +1,5 @@
-{ ...
+{ pkgs
+, ...
 }:
 {
   home.file.".scripts/moveeww.sh" = {
@@ -6,13 +7,13 @@
     text = ''
 #!/usr/bin/env bash
 
-defaultscreen=$(eww get defaultscreen)
+defaultscreen=$(${pkgs.over-eww}/bin/eww get defaultscreen)
 
-eww update defaultscreen=$((!$defaultscreen))
+${pkgs.over-eww}/bin/eww update defaultscreen=$((!$defaultscreen))
 
-eww open popup-power-window --screen $((!$defaultscreen))
-eww open calendar-popup-window --screen $((!$defaultscreen))
-eww open bar --screen $((!$defaultscreen))
+${pkgs.over-eww}/bin/eww open popup-power-window --screen $((!$defaultscreen))
+${pkgs.over-eww}/bin/eww open calendar-popup-window --screen $((!$defaultscreen))
+${pkgs.over-eww}/bin/eww open bar --screen $((!$defaultscreen))
 
     '';
   };

@@ -20,7 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      url = "github:hyprwm/Hyprland"; # "github:hyprwm/Hyprland/v0.37.1";
+      url = "github:hyprwm/Hyprland/v0.39.1"; #"github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprlock = {
@@ -147,7 +147,6 @@
           over-prismlauncher = (import ./overlays/prismlauncher.nix { inherit pkgs; });         # minecraft launcher with java replacement
           over-vesktop = (import ./overlays/vesktop.nix { inherit pkgs; });                     # vesktop overlay as official package is not up to date
           over-opencore = (prev.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
-          over-wayshot = (prev.callPackage ./overlays/wayshot.nix {});                          # wayshot as official package is not up to date
           over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                      # veracrypt overlay due to sudo-rs glitch
           over-outline-manager = (prev.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
           over-joplin = (prev.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
@@ -259,31 +258,6 @@
           port = "tbsfhd";
         };
       };
-      nuc11phhyprtbfhd = mkSyst {
-        hostname = "nuc11ph";
-        envir = "Hyprland";
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          proxy = false;
-          domain = "none";
-          wp = "default3.png";
-          owner = "id3v1669";
-          sleeptimeout = 99000;
-        };
-        bootloader = {
-          type = "opencore";
-          defconf = true;
-          timeout = 10;
-        };
-        gpuvar = {
-          type = "nvidia";
-          tech = "prime";
-          busd = "PCI:01:00:0";
-          busi = "PCI:00:02:0";
-          port = "tbfhd";
-        };
-      };
       nuc11phhyprhdminvk = mkSyst {
         hostname = "nuc11ph";
         envir = "Hyprland";
@@ -324,33 +298,6 @@
           domain = "none";
           wp = "default3.png";
           owner = "id3v1669";
-          sleeptimeout = 1200;
-        };
-        brightnesctrl = {
-          up = "light -A 5";
-          down = "light -U 5";
-        };
-        gpuvar = {
-          type = "amd";
-          tech = "amd";
-        };
-      };
-      whyoolw = mkSyst { 
-        hostname = "whyoolw";
-        envir = "Hyprland";
-        cpuvar = "amd";
-        desk = "laptop";
-        bootloader = {
-          type = "systemd";
-          timeout = 10;
-        };
-        uservars = {
-          name = "whyoolw";
-          description = "whyoolw";
-          proxy = true;
-          domain = "none";
-          wp = "default3.png";
-          owner = "whyoolw";
           sleeptimeout = 1200;
         };
         brightnesctrl = {

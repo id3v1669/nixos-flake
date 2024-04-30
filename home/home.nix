@@ -12,6 +12,7 @@
   imports = [
     ./programs
     ./pkgs
+    ./enviroment/systemd
   ] ++ lib.lists.optionals (envir != "none") [
     ./assets
     ./../scripts

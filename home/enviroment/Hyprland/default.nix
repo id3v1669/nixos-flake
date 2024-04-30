@@ -76,14 +76,11 @@
     extraConfig = ''
 #----------------startup commands-----------------
 exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 15    # set cursor as hyprland doesn't respect gtk
-exec-once = arrpc &                                               # rpc server for discord
-exec-once = swhks &                                               # shortcut daemon
-exec-once = wl-paste --type text --watch cliphist store           # clipboard text history
+exec-once = swhks &                                               # used command as systemd service starts it in isolation
 #-------------------------------------------------
 
 #-----------------startup scripts-----------------
 exec-once = ${config.home.homeDirectory}/.scripts/wallpaper.sh    # lutgen and wallpaper starter
-exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh  # eww restarter and applets
 #------------------------------------------------- 
 
 source = ${config.home.homeDirectory}/.config/hypr/colors
