@@ -26,7 +26,10 @@
   ];
 
   services.usbmuxd.enable = true;
-  networking.firewall.enable = false;
+  networking = {
+    firewall.enable = false;
+    enableIPv6 = false;
+  };
   hardware.bluetooth.settings = {
     General = {
       ControllerMode = "bredr";

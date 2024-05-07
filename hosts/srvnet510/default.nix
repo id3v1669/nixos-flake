@@ -27,10 +27,21 @@
     firewall.allowedTCPPorts = [ 26783 80 443 ];
     firewall.enable = true;
   };
-  users.users.${uservars.name}.extraGroups = [ 
-    "wheel"
-    "networkmanager"
-  ];
+  users.users = {
+    ${uservars.name}.extraGroups = [ 
+      "wheel"
+      "networkmanager"
+    ];
+    guest = {
+      isNormalUser = true;
+      description = "guest user";
+      shell = pkgs.fish;
+      ignoreShellProgramCheck = true;
+      extraGroups = [
+        "networkmanager"
+      ];
+    };
+  };
   services.openssh = {
     enable = true;
     ports = [ 26783 ];

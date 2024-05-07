@@ -41,6 +41,7 @@
     };
   };
   environment.systemPackages = with pkgs; [
+    tun2socks
     over-ndct-sddm
     polkit_gnome                        # polkit agent
     xorg.xhost                          # xhost

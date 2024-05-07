@@ -20,7 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.39.1"; #"github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/v0.40.0"; #"github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprlock = {
@@ -154,6 +154,7 @@
           over-soundux = (prev.callPackage ./overlays/soundux {});                              # soundux as official package is broken
           over-bootstrap-studio = (prev.callPackage ./overlays/bootstrap-studio.nix {});        # bootstrap-studio as official package is not up to date
           over-gruv-icons = (prev.callPackage ./overlays/gruv-icons.nix {});                    # gruv-icons as official package is not up to date
+          over-protonup-qt = (prev.callPackage ./overlays/protonup-qt.nix {});                  # temp fix
           #-------------------------------------------------------------------------------------ai cuda stuff
           over-fooocus = (prev.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
           over-accelerate = (import ./overlays/accelerate.nix { inherit pkgs; });               # with cuda torch

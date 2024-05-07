@@ -39,7 +39,7 @@ in
 {
   home.packages = with pkgs; [
     # text & docs
-    joplin                        # note taking app
+    over-joplin                        # note taking app
     calibre                       # e-book reader
 
     # dev

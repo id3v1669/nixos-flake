@@ -51,10 +51,12 @@
     # security
     nmap                          # network scanner
     openssl                       # cli encryption
+    
     #rustdesk                      # remote desktop
 
     # games
-    protonup-qt                   # proton and wine updater
+    over-protonup-qt
+    #protonup-qt                   # proton and wine updater
     over-lutris                   # game launcher
     mangohud                      # overlay for games & apps
 
