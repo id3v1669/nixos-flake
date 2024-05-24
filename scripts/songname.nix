@@ -3,7 +3,7 @@
 , ...
 }:
 {
-  home.file.".scripts/songname.sh" = {
+  home.file.".scripts/eww_songname.sh" = {
     executable = true;
     text = ''
 #!/usr/bin/env bash

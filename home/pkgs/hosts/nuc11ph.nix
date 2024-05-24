@@ -40,14 +40,31 @@ in
   home.packages = with pkgs; [
     # text & docs
     over-joplin                        # note taking app
-    calibre                       # e-book reader
+    #calibre                       # e-book reader
 
     # dev
     github-desktop                # github desktop
     jetbrains.rider               # c# ide
     jetbrains.rust-rover          # rust ide
-#    over-bootstrap-studio         # web design (front-end)
-    rstudio                       # r ide
+    #over-bootstrap-studio         # web design (front-end)
+    (rstudioWrapper.override{ packages = with rPackages; [ 
+      tidyverse
+      caret
+      glmnet
+      forcats
+      e1071
+      readr
+      moments
+      ggpubr
+      scatterplot3d
+      factoextra
+      mikropml
+      rpart
+      rpart_plot
+      ipred
+      ranger
+      mlbench
+    ];})
 
     # files
     filezilla                     # ftp client

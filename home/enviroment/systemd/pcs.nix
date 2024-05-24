@@ -17,7 +17,7 @@
   systemd.user.services.blueman-applet = {
 		Unit = {
       Description = "Blueman applet service";
-   	  After = ["graphical-session-pre.target" "bluetooth.target" "eww-daemon.service" ];
+   	  After = ["graphical-session-pre.target" "bluetooth.target" ];
       PartOf = ["graphical-session.target"];
     };
 		Service = {

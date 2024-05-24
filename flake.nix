@@ -11,8 +11,8 @@
     nixified-ai.url = "github:nixified-ai/flake";
     prism-launcher.url = "github:PrismLauncher/PrismLauncher";
     nur.url = "github:nix-community/NUR";
-    eww-tray = {
-     url = "github:ralismark/eww/tray-3";
+    eww = {
+     url = "github:id3v1669/eww";
      flake = true;
     };
     home-manager = {
@@ -20,7 +20,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.40.0"; #"github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/v0.40.0";
+#      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprlock = {
@@ -59,7 +60,7 @@
 , nixmox
 , xdghypr
 , hyprlock
-, eww-tray
+, eww
 , sops-nix
 , nix-colors
 , nixified-ai
@@ -131,7 +132,7 @@
         (final: prev: {
           over-intel-vaapi-driver = prev.vaapiIntel.override { enableHybridCodec = true; };     # intel vaapi driver with hybrid codec support
           over-swhkd = swhkd.packages.${prev.system}.swhkd;                                     # hotkey daemon
-          over-eww = eww-tray.packages.${prev.system}.default.override { withWayland = true; }; # overlay of eww(bar & widgets) with dynamic icons tray support
+          over-eww = eww.packages.${prev.system}.default;                                       # eww custom - swap tray mouse buttons
           over-hyprland = hyprland.packages.${prev.system}.hyprland;                            # hyprland overlay
           over-hypr-portal = xdghypr.packages.${prev.system}.xdg-desktop-portal-hyprland;       # hyprland portal overlay
           over-hyprlock = hyprlock.packages.${prev.system}.hyprlock;                            # hyprlock overlay
@@ -155,6 +156,8 @@
           over-bootstrap-studio = (prev.callPackage ./overlays/bootstrap-studio.nix {});        # bootstrap-studio as official package is not up to date
           over-gruv-icons = (prev.callPackage ./overlays/gruv-icons.nix {});                    # gruv-icons as official package is not up to date
           over-protonup-qt = (prev.callPackage ./overlays/protonup-qt.nix {});                  # temp fix
+          over-rkward = (prev.callPackage ./overlays/rkward.nix {});                            # rkward
+          over-rstudio = (prev.callPackage ./overlays/rstudio.nix {});                          # rstudio
           #-------------------------------------------------------------------------------------ai cuda stuff
           over-fooocus = (prev.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
           over-accelerate = (import ./overlays/accelerate.nix { inherit pkgs; });               # with cuda torch
@@ -209,7 +212,7 @@
           timeout = 10;
         };
       };
-      nuc11phhyprtbqhd = mkSyst {
+      nuc11phhyprtb = mkSyst {
         hostname = "nuc11ph";
         envir = "Hyprland";
         uservars = {
@@ -234,7 +237,7 @@
           port = "tbqhd";
         };
       };
-      nuc11phhyprtbsfhd = mkSyst {
+      nuc11phhyprhdmi = mkSyst {
         hostname = "nuc11ph";
         envir = "Hyprland";
         uservars = {
@@ -253,10 +256,10 @@
         };
         gpuvar = {
           type = "nvidia";
-          tech = "prime";
+          tech = "native";
           busd = "PCI:01:00:0";
           busi = "PCI:00:02:0";
-          port = "tbsfhd";
+          port = "hdmi";
         };
       };
       nuc11phhyprhdminvk = mkSyst {

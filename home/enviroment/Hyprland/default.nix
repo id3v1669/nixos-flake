@@ -80,6 +80,7 @@ exec-once = swhks &                                               # used command
 #-------------------------------------------------
 
 #-----------------startup scripts-----------------
+exec-once = ${config.home.homeDirectory}/.scripts/ewwlauncher.sh  # eww launcher
 exec-once = ${config.home.homeDirectory}/.scripts/wallpaper.sh    # lutgen and wallpaper starter
 #------------------------------------------------- 
 

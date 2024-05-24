@@ -8,16 +8,16 @@
 }:
 let
   over-v4l2loopback = config.boot.kernelPackages.v4l2loopback.overrideAttrs (oldAttrs: rec {
-  pname = "v4l2loopback";
-  version = "unstable-2024-02-12";
+    pname = "v4l2loopback";
+    version = "unstable-2024-02-12";
 
-  src = pkgs.fetchFromGitHub {
-    owner = "umlaeute";
-    repo = "v4l2loopback";
-    rev = "5d72c17f92ee0e38efbb7eb85e34443ecbf1a80c";
-    hash = "sha256-ggmYH5MUXhMPvA8UZ2EAG+eGoPTNbw7B8UxmmgP6CsE=";
-  };
-});
+    src = pkgs.fetchFromGitHub {
+      owner = "umlaeute";
+      repo = "v4l2loopback";
+      rev = "5d72c17f92ee0e38efbb7eb85e34443ecbf1a80c";
+      hash = "sha256-ggmYH5MUXhMPvA8UZ2EAG+eGoPTNbw7B8UxmmgP6CsE=";
+    };
+  });
 in
 {
   imports =[ (modulesPath + "/installer/scan/not-detected.nix") ];
@@ -38,16 +38,17 @@ in
       "nouveau"
     ];
     kernelParams = [
+      "module_blacklist=i915"
     ] ++ lib.lists.optionals (gpuvar.tech == "prime") [
       "i915.force_probe=9a49"
-    ] ++ lib.lists.optionals (gpuvar.tech == "native") [
-      "nvidia_drm.modeset=1"
     ] ++ lib.lists.optionals (gpuvar.tech == "nvk") [
       "nouveau.config=NvGspRm=1"
       "nouveau.debug=info,VBIOS=info,gsp=debug"
     ];
     kernelPackages = pkgs.linuxPackages_latest;
-    extraModulePackages = with config.boot.kernelPackages; [ over-v4l2loopback ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      over-v4l2loopback
+    ];
     initrd = {
       availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
       kernelModules = [ ];

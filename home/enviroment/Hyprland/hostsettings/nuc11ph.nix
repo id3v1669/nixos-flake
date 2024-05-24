@@ -28,17 +28,27 @@
 #-----------------------------------------#
 #----------------Variables----------------#
 
-availible_resolutions=("tbqhd" "tbfhd" "tbsfhd")
+availible_resolutions=("tbqhd" "tbsqhd" "tbfhd" "tbsfhd" "hdmiqhd" "hdmisqhd" "hdmifhd" "hdmisfhd")
 
 declare -A screen1_resolutions
 screen1_resolutions["tbqhd"]="monitor=DP-3,3440x1440@144,0x0,1"
+screen1_resolutions["tbsqhd"]="monitor=DP-3,3440x1440@144,0x0,1"
 screen1_resolutions["tbfhd"]="monitor=DP-3,2560x1080@144,0x0,1"
 screen1_resolutions["tbsfhd"]="monitor=DP-3,2560x1080@144,0x0,1"
+screen1_resolutions["hdmiqhd"]="monitor=HDMI-A-1,3440x1440@100,0x0,1"
+screen1_resolutions["hdmisqhd"]="monitor=HDMI-A-1,3440x1440@100,0x0,1"
+screen1_resolutions["hdmifhd"]="monitor=HDMI-A-1,2560x1080@120,0x0,1"
+screen1_resolutions["hdmisfhd"]="monitor=HDMI-A-1,2560x1080@120,0x0,1"
 
 declare -A screen2_resolutions
 screen2_resolutions["tbqhd"]="monitor=DP-4,1920x1080@100,3440x0,1"
+screen2_resolutions["tbsqhd"]="monitor=DP-4,disable"
 screen2_resolutions["tbfhd"]="monitor=DP-4,1920x1080@100,2560x0,1"
 screen2_resolutions["tbsfhd"]="monitor=DP-4,disable"
+screen2_resolutions["hdmiqhd"]="monitor=DP-1,1920x1080@100,3440x0,1"
+screen2_resolutions["hdmisqhd"]="monitor=DP-1,disable"
+screen2_resolutions["hdmifhd"]="monitor=DP-1,1920x1080@100,2560x0,1"
+screen2_resolutions["hdmisfhd"]="monitor=DP-1,disable"
 
 path="${config.home.homeDirectory}/.config/hypr/monitor.conf"
 resolution=$1
@@ -72,20 +82,20 @@ fi
 
 		'';
 	};
-	systemd.user.services.monitors-declare = {
-		Unit = {
-     	Description = "Declare monitor resolution";
-   		After = [ "default.target" ];
-   	};
-		Service = {
-			Type = "oneshot";
-			Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath (with pkgs; [
-				bash
-				coreutils
-			])}";
-			ExecStart = "bash ${config.home.homeDirectory}/.scripts/screen.sh";
-			RemainAfterExit = true;
-		};
-		Install = { WantedBy = ["default.target"]; };
- };
+# 	systemd.user.services.monitors-declare = {
+# 		Unit = {
+#      	Description = "Declare monitor resolution";
+#    		After = [ "default.target" ];
+#    	};
+# 		Service = {
+# 			Type = "oneshot";
+# 			Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath (with pkgs; [
+# 				bash
+# 				coreutils
+# 			])}";
+# 			ExecStart = "bash ${config.home.homeDirectory}/.scripts/screen.sh";
+# 			RemainAfterExit = true;
+# 		};
+# 		Install = { WantedBy = ["default.target"]; };
+#  };
 }

@@ -24,6 +24,8 @@
       else "";
     fullscreen = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch fullscreen"
       else "";
+    fullscreen_bar = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch fullscreen 1"
+      else "";
     nextactivewindow = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch cyclenext"
       else "";
     movetoworkspace = if envir=="Hyprland" then "${pkgs.over-hyprland}/bin/hyprctl dispatch movetoworkspace"
@@ -47,6 +49,9 @@ super + j
 
 super + g
   ${fullscreen}
+
+super + shift + g
+  ${fullscreen_bar}
 
 super + p
   ${pseudo}

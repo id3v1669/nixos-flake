@@ -22,6 +22,7 @@
     light.enable = true;                # laptop brightness control and fix for openrgb
     traceroute.enable = true;           # traceroute
     adb.enable = true;                  # android debug bridge
+    xwayland.enable = true;             # xwayland for x11 apps
   };
   hardware = {
     cpu.${cpuvar}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
@@ -32,12 +33,12 @@
     flatpak.enable = true;              # crap to be removed later
     hardware.bolt.enable = true;        # thunderbolt support
     displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      extraPackages = with pkgs; [
-        libsForQt5.qt5.qtgraphicaleffects
-      ];
-      theme = "ndct";
+     enable = true;
+     wayland.enable = true;
+     extraPackages = with pkgs; [
+       libsForQt5.qt5.qtgraphicaleffects
+     ];
+     theme = "ndct";
     };
   };
   environment.systemPackages = with pkgs; [

@@ -283,6 +283,8 @@
       };
     };
     extensions = with pkgs.vscode-extensions; [
+      reditorsupport.r
+      formulahendry.code-runner
       github.copilot
       mads-hartmann.bash-ide-vscode
       jnoortheen.nix-ide

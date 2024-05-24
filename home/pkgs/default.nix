@@ -21,7 +21,6 @@
     # cli utils
     vim                           # text editor
     btop                          # htop but better
-    neofetch                      # linux core))
     git                           # git
     gh                            # github auth helper
 

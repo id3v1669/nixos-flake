@@ -3,7 +3,7 @@
 , ...
 }:
 {
-  home.file.".scripts/volume.sh" = {
+  home.file.".scripts/eww_volume.sh" = {
     executable = true;
     text = ''
 #!/usr/bin/env bash

@@ -16,7 +16,7 @@
     ./btop
     ./joplin
     ./obs
-    ./neofetch
+    ./fastfetch
     ./rider
     ./swappy
   ];

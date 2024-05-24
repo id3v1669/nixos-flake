@@ -168,7 +168,8 @@
       :orientation "h"
       :class "tray"
       (systray
-        :pack-direction "left"
+        :space-evenly true
+        :spacing 6
       )
     )
     (sound)

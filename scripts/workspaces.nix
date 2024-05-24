@@ -31,7 +31,7 @@ wss() {
 
 wss
 
-${pkgs.socat}/bin/socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | \
+${pkgs.socat}/bin/socat -u UNIX-CONNECT:/run/user/1000/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | \
 stdbuf -o0 ${pkgs.gawk}/bin/awk -F '>>|,' -e '/^workspace>>/ {print $2}' -e '/^focusedmon>>/ {print $3}' | \
 while IFS= read -r line; do
     wss "$line"

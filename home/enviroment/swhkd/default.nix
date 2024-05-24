@@ -29,6 +29,9 @@ super + shift + p
 super + shift + e
   eww reload
 
+super + shift + r
+  bash ${config.home.homeDirectory}/.scripts/ewwlauncher.sh
+
 super + shift + y
   bash ${config.home.homeDirectory}/.scripts/moveeww.sh
 

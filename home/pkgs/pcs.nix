@@ -40,7 +40,8 @@
     hyprpaper                     # wallpapers
     imagemagickBig                # image manipulation(convert etc)
     swappy
-    
+    feh                           # cli image viewer (later find wayland alternative)
+    imv                           # wayland image viewer
 
     # chat
     telegram-desktop              # telegram client

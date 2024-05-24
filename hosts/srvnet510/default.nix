@@ -1,4 +1,5 @@
-{ uservars
+{ pkgs
+, uservars
 , curversion
 , ...
 }:
