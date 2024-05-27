@@ -11,5 +11,6 @@
     ./lang.nix
     ./songname.nix
     ./moveeww.nix
+    ./shadowplay.nix
   ];
 }

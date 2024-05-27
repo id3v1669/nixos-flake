@@ -38,6 +38,7 @@ in
       "nouveau"
     ];
     kernelParams = [
+    ] ++ lib.lists.optionals (gpuvar.tech == "native") [
       "module_blacklist=i915"
     ] ++ lib.lists.optionals (gpuvar.tech == "prime") [
       "i915.force_probe=9a49"

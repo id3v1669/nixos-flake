@@ -39,9 +39,7 @@
     lutgen                        # image with filter generator
     hyprpaper                     # wallpapers
     imagemagickBig                # image manipulation(convert etc)
-    swappy
-    feh                           # cli image viewer (later find wayland alternative)
-    imv                           # wayland image viewer
+    imv                           # wayland cli image viewer
 
     # chat
     telegram-desktop              # telegram client

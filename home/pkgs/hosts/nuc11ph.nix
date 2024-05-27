@@ -79,6 +79,8 @@ in
     egl-wayland                   # for nvidia vms
     over-prismlauncher            # minecraft launcher
     
+    over-gpu-screen-recorder
+    over-gpu-screen-recorder-gtk
     libsForQt5.kdenlive           # video editing
     gimp                          # image editing
 #    over-outline-manager          # outline manager vpn(proxy)

@@ -85,7 +85,7 @@
       gpuvar ? {
         type = "nvidia";
         tech = "prime";
-        busd = "PCI:01:00:0";
+        busd = "PCI:01:00:0"; # lspci -nn | grep VGA
         busi = "PCI:00:02:0";
         port = "tbqhd";
       },
@@ -147,6 +147,8 @@
           over-discord = (import ./overlays/discord.nix { inherit pkgs; });                     # discord for testing
           over-prismlauncher = (import ./overlays/prismlauncher.nix { inherit pkgs; });         # minecraft launcher with java replacement
           over-vesktop = (import ./overlays/vesktop.nix { inherit pkgs; });                     # vesktop overlay as official package is not up to date
+          over-gpu-screen-recorder-gtk = (import ./overlays/shadow-gtk.nix { inherit pkgs; });  # gpu-screen-recorder-gtk overlay as official package is not up to date
+          over-gpu-screen-recorder = (import ./overlays/shadow.nix { inherit pkgs; });          # gpu-screen-recorder overlay as official package is not up to date
           over-opencore = (prev.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
           over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                      # veracrypt overlay due to sudo-rs glitch
           over-outline-manager = (prev.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it

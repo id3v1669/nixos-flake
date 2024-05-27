@@ -136,6 +136,24 @@
       }
   }
 
+.replay {
+  font-size: 1.4em;
+  background-color: #${config.colorScheme.palette.base00};
+  border-radius: 20px;
+  padding: 5px 16px 4px 10px;
+  &:hover {
+      background-color: #${config.colorScheme.palette.base01};
+      color: #${config.colorScheme.palette.base06};
+    }
+}
+.replay.active {
+  color: #${config.colorScheme.palette.base0B};
+}
+
+.replay.inactive {
+  color: #${config.colorScheme.palette.base05};
+}
+
   .mic {
     font-size: 1.3em;
     background-color: #${config.colorScheme.palette.base00};

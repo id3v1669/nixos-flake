@@ -31,6 +31,8 @@
 (defvar songunfolded false)
 (defvar songfolded true)
 (defvar defaultscreen 0)
+(defvar recsym "")
+(defvar recclass "replay inactive")
 
 (defwidget calendarpop []
   (eventbox 
@@ -164,6 +166,7 @@
     :halign "end"
     ${proxy}
     (music)
+    (replay)
     (box 
       :orientation "h"
       :class "tray"
@@ -176,6 +179,20 @@
     (microphone)
     ${battery}
     (power)
+  )
+)
+
+(defwidget replay []
+  (box
+    :orientation "h"
+    (button 
+      :class recclass
+      :onclick "${pkgs.bash}/bin/bash ~/.scripts/play-pause.sh"
+      :onrightclick "${pkgs.bash}/bin/bash ~/.scripts/play-pause.sh 0"
+      (box 
+        recsym
+      )
+    )
   )
 )
 
