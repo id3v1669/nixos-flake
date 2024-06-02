@@ -116,8 +116,8 @@
     "editor.lineHighlightBorder" = "#${config.colorScheme.palette.base00}";
     "editorLineNumber.activeForeground" = "#${config.colorScheme.palette.base0B}";
     "editorLink.activeForeground" = "#${config.colorScheme.palette.base0D}";
-    "editorIndentGuide.background" = "#${config.colorScheme.palette.base03}";
-    "editorIndentGuide.activeBackground" = "#${config.colorScheme.palette.base04}";
+    "editorIndentGuide.background1" = "#${config.colorScheme.palette.base03}";
+    "editorIndentGuide.activeBackground1" = "#${config.colorScheme.palette.base04}";
     "editorRuler.foreground" = "#${config.colorScheme.palette.base04}";
     "editorBracketMatch.background" = "#${config.colorScheme.palette.base05}14";
     "editorBracketMatch.border" = "#${config.colorScheme.palette.base05}";
@@ -283,8 +283,6 @@
       };
     };
     extensions = with pkgs.vscode-extensions; [
-      reditorsupport.r
-      formulahendry.code-runner
       github.copilot
       mads-hartmann.bash-ide-vscode
       jnoortheen.nix-ide

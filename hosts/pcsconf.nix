@@ -5,7 +5,15 @@
 , ...
 }: 
 {
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    wrappers."gsr-kms-server" = {       # passwordless display pick for gpu-screen-recorder
+      owner = "root";
+      group = "root";
+      capabilities = "cap_sys_admin+ep";
+      source = "${pkgs.over-gpu-screen-recorder}/bin/gsr-kms-server";
+    };
+  };
   programs = {
     steam = {                           # games...
       enable = true;
@@ -32,6 +40,7 @@
     printing.enable = true;             # needed for printing and pdf export
     flatpak.enable = true;              # crap to be removed later
     hardware.bolt.enable = true;        # thunderbolt support
+    gvfs.enable = true;                 # Mount, trash, etc
     displayManager.sddm = {
      enable = true;
      wayland.enable = true;

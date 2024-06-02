@@ -68,16 +68,17 @@ in
 
     # files
     filezilla                     # ftp client
+    gnome.nautilus
 
     # security
     over-veracrypt                     # gui encryption
     over-sherlock                 # find accounts by username
 
     #gmaes
-    osu-lazer                     # rhythm game
+    #osu-lazer                     # rhythm game
 
     egl-wayland                   # for nvidia vms
-    over-prismlauncher            # minecraft launcher
+    #over-prismlauncher            # minecraft launcher
     
     over-gpu-screen-recorder
     over-gpu-screen-recorder-gtk

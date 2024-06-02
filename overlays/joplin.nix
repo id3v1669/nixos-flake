@@ -4,11 +4,11 @@
 }:
 let
   pname = "joplin-desktop";
-  version = "2.14.20";
+  version = "3.0.8";
 
   src = fetchurl {
     url = "https://github.com/laurent22/joplin/releases/download/v${version}/Joplin-${version}.AppImage";
-    hash = "sha256-LVN4HHLQqU8/RznFyhsAICr50YUKljIoO9ulsW9ohiA=";
+    hash = "sha256-SKJP3d+7CWf6szw8ugH+Nx1r0QI6YzfwJzThNniBkvM=";
   };
 
   appimageContents = appimageTools.extractType2 {
@@ -26,8 +26,6 @@ in appimageTools.wrapType2 {
   extraPkgs = appimageTools.defaultFhsEnvArgs.multiPkgs;
   extraInstallCommands = ''
     source "${makeWrapper}/nix-support/setup-hook"
-    wrapProgram $out/bin/${pname} \
-    --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland --enable-features=WaylandWindowDecorations}}"
     install -Dm444 ${appimageContents}/@joplinapp-desktop.desktop -t $out/share/applications
     install -Dm444 ${appimageContents}/@joplinapp-desktop.png -t $out/share/pixmaps
     substituteInPlace $out/share/applications/@joplinapp-desktop.desktop \

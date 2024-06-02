@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    stable-nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nix-colors.url = "github:misterio77/nix-colors";
     flake-utils.url = "github:numtide/flake-utils";
     nixmox.url = "github:Sorixelle/nixmox";
@@ -19,23 +19,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland/v0.40.0";
-#      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprpicker = {
-      url = "github:hyprwm/hyprpicker";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    xdghypr = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     ndct-sddm = {
      url = "github:id3v1669/ndct-sddm-corners";
      inputs.nixpkgs.follows = "nixpkgs";
@@ -48,12 +31,42 @@
       url = "github:inclyc/flake-compat";
       flake = false;
     };
+    hyprland.url = "github:hyprwm/Hyprland/v0.40.0";
+#    hyprland.url = "github:hyprwm/Hyprland";
+#    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    xdghypr = {
+      url = "github:hyprwm/xdg-desktop-portal-hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+#    hypridle = {
+#      url = "github:hyprwm/hypridle";
+#      inputs.hyprlang.follows = "hyprland/hyprlang";
+#      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+#    };
+    hyprpicker = {
+      url = "github:hyprwm/hyprpicker";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+#    hyprland-plugins = {
+#      url = "github:hyprwm/hyprland-plugins";
+#      inputs.hyprland.follows = "hyprland";
+#    };
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+#      inputs.hyprlang.follows = "hyprland/hyprlang";
+#      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
+#    hyprpaper = {
+#      url = "github:hyprwm/hyprpaper";
+#      inputs.hyprlang.follows = "hyprland/hyprlang";
+#      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+#    };
   };
 
   outputs = { 
   self
 , nixpkgs
-, stable-nixpkgs
+#, stable-nixpkgs
 , home-manager
 , hyprland
 , nur
@@ -71,7 +84,7 @@
 , ... }@inputs: 
   let
     inherit (self) outputs;
-    curversion = "24.05";
+    curversion = "24.11";
     mkSyst = { 
       hostname,
       envir,
@@ -113,12 +126,12 @@
         locale = "en_AU.UTF-8";
       }
     }: let
-    stable-pkgs = import stable-nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
-    };
+    #stable-pkgs = import stable-nixpkgs {
+    #  inherit system;
+    #  config = {
+    #    allowUnfree = true;
+    #  };
+    #};
     pkgs = import nixpkgs {
       inherit system;
       config = {
@@ -178,7 +191,7 @@
     in nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader nixified-ai stable-pkgs;
+        inherit outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader nixified-ai; # stable-pkgs;
       };
       modules = [
         (./. + "/hosts/${hostname}")
@@ -196,7 +209,7 @@
     };
   in {
     nixosConfigurations = {
-      nuc11phplasma5tbqhd = mkSyst {
+      nuc11phplasma5tb = mkSyst {
         hostname = "nuc11ph";
         envir = "plasma5";
         uservars = {

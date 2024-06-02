@@ -46,7 +46,9 @@ in
       "nouveau.config=NvGspRm=1"
       "nouveau.debug=info,VBIOS=info,gsp=debug"
     ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    #kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    #kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = with config.boot.kernelPackages; [
       over-v4l2loopback
     ];

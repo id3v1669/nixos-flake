@@ -20,7 +20,6 @@
   environment.systemPackages = with pkgs; [
   ];
   services = {
-    gvfs.enable = true;                         # Mount, trash, etc
     displayManager.sessionPackages = [
       pkgs.over-hyprland                        # hyprland session to be recognized by login managers
     ];

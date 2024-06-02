@@ -25,7 +25,10 @@
     nixified-ai.nixosModules.invokeai
   ];
 
-  services.usbmuxd.enable = true;
+  services = {
+    usbmuxd.enable = true;
+    gnome.sushi.enable = true;
+  };
   networking = {
     firewall.enable = false;
     enableIPv6 = false;

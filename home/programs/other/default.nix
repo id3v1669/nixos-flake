@@ -12,10 +12,10 @@
  };
   programs = {
     direnv.enable = true;
-    java = {
-      enable = true;
-      package = pkgs.jdk20;
-    };
+    #java = {
+    #  enable = true;
+    #  package = pkgs.jdk20;
+    #};
     ncmpcpp.enable = true;
     
   };
