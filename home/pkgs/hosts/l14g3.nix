@@ -5,37 +5,33 @@
   home.packages = with pkgs; [
     # gui
     gimp                                                   # image editing
-    over-outline-manager                                   # outline manager vpn(proxy)
+    #over-outline-manager                                  # outline manager vpn(proxy)
 
     # security
     veracrypt                                              # gui encryption
 
     # dev
-    jetbrains.rider                                        # c# ide
-    #bootstrap-studio                                       # web design (front-end)
-    (rstudioWrapper.override{ packages = with rPackages; [ # r ide
-      tidyverse
-      caret
-      glmnet
-      forcats
-      e1071
-      readr
-      moments
-      ggpubr
-      scatterplot3d
-      factoextra
-      mikropml
-      rpart
-      rpart_plot
-      ipred
-      ranger
-      mlbench
-    ];})
+    jetbrains.rust-rover                                   # rust ide
 
     # text & docs
     over-joplin                                            # note taking app
 
     # files
     filezilla                                              # ftp client
+
+    #for gtk theme testing
+    optipng
+    sassc
+    gtk-engine-murrine
+    gnome.gnome-themes-extra
+    gnome.geary
+    gnome.totem
+    evince
+    gedit
+    gnome.gnome-terminal
+    lollypop
+    gnome.gnome-calendar
+    inkscape-with-extensions
+    gnome.gnome-system-monitor
   ];
 }
