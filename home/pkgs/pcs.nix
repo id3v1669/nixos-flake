@@ -15,7 +15,7 @@
     qpwgraph                      # gui for pipewire graph
     mpc-cli                       # cli for mpd
     qjackctl                      # gui for jack
-    #over-soundux                  # soundpad broken after webkitgtk update
+    #over-soundux                 # soundpad broken after webkitgtk update
     over-spotify                  # music player
 
     # vm, virt and emulators
@@ -44,7 +44,7 @@
     # chat
     telegram-desktop              # telegram client
     whatsapp-for-linux            # whatsapp client
-    over-vesktop                  # vesktop(unofficial discord app)
+    vesktop                       # vesktop(unofficial discord app)
     arrpc                         # rpc for discord(vesktop)
       
     # security
@@ -54,8 +54,7 @@
     #rustdesk                      # remote desktop
 
     # games
-    over-protonup-qt
-    #protonup-qt                   # proton and wine updater
+    protonup-qt                   # proton and wine updater
     over-lutris                   # game launcher
     mangohud                      # overlay for games & apps
 
@@ -81,6 +80,7 @@
     isoimagewriter                # kde iso writer (as ventoy is bad for bios updated)
 
     # other cli utils
+    ngrrram                       # practice fast typing
     over-hyprpicker               # color picker
     onefetch                      # fetch for git repos
     pciutils                      # lspci

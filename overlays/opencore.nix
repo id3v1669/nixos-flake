@@ -6,18 +6,18 @@
 }:stdenv.mkDerivation rec 
 {
   pname = "opencore";
-  version = "0.9.6";
+  version = "1.0.0";
 
   src = fetchurl rec {
     url = "https://github.com/acidanthera/OpenCorePkg/releases/download/${version}/OpenCore-${version}-RELEASE.zip";
-    hash = "sha256-biKbC6GuIagv/IhagwnHyG/nGJHoDXfe0ztAKNm6Log=";
+    hash = "sha256-vGH5xDEkA2HPHOJX35nfuudKwUTMFajC0jC8IouHbbE=";
   };
 
   bdata = fetchFromGitHub ({
     owner = "acidanthera";
     repo = "OcBinaryData";
-    rev = "4e7e1b7465aae297d706afe5de5c4d1572d86917";
-    hash = "sha256-TIIHa74LJB3vNUJNH/j2yuPJPMo+yYQD/EklzefksZ8=";
+    rev = "af09b0bf763363ec9f4ecdbbe2f0adeb970948d8";
+    hash = "sha256-tSmIqwXOwD3jDGeqLAtbwfA3Gu4JBXnfWkIeFCGd26E=";
   });
 
   dontUnpack = true;

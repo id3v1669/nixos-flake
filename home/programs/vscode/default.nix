@@ -14,8 +14,8 @@
   };
   programs.vscode = {
     enable = true;
-    package = pkgs.over-vscode;
-    enableUpdateCheck = true;
+    package = pkgs.vscode;
+    enableUpdateCheck = false;
     enableExtensionUpdateCheck = true;
     userSettings = {
       "window.titleBarStyle" = "custom";

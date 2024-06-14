@@ -10,18 +10,10 @@
     enable = true;
     package = pkgs.virt-manager;
   };
-  environment.systemPackages = with pkgs; [
-    spice
-    spice-gtk
-    spice-protocol
-    virt-viewer
-    virtio-win
-    win-spice
-  ];
   virtualisation = let notsrv = desk!="server"; in {
-    spiceUSBRedirection.enable = notsrv;                                      # USB redirection to vm
+    spiceUSBRedirection.enable = notsrv;                                       # USB redirection to vm
     libvirtd = {
-      enable = notsrv;                                                        # libvirtd for virt-manager
+      enable = notsrv;                                                         # libvirtd for virt-manager
       qemu = {
         package = pkgs.qemu_full;
         swtpm.enable = notsrv;
@@ -29,6 +21,15 @@
           enable = notsrv;
           packages = [ pkgs.OVMFFull.fd ];
         };
+        vhostUserPackages = with pkgs; [
+          spice
+    spice-gtk
+    spice-protocol
+    virt-viewer
+    virtio-win
+    virtiofsd
+    win-spice
+        ];
       };
     };
     docker = {

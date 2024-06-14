@@ -28,6 +28,9 @@
   services = {
     usbmuxd.enable = true;
     gnome.sushi.enable = true;
+    # xserver.displayManager.setupCommands = '' 
+    #     ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --primary;
+		# 	'';
   };
   networking = {
     firewall.enable = false;
@@ -64,6 +67,7 @@
       WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";   # output with intel, nvidia sync mode
     };
     systemPackages = (with pkgs; [
+      egl-wayland
       libimobiledevice
       ifuse
       fuzzel

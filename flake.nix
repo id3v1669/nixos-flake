@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    stable-nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nix-colors.url = "github:misterio77/nix-colors";
     flake-utils.url = "github:numtide/flake-utils";
     nixmox.url = "github:Sorixelle/nixmox";
@@ -31,42 +31,24 @@
       url = "github:inclyc/flake-compat";
       flake = false;
     };
-    hyprland.url = "github:hyprwm/Hyprland/v0.40.0";
-#    hyprland.url = "github:hyprwm/Hyprland";
-#    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+#    hyprland.url = "github:hyprwm/Hyprland/v0.41.0?submodules=1";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     xdghypr = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-#    hypridle = {
-#      url = "github:hyprwm/hypridle";
-#      inputs.hyprlang.follows = "hyprland/hyprlang";
-#      inputs.nixpkgs.follows = "hyprland/nixpkgs";
-#    };
     hyprpicker = {
       url = "github:hyprwm/hyprpicker";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-#    hyprland-plugins = {
-#      url = "github:hyprwm/hyprland-plugins";
-#      inputs.hyprland.follows = "hyprland";
-#    };
     hyprlock = {
       url = "github:hyprwm/hyprlock";
-#      inputs.hyprlang.follows = "hyprland/hyprlang";
-#      inputs.nixpkgs.follows = "hyprland/nixpkgs";
     };
-#    hyprpaper = {
-#      url = "github:hyprwm/hyprpaper";
-#      inputs.hyprlang.follows = "hyprland/hyprlang";
-#      inputs.nixpkgs.follows = "hyprland/nixpkgs";
-#    };
   };
-
   outputs = { 
   self
 , nixpkgs
-#, stable-nixpkgs
+, stable-nixpkgs
 , home-manager
 , hyprland
 , nur
@@ -126,12 +108,12 @@
         locale = "en_AU.UTF-8";
       }
     }: let
-    #stable-pkgs = import stable-nixpkgs {
-    #  inherit system;
-    #  config = {
-    #    allowUnfree = true;
-    #  };
-    #};
+    stable-pkgs = import stable-nixpkgs {
+     inherit system;
+     config = {
+       allowUnfree = true;
+     };
+    };
     pkgs = import nixpkgs {
       inherit system;
       config = {
@@ -151,7 +133,6 @@
           over-hyprlock = hyprlock.packages.${prev.system}.hyprlock;                            # hyprlock overlay
           over-hyprpicker = hyprpicker.packages.${prev.system}.hyprpicker;                      # hyprpicker overlay
           over-ndct-sddm = ndct-sddm.packages.${prev.system}.ndct-sddm-corners;                 # sddm theme
-          over-vscode = (import ./overlays/vscode.nix { inherit pkgs; });                       # vscode overlay as official package is not up to date
           over-lutris = (import ./overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
           over-steam = (import ./overlays/steam.nix { inherit pkgs; });                         # steam overlay with extra packages
           over-sherlock = (import ./overlays/sherlock.nix { inherit pkgs; });                   # sherlock overlay as official package is not up to date
@@ -159,20 +140,13 @@
           over-rofi-emoji = (import ./overlays/rofi-emoji.nix { inherit pkgs; });               # rofi-emoji overlay as package has non-wayland build input
           over-discord = (import ./overlays/discord.nix { inherit pkgs; });                     # discord for testing
           over-prismlauncher = (import ./overlays/prismlauncher.nix { inherit pkgs; });         # minecraft launcher with java replacement
-          over-vesktop = (import ./overlays/vesktop.nix { inherit pkgs; });                     # vesktop overlay as official package is not up to date
-          over-gpu-screen-recorder-gtk = (import ./overlays/shadow-gtk.nix { inherit pkgs; });  # gpu-screen-recorder-gtk overlay as official package is not up to date
-          over-gpu-screen-recorder = (import ./overlays/shadow.nix { inherit pkgs; });          # gpu-screen-recorder overlay as official package is not up to date
           over-opencore = (prev.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
           over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                      # veracrypt overlay due to sudo-rs glitch
           over-outline-manager = (prev.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
           over-joplin = (prev.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
           over-spotify = (prev.callPackage ./overlays/spot.nix {});                             # spotify with adblocker
           over-soundux = (prev.callPackage ./overlays/soundux {});                              # soundux as official package is broken
-          over-bootstrap-studio = (prev.callPackage ./overlays/bootstrap-studio.nix {});        # bootstrap-studio as official package is not up to date
           over-gruv-icons = (prev.callPackage ./overlays/gruv-icons.nix {});                    # gruv-icons as official package is not up to date
-          over-protonup-qt = (prev.callPackage ./overlays/protonup-qt.nix {});                  # temp fix
-          over-rkward = (prev.callPackage ./overlays/rkward.nix {});                            # rkward
-          over-rstudio = (prev.callPackage ./overlays/rstudio.nix {});                          # rstudio
           #-------------------------------------------------------------------------------------ai cuda stuff
           over-fooocus = (prev.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
           over-accelerate = (import ./overlays/accelerate.nix { inherit pkgs; });               # with cuda torch
@@ -191,7 +165,7 @@
     in nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader nixified-ai; # stable-pkgs;
+        inherit outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader nixified-ai;
       };
       modules = [
         (./. + "/hosts/${hostname}")
@@ -222,8 +196,7 @@
           sleeptimeout = 99000;
         };
         bootloader = {
-          type = "opencore";
-          defconf = true;
+          type = "systemd";
           timeout = 10;
         };
       };
@@ -240,8 +213,7 @@
           sleeptimeout = 99000;
         };
         bootloader = {
-          type = "opencore";
-          defconf = true;
+          type = "systemd";
           timeout = 10;
         };
         gpuvar = {
@@ -250,6 +222,30 @@
           busd = "PCI:01:00:0";
           busi = "PCI:00:02:0";
           port = "tbqhd";
+        };
+      };
+      nuc11phswayhdmi = mkSyst {
+        hostname = "nuc11ph";
+        envir = "sway";
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          proxy = false;
+          domain = "none";
+          wp = "default3.png";
+          owner = "id3v1669";
+          sleeptimeout = 99000;
+        };
+        bootloader = {
+          type = "systemd";
+          timeout = 10;
+        };
+        gpuvar = {
+          type = "nvidia";
+          tech = "native";
+          busd = "PCI:01:00:0";
+          busi = "PCI:00:02:0";
+          port = "hdmi";
         };
       };
       nuc11phhyprhdmi = mkSyst {
@@ -265,8 +261,7 @@
           sleeptimeout = 99000;
         };
         bootloader = {
-          type = "opencore";
-          defconf = true;
+          type = "systemd";
           timeout = 10;
         };
         gpuvar = {
@@ -290,8 +285,7 @@
           sleeptimeout = 99000;
         };
         bootloader = {
-          type = "opencore";
-          defconf = true;
+          type = "systemd";
           timeout = 10;
         };
         gpuvar = {

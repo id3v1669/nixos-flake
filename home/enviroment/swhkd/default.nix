@@ -21,7 +21,7 @@ super + shift + b
   firefox
 
 super + shift + f
-  nemo
+  nautilus
     
 super + shift + p
   hyprpicker -a

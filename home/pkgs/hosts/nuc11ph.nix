@@ -39,54 +39,45 @@ in
 {
   home.packages = with pkgs; [
     # text & docs
-    over-joplin                        # note taking app
-    #calibre                       # e-book reader
+    over-joplin                   # note taking app
 
     # dev
     github-desktop                # github desktop
-    jetbrains.rider               # c# ide
     jetbrains.rust-rover          # rust ide
-    #over-bootstrap-studio         # web design (front-end)
-    (rstudioWrapper.override{ packages = with rPackages; [ 
-      tidyverse
-      caret
-      glmnet
-      forcats
-      e1071
-      readr
-      moments
-      ggpubr
-      scatterplot3d
-      factoextra
-      mikropml
-      rpart
-      rpart_plot
-      ipred
-      ranger
-      mlbench
-    ];})
 
     # files
     filezilla                     # ftp client
     gnome.nautilus
 
     # security
-    over-veracrypt                     # gui encryption
+    over-veracrypt                # gui encryption
     over-sherlock                 # find accounts by username
 
-    #gmaes
-    #osu-lazer                     # rhythm game
 
-    egl-wayland                   # for nvidia vms
-    #over-prismlauncher            # minecraft launcher
+    #over-prismlauncher           # minecraft launcher
     
-    over-gpu-screen-recorder
-    over-gpu-screen-recorder-gtk
+    gpu-screen-recorder
     libsForQt5.kdenlive           # video editing
     gimp                          # image editing
-#    over-outline-manager          # outline manager vpn(proxy)
+#    over-outline-manager         # outline manager vpn(proxy)
 
-    #over-fooocus                # images ai
+    #over-fooocus                 # images ai
     #pythonEnv
+
+    #for gtk theme testing
+    optipng
+    sassc
+    gtk-engine-murrine
+    gnome.gnome-themes-extra
+    gnome.geary
+    gnome.totem
+    evince
+    gedit
+    gnome.gnome-terminal
+    lollypop
+    gnome.gnome-calendar
+    inkscape-with-extensions
+    gnome.gnome-system-monitor
+
   ];
 }

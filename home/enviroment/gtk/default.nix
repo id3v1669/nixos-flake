@@ -6,8 +6,7 @@
   gtk = {
     enable = true;
     theme = {
-      #name = "dynamic-color-theme";
-      name = "dynamic-color-gtk-theme";
+      name = "Dynamic-Color-GTK-Theme";
     };
     iconTheme = {
       name = "Gruvbox-Plus-Dark";

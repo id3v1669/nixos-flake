@@ -7,11 +7,12 @@
 {
   security = {
     rtkit.enable = true;
+    chromiumSuidSandbox.enable = true;
     wrappers."gsr-kms-server" = {       # passwordless display pick for gpu-screen-recorder
       owner = "root";
       group = "root";
       capabilities = "cap_sys_admin+ep";
-      source = "${pkgs.over-gpu-screen-recorder}/bin/gsr-kms-server";
+      source = "${pkgs.gpu-screen-recorder}/bin/gsr-kms-server";
     };
   };
   programs = {

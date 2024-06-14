@@ -34,7 +34,7 @@
     };
   } // lib.optionalAttrs (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") {
     nvidia = {
-      open = true;
+      open = false;
       nvidiaSettings = true;
       modesetting.enable = true;
       forceFullCompositionPipeline = true;
@@ -45,18 +45,19 @@
       # 550.67     - works, sync/offload
       # 550.76     - works, sync/offload
       # 550.78     - works, sync/offload
-      # 555.42.02  - works, finaly works native(hdmi instead of thunderbolt)
+      # 555.42.02  - works, hdmi,         finaly works native(hdmi instead of thunderbolt)
+      # 555.52.04  - works, hdmi,         glitchy
       # 545.29.02  - drm(VDPAU) failure
       # 545.29.06  - drm(VDPAU) failure
       # 550.40.07  - drm(VDPAU) failure
       #----------------------------------
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        version = "555.42.02";
-        sha256_64bit = "sha256-k7cI3ZDlKp4mT46jMkLaIrc2YUx1lh1wj/J4SVSHWyk=";
+        version = "555.52.04";
+        sha256_64bit = "sha256-nVOubb7zKulXhux9AruUTVBQwccFFuYGWrU1ZiakRAI=";
         sha256_aarch64 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-        openSha256 = "sha256-3/eI1VsBzuZ3Y6RZmt3Q5HrzI2saPTqUNs6zPh5zy6w=";
-        settingsSha256 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
-        persistencedSha256 = "sha256-3ae31/egyMKpqtGEqgtikWcwMwfcqMv2K4MVFa70Bqs=";
+        openSha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+        settingsSha256 = "sha256-PMh5efbSEq7iqEMBr2+VGQYkBG73TGUh6FuDHZhmwHk=";
+        persistencedSha256 = "sha256-KAYIvPjUVilQQcD04h163MHmKcQrn2a8oaXujL2Bxro=";
         patchFlags = ["-p1" "-d" "kernel"];
         patches = [];
       };
@@ -86,5 +87,7 @@
   } // lib.optionalAttrs (gpuvar.tech == "nvk") {
     NVK_I_WANT_A_BROKEN_VULKAN_DRIVER = "1";             # prep for nvk
     MESA_VK_VERSION_OVERRIDE = "1.3";                    # prep for nvk
+  } // lib.optionalAttrs (gpuvar.type != "nvidia") {
+    NIXOS_OZONE_WL="1";
   };
 }

@@ -39,16 +39,18 @@ in
     ];
     kernelParams = [
     ] ++ lib.lists.optionals (gpuvar.tech == "native") [
+      "video=HDMI-A-1:3440x1440@100"
       "module_blacklist=i915"
+      "nvidia_drm.fbdev=1"
     ] ++ lib.lists.optionals (gpuvar.tech == "prime") [
       "i915.force_probe=9a49"
     ] ++ lib.lists.optionals (gpuvar.tech == "nvk") [
       "nouveau.config=NvGspRm=1"
       "nouveau.debug=info,VBIOS=info,gsp=debug"
     ];
-    #kernelPackages = pkgs.linuxPackages_zen;
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
+#    kernelPackages = (pkgs.linuxKernel.packagesFor pkgs.linuxKernel.kernels.linux_6_8_hardened);
+    kernel.sysctl."kernel.unprivileged_userns_clone" = 1;
     extraModulePackages = with config.boot.kernelPackages; [
       over-v4l2loopback
     ];
