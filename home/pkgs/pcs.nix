@@ -67,7 +67,7 @@
     rar                           # unfree for rar archives
 
     # text & docs
-    libreoffice-qt                # opensource office apps
+    libreoffice                   # opensource office apps
     hunspell                      # needed for libreoffice
     hunspellDicts.en_US-large     # needed for libreoffice
     hunspellDicts.ru_RU           # needed for libreoffice
