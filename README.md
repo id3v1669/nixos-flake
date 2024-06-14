@@ -2,12 +2,12 @@
 
 NixOS flake with home manager
 
-Latest commit to use: 3e55c699ba3c64dad1ef9b33a4c42da28d5fbd73
+Latest commit to use: b4db577b5898acd25870df42ab11713be5249e19
 
 ## Main
 | Environment | Name | Comment | Needed fix |
 |-----|-----|-----|-----|
-| WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel) | - |
+| WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel), nvidia native | - |
 | launcher | Rofi | - | - |
 | bar | eww | fork of eww with tray support | - |
 | background | hyprpaper | - | - |
@@ -17,7 +17,7 @@ Latest commit to use: 3e55c699ba3c64dad1ef9b33a4c42da28d5fbd73
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
 | notifications | dunst | - | - |
 | shell | fish | - | - |
-| bootloader | opencore(systemd mod) | extra folder OC reated, reads systemd entries | - |
+| bootloader | opencore(systemd mod) | extra folder OC reated, reads systemd entries | ToDo 11 |
 
 ## ToDo
 
@@ -35,23 +35,16 @@ Latest commit to use: 3e55c699ba3c64dad1ef9b33a4c42da28d5fbd73
 
 7. **patch dsdt for nuc11ph(acpi errors)**
 
-8. **rewrite gtk theme**
+8. **fix sops**
 
 9. **find idler that works with gamepad**
 
 10. **add notification widget with notififcation history(eww?)**
 
-## Notes:
+11. **opencre is broken after systemd-boot update relace with grub or fix**
+
+## Notes
 
 OpenRGB Module is broken and installed manually
 
-eww buttons fixed by box with empty element, later find better approach
-
-vscode is used instead of vscode-fhs as last one has problems on wayland + iGPU and wayland + nvidia
-
-Usable colorshemes:
-vulcan, twilight, summercamp, stella, uwunicorn,
-spaceduck, seti, selenized-black, rose-pine, rose-pine-moon,
-porple, phd, pasque, pandora, outrun-dark, mountain, material-darker,
-lime, kimber, icy, gruvbox-dark-pale, grayscale-dark, darktooth, black-metal
-mytop: pandora, stella, lime, gruvbox-dark-pale, outrun-dark, spaceduck, embers
+sway and plasma are just for testing

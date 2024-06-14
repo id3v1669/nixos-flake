@@ -12,7 +12,7 @@
   services = {
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud28;
+      package = pkgs.nextcloud29;
       database.createLocally = true;
       https = true;
       nginx.hstsMaxAge = 31536000;
