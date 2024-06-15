@@ -1,1 +1,0 @@
-{ config, lib, pkgs, uservars, ... }:{home.file.".themes/dynamic-color-theme/cinnamon/assets/corner-ripple.svg".text = ''<svg width="104" height="104" version="1.1" xmlns="http://www.w3.org/2000/svg"> <g transform="translate(0 -948.36)"> <circle id="corner-ripple" cx="52" cy="1000" r="48" fill="#333333" opacity=".25"/> </g> </svg>'';}

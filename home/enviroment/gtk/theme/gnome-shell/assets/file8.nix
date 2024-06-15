@@ -1,1 +1,0 @@
-{ config, lib, pkgs, uservars, ... }:{home.file.".themes/dynamic-color-theme/gnome-shell/assets/dash-placeholder.svg".text = ''<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFFFFF"> <circle cx="12" cy="12" r="12" opacity="0.3"/> <circle cx="12" cy="12" r="4"/> </svg>'';}

@@ -45,10 +45,6 @@ in
     github-desktop                # github desktop
     jetbrains.rust-rover          # rust ide
 
-    # files
-    filezilla                     # ftp client
-    gnome.nautilus
-
     # security
     over-veracrypt                # gui encryption
     over-sherlock                 # find accounts by username

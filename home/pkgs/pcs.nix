@@ -59,7 +59,9 @@
     mangohud                      # overlay for games & apps
 
     # files
-    cinnamon.nemo-with-extensions # file manager(as nautilus has incorrect behavior with gtk themes)
+    filezilla                     # ftp client
+    gnome.nautilus                # file manager   
+    cinnamon.nemo-with-extensions # file manager(backup as nautilus had some glitches in previous updates)
     zip                           # create .zip arcs
     p7zip                         # .7z arcs
     unzip                         # unzip .zip arcs
