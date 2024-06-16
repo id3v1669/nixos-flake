@@ -96,7 +96,6 @@
         description = "id3v1669";
         owner = "id3v1669";
         domain = "none";
-        proxy = false;
         wp = "default3.png";
         sleeptimeout = 1200;
       },
@@ -189,7 +188,6 @@
         uservars = {
           name = "user";
           description = "id3v1669";
-          proxy = false;
           domain = "none";
           wp = "default3.png";
           owner = "id3v1669";
@@ -206,7 +204,6 @@
         uservars = {
           name = "user";
           description = "id3v1669";
-          proxy = false;
           domain = "none";
           wp = "default3.png";
           owner = "id3v1669";
@@ -230,7 +227,6 @@
         uservars = {
           name = "user";
           description = "id3v1669";
-          proxy = false;
           domain = "none";
           wp = "default3.png";
           owner = "id3v1669";
@@ -254,7 +250,6 @@
         uservars = {
           name = "user";
           description = "id3v1669";
-          proxy = false;
           domain = "none";
           wp = "default3.png";
           owner = "id3v1669";
@@ -278,7 +273,6 @@
         uservars = {
           name = "user";
           description = "id3v1669";
-          proxy = true;
           domain = "none";
           wp = "default3.png";
           owner = "id3v1669";
@@ -300,14 +294,13 @@
         cpuvar = "amd";
         desk = "laptop";
         bootloader = {
-          type = "opencore";
+          type = "systemd";
           defconf = false;
           timeout = 10;
         };
         uservars = {
           name = "user";
           description = "id3v1669";
-          proxy = true;
           domain = "none";
           wp = "default3.png";
           owner = "id3v1669";

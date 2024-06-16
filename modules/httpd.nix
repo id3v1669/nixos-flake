@@ -3,7 +3,7 @@
 {
   services.httpd = {
     enable = true;
-    adminAddr = "nico@nico.ni";
+    adminAddr = "id3v1669@gmail.com";
     enablePHP = true;
   };
 }

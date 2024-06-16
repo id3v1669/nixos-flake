@@ -3,7 +3,7 @@
 }:
 {
   security.acme = {
-    defaults.email = "nico@nico.ni";
+    defaults.email = "id3v1669@gmail.com";
     acceptTerms = true;
   };
   services.nginx = {

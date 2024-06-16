@@ -9,7 +9,6 @@
   home.file.".config/eww/eww.yuck".text = 
   let
     battery = if desk == "laptop" then "(battery)" else "";
-    proxy = if uservars.proxy then "(proxy)" else "";
     cputemp = if cpuvar == "intel" then ''
 (box 
   :class "cputemp"
@@ -21,7 +20,6 @@
   ''
 (defvar deftimeout "999999999ms")
 (defpoll datetime :interval "1s" "date '+%a, %d. %b  %H:%M'")
-(defvar proxystatus "󰱟")
 (defvar soundvol "xx")
 (defvar wss "xxx")
 (defvar langvar "tt")
@@ -164,7 +162,6 @@
 		:space-evenly false
     :spacing 6
     :halign "end"
-    ${proxy}
     (music)
     (replay)
     (box 
@@ -259,20 +256,6 @@
             )
           )
           ""
-        )
-      )
-    )
-  )
-
-(defwidget proxy []
-    (box
-      :orientation "h"
-      (button 
-        :class "proxy"
-        :timeout "''${deftimeout}"
-        :onclick "${pkgs.bash}/bin/bash ~/.scripts/ss.sh"
-        (box 
-          "''${proxystatus}"
         )
       )
     )

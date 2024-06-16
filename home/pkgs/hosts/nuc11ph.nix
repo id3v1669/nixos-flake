@@ -52,7 +52,6 @@ in
 
     #over-prismlauncher           # minecraft launcher
     
-    gpu-screen-recorder
     libsForQt5.kdenlive           # video editing
     gimp                          # image editing
 #    over-outline-manager         # outline manager vpn(proxy)

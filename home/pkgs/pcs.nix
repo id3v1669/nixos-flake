@@ -21,12 +21,11 @@
     # vm, virt and emulators
     distrobox                     # archbox for apps that are not in nixpkgs
     docker-compose                # docker-compose for tests
-    virtiofsd                     # virtiofsd for qemu
 
     # web
     networkmanagerapplet          # network manager applet
     nm-tray                       # network manager tray
-    ungoogled-chromium            # backup browser
+    #ungoogled-chromium            # backup browser
     wireguard-tools               # wireguard tools for experiments with vpn
     tor-browser                   # tor browser for research
 
@@ -40,6 +39,7 @@
     hyprpaper                     # wallpapers
     imagemagickBig                # image manipulation(convert etc)
     imv                           # wayland cli image viewer
+    gpu-screen-recorder           # screen recorder
 
     # chat
     telegram-desktop              # telegram client
@@ -103,7 +103,7 @@
     nixpkgs-review                # review utility for nixpkgs
 
     # libs
-    gtk3                          # gtk lib
+    gtk3                          # gtk for 
     libpng                        # png lib
     libnotify                     # for dunst or mako
     libheif                       # heif lib

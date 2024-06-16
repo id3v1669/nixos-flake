@@ -124,17 +124,6 @@
     padding: 5px 14px 5px 15px;
   }
 
-  .proxy {
-    font-size: 1.5em;
-    background-color: #${config.colorScheme.palette.base00};
-    color: #${config.colorScheme.palette.base05};
-    border-radius: 20px;
-    padding: 4px 18px 4px 13px;
-    &:hover {
-        background-color: #${config.colorScheme.palette.base01};
-        color: #${config.colorScheme.palette.base06};
-      }
-  }
 
 .replay {
   font-size: 1.4em;

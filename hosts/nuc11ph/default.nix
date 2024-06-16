@@ -25,21 +25,9 @@
     nixified-ai.nixosModules.invokeai
   ];
 
-  services = {
-    usbmuxd.enable = true;
-    gnome.sushi.enable = true;
-    # xserver.displayManager.setupCommands = '' 
-    #     ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --primary;
-		# 	'';
-  };
   networking = {
     firewall.enable = false;
     enableIPv6 = false;
-  };
-  hardware.bluetooth.settings = {
-    General = {
-      ControllerMode = "bredr";
-    };
   };
   users.users.${uservars.name}.extraGroups = [ 
     "wheel"
