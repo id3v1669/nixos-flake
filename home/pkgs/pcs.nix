@@ -48,7 +48,16 @@
     arrpc                         # rpc for discord(vesktop)
       
     # security
+    metasploit                    # tool
+    nikto                         # tool
+    john                          # tool
+    johnny                        # tool
+    openvas-scanner               # tool
+    tcpdump                       # tool
+    dhcpdump                      # tool
     nmap                          # network scanner
+    over-veracrypt                # gui encryption
+    sherlock                      # find accounts by username
     openssl                       # cli encryption
     
     #rustdesk                      # remote desktop

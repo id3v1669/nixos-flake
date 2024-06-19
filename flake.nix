@@ -134,10 +134,8 @@
           over-ndct-sddm = ndct-sddm.packages.${prev.system}.ndct-sddm-corners;                 # sddm theme
           over-lutris = (import ./overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
           over-steam = (import ./overlays/steam.nix { inherit pkgs; });                         # steam overlay with extra packages
-          over-sherlock = (import ./overlays/sherlock.nix { inherit pkgs; });                   # sherlock overlay as official package is not up to date
           over-rofi-calc = (import ./overlays/rofi-calc.nix { inherit pkgs; });                 # rofi-calc overlay as package has non-wayland build input
           over-rofi-emoji = (import ./overlays/rofi-emoji.nix { inherit pkgs; });               # rofi-emoji overlay as package has non-wayland build input
-          over-discord = (import ./overlays/discord.nix { inherit pkgs; });                     # discord for testing
           over-prismlauncher = (import ./overlays/prismlauncher.nix { inherit pkgs; });         # minecraft launcher with java replacement
           over-opencore = (prev.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
           over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                      # veracrypt overlay due to sudo-rs glitch
@@ -145,7 +143,6 @@
           over-joplin = (prev.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
           over-spotify = (prev.callPackage ./overlays/spot.nix {});                             # spotify with adblocker
           over-soundux = (prev.callPackage ./overlays/soundux {});                              # soundux as official package is broken
-          over-gruv-icons = (prev.callPackage ./overlays/gruv-icons.nix {});                    # gruv-icons as official package is not up to date
           #-------------------------------------------------------------------------------------ai cuda stuff
           over-fooocus = (prev.callPackage ./overlays/fooocus {});                              # fooocus ai: still broken paths need to be fixed
           over-accelerate = (import ./overlays/accelerate.nix { inherit pkgs; });               # with cuda torch
@@ -182,6 +179,33 @@
     };
   in {
     nixosConfigurations = {
+      macbookhypr = mkSyst { 
+        hostname = "macbook";
+        envir = "Hyprland";
+        cpuvar = "intel";
+        desk = "laptop";
+        bootloader = {
+          type = "systemd";
+          defconf = false;
+          timeout = 10;
+        };
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          domain = "none";
+          wp = "default3.png";
+          owner = "id3v1669";
+          sleeptimeout = 1200;
+        };
+        brightnesctrl = {
+          up = "light -A 5";
+          down = "light -U 5";
+        };
+        gpuvar = {
+          type = "amd";
+          tech = "amd";
+        };
+      };
       nuc11phplasma5tb = mkSyst {
         hostname = "nuc11ph";
         envir = "plasma5";

@@ -5,7 +5,6 @@
   home.packages = with pkgs; [
     # gui
     gimp                                                   # image editing
-    #over-outline-manager                                  # outline manager vpn(proxy)
 
     # dev
     jetbrains.rust-rover                                   # rust ide

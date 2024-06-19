@@ -9,7 +9,7 @@
     };
     iconTheme = {
       name = "Gruvbox-Plus-Dark";
-      package = pkgs.over-gruv-icons;
+      package = pkgs.gruvbox-plus-icons;
     };
     cursorTheme = {
       name = "Capitaine Cursors (Gruvbox)";

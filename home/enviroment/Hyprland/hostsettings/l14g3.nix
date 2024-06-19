@@ -30,7 +30,7 @@ screen1_resolutions["triple"]="monitor=eDP-1,1920x1080@60,4520x0,1"
 
 declare -A screen2_resolutions
 screen2_resolutions["single"]="monitor=HDMI-A-1,disable"
-screen2_resolutions["triple"]="monitor=HDMI-A-1,3440x1440@120,1080x0,1"
+screen2_resolutions["triple"]="monitor=HDMI-A-1,3440x1440@100,1080x0,1"
 
 declare -A screen3_resolutions
 screen3_resolutions["single"]="monitor=DP-1,disable"
