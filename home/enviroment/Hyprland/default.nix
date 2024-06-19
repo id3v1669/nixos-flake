@@ -60,9 +60,6 @@
         pseudotile = true;
         preserve_split = true;
       };
-      master = {
-        new_is_master = true;
-      };
       "$mainMod" = "SUPER";
       bindm = [
         "$mainMod, mouse:272, movewindow"
