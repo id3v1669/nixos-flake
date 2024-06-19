@@ -59,6 +59,7 @@ in
     optipng
     sassc
     gtk-engine-murrine
+    inkscape-with-extensions
     gnome.gnome-themes-extra
     gnome.geary
     gnome.totem
@@ -67,7 +68,6 @@ in
     gnome.gnome-terminal
     lollypop
     gnome.gnome-calendar
-    inkscape-with-extensions
     gnome.gnome-system-monitor
 
   ];
