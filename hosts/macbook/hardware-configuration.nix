@@ -11,11 +11,21 @@
   ];
 
   boot = {
+    blacklistedKernelModules = [
+      "b43"
+      "b43legacy"
+      "ssb"
+      "bcm43xx"
+      "brcm80211"
+      "brcmfmac"
+      "brcmsmac"
+      "bcma"
+    ];
     kernelModules = [ "kvm-intel" "i2c-dev" "i2c-i801" ];
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback broadcom-sta ];
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" ];
-      kernelModules = [ "amdgpu" ];
+      kernelModules = [ "amdgpu" "applespi" "intel_lpss_pci" "spi_pxa2xx_platform" "apple-ib-tb" ];
     };
   };
 
