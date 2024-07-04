@@ -7,10 +7,9 @@
 }:
 {
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
       extraPackages = (with pkgs; [
         libva
         vaapiVdpau
@@ -83,7 +82,9 @@
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     NVD_BACKEND = "direct";
-    WLR_NO_HARDWARE_CURSORS = "1";
+    WLR_NO_HARDWARE_CURSORS = "1"; # needed for sway, no effect on Hyprland
+    __GL_GSYNC_ALLOWED = "1";
+    __GL_VRR_ALLOWED = "1";
   } // lib.optionalAttrs (gpuvar.tech == "nvk") {
     NVK_I_WANT_A_BROKEN_VULKAN_DRIVER = "1";             # prep for nvk
     MESA_VK_VERSION_OVERRIDE = "1.3";                    # prep for nvk

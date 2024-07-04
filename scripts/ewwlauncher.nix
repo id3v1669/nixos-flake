@@ -9,6 +9,7 @@
 #!/usr/bin/env bash
 
 pidof eww | xargs kill
+
 sleep 2
 ${pkgs.over-eww}/bin/eww daemon
 sleep 2

@@ -19,5 +19,6 @@
     ./fastfetch
     ./rider
     ./swappy
+    ./chromium
   ];
 }

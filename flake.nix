@@ -31,7 +31,7 @@
       url = "github:inclyc/flake-compat";
       flake = false;
     };
-#    hyprland.url = "github:hyprwm/Hyprland/v0.41.0?submodules=1";
+    #hyprland.url = "github:hyprwm/Hyprland/v0.41.1?submodules=1";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     xdghypr = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";

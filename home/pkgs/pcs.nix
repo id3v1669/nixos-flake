@@ -25,7 +25,6 @@
     # web
     networkmanagerapplet          # network manager applet
     nm-tray                       # network manager tray
-    #ungoogled-chromium            # backup browser
     wireguard-tools               # wireguard tools for experiments with vpn
     tor-browser                   # tor browser for research
 
