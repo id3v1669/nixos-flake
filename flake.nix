@@ -44,6 +44,10 @@
     hyprlock = {
       url = "github:hyprwm/hyprlock";
     };
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = { 
   self
@@ -63,6 +67,7 @@
 , ndct-sddm
 , swhkd
 , hyprpicker
+, auto-cpufreq
 , ... }@inputs: 
   let
     inherit (self) outputs;
@@ -125,7 +130,7 @@
         prism-launcher.overlays.default
         (final: prev: {
           over-intel-vaapi-driver = prev.vaapiIntel.override { enableHybridCodec = true; };     # intel vaapi driver with hybrid codec support
-          over-swhkd = swhkd.packages.${prev.system}.swhkd;                                     # hotkey daemon
+          #over-swhkd = swhkd.packages.${prev.system}.swhkd;                                     # hotkey daemon
           over-eww = eww.packages.${prev.system}.default;                                       # eww custom - swap tray mouse buttons
           over-hyprland = hyprland.packages.${prev.system}.hyprland;                            # hyprland overlay
           over-hypr-portal = xdghypr.packages.${prev.system}.xdg-desktop-portal-hyprland;       # hyprland portal overlay
@@ -138,7 +143,7 @@
           over-rofi-emoji = (import ./overlays/rofi-emoji.nix { inherit pkgs; });               # rofi-emoji overlay as package has non-wayland build input
           over-prismlauncher = (import ./overlays/prismlauncher.nix { inherit pkgs; });         # minecraft launcher with java replacement
           over-opencore = (prev.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
-          over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                      # veracrypt overlay due to sudo-rs glitch
+          over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                          # veracrypt overlay due to sudo-rs glitch
           over-outline-manager = (prev.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
           over-joplin = (prev.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
           over-spotify = (prev.callPackage ./overlays/spot.nix {});                             # spotify with adblocker
@@ -161,10 +166,12 @@
     in nixpkgs.lib.nixosSystem 
     {
       specialArgs = {
-        inherit outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader nixified-ai;
+        inherit outputs curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader nixified-ai brightnesctrl;
       };
       modules = [
         (./. + "/hosts/${hostname}")
+        swhkd.nixosModules.default
+        auto-cpufreq.nixosModules.default
         sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
         {
@@ -172,7 +179,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${uservars.name} = import (./. + "/home/home.nix") ;
-            extraSpecialArgs = { inherit curversion hostname envir deflocale uservars colorsvar brightnesctrl gpuvar cpuvar desk sops-nix nix-colors; };
+            extraSpecialArgs = { inherit curversion hostname envir deflocale uservars colorsvar gpuvar cpuvar desk sops-nix nix-colors; };
           };
         }
       ] ++ nixpkgs.lib.lists.optional (envir == "Hyprland") hyprland.nixosModules.default;

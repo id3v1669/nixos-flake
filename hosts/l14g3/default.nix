@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ./../configuration.nix
     ./../pcsconf.nix
-    ./../../modules/autocpufreq.nix
+    ./../../modules/auto-cpufreq.nix
     #./../../modules/virtualisation.nix
     ./../../modules/udevrules.nix
     ./../../modules/fonts.nix

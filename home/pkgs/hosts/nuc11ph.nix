@@ -60,15 +60,15 @@ in
     sassc
     gtk-engine-murrine
     inkscape-with-extensions
-    gnome.gnome-themes-extra
-    gnome.geary
-    gnome.totem
+    gnome-themes-extra
+    geary
+    totem
     evince
     gedit
-    gnome.gnome-terminal
+    gnome-terminal
     lollypop
-    gnome.gnome-calendar
-    gnome.gnome-system-monitor
+    gnome-calendar
+    gnome-system-monitor
 
   ];
 }

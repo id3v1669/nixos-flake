@@ -32,7 +32,7 @@
     vlc                           # video player
     mpv                           # video player
     nomacs                        # image viewer
-    gnome.eog                     # image viewer
+    eog                           # image viewer
     ffmpegthumbnailer             # thumbnails for video files
     lutgen                        # image with filter generator
     hyprpaper                     # wallpapers
@@ -68,7 +68,7 @@
 
     # files
     filezilla                     # ftp client
-    gnome.nautilus                # file manager   
+    nautilus                      # file manager   
     cinnamon.nemo-with-extensions # file manager(backup as nautilus had some glitches in previous updates)
     zip                           # create .zip arcs
     p7zip                         # .7z arcs
@@ -83,7 +83,7 @@
     hunspellDicts.ru_RU           # needed for libreoffice
 
     # other gui tools
-    gnome.gnome-disk-utility      # disk manager(gparted is broken)
+    gnome-disk-utility            # disk manager(gparted is broken)
     qbittorrent                   # torrent client
     openrgb-with-all-plugins      # rgb control as nixos module is broken
     over-eww                      # overlay of eww(bar) with tray and dynamic tray icons

@@ -14,7 +14,7 @@ pkgs.lutris.override {
     libpng
     openldap
     gnutls
-    gnome.zenity
+    zenity
     mpg123
     libgpg-error
     libjpeg

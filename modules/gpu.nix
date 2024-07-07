@@ -88,7 +88,5 @@
   } // lib.optionalAttrs (gpuvar.tech == "nvk") {
     NVK_I_WANT_A_BROKEN_VULKAN_DRIVER = "1";             # prep for nvk
     MESA_VK_VERSION_OVERRIDE = "1.3";                    # prep for nvk
-  } // lib.optionalAttrs (gpuvar.type != "nvidia") {
-    NIXOS_OZONE_WL="1";
   };
 }

@@ -14,7 +14,7 @@
     cursorTheme = {
       name = "Capitaine Cursors (Gruvbox)";
       package = pkgs.capitaine-cursors-themed;
-      size = 15;
+      size = 30;
     };
   };
   # xdg.configFile = {

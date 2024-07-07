@@ -21,7 +21,6 @@
     ./enviroment/gtk
     ./enviroment/rofi
     ./enviroment/xdg
-    ./enviroment/swhkd
     ./enviroment/${envir}
     nix-colors.homeManagerModules.default
   ] ++ lib.lists.optionals (envir != "plasma5" && envir != "none") [
@@ -34,7 +33,7 @@
     username = "${uservars.name}";
     homeDirectory = "/home/${uservars.name}";
     sessionVariables = {
-      #      WLR_RENDERER="vulkan";
+#      WLR_RENDERER="vulkan";+
 #      WLR_BACKEND="vulkan";
       MOZ_ENABLE_WAYLAND = "1";
       _JAVA_AWT_WM_NONREPARENTING = "1";
@@ -45,6 +44,8 @@
       XDG_SESSION_TYPE = "wayland";
       XDG_CURRENT_DESKTOP = "${envir}";
       XDG_SESSION_DESKTOP = "${envir}";
+    } // lib.optionalAttrs (gpuvar.type != "nvidia") {
+      NIXOS_OZONE_WL="1";
     };
   };
 } // lib.optionalAttrs (desk != "server") {

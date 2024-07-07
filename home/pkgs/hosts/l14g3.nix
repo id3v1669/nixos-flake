@@ -22,15 +22,15 @@
     optipng
     sassc
     gtk-engine-murrine
-    gnome.gnome-themes-extra
-    gnome.geary
-    gnome.totem
+    gnome-themes-extra
+    geary
+    totem
     evince
     gedit
-    gnome.gnome-terminal
+    gnome-terminal
     lollypop
-    gnome.gnome-calendar
+    gnome-calendar
     inkscape-with-extensions
-    gnome.gnome-system-monitor
+    gnome-system-monitor
   ];
 }
