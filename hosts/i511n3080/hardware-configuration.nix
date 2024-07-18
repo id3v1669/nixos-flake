@@ -40,10 +40,7 @@ in
     kernelParams = [
     ] ++ lib.lists.optionals (gpuvar.tech == "native") [
       "video=HDMI-A-1:3440x1440@100"
-      "module_blacklist=i915"
       "nvidia_drm.fbdev=1"
-    ] ++ lib.lists.optionals (gpuvar.tech == "prime") [
-      "i915.force_probe=9a49"
     ] ++ lib.lists.optionals (gpuvar.tech == "nvk") [
       "nouveau.config=NvGspRm=1"
       "nouveau.debug=info,VBIOS=info,gsp=debug"
@@ -60,12 +57,12 @@ in
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/7afcb34c-365c-4505-9609-58eac92c358f";
+    device = "";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/E086-5B5C";
+    device = "";
     fsType = "vfat";
   };
 

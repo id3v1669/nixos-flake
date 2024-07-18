@@ -28,7 +28,7 @@
     evince
     gedit
     gnome-terminal
-    lollypop
+    #lollypop
     gnome-calendar
     inkscape-with-extensions
     gnome-system-monitor

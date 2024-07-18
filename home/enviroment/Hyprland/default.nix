@@ -1,4 +1,5 @@
-{ config
+{ lib
+, config
 , pkgs
 , deflocale
 , hostname
@@ -7,10 +8,10 @@
 , ...
 }:
 {
-  imports = [ 
-    (./. + "/hostsettings/${hostname}.nix")
+  imports = [
     ./colors.nix
-  ];
+  ] ++ lib.optional (builtins.pathExists (./. + "/hostsettings/${hostname}.nix")) (./. + "/hostsettings/${hostname}.nix");
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.over-hyprland;

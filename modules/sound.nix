@@ -2,7 +2,6 @@
 , ...
 }:
 {
-  sound.enable = false;
   hardware.pulseaudio.enable = false;
   programs.noisetorch.enable = true;
   services = {

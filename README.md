@@ -1,4 +1,23 @@
-# NixOS flake on Hyprland + eww + rofi
+<h1 align="center"> <code>NixOS❄️</code> flake for Hyprland </h1>
+
+<h2 id="nixos-flake" align="center">
+  <br>
+  <div align="center">
+    <a href="https://github.com/id3v1669/nixos-flake/stargazers">
+      <img src="https://img.shields.io/github/stars/id3v1669/nixos-flake?color=d79921&labelColor=282828&style=for-the-badge&logo=starship&logoColor=d79921">
+    </a>
+    <a href="https://github.com/id3v1669/nixos-flake/">
+      <img src="https://img.shields.io/github/repo-size/id3v1669/nixos-flake?color=98971a&labelColor=282828&style=for-the-badge&logo=github&logoColor=98971a">
+    </a>
+    <a href="https://github.com/id3v1669/nixos-flake/blob/master/LICENSE">
+      <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=GPL-3&colorA=282828&colorB=8f3f71&logo=unlicense&logoColor=8f3f71&"/>
+    </a>
+    <br>
+    <a href="https://nixos.org">
+      <img src="https://img.shields.io/badge/NixOS-unstable-blue.svg?style=for-the-badge&labelColor=282828&logo=NixOS&logoColor=white&color=458588">
+    </a>
+  </div>
+</h2>
 
 NixOS flake with home manager
 
@@ -18,30 +37,6 @@ Latest commit to use: b4db577b5898acd25870df42ab11713be5249e19
 | notifications | dunst | - | - |
 | shell | fish | - | - |
 | bootloader | opencore(systemd mod) | extra folder OC reated, reads systemd entries | ToDo 11 |
-
-## ToDo
-
-1. **-fix brightness control for multimonitor config**
-
-2. **-find gamma tool for unsupported brightness monitors and cables**
-
-3. **-fix audio input in windows apps like yousician(lutris) and rocksmith(steam)**
-
-4. **rewrite readme**
-
-5. **fix adb udev rules(overwrite or manual install instead of module)**
-
-6. **patch invoke-ai(pytorch) to clean vram after error "CUDA error: out of memory"**
-
-7. **patch dsdt for nuc11ph(acpi errors)**
-
-8. **fix sops**
-
-9. **find idler that works with gamepad**
-
-10. **add notification widget with notififcation history(eww?)**
-
-11. **opencre is broken after systemd-boot update relace with grub or fix**
 
 ## Notes
 

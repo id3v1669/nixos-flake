@@ -6,8 +6,8 @@
 }:
 {
   imports = [
-    (./. + "/hostsettings/${hostname}.nix")
-  ];
+  ] ++ lib.optional (builtins.pathExists (./. + "/hostsettings/${hostname}.nix")) (./. + "/hostsettings/${hostname}.nix");
+  
   home.sessionVariables = {
     WLR_RENDERER="vulkan";
     WLR_BACKEND="vulkan";

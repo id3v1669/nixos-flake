@@ -66,7 +66,7 @@ in
     evince
     gedit
     gnome-terminal
-    lollypop
+    #lollypop
     gnome-calendar
     gnome-system-monitor
 

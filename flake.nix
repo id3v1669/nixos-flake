@@ -186,6 +186,27 @@
     };
   in {
     nixosConfigurations = {
+      i511n3080hypr = mkSyst { 
+        hostname = "i511n3080";
+        envir = "Hyprland";
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          domain = "none";
+          wp = "default3.png";
+          owner = "id3v1669";
+          sleeptimeout = 99000;
+        };
+        bootloader = {
+          type = "systemd";
+          timeout = 10;
+        };
+        gpuvar = {
+          type = "nvidia";
+          tech = "native";
+          port = "hdmi";
+        };
+      };
       nuc10chhypr = mkSyst { 
         hostname = "nuc10ch";
         envir = "Hyprland";
@@ -269,8 +290,6 @@
         gpuvar = {
           type = "nvidia";
           tech = "native";
-          busd = "PCI:01:00:0";
-          busi = "PCI:00:02:0";
           port = "hdmi";
         };
       };
@@ -292,8 +311,6 @@
         gpuvar = {
           type = "nvidia";
           tech = "native";
-          busd = "PCI:01:00:0";
-          busi = "PCI:00:02:0";
           port = "hdmi";
         };
       };

@@ -1,0 +1,19 @@
+## ToDo
+
+1. **-fix brightness control for multimonitor config**
+
+2. **-find gamma tool for unsupported brightness monitors and cables**
+
+3. **-fix audio input in windows apps like yousician(lutris) and rocksmith(steam)**
+
+4. **rewrite readme(in progress, fininsh after finishing gtk theme and base32 colors repo)**
+
+5. **patch dsdt for nuc11ph(acpi errors)**
+
+6. **fix sops**
+
+7. **find idler that works with gamepad**
+
+8. **add notification widget with notififcation history(eww?)**
+
+9. **opencre is broken after systemd-boot update relace with grub or fix**

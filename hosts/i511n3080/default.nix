@@ -48,12 +48,6 @@
     "usbmux"
   ];
   environment = {
-    variables = {
-    } // lib.optionalAttrs ( gpuvar.tech == "nvk") {
-      WLR_DRM_DEVICES = "/dev/dri/card0";                  # output with nvidia only
-    } // lib.optionalAttrs (gpuvar.tech == "prime") {
-      WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";   # output with intel, nvidia sync mode
-    };
     systemPackages = (with pkgs; [
       # nixified-ai.packages.${system}.invokeai-nvidia
       # #nixified-ai.packages.${system}.textgen-nvidia

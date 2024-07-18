@@ -76,17 +76,20 @@
   ] ++ lib.lists.optionals (gpuvar.type == "intel")[ "intel"
   ] ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk")[ "nvidia"
   ] ++ lib.lists.optionals (gpuvar.type == "amd" || cpuvar == "amd" ) [ "amdgpu" "radeon" ];
-  environment.variables = {
-  } // lib.optionalAttrs ( gpuvar.tech == "native") {
-    LIBVA_DRIVER_NAME = "nvidia";
-    GBM_BACKEND = "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    NVD_BACKEND = "direct";
-    WLR_NO_HARDWARE_CURSORS = "1"; # needed for sway, no effect on Hyprland
-    __GL_GSYNC_ALLOWED = "1";
-    __GL_VRR_ALLOWED = "1";
-  } // lib.optionalAttrs (gpuvar.tech == "nvk") {
-    NVK_I_WANT_A_BROKEN_VULKAN_DRIVER = "1";             # prep for nvk
-    MESA_VK_VERSION_OVERRIDE = "1.3";                    # prep for nvk
+  environment = {
+    systemPackages = [] ++ lib.optional (gpuvar.type == "nvidia") pkgs.egl-wayland;
+    variables = {
+    } // lib.optionalAttrs ( gpuvar.tech == "native") {
+      LIBVA_DRIVER_NAME = "nvidia";
+      GBM_BACKEND = "nvidia-drm";
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      NVD_BACKEND = "direct";
+      WLR_NO_HARDWARE_CURSORS = "1"; # needed for sway, no effect on Hyprland
+      __GL_GSYNC_ALLOWED = "1";
+      __GL_VRR_ALLOWED = "1";
+    } // lib.optionalAttrs (gpuvar.tech == "nvk") {
+      NVK_I_WANT_A_BROKEN_VULKAN_DRIVER = "1";             # prep for nvk
+      MESA_VK_VERSION_OVERRIDE = "1.3";                    # prep for nvk
+    };
   };
 }
