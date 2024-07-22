@@ -34,6 +34,7 @@
   nix = {
     settings = {
       experimental-features = [ "flakes" "nix-command" ];
+      warn-dirty = false;
       auto-optimise-store = true;
     };
     gc = {

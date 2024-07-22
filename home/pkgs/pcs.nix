@@ -39,6 +39,7 @@
     imagemagickBig                # image manipulation(convert etc)
     imv                           # wayland cli image viewer
     gpu-screen-recorder           # screen recorder
+    swappy                        # screenshot editor
 
     # chat
     telegram-desktop              # telegram client

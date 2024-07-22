@@ -18,6 +18,7 @@
     ./../../modules/fonts.nix
     ./../../modules/sound.nix
     ./../../modules/gpu.nix
+    ./../../modules/security.nix
     ./../../modules/swhkd.nix
     ./../../modules/sudo.nix
     ./../../modules/sops.nix

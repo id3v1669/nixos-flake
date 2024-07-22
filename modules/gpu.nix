@@ -33,7 +33,7 @@
     };
   } // lib.optionalAttrs (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") {
     nvidia = {
-      open = false;
+      open = true;
       nvidiaSettings = true;
       modesetting.enable = true;
       forceFullCompositionPipeline = true;
@@ -54,7 +54,7 @@
         version = "555.52.04";
         sha256_64bit = "sha256-nVOubb7zKulXhux9AruUTVBQwccFFuYGWrU1ZiakRAI=";
         sha256_aarch64 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-        openSha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+        openSha256 = "sha256-wDimW8/rJlmwr1zQz8+b1uvxxxbOf3Bpk060lfLKuy0=";
         settingsSha256 = "sha256-PMh5efbSEq7iqEMBr2+VGQYkBG73TGUh6FuDHZhmwHk=";
         persistencedSha256 = "sha256-KAYIvPjUVilQQcD04h163MHmKcQrn2a8oaXujL2Bxro=";
         patchFlags = ["-p1" "-d" "kernel"];

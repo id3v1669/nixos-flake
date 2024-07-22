@@ -8,11 +8,12 @@
     ./../configuration.nix
     ./../pcsconf.nix
     ./../../modules/auto-cpufreq.nix
-    #./../../modules/virtualisation.nix
+    ./../../modules/virtualisation.nix
     ./../../modules/udevrules.nix
     ./../../modules/fonts.nix
     ./../../modules/sound.nix
     ./../../modules/gpu.nix
+    ./../../modules/security.nix
     ./../../modules/sudo.nix
     ./../../modules/swhkd.nix
     ./../../modules/bluetooth.nix

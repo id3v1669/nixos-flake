@@ -33,7 +33,7 @@ monitor="screen"
 output="$(pactl get-default-sink).monitor"
 input="$(pactl get-default-source)"
 ${pkgs.over-eww}/bin/eww update recclass="replay active"
-gpu-screen-recorder -w $monitor -f 30 -a "$output|$input" -c mp4 -r 240 -o "$video_path"
+gpu-screen-recorder -w $monitor -f 40 -a "$output|$input" -c mp4 -r 240 -o "$video_path"
       '';
       in
         start + env + end;

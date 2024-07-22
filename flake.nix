@@ -121,6 +121,7 @@
     pkgs = import nixpkgs {
       inherit system;
       config = {
+        cudaSupport = (gpuvar.type == "nvidia");
         allowUnfree = true;
       };
       overlays = 
