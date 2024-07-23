@@ -4,13 +4,12 @@
 {
   home.packages = with pkgs; [
     # text & docs
-    over-joplin                   # note taking app
+    joplin-desktop                # note taking app
+    spotify
 
     # dev
     jetbrains.rust-rover          # rust ide
 
-
-    #over-prismlauncher           # minecraft launcher
     prismlauncher
     
     libsForQt5.kdenlive           # video editing

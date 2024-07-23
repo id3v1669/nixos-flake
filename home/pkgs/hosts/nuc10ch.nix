@@ -4,8 +4,7 @@
 {
   home.packages = with pkgs; [
     # text & docs
-    over-joplin                                            # note taking app
-    over-prismlauncher
+    joplin-desktop
 
     optipng
     sassc

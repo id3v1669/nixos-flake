@@ -146,7 +146,6 @@
           over-opencore = (prev.callPackage ./overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
           over-veracrypt = (prev.callPackage ./overlays/veracrypt {});                          # veracrypt overlay due to sudo-rs glitch
           over-outline-manager = (prev.callPackage ./overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
-          over-joplin = (prev.callPackage ./overlays/joplin.nix {});                            # joplin overlay as official package is not up to date
           over-spotify = (prev.callPackage ./overlays/spot.nix {});                             # spotify with adblocker
           over-soundux = (prev.callPackage ./overlays/soundux {});                              # soundux as official package is broken
           #-------------------------------------------------------------------------------------ai cuda stuff

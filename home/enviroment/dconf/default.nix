@@ -10,6 +10,9 @@
         color-scheme = "prefer-dark";
         clock-show-seconds = true;
       };
+      "org/gnome/desktop/privacy" = {
+        remember-recent-files = false;
+      };
       "org/gnome/shell/extensions/user-theme" = {
         name = "dynamic-color-theme";
       };

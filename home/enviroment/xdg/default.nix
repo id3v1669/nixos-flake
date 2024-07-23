@@ -26,14 +26,6 @@
       };
     };
     desktopEntries = {
-      spotify = {
-        name = "Spotify";
-        genericName = "Music Player";
-        exec = "spotify-adblock %U";
-        icon = "spotify-client";
-        terminal = false;
-        categories = [ "Audio" "AudioVideo" "Player" "Network" ];
-      };
       firefox = {
         name = "Firefox";
         genericName = "Web Browser";

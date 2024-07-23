@@ -39,7 +39,8 @@ in
 {
   home.packages = with pkgs; [
     # text & docs
-    over-joplin                   # note taking app
+    joplin-desktop                # note taking app
+    spotify
 
     # dev
     github-desktop                # github desktop

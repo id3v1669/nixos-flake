@@ -59,6 +59,7 @@
       settings = {
         "accessibility.typeaheadfind.autostart" = false;
         "accessibility.typeaheadfind.manual" = false;
+        "browser.startup.page" = 3; # Restore previous session
         "browser.search.region" = "AU";
         "browser.search.isUS" = false;
         "browser.sessionstore.restore_on_demand" = true;
@@ -78,6 +79,11 @@
         "services.sync.prefs.sync.signon.management.page.breach-alerts.enabled" = false;
         "signon.management.page.breach-alerts.enabled" = false;
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+
+        # Disable crash reports
+        "breakpad.reportURL" = "";
+        "browser.tabs.crashReporting.sendReport" = false;
+        "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
       };
       extraConfig = ''
         user_pref("media.ffmpeg.vaapi.enabled", true);

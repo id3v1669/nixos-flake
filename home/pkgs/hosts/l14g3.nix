@@ -4,19 +4,20 @@
 {
   home.packages = with pkgs; [
     # gui
-    gimp                                                   # image editing
-    #over-outline-manager                                  # outline manager vpn(proxy)
+    gimp                                 # image editing
+    #over-outline-manager                # outline manager vpn(proxy)
 
     # dev
-    jetbrains.rust-rover                                   # rust ide
+    jetbrains.rust-rover                 # rust ide
 
     # text & docs
-    over-joplin                                            # note taking app
+    joplin-desktop                       # note taking app
 
     # files
-    filezilla                                              # ftp client
+    filezilla                            # ftp client
 
-    over-prismlauncher
+    prismlauncher
+    spotify
 
     #for gtk theme testing
     optipng

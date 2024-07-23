@@ -16,7 +16,6 @@
     mpc-cli                       # cli for mpd
     qjackctl                      # gui for jack
     #over-soundux                 # soundpad broken after webkitgtk update
-    over-spotify                  # music player
 
     # vm, virt and emulators
     distrobox                     # archbox for apps that are not in nixpkgs
