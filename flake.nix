@@ -23,6 +23,7 @@
      url = "github:id3v1669/ndct-sddm-corners";
      inputs.nixpkgs.follows = "nixpkgs";
     };
+    dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
     swhkd = {
       url = "github:id3v1669/swhkd";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,7 +46,8 @@
       url = "github:hyprwm/hyprlock";
     };
     auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
+      #url = "github:AdnanHodzic/auto-cpufreq";
+      url = "github:AdnanHodzic/auto-cpufreq/v2.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -61,6 +63,7 @@
 , hyprlock
 , eww
 , sops-nix
+, dcgt
 , nix-colors
 , nixified-ai
 , prism-launcher
@@ -130,6 +133,7 @@
         nixmox.overlay
         prism-launcher.overlays.default
         (final: prev: {
+          dynamic-color-gtk-theme = dcgt.packages.${prev.system}.default;
           over-intel-vaapi-driver = prev.vaapiIntel.override { enableHybridCodec = true; };     # intel vaapi driver with hybrid codec support
           #over-swhkd = swhkd.packages.${prev.system}.swhkd;                                     # hotkey daemon
           over-eww = eww.packages.${prev.system}.default;                                       # eww custom - swap tray mouse buttons
@@ -338,6 +342,33 @@
       l14g3hypr = mkSyst { 
         hostname = "l14g3";
         envir = "Hyprland";
+        cpuvar = "amd";
+        desk = "laptop";
+        bootloader = {
+          type = "systemd";
+          defconf = false;
+          timeout = 10;
+        };
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          domain = "none";
+          wp = "default3.png";
+          owner = "id3v1669";
+          sleeptimeout = 1200;
+        };
+        brightnesctrl = {
+          up = "light -A 5";
+          down = "light -U 5";
+        };
+        gpuvar = {
+          type = "amd";
+          tech = "amd";
+        };
+      };
+      l14g3plasma5 = mkSyst { 
+        hostname = "l14g3";
+        envir = "plasma5";
         cpuvar = "amd";
         desk = "laptop";
         bootloader = {

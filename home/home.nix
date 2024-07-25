@@ -25,7 +25,7 @@
     nix-colors.homeManagerModules.default
   ] ++ lib.lists.optionals (envir != "plasma5" && envir != "none") [
     ./enviroment/eww
-    ./enviroment/dunst
+    ./enviroment/swaync
     ./enviroment/hyprlock
   ];
   home = {

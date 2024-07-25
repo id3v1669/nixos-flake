@@ -16,19 +16,20 @@
     gimp                          # image editing
 
     #for gtk theme testing
-    optipng
-    sassc
-    gtk-engine-murrine
-    inkscape-with-extensions
-    gnome-themes-extra
-    geary
-    totem
-    evince
-    gedit
-    gnome-terminal
-    lollypop
-    gnome-calendar
-    gnome-system-monitor
+    # swaynotificationcenter
+    # optipng
+    # sassc
+    # gtk-engine-murrine
+    # inkscape-with-extensions
+    # gnome-themes-extra
+    # geary
+    # totem
+    # evince
+    # gedit
+    # gnome-terminal
+    # lollypop
+    # gnome-calendar
+    # gnome-system-monitor
 
   ];
 }

@@ -34,7 +34,7 @@ Latest commit to use: b4db577b5898acd25870df42ab11713be5249e19
 | login manager | gdm | - | - |
 | lockscreen | hyprlock | - | - |
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
-| notifications | dunst | - | - |
+| notifications | swaync | gtk themeing needs to be done | - |
 | shell | fish | - | - |
 | bootloader | opencore(systemd mod) | extra folder OC reated, reads systemd entries | ToDo 11 |
 

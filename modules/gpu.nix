@@ -33,7 +33,7 @@
     };
   } // lib.optionalAttrs (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") {
     nvidia = {
-      open = true;
+      open = false;
       nvidiaSettings = false;
       modesetting.enable = true;
       forceFullCompositionPipeline = true;
@@ -45,22 +45,24 @@
       # 550.76     - works, sync/offload
       # 550.78     - works, sync/offload
       # 555.42.02  - works, hdmi,         finaly works native(hdmi instead of thunderbolt)
-      # 555.52.04  - works, hdmi,         glitchy
-      # 560.28.03  - works, hdmi,         new best performance
+      # 555.52.04  - works, hdmi,         
+      # 560.28.03  - works, hdmi,         better performance, more glitchi on open-kernel-module
       # 545.29.02  - drm(VDPAU) failure
       # 545.29.06  - drm(VDPAU) failure
       # 550.40.07  - drm(VDPAU) failure
       #----------------------------------
+      # rtx 3080-------------------------
+      # 555.52.04  - works, hdmi,         
+      # 560.28.03  - works, hdmi,         better performance, more glitchi on open-kernel-module
+      #----------------------------------
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        version = "560.28.03";
-        sha256_64bit = "sha256-martv18vngYBJw1IFUCAaYr+uc65KtlHAMdLMdtQJ+Y=";
-        sha256_aarch64 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-        openSha256 = "sha256-asGpqOpU0tIO9QqceA8XRn5L27OiBFuI9RZ1NjSVwaM=";
-        settingsSha256 = "sha256-b4nhUMCzZc3VANnNb0rmcEH6H7SK2D5eZIplgPV59c8=";
-        persistencedSha256 = "sha256-MhITuC8tH/IPhCOUm60SrPOldOpitk78mH0rg+egkTE=";
-        patchFlags = ["-p1" "-d" "kernel"];
-        patches = [];
-      };
+          version = "560.28.03";
+          sha256_64bit = "sha256-martv18vngYBJw1IFUCAaYr+uc65KtlHAMdLMdtQJ+Y=";
+          sha256_aarch64 = "sha256-+u0ZolZcZoej4nqPGmZn5qpyynLvu2QSm9Rd3wLdDmM=";
+          openSha256 = "sha256-asGpqOpU0tIO9QqceA8XRn5L27OiBFuI9RZ1NjSVwaM=";
+          settingsSha256 = "sha256-b4nhUMCzZc3VANnNb0rmcEH6H7SK2D5eZIplgPV59c8=";
+          persistencedSha256 = "sha256-MhITuC8tH/IPhCOUm60SrPOldOpitk78mH0rg+egkTE=";
+        };
       powerManagement.enable = true; 
     } // lib.optionalAttrs (gpuvar.tech == "prime") {
       prime = {
