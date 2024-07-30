@@ -3,25 +3,11 @@
 , ...
 }: 
 {
-  security.polkit.enable = true;
-  xdg.portal = {
+  programs.hyprland = {
     enable = true;
-    wlr.enable = false;
-    config.common = {
-      default = "gtk";
-      "org.freedesktop.impl.portal.Screencast" = "hyprland";
-      "org.freedesktop.impl.portal.Screenshot" = "hyprland";
-    };
-    extraPortals = with pkgs; [
-      over-hypr-portal                          # hyprland portal
-      xdg-desktop-portal-gtk                    # for gtk apps
-    ];
+    package = pkgs.over-hyprland;
+    portalPackage = pkgs.over-hypr-portal;
   };
   environment.systemPackages = with pkgs; [
   ];
-  services = {
-    displayManager.sessionPackages = [
-      pkgs.over-hyprland                        # hyprland session to be recognized by login managers
-    ];
-  };
 }

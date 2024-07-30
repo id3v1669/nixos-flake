@@ -19,6 +19,8 @@
     steam = {                           # games...
       enable = true;
       package = pkgs.over-steam;
+      protontricks.enable = true;
+      gamescopeSession.enable = true;
     };
     wireshark = {                       # wireshark for network analysis
       enable = true;
@@ -41,6 +43,11 @@
         ControllerMode = "bredr";
       };
     };
+  };
+  xdg.portal = {
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk            # for gtk apps
+    ];
   };
   services = {
     gnome.sushi.enable = true;          # file preview

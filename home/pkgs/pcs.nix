@@ -20,6 +20,7 @@
     # vm, virt and emulators
     distrobox                     # archbox for apps that are not in nixpkgs
     docker-compose                # docker-compose for tests
+    remmina                       # remote desktop
 
     # web
     networkmanagerapplet          # network manager applet
@@ -69,7 +70,7 @@
     # files
     filezilla                     # ftp client
     nautilus                      # file manager   
-    cinnamon.nemo-with-extensions # file manager(backup as nautilus had some glitches in previous updates)
+    nemo-with-extensions          # file manager(backup as nautilus had some glitches in previous updates)
     zip                           # create .zip arcs
     p7zip                         # .7z arcs
     unzip                         # unzip .zip arcs

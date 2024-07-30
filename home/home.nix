@@ -45,7 +45,7 @@
       XDG_CURRENT_DESKTOP = "${envir}";
       XDG_SESSION_DESKTOP = "${envir}";
     } // lib.optionalAttrs (gpuvar.type != "nvidia") {
-      NIXOS_OZONE_WL="1";
+      NIXOS_OZONE_WL = "1";
     };
   };
 } // lib.optionalAttrs (desk != "server") {

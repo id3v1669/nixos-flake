@@ -18,7 +18,7 @@
       nginx.hstsMaxAge = 31536000;
       configureRedis = true;
       webfinger = true;
-      maxUploadSize = "10G";
+      maxUploadSize = "20G";
       hostName = "nextcloud.${uservars.domain}";
       caching = {
         apcu = true;

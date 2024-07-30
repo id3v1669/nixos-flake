@@ -4,6 +4,7 @@
 {
   fonts = {
     fontconfig.enable = true;
+    enableDefaultPackages = true;
     fontDir = {
       enable = true;
       decompressFonts = true;

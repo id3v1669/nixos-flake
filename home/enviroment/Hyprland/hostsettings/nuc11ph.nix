@@ -83,20 +83,4 @@ fi
 
 		'';
 	};
-# 	systemd.user.services.monitors-declare = {
-# 		Unit = {
-#      	Description = "Declare monitor resolution";
-#    		After = [ "default.target" ];
-#    	};
-# 		Service = {
-# 			Type = "oneshot";
-# 			Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath (with pkgs; [
-# 				bash
-# 				coreutils
-# 			])}";
-# 			ExecStart = "bash ${config.home.homeDirectory}/.scripts/screen.sh";
-# 			RemainAfterExit = true;
-# 		};
-# 		Install = { WantedBy = ["default.target"]; };
-#  };
 }

@@ -137,8 +137,10 @@
           over-intel-vaapi-driver = prev.vaapiIntel.override { enableHybridCodec = true; };     # intel vaapi driver with hybrid codec support
           #over-swhkd = swhkd.packages.${prev.system}.swhkd;                                     # hotkey daemon
           over-eww = eww.packages.${prev.system}.default;                                       # eww custom - swap tray mouse buttons
-          over-hyprland = hyprland.packages.${prev.system}.hyprland;                            # hyprland overlay
-          over-hypr-portal = xdghypr.packages.${prev.system}.xdg-desktop-portal-hyprland;       # hyprland portal overlay
+          #over-hyprland = hyprland.packages.${prev.system}.hyprland;                            # hyprland overlay
+          #over-hypr-portal = xdghypr.packages.${prev.system}.xdg-desktop-portal-hyprland;       # hyprland portal overlay
+          over-hyprland = prev.hyprland;                                                        # temporary back to default packages due to hyprland rewrite (wlroots)
+          over-hypr-portal = prev.xdg-desktop-portal-hyprland;
           over-hyprlock = hyprlock.packages.${prev.system}.hyprlock;                            # hyprlock overlay
           over-hyprpicker = hyprpicker.packages.${prev.system}.hyprpicker;                      # hyprpicker overlay
           over-ndct-sddm = ndct-sddm.packages.${prev.system}.ndct-sddm-corners;                 # sddm theme
