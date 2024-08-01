@@ -14,7 +14,7 @@ wss() {
   ws=("")
       '';
       env = if envir == "Hyprland" then ''
-  wsa=($(${pkgs.over-hyprland}/bin/hyprctl workspaces | ${pkgs.gnugrep}/bin/grep 'workspace ID .*(*)' | ${pkgs.gawk}/bin/awk '{ gsub(/[()]/, "", $3); print $3 }'))
+  wsa=($(${pkgs.hyprland}/bin/hyprctl workspaces | ${pkgs.gnugrep}/bin/grep 'workspace ID .*(*)' | ${pkgs.gawk}/bin/awk '{ gsub(/[()]/, "", $3); print $3 }'))
   '' else  if envir == "sway" then ''
   wsa=($(swaymsg -t get_workspaces | grep -o '"num":\s*[0-9]\+' | awk '{print $2}'))
       '' else '''';
@@ -28,7 +28,7 @@ wss() {
         ws[index2-1]=""
     done
     ws[curindex-1]=""
-    ${pkgs.over-eww}/bin/eww update wss="''${ws[*]}"
+    ${pkgs.eww}/bin/eww update wss="''${ws[*]}"
 }
 
 wss

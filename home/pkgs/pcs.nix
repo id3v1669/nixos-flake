@@ -48,6 +48,10 @@
     arrpc                         # rpc for discord(vesktop)
       
     # security
+    clamav                        # antivirus
+    clamtk                        # frontend for clamav
+    autopsy                       # forensic tool
+    chkrootkit                    # rootkit checker
     metasploit                    # tool
     nikto                         # tool
     john                          # tool
@@ -87,12 +91,12 @@
     gnome-disk-utility            # disk manager(gparted is broken)
     qbittorrent                   # torrent client
     openrgb-with-all-plugins      # rgb control as nixos module is broken
-    over-eww                      # overlay of eww(bar) with tray and dynamic tray icons
+    eww                           # overlay of eww
     isoimagewriter                # kde iso writer (as ventoy is bad for bios updated)
 
     # other cli utils
     ngrrram                       # practice fast typing
-    over-hyprpicker               # color picker
+    hyprpicker               # color picker
     onefetch                      # fetch for git repos
     pciutils                      # lspci
     usbutils                      # lsusb

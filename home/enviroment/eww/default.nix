@@ -5,7 +5,7 @@
 , ...
 }:
 let 
-  eww = "${pkgs.over-eww}/bin/eww";
+  eww = "${pkgs.eww}/bin/eww";
 	dependencies = with pkgs; [
 		coreutils
 	];

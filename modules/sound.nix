@@ -1,4 +1,5 @@
 { pkgs
+, uservars
 , ...
 }:
 {
@@ -26,4 +27,5 @@
     };
   };
   systemd.services.mpd.serviceConfig.SupplementaryGroups = [ "pipewire" ];
+  users.users.${uservars.name}.extraGroups = [ "pipewire" ];
 }

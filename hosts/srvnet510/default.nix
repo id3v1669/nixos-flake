@@ -29,7 +29,7 @@
     firewall.enable = true;
   };
   users.users = {
-    ${uservars.name}.extraGroups = [ 
+    ${uservars.name}.extraGroups = [
       "wheel"
       "networkmanager"
     ];

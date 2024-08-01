@@ -4,7 +4,6 @@
 , uservars
 , gpuvar
 , curversion
-, nixified-ai
 , lib
 , ...
 }:
@@ -22,27 +21,20 @@
     ./../../modules/sudo.nix
     ./../../modules/sops.nix
     ./../../modules/bluetooth.nix
-    nixified-ai.nixosModules.invokeai
   ];
 
   networking = {
     firewall.enable = false;
     enableIPv6 = false;
   };
-  users.users.${uservars.name}.extraGroups = [ 
+  users.users.${uservars.name}.extraGroups = [
     "wheel"
     "networkmanager"
-    "docker"
     "rustdesk"
     "adbusers"
-    "kvm"
     "input" 
     "disk"
-    "qemu-libvirtd"
-    "libvirtd"
-    "video"
     "wireshark"
-    "pipewire"
     "i2c"
     "veracrypt"
     "usbmux"
@@ -55,8 +47,6 @@
       WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";   # output with intel, nvidia sync mode
     };
     systemPackages = (with pkgs; [
-      # nixified-ai.packages.${system}.invokeai-nvidia
-      # #nixified-ai.packages.${system}.textgen-nvidia
     ]);
   };
   system.stateVersion = "${curversion}";

@@ -52,16 +52,15 @@
   services = {
     gnome.sushi.enable = true;          # file preview
     printing.enable = true;             # needed for printing and pdf export
-    flatpak.enable = true;              # crap to be removed later
     hardware.bolt.enable = true;        # thunderbolt support
     gvfs.enable = true;                 # Mount, trash, etc
     displayManager.sddm = {
-     enable = true;
-     wayland.enable = true;
-     extraPackages = with pkgs; [
-       libsForQt5.qt5.qtgraphicaleffects
-     ];
-     theme = "ndct";
+      enable = true;
+      wayland.enable = true;
+      extraPackages = with pkgs; [
+        libsForQt5.qt5.qtgraphicaleffects
+      ];
+      theme = "ndct";
     };
   };
   environment.systemPackages = with pkgs; [

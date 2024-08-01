@@ -3,6 +3,7 @@
 , pkgs
 , cpuvar
 , gpuvar
+, uservars
 , ...
 }:
 {
@@ -94,4 +95,5 @@
       MESA_VK_VERSION_OVERRIDE = "1.3";                    # prep for nvk
     };
   };
+  users.users.${uservars.name}.extraGroups = [ "video" ];
 }

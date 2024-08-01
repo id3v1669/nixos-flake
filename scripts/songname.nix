@@ -22,7 +22,7 @@ while read -r line; do
             break
         fi
     done
-    ${pkgs.over-eww}/bin/eww update songname="$res"
+    ${pkgs.eww}/bin/eww update songname="$res"
 done
     '';
   };

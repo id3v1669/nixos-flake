@@ -38,8 +38,8 @@ screen1_resolutions["qhd"]="monitor=DP-3,3440x1440@144,0x0,1"
 screen1_resolutions["sqhd"]="monitor=DP-3,3440x1440@144,0x0,1"
 
 declare -A screen2_resolutions
-screen2_resolutions["qhd"]="monitor=HDMI-A-1,1920x1080@100,-1080x0,1,transform,1"
-screen2_resolutions["sqhd"]="monitor=HDMI-A-1,disable"
+screen2_resolutions["qhd"]="monitor=DP-2,1920x1080@100,-1080x0,1,transform,1"
+screen2_resolutions["sqhd"]="monitor=DP-2,disable"
 
 path="${config.home.homeDirectory}/.config/hypr/monitor.conf"
 resolution=$1

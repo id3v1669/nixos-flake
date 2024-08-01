@@ -18,21 +18,17 @@
   ];
   
   networking.firewall.enable = false;
-  users.users.${uservars.name}.extraGroups = [ 
+  users.users.${uservars.name}.extraGroups = [
     "wheel"
     "networkmanager"
-    "docker"
     "rustdesk"
     "adbusers"
-    "kvm"
     "input" 
-    "disk" 
-    "qemu-libvirtd"
-    "libvirtd"
-    "video"
+    "disk"
     "wireshark"
-    "pipewire"
-    "i2c" 
+    "i2c"
+    "veracrypt"
+    "usbmux"
   ];
   environment.variables = {
     #system vars

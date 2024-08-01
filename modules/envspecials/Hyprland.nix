@@ -5,8 +5,8 @@
 {
   programs.hyprland = {
     enable = true;
-    package = pkgs.over-hyprland;
-    portalPackage = pkgs.over-hypr-portal;
+    package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
   environment.systemPackages = with pkgs; [
   ];

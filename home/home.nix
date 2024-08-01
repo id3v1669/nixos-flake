@@ -4,7 +4,7 @@
 , envir
 , colorsvar
 , desk
-, nix-colors
+, inputs
 , gpuvar
 , ...
 }:
@@ -22,7 +22,7 @@
     ./enviroment/rofi
     ./enviroment/xdg
     ./enviroment/${envir}
-    nix-colors.homeManagerModules.default
+    inputs.nix-colors.homeManagerModules.default
   ] ++ lib.lists.optionals (envir != "plasma5" && envir != "none") [
     ./enviroment/eww
     ./enviroment/swaync
@@ -33,8 +33,6 @@
     username = "${uservars.name}";
     homeDirectory = "/home/${uservars.name}";
     sessionVariables = {
-#      WLR_RENDERER="vulkan";+
-#      WLR_BACKEND="vulkan";
       MOZ_ENABLE_WAYLAND = "1";
       _JAVA_AWT_WM_NONREPARENTING = "1";
       SDL_VIDEODRIVER = "wayland";
@@ -49,5 +47,5 @@
     };
   };
 } // lib.optionalAttrs (desk != "server") {
-  colorScheme = nix-colors.colorSchemes.${colorsvar};
+  colorScheme = inputs.nix-colors.colorSchemes.${colorsvar};
 }

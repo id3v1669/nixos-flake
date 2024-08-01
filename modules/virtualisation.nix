@@ -1,6 +1,7 @@
 { lib
 , gpuvar
 , desk
+, uservars
 , pkgs
 , ...
 }: 
@@ -9,6 +10,9 @@
   programs.virt-manager = {                                                    # gui for managing vms       
     enable = true;
     package = pkgs.virt-manager;
+  };
+  hardware.nvidia-container-toolkit = {                                       # nvidia container toolkit
+    enable = (gpuvar.type == "nvidia");
   };
   virtualisation = let notsrv = desk!="server"; in {
     spiceUSBRedirection.enable = notsrv;                                       # USB redirection to vm
@@ -36,6 +40,12 @@
      enable = true;
     } // lib.optionalAttrs (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") { enableNvidia = true; };
   };
+  users.users.${uservars.name}.extraGroups = [
+    "docker"
+    "kvm"
+    "qemu-libvirtd"
+    "libvirtd"
+  ];
 }
 
 

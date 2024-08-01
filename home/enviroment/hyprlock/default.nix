@@ -7,7 +7,7 @@
 {
   programs.hyprlock = {
     enable = true;
-    package = pkgs.over-hyprlock;
+    package = pkgs.hyprlock;
     settings = {
       general = {
         disable_loading_bar = false;
