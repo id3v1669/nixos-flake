@@ -10,7 +10,7 @@
   ];
 
   boot = {
-    kernelModules = [ "kvm-intel" "i2c-dev" "i2c-i801" ];
+    kernelModules = [ "kvm-intel" ];
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "usbhid" ];

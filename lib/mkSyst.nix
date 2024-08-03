@@ -65,16 +65,14 @@ in
           dynamic-color-gtk-theme = inputs.dcgt.packages.${prev.system}.default;                   # custom theme(unfinished)
           over-intel-vaapi-driver = prev.vaapiIntel.override { enableHybridCodec = true; };        # intel vaapi driver with hybrid codec support
           over-ndct-sddm = inputs.ndct-sddm.packages.${prev.system}.ndct-sddm-corners;             # sddm theme
+          over-libratbag = (import ./../overlays/libratbag.nix { inherit pkgs; });                 # libratbag overlay with asus rog pugio ii config
           over-lutris = (import ./../overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
           over-steam = (import ./../overlays/steam.nix { inherit pkgs; });                         # steam overlay with extra packages
           over-rofi-calc = (import ./../overlays/rofi-calc.nix { inherit pkgs; });                 # rofi-calc overlay as package has non-wayland build input
           over-rofi-emoji = (import ./../overlays/rofi-emoji.nix { inherit pkgs; });               # rofi-emoji overlay as package has non-wayland build input
-          over-prismlauncher = (import ./../overlays/prismlauncher.nix { inherit pkgs; });         # minecraft launcher with java replacement
           over-opencore = (prev.callPackage ./../overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
           over-veracrypt = (prev.callPackage ./../overlays/veracrypt {});                          # veracrypt overlay due to sudo-rs glitch
-          over-outline-manager = (prev.callPackage ./../overlays/outline-manager.nix {});          # outline-manager as official repo doesn't have it
           over-spotify = (prev.callPackage ./../overlays/spot.nix {});                             # spotify with adblocker
-          over-soundux = (prev.callPackage ./../overlays/soundux {});                              # soundux as official package is broken
           #--------------------------------------------------------------------------------------
         })
       ];

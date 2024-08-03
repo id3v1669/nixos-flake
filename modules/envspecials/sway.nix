@@ -3,25 +3,14 @@
 , ...
 }: 
 {
-  security.polkit.enable = true;
-  xdg.portal = {
+  programs.sway = {
     enable = true;
-    wlr.enable = true;
-    config.common = {
-      default = "gtk";
-      "org.freedesktop.impl.portal.Screencast" = "wlr";
-      "org.freedesktop.impl.portal.Screenshot" = "wlr";
-    };
-    extraPortals = ( with pkgs; [
-      xdg-desktop-portal-gtk
-    ]);
-  };
-  environment.systemPackages = with pkgs; [
-    wdisplays
-  ];
-  services = {
-    displayManager.sessionPackages = [
-      pkgs.swayfx
+    package = pkgs.sway;
+    extraOptions = [
+      "--unsupported-gpu"
+    ];
+    extraPackages = with pkgs; [
+      wdisplays
     ];
   };
 }

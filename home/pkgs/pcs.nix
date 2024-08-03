@@ -15,7 +15,6 @@
     qpwgraph                      # gui for pipewire graph
     mpc-cli                       # cli for mpd
     qjackctl                      # gui for jack
-    #over-soundux                 # soundpad broken after webkitgtk update
 
     # vm, virt and emulators
     distrobox                     # archbox for apps that are not in nixpkgs
@@ -48,7 +47,6 @@
     arrpc                         # rpc for discord(vesktop)
       
     # security
-    clamav                        # antivirus
     clamtk                        # frontend for clamav
     autopsy                       # forensic tool
     chkrootkit                    # rootkit checker
@@ -63,13 +61,14 @@
     over-veracrypt                # gui encryption
     sherlock                      # find accounts by username
     openssl                       # cli encryption
-    
-    #rustdesk                      # remote desktop
 
     # games
     protonup-qt                   # proton and wine updater
-    over-lutris                   # game launcher
+    over-lutris                        # game launcher
     mangohud                      # overlay for games & apps
+    steam-tui                     # unofficial steam tui client in rust
+    steam-run                     # fhs steam
+    steamPackages.steamcmd        # steamcmd for testing
 
     # files
     filezilla                     # ftp client
@@ -88,9 +87,9 @@
     hunspellDicts.ru_RU           # needed for libreoffice
 
     # other gui tools
+    piper                         # gui for mouse settings daemon
     gnome-disk-utility            # disk manager(gparted is broken)
     qbittorrent                   # torrent client
-    openrgb-with-all-plugins      # rgb control as nixos module is broken
     eww                           # overlay of eww
     isoimagewriter                # kde iso writer (as ventoy is bad for bios updated)
 

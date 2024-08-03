@@ -27,18 +27,16 @@
         };
         vhostUserPackages = with pkgs; [
           spice
-    spice-gtk
-    spice-protocol
-    virt-viewer
-    virtio-win
-    virtiofsd
-    win-spice
+          spice-gtk
+          spice-protocol
+          virt-viewer
+          virtio-win
+          virtiofsd
+          win-spice
         ];
       };
     };
-    docker = {
-     enable = true;
-    } // lib.optionalAttrs (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") { enableNvidia = true; };
+    docker.enable = true;
   };
   users.users.${uservars.name}.extraGroups = [
     "docker"

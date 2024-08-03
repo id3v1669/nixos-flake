@@ -2,6 +2,7 @@
 , pkgs
 , deflocale
 , hostname
+, lib
 , ...
 }:
 {
@@ -14,12 +15,11 @@
   };
   wayland.windowManager.sway = {
     enable = true;
-    package = pkgs.swayfx;
+    package = pkgs.sway;
     checkConfig = false;
     systemd.enable = true;
     extraOptions = [
       "--unsupported-gpu"
-      "--my-next-gpu-wont-be-nvidia"
     ];
     config = {
       startup = [

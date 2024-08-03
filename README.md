@@ -40,6 +40,4 @@ Latest commit to use: b4db577b5898acd25870df42ab11713be5249e19
 
 ## Notes
 
-OpenRGB Module is broken and installed manually
-
 sway and plasma are just for testing

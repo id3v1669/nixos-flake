@@ -8,7 +8,7 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
-    kernelModules = [ "kvm-amd" "i2c-dev" "i2c-piix4" ];
+    kernelModules = [ "kvm-amd" ];
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];

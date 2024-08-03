@@ -9,7 +9,6 @@
     ./../pcsconf.nix
     ./../../modules/auto-cpufreq.nix
     ./../../modules/virtualisation.nix
-    ./../../modules/udevrules.nix
     ./../../modules/fonts.nix
     ./../../modules/sound.nix
     ./../../modules/gpu.nix

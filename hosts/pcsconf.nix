@@ -20,7 +20,10 @@
       enable = true;
       package = pkgs.over-steam;
       protontricks.enable = true;
-      gamescopeSession.enable = true;
+    };
+    gamescope = {                       # gamescope for games
+      enable = true;
+      package = pkgs.gamescope;
     };
     wireshark = {                       # wireshark for network analysis
       enable = true;
@@ -28,7 +31,7 @@
     };
     kdeconnect = {
       enable = true;                    # kdeconnect for android integration
-      package = pkgs.libsForQt5.kdeconnect-kde;
+      package = lib.mkDefault pkgs.kdePackages.kdeconnect-kde;
     };
     light.enable = true;                # laptop brightness control and fix for openrgb
     traceroute.enable = true;           # traceroute
@@ -50,15 +53,27 @@
     ];
   };
   services = {
+    udev.enable = true;                 # udev for hardware
     gnome.sushi.enable = true;          # file preview
     printing.enable = true;             # needed for printing and pdf export
-    hardware.bolt.enable = true;        # thunderbolt support
     gvfs.enable = true;                 # Mount, trash, etc
+    ratbagd = {                         # mouse settings daemon
+      enable = true;
+      package = pkgs.over-libratbag;
+    };
+    hardware = {
+      bolt.enable = true;               # thunderbolt support
+      openrgb = {
+        enable = true;                  # rgb control
+        package = pkgs.openrgb-with-all-plugins;
+        motherboard = "${cpuvar}";
+      };
+    };
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
       extraPackages = with pkgs; [
-        libsForQt5.qt5.qtgraphicaleffects
+        #libsForQt5.qt5.qtgraphicaleffects
       ];
       theme = "ndct";
     };

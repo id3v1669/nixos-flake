@@ -19,8 +19,6 @@
     ];
     kernelModules = [ 
       "kvm-intel"
-      "i2c-dev"
-      "i2c-i801"
     ] ++ lib.lists.optionals (gpuvar.tech == "nvk") [
       "nouveau"
     ];
