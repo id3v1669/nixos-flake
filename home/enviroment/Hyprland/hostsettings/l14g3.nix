@@ -62,8 +62,8 @@ echo ''${screen3_resolutions[$resolution]} >> $path
 echo "monitor=Unknown-1,disabled" >> $path
 
 if [ "$resolution" == "single" ]; then
-   echo "windowrule=move 69% 6%,^(pavucontrol)$" >> $path
-   echo "windowrule=size 30% 65%,^(pavucontrol)$" >> $path
+   echo "windowrule=move 69% 6%,^(org.pulseaudio.pavucontrol)$" >> $path
+   echo "windowrule=size 30% 65%,^(org.pulseaudio.pavucontrol)$" >> $path
 fi
 
 # to avoid hyprctl reload before hyprland starts as script is executed by systemd

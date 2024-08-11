@@ -46,7 +46,7 @@
       label = [
         {
           monitor = "";
-          text = "cmd[update:1000] echo \"<b><big> $(date +\"%H:%M:%S\") </big></b>\"";
+          text = "cmd[update:1000:1] echo \"<b><big> $(date +\"%H:%M:%S\") </big></b>\"";
           color = "rgb(${config.colorScheme.palette.base01})";
           font_size = 64;
           font_family = "${config.colorScheme.palette.base08}";

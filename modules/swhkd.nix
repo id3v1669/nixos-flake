@@ -50,6 +50,9 @@
       exit = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch exit"
         else if envir == "sway" then "swaymsg exit"
         else "";
+      reload = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl reload"
+        else if envir == "sway" then "swaymsg reload"
+        else "";
     in ''
 
 super + shift + q
@@ -129,6 +132,9 @@ super + shift + c
 
 super + shift + l
   hyprlock
+
+super + shift + /
+  ${reload}
 
 super + shift + 3
   wayshot -s "$(slurp)" --stdout | swappy -f -

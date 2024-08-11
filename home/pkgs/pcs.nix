@@ -115,7 +115,8 @@
     nixpkgs-review                # review utility for nixpkgs
 
     # libs
-    gtk3                          # gtk for 
+    gtk3                          #
+    gtk4                          #
     libpng                        # png lib
     libnotify                     # for dunst or mako
     libheif                       # heif lib

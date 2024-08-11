@@ -7,8 +7,8 @@
 {
   wayland.windowManager.hyprland.settings = {
 		windowrule = [
-			"move 84.75% 4.25%,^(pavucontrol)$"
-      "size 15% 50%,^(pavucontrol)$"
+			"move 84.75% 4.25%,^(org.pulseaudio.pavucontrol)$"
+      "size 15% 50%,^(org.pulseaudio.pavucontrol)$"
 			"move 84.75% 4.25%,^(nm-connection-editor)$"
       "size 15% 50%,^(nm-connection-editor)$"
 			"move 81.25% 4.25%, blueman-manager"

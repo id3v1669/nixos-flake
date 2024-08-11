@@ -100,8 +100,8 @@ windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 #--------------------------------------------------
 
 #--------------other windowrules-------------------
-windowrule=float,^(pavucontrol)$                                  # sound controls
-windowrule = opacity 0.8,^(pavucontrol)$                          # sound controls
+windowrule=float,^(org.pulseaudio.pavucontrol)$                                  # sound controls
+windowrule = opacity 0.8,^(org.pulseaudio.pavucontrol)$                          # sound controls
 
 windowrule = float,^(nm-connection-editor)$                       # network manager
 windowrule = opacity 0.8,^(nm-connection-editor)$                 # network manager

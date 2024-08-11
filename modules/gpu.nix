@@ -20,7 +20,7 @@
       ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar.type == "intel") (with pkgs; [
         intel-media-driver
         vaapi-intel-hybrid
-        over-intel-vaapi-driver
+        intel-vaapi-driver
       ]);
       extraPackages32 = (with pkgs.pkgsi686Linux; [
         vaapiVdpau
@@ -29,13 +29,14 @@
         nvidia-vaapi-driver
       ]) ++ lib.lists.optionals (cpuvar == "intel" || gpuvar == "intel") (with pkgs.pkgsi686Linux; [
         intel-media-driver
-        over-intel-vaapi-driver
+        vaapi-intel-hybrid
+        intel-vaapi-driver
       ]);
     };
   } // lib.optionalAttrs (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") {
     nvidia = {
-      open = false;
-      nvidiaSettings = false;
+      open = true;
+      nvidiaSettings = true;
       modesetting.enable = true;
       powerManagement.enable = true; 
       forceFullCompositionPipeline = true;
@@ -55,14 +56,15 @@
       # rtx 3080-------------------------
       # 555.52.04  - works, hdmi,         
       # 560.28.03  - works, hdmi,         better performance, more glitchi on open-kernel-module
+      # 560.31.02  - works, hdmi,         
       #----------------------------------
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        version = "560.28.03";
-        sha256_64bit = "sha256-martv18vngYBJw1IFUCAaYr+uc65KtlHAMdLMdtQJ+Y=";
-        sha256_aarch64 = "sha256-+u0ZolZcZoej4nqPGmZn5qpyynLvu2QSm9Rd3wLdDmM=";
-        openSha256 = "sha256-asGpqOpU0tIO9QqceA8XRn5L27OiBFuI9RZ1NjSVwaM=";
-        settingsSha256 = "sha256-b4nhUMCzZc3VANnNb0rmcEH6H7SK2D5eZIplgPV59c8=";
-        persistencedSha256 = "sha256-MhITuC8tH/IPhCOUm60SrPOldOpitk78mH0rg+egkTE=";
+        version = "560.31.02";
+        sha256_64bit = "sha256-0cwgejoFsefl2M6jdWZC+CKc58CqOXDjSi4saVPNKY0=";
+        sha256_aarch64 = "sha256-+u0ZolZcZoej4nqPGmdn5qpyynLvu2QSm9Rd3wLdDmM=";
+        openSha256 = "sha256-X5UzbIkILvo0QZlsTl9PisosgPj/XRmuuMH+cDohdZQ=";
+        settingsSha256 = "sha256-A3SzGAW4vR2uxT1Cv+Pn+Sbm9lLF5a/DGzlnPhxVvmE=";
+        persistencedSha256 = "sha256-MhITuC8tH/IPhCdUm60SrPOldOpitk78mH0rg+egkTE=";
       };
     } // lib.optionalAttrs (gpuvar.tech == "prime") {
       prime = {
