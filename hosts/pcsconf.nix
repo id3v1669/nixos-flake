@@ -2,6 +2,7 @@
 , config
 , pkgs
 , cpuvar
+, envir
 , ...
 }: 
 {
@@ -14,6 +15,8 @@
       capabilities = "cap_sys_admin+ep";
       source = "${pkgs.gpu-screen-recorder}/bin/gsr-kms-server";
     };
+  } // lib.optionalAttrs (envir == "Hyprland" || envir == "sway") {
+    pam.services.hyprlock = {};
   };
   programs = {
     steam = {                           # games...

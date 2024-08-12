@@ -1,13 +1,13 @@
 { config
 , pkgs
+, inputs
 , ...
 }: 
 {
-  programs.hyprland = {
-    enable = true;
-    package = pkgs.hyprland;
-    portalPackage = pkgs.xdg-desktop-portal-hyprland;
-  };
+  imports = [
+    inputs.hyprland.nixosModules.default
+  ];
+  programs.hyprland.enable = true;
   environment.systemPackages = with pkgs; [
   ];
 }

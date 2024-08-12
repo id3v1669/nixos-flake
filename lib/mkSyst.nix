@@ -59,6 +59,9 @@ in
         inputs.eww.overlays.default
         inputs.xdghypr.overlays.default
         inputs.hyprpicker.overlays.default
+        inputs.hyprlock.overlays.default
+        inputs.hyprpaper.overlays.default
+        inputs.hypridle.overlays.default
         (final: prev: {
           hyprland = inputs.hyprland.packages.${prev.system}.hyprland;                             # overlay for hyprland(overlays.default is broken 20240801)
           dynamic-color-gtk-theme = inputs.dcgt.packages.${prev.system}.default;                   # custom theme(unfinished)
@@ -79,7 +82,7 @@ in
   in
   inputs.nixpkgs.lib.nixosSystem {
     specialArgs = {
-      inherit curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader brightnesctrl;
+      inherit curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader brightnesctrl inputs;
     };
     modules = [
       (./.. + "/hosts/${hostname}")
@@ -94,6 +97,6 @@ in
           extraSpecialArgs = { inherit curversion hostname envir deflocale uservars colorsvar gpuvar cpuvar desk inputs; };
         };
       }
-    ] ++ inputs.nixpkgs.lib.lists.optional (envir == "Hyprland") inputs.hyprland.nixosModules.default;
+    ];
   };
 }

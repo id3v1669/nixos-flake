@@ -38,7 +38,7 @@
       open = true;
       nvidiaSettings = true;
       modesetting.enable = true;
-      powerManagement.enable = true; 
+      powerManagement.enable = true;
       forceFullCompositionPipeline = true;
       # rtx 2060(laptop)-----------------
       # 535.154.05 - works, sync/offload
@@ -61,10 +61,10 @@
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
         version = "560.31.02";
         sha256_64bit = "sha256-0cwgejoFsefl2M6jdWZC+CKc58CqOXDjSi4saVPNKY0=";
-        sha256_aarch64 = "sha256-+u0ZolZcZoej4nqPGmdn5qpyynLvu2QSm9Rd3wLdDmM=";
         openSha256 = "sha256-X5UzbIkILvo0QZlsTl9PisosgPj/XRmuuMH+cDohdZQ=";
         settingsSha256 = "sha256-A3SzGAW4vR2uxT1Cv+Pn+Sbm9lLF5a/DGzlnPhxVvmE=";
-        persistencedSha256 = "sha256-MhITuC8tH/IPhCdUm60SrPOldOpitk78mH0rg+egkTE=";
+        sha256_aarch64 = lib.fakeSha256;
+        persistencedSha256 = lib.fakeSha256;
       };
     } // lib.optionalAttrs (gpuvar.tech == "prime") {
       prime = {
@@ -82,14 +82,26 @@
   ] ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk")[ "nvidia"
   ] ++ lib.lists.optionals (gpuvar.type == "amd" || cpuvar == "amd" ) [ "amdgpu" "radeon" ];
   environment = {
-    systemPackages = [] ++ lib.optional (gpuvar.type == "nvidia") pkgs.egl-wayland;
+    systemPackages = [] ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [
+      (egl-wayland.overrideAttrs (oldAttrs: {
+        version = "1.1.15";
+        src = pkgs.fetchFromGitHub {
+          owner = "NVIDIA";
+          repo = "egl-wayland";
+          rev = "1.1.15";
+          hash = "sha256-7spfmYwJ6U97x83219/kMwdJXS2vir+U0MUnYWJOLB4=";
+        };
+      }))
+      nvidia-system-monitor-qt
+    ]);
     variables = {
     } // lib.optionalAttrs ( gpuvar.tech == "native") {
       LIBVA_DRIVER_NAME = "nvidia";
       GBM_BACKEND = "nvidia-drm";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       NVD_BACKEND = "direct";
-      WLR_NO_HARDWARE_CURSORS = "1"; # needed for sway, no effect on Hyprland
+      WLR_NO_HARDWARE_CURSORS = "1";                       # needed for sway, no effect on Hyprland
+      AQ_NO_ATOMIC = "1";                                  # needed for Hyprland
       __GL_GSYNC_ALLOWED = "1";
       __GL_VRR_ALLOWED = "1";
     } // lib.optionalAttrs (gpuvar.tech == "nvk") {

@@ -5,11 +5,14 @@
 , hostname
 , colorsvar
 , uservars
+, gpuvar
+, inputs
 , ...
 }:
 {
   imports = [
     ./colors.nix
+    inputs.hyprland.homeManagerModules.default
   ] ++ lib.optional (builtins.pathExists (./. + "/hostsettings/${hostname}.nix")) (./. + "/hostsettings/${hostname}.nix");
 
   wayland.windowManager.hyprland = {
@@ -71,7 +74,13 @@
         "$mainMod SHIFT, R, exec, rofi -show"
       ];
     };
-    extraConfig = ''
+    extraConfig = 
+      let
+        # temp solution untill nvidia drivers are fixed
+        explicit_sync = if gpuvar.type == "nvidia" then "render:explicit_sync = false" else "";
+      in 
+      ''
+${explicit_sync}
 #----------------startup commands-----------------
 exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30    # set cursor as hyprland doesn't respect gtk
 exec-once = swhks &                                               # used command as systemd service starts it in isolation

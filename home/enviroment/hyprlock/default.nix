@@ -7,7 +7,12 @@
 {
   programs.hyprlock = {
     enable = true;
-    package = pkgs.hyprlock;
+    package = pkgs.hyprlock.overrideAttrs (old: {
+      patchPhase = ''
+        substituteInPlace src/core/hyprlock.cpp \
+        --replace "5000" "16"
+      '';
+      });
     settings = {
       general = {
         disable_loading_bar = false;
