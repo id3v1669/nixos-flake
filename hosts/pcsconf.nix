@@ -74,10 +74,7 @@
     };
     displayManager.sddm = {
       enable = true;
-      wayland.enable = true;
-      extraPackages = with pkgs; [
-        #libsForQt5.qt5.qtgraphicaleffects
-      ];
+      wayland.enable = false;
       theme = "ndct";
     };
   };

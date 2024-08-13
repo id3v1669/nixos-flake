@@ -26,7 +26,6 @@
     ] ++ lib.lists.optionals (gpuvar.tech == "native") [
       "video=HDMI-A-1:3440x1440@100"
       "nvidia_drm.fbdev=1"
-      "nvidia.NVreg_EnableGpuFirmware=0"
     ] ++ lib.lists.optionals (gpuvar.tech == "nvk") [
       "nouveau.config=NvGspRm=1"
       "nouveau.debug=info,VBIOS=info,gsp=debug"
