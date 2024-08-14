@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-colors.url = "github:misterio77/nix-colors";
     sops-nix.url = "github:Mic92/sops-nix";
     prism-launcher.url = "github:PrismLauncher/PrismLauncher";

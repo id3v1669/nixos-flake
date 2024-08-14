@@ -89,6 +89,7 @@ in
       inputs.swhkd.nixosModules.default
       inputs.sops-nix.nixosModules.sops
       inputs.home-manager.nixosModules.home-manager
+      inputs.nixos-hardware.nixosModules.apple-t2
       {
         home-manager = {
           useGlobalPkgs = true;
