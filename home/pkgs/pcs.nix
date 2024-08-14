@@ -50,6 +50,8 @@
     clamtk                        # frontend for clamav
     autopsy                       # forensic tool
     chkrootkit                    # rootkit checker
+    dcfldd                        # dd for forensics
+    dc3dd                         # dd for forensics
     metasploit                    # tool
     nikto                         # tool
     john                          # tool

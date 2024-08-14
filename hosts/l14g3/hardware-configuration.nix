@@ -8,6 +8,7 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     initrd = {
@@ -16,6 +17,7 @@
       luks.devices."luks-38a6644b-b8ab-4752-b768-7a402b2ff207".device = "/dev/disk/by-uuid/38a6644b-b8ab-4752-b768-7a402b2ff207";
     };
   };
+  
 
   fileSystems."/" ={ 
     device = "/dev/disk/by-uuid/39d5024a-cfaf-438f-aed2-ddcdf0b36315";
