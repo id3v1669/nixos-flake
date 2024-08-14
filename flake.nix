@@ -226,6 +226,33 @@
           tech = "amd";
         };
       };
+      mbp14-3hypr = mkSystem { 
+        hostname = "mbp14-3";
+        envir = "Hyprland";
+        cpuvar = "intel";
+        desk = "laptop";
+        bootloader = {
+          type = "systemd";
+          defconf = false;
+          timeout = 10;
+        };
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          domain = "none";
+          wp = "default3.png";
+          owner = "id3v1669";
+          sleeptimeout = 1200;
+        };
+        brightnesctrl = {
+          up = "light -A 5";
+          down = "light -U 5";
+        };
+        gpuvar = {
+          type = "amd";
+          tech = "amd";
+        };
+      };
       srvnet510 = mkSystem {
         hostname = "srvnet510";
         envir = "none";
