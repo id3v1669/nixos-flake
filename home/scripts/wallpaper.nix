@@ -1,20 +1,32 @@
 { config
-, uservars
-, colorsvar
+, pkgs
+, writeShellApplication
 , envir
+, colorsvar
+, uservars
 , ...
 }:
-let
-  launch = if (envir == "Hyprland") then ''
-kill $(pidof hyprpaper)
+writeShellApplication{
+  name = "wallpaper-autostart";
+  runtimeInputs = with pkgs; [
+    lutgen
+  ] ++ lib.lists.optionals (envir == "Hyprland") [
+    hyprpaper
+  ] ++ lib.lists.optionals (envir == "sway") [
+    swaybg
+  ];
+  text = let
+  launch = if envir == "Hyprland" then ''
+kill "$(pidof hyprpaper)"
 hyprpaper &
+  '' else  if envir == "sway" then ''
+kill "$(pidof swaybg)"
+swaybg -i ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/$_image &
   '' else '''';
-in
-{
-  home.file.".scripts/wallpaper.sh" = {
-    executable = true;
-    text = ''
-#!/usr/bin/env bash
+  in ''
+set +o errexit
+set +o nounset
+set +o pipefail
 
 _image="${uservars.wp}"
 
@@ -26,6 +38,5 @@ if [ ! -f "${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/$_image
 fi
 
 ${launch}
-    '';
-  };
+  '';
 }

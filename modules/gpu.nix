@@ -88,8 +88,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "NVIDIA";
           repo = "egl-wayland";
-          rev = "1.1.15";
-          hash = "sha256-7spfmYwJ6U97x83219/kMwdJXS2vir+U0MUnYWJOLB4=";
+          rev = "f30cb0e4c9a215e933dc8250f5dad4e96d4f2136";
+          hash = "sha256-EwMj3PqU4yzSucYhx8Yy/MqOwZbfsGkhSA+yNwOh4U0=";
         };
       }))
       nvidia-system-monitor-qt

@@ -1,16 +1,22 @@
 { config
 , pkgs
+, writeShellApplication
 , ...
 }:
-{
-  home.file.".scripts/distrobox.sh" = {
-    executable = true;
-    text = ''
-#!/usr/bin/env bash
-
+writeShellApplication{
+  name = "distrobox-script";
+  runtimeInputs = with pkgs; [
+    distrobox
+    git
+    gnugrep
+  ];
+  text = ''
+set +o errexit
+set +o nounset
+set +o pipefail
 
 does_distrobox_exist() {
-    distrobox-list | ${pkgs.gnugrep}/bin/grep -q "$1"
+    distrobox-list | grep -q "$1"
 }
 
 echo "Checking for distrobox images..."
@@ -39,6 +45,5 @@ else
   distrobox-create --name debbox --image quay.io/toolbx-images/debian-toolbox:12 
 fi
 
-    '';
-  };
+  '';
 }

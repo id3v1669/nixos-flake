@@ -9,12 +9,6 @@
   security = {
     rtkit.enable = true;
     chromiumSuidSandbox.enable = true;
-    wrappers."gsr-kms-server" = {       # passwordless display pick for gpu-screen-recorder
-      owner = "root";
-      group = "root";
-      capabilities = "cap_sys_admin+ep";
-      source = "${pkgs.gpu-screen-recorder}/bin/gsr-kms-server";
-    };
   } // lib.optionalAttrs (envir == "Hyprland" || envir == "sway") {
     pam.services.hyprlock = {};
   };
@@ -36,6 +30,7 @@
       enable = true;                    # kdeconnect for android integration
       package = lib.mkDefault pkgs.kdePackages.kdeconnect-kde;
     };
+    gpu-screen-recorder.enable = true;  # gpu screen recorder
     light.enable = true;                # laptop brightness control and fix for openrgb
     traceroute.enable = true;           # traceroute
     adb.enable = true;                  # android debug bridge

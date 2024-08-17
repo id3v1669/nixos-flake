@@ -113,13 +113,13 @@ super + shift + p
   hyprpicker -a
 
 super + shift + e
-  bash /home/${uservars.name}/.scripts/moveeww.sh
+  eww-move
 
 super + shift + z
   ${pkgs.killall}/bin/killall -SIGUSR1 gpu-screen-recorder && sleep 0.5 && notify-send -t 3500 -u low -- "GPU Screen Recorder" "Replay saved"
 
 super + shift + r
-  bash /home/${uservars.name}/.scripts/ewwlauncher.sh
+  eww-launcher
 
 super + shift + y
   eww reload

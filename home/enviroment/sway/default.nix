@@ -23,8 +23,8 @@
     ];
     config = {
       startup = [
-        { command = "${config.home.homeDirectory}/.scripts/ewwlauncher.sh"; always = true; }
-        { command = "${config.home.homeDirectory}/.scripts/wallpaper.sh"; always = true; }
+        { command = "eww-launcher"; always = true; }
+        { command = "wallpaper-autostart"; always = true; }
         { command = "arrpc &"; always = true; }
         { command = "swhks &"; always = true; }
       ];

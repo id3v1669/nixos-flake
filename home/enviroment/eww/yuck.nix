@@ -184,8 +184,8 @@
     :orientation "h"
     (button 
       :class recclass
-      :onclick "${pkgs.bash}/bin/bash ~/.scripts/play-pause.sh"
-      :onrightclick "${pkgs.bash}/bin/bash ~/.scripts/play-pause.sh 0"
+      :onclick "sp-play-pause"
+      :onrightclick "sp-play-pause 0"
       (box 
         recsym
       )
@@ -292,7 +292,8 @@
     :orientation "h"
     (button 
       :class "mic"
-      :onclick "${pkgs.bash}/bin/bash ~/.scripts/microphone.sh"
+      :onclick "microphone-toggle false"
+      :onrightclick "microphone-toggle true"
       (box 
         "󰍬"
       )

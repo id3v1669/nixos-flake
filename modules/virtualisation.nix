@@ -11,10 +11,11 @@
     enable = true;
     package = pkgs.virt-manager;
   };
-  hardware.nvidia-container-toolkit = {                                       # nvidia container toolkit
+  hardware.nvidia-container-toolkit = {                                        # nvidia container toolkit
     enable = (gpuvar.type == "nvidia");
   };
   virtualisation = let notsrv = desk!="server"; in {
+    waydroid.enable = notsrv;                                                  # waydroid for android apps
     spiceUSBRedirection.enable = notsrv;                                       # USB redirection to vm
     libvirtd = {
       enable = notsrv;                                                         # libvirtd for virt-manager
@@ -43,6 +44,9 @@
     "kvm"
     "qemu-libvirtd"
     "libvirtd"
+  ];
+  environment.systemPackages = with pkgs; [
+    nur.repos.ataraxiasjel.waydroid-script
   ];
 }
 

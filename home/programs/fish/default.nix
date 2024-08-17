@@ -10,11 +10,7 @@
     enable = true;
       shellAliases = {    #global aliases
         me = "echo $hostname";
-        wifi = "sudo bash ${config.home.homeDirectory}/mywifi.sh";
         vi = "vim";
-        ewwr = "kill $(pidof eww) && bash ${config.home.homeDirectory}/.scripts/ewwlauncher.sh";
-        xdgr = "bash ${config.home.homeDirectory}/.scripts/portals.sh";
-        ncb = "bash ${pkgs.nix}/bin/nix-collect-garbage";
         nano = "nano -l";
         neofetch = "fastfetch";
       };
@@ -47,7 +43,6 @@ echo "
             conditionalPart = if desk != "server" then ''
 switch "$hostname"
   case "${hostname}${envir}"
-    alias firstinstall="bash ${config.home.homeDirectory}/.scripts/firstinstall.sh"
     alias scr="bash ${config.home.homeDirectory}/.scripts/screen.sh"
     alias tests="bash ${config.home.homeDirectory}/.scripts/tests.sh"
     alias yay="distrobox enter --name archbox -- yay"

@@ -10,7 +10,7 @@
     nur.url = "github:nix-community/NUR";
     eww = {
      url = "github:id3v1669/eww";
-     flake = true;
+     inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
