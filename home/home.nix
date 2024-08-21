@@ -42,7 +42,6 @@
       QT_QPA_PLATFORM="wayland";
       XDG_SESSION_TYPE = "wayland";
       XDG_CURRENT_DESKTOP = "${envir}";
-    } // lib.optionalAttrs (gpuvar.type != "nvidia") {
       NIXOS_OZONE_WL = "1";
     };
   };

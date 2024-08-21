@@ -20,7 +20,7 @@
     libvirtd = {
       enable = notsrv;                                                         # libvirtd for virt-manager
       qemu = {
-        package = pkgs.qemu_full;
+        package = pkgs.qemu_kvm;
         swtpm.enable = notsrv;
         ovmf = {
           enable = notsrv;

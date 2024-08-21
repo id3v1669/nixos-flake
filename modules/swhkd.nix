@@ -115,6 +115,9 @@ super + shift + p
 super + shift + e
   eww-move
 
+super + shift + n
+  swaync-client -t
+
 super + shift + z
   ${pkgs.killall}/bin/killall -SIGUSR1 gpu-screen-recorder && sleep 0.5 && notify-send -t 3500 -u low -- "GPU Screen Recorder" "Replay saved"
 
@@ -131,7 +134,7 @@ super + shift + c
   cliphist list | rofi -dmenu | cliphist decode | wl-copy
 
 super + shift + l
-  hyprlock
+  loginctl lock-session
 
 super + shift + /
   ${reload}

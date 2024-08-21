@@ -66,6 +66,7 @@ in
           dynamic-color-gtk-theme = inputs.dcgt.packages.${prev.system}.default;                   # custom theme(unfinished)
           over-ndct-sddm = inputs.ndct-sddm.packages.${prev.system}.ndct-sddm-corners;             # sddm theme
           over-libratbag = (import ./../overlays/libratbag.nix { inherit pkgs; });                 # libratbag overlay with asus rog pugio ii config
+          over-clamav = (import ./../overlays/clamav.nix { inherit pkgs; });                       # clamav overlay with fangfrisch
           over-lutris = (import ./../overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
           over-steam = (import ./../overlays/steam.nix { inherit pkgs; });                         # steam overlay with extra packages
           over-firefox = (import ./../overlays/firefox.nix { inherit pkgs; });                     # ff

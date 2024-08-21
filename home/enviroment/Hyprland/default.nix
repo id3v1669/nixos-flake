@@ -48,6 +48,7 @@
         kb_variant = "${deflocale.kbvariant}";
         kb_options = "${deflocale.kboption}";
         follow_mouse = 1;
+        focus_on_close = 1;
         touchpad = {
             natural_scroll = true;
         };
@@ -74,13 +75,7 @@
         "$mainMod SHIFT, R, exec, rofi -show"
       ];
     };
-    extraConfig = 
-      let
-        # temp solution untill nvidia drivers are fixed
-        explicit_sync = if gpuvar.type == "nvidia" then "render:explicit_sync = false" else "";
-      in 
-      ''
-${explicit_sync}
+    extraConfig = ''
 #----------------startup commands-----------------
 exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30    # set cursor as hyprland doesn't respect gtk
 exec-once = swhks &                                               # used command as systemd service starts it in isolation

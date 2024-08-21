@@ -59,10 +59,10 @@
       # 560.31.02  - works, hdmi,         
       #----------------------------------
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        version = "560.31.02";
-        sha256_64bit = "sha256-0cwgejoFsefl2M6jdWZC+CKc58CqOXDjSi4saVPNKY0=";
-        openSha256 = "sha256-X5UzbIkILvo0QZlsTl9PisosgPj/XRmuuMH+cDohdZQ=";
-        settingsSha256 = "sha256-A3SzGAW4vR2uxT1Cv+Pn+Sbm9lLF5a/DGzlnPhxVvmE=";
+        version = "560.35.03";
+        sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
+        openSha256 = "sha256-/32Zf0dKrofTmPZ3Ratw4vDM7B+OgpC4p7s+RHUjCrg=";
+        settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
         sha256_aarch64 = lib.fakeSha256;
         persistencedSha256 = lib.fakeSha256;
       };
@@ -88,8 +88,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "NVIDIA";
           repo = "egl-wayland";
-          rev = "f30cb0e4c9a215e933dc8250f5dad4e96d4f2136";
-          hash = "sha256-EwMj3PqU4yzSucYhx8Yy/MqOwZbfsGkhSA+yNwOh4U0=";
+          rev = "8188db9a5dc734c385b5f42f1dbb13c0e126d17e";
+          hash = "sha256-qd09i2J3OwGo8npcgSlNKzhIthMmQlIQCR/u21Uktek=";
         };
       }))
       nvidia-system-monitor-qt
@@ -101,7 +101,6 @@
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       NVD_BACKEND = "direct";
       WLR_NO_HARDWARE_CURSORS = "1";                       # needed for sway, no effect on Hyprland
-      AQ_NO_ATOMIC = "1";                                  # needed for Hyprland
       __GL_GSYNC_ALLOWED = "1";
       __GL_VRR_ALLOWED = "1";
     } // lib.optionalAttrs (gpuvar.tech == "nvk") {

@@ -18,6 +18,7 @@
         disable_loading_bar = false;
         hide_cursor = true;
         no_fade_in = false;
+        no_fade_out = false;
       };
       background = [{
         monitor = "";

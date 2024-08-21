@@ -46,7 +46,7 @@
     arrpc                         # rpc for discord(vesktop)
       
     # security
-    clamtk                        # frontend for clamav
+    #clamtk                        # frontend for clamav
     autopsy                       # forensic tool
     chkrootkit                    # rootkit checker
     dcfldd                        # dd for forensics
