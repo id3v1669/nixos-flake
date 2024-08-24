@@ -55,8 +55,9 @@
       #----------------------------------
       # rtx 3080-------------------------
       # 555.52.04  - works, hdmi,         
-      # 560.28.03  - works, hdmi,         better performance, more glitchi on open-kernel-module
+      # 560.28.03  - works, hdmi,         
       # 560.31.02  - works, hdmi,         
+      # 560.35.03  - works, hdmi,         best performance, finaly fixed electron
       #----------------------------------
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
         version = "560.35.03";

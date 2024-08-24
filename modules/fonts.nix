@@ -17,6 +17,7 @@
       noto-fonts-emoji
       liberation_ttf
       fira-code
+      _0xproto
       fira-code-symbols
       mplus-outline-fonts.githubRelease
       dina-font

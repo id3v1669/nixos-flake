@@ -1,4 +1,5 @@
 { pkgs
+, inputs
 , ...
 }:
 {
@@ -20,5 +21,10 @@
     
     # vid photo etc
     libsForQt5.kdenlive           # video editing
+
+    #testing
+    over-logseq
+    #zettlr
+
   ];
 }

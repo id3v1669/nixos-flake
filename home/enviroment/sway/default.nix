@@ -52,7 +52,7 @@
       keybindings = let
         mod = config.wayland.windowManager.sway.config.modifier;
       in {
-        "${mod}+Shift+r" = "exec rofi -show";
+        "${mod}+Shift+r" = "exec anyrun";
       };
       colors = {
         background = "#${config.colorScheme.palette.base00}";

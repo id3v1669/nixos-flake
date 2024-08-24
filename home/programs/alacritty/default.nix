@@ -6,6 +6,24 @@
     enable = true;
     settings = {
       shell.program = "fish";
+      font = {
+        normal = {
+          family = "0xProto";
+          style = "Regular";
+        };
+        bold = {
+          family = "0xProto";
+          style = "Bold";
+        };
+        italic = {
+          family = "0xProto";
+          style = "Italic";
+        };
+        bold_italic = {
+          family = "0xProto";
+          style = "Bold Italic";
+        };
+      };
       colors = {
         primary = {
           background = "#${config.colorScheme.palette.base00}"; # base

@@ -399,7 +399,7 @@
     (button 
       :class "launcher"
       :timeout "''${deftimeout}"
-      :onclick "${config.programs.rofi.finalPackage}/bin/rofi -show"
+      :onclick "anyrun"
       (box
         " "
       )

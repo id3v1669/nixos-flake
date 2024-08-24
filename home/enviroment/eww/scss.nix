@@ -3,6 +3,11 @@
 }:
 {
   home.file.".config/eww/eww.scss".text = ''
+
+* {
+    font-family: "0xProto";
+}
+
 .launcher {
     font-size: 1.5em;
     border-radius: 20px;

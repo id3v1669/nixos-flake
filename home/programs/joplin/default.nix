@@ -65,7 +65,7 @@ html, body {
 /* Icons */
 .fa, .far, .fas {
 	font-weight: 900 !important;
-	font-family: "Font Awesome 5 Free" !important;
+	font-family: "0xProto" !important;
 	font-size: var(--icon-size) !important;
 }
 

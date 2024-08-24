@@ -72,7 +72,7 @@
         "ALT, mouse:272, resizewindow"
       ];
       bind = [
-        "$mainMod SHIFT, R, exec, rofi -show"
+        "$mainMod SHIFT, R, exec, anyrun"
       ];
     };
     extraConfig = ''

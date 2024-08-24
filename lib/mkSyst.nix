@@ -60,16 +60,17 @@ in
         inputs.hyprpicker.overlays.default
         inputs.hyprlock.overlays.default
         inputs.hyprpaper.overlays.default
-        inputs.hypridle.overlays.default
+        inputs.hyprland-plugins.overlays.default
         (final: prev: {
           hyprland = inputs.hyprland.packages.${prev.system}.hyprland;                             # overlay for hyprland(overlays.default is broken 20240801)
           dynamic-color-gtk-theme = inputs.dcgt.packages.${prev.system}.default;                   # custom theme(unfinished)
           over-ndct-sddm = inputs.ndct-sddm.packages.${prev.system}.ndct-sddm-corners;             # sddm theme
+          over-logseq = (import ./../overlays/logseq.nix { inherit pkgs; });                       # electron fix
           over-libratbag = (import ./../overlays/libratbag.nix { inherit pkgs; });                 # libratbag overlay with asus rog pugio ii config
           over-clamav = (import ./../overlays/clamav.nix { inherit pkgs; });                       # clamav overlay with fangfrisch
           over-lutris = (import ./../overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
           over-steam = (import ./../overlays/steam.nix { inherit pkgs; });                         # steam overlay with extra packages
-          over-firefox = (import ./../overlays/firefox.nix { inherit pkgs; });                     # ff
+          over-firefox = (import ./../overlays/firefox.nix { inherit pkgs; });                     # temp bump due to isses on hyprland
           over-rofi-calc = (import ./../overlays/rofi-calc.nix { inherit pkgs; });                 # rofi-calc overlay as package has non-wayland build input
           over-rofi-emoji = (import ./../overlays/rofi-emoji.nix { inherit pkgs; });               # rofi-emoji overlay as package has non-wayland build input
           over-opencore = (prev.callPackage ./../overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)

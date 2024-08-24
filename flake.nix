@@ -8,6 +8,10 @@
     sops-nix.url = "github:Mic92/sops-nix";
     prism-launcher.url = "github:PrismLauncher/PrismLauncher";
     nur.url = "github:nix-community/NUR";
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     eww = {
       url = "github:id3v1669/eww";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,14 +34,9 @@
       url = "https://github.com/hyprwm/Hyprland";
       submodules = true;
     };
-    hypridle = {
-      url = "github:hyprwm/hypridle";
-      inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
     };
     hyprlock = {
       url = "github:hyprwm/hyprlock";

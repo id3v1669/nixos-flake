@@ -27,7 +27,7 @@ Latest commit to use: b4db577b5898acd25870df42ab11713be5249e19
 | Environment | Name | Comment | Needed fix |
 |-----|-----|-----|-----|
 | WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel), nvidia native | - |
-| launcher | Rofi | - | - |
+| launcher | anyrun | - | - |
 | bar | eww | fork of eww with tray support | - |
 | background | hyprpaper | - | - |
 | portals | gtk and hyprland | - | - |

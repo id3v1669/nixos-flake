@@ -19,15 +19,15 @@
     ./enviroment/qt
     ./enviroment/dconf
     ./enviroment/gtk
-    ./enviroment/rofi
+    ./enviroment/anyrun
     ./enviroment/xdg
     ./enviroment/${envir}
     inputs.nix-colors.homeManagerModules.default
+    inputs.anyrun.homeManagerModules.default
   ] ++ lib.lists.optionals (envir == "Hyprland" || envir == "sway") [
     ./enviroment/eww
     ./enviroment/swaync
     ./enviroment/hyprlock
-    ./enviroment/hypridle
   ];
   home = {
     stateVersion = "${curversion}";

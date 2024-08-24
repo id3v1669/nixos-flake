@@ -128,13 +128,13 @@ super + shift + y
   eww reload
 
 super + r
-  rofi -show
+  anyrun
 
 super + shift + c
-  cliphist list | rofi -dmenu | cliphist decode | wl-copy
+  cliphist list | anyrun --show-results-immediately true | cliphist decode | wl-copy
 
 super + shift + l
-  loginctl lock-session
+  hyprlock
 
 super + shift + /
   ${reload}
