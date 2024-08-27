@@ -6,6 +6,7 @@
 , desk
 , inputs
 , gpuvar
+, config
 , ...
 }:
 {
@@ -22,6 +23,7 @@
     ./enviroment/anyrun
     ./enviroment/xdg
     ./enviroment/${envir}
+    inputs.base16x2.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
     inputs.anyrun.homeManagerModules.default
   ] ++ lib.lists.optionals (envir == "Hyprland" || envir == "sway") [
@@ -47,4 +49,5 @@
   };
 } // lib.optionalAttrs (desk != "server") {
   colorScheme = inputs.nix-colors.colorSchemes.${colorsvar};
+  palette = "gruvbox-dark";
 }

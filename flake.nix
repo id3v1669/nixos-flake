@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-colors.url = "github:misterio77/nix-colors";
+    base16x2.url = "github:id3v1669/base16x2-color-shemes";
     sops-nix.url = "github:Mic92/sops-nix";
     prism-launcher.url = "github:PrismLauncher/PrismLauncher";
     nur.url = "github:nix-community/NUR";
@@ -33,6 +34,10 @@
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
       submodules = true;
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        aquamarine.url = "github:hyprwm/aquamarine";
+      };
     };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";

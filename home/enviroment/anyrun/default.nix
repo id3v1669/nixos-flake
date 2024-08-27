@@ -32,7 +32,7 @@ in
         Config(
           desktop_actions: false,
           max_entries: 5,
-          terminal: Some("foot"),
+          terminal: Some("alacritty"),
         )
       '';
 

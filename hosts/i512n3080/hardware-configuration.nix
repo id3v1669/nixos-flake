@@ -14,6 +14,8 @@
     ] ++ lib.lists.optionals (gpuvar.tech == "nvk") [
       "nvidia"
       "nvidia_uvm"
+      "nvidia_drm"
+      "nvidia_modeset"
     ] ++ lib.lists.optionals (gpuvar.tech != "nvk") [
       "nouveau"
     ];
@@ -28,7 +30,6 @@
       "nvidia_drm.fbdev=1"
     ] ++ lib.lists.optionals (gpuvar.tech == "nvk") [
       "nouveau.config=NvGspRm=1"
-      "nouveau.debug=info,VBIOS=info,gsp=debug"
     ];
     kernelPackages = pkgs.linuxPackages_latest;
     kernel.sysctl."kernel.unprivileged_userns_clone" = 1;

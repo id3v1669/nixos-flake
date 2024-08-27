@@ -83,14 +83,14 @@
   ] ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk")[ "nvidia"
   ] ++ lib.lists.optionals (gpuvar.type == "amd" || cpuvar == "amd" ) [ "amdgpu" "radeon" ];
   environment = {
-    systemPackages = [] ++ lib.lists.optionals (gpuvar.type == "nvidia") (with pkgs; [
+    systemPackages = [] ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") (with pkgs; [
       (egl-wayland.overrideAttrs (oldAttrs: {
-        version = "1.1.15";
+        version = "1.1.17";
         src = pkgs.fetchFromGitHub {
           owner = "NVIDIA";
           repo = "egl-wayland";
-          rev = "8188db9a5dc734c385b5f42f1dbb13c0e126d17e";
-          hash = "sha256-qd09i2J3OwGo8npcgSlNKzhIthMmQlIQCR/u21Uktek=";
+          rev = "8dbdd61b7c07e23bc5b8913fe3d52f32995be98a";
+          hash = "sha256-nKy/N+FxieDUyvEghcrBGcC2d5a44zNhcW27SOKSKyQ=";
         };
       }))
       nvidia-system-monitor-qt
@@ -104,9 +104,6 @@
       WLR_NO_HARDWARE_CURSORS = "1";                       # needed for sway, no effect on Hyprland
       __GL_GSYNC_ALLOWED = "1";
       __GL_VRR_ALLOWED = "1";
-    } // lib.optionalAttrs (gpuvar.tech == "nvk") {
-      NVK_I_WANT_A_BROKEN_VULKAN_DRIVER = "1";             # prep for nvk
-      MESA_VK_VERSION_OVERRIDE = "1.3";                    # prep for nvk
     };
   };
   users.users.${uservars.name}.extraGroups = [ "video" ];
