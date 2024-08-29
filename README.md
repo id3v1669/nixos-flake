@@ -21,22 +21,20 @@
 
 NixOS flake with home manager
 
-Latest commit to use: b4db577b5898acd25870df42ab11713be5249e19
-
 ## Main
 | Environment | Name | Comment | Needed fix |
 |-----|-----|-----|-----|
 | WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel), nvidia native | - |
 | launcher | anyrun | - | - |
-| bar | eww | fork of eww with tray support | - |
+| bar | eww | fork of eww | - |
 | background | hyprpaper | - | - |
 | portals | gtk and hyprland | - | - |
-| login manager | gdm | - | - |
+| login manager | sddm | - | - |
 | lockscreen | hyprlock | - | - |
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
 | notifications | swaync | gtk themeing needs to be done | - |
 | shell | fish | - | - |
-| bootloader | opencore(systemd mod) | extra folder OC reated, reads systemd entries | ToDo 11 |
+| bootloader | opencore(systemd mod) | extra folder OC reated, reads systemd entries | ToDo 9 |
 
 ## Notes
 

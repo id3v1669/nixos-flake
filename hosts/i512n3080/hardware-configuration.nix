@@ -26,7 +26,7 @@
     ];
     kernelParams = [
     ] ++ lib.lists.optionals (gpuvar.tech == "native") [
-      "video=HDMI-A-1:3440x1440@100"
+      "video=DP-3:3440x1440@144"
       "nvidia_drm.fbdev=1"
     ] ++ lib.lists.optionals (gpuvar.tech == "nvk") [
       "nouveau.config=NvGspRm=1"

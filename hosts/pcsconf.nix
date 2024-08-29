@@ -69,7 +69,10 @@
     };
     displayManager.sddm = {
       enable = true;
-      wayland.enable = false;
+      wayland = {
+        enable = true;
+        compositor = "weston";
+      };
       theme = "ndct";
     };
   };

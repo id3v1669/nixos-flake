@@ -68,7 +68,6 @@
   };
 
   services.clamav = {
-    package = pkgs.over-clamav;
     daemon.enable = true;
     fangfrisch.enable = true;
     scanner.enable = true;

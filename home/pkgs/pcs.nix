@@ -46,7 +46,8 @@
     arrpc                         # rpc for discord(vesktop)
       
     # security
-    #clamtk                        # frontend for clamav
+    clamtk                        # frontend for clamav
+    theharvester                  # search for emails
     autopsy                       # forensic tool
     chkrootkit                    # rootkit checker
     dcfldd                        # dd for forensics
@@ -62,6 +63,9 @@
     over-veracrypt                # gui encryption
     sherlock                      # find accounts by username
     openssl                       # cli encryption
+    sslscan                       # scan ssl
+    dig                           # dns tool(ip of domain)
+    #metagoofil                   # metadata tool to be packaged
 
     # games
     protonup-qt                   # proton and wine updater
