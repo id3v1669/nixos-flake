@@ -9,7 +9,7 @@
 {
   imports = [ 
     (modulesPath + "/installer/scan/not-detected.nix")
-    inputs.nixos-hardware.nixosModules.apple-t2
+    #inputs.nixos-hardware.nixosModules.apple-t2
   ];
 
   boot = {

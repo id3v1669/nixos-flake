@@ -46,6 +46,12 @@ in
     })
   }:
   let
+    stable = import inputs.nixpkgs-stable {
+      inherit system;
+      config = {
+        allowUnfree = true;
+      };
+    };
     pkgs = import inputs.nixpkgs {
       inherit system;
       config = {
@@ -69,6 +75,7 @@ in
           over-libratbag = (import ./../overlays/libratbag.nix { inherit pkgs; });                 # libratbag overlay with asus rog pugio ii config
           over-lutris = (import ./../overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
           over-steam = (import ./../overlays/steam.nix { inherit pkgs; });                         # steam overlay with extra packages
+          over-vesktop = (import ./../overlays/vesktop.nix { inherit pkgs; });                     # vesktop overlay with no wayland flags
           over-firefox = (import ./../overlays/firefox.nix { inherit pkgs; });                     # temp bump due to isses on hyprland
           over-rofi-calc = (import ./../overlays/rofi-calc.nix { inherit pkgs; });                 # rofi-calc overlay as package has non-wayland build input
           over-rofi-emoji = (import ./../overlays/rofi-emoji.nix { inherit pkgs; });               # rofi-emoji overlay as package has non-wayland build input
@@ -82,7 +89,7 @@ in
   in
   inputs.nixpkgs.lib.nixosSystem {
     specialArgs = {
-      inherit curversion uservars hostname envir deflocale pkgs cpuvar gpuvar desk system bootloader brightnesctrl inputs;
+      inherit curversion uservars hostname envir deflocale pkgs stable cpuvar gpuvar desk system bootloader brightnesctrl inputs;
     };
     modules = [
       (./.. + "/hosts/${hostname}")
@@ -94,7 +101,7 @@ in
           useGlobalPkgs = true;
           useUserPackages = true;
           users.${uservars.name} = import (./.. + "/home/home.nix") ;
-          extraSpecialArgs = { inherit curversion hostname envir deflocale uservars colorsvar gpuvar cpuvar desk inputs; };
+          extraSpecialArgs = { inherit curversion hostname envir deflocale uservars colorsvar gpuvar cpuvar desk inputs stable; };
         };
       }
     ];

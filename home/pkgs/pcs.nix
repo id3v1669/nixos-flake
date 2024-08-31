@@ -1,4 +1,5 @@
 { pkgs
+, stable
 , ...
 }:
 {
@@ -20,6 +21,8 @@
     distrobox                     # archbox for apps that are not in nixpkgs
     docker-compose                # docker-compose for tests
     remmina                       # remote desktop
+    stable.vagrant                # venv dev tool
+    packer                        
 
     # web
     networkmanagerapplet          # network manager applet
@@ -42,8 +45,6 @@
     # chat
     telegram-desktop              # telegram client
     whatsapp-for-linux            # whatsapp client
-    vesktop                       # vesktop(unofficial discord app)
-    arrpc                         # rpc for discord(vesktop)
       
     # security
     clamtk                        # frontend for clamav
@@ -65,11 +66,17 @@
     openssl                       # cli encryption
     sslscan                       # scan ssl
     dig                           # dns tool(ip of domain)
+    exploitdb                     # exploit database
     #metagoofil                   # metadata tool to be packaged
+    (pkgs.python312Packages.python.withPackages (python-pkgs: with python-pkgs; [
+      markdown
+      setuptools
+      requests
+    ]))
 
     # games
     protonup-qt                   # proton and wine updater
-    over-lutris                        # game launcher
+    over-lutris                   # game launcher
     mangohud                      # overlay for games & apps
     steam-tui                     # unofficial steam tui client in rust
     steam-run                     # fhs steam
@@ -100,7 +107,7 @@
 
     # other cli utils
     ngrrram                       # practice fast typing
-    hyprpicker               # color picker
+    hyprpicker                    # color picker
     onefetch                      # fetch for git repos
     pciutils                      # lspci
     usbutils                      # lsusb

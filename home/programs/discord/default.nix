@@ -9,6 +9,10 @@ let
     inherit (import ./../../../lib/h2rgb.nix { inherit lib; }) hexToRgb;
 in
 {
+  home.packages = (with pkgs;[
+    over-vesktop                       # vesktop(unofficial discord app)
+    arrpc                         # rpc for discord(vesktop)
+  ]);
   systemd.user.services = {} // lib.optionalAttrs (desk == "desktop") {
     arrpc = {
 		  Unit = {
@@ -22,6 +26,15 @@ in
 		  Install = { WantedBy = [ "default.target" ]; };
     };
   };
+  home.file.".config/vesktop/settings.json".text = ''
+{
+    "minimizeToTray": "on",
+    "discordBranch": "stable",
+    "arRPC": "on",
+    "splashColor": "${config.palette.base02.rgb}",
+    "splashBackground": "${config.palette.base06.rgb}"
+}
+  '';
   home.file.".config/vesktop/themes/usertheme.css".text = ''
 
 .wrapper__7bcde .link__95dc0 /* channels */,
