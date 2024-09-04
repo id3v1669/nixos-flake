@@ -7,7 +7,6 @@
     nix-colors.url = "github:misterio77/nix-colors";
     base16x2.url = "github:id3v1669/base16x2-color-shemes";
     sops-nix.url = "github:Mic92/sops-nix";
-    prism-launcher.url = "github:PrismLauncher/PrismLauncher";
     nur.url = "github:nix-community/NUR";
     anyrun = {
       url = "github:anyrun-org/anyrun";
@@ -20,10 +19,6 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    ndct-sddm = {
-     url = "github:id3v1669/ndct-sddm-corners";
-     inputs.nixpkgs.follows = "nixpkgs";
     };
     dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
     swhkd = {
@@ -60,10 +55,6 @@
         nixpkgs.follows = "hyprland/nixpkgs";
         systems.follows = "hyprland/systems";
       };
-    };
-    xdghypr = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprpicker.url = "github:hyprwm/hyprpicker";
   };

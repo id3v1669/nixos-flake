@@ -60,28 +60,27 @@ in
       overlays = 
       [
         inputs.nur.overlay
-        inputs.prism-launcher.overlays.default
         inputs.eww.overlays.default
-        inputs.xdghypr.overlays.default
         inputs.hyprpicker.overlays.default
         inputs.hyprlock.overlays.default
         inputs.hyprpaper.overlays.default
         inputs.hyprland-plugins.overlays.default
         (final: prev: {
-          hyprland = inputs.hyprland.packages.${prev.system}.hyprland;                             # overlay for hyprland(overlays.default is broken 20240801)
-          dynamic-color-gtk-theme = inputs.dcgt.packages.${prev.system}.default;                   # custom theme(unfinished)
-          over-ndct-sddm = inputs.ndct-sddm.packages.${prev.system}.ndct-sddm-corners;             # sddm theme
-          over-logseq = (import ./../overlays/logseq.nix { inherit pkgs; });                       # electron fix
-          over-libratbag = (import ./../overlays/libratbag.nix { inherit pkgs; });                 # libratbag overlay with asus rog pugio ii config
-          over-lutris = (import ./../overlays/lutris.nix { inherit pkgs; });                       # lutris overlay with extra packages
-          over-steam = (import ./../overlays/steam.nix { inherit pkgs; });                         # steam overlay with extra packages
-          over-vesktop = (import ./../overlays/vesktop.nix { inherit pkgs; });                     # vesktop overlay with no wayland flags
-          over-firefox = (import ./../overlays/firefox.nix { inherit pkgs; });                     # temp bump due to isses on hyprland
-          over-rofi-calc = (import ./../overlays/rofi-calc.nix { inherit pkgs; });                 # rofi-calc overlay as package has non-wayland build input
-          over-rofi-emoji = (import ./../overlays/rofi-emoji.nix { inherit pkgs; });               # rofi-emoji overlay as package has non-wayland build input
-          over-opencore = (prev.callPackage ./../overlays/opencore.nix {});                        # opencore bootloader files as official repo doesn't have it (later create module)
-          over-veracrypt = (prev.callPackage ./../overlays/veracrypt {});                          # veracrypt overlay due to sudo-rs glitch
-          over-spotify = (prev.callPackage ./../overlays/spot.nix {});                             # spotify with adblocker
+          hyprland = inputs.hyprland.packages.${prev.system}.hyprland;                                        # overlay for hyprland
+          hyprland-unwrapped = inputs.hyprland.packages.${prev.system}.hyprland-unwrapped;                    # overlay for hyprland-unwrapped
+          xdg-desktop-portal-hyprland = inputs.hyprland.packages.${prev.system}.xdg-desktop-portal-hyprland;  # overlay for xdg-desktop-portal-hyprland
+          dynamic-color-gtk-theme = inputs.dcgt.packages.${prev.system}.default;                              # custom theme(unfinished)
+          over-logseq = (import ./../overlays/logseq.nix { inherit pkgs; });                                  # electron fix
+          over-libratbag = (import ./../overlays/libratbag.nix { inherit pkgs; });                            # libratbag overlay with asus rog pugio ii config
+          over-lutris = (import ./../overlays/lutris.nix { inherit pkgs; });                                  # lutris overlay with extra packages
+          over-steam = (import ./../overlays/steam.nix { inherit pkgs; });                                    # steam overlay with extra packages
+          over-vesktop = (import ./../overlays/vesktop.nix { inherit pkgs; });                                # vesktop overlay with no wayland flags
+          over-firefox = (import ./../overlays/firefox.nix { inherit pkgs; });                                # temp bump due to isses on hyprland
+          over-rofi-calc = (import ./../overlays/rofi-calc.nix { inherit pkgs; });                            # rofi-calc overlay as package has non-wayland build input
+          over-rofi-emoji = (import ./../overlays/rofi-emoji.nix { inherit pkgs; });                          # rofi-emoji overlay as package has non-wayland build input
+          over-opencore = (prev.callPackage ./../overlays/opencore.nix {});                                   # opencore bootloader files as official repo doesn't have it (later create module)
+          over-veracrypt = (prev.callPackage ./../overlays/veracrypt {});                                     # veracrypt overlay due to sudo-rs glitch
+          over-spotify = (prev.callPackage ./../overlays/spot.nix {});                                        # spotify with adblocker
           #--------------------------------------------------------------------------------------
         })
       ];

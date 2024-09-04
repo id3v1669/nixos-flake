@@ -29,7 +29,7 @@ NixOS flake with home manager
 | bar | eww | fork of eww | - |
 | background | hyprpaper | - | - |
 | portals | gtk and hyprland | - | - |
-| login manager | sddm | - | - |
+| login manager | regreet | - | - |
 | lockscreen | hyprlock | - | - |
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
 | notifications | swaync | gtk themeing needs to be done | - |

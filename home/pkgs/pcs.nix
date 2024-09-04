@@ -43,36 +43,7 @@
     swappy                        # screenshot editor
 
     # chat
-    telegram-desktop              # telegram client
     whatsapp-for-linux            # whatsapp client
-      
-    # security
-    clamtk                        # frontend for clamav
-    theharvester                  # search for emails
-    autopsy                       # forensic tool
-    chkrootkit                    # rootkit checker
-    dcfldd                        # dd for forensics
-    dc3dd                         # dd for forensics
-    metasploit                    # tool
-    nikto                         # tool
-    john                          # tool
-    johnny                        # tool
-    openvas-scanner               # tool
-    tcpdump                       # tool
-    dhcpdump                      # tool
-    nmap                          # network scanner
-    over-veracrypt                # gui encryption
-    sherlock                      # find accounts by username
-    openssl                       # cli encryption
-    sslscan                       # scan ssl
-    dig                           # dns tool(ip of domain)
-    exploitdb                     # exploit database
-    #metagoofil                   # metadata tool to be packaged
-    (pkgs.python312Packages.python.withPackages (python-pkgs: with python-pkgs; [
-      markdown
-      setuptools
-      requests
-    ]))
 
     # games
     protonup-qt                   # proton and wine updater

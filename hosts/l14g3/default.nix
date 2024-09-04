@@ -31,9 +31,10 @@
     "veracrypt"
     "usbmux"
   ];
-  environment.variables = {
-    #system vars
-    EDITOR = "nano";
+  environment = {
+    etc."hypr/monitor-init.conf".text = ''
+      monitor=eDP-1,1920x1080@60,0x0,1
+    '';
   };
   system.stateVersion = "${curversion}";
 }

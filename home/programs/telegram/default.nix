@@ -1,7 +1,13 @@
 { config
+, pkgs
 , ...
 }:
 {
+  home.packages = with pkgs; [
+    telegram-desktop
+    materialgram
+  ];
+
   home.file.".config/telegram/colors.tdesktop-theme".text = ''
 dark: true;
 crust: #${config.colorScheme.palette.base01}e6;

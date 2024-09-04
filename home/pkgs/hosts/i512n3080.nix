@@ -3,6 +3,9 @@
 , ...
 }:
 {
+  imports = [
+    ./../security.nix
+  ];
   home.packages = with pkgs; [
     # gui
     gimp                                 # image editing
@@ -14,7 +17,10 @@
     joplin-desktop                       # note taking app
 
     # games
-    prismlauncher
+    #prismlauncher
+    (prismlauncher.override {
+      jdks = with pkgs; [jdk22 zulu];
+    })
 
     # sound
     spotify

@@ -4,12 +4,16 @@
 , cpuvar
 , envir
 , ...
-}: 
+}:
+let 
+  inherit (lib) getExe getExe' mkDefault optionalAttrs;
+in
 {
+  
   security = {
     rtkit.enable = true;
     chromiumSuidSandbox.enable = true;
-  } // lib.optionalAttrs (envir == "Hyprland" || envir == "sway") {
+  } // optionalAttrs (envir == "Hyprland" || envir == "sway") {
     pam.services.hyprlock = {};
   };
   programs = {
@@ -28,7 +32,7 @@
     };
     kdeconnect = {
       enable = true;                    # kdeconnect for android integration
-      package = lib.mkDefault pkgs.kdePackages.kdeconnect-kde;
+      package = mkDefault pkgs.kdePackages.kdeconnect-kde;
     };
     gpu-screen-recorder.enable = true;  # gpu screen recorder
     light.enable = true;                # laptop brightness control and fix for openrgb
@@ -37,7 +41,7 @@
     xwayland.enable = true;             # xwayland for x11 apps
   };
   hardware = {
-    cpu.${cpuvar}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    cpu.${cpuvar}.updateMicrocode = mkDefault config.hardware.enableRedistributableFirmware;
     i2c.enable = true;                  # i2c devices support
     bluetooth.settings = {
       General = {
@@ -55,6 +59,7 @@
     gnome.sushi.enable = true;          # file preview
     printing.enable = true;             # needed for printing and pdf export
     gvfs.enable = true;                 # Mount, trash, etc
+    libinput.enable = true;             # 
     ratbagd = {                         # mouse settings daemon
       enable = true;
       package = pkgs.over-libratbag;
@@ -67,26 +72,55 @@
         motherboard = "${cpuvar}";
       };
     };
-    displayManager.sddm = {
-      enable = true;
-      wayland = {
-        enable = true;
-        compositor = "weston";
+    greetd = with pkgs; let
+    greetdHyprlandConfig = pkgs.writeText "greetd-hyprland-config" ''
+    source=/etc/hypr/monitor-init.conf
+
+    animations {
+      enabled=false
+      first_launch_animation=false
+    }
+    misc {
+      disable_hyprland_logo=true
+    }
+
+    bind=SUPER SHIFT, T, exec, ${getExe alacritty}
+    bind=SUPER SHIFT, R, exec, ${getExe greetd.regreet}
+
+    exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30
+
+    exec-once = ${getExe' dbus "dbus-update-activation-environment"} --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE
+
+    exec-once = ${getExe greetd.regreet} && ${
+      getExe' hyprland-unwrapped "hyprctl"
+    } exit
+  '';
+in {
+      settings = {
+        default_session = {
+          command = "${
+            getExe pkgs.hyprland-unwrapped
+          } --config ${greetdHyprlandConfig} > /tmp/hyprland-log-out.txt 2>&1";
+        };
       };
-      theme = "ndct";
+
+      restart = false;
     };
   };
-  environment.systemPackages = with pkgs; [
-    tun2socks
-    over-ndct-sddm
-    polkit_gnome                        # polkit agent
-    xorg.xhost                          # xhost
-    vulkan-headers
-    vulkan-tools
-    vulkan-loader
+  environment = {
+    etc."hypr/monitor-init.conf".text = mkDefault ''
+    '';
+    systemPackages = with pkgs; [
+      tun2socks
+      polkit_gnome                        # polkit agent
+      xorg.xhost                          # xhost
+      vulkan-headers
+      vulkan-tools
+      vulkan-loader
 
-    libva-utils                         # vaapi test
-  ];
+      libva-utils                         # vaapi test
+    ];
+  };
   systemd = let
     extraConfig = ''
       DefaultTimeoutStopSec=10s
@@ -109,6 +143,38 @@
             TimeoutStopSec = 10;
           };
         };
+      };
+    };
+  };
+  programs.regreet = {
+    enable = true;
+    cageArgs = [
+      "-s"
+      "-d"
+    ];
+    theme = {
+      package = pkgs.dynamic-color-gtk-theme;
+      name = "Dynamic-Color-GTK-Theme";
+    };
+    cursorTheme = {
+      package = pkgs.capitaine-cursors-themed;
+      name = "Capitaine Cursors (Gruvbox)";
+    };
+    font = {
+      package = pkgs._0xproto;
+      name = "0xProto 13";
+    };
+    iconTheme = {
+      package = pkgs.gruvbox-plus-icons;
+      name = "Gruvbox-Plus-Dark";
+    };
+    settings = {
+      background = {
+        path = ./../assets/wallpapers/default1.png;
+        fit = "Cover";
+      };
+      GTK = {
+        application_prefer_dark_theme = true;
       };
     };
   };

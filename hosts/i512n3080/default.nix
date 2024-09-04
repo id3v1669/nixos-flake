@@ -28,34 +28,7 @@
     firewall.enable = false;
     enableIPv6 = false;
   };
-  services.displayManager.sddm.wayland.compositorCommand = 
-  let 
-    cxkb = config.services.xserver.xkb;
-    weston-ini = pkgs.writeText "weston.ini" ''
-      [core]
-      xwayland=false
-      shell=fullscreen-shell.so
-
-      [keyboard]
-      keymap_model=${builtins.toString cxkb.model}
-      keymap_layout=${builtins.toString cxkb.layout}
-      keymap_options=${builtins.toString cxkb.options}
-      keymapvariant=
-
-      [libinput]
-      enable-tap=true
-      left-handed=false
-
-      [output]
-      name=DP-3
-      mode=3440x1440@144
-
-      [output]
-      name=DP-2
-      mode=off
-    '';
-  in "${lib.getExe pkgs.weston} --shell=kiosk -c ${weston-ini}";
-
+  
   users.users.${uservars.name}.extraGroups = [
     "wheel"
     "networkmanager"
@@ -71,6 +44,10 @@
   environment = {
     systemPackages = (with pkgs; [
     ]);
+    etc."hypr/monitor-init.conf".text = ''
+      monitor=DP-3,3440x1440@144,0x0,1
+      monitor=DP-2,disable
+    '';
   };
   system.stateVersion = "${curversion}";
 }
