@@ -49,7 +49,7 @@
 availible_resolutions=("qhd" "sqhd" "sfhd")
 
 declare -A screen1_resolutions
-screen1_resolutions["qhd"]="monitor=DP-3,3440x1440@144,0x0,1"
+screen1_resolutions["qhd"]="monitor=DP-3,3440x1440@144,0x0,1,bitdepth,10"
 screen1_resolutions["sqhd"]="monitor=DP-3,3440x1440@144,0x0,1"
 screen1_resolutions["sfhd"]="monitor=DP-3,2560x1080@144,0x0,1"
 

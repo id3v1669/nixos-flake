@@ -20,7 +20,6 @@
 
     # cli utils
     vim                           # text editor
-    btop                          # htop but better
     git                           # git
     gh                            # github auth helper
 

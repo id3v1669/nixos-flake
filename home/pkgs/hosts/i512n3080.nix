@@ -30,6 +30,7 @@
 
     #testing
     over-logseq
+    zed-editor
     #zettlr
 
   ];

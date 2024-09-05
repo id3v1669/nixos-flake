@@ -9,9 +9,11 @@
 , inputs
 , ...
 }:
+let
+  clp = config.palette;
+in
 {
   imports = [
-    ./colors.nix
     inputs.hyprland.homeManagerModules.default
   ] ++ lib.optional (builtins.pathExists (./. + "/hostsettings/${hostname}.nix")) (./. + "/hostsettings/${hostname}.nix");
 
@@ -25,8 +27,8 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "rgb(${config.colorScheme.palette.base0C}) rgb(${config.colorScheme.palette.base0B}) 45deg";
-        "col.inactive_border" = "rgb(${config.colorScheme.palette.base01})";
+        "col.active_border" = "rgb(${clp.base16.hex}) rgb(${clp.base12.hex}) 45deg";
+        "col.inactive_border" = "rgb(${clp.base04.hex})";
         layout = "dwindle";
       };
       decoration = {
@@ -86,7 +88,7 @@ exec-once = eww-launcher                                          # eww launcher
 exec-once = wallpaper-autostart                                   # lutgen and wallpaper starter
 #------------------------------------------------- 
 
-source = ${config.home.homeDirectory}/.config/hypr/colors
+#source = ${config.home.homeDirectory}/.config/hypr/colors
 
 #------------------kitty for btop------------------
 windowrule = float,^(kitty)$

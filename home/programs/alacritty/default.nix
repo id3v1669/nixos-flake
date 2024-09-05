@@ -24,116 +24,83 @@
           style = "Bold Italic";
         };
       };
-      colors = {
+      colors = with config.palette; {
         primary = {
-          background = "#${config.colorScheme.palette.base00}"; # base
-          foreground = "#${config.colorScheme.palette.base05}"; # text
-          # Bright and dim foreground colors
-          dim_foreground = "#${config.colorScheme.palette.base05}"; # text
-          bright_foreground = "#${config.colorScheme.palette.base05}"; # text
+          background = "${base06.hexT}";
+          foreground = "${base00.hexT}";
+          dim_foreground = "${base02.hexT}";
+          bright_foreground = "${base01.hexT}";
         };
-        # Cursor colors
         cursor = {
-          text = "#${config.colorScheme.palette.base00}"; # base
-          cursor = "#${config.colorScheme.palette.base06}"; # rosewater
+          cursor = "${base02.hexT}";
+          text = "${base06.hexT}";
         };
         vi_mode_cursor = {
-          text = "#${config.colorScheme.palette.base00}"; # base
-          cursor = "#${config.colorScheme.palette.base07}"; # lavender
+          cursor = "${base00.hexT}";
+          text = "${base06.hexT}";
         };
-        # footer bar
-        footer_bar = {
-          foreground = "#${config.colorScheme.palette.base00}"; # base
-          background = "#${config.colorScheme.palette.base02}"; # subtext0
-        };
-        # Search colors
         search = {
           matches = {
-            foreground = "#${config.colorScheme.palette.base00}"; # base
-            background = "#${config.colorScheme.palette.base02}"; # subtext0
+            background = "${base13.hexT}";
+            foreground = "${base04.hexT}";
           };
           focused_match = {
-            foreground = "#${config.colorScheme.palette.base00}"; # base
-            background = "#${config.colorScheme.palette.base0B}"; # green
+            background = "${base12.hexT}";
+            foreground = "${base04.hexT}";
           };
         };
-        # Keyboard regex hints
         hints = {
           start = {
-            foreground = "#${config.colorScheme.palette.base00}"; # base
-            background = "#${config.colorScheme.palette.base0A}"; # yellow
+            background = "${base0E.hexT}";
+            foreground = "${base06.hexT}";
           };
           end = {
-            foreground = "#${config.colorScheme.palette.base00}"; # base
-            background = "#${config.colorScheme.palette.base02}"; # subtext0
+            background = "${base05.hexT}";
+            foreground = "${base06.hexT}";
           };
         };
-        # Selection colors
+        line_indicator = {
+          background = "${base0B.hexT}";
+          foreground = "${base06.hexT}";
+        };
+        footer_bar = {
+          background = "${base05.hexT}";
+          foreground = "${base0B.hexT}";
+        };
         selection = {
-          text = "#${config.colorScheme.palette.base00}"; # base
-          background = "#${config.colorScheme.palette.base06}"; # rosewater
+          background = "${base03.hexT}";
+          text = "${base06.hexT}";
         };
-        # Normal colors
-        normal = {
-          black = "#${config.colorScheme.palette.base03}"; # surface1
-          red = "#${config.colorScheme.palette.base08}"; # red
-          green = "#${config.colorScheme.palette.base0B}"; # green
-          yellow = "#${config.colorScheme.palette.base0A}"; # yellow
-          blue = "#${config.colorScheme.palette.base0D}"; # blue
-          magenta = "#${config.colorScheme.palette.base0F}"; # pink
-          cyan = "#${config.colorScheme.palette.base0C}"; # teal
-          white = "#${config.colorScheme.palette.base06}"; # subtext1
-        };
-        # Bright colors
         bright = {
-          black = "#${config.colorScheme.palette.base04}"; # surface2
-          red = "#${config.colorScheme.palette.base08}"; # red
-          green = "#${config.colorScheme.palette.base0B}"; # green
-          yellow = "#${config.colorScheme.palette.base0A}"; # yellow
-          blue = "#${config.colorScheme.palette.base0D}"; # blue
-          magenta = "#${config.colorScheme.palette.base0F}"; # pink
-          cyan = "#${config.colorScheme.palette.base0C}"; # teal
-          white = "#${config.colorScheme.palette.base02}"; # subtext0
+          black = "${base05.hexT}";
+          blue = "${base18.hexT}";
+          cyan = "${base15.hexT}";
+          green = "${base12.hexT}";
+          magenta = "${base1B.hexT}";
+          red = "${base09.hexT}";
+          white = "${base01.hexT}";
+          yellow = "${base0F.hexT}";
         };
-        # Dim colors
+        normal = {
+          black = "${base04.hexT}";
+          blue = "${base17.hexT}";
+          cyan = "${base14.hexT}";
+          green = "${base11.hexT}";
+          magenta = "${base1A.hexT}";
+          red = "${base08.hexT}";
+          white = "${base00.hexT}";
+          yellow = "${base0E.hexT}";
+        };
         dim = {
-          black = "#${config.colorScheme.palette.base03}"; # surface1
-          red = "#${config.colorScheme.palette.base08}"; # red
-          green = "#${config.colorScheme.palette.base0B}"; # green
-          yellow = "#${config.colorScheme.palette.base0A}"; # yellow
-          blue = "#${config.colorScheme.palette.base0D}"; # blue
-          magenta = "#${config.colorScheme.palette.base0F}"; # pink
-          cyan = "#${config.colorScheme.palette.base0C}"; # teal
-          white = "#${config.colorScheme.palette.base06}"; # subtext1
+          black = "${base07.hexT}";
+          blue = "${base19.hexT}";
+          cyan = "${base16.hexT}";
+          green = "${base13.hexT}";
+          magenta = "${base1C.hexT}";
+          red = "${base0A.hexT}";
+          white = "${base03.hexT}";
+          yellow = "${base10.hexT}";
         };
-        # primary = {
-        #   background = "#${config.colorScheme.palette.base01}";
-        #   foreground = "#${config.colorScheme.palette.base06}";
-        # };
-        # cursor = {
-        #   text = "#${config.colorScheme.palette.base05}";
-        #   cursor = "#${config.colorScheme.palette.base06}";
-        # };
-        # normal = {
-        #   black = "#${config.colorScheme.palette.base00}";
-        #   red = "#${config.colorScheme.palette.base08}";
-        #   green = "#${config.colorScheme.palette.base0B}";
-        #   yellow = "#${config.colorScheme.palette.base0F}";
-        #   blue = "#${config.colorScheme.palette.base0D}";
-        #   magenta = "#${config.colorScheme.palette.base05}";
-        #   cyan = "#${config.colorScheme.palette.base0C}";
-        #   white = "#${config.colorScheme.palette.base06}";
-        # };
-        # bright = {
-        #   black = "#${config.colorScheme.palette.base01}";
-        #   red = "#${config.colorScheme.palette.base09}";
-        #   green = "#${config.colorScheme.palette.base0B}";
-        #   yellow = "#${config.colorScheme.palette.base0F}";
-        #   blue = "#${config.colorScheme.palette.base0D}";
-        #   magenta = "#${config.colorScheme.palette.base05}";
-        #   cyan = "#${config.colorScheme.palette.base0C}";
-        #   white = "#${config.colorScheme.palette.base07}";
-        # };
       };
     };
   };

@@ -4,9 +4,6 @@
 , inputs
 , ...
 }:
-let
-    inherit (import ./../../../lib/h2rgba.nix { inherit lib; }) hexToRgba;
-in
 {
 
   programs.anyrun = {
@@ -43,7 +40,7 @@ in
       '';
     };
 
-    extraCss = ''
+    extraCss = with config.palette; ''
 * {
   all: unset;
   font-family: "0xProto";
@@ -51,21 +48,21 @@ in
 }
 
 box#main {
-  background: ${hexToRgba "${config.colorScheme.palette.base00}" "0.6"};
+  background: ${base06.rgba "0.6"};
   border-radius: 20px;
   padding: 10px 8px;
-  color: #${config.colorScheme.palette.base07};
+  color: ${base01.hexT};
 }
 
 #entry {
-  background: ${hexToRgba "${config.colorScheme.palette.base01}" "0.8"};
-  border: 2px solid #${config.colorScheme.palette.base0F};
+  background: ${base04.rgba "0.8"};
+  border: 2px solid ${base0B.hexT};
   border-radius: 16px;
   padding: 10px;
 }
 
 #entry selection {
-  background: ${hexToRgba "${config.colorScheme.palette.base02}" "0.8"};
+  background: ${base05.rgba "0.8"};
 }
 
 list#main{
@@ -77,7 +74,7 @@ list#main > row {
 }
 
 #match.activatable {
-  background: ${hexToRgba "${config.colorScheme.palette.base02}" "0.8"};
+  background: ${base05.rgba "0.8"};
   padding: 6px 3px;
 }
 
@@ -93,8 +90,8 @@ list#main > row {
 }
 
 #match:selected, #match:hover {
-  background: ${hexToRgba "${config.colorScheme.palette.base01}" "0.8"};
-  color: #${config.colorScheme.palette.base0F};
+  background: ${base04.rgba "0.8"};
+  color: ${base0B.hexT};
 }
     '';
   };

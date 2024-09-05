@@ -368,7 +368,7 @@
     (button 
       :class "usageinfo"
       :timeout "''${ deftimeout}"
-      :onclick "${pkgs.kitty}/bin/kitty ${pkgs.btop}/bin/btop"
+      :onclick "${pkgs.kitty}/bin/kitty ${pkgs.over-btop}/bin/btop"
       (box 
         :space-evenly false
         :spacing 10

@@ -3,7 +3,10 @@
 , uservars
 , colorsvar
 , ... 
-}: 
+}:
+let
+  clp = config.palette;
+in
 {
   programs.hyprlock = {
     enable = true;
@@ -23,7 +26,7 @@
       background = [{
         monitor = "";
         path = "${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp}";
-        color = "rgb(${config.colorScheme.palette.base00})";
+        color = "rgb(${clp.base06.hex})";
         blur_size = 4;
         blur_passes = 3;
         noise = 0.0117;
@@ -39,9 +42,9 @@
         dots_size = 0.2;
         dots_spacing = 0.64;
         dots_center = true;
-        outer_color = "rgb(${config.colorScheme.palette.base02})";
-        inner_color = "rgb(${config.colorScheme.palette.base00})";
-        font_color = "rgb(${config.colorScheme.palette.base01})";
+        outer_color = "rgb(${clp.base05.hex})";
+        inner_color = "rgb(${clp.base06.hex})";
+        font_color = "rgb(${clp.base04.hex})";
         fade_on_empty = true;
         placeholder_text = "<i>Password...</i>";
         hide_input = false;
@@ -53,9 +56,9 @@
         {
           monitor = "";
           text = "cmd[update:1000:1] echo \"<b><big> $(date +\"%H:%M:%S\") </big></b>\"";
-          color = "rgb(${config.colorScheme.palette.base01})";
+          color = "rgb(${clp.base04.hex})";
           font_size = 64;
-          font_family = "${config.colorScheme.palette.base08}";
+          font_family = "${clp.base09.hex}";
           position = "0, 70";
           halign = "center";
           valign = "center";
@@ -63,9 +66,9 @@
         {
           monitor = "";
           text = "Hey <span text_transform=\"capitalize\" size=\"larger\">${uservars.description}</span>";
-          color = "rgb(${config.colorScheme.palette.base01})";
+          color = "rgb(${clp.base04.hex})";
           font_size = 20;
-          font_family = "${config.colorScheme.palette.base08}";
+          font_family = "${clp.base09.hex}";
           position = "0, 0";
           halign = "center";
           valign = "center";
@@ -73,9 +76,9 @@
         {
           monitor = "";
           text = "Type to unlock!";
-          color = "rgb(${config.colorScheme.palette.base01})";
+          color = "rgb(${clp.base04.hex})";
           font_size = 16;
-          font_family = "${config.colorScheme.palette.base08}";
+          font_family = "${clp.base09.hex}";
           position = "0, 30";
           halign = "center";
           valign = "bottom";

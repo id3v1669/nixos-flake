@@ -56,6 +56,7 @@ in
     ];
   };
   services = {
+    seatd.enable = true;                # 
     udev.enable = true;                 # udev for hardware
     gnome.sushi.enable = true;          # file preview
     printing.enable = true;             # needed for printing and pdf export
@@ -98,6 +99,7 @@ in {
           command = "${
             getExe pkgs.hyprland-unwrapped
           } --config ${greetdHyprlandConfig} > /tmp/hyprland-log-out.txt 2>&1";
+          user = "greeter";
         };
       };
 
@@ -105,6 +107,7 @@ in {
     };
   };
   environment = {
+    sessionVariables.NIXOS_OZONE_WL = "1";
     etc."hypr/monitor-init.conf".text = mkDefault '''';
     systemPackages = with pkgs; [
       tun2socks
@@ -147,10 +150,10 @@ in {
   };
   programs.regreet = {
     enable = true;
-    cageArgs = [
-      "-s"
-      "-d"
-    ];
+    # cageArgs = [
+    #   "-s"
+    #   "-d"
+    # ];
     theme = {
       package = pkgs.dynamic-color-gtk-theme;
       name = "Dynamic-Color-GTK-Theme";

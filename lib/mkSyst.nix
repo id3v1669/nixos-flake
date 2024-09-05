@@ -70,6 +70,7 @@ in
           hyprland-unwrapped = inputs.hyprland.packages.${prev.system}.hyprland-unwrapped;                    # overlay for hyprland-unwrapped
           xdg-desktop-portal-hyprland = inputs.hyprland.packages.${prev.system}.xdg-desktop-portal-hyprland;  # overlay for xdg-desktop-portal-hyprland
           dynamic-color-gtk-theme = inputs.dcgt.packages.${prev.system}.default;                              # custom theme(unfinished)
+          over-btop = (import ./../overlays/btop.nix { inherit pkgs gpuvar; });                               # btop overlay for gpu support
           over-logseq = (import ./../overlays/logseq.nix { inherit pkgs; });                                  # electron fix
           over-libratbag = (import ./../overlays/libratbag.nix { inherit pkgs; });                            # libratbag overlay with asus rog pugio ii config
           over-lutris = (import ./../overlays/lutris.nix { inherit pkgs; });                                  # lutris overlay with extra packages
