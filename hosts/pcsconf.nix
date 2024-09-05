@@ -3,13 +3,14 @@
 , pkgs
 , cpuvar
 , envir
+, uservars
+, colorsvar
 , ...
 }:
 let 
   inherit (lib) getExe getExe' mkDefault optionalAttrs;
 in
 {
-  
   security = {
     rtkit.enable = true;
     chromiumSuidSandbox.enable = true;
@@ -84,11 +85,7 @@ in
       disable_hyprland_logo=true
     }
 
-    bind=SUPER SHIFT, T, exec, ${getExe alacritty}
-    bind=SUPER SHIFT, R, exec, ${getExe greetd.regreet}
-
     exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30
-
     exec-once = ${getExe' dbus "dbus-update-activation-environment"} --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE
 
     exec-once = ${getExe greetd.regreet} && ${
@@ -108,8 +105,7 @@ in {
     };
   };
   environment = {
-    etc."hypr/monitor-init.conf".text = mkDefault ''
-    '';
+    etc."hypr/monitor-init.conf".text = mkDefault '''';
     systemPackages = with pkgs; [
       tun2socks
       polkit_gnome                        # polkit agent
@@ -127,6 +123,9 @@ in {
     '';
   in {
     inherit extraConfig;
+    tmpfiles.rules = [
+      "d /etc/backgrounds 0755 user users - -"
+    ];
     user = {
       inherit extraConfig;
       services = {
@@ -165,13 +164,13 @@ in {
       name = "0xProto 13";
     };
     iconTheme = {
-      package = pkgs.gruvbox-plus-icons;
+      package = pkgs.over-gruvbox-plus-icons;
       name = "Gruvbox-Plus-Dark";
     };
     settings = {
       background = {
-        path = ./../assets/wallpapers/default1.png;
         fit = "Cover";
+        path = "/etc/backgrounds/${colorsvar}/${uservars.wp}";
       };
       GTK = {
         application_prefer_dark_theme = true;

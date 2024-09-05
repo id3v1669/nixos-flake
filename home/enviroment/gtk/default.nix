@@ -10,7 +10,7 @@
     };
     iconTheme = {
       name = "Gruvbox-Plus-Dark";
-      package = pkgs.gruvbox-plus-icons;
+      package = pkgs.over-gruvbox-plus-icons;
     };
     cursorTheme = {
       name = "Capitaine Cursors (Gruvbox)";
@@ -19,11 +19,9 @@
     };
     gtk3.extraConfig = {
       "gtk-recent-files-max-age" = 0;
-      "gtk-recent-files-limit" = 0;
     };
     gtk4.extraConfig = {
       "gtk-recent-files-max-age" = 0;
-      "gtk-recent-files-limit" = 0;
     };
   };
   # xdg.configFile = {

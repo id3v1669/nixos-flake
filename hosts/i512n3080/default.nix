@@ -30,6 +30,7 @@
   };
   
   users.users.${uservars.name}.extraGroups = [
+    "users"
     "wheel"
     "networkmanager"
     "rustdesk"

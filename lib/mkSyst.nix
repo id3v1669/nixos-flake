@@ -73,6 +73,7 @@ in
           over-logseq = (import ./../overlays/logseq.nix { inherit pkgs; });                                  # electron fix
           over-libratbag = (import ./../overlays/libratbag.nix { inherit pkgs; });                            # libratbag overlay with asus rog pugio ii config
           over-lutris = (import ./../overlays/lutris.nix { inherit pkgs; });                                  # lutris overlay with extra packages
+          over-gruvbox-plus-icons = (import ./../overlays/gruvbox-plus-icons.nix { inherit pkgs; });          # gruvbox-plus-icons overlay with symlinks for symbolic icons
           over-steam = (import ./../overlays/steam.nix { inherit pkgs; });                                    # steam overlay with extra packages
           over-vesktop = (import ./../overlays/vesktop.nix { inherit pkgs; });                                # vesktop overlay with no wayland flags
           over-firefox = (import ./../overlays/firefox.nix { inherit pkgs; });                                # temp bump due to isses on hyprland
@@ -88,7 +89,7 @@ in
   in
   inputs.nixpkgs.lib.nixosSystem {
     specialArgs = {
-      inherit curversion uservars hostname envir deflocale pkgs stable cpuvar gpuvar desk system bootloader brightnesctrl inputs;
+      inherit curversion uservars hostname envir deflocale pkgs stable cpuvar gpuvar desk system bootloader brightnesctrl inputs colorsvar;
     };
     modules = [
       (./.. + "/hosts/${hostname}")

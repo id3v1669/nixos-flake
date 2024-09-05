@@ -133,7 +133,7 @@ windowrulev2 = workspace 2, class:(vesktop)
   };
 
   home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp}
-    wallpaper = , ${config.home.homeDirectory}/Pictures/Wallpapers/${colorsvar}/${uservars.wp}
+    preload = /etc/backgrounds/${colorsvar}/${uservars.wp}
+    wallpaper = , /etc/backgrounds/${colorsvar}/${uservars.wp}
   '';
 }
