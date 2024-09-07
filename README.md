@@ -38,4 +38,4 @@ NixOS flake with home manager
 
 ## Notes
 
-sway and plasma are just for testing
+plasma is just for testing

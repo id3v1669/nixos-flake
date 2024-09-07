@@ -21,6 +21,6 @@ stdbuf -o0 awk -F '>>|,' -e '/^activelayout>>/ {print tolower(substr($3, 1, 2))}
 while IFS= read -r line; do
   eww update langvar="$line"
 done
-  '';# TODO: Add support for sway
+  '';
 }
 

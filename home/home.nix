@@ -25,7 +25,7 @@
     inputs.base16x2.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
     inputs.anyrun.homeManagerModules.default
-  ] ++ lib.lists.optionals (envir == "Hyprland" || envir == "sway") [
+  ] ++ lib.lists.optionals (envir == "Hyprland") [
     ./enviroment/eww
     ./enviroment/swaync
     ./enviroment/hyprlock

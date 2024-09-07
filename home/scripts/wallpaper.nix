@@ -12,8 +12,6 @@ writeShellApplication{
     lutgen
   ] ++ lib.lists.optionals (envir == "Hyprland") [
     hyprpaper
-  ] ++ lib.lists.optionals (envir == "sway") [
-    swaybg
   ];
   text = let
   imageFile = ./../../assets/wallpapers/${uservars.wp};
@@ -21,9 +19,6 @@ writeShellApplication{
   launch = if envir == "Hyprland" then ''
 kill "$(pidof hyprpaper)"
 hyprpaper &
-  '' else  if envir == "sway" then ''
-kill "$(pidof swaybg)"
-swaybg -i /etc/backgrounds/${colorsvar}/$_image &
   '' else '''';
   in ''
 set +o errexit

@@ -13,8 +13,6 @@ writeShellApplication{
     gawk
   ] ++ lib.lists.optionals (envir == "Hyprland") [
     hyprland
-  ] ++ lib.lists.optionals (envir == "sway") [
-    sway
   ];
   text = 
   let 
@@ -22,7 +20,7 @@ writeShellApplication{
 monitor=$(hyprctl monitors | grep "ID $id" | awk '{print $2}')
     '' else ''
 monitor="screen"
-    ''; # TODO: add sway support
+    '';
   in ''
 set +o errexit
 set +o nounset

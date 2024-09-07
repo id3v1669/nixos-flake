@@ -13,14 +13,10 @@ writeShellApplication{
     gawk
   ] ++ lib.lists.optionals (envir == "Hyprland") [
     hyprland
-  ] ++ lib.lists.optionals (envir == "sway") [
-    sway
   ];
   text = let
   wsa = if envir == "Hyprland" then ''
 mapfile -t wsa < <(hyprctl workspaces | grep 'workspace ID .*(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }')
-  '' else  if envir == "sway" then ''
-mapfile -t wsa < <(swaymsg -t get_workspaces | grep -o '"num":\s*[0-9]\+' | awk '{print $2}')
   '' else '''';
   in ''
 set +o errexit

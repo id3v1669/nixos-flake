@@ -106,27 +106,6 @@
           port = "DP-3";
         };
       };
-      i512n3080sway = mkSystem { 
-        hostname = "i512n3080";
-        envir = "sway";
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          domain = "none";
-          wp = "default3.png";
-          owner = "id3v1669";
-          sleeptimeout = 99000;
-        };
-        bootloader = {
-          type = "systemd";
-          timeout = 10;
-        };
-        gpuvar = {
-          type = "nvidia";
-          tech = "native";
-          port = "DP-3";
-        };
-      };
       i512n3080KDE = mkSystem { 
         hostname = "i512n3080";
         envir = "KDE";

@@ -14,7 +14,7 @@ in
   security = {
     rtkit.enable = true;
     chromiumSuidSandbox.enable = true;
-  } // optionalAttrs (envir == "Hyprland" || envir == "sway") {
+  } // optionalAttrs (envir == "Hyprland") {
     pam.services.hyprlock = {};
   };
   programs = {
