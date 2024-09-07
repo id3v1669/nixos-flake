@@ -8,7 +8,7 @@
 
 4. **rewrite readme(in progress, fininsh after finishing gtk theme and base32 colors repo)**
 
-5. **patch dsdt for nuc11ph(acpi errors)**
+5. **find out why hm session vars don't pass with regreet**
 
 6. **fix sops**
 

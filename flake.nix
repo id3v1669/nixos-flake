@@ -174,27 +174,6 @@
           tech = "amd";
         };
       };
-      nuc11phhyprhdmi = mkSystem {
-        hostname = "nuc11ph";
-        envir = "Hyprland";
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          domain = "none";
-          wp = "default3.png";
-          owner = "id3v1669";
-          sleeptimeout = 99000;
-        };
-        bootloader = {
-          type = "systemd";
-          timeout = 10;
-        };
-        gpuvar = {
-          type = "nvidia";
-          tech = "native";
-          port = "hdmi";
-        };
-      };
       l14g3hypr = mkSystem { 
         hostname = "l14g3";
         envir = "Hyprland";
