@@ -5,7 +5,6 @@
 {
   home.packages = with pkgs; [
     telegram-desktop
-    materialgram
   ];
 
   home.file.".config/telegram/colors.tdesktop-theme".text = with config.palette; ''

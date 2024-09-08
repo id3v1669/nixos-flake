@@ -24,7 +24,7 @@ in
     }),
     system ? "x86_64-linux",
     cpuvar ? "intel",
-    colorsvar ? "gruvbox-dark-pale",
+    colorsvar ? "gruvbox-dark",
     brightnesctrl ? ({
       up = "ddcutil setvcp 10 + 5";
       down = "ddcutil setvcp 10 - 5";
