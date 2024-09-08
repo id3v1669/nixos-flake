@@ -3,9 +3,6 @@
 , ...
 }:
 {
-  imports = [
-    ./stylish.nix
-  ];
   programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.over-firefox {
