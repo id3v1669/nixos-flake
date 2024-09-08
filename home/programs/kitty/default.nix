@@ -9,77 +9,77 @@
       scrollback_lines = 20000;
       enable_audio_bell = false;
     };
-    extraConfig = ''
+    extraConfig = with config.palette; ''
 # The basic colors
-foreground              #${config.colorScheme.palette.base05}
-background              #${config.colorScheme.palette.base00}
-selection_foreground    #${config.colorScheme.palette.base00}
-selection_background    #${config.colorScheme.palette.base06}
+foreground              ${base00.hexT}
+background              ${base06.hexT}
+selection_foreground    ${base06.hexT}
+selection_background    ${base05.hexT}
 
 # Cursor colors
-cursor                  #${config.colorScheme.palette.base06}
-cursor_text_color       #${config.colorScheme.palette.base00}
+cursor                  ${base05.hexT}
+cursor_text_color       ${base06.hexT}
 
 # URL underline color when hovering with mouse
-url_color               #${config.colorScheme.palette.base06}
+url_color               ${base05.hexT}
 
 # Kitty window border colors
-active_border_color     #${config.colorScheme.palette.base07}
-inactive_border_color   #${config.colorScheme.palette.base02}
-bell_border_color       #${config.colorScheme.palette.base0A}
+active_border_color     ${base01.hexT}
+inactive_border_color   ${base07.hexT}
+bell_border_color       ${base0E.hexT}
 
 # OS Window titlebar colors
 wayland_titlebar_color system
 macos_titlebar_color system
 
 # Tab bar colors
-active_tab_foreground   #${config.colorScheme.palette.base02}
-active_tab_background   #${config.colorScheme.palette.base0E}
-inactive_tab_foreground #${config.colorScheme.palette.base05}
-inactive_tab_background #${config.colorScheme.palette.base01}
-tab_bar_background      #${config.colorScheme.palette.base02}
+active_tab_foreground   ${base07.hexT}
+active_tab_background   ${base1D.hexT}
+inactive_tab_foreground ${base00.hexT}
+inactive_tab_background ${base04.hexT}
+tab_bar_background      ${base07.hexT}
 
 # Colors for marks (marked text in the terminal)
-mark1_foreground #${config.colorScheme.palette.base00}
-mark1_background #${config.colorScheme.palette.base07}
-mark2_foreground #${config.colorScheme.palette.base00}
-mark2_background #${config.colorScheme.palette.base0E}
-mark3_foreground #${config.colorScheme.palette.base00}
-mark3_background #${config.colorScheme.palette.base05}
+mark1_foreground ${base06.hexT}
+mark1_background ${base01.hexT}
+mark2_foreground ${base06.hexT}
+mark2_background ${base1D.hexT}
+mark3_foreground ${base06.hexT}
+mark3_background ${base00.hexT}
 
 # The 16 terminal colors
 
 # black
-color0 #${config.colorScheme.palette.base03}
-color8 #${config.colorScheme.palette.base04}
+color0 ${base05.hexT}
+color8 ${base06.hexT}
 
 # red
-color1 #${config.colorScheme.palette.base08}
-color9 #${config.colorScheme.palette.base08}
+color1 ${base09.hexT}
+color9 ${base0A.hexT}
 
 # green
-color2  #${config.colorScheme.palette.base0B}
-color10 #${config.colorScheme.palette.base0B}
+color2  ${base12.hexT}
+color10 ${base13.hexT}
 
 # yellow
-color3  #${config.colorScheme.palette.base0A}
-color11 #${config.colorScheme.palette.base0A}
+color3  ${base0F.hexT}
+color11 ${base10.hexT}
 
 # blue
-color4  #${config.colorScheme.palette.base0D}
-color12 #${config.colorScheme.palette.base0D}
+color4  ${base17.hexT}
+color12 ${base19.hexT}
 
 # magenta
-color5  #${config.colorScheme.palette.base0E}
-color13 #${config.colorScheme.palette.base0E}
+color5  ${base1B.hexT}
+color13 ${base1C.hexT}
 
 # cyan
-color6  #${config.colorScheme.palette.base0C}
-color14 #${config.colorScheme.palette.base0C}
+color6  ${base15.hexT}
+color14 ${base16.hexT}
 
 # white
-color7  #${config.colorScheme.palette.base05}
-color15 #${config.colorScheme.palette.base06}
+color7  ${base01.hexT}
+color15 ${base02.hexT}
     '';
   };
 }
