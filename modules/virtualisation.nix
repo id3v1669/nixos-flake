@@ -44,7 +44,10 @@
         ];
       };
     };
-    docker.enable = true;
+    podman = {
+      enable = true;
+      extraPackages = [ pkgs.podman-compose ];
+    };
   };
   users.users.${uservars.name}.extraGroups = [
     "docker"

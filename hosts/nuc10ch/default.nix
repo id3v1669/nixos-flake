@@ -22,7 +22,7 @@
     ];
     defaultGateway = "77.91.123.1";
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
-    firewall.allowedTCPPorts = [ 26783 80 443 ];
+    firewall.allowedTCPPorts = [ 21669 26783 80 443 ];
     firewall.enable = true;
   };
   users.users = {

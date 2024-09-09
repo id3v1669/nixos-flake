@@ -13,7 +13,7 @@
     };
   };
   virtualisation.oci-containers = {
-    backend = "docker";
+    backend = "podman";
     containers."vaultwarden" = {
       autoStart = true;
       image = "vaultwarden/server:latest";

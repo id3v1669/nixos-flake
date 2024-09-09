@@ -14,6 +14,7 @@
     ./programs
     ./pkgs
     ./enviroment/systemd
+    inputs.base16x2.homeManagerModules.default
   ] ++ lib.lists.optionals (envir != "none") [
     ./scripts
     ./enviroment/qt
@@ -22,7 +23,6 @@
     ./enviroment/anyrun
     ./enviroment/xdg
     ./enviroment/${envir}
-    inputs.base16x2.homeManagerModules.default
     inputs.anyrun.homeManagerModules.default
   ] ++ lib.lists.optionals (envir == "Hyprland") [
     ./enviroment/eww
@@ -45,6 +45,5 @@
       NIXOS_OZONE_WL = "1";
     };
   };
-} // lib.optionalAttrs (desk != "server") {
   palette = "${colorsvar}";
 }

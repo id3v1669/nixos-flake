@@ -7,6 +7,7 @@
     base16x2.url = "github:id3v1669/base16x2-color-shemes";
     sops-nix.url = "github:Mic92/sops-nix";
     nur.url = "github:nix-community/NUR";
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     anyrun = {
       url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -14,6 +14,10 @@
     ./../../modules/onlyoffice.nix #starts but doesn't connect to nextcloud
     ./../../modules/sops.nix
     ./../../modules/vaultwarden.nix
+    ./../../modules/virtualisation.nix
+    ./../../modules/fonts.nix
+    ./../../modules/security.nix
+    ./../../modules/minecraft.nix
     #./../../modules/shadowsocks.nix
   ];
 
