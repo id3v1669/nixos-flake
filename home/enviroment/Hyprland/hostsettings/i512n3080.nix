@@ -7,17 +7,7 @@
 }:
 {
   wayland.windowManager.hyprland = {
-    plugins = with inputs.hyprland-plugins.packages.${pkgs.system}; [ 
-      csgo-vulkan-fix
-    ];
     settings = {
-      plugin = {
-        csgo-vulkan-fix = {
-          res_w = 2560;
-          res_h = 1440;
-          class = "SDL Application";
-        };
-      };
 		  windowrule = [
 			  "move 84.75% 4.25%,^(org.pulseaudio.pavucontrol)$"
         "size 15% 50%,^(org.pulseaudio.pavucontrol)$"

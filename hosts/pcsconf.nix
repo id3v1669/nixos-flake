@@ -150,10 +150,6 @@ in {
   };
   programs.regreet = {
     enable = true;
-    # cageArgs = [
-    #   "-s"
-    #   "-d"
-    # ];
     theme = {
       package = pkgs.dynamic-color-gtk-theme;
       name = "Dynamic-Color-GTK-Theme";

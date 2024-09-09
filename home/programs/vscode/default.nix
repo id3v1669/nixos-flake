@@ -35,6 +35,7 @@
       "editor.fontFamily" = "JetBrainsMono Nerd Font";
       "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
       "explorer.confirmDelete" = false;
+      "editor.tabSize" = 2;
       "editor.tokenColorCustomizations" = {
         "comments" = "${config.palette.base02.hexT}";
       };
