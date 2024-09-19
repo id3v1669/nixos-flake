@@ -1,10 +1,12 @@
 { pkgs
 , envir
+, config
 , brightnesctrl
 , uservars
+, lib
 , ...
 }:
-{
+{ 
   services.swhkd = {
     enable = true;
     settings = let 

@@ -18,8 +18,7 @@
     qjackctl                      # gui for jack
 
     # vm, virt and emulators
-    distrobox                     # archbox for apps that are not in nixpkgs
-    docker-compose                # docker-compose for tests
+    distrobox
     remmina                       # remote desktop
     stable.vagrant                # venv dev tool
     packer                        
@@ -73,7 +72,6 @@
     piper                         # gui for mouse settings daemon
     gnome-disk-utility            # disk manager(gparted is broken)
     qbittorrent                   # torrent client
-    eww                           # overlay of eww
     isoimagewriter                # kde iso writer (as ventoy is bad for bios updated)
 
     # other cli utils

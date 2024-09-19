@@ -22,7 +22,7 @@
 (defpoll datetime :interval "1s" "date '+%a, %d. %b  %H:%M'")
 (defvar soundvol "xx")
 (defvar wss "xxx")
-(defvar langvar "tt")
+(defvar langvar "en")
 (defvar showpowerbuttons false)
 (defvar showcalendar false)
 (defvar songname "None")
@@ -387,6 +387,16 @@
         (box 
           :class "boot"
           "''${round(EWW_DISK['/boot'].free/1073741824,1)} Gb"
+        )
+        (box :class "spacerh" "|")
+        (box 
+          :class "ram"
+          "gpu: ''${EWW_GPU.NVIDIA_GPU_LOAD_0}%"
+        )
+        (box :class "spacerh" "|")
+        (box 
+          :class "ram"
+          "vram: ''${round(EWW_GPU.NVIDIA_GPU_VRAM_CURRENT_0/1073741824,1)}/''${round(EWW_GPU.NVIDIA_GPU_VRAM_MAX_0/1073741824,1)} Gb"
         )
       )
     )

@@ -45,11 +45,6 @@ switch "$hostname"
   case "${hostname}${envir}"
     alias scr="bash ${config.home.homeDirectory}/.scripts/screen.sh"
     alias tests="bash ${config.home.homeDirectory}/.scripts/tests.sh"
-    alias yay="distrobox enter --name archbox -- yay"
-    alias pacman="distrobox enter --name archbox -- sudo pacman"
-    #alias packettracer="distrobox-enter --name archbox -- 'packettracer &'"
-    alias archt="distrobox enter archbox"
-    alias debt="distrobox enter debbox"
   case '*'
     # Default case
 end

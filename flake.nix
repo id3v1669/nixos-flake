@@ -32,6 +32,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         aquamarine.url = "github:hyprwm/aquamarine";
+        xdph.url = "github:hyprwm/xdg-desktop-portal-hyprland";
       };
     };
     hyprland-plugins = {

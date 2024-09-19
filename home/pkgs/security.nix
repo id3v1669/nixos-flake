@@ -6,7 +6,7 @@
   home.packages = with pkgs; [
     clamtk                        # frontend for clamav
     stable.theharvester           # emails, subdomains etc
-    autopsy                       # forensic tool
+    #autopsy                      # forensic tool                BROKEN
     adalanche                     # AD visualizer
     chkrootkit                    # rootkit checker
     dcfldd                        # dd for forensics
@@ -35,6 +35,26 @@
     dig                           # dns tool(ip of domain)
     exploitdb                     # exploit database
     cvemap                        # 
+    sqlmap                        # sql injection tool
+
+    #volatility                    # memory forensics
+    pdf-parser
+    regripper
+    binwalk
+    bulk_extractor
+    capstone
+    stegseek
+    steghide
+
+    gnupg
+    ent
+    truecrack
+    pdfcrack
+    cryptsetup
+    foremost
+    scalpel
+    sleuthkit
+
     # (pkgs.python312Packages.python.withPackages (python-pkgs: with python-pkgs; [
     #   markdown
     #   setuptools
@@ -48,5 +68,6 @@
   # declare service for cloudfoxable
   # declare service for metasploitable
   # declare service for faction
+  # to check https://github.com/NixOS/nixpkgs/issues/81418
 
 }

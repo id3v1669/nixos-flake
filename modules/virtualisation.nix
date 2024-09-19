@@ -3,6 +3,7 @@
 , desk
 , uservars
 , pkgs
+, stable
 , ...
 }: 
 {
@@ -50,7 +51,7 @@
     };
   };
   users.users.${uservars.name}.extraGroups = [
-    "docker"
+    "podman"
     "kvm"
     "qemu-libvirtd"
     "libvirtd"

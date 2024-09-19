@@ -1,5 +1,6 @@
 { pkgs
 , lib
+, uservars
 , inputs
 , ...
 }:
@@ -7,13 +8,16 @@
   imports = [ 
     inputs.nix-minecraft.nixosModules.minecraft-servers
   ];
+  users.users.${uservars.name}.extraGroups = [ "minecraft" ];
 
   services.minecraft-servers = {
     enable = true;
     eula = true;
+    user = "${uservars.name}";
     servers = {
       primary = {
         enable = true;
+        autoStart = false;
         package = pkgs.fabricServers.fabric-1_21_1;
         jvmOpts = "-Xmx6G";
         openFirewall = true;

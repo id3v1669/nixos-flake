@@ -1,4 +1,5 @@
 { lib
+, desk
 , config
 , pkgs
 , ... 

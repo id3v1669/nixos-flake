@@ -77,7 +77,10 @@ in
         "$mainMod SHIFT, R, exec, anyrun"
       ];
     };
-    extraConfig = ''
+    extraConfig = let
+      explicit_sync = if gpuvar.type == "nvidia" then "render:explicit_sync=0" else ""; # still needed for minecraft((
+    in ''
+${explicit_sync}
 #----------------startup commands-----------------
 exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30    # set cursor as hyprland doesn't respect gtk
 exec-once = swhks &                                               # used command as systemd service starts it in isolation

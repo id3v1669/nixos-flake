@@ -1,5 +1,5 @@
 { pkgs
-, stable-pkgs
+, stable
 , system
 , uservars
 , gpuvar

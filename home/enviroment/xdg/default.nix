@@ -94,6 +94,7 @@
         #video
         "video/mp4" = "vlc.desktop";
         "video/mov" = "vlc.desktop";
+        "video/x-ms-wmv" = "vlc.desktop";
         #vscode for text etc
         "text/plain" = "code.desktop";
         "text/x-c" = "code.desktop";
@@ -141,6 +142,7 @@
         #video
         "video/mp4" = "vlc.desktop";
         "video/mov" = "vlc.desktop";
+        "video/x-ms-wmv" = "vlc.desktop";
         #vscode
         "text/plain" = "code.desktop";
         "text/x-c" = "code.desktop";
@@ -160,6 +162,7 @@
         "text/x-scala" = "code.desktop";
         "text/x-scheme" = "code.desktop";
         "text/css" = "code.desktop";
+        "text/x-shellscript" = "code.desktop";
       };
     };
   };

@@ -2,6 +2,7 @@
 , config
 , lib
 , uservars
+, inputs
 , ...
 }:
 let 
@@ -11,10 +12,14 @@ let
 	];
 in
 {
+	
   imports = [
     ./scss.nix
     ./yuck.nix
+		inputs.eww.homeManagerModules.default
   ];
+	programs.eww.enable = true;
+	#programs.eww.configDir = ./../eww;
   # systemd.user.services.eww-daemon = {
 	# 	Unit = {
   #     Description = "eww daemon service";
