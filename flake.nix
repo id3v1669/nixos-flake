@@ -8,10 +8,8 @@
     sops-nix.url = "github:Mic92/sops-nix";
     nur.url = "github:nix-community/NUR";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    anyrun.url = "github:anyrun-org/anyrun";
+    dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
     eww = {
       url = "github:id3v1669/eww";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +18,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
     swhkd = {
       url = "github:id3v1669/swhkd";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,10 +31,6 @@
         aquamarine.url = "github:hyprwm/aquamarine";
         xdph.url = "github:hyprwm/xdg-desktop-portal-hyprland";
       };
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
     };
     hyprlock = {
       url = "github:hyprwm/hyprlock";

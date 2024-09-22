@@ -55,12 +55,21 @@
     scalpel
     sleuthkit
 
-    # (pkgs.python312Packages.python.withPackages (python-pkgs: with python-pkgs; [
-    #   markdown
-    #   setuptools
-    #   requests
-    #   patator                   # brute force tool
-    # ]))
+    gobuster # scanner web
+    dirb # scanner web
+    gdb # debugger
+
+    retdec # decompiler
+    ghidra # decompiler
+    snowman # decompiler
+
+    (pkgs.python312Packages.python.withPackages (python-pkgs: with python-pkgs; [
+      markdown
+      setuptools
+      requests
+      patator                   # brute force tool
+      paramiko
+    ]))
   ];
   #TODO: 
   # package metagoofil

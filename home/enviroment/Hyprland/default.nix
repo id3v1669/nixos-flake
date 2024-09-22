@@ -54,14 +54,15 @@ in
         touchpad = {
             natural_scroll = true;
         };
-        sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+        #sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
       };
       gestures = {
         workspace_swipe = true;
         workspace_swipe_fingers = 3;
       };
       misc = {
-        disable_hyprland_logo = false;
+         vrr = 1;
+         disable_hyprland_logo = false;
       };
       dwindle = {
         pseudotile = true;
@@ -80,7 +81,9 @@ in
     extraConfig = let
       explicit_sync = if gpuvar.type == "nvidia" then "render:explicit_sync=0" else ""; # still needed for minecraft((
     in ''
-${explicit_sync}
+#${explicit_sync}
+cursor:allow_dumb_copy = false
+cursor:no_hardware_cursors = true
 #----------------startup commands-----------------
 exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30    # set cursor as hyprland doesn't respect gtk
 exec-once = swhks &                                               # used command as systemd service starts it in isolation

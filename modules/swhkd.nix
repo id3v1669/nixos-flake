@@ -95,6 +95,9 @@ super + shift + b
 
 super + shift + f
   nautilus
+
+super + shift + u
+  echo "dd" > /tmp/test1.txt
     
 super + shift + p
   hyprpicker -a

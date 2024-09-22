@@ -9,7 +9,7 @@
 , ...
 }:
 {
-  imports =[ 
+  imports = [ 
     ./hardware-configuration.nix
     ./../configuration.nix
     ./../pcsconf.nix
@@ -46,8 +46,8 @@
     systemPackages = (with pkgs; [
     ]);
     etc."hypr/monitor-init.conf".text = ''
-      monitor=DP-3,3440x1440@144,0x0,1
-      monitor=DP-2,disable
+      monitor=DP-4,3440x1440@144,0x0,1
+      monitor=DP-3,disable
     '';
   };
   system.stateVersion = "${curversion}";

@@ -64,7 +64,6 @@ in
         inputs.hyprpicker.overlays.default
         inputs.hyprlock.overlays.default
         inputs.hyprpaper.overlays.default
-        inputs.hyprland-plugins.overlays.default
         inputs.nix-minecraft.overlay
         (final: prev: {
           hyprland = inputs.hyprland.packages.${prev.system}.hyprland;                                        # overlay for hyprland

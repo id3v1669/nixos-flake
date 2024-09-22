@@ -21,10 +21,11 @@
 	  		"${config.home.homeDirectory}/.config/hypr/monitor.conf"
       ];
       workspace = [
-        "1, monitor:DP-3"
+        "1, monitor:DP-4"
+        "2, monitor:DP-3"
       ];
       exec-once = [
-        "xrandr --output DP-3 --primary"
+        "xrandr --output DP-4 --primary"
       ];
     };
   };
@@ -39,14 +40,14 @@
 availible_resolutions=("qhd" "sqhd" "sfhd")
 
 declare -A screen1_resolutions
-screen1_resolutions["qhd"]="monitor=DP-3,3440x1440@144,0x0,1,bitdepth,10"
-screen1_resolutions["sqhd"]="monitor=DP-3,3440x1440@144,0x0,1"
-screen1_resolutions["sfhd"]="monitor=DP-3,2560x1080@144,0x0,1"
+screen1_resolutions["qhd"]="monitor=DP-4,3440x1440@144,0x0,1,bitdepth,10"
+screen1_resolutions["sqhd"]="monitor=DP-4,3440x1440@144,0x0,1"
+screen1_resolutions["sfhd"]="monitor=DP-4,2560x1080@144,0x0,1"
 
 declare -A screen2_resolutions
-screen2_resolutions["qhd"]="monitor=DP-2,1920x1080@75,-1080x0,1,transform,1"
-screen2_resolutions["sqhd"]="monitor=DP-2,disable"
-screen2_resolutions["sfhd"]="monitor=DP-2,disable"
+screen2_resolutions["qhd"]="monitor=DP-3,1920x1080@100,-1080x0,1,transform,1"
+screen2_resolutions["sqhd"]="monitor=DP-3,disable"
+screen2_resolutions["sfhd"]="monitor=DP-3,disable"
 
 path="${config.home.homeDirectory}/.config/hypr/monitor.conf"
 resolution=$1

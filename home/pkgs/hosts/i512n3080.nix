@@ -31,6 +31,9 @@
     #testing
     over-logseq
     zed-editor
+    sysbench
+    phoronix-test-suite
+    stress
     #zettlr
 
   ];
