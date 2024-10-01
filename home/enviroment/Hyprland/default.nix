@@ -54,14 +54,12 @@ in
         touchpad = {
             natural_scroll = true;
         };
-        #sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
       };
       gestures = {
         workspace_swipe = true;
         workspace_swipe_fingers = 3;
       };
       misc = {
-         vrr = 1;
          disable_hyprland_logo = false;
       };
       dwindle = {
@@ -81,7 +79,7 @@ in
     extraConfig = let
       explicit_sync = if gpuvar.type == "nvidia" then "render:explicit_sync=0" else ""; # still needed for minecraft((
     in ''
-#${explicit_sync}
+${explicit_sync}
 cursor:allow_dumb_copy = false
 cursor:no_hardware_cursors = true
 #----------------startup commands-----------------

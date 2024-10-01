@@ -5,7 +5,7 @@
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.wrapFirefox pkgs.over-firefox {
+    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
       extraPolicies = {
         CaptivePortal = false;
         DisablePocket = true;

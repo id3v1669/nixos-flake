@@ -114,6 +114,7 @@
         "text/x-scala" = "code.desktop";
         "text/x-scheme" = "code.desktop";
         "text/css" = "code.desktop";
+        "application/x-shellscript" = "code.desktop";
         
       };
       defaultApplications = {
@@ -163,6 +164,7 @@
         "text/x-scheme" = "code.desktop";
         "text/css" = "code.desktop";
         "text/x-shellscript" = "code.desktop";
+        "application/x-shellscript" = "code.desktop";
       };
     };
   };

@@ -11,7 +11,7 @@ in
 {
   home.packages = (with pkgs;[
     over-vesktop                       # vesktop(unofficial discord app)
-    arrpc                         # rpc for discord(vesktop)
+    arrpc                              # rpc for discord(vesktop)
   ]);
   systemd.user.services = {} // lib.optionalAttrs (desk == "desktop") {
     arrpc = {
@@ -26,19 +26,7 @@ in
 		  Install = { WantedBy = [ "default.target" ]; };
     };
   };
-#   home.file.".config/vesktop/settings.json".text = ''
-# {
-#     "minimizeToTray": "on",
-#     "discordBranch": "stable",
-#     "arRPC": "on",
-#     "splashColor": "${config.palette.base02.rgb}",
-#     "splashBackground": "${config.palette.base06.rgb}"
-# }
-#   '';
   home.file.".config/vesktop/themes/usertheme.css".text = with config.palette; ''
-
-
-
 .theme-dark,
 .theme-light {
   --white:                                        ${base01.hexT};                  /* some buttons hover */

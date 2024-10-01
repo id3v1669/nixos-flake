@@ -3,6 +3,7 @@
 , desk
 , cpuvar
 , uservars
+, gpuvar
 , ...
 }:
 {
@@ -15,6 +16,18 @@
   "''${EWW_TEMPS.CORETEMP_CORE_0}°C "
 )
 (box :class "spacerh" "|")
+    '' else '''';
+    gpuinfo = if gpuvar.type == "nvidia" then ''
+(box :class "spacerh" "|")
+(box 
+  :class "ram"
+  "gpu: ''${EWW_GPU.NVIDIA_GPU_LOAD_0}%"
+)
+(box :class "spacerh" "|")
+(box 
+  :class "ram"
+  "vram: ''${round(EWW_GPU.NVIDIA_GPU_VRAM_CURRENT_0/1073741824,1)}/''${round(EWW_GPU.NVIDIA_GPU_VRAM_MAX_0/1073741824,1)} Gb"
+)
     '' else '''';
   in
   ''
@@ -31,6 +44,7 @@
 (defvar defaultscreen 0)
 (defvar recsym "")
 (defvar recclass "replay inactive")
+(defvar testvar false)
 
 (defwidget calendarpop []
   (eventbox 
@@ -388,15 +402,11 @@
           :class "boot"
           "''${round(EWW_DISK['/boot'].free/1073741824,1)} Gb"
         )
+        ${gpuinfo}
         (box :class "spacerh" "|")
         (box 
-          :class "ram"
-          "gpu: ''${EWW_GPU.NVIDIA_GPU_LOAD_0}%"
-        )
-        (box :class "spacerh" "|")
-        (box 
-          :class "ram"
-          "vram: ''${round(EWW_GPU.NVIDIA_GPU_VRAM_CURRENT_0/1073741824,1)}/''${round(EWW_GPU.NVIDIA_GPU_VRAM_MAX_0/1073741824,1)} Gb"
+          :class "boot"
+          "''${testvar}"
         )
       )
     )

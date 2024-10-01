@@ -13,6 +13,7 @@
     stdenv.cc.cc.lib
     libkrb5
     keyutils
+    curl
   ];
 }).overrideAttrs (oldAttrs: rec {
   # version = "1.0.0.79";

@@ -1,6 +1,7 @@
 { config
 , lib
 , pkgs
+, stable
 , modulesPath
 , system
 , gpuvar
@@ -27,12 +28,14 @@
     kernelParams = [
     ] ++ lib.lists.optionals (gpuvar.tech == "native") [
       "video=DP-3:3440x1440@144"
+      "module_blacklist=i915"
       "nvidia_drm.fbdev=1"
     ] ++ lib.lists.optionals (gpuvar.tech == "nvk") [
       "nouveau.config=NvGspRm=1"
     ];
-#    kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.linuxPackages_6_10;
+    #kernelPackages = pkgs.linuxPackages_latest;
+    #kernelPackages = pkgs.linuxPackages_6_10;
+    kernelPackages = pkgs.linuxPackages_zen;
     kernel.sysctl."kernel.unprivileged_userns_clone" = 1;
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback

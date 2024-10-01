@@ -68,7 +68,9 @@
     };
   };
 
-  services.clamav = let srv = (desk != "server"); in {
+  services.clamav = let 
+    srv = (desk != "server"); 
+  in {
     daemon.enable = srv;
     fangfrisch.enable = srv;
     scanner.enable = srv;
