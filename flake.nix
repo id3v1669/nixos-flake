@@ -58,8 +58,8 @@
   in
   {
     nixosConfigurations = {
-      i512n3080hypr = mkSystem { 
-        hostname = "i512n3080";
+      i912n3080hypr = mkSystem { 
+        hostname = "i912n3080";
         envir = "Hyprland";
         uservars = {
           name = "user";
@@ -79,8 +79,8 @@
           port = "DP-3";
         };
       };
-      i512n3080hyprnvk = mkSystem {
-        hostname = "i512n3080";
+      i912n3080hyprnvk = mkSystem {
+        hostname = "i912n3080";
         envir = "Hyprland";
         uservars = {
           name = "user";
@@ -100,8 +100,8 @@
           port = "DP-3";
         };
       };
-      i512n3080KDE = mkSystem { 
-        hostname = "i512n3080";
+      i912n3080KDE = mkSystem { 
+        hostname = "i912n3080";
         envir = "KDE";
         uservars = {
           name = "user";

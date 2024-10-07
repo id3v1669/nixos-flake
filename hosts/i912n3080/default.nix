@@ -43,25 +43,7 @@
     "usbmux"
   ];
   environment = {
-    systemPackages = [
-#       (pkgs.stdenv.mkDerivation rec 
-# {
-#   pname = "millennium";
-#   version = "2.11.1";
-
-#   src = pkgs.fetchurl {
-#     url="https://github.com/SteamClientHomebrew/Millennium/releases/download/v2.11.1/millennium-v2.11.1-linux-x86_64.tar.gz";
-#     hash = "sha256-dqwigLzkesLCtwUHk3fhiOwPVsOZFpzlivIV7dVJeNM=";
-#   };
-#   dontUnpack = true;
-
-#   nativeBuildInputs = [ pkgs.gnutar ];
-
-#   installPhase = ''
-#   mkdir -p $out/lib
-# ${lib.getExe' pkgs.gnutar "tar"} -xf $src -C $out/lib
-#   '';
-# })
+    systemPackages = with pkgs; [
     ];
     etc."hypr/monitor-init.conf".text = ''
 monitor=DP-3,3440x1440@144,0x0,1

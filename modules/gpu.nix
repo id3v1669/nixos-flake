@@ -40,24 +40,15 @@
       modesetting.enable = true;
       powerManagement.enable = true;
       forceFullCompositionPipeline = true;
-      # rtx 2060(laptop)-----------------
-      # 535.154.05 - works, sync/offload
-      # 550.54.14  - works, sync/offload, best performance
-      # 550.67     - works, sync/offload
-      # 550.76     - works, sync/offload
-      # 550.78     - works, sync/offload
-      # 555.42.02  - works, hdmi,         finaly works native(hdmi instead of thunderbolt)
-      # 555.52.04  - works, hdmi,         
-      # 560.28.03  - works, hdmi,         better performance, more glitchi on open-kernel-module
-      # 545.29.02  - drm(VDPAU) failure
-      # 545.29.06  - drm(VDPAU) failure
-      # 550.40.07  - drm(VDPAU) failure
       #----------------------------------
       # rtx 3080-------------------------
       # 555.52.04  - works, hdmi,         
       # 560.28.03  - works, hdmi,         
       # 560.31.02  - works, hdmi,         
       # 560.35.03  - works, hdmi,         best performance, finaly fixed electron
+      # 545.29.02  - drm(VDPAU) failure
+      # 545.29.06  - drm(VDPAU) failure
+      # 550.40.07  - drm(VDPAU) failure
       #----------------------------------
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
         version = "560.35.03";
@@ -66,6 +57,12 @@
         settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
         sha256_aarch64 = lib.fakeSha256;
         persistencedSha256 = lib.fakeSha256;
+        patchesOpen = [
+          (pkgs.fetchpatch {
+            url = "https://patch-diff.githubusercontent.com/raw/NVIDIA/open-gpu-kernel-modules/pull/692.patch";
+            hash = "sha256-OYw8TsHDpBE5DBzdZCBT45+AiznzO9SfECz5/uXN5Uc=";
+          })
+        ];
       };
     } // lib.optionalAttrs (gpuvar.tech == "prime") {
       prime = {

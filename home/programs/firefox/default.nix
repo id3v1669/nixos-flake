@@ -66,6 +66,7 @@
         "browser.search.suggest.enabled" = false;
         "browser.safebrowsing.downloads.enabled" = false;
         "browser.safebrowsing.blockedURIs.enabled" = false;
+        "browser.low_commit_space_threshold_percent" = 70;
         "distribution.searchplugins.defaultLocale" = "en-AU";
         "devtools.chrome.enabled" = true;
         "general.useragent.locale" = "en-AU";

@@ -69,7 +69,8 @@
   };
 
   services.clamav = let 
-    srv = (desk != "server"); 
+    srv = false; # temporary disabled
+    #srv = (desk != "server"); 
   in {
     daemon.enable = srv;
     fangfrisch.enable = srv;
@@ -77,9 +78,3 @@
     updater.enable = srv;
   };
 }
-
-# kernel.unprivileged_bpf_disabled=1
-# net.core.bpf_jit_harden=2
-# kernel.unprivileged_userns_clone=0
-# kernel.kexec_load_disabled=1
-# kernel.perf_event_paranoid=3
