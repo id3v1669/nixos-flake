@@ -29,7 +29,6 @@
     libsForQt5.kdenlive           # video editing
 
     #testing
-    over-logseq
     zed-editor
     sysbench
     phoronix-test-suite

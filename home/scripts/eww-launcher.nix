@@ -9,6 +9,7 @@ writeShellApplication {
   runtimeInputs = with pkgs; [
     eww
     gnugrep
+    alsa-utils
     (callPackage ./eww-ws.nix {envir = envir;})
     (callPackage ./eww-lang.nix {})
     (callPackage ./eww-volume.nix {})
@@ -19,7 +20,9 @@ set +o errexit
 set +o nounset
 set +o pipefail
 
-pidof eww | xargs kill
+if [ "$(pidof eww)" ]; then
+  pidof eww | xargs kill
+fi
 
 sleep 2
 eww daemon
