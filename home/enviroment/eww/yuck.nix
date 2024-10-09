@@ -4,6 +4,7 @@
 , cpuvar
 , uservars
 , gpuvar
+, hostname
 , ...
 }:
 {
@@ -14,6 +15,12 @@
 (box 
   :class "cputemp"
   "''${EWW_TEMPS.CORETEMP_CORE_0}°C "
+)
+(box :class "spacerh" "|")
+    '' else if hostname == "l14g3" then ''
+(box 
+  :class "cputemp"
+  "''${EWW_TEMPS.THINKPAD_CPU}°C "
 )
 (box :class "spacerh" "|")
     '' else '''';
@@ -27,6 +34,12 @@
 (box 
   :class "ram"
   "vram: ''${round(EWW_GPU.NVIDIA_GPU_VRAM_CURRENT_0/1073741824,1)}/''${round(EWW_GPU.NVIDIA_GPU_VRAM_MAX_0/1073741824,1)} Gb"
+)
+    '' else if hostname == "l14g3" then ''
+(box :class "spacerh" "|")
+(box 
+  :class "ram"
+  "gpu: ''${EWW_TEMPS.THINKPAD_GPU}°C"
 )
     '' else '''';
   in

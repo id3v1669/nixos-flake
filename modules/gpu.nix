@@ -93,7 +93,7 @@
       nvidia-system-monitor-qt
     ]);
     variables = {
-    } // lib.optionalAttrs ( gpuvar.tech == "native") {
+    } // lib.optionalAttrs ( gpuvar.type == "nvidia" && gpuvar.tech == "native") {
       LIBVA_DRIVER_NAME = "nvidia";
       GBM_BACKEND = "nvidia-drm";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
