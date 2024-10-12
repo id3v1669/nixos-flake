@@ -21,9 +21,6 @@
     (prismlauncher.override {
       jdks = with pkgs; [jdk22 zulu];
     })
-
-    # sound
-    spotify
     
     # vid photo etc
     libsForQt5.kdenlive           # video editing

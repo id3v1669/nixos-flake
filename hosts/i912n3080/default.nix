@@ -53,6 +53,6 @@ cursor:no_hardware_cursors = true
 render:explicit_sync=0
     '';
   };
-  nix.settings.cores = 12;
+  nix.settings.cores = 8;
   system.stateVersion = "${curversion}";
 }

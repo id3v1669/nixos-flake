@@ -20,5 +20,6 @@
     ./rider
     ./swappy
     ./chromium
+    ./spicetify
   ];
 }

@@ -89,6 +89,7 @@
     cargo-binutils                # rust tools
     xdg-utils                     # xdg-open and other xdg utils
     wl-clipboard                  # wayland clipboard
+    wl-clipboard-x11              # xwayland clipboard
     cliphist                      # clipboard history
     
     # nix utils

@@ -14,8 +14,5 @@
 
     # games
     prismlauncher
-
-    # sound
-    spotify
   ];
 }

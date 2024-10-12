@@ -10,6 +10,10 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     anyrun.url = "github:anyrun-org/anyrun";
     dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     eww = {
       url = "github:id3v1669/eww";
       inputs.nixpkgs.follows = "nixpkgs";

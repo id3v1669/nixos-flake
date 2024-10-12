@@ -81,7 +81,6 @@ in
           over-rofi-emoji = (import ./../overlays/rofi-emoji.nix { inherit pkgs; });                          # rofi-emoji overlay as package has non-wayland build input
           over-opencore = (prev.callPackage ./../overlays/opencore.nix {});                                   # opencore bootloader files as official repo doesn't have it (later create module)
           over-veracrypt = (prev.callPackage ./../overlays/veracrypt {});                                     # veracrypt overlay due to sudo-rs glitch
-          over-spotify = (prev.callPackage ./../overlays/spot.nix {});                                        # spotify with adblocker
           #--------------------------------------------------------------------------------------
         })
       ];
