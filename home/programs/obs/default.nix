@@ -11,7 +11,7 @@
     plugins = with pkgs.obs-studio-plugins; [
       obs-vaapi
       wlrobs
-      obs-vkcapture
+      #obs-vkcapture
       droidcam-obs
     ] ++ lib.optional (gpuvar.tech == "nvidia") pkgs.obs-studio-plugins.obs-nvfbc;
   };

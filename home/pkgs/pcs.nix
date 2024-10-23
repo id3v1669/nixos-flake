@@ -50,7 +50,7 @@
     mangohud                      # overlay for games & apps
     steam-tui                     # unofficial steam tui client in rust
     steam-run                     # fhs steam
-    steamPackages.steamcmd        # steamcmd for testing
+    steamcmd                      # steamcmd for testing
 
     # files
     filezilla                     # ftp client

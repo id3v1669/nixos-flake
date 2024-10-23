@@ -1,13 +1,11 @@
 { inputs
 , ...
 }:
-let
-  curversion = "24.11";
-in
 {
   mkSyst = { 
     hostname,
     envir,
+    curversion ? "24.11",
     desk ? "desktop",
     bootloader ? ({
       type = "opencore";
@@ -70,7 +68,7 @@ in
           hyprland-unwrapped = inputs.hyprland.packages.${prev.system}.hyprland-unwrapped;                    # overlay for hyprland-unwrapped
           xdg-desktop-portal-hyprland = inputs.hyprland.packages.${prev.system}.xdg-desktop-portal-hyprland;  # overlay for xdg-desktop-portal-hyprland
           dynamic-color-gtk-theme = inputs.dcgt.packages.${prev.system}.default;                              # custom theme(unfinished)
-          eww = inputs.eww.packages.${prev.system}.eww.override {cudaSupport = (gpuvar.type == "nvidia");};  # eww overlay with nviia tempratures support
+          eww = inputs.eww.packages.${prev.system}.eww.override {cudaSupport = (gpuvar.type == "nvidia" && gpuvar.tech != "nvk");};  # eww overlay with nviia tempratures support
           over-btop = (import ./../overlays/btop.nix { inherit pkgs gpuvar; });                               # btop overlay for gpu support
           over-libratbag = (import ./../overlays/libratbag.nix { inherit pkgs; });                            # libratbag overlay with asus rog pugio ii config
           over-lutris = (import ./../overlays/lutris.nix { inherit pkgs; });                                  # lutris overlay with extra packages

@@ -19,9 +19,9 @@
     cewl                          # wordlist generator
     thc-hydra                     # net login cracker
     medusa                        # net login cracker
-    #rainbowcrack                  # rainbow table gen
+    #rainbowcrack                 # rainbow table gen
     ophcrack                      # win pass cracker
-    crowbar                       # brute force tool
+    stable.crowbar                # brute force tool
     fcrackzip                     # zip pass cracker
     johnny                        # tool
     openvas-scanner               # tool
@@ -37,7 +37,7 @@
     cvemap                        # 
     sqlmap                        # sql injection tool
 
-    #volatility                    # memory forensics
+    #volatility                   # memory forensics
     pdf-parser
     regripper
     binwalk
@@ -55,19 +55,19 @@
     scalpel
     sleuthkit
 
-    gobuster # scanner web
-    dirb # scanner web
-    gdb # debugger
+    gobuster                      # scanner web
+    dirb                          # scanner web
+    gdb                           # debugger
 
-    retdec # decompiler
-    ghidra # decompiler
-    snowman # decompiler
+    retdec                        # decompiler
+    ghidra                        # decompiler
+    snowman                       # decompiler
 
     (pkgs.python312Packages.python.withPackages (python-pkgs: with python-pkgs; [
       markdown
       setuptools
       requests
-      patator                   # brute force tool
+      patator                     # brute force tool
       paramiko
     ]))
   ];

@@ -77,7 +77,7 @@ in
       ];
     };
     extraConfig = let
-      explicit_sync = if gpuvar.type == "nvidia" then "render:explicit_sync=0" else ""; # still needed for minecraft((
+      explicit_sync = if (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") then "render:explicit_sync=0" else ""; # still needed for minecraft((
     in ''
 ${explicit_sync}
 cursor:allow_dumb_copy = false

@@ -31,6 +31,7 @@
       "module_blacklist=i915"
       "nvidia_drm.fbdev=1"
     ] ++ lib.lists.optionals (gpuvar.tech == "nvk") [
+      "module_blacklist=i915"
       "nouveau.config=NvGspRm=1"
     ];
     kernelPackages = pkgs.linuxPackages_latest;

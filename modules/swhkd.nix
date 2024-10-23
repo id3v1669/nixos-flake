@@ -6,39 +6,43 @@
 , lib
 , ...
 }:
+let
+  hyprctl = "${lib.getExe' pkgs.hyprland "hyprctl"}";
+  playerctl = "${lib.getExe' pkgs.playerctl "playerctl"}";
+in
 { 
   services.swhkd = {
     enable = true;
     settings = let 
-      killactive = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch killactive"
+      killactive = if envir=="Hyprland" then "${hyprctl} dispatch killactive"
         else "";
-      togglesplit = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch togglesplit"
+      togglesplit = if envir=="Hyprland" then "${hyprctl} dispatch togglesplit"
         else "echo 'no envir'";
-      togglefloating = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch togglefloating"
+      togglefloating = if envir=="Hyprland" then "${hyprctl} dispatch togglefloating"
         else "";
-      pseudo = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch pseudo"
+      pseudo = if envir=="Hyprland" then "${hyprctl} dispatch pseudo"
         else "";
-      nextworkspace = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch workspace e+1"
+      nextworkspace = if envir=="Hyprland" then "${hyprctl} dispatch workspace e+1"
         else "";
-      prevworkspace = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch workspace e-1"
+      prevworkspace = if envir=="Hyprland" then "${hyprctl} dispatch workspace e-1"
         else "";
-      movenextworkspace = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch movetoworkspace e+1"
+      movenextworkspace = if envir=="Hyprland" then "${hyprctl} dispatch movetoworkspace e+1"
         else "";
-      moveprevworkspace = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch movetoworkspace e-1"
+      moveprevworkspace = if envir=="Hyprland" then "${hyprctl} dispatch movetoworkspace e-1"
         else "";
-      fullscreen = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch fullscreen"
+      fullscreen = if envir=="Hyprland" then "${hyprctl} dispatch fullscreen"
         else "";
-      nextactivewindow = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch cyclenext"
+      nextactivewindow = if envir=="Hyprland" then "${hyprctl} dispatch cyclenext"
         else "";
-      movetoworkspace = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch movetoworkspace"
+      movetoworkspace = if envir=="Hyprland" then "${hyprctl} dispatch movetoworkspace"
         else "";
-      workspace = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch workspace"
+      workspace = if envir=="Hyprland" then "${hyprctl} dispatch workspace"
         else "";
-      movefocus = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch movefocus "
+      movefocus = if envir=="Hyprland" then "${hyprctl} dispatch movefocus "
         else "";
-      exit = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl dispatch exit"
+      exit = if envir=="Hyprland" then "${hyprctl} dispatch exit"
         else "";
-      reload = if envir=="Hyprland" then "${pkgs.hyprland}/bin/hyprctl reload"
+      reload = if envir=="Hyprland" then "${hyprctl} reload"
         else "";
     in ''
 
@@ -109,7 +113,7 @@ super + shift + n
   swaync-client -t
 
 super + shift + z
-  ${pkgs.killall}/bin/killall -SIGUSR1 gpu-screen-recorder && sleep 0.5 && notify-send -t 3500 -u low -- "GPU Screen Recorder" "Replay saved"
+  ${lib.getExe pkgs.killall}-SIGUSR1 gpu-screen-recorder && sleep 0.5 && notify-send -t 3500 -u low -- "GPU Screen Recorder" "Replay saved"
 
 super + shift + r
   eww-launcher
@@ -143,11 +147,11 @@ xf86monbrightnessdown
 xf86monbrightnessup
   ${brightnesctrl.up}
 xf86audioplay
-  ${pkgs.playerctl}/bin/playerctl play-pause
+  ${playerctl} play-pause
 xf86audioprev
-  ${pkgs.playerctl}/bin/playerctl previous
+  ${playerctl} previous
 xf86audionext
-  ${pkgs.playerctl}/bin/playerctl next
+  ${playerctl} next
 xf86audiolowervolume
   pamixer -d 10
 xf86audioraisevolume

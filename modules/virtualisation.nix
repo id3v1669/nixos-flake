@@ -13,7 +13,7 @@
     package = pkgs.virt-manager;
   };
   hardware.nvidia-container-toolkit = {                                        # nvidia container toolkit
-    enable = (gpuvar.type == "nvidia");
+    enable = (gpuvar.type == "nvidia" && gpuvar.tech != "nvk");
   };
   virtualisation = let notsrv = desk!="server"; in {
     waydroid.enable = notsrv;                                                  # waydroid for android apps

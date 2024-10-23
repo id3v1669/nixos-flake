@@ -16,6 +16,7 @@
     ./../../modules/sudo.nix
     ./../../modules/swhkd.nix
     ./../../modules/bluetooth.nix
+    ./../../modules/greeters/regreet.nix
   ];
   
   networking.firewall.enable = false;

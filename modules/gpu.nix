@@ -36,7 +36,7 @@
   } // lib.optionalAttrs (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") {
     nvidia = {
       open = true;
-      nvidiaSettings = true;
+      nvidiaSettings = false;
       modesetting.enable = true;
       powerManagement.enable = true;
       forceFullCompositionPipeline = true;
@@ -51,18 +51,12 @@
       # 550.40.07  - drm(VDPAU) failure
       #----------------------------------
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        version = "560.35.03";
-        sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
-        openSha256 = "sha256-/32Zf0dKrofTmPZ3Ratw4vDM7B+OgpC4p7s+RHUjCrg=";
-        settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
+        version = "565.57.01";
+        sha256_64bit = "sha256-buvpTlheOF6IBPWnQVLfQUiHv4GcwhvZW3Ks0PsYLHo=";
+        openSha256 = "sha256-/tM3n9huz1MTE6KKtTCBglBMBGGL/GOHi5ZSUag4zXA=";
+        settingsSha256 = lib.fakeSha256;
         sha256_aarch64 = lib.fakeSha256;
         persistencedSha256 = lib.fakeSha256;
-        patchesOpen = [
-          (pkgs.fetchpatch {
-            url = "https://patch-diff.githubusercontent.com/raw/NVIDIA/open-gpu-kernel-modules/pull/692.patch";
-            hash = "sha256-OYw8TsHDpBE5DBzdZCBT45+AiznzO9SfECz5/uXN5Uc=";
-          })
-        ];
       };
     } // lib.optionalAttrs (gpuvar.tech == "prime") {
       prime = {
@@ -86,8 +80,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "NVIDIA";
           repo = "egl-wayland";
-          rev = "c10c5300483a8ec975e64e5d76c0fb00ac94e026";
-          hash = "sha256-xcllzmRzwbxmfe1muNg+04/FRhNHwq6iONoLilJHCCE=";
+          rev = "0cd471dcfd46e6cb8b71eceddb20cc02eadabf61";
+          hash = "sha256-WWi6V6cxFk+XO3lgP7HZOUNMux5LfE/fjrU1lrJQfSk=";
         };
       }))
       nvidia-system-monitor-qt

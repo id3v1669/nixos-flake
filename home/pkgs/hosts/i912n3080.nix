@@ -18,6 +18,7 @@
 
     # games
     #prismlauncher
+    heroic
     (prismlauncher.override {
       jdks = with pkgs; [jdk22 zulu];
     })
@@ -31,6 +32,5 @@
     phoronix-test-suite
     stress
     #zettlr
-
   ];
 }

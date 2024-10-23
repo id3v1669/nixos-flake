@@ -1,6 +1,11 @@
 { pkgs
+, stable
+, lib
 , ...
 }:
+let
+  inherit (lib) getExe';
+in
 {
   systemd.user.services.nm-applet = {
 		Unit = {
@@ -9,7 +14,7 @@
       PartOf = ["graphical-session.target"];
     };
 		Service = {
-			ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet";
+			ExecStart = "${getExe' pkgs.networkmanagerapplet "nm-applet"}";
       Restart = "on-failure";
 		};
 		Install = { WantedBy = ["graphical-session.target"]; };
@@ -21,7 +26,7 @@
       PartOf = ["graphical-session.target"];
     };
 		Service = {
-			ExecStart = "${pkgs.blueman}/bin/blueman-applet";
+			ExecStart = "${getExe' pkgs.blueman "blueman-applet"}";
       Restart = "on-failure";
 		};
 		Install = { WantedBy = ["graphical-session.target"]; };
@@ -33,7 +38,7 @@
     };
     Service = {
       Type = "simple";
-      ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store";
+      ExecStart = "${getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${getExe' pkgs.cliphist "cliphist"} store";
       Restart = "on-failure";
     };
     Install = { WantedBy = [ "graphical-session.target" ]; };

@@ -20,7 +20,7 @@ in
    	    After = ["default.target" ];
       };
 		  Service = {
-			  ExecStart = "${pkgs.arrpc}/bin/arrpc";
+			  ExecStart = "${lib.getExe pkgs.arrpc}";
         Restart = "on-failure";
 		  };
 		  Install = { WantedBy = [ "default.target" ]; };

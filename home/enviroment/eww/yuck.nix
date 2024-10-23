@@ -5,8 +5,12 @@
 , uservars
 , gpuvar
 , hostname
+, lib
 , ...
 }:
+let
+  inherit (lib) getExe getExe';
+in
 {
   home.file.".config/eww/eww.yuck".text = 
   let
@@ -24,7 +28,7 @@
 )
 (box :class "spacerh" "|")
     '' else '''';
-    gpuinfo = if gpuvar.type == "nvidia" then ''
+    gpuinfo = if (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") then ''
 (box :class "spacerh" "|")
 (box 
   :class "ram"
@@ -101,17 +105,17 @@
         :orientation "vertical"
         (button
           :class "suspend" 
-          :onclick "${pkgs.systemd}/bin/systemctl suspend"
+          :onclick "${getExe' pkgs.systemd "systemctl"} suspend"
           ""
         )
         (button 
           :class "reboot"
-          :onclick "${pkgs.systemd}/bin/reboot"
+          :onclick "${getExe' pkgs.systemd "reboot"}"
           ""
         )
         (button 
           :class "shutdown"
-          :onclick "${pkgs.systemd}/bin/shutdown -h now"
+          :onclick "${getExe' pkgs.systemd "shutdown"} -h now"
           "󰐥"
         )
       )
@@ -227,7 +231,7 @@
       :class "music-controls"
       (button
         :timeout "300ms"
-        :onclick "${pkgs.playerctl}/bin/playerctl previous"
+        :onclick "${getExe' pkgs.playerctl "playerctl"} previous"
         :class "previoussong"
         (box 
           :class "symb"
@@ -237,7 +241,7 @@
       (button
         :timeout "300ms"
         :class "playpause"
-        :onclick "${pkgs.playerctl}/bin/playerctl play-pause"
+        :onclick "${getExe' pkgs.playerctl "playerctl"} play-pause"
         (box 
           :class "symb"
           "󰐎"
@@ -245,7 +249,7 @@
       )
       (button
         :timeout "300ms"
-        :onclick "${pkgs.playerctl}/bin/playerctl next"
+        :onclick "${getExe' pkgs.playerctl "playerctl"} next"
         :class "nextsong"
         (box 
           :class "symb"
@@ -350,7 +354,7 @@
       (button 
         :class "sound"
         :timeout "''${deftimeout}"
-        :onclick "${pkgs.pavucontrol}/bin/pavucontrol"
+        :onclick "${getExe pkgs.pavucontrol}"
         (box 
           (box 
             :class "soundsymb"
@@ -395,7 +399,7 @@
     (button 
       :class "usageinfo"
       :timeout "''${ deftimeout}"
-      :onclick "${pkgs.kitty}/bin/kitty ${pkgs.over-btop}/bin/btop"
+      :onclick "${getExe pkgs.kitty} ${getExe pkgs.over-btop}"
       (box 
         :space-evenly false
         :spacing 10

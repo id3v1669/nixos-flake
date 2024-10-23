@@ -23,7 +23,6 @@
     ./enviroment/anyrun
     ./enviroment/xdg
     ./enviroment/${envir}
-    inputs.anyrun.homeManagerModules.default
   ] ++ lib.lists.optionals (envir == "Hyprland") [
     ./enviroment/eww
     ./enviroment/swaync

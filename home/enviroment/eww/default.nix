@@ -6,7 +6,7 @@
 , ...
 }:
 let 
-  eww = "${pkgs.eww}/bin/eww";
+  eww = "${lib.getExe pkgs.eww}";
 	dependencies = with pkgs; [
 		coreutils
 	];

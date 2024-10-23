@@ -10,6 +10,10 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     anyrun.url = "github:anyrun-org/anyrun";
     dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
+    ndct-sddm = {
+      url = "github:id3v1669/ndct-sddm-corners";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +33,6 @@
     hyprland = {
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
-      submodules = true;
       inputs = {
         nixpkgs.follows = "nixpkgs";
         aquamarine.url = "github:hyprwm/aquamarine";
