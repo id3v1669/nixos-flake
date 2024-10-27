@@ -11,11 +11,11 @@
   '';
   version = "1.5.3";
   src = oldAttrs.src.override {
-    rev = "d008f903995c802cb5addd99bd759878c8a3491a";
-    hash = "sha256-oQr0k+0dOuJgwg51hr3O/OZoD66XOctQK82bu+MY+zE=";
+    rev = "03c7ad4cc00970e970960340b55ad32d3f2643f2";
+    hash = "sha256-Eg0j0Cr5Ibn6QisYKZXwOzll0Lbd8uw66mInck0if0c=";
   };
   
   pnpmDeps = oldAttrs.pnpmDeps.overrideAttrs (oldAttrs2: {
-    outputHash = "sha256-Y55CeMKXZALes7X8uwsnFI6QVExHU8AbvU/gxCvTLHs=";
+    outputHash = "sha256-IIR1iz/Un24/cv/kexRaV0lqFmnEAgXsIyQYOZUCVqI=";
   });
 })

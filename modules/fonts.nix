@@ -13,7 +13,7 @@
       terminus-nerdfont
       noto-fonts
       nerdfonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
       liberation_ttf
       fira-code

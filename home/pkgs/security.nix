@@ -63,13 +63,13 @@
     ghidra                        # decompiler
     snowman                       # decompiler
 
-    (pkgs.python312Packages.python.withPackages (python-pkgs: with python-pkgs; [
-      markdown
-      setuptools
-      requests
-      patator                     # brute force tool
-      paramiko
-    ]))
+    # (pkgs.python312Packages.python.withPackages (python-pkgs: with python-pkgs; [
+    #   markdown
+    #   setuptools
+    #   requests
+    #   patator                     # brute force tool
+    #   paramiko
+    # ]))
   ];
   #TODO: 
   # package metagoofil

@@ -5,13 +5,17 @@
 {
   services.blueman.enable = true;
   hardware.bluetooth = {
-    enable = true;            
+    enable = true;
+    package = pkgs.bluez.override {
+      enableExperimental = true;
+    };
     settings = {
       General = {
         AutoEnable = true;
         FastConnectable = true;
         Experimental = true;
         Enable = "Sink,Media,Socket";
+        ControllerMode = "bredr";
       };
     };
   };

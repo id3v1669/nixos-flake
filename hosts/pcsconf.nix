@@ -44,11 +44,6 @@ in
   hardware = {
     cpu.${cpuvar}.updateMicrocode = mkDefault config.hardware.enableRedistributableFirmware;
     i2c.enable = true;                  # i2c devices support
-    bluetooth.settings = {
-      General = {
-        ControllerMode = "bredr";
-      };
-    };
   };
   xdg.portal = {
     extraPortals = with pkgs; [
