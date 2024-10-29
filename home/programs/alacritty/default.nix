@@ -5,7 +5,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      shell.program = "fish";
+      terminal.shell = "fish";
       font = {
         normal = {
           family = "0xProto";
