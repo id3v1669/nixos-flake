@@ -26,7 +26,6 @@
     "adbusers"
     "input" 
     "disk"
-    "wireshark"
     "i2c"
     "veracrypt"
     "usbmux"

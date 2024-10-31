@@ -2,6 +2,7 @@
 , desk
 , config
 , pkgs
+, uservars
 , ... 
 }:
 {
@@ -77,4 +78,11 @@
     scanner.enable = srv;
     updater.enable = srv;
   };
+  programs.wireshark = {            # wireshark for network analysis
+    enable = true;
+    package = pkgs.wireshark;
+  };
+  users.users.${uservars.name}.extraGroups = [
+    "wireshark"
+  ];
 }

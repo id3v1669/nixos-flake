@@ -34,8 +34,10 @@
     sslscan                       # scan ssl
     dig                           # dns tool(ip of domain)
     exploitdb                     # exploit database
+    wpscan                        # wordpress scanner
     cvemap                        # 
     sqlmap                        # sql injection tool
+    netcat-gnu                    # network tool
 
     #volatility                   # memory forensics
     pdf-parser
@@ -62,6 +64,7 @@
     retdec                        # decompiler
     ghidra                        # decompiler
     snowman                       # decompiler
+    
 
     # (pkgs.python312Packages.python.withPackages (python-pkgs: with python-pkgs; [
     #   markdown
@@ -78,5 +81,4 @@
   # declare service for metasploitable
   # declare service for faction
   # to check https://github.com/NixOS/nixpkgs/issues/81418
-
 }

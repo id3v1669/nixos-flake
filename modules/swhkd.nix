@@ -113,7 +113,7 @@ super + shift + n
   swaync-client -t
 
 super + shift + z
-  ${lib.getExe pkgs.killall}-SIGUSR1 gpu-screen-recorder && sleep 0.5 && notify-send -t 3500 -u low -- "GPU Screen Recorder" "Replay saved"
+  ${lib.getExe pkgs.killall} -SIGUSR1 gpu-screen-recorder && sleep 0.5 && notify-send -t 3500 -u low -- "GPU Screen Recorder" "Replay saved"
 
 super + shift + r
   eww-launcher

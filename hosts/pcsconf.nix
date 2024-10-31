@@ -27,10 +27,6 @@ in
       enable = true;
       package = pkgs.gamescope;
     };
-    wireshark = {                       # wireshark for network analysis
-      enable = true;
-      package = pkgs.wireshark;
-    };
     kdeconnect = {
       enable = true;                    # kdeconnect for android integration
       package = mkDefault pkgs.kdePackages.kdeconnect-kde;

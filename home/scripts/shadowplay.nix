@@ -11,6 +11,7 @@ writeShellApplication{
     killall
     eww
     gawk
+    gpu-screen-recorder
   ] ++ lib.lists.optionals (envir == "Hyprland") [
     hyprland
   ];
