@@ -12,17 +12,8 @@ writeShellApplication{
     eww
     gawk
     gpu-screen-recorder
-  ] ++ lib.lists.optionals (envir == "Hyprland") [
-    hyprland
   ];
-  text = 
-  let 
-    monitor = if envir == "Hyprland" then ''
-monitor=$(hyprctl monitors | grep "ID $id" | awk '{print $2}')
-    '' else ''
-monitor="screen"
-    '';
-  in ''
+  text = ''
 set +o errexit
 set +o nounset
 set +o pipefail
@@ -33,18 +24,12 @@ if [[ $(pidof gpu-screen-recorder) ]]; then
     exit 0
 fi
 
-id="1"
-if [ -n "$1" ]; then
-    id=$1
-fi
-
 video_path="$HOME/Videos/ShadowPlay"
 
 mkdir -p "$video_path"
-${monitor}
 output="$(pactl get-default-sink).monitor"
 input="$(pactl get-default-source)"
 eww update recclass="replay active"
-gpu-screen-recorder -w "$monitor" -f 30 -a "$output|$input" -c mp4 -r 240 -o "$video_path"
+gpu-screen-recorder -w portal -f 40 -a "$output|$input" -c mp4 -r 240 -o "$video_path"
   '';
 }

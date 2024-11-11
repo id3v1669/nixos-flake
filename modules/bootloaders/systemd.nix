@@ -1,4 +1,5 @@
 { bootloader
+, lib
 , ...
 }: 
 {
@@ -6,9 +7,9 @@
     timeout = bootloader.timeout;
     systemd-boot = {
       enable = true;
-      configurationLimit = 20;
+      configurationLimit = 10;
     };
     efi.canTouchEfiVariables = true;
-    grub.enable = false;
+    grub.enable = lib.mkForce false;
   };
 }

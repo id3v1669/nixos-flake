@@ -33,6 +33,8 @@
     username = "${uservars.name}";
     homeDirectory = "/home/${uservars.name}";
     sessionVariables = {
+      __GL_VRR_ALLOWED = "0";
+      __GL_GSYNC_ALLOWED = "0";
       MOZ_ENABLE_WAYLAND = "1";
       _JAVA_AWT_WM_NONREPARENTING = "1";
       SDL_VIDEODRIVER = "wayland";

@@ -23,6 +23,7 @@ in
     systemd.enable = true;
     xwayland.enable = true;
     settings = {
+      decoration.rounding = 5;
       general = {
         gaps_in = 5;
         gaps_out = 10;
@@ -30,9 +31,6 @@ in
         "col.active_border" = "rgb(${clp.base16.hex}) rgb(${clp.base12.hex}) 45deg";
         "col.inactive_border" = "rgb(${clp.base04.hex})";
         layout = "dwindle";
-      };
-      decoration = {
-        rounding = 5;
       };
       animations = {
         enabled = true;
@@ -60,7 +58,8 @@ in
         workspace_swipe_fingers = 3;
       };
       misc = {
-         disable_hyprland_logo = false;
+        disable_hyprland_logo = false;
+        vrr = 0;
       };
       dwindle = {
         pseudotile = true;
@@ -76,10 +75,9 @@ in
         "$mainMod SHIFT, R, exec, anyrun"
       ];
     };
-    extraConfig = let
-      explicit_sync = if (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") then "render:explicit_sync=0" else ""; # still needed for minecraft((
-    in ''
-${explicit_sync}
+    extraConfig = ''
+render:explicit_sync = 1 #required for proper screensharing
+
 cursor:allow_dumb_copy = false
 cursor:no_hardware_cursors = true
 #----------------startup commands-----------------

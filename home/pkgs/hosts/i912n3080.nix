@@ -20,7 +20,7 @@
     #prismlauncher
     heroic
     (prismlauncher.override {
-      jdks = with pkgs; [jdk22 zulu];
+      jdks = with pkgs; [jdk23 zulu];
     })
     
     # vid photo etc

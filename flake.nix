@@ -14,6 +14,10 @@
       url = "github:id3v1669/ndct-sddm-corners";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -77,7 +81,7 @@
           sleeptimeout = 99000;
         };
         bootloader = {
-          type = "systemd";
+          type = "secureboot";
           timeout = 10;
         };
         gpuvar = {
@@ -98,7 +102,7 @@
           sleeptimeout = 99000;
         };
         bootloader = {
-          type = "systemd";
+          type = "secureboot";
           timeout = 10;
         };
         gpuvar = {
@@ -119,7 +123,7 @@
           sleeptimeout = 99000;
         };
         bootloader = {
-          type = "systemd";
+          type = "secureboot";
           timeout = 10;
         };
         gpuvar = {
