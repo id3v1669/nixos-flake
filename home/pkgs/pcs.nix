@@ -30,6 +30,7 @@
     tor-browser                   # tor browser for research
 
     # vid photo etc
+    cameractrls-gtk4              # camera controls
     vlc                           # video player
     mpv                           # video player
     nomacs                        # image viewer
@@ -45,7 +46,7 @@
     whatsapp-for-linux            # whatsapp client
 
     # games
-    protonup-qt                   # proton and wine updater
+    protonplus                    # proton and wine updater
     over-lutris                   # game launcher
     mangohud                      # overlay for games & apps
     steam-tui                     # unofficial steam tui client in rust

@@ -78,7 +78,7 @@ in
     extraConfig = ''
 render:explicit_sync = 1 #required for proper screensharing
 
-cursor:allow_dumb_copy = false
+cursor:use_cpu_buffer = false
 cursor:no_hardware_cursors = true
 #----------------startup commands-----------------
 exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30    # set cursor as hyprland doesn't respect gtk

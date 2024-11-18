@@ -1,5 +1,4 @@
 { pkgs
-, gpuvar
 , ...
 }:
 (pkgs.vesktop.override {
@@ -18,5 +17,25 @@
   
   pnpmDeps = oldAttrs.pnpmDeps.overrideAttrs (oldAttrs2: {
     outputHash = "sha256-ap4q0VNxobOxjTb3ULqanDoDl3Vc+h7PU0U6nlPVm+c=";
+  });
+
+  desktopItems = (pkgs.makeDesktopItem {
+    name = "vesktop";
+    desktopName = "Vesktop";
+    exec = "vesktop %U";
+    icon = "discord";
+    startupWMClass = "Vesktop";
+    genericName = "Internet Messenger";
+    keywords = [
+      "discord"
+      "vencord"
+      "electron"
+      "chat"
+    ];
+    categories = [
+      "Network"
+      "InstantMessaging"
+      "Chat"
+    ];
   });
 })

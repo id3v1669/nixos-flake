@@ -51,7 +51,7 @@
     etc."hypr/monitor-init.conf".text = ''
 monitor=DP-3,3440x1440@144,0x0,1
 monitor=DP-2,disable
-cursor:allow_dumb_copy = false
+cursor:use_cpu_buffer = false
 cursor:no_hardware_cursors = true
 render:explicit_sync=0
     '';

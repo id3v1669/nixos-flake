@@ -28,6 +28,7 @@
     tcpdump                       # tool
     dhcpdump                      # tool
     nmap                          # network scanner
+    rustscan                      # network scanner nmap alternative
     over-veracrypt                # gui encryption
     sherlock                      # find accounts by username
     openssl                       # cli encryption
@@ -48,7 +49,7 @@
     stegseek
     steghide
 
-    gnupg
+
     ent
     truecrack
     pdfcrack

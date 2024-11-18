@@ -5,7 +5,7 @@
   mkSyst = { 
     hostname,
     envir,
-    curversion ? "24.11",
+    curversion ? "25.05",
     desk ? "desktop",
     bootloader ? ({
       type = "opencore";
@@ -74,7 +74,7 @@
           over-lutris = (import ./../overlays/lutris.nix { inherit pkgs; });                                  # lutris overlay with extra packages
           over-gruvbox-plus-icons = (import ./../overlays/gruvbox-plus-icons.nix { inherit pkgs; });          # gruvbox-plus-icons overlay with symlinks for symbolic icons
           over-steam = (import ./../overlays/steam.nix { inherit pkgs; });                                    # steam overlay with extra packages
-          over-vesktop = (import ./../overlays/vesktop.nix { inherit pkgs gpuvar; });                         # vesktop overlay with no wayland flags
+          over-vesktop = (import ./../overlays/vesktop.nix { inherit pkgs; });                         # vesktop overlay with no wayland flags
           over-rofi-calc = (import ./../overlays/rofi-calc.nix { inherit pkgs; });                            # rofi-calc overlay as package has non-wayland build input
           over-rofi-emoji = (import ./../overlays/rofi-emoji.nix { inherit pkgs; });                          # rofi-emoji overlay as package has non-wayland build input
           over-opencore = (prev.callPackage ./../overlays/opencore.nix {});                                   # opencore bootloader files as official repo doesn't have it (later create module)

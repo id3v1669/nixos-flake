@@ -21,7 +21,14 @@
     useDHCP = lib.mkDefault true;
     enableIPv6 = lib.mkDefault true;
   };
-  programs.fish.enable = true;                  
+  programs = {
+    fish.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+      pinentryPackage = pkgs.pinentry-all;
+    };
+  };
   users.users.${uservars.name} = {
     isNormalUser = true;
     description = "${uservars.description}";
