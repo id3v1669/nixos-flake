@@ -4,12 +4,21 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    base16x2.url = "github:id3v1669/base16x2-color-shemes";
     sops-nix.url = "github:Mic92/sops-nix";
     nur.url = "github:nix-community/NUR";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-    anyrun.url = "github:anyrun-org/anyrun";
-    dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    base16x2 = {
+      url = "github:id3v1669/base16x2-color-shemes";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dcgt = {
+      url = "github:id3v1669/Dynamic-Color-GTK-Theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ndct-sddm = {
       url = "github:id3v1669/ndct-sddm-corners";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -61,7 +70,10 @@
         systems.follows = "hyprland/systems";
       };
     };
-    hyprpicker.url = "github:hyprwm/hyprpicker";
+    hyprpicker = {
+      url = "github:hyprwm/hyprpicker";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = { ... } @ inputs:
   let 

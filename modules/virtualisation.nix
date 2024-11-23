@@ -18,13 +18,6 @@
   virtualisation = let notsrv = desk!="server"; in {
     waydroid.enable = notsrv;                                                  # waydroid for android apps
     spiceUSBRedirection.enable = notsrv;                                       # USB redirection to vm
-    virtualbox = {
-      host = {
-        enable = notsrv;
-        addNetworkInterface = true;
-      };
-      guest.enable = notsrv;
-    };
     libvirtd = {
       enable = notsrv;                                                         # libvirtd for virt-manager
       qemu = {
@@ -55,13 +48,8 @@
     "kvm"
     "qemu-libvirtd"
     "libvirtd"
-    "vboxusers"
   ];
   environment = {
-    etc."vbox/networks.conf".text = ''
-      * 10.0.0.0/8 192.168.0.0/16 172.28.0.0/16
-      * 2001::/64
-    '';
     systemPackages = with pkgs; [
       nur.repos.ataraxiasjel.waydroid-script
     ];

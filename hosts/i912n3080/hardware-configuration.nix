@@ -7,6 +7,26 @@
 , gpuvar
 , ...
 }:
+let 
+  kernelx = { stdenv, lib, linuxKernel , ...} @ args:
+  (linuxKernel.manualConfig rec {
+    inherit lib;
+    inherit (pkgs) stdenv;
+    version = "6.11.9";
+    modDirVersion = "${version}";
+    configfile = ./config;
+    allowImportFromDerivation = true;
+    src = builtins.fetchurl {
+      url = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${version}.tar.xz";
+      sha256 = "sha256:1d44yfk105bsf9f853f2fpnzqd0xbqn8drg1dv4ri5dxldx8lrbm";
+    };
+    kernelPatches = [];
+  });
+  passthru = {
+    features.ia32Emulation = true;
+  };
+  customKernel = pkgs.recurseIntoAttrs(pkgs.linuxPackagesFor (pkgs.callPackage kernelx {}).overrideAttrs(old: {passthru = old.passthru // passthru;}));
+in 
 {
   imports =[ (modulesPath + "/installer/scan/not-detected.nix") ];
 
@@ -34,7 +54,7 @@
       "module_blacklist=i915"
       "nouveau.config=NvGspRm=1"
     ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_11;
     kernel.sysctl."kernel.unprivileged_userns_clone" = 1;
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback

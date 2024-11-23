@@ -40,16 +40,6 @@
       modesetting.enable = true;
       powerManagement.enable = true;
       forceFullCompositionPipeline = true;
-      #----------------------------------
-      # rtx 3080-------------------------
-      # 555.52.04  - works, hdmi,         
-      # 560.28.03  - works, hdmi,         
-      # 560.31.02  - works, hdmi,         
-      # 560.35.03  - works, hdmi,         best performance, finaly fixed electron
-      # 545.29.02  - drm(VDPAU) failure
-      # 545.29.06  - drm(VDPAU) failure
-      # 550.40.07  - drm(VDPAU) failure
-      #----------------------------------
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
         version = "565.57.01";
         sha256_64bit = "sha256-buvpTlheOF6IBPWnQVLfQUiHv4GcwhvZW3Ks0PsYLHo=";
@@ -80,8 +70,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "NVIDIA";
           repo = "egl-wayland";
-          rev = "218f67846472c9310355210ee9a7e1fabed95062";
-          hash = "sha256-D11+5rYrf9+ESXREcAdAHUvO9ix7CunVdJH8zvzXTAE=";
+          rev = "eeb29e10e5e7bedb0ce81cfff34683eda960bc80";
+          hash = "sha256-/lj52qCbv07NDYDdF8SEjCIWWPAMcwXNvYXiU8IoC/A=";
         };
       }))
       nvidia-system-monitor-qt

@@ -10,8 +10,8 @@ let
 in
 {
   home.packages = (with pkgs;[
-    over-vesktop                       # vesktop(unofficial discord app)
-    arrpc                              # rpc for discord(vesktop)
+    over-equibop                       # equibop(unofficial discord app)        
+    arrpc                              # rpc for discord(equibop)
   ]);
   systemd.user.services = {} // lib.optionalAttrs (desk == "desktop") {
     arrpc = {
@@ -26,7 +26,7 @@ in
 		  Install = { WantedBy = [ "default.target" ]; };
     };
   };
-  home.file.".config/vesktop/themes/usertheme.css".text = with config.palette; ''
+  home.file.".config/equibop/themes/usertheme.css".text = with config.palette; ''
 .theme-dark,
 .theme-light {
   --white:                                        ${base01.hexT};                  /* some buttons hover */
