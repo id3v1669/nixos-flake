@@ -59,14 +59,10 @@
       [
         inputs.nur.overlay
         inputs.eww.overlays.default
-        inputs.hyprlock.overlays.default
-        inputs.hyprpaper.overlays.default
         inputs.hyprpicker.overlays.default
         inputs.nix-minecraft.overlay
+        inputs.hyprland.overlays.default
         (final: prev: {
-          hyprland = inputs.hyprland.packages.${prev.system}.hyprland;                                        # overlay for hyprland
-          hyprland-unwrapped = inputs.hyprland.packages.${prev.system}.hyprland-unwrapped;                    # overlay for hyprland-unwrapped
-          xdg-desktop-portal-hyprland = inputs.hyprland.packages.${prev.system}.xdg-desktop-portal-hyprland;  # overlay for xdg-desktop-portal-hyprland
           dynamic-color-gtk-theme = inputs.dcgt.packages.${prev.system}.default;                              # custom theme(unfinished)
           eww = inputs.eww.packages.${prev.system}.eww.override {cudaSupport = (gpuvar.type == "nvidia" && gpuvar.tech != "nvk");};  # eww overlay with nviia tempratures support
           over-btop = (import ./../overlays/btop.nix { inherit pkgs gpuvar; });                               # btop overlay for gpu support

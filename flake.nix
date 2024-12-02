@@ -44,31 +44,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        aquamarine.url = "github:hyprwm/aquamarine";
-        xdph.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-      };
-    };
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
-    };
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-      inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprpicker = {
       url = "github:hyprwm/hyprpicker";

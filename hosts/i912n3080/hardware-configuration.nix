@@ -54,7 +54,7 @@ in
       "module_blacklist=i915"
       "nouveau.config=NvGspRm=1"
     ];
-    kernelPackages = pkgs.linuxPackages_6_11;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernel.sysctl."kernel.unprivileged_userns_clone" = 1;
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback

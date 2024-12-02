@@ -130,8 +130,8 @@ windowrulev2 = opacity 0.95 0.9,class:^(org.telegram.desktop)$    # telegram
 windowrulev2 = float, class:(polkit-gnome-authentication-agent-1)
 windowrulev2 = center, class:(polkit-gnome-authentication-agent-1)
 #Discord client
-windowrulev2 = opacity 0.95 0.9,class:^(vesktop)$
-windowrulev2 = workspace 2, class:(vesktop)
+windowrulev2 = opacity 0.95 0.9,class:^(equibop)$
+windowrulev2 = workspace 2, class:(equibop)
 #--------------------------------------------------
     '';
   };

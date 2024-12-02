@@ -25,7 +25,7 @@
     ./enviroment/${envir}
   ] ++ lib.lists.optionals (envir == "Hyprland") [
     ./enviroment/eww
-    #./enviroment/swaync
+    ./enviroment/swaync
     ./enviroment/hyprlock
   ];
   home = {

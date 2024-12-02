@@ -20,6 +20,7 @@
       addToQueueTop
       volumePercentage
       copyToClipboard
+      trashbin
     ];
     theme = spicePkgs.themes.onepunch;
   };

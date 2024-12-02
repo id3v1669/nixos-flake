@@ -10,9 +10,8 @@
       decompressFonts = true;
     };
     packages = (with pkgs; [
-      terminus-nerdfont
+      nerd-fonts.terminess-ttf
       noto-fonts
-      nerdfonts
       noto-fonts-cjk-sans
       noto-fonts-emoji
       liberation_ttf

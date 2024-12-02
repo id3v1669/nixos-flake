@@ -40,13 +40,19 @@
       modesetting.enable = true;
       powerManagement.enable = true;
       forceFullCompositionPipeline = true;
-      package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      package = let 
+        drm_fop_flags_linux_612_patch = pkgs.fetchpatch {
+          url = "https://github.com/Binary-Eater/open-gpu-kernel-modules/commit/8ac26d3c66ea88b0f80504bdd1e907658b41609d.patch";
+          hash = "sha256-+SfIu3uYNQCf/KXhv4PWvruTVKQSh4bgU1moePhe57U=";
+        };
+      in config.boot.kernelPackages.nvidiaPackages.mkDriver {
         version = "565.57.01";
         sha256_64bit = "sha256-buvpTlheOF6IBPWnQVLfQUiHv4GcwhvZW3Ks0PsYLHo=";
         openSha256 = "sha256-/tM3n9huz1MTE6KKtTCBglBMBGGL/GOHi5ZSUag4zXA=";
         settingsSha256 = lib.fakeSha256;
         sha256_aarch64 = lib.fakeSha256;
         persistencedSha256 = lib.fakeSha256;
+        patchesOpen = [ drm_fop_flags_linux_612_patch ];
       };
     } // lib.optionalAttrs (gpuvar.tech == "prime") {
       prime = {
