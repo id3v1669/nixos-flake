@@ -420,11 +420,6 @@ in
           "''${round(EWW_DISK['/boot'].free/1073741824,1)} Gb"
         )
         ${gpuinfo}
-        (box :class "spacerh" "|")
-        (box 
-          :class "boot"
-          "''${testvar}"
-        )
       )
     )
   )
