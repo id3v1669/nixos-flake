@@ -4,7 +4,6 @@
 , uservars
 , hostname
 , envir
-, cpuvar
 , gpuvar
 , bootloader
 , ...

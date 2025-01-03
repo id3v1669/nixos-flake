@@ -1,55 +1,59 @@
 { pkgs
+, stable
+, system
 , uservars
+, gpuvar
 , curversion
+, lib
+, config
 , ...
 }:
 {
   imports = [ 
     ./hardware-configuration.nix
     ./../configuration.nix
-    ./../../modules/sops.nix
+    ./../pcsconf.nix
     ./../../modules/virtualisation.nix
     ./../../modules/fonts.nix
+    ./../../modules/sound.nix
+    ./../../modules/gpu.nix
     ./../../modules/security.nix
     ./../../modules/swhkd.nix
+    ./../../modules/sudo.nix
+    ./../../modules/sops.nix
+    ./../../modules/bluetooth.nix
+    ./../../modules/greeters/regreet.nix
   ];
 
   networking = {
-    useDHCP = false;
-    interfaces.ens3.ipv4.addresses = [
-      { address = "77.91.123.39"; prefixLength = 24; }
-      { address = "77.91.123.50"; prefixLength = 24; }
+    firewall.enable = false;
+    enableIPv6 = false;
+  };
+  
+  users.users.${uservars.name}.extraGroups = [
+    "users"
+    "wheel"
+    "networkmanager"
+    "rustdesk"
+    "adbusers"
+    "input" 
+    "disk"
+    "i2c"
+    "veracrypt"
+    "usbmux"
+  ];
+  environment = {
+    systemPackages = with pkgs; [
     ];
-    defaultGateway = "77.91.123.1";
-    nameservers = [ "1.1.1.1" "8.8.8.8" ];
-    firewall.allowedTCPPorts = [ 21669 26783 80 443 ];
-    firewall.enable = true;
+    etc."hypr/monitor-init.conf".text = ''
+monitor=DP-1,3440x1440@100,0x0,1
+monitor=HDMI-A-2,disable
+    '';
   };
-  users.users = {
-    ${uservars.name}.extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
-    guest = {
-      isNormalUser = true;
-      description = "guest user";
-      shell = pkgs.fish;
-      ignoreShellProgramCheck = true;
-      extraGroups = [
-        "networkmanager"
-      ];
-    };
-  };
-  services.openssh = {
-    enable = true;
-    ports = [ 26783 ];
-    settings = {
-      PermitRootLogin = "no";
-    };
-  };
-  environment.variables = {
-    #system vars
-    EDITOR = "nano";
+  nix.settings = {
+    cores = 8;
+    substituters = ["https://nix-gaming.cachix.org"];
+    trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
   };
   system.stateVersion = "${curversion}";
 }

@@ -72,7 +72,7 @@ in
         "ALT, mouse:272, resizewindow"
       ];
       bind = [
-        "$mainMod SHIFT, R, exec, anyrun"
+        "$mainMod, R, exec, anyrun"
       ];
     };
     extraConfig = ''

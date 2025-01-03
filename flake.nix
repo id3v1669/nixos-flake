@@ -7,16 +7,17 @@
     sops-nix.url = "github:Mic92/sops-nix";
     nur.url = "github:nix-community/NUR";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
+    lan-mouse = {
+      url = "github:feschber/lan-mouse";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     anyrun = {
       url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     base16x2 = {
       url = "github:id3v1669/base16x2-color-shemes";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dcgt = {
-      url = "github:id3v1669/Dynamic-Color-GTK-Theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ndct-sddm = {
@@ -58,73 +59,13 @@
   in
   {
     nixosConfigurations = {
-      i912n3080hypr = mkSystem { 
-        hostname = "i912n3080";
-        envir = "Hyprland";
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          domain = "none";
-          wp = "default3.png";
-          owner = "id3v1669";
-          sleeptimeout = 99000;
-        };
-        bootloader = {
-          type = "secureboot";
-          timeout = 10;
-        };
-        gpuvar = {
-          type = "nvidia";
-          tech = "native";
-          port = "DP-3";
-        };
-      };
-      i912n3080hyprnvk = mkSystem {
-        hostname = "i912n3080";
-        envir = "Hyprland";
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          domain = "none";
-          wp = "default3.png";
-          owner = "id3v1669";
-          sleeptimeout = 99000;
-        };
-        bootloader = {
-          type = "secureboot";
-          timeout = 10;
-        };
-        gpuvar = {
-          type = "nvidia";
-          tech = "nvk";
-          port = "DP-3";
-        };
-      };
-      i912n3080KDE = mkSystem { 
-        hostname = "i912n3080";
-        envir = "KDE";
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          domain = "none";
-          wp = "default3.png";
-          owner = "id3v1669";
-          sleeptimeout = 99000;
-        };
-        bootloader = {
-          type = "secureboot";
-          timeout = 10;
-        };
-        gpuvar = {
-          type = "nvidia";
-          tech = "native";
-          port = "DP-3";
-        };
-      };
       nuc10chhypr = mkSystem { 
         hostname = "nuc10ch";
         envir = "Hyprland";
-        cpuvar = "intel";
+        cpuvar = {
+          type = "intel";
+          hasIntegrated = false;
+        };
         bootloader = {
           type = "systemd";
           defconf = false;
@@ -144,13 +85,17 @@
         };
         gpuvar = {
           type = "amd";
-          tech = "amd";
+          tech = "broken";
         };
       };
       l14g3hypr = mkSystem { 
         hostname = "l14g3";
         envir = "Hyprland";
-        cpuvar = "amd";
+        cpuvar = {
+          type = "amd";
+          hasIntegrated = true;
+          integratedBroken = false;
+        };
         desk = "laptop";
         bootloader = {
           type = "systemd";
@@ -177,7 +122,10 @@
       mbp14-3hypr = mkSystem { 
         hostname = "mbp14-3";
         envir = "Hyprland";
-        cpuvar = "intel";
+        cpuvar = {
+          type = "intel";
+          hasIntegrated = true;
+        };
         desk = "laptop";
         bootloader = {
           type = "systemd";

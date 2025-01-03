@@ -1,8 +1,9 @@
 { pkgs
 , gpuvar
+, cpuvar
 , ...
 }:
 (pkgs.btop.override {
   cudaSupport = (gpuvar.type == "nvidia" && gpuvar.tech != "nvk");
-  rocmSupport = (gpuvar.type == "amd");
+  rocmSupport = ((gpuvar.type == "amd" && gpuvar.tech != "broken") || (cpuvar.type == "amd" && cpuvar.hasIntegrated && !cpuvar.integratedBroken));
 })

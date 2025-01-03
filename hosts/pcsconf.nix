@@ -11,6 +11,10 @@ let
   inherit (lib) getExe getExe' mkDefault optionalAttrs;
 in
 {
+  boot.extraModprobeConfig = ''
+    # fix the F* keys on nuphy air 75 win mode
+    options hid_apple fnmode=0
+  '';
   security = {
     rtkit.enable = true;
     chromiumSuidSandbox.enable = true;
@@ -38,7 +42,7 @@ in
     xwayland.enable = true;             # xwayland for x11 apps
   };
   hardware = {
-    cpu.${cpuvar}.updateMicrocode = mkDefault config.hardware.enableRedistributableFirmware;
+    cpu.${cpuvar.type}.updateMicrocode = mkDefault config.hardware.enableRedistributableFirmware;
     i2c.enable = true;                  # i2c devices support
   };
   xdg.portal = {
@@ -62,7 +66,7 @@ in
       openrgb = {
         enable = true;                  # rgb control
         package = pkgs.openrgb-with-all-plugins;
-        motherboard = "${cpuvar}";
+        motherboard = "${cpuvar.type}";
       };
     };
   };

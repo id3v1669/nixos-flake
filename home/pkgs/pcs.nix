@@ -17,11 +17,13 @@
     mpc-cli                       # cli for mpd
     qjackctl                      # gui for jack
 
-    # vm, virt and emulators
+    # vm, virt, emulators & remote
     distrobox
     remmina                       # remote desktop
     stable.vagrant                # venv dev tool
     packer                        
+    minikube                      # kubernetes for local tests
+    kubectl                       # kubernetes cli
 
     # web
     networkmanagerapplet          # network manager applet
@@ -62,9 +64,11 @@
     unzip                         # unzip .zip arcs
     file                          # file type detection
     rar                           # unfree for rar archives
+    veracrypt                     # gui encryption
 
     # text & docs
     libreoffice                   # opensource office apps
+    calibre                       # ebook reader
     hunspell                      # needed for libreoffice
     hunspellDicts.en_US-large     # needed for libreoffice
     hunspellDicts.ru_RU           # needed for libreoffice

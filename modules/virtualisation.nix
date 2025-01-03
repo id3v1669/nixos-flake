@@ -5,7 +5,8 @@
 , pkgs
 , stable
 , ...
-}: 
+}:
+let notsrv = desk!="server"; in
 {
   security.virtualisation.flushL1DataCache = "always";                         # flush L1 data cache on context switch
   programs.virt-manager = {                                                    # gui for managing vms       
@@ -15,7 +16,7 @@
   hardware.nvidia-container-toolkit = {                                        # nvidia container toolkit
     enable = (gpuvar.type == "nvidia" && gpuvar.tech != "nvk");
   };
-  virtualisation = let notsrv = desk!="server"; in {
+  virtualisation = {
     waydroid.enable = notsrv;                                                  # waydroid for android apps
     spiceUSBRedirection.enable = notsrv;                                       # USB redirection to vm
     libvirtd = {
@@ -39,16 +40,19 @@
       };
     };
     podman = {
-      enable = true;
+      enable = !notsrv;                                                      # podman for containers on vps
       extraPackages = [ pkgs.podman-compose ];
+    };
+    docker = {
+      enable = notsrv;                                                       # docker for containers on local pc
+      extraPackages = [ pkgs.docker-compose ];
     };
   };
   users.users.${uservars.name}.extraGroups = [
-    "podman"
     "kvm"
     "qemu-libvirtd"
     "libvirtd"
-  ];
+  ] ++ (if notsrv then ["docker"] else ["podman"]);
   environment = {
     systemPackages = with pkgs; [
       nur.repos.ataraxiasjel.waydroid-script

@@ -9,7 +9,7 @@
     #autopsy                      # forensic tool                BROKEN
     adalanche                     # AD visualizer
     chkrootkit                    # rootkit checker
-    dcfldd                        # dd for forensics
+    stable.dcfldd                 # dd for forensics
     dc3dd                         # dd for forensics
     metasploit                    # tool
     nikto                         # tool
@@ -29,7 +29,6 @@
     dhcpdump                      # tool
     nmap                          # network scanner
     rustscan                      # network scanner nmap alternative
-    over-veracrypt                # gui encryption
     sherlock                      # find accounts by username
     openssl                       # cli encryption
     sslscan                       # scan ssl

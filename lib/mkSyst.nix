@@ -21,7 +21,11 @@
       port = "tbqhd";
     }),
     system ? "x86_64-linux",
-    cpuvar ? "intel",
+    cpuvar ? ({
+      type = "intel";
+      hasIntegrated = false;
+      integratedBroken = false;
+    }),
     colorsvar ? "gruvbox-dark",
     brightnesctrl ? ({
       up = "ddcutil setvcp 10 + 5";
@@ -57,15 +61,27 @@
       };
       overlays = 
       [
-        inputs.nur.overlay
+        inputs.nur.overlays.default
         inputs.eww.overlays.default
         inputs.hyprpicker.overlays.default
         inputs.nix-minecraft.overlay
         inputs.hyprland.overlays.default
         (final: prev: {
+          #dcfldd = inputs.stable.packages.${prev.system}.dcfldd;
+          #dcfldd = stable.dcfldd;
+          #libxml2 = stable.libxml2;
+          #libmcrypt = stable.libmcrypt;
+          #rubyPackages.nokogiri = stable.rubyPackages.nokogiri;
+          #rubyPackages_3_1.nokogiri = stable.rubyPackages.nokogiri;
+          #rubyPackages_3_3.nokogiri = stable.rubyPackages.nokogiri;
+          #rubyPackages_3_4.nokogiri = stable.rubyPackages.nokogiri;
+          #nokogiri = stable.rubyPackages.nokogiri;
+          #truecrack = stable.truecrack;
+          #medusa = stable.medusa;
           dynamic-color-gtk-theme = inputs.dcgt.packages.${prev.system}.default;                              # custom theme(unfinished)
-          eww = inputs.eww.packages.${prev.system}.eww.override {cudaSupport = (gpuvar.type == "nvidia" && gpuvar.tech != "nvk");};  # eww overlay with nviia tempratures support
-          over-btop = (import ./../overlays/btop.nix { inherit pkgs gpuvar; });                               # btop overlay for gpu support
+          eww = inputs.eww.packages.${prev.system}.eww.override {cudaSupport = (gpuvar.type == "nvidia" && gpuvar.tech != "nvk");}; 
+                                                                                                              # eww overlay with nviia tempratures support
+          over-btop = (import ./../overlays/btop.nix { inherit pkgs gpuvar cpuvar; });                        # btop overlay for gpu support
           over-libratbag = (import ./../overlays/libratbag.nix { inherit pkgs; });                            # libratbag overlay with asus rog pugio ii config
           over-lutris = (import ./../overlays/lutris.nix { inherit pkgs; });                                  # lutris overlay with extra packages
           over-gruvbox-plus-icons = (import ./../overlays/gruvbox-plus-icons.nix { inherit pkgs; });          # gruvbox-plus-icons overlay with symlinks for symbolic icons
@@ -74,7 +90,6 @@
           over-rofi-calc = (import ./../overlays/rofi-calc.nix { inherit pkgs; });                            # rofi-calc overlay as package has non-wayland build input
           over-rofi-emoji = (import ./../overlays/rofi-emoji.nix { inherit pkgs; });                          # rofi-emoji overlay as package has non-wayland build input
           over-opencore = (prev.callPackage ./../overlays/opencore.nix {});                                   # opencore bootloader files as official repo doesn't have it (later create module)
-          over-veracrypt = (prev.callPackage ./../overlays/veracrypt {});                                     # veracrypt overlay due to sudo-rs glitch
           #--------------------------------------------------------------------------------------
         })
       ];

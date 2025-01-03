@@ -1,4 +1,5 @@
-{ config
+{ pkgs
+, config
 , lib
 , modulesPath
 , system
@@ -11,7 +12,11 @@
 
   boot = {
     kernelModules = [ "kvm-intel" ];
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernel.sysctl."kernel.unprivileged_userns_clone" = 1;
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback
+    ];
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "usbhid" ];
       kernelModules = [ "amdgpu" ];
@@ -19,12 +24,12 @@
   };
 
   fileSystems."/" ={ 
-    device = "/dev/disk/by-uuid/4c97a748-70f1-4505-87d7-6b04f7e389b3";
-    fsType = "ext4";
+    device = "/dev/disk/by-uuid/9e67ad3a-3900-4855-92c4-828a53d4d8f2";
+    fsType = "xfs";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/E7D8-D4E6";
+    device = "/dev/disk/by-uuid/E611-6933";
     fsType = "vfat";
     options = [ "fmask=0022" "dmask=0022" ];
   };

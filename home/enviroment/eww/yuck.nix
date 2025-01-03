@@ -15,7 +15,7 @@ in
   home.file.".config/eww/eww.yuck".text = 
   let
     battery = if desk == "laptop" then "(battery)" else "";
-    cputemp = if cpuvar == "intel" then ''
+    cputemp = if cpuvar.type == "intel" then ''
 (box 
   :class "cputemp"
   "''${EWW_TEMPS.CORETEMP_CORE_0}°C "
