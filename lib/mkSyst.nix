@@ -86,7 +86,6 @@
     allSpecialArgs = {
       inherit 
         inputs
-        pkgs
         stable
         hostname
         envir
@@ -103,6 +102,7 @@
     };
   in
   inputs.nixpkgs.lib.nixosSystem {
+    inherit pkgs;
     specialArgs = allSpecialArgs;
     modules = [
       (./.. + "/hosts/${hostname}")
