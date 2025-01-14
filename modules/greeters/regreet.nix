@@ -1,5 +1,6 @@
 { pkgs
 , lib
+, inputs
 , ...
 }:
 let 
@@ -7,7 +8,7 @@ let
 in
 {
   services.greetd = with pkgs; let
-    greetdHyprlandConfig = pkgs.writeText "greetd-hyprland-config" ''
+    greetdHyprlandConfig = writeText "greetd-hyprland-config" ''
     source=/etc/hypr/monitor-init.conf
 
     animations {
@@ -30,7 +31,7 @@ in
     settings = {
       default_session = {
         command = "${
-          getExe pkgs.hyprland-unwrapped
+          getExe hyprland-unwrapped
         } --config ${greetdHyprlandConfig} > /tmp/hyprland-log-out.txt 2>&1";
         user = "greeter";
       };

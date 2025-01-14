@@ -4,7 +4,7 @@
 , uservars
 , hostname
 , envir
-, gpuvar
+, curversion
 , bootloader
 , ...
 }: 
@@ -59,4 +59,5 @@
       };
     };
   };
+  system.stateVersion = "${curversion}";
 }

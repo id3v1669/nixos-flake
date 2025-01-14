@@ -1,5 +1,6 @@
 { pkgs
 , config
+, stable
 , envir
 , colorsvar
 , uservars

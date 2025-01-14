@@ -1,14 +1,15 @@
 { pkgs
+, stable
 , inputs
 , ...
 }:
 {
   imports = [
-    #./../security.nix
+    ./../security.nix
   ];
   home.packages = with pkgs; [
     # gui
-    gimp                                 # image editing
+    stable.gimp                          # image editing
 
     # text & docs
     joplin-desktop                       # note taking app

@@ -5,7 +5,7 @@
 {
   home.packages = with pkgs; [
     clamtk                        # frontend for clamav
-    stable.theharvester           # emails, subdomains etc
+    theharvester                  # emails, subdomains etc
     #autopsy                      # forensic tool                BROKEN
     adalanche                     # AD visualizer
     chkrootkit                    # rootkit checker
@@ -16,12 +16,11 @@
     john                          # password cracker
     hashcat                       # password cracker
     crunch                        # wordlist generator
-    cewl                          # wordlist generator
+    stable.cewl                   # wordlist generator
     thc-hydra                     # net login cracker
-    medusa                        # net login cracker
-    #rainbowcrack                 # rainbow table gen
+    stable.medusa                 # net login cracker
     ophcrack                      # win pass cracker
-    stable.crowbar                # brute force tool
+    crowbar                       # brute force tool
     fcrackzip                     # zip pass cracker
     johnny                        # tool
     openvas-scanner               # tool
@@ -38,8 +37,7 @@
     cvemap                        # 
     sqlmap                        # sql injection tool
     netcat-gnu                    # network tool
-
-    #volatility                   # memory forensics
+    volatility3                   # memory forensics
     pdf-parser
     regripper
     binwalk
@@ -50,7 +48,7 @@
 
 
     ent
-    truecrack
+    stable.truecrack
     pdfcrack
     cryptsetup
     foremost
@@ -65,6 +63,9 @@
     ghidra                        # decompiler
     snowman                       # decompiler
     
+
+    #rainbowcrack                 # rainbow tables gen Propritary and unsupported platform(mistake in nixpkgs)
+
 
     # (pkgs.python312Packages.python.withPackages (python-pkgs: with python-pkgs; [
     #   markdown

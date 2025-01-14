@@ -67,17 +67,6 @@
         inputs.nix-minecraft.overlay
         inputs.hyprland.overlays.default
         (final: prev: {
-          #dcfldd = inputs.stable.packages.${prev.system}.dcfldd;
-          #dcfldd = stable.dcfldd;
-          #libxml2 = stable.libxml2;
-          #libmcrypt = stable.libmcrypt;
-          #rubyPackages.nokogiri = stable.rubyPackages.nokogiri;
-          #rubyPackages_3_1.nokogiri = stable.rubyPackages.nokogiri;
-          #rubyPackages_3_3.nokogiri = stable.rubyPackages.nokogiri;
-          #rubyPackages_3_4.nokogiri = stable.rubyPackages.nokogiri;
-          #nokogiri = stable.rubyPackages.nokogiri;
-          #truecrack = stable.truecrack;
-          #medusa = stable.medusa;
           dynamic-color-gtk-theme = inputs.dcgt.packages.${prev.system}.default;                              # custom theme(unfinished)
           eww = inputs.eww.packages.${prev.system}.eww.override {cudaSupport = (gpuvar.type == "nvidia" && gpuvar.tech != "nvk");}; 
                                                                                                               # eww overlay with nviia tempratures support
@@ -94,11 +83,27 @@
         })
       ];
     };
+    allSpecialArgs = {
+      inherit 
+        inputs
+        pkgs
+        stable
+        hostname
+        envir
+        curversion
+        desk
+        bootloader
+        gpuvar
+        system
+        cpuvar
+        colorsvar
+        brightnesctrl
+        uservars
+        deflocale;
+    };
   in
   inputs.nixpkgs.lib.nixosSystem {
-    specialArgs = {
-      inherit curversion uservars hostname envir deflocale pkgs stable cpuvar gpuvar desk system bootloader brightnesctrl inputs colorsvar;
-    };
+    specialArgs = allSpecialArgs;
     modules = [
       (./.. + "/hosts/${hostname}")
       inputs.lanzaboote.nixosModules.lanzaboote
@@ -110,7 +115,7 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           users.${uservars.name} = import (./.. + "/home/home.nix") ;
-          extraSpecialArgs = { inherit curversion hostname envir deflocale uservars colorsvar gpuvar cpuvar desk inputs stable; };
+          extraSpecialArgs = allSpecialArgs;
         };
       }
     ];

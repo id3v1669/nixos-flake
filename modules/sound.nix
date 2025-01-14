@@ -3,9 +3,9 @@
 , ...
 }:
 {
-  hardware.pulseaudio.enable = false;
   programs.noisetorch.enable = true;
   services = {
+    pulseaudio.enable = false;
     pipewire = {
       enable = true;
       systemWide = true;

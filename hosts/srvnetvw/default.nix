@@ -1,6 +1,5 @@
 { pkgs
 , uservars
-, curversion
 , ...
 }:
 {
@@ -34,5 +33,4 @@
     #system vars
     EDITOR = "nano";
   };
-  system.stateVersion = "${curversion}";
 }
