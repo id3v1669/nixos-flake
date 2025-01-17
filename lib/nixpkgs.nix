@@ -4,7 +4,17 @@
 }:
 with allSpecialArgs; {
   inherit system;
-  config.allowUnfree = true;
+  config.allowUnfreePredicate = pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) [
+    "vscode"
+    "vscode-extension-github-copilot"
+    "rar"
+    "spotify"
+    "steam"
+    "steam-unwrapped"
+    "veracrypt"
+    "wpscan"
+    "volatility3"
+  ];
   overlays = 
   [
     inputs.nur.overlays.default

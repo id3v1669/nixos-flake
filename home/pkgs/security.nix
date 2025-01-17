@@ -3,6 +3,9 @@
 , ...
 }:
 {
+  imports = [
+    #./security-unfree.nix
+  ];
   home.packages = with pkgs; [
     clamtk                        # frontend for clamav
     theharvester                  # emails, subdomains etc
@@ -33,11 +36,9 @@
     sslscan                       # scan ssl
     dig                           # dns tool(ip of domain)
     exploitdb                     # exploit database
-    wpscan                        # wordpress scanner
     cvemap                        # 
     sqlmap                        # sql injection tool
     netcat-gnu                    # network tool
-    volatility3                   # memory forensics
     pdf-parser
     regripper
     binwalk

@@ -21,7 +21,7 @@
     distrobox
     remmina                       # remote desktop
     stable.vagrant                # venv dev tool
-    packer                        
+    #packer                        
     minikube                      # kubernetes for local tests
     kubectl                       # kubernetes cli
 
@@ -51,9 +51,6 @@
     protonplus                    # proton and wine updater
     over-lutris                   # game launcher
     mangohud                      # overlay for games & apps
-    steam-tui                     # unofficial steam tui client in rust
-    steam-run                     # fhs steam
-    steamcmd                      # steamcmd for testing
 
     # files
     filezilla                     # ftp client
