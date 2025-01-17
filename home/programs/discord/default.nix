@@ -4,10 +4,6 @@
 , desk
 , ...
 }:
-let
-    inherit (import ./../../../lib/h2rgba.nix { inherit lib; }) hexToRgba;
-    inherit (import ./../../../lib/h2rgb.nix { inherit lib; }) hexToRgb;
-in
 {
   home.packages = (with pkgs;[
     over-equibop                       # equibop(unofficial discord app)        
@@ -90,14 +86,16 @@ in
   --button-secondary-background:                  ${base0B.hexT};                  /* buttons invite friends incall */
   --button-secondary-background-hover:            ${base0D.hexT};                  /* buttons invite friends incall hover */
   --button-secondary-background-active:           ${base0C.hexT};                  /* buttons invite friends incall onclick */
-  --button-secondary-background-disabled:         ${base07.rgba "0.5"};    /* base07 shop inactive button */
+  --button-secondary-background-disabled:         ${base07.rgba "0.5"};            /* base07 shop inactive button */
   --button-outline-danger-text:                   ${base09.hexT};                  /* my account disable button */
   --button-outline-danger-border:                 ${base09.hexT};                  /* my account disable button */
-  --button-outline-danger-background-hover:       ${base0A.rgba "0.2"};   /* my account disable button */
+  --button-outline-danger-background              ${base0A.rgba "0.2"};            /* my account delete button */
+  --button-outline-danger-background-hover:       ${base0A.rgba "0.2"};            /* my account disable button */
   --button-outline-danger-text-hover:             ${base00.hexT};                  /* my account disable button */
   --button-outline-danger-border-hover:           ${base0A.hexT};                  /* my account disable button */
   --button-danger-background:                     ${base08.hexT};                  /* my account delete button */
   --button-danger-background-hover:               ${base0A.hexT};                  /* my account delete button */
+  --button-danger-background-active:              ${base0A.rgba "0.4"};            /* danger button on press */
   --scrollbar-thin-thumb:                         ${base0B.hexT};                  /* scrollbar channel list */
   --scrollbar-thin-track:                         ${base07.hexT};                  /* scrollbar channel list */
   --scrollbar-auto-thumb:                         ${base0B.hexT};                  /* scrollbar chat */
@@ -115,16 +113,16 @@ in
   --button-positive-background:                   ${base11.hexT};                  /* join voice button */
   --button-positive-background-hover:             ${base13.hexT};                  /* join voice button */
   --button-positive-background-active:            ${base12.hexT};                  /* join voice button */
-  --button-positive-background-disabled:          ${base07.rgba "0.5"};    /* join voice button */
+  --button-positive-background-disabled:          ${base07.rgba "0.5"};            /* join voice button */
   --control-brand-foreground:                     ${base00.hexT};                  /* unserscore active family center */
   --deprecated-card-bg:                           ${base06.hexT};                  /* authorized apps bg */
   --guild-boosting-pink:                          ${base1D.hexT};                  /* boost icon */
   --button-outline-primary-text:                  ${base0B.hexT};                  /* server settings upload image button */
   --button-outline-primary-border:                ${base0B.hexT};                  /* server settings upload image button */
-  --button-outline-primary-background-hover:      ${base0D.rgba "0.3"};    /* base0d server settings upload image button */
+  --button-outline-primary-background-hover:      ${base0D.rgba "0.3"};            /* base0d server settings upload image button */
   --button-outline-primary-text-hover:            ${base00.hexT};                  /* server settings upload image button */
   --button-outline-primary-border-hover:          ${base0D.hexT};                  /* server settings upload image button */
-  --button-outline-primary-background-active:     ${base0C.rgba "0.5"};  /* base0c server settings upload image button */
+  --button-outline-primary-background-active:     ${base0C.rgba "0.5"};            /* base0c server settings upload image button */
   --button-outline-primary-text-active:           ${base00.hexT};                  /* server settings upload image button */
   --button-outline-primary-border-active:         ${base0C.hexT};                  /* server settings upload image button */
   --input-placeholder-text:                       ${base03.hexT};                  /* placeholder text in settings */
@@ -147,19 +145,18 @@ in
   --white-400:                                    ${base01.hexT};                  /* fg logo server boost status */
   --primary-100:                                  ${base00.hexT};                  /* fg sound hover popup timer */
   --mention-foreground:                           ${base00.hexT};                  /* mention text */
-  --mention-background:                           ${base16.rgba "0.3"};   /* mention background */
+  --mention-background:                           ${base16.rgba "0.3"};            /* mention background */
   --primary-130:                                  ${base03.hexT};                  /* bg incall mic hover */
   --button-outline-positive-text:                 ${base11.hexT};                  /* invite friend in popup button */
   --button-outline-positive-border:               ${base11.hexT};                  /* invite friend in popup button */
+  --
 
 
   /* not found */
   --primary-dark-700:                             #ff0000;
   --status-green-560:                             #ff0000;
   --status-green-400:                             #ff0000;
-  --button-danger-background-active:              #ff0000;
   --button-danger-background-disabled:            #ff0000;
-  --button-outline-danger-background:             #ff0000;
   --button-outline-danger-background-active:      #ff0000;
   --button-outline-danger-text-active:            #ff0000;
   --button-outline-danger-border-active:          #ff0000;
@@ -248,6 +245,11 @@ in
 
 /* call container bg */
 [class^=callContainer_] {
+  background-color: var(--background-primary);
+}
+
+/* forum preview message bg fix */
+[class^=previewForm_]{
   background-color: var(--background-primary);
 }
 

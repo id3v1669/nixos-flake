@@ -5,7 +5,6 @@
 , hostname
 , colorsvar
 , uservars
-, gpuvar
 , inputs
 , ...
 }:

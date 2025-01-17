@@ -27,9 +27,7 @@ fi
 sleep 2
 eww daemon
 sleep 2
-eww open popup-power-window
-eww open calendar-popup-window
-eww open bar
+eww open-many popup-power-window calendar-popup-window bar
 sleep 2
 systemctl --user restart blueman-applet
 eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)"
