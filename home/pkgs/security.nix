@@ -61,7 +61,7 @@
     gdb                           # debugger
 
     retdec                        # decompiler
-    ghidra                        # decompiler
+    stable.ghidra                        # decompiler
     snowman                       # decompiler
     
 

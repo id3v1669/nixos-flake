@@ -12,7 +12,7 @@
 
   boot = {
     kernelModules = [ "kvm-intel" ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_12; #linuxPackages_latest;
     kernel.sysctl."kernel.unprivileged_userns_clone" = 1;
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback

@@ -23,7 +23,7 @@ with allSpecialArgs; {
     inputs.nix-minecraft.overlay
     inputs.hyprland.overlays.default
     (final: pkgs: {
-      dynamic-color-gtk-theme = inputs.dcgt.packages.${pkgs.system}.default;                              # custom theme(unfinished)
+#      dynamic-color-gtk-theme = inputs.dcgt.packages.${pkgs.system}.default;                              # custom theme(unfinished)
       eww = inputs.eww.packages.${pkgs.system}.eww.override {cudaSupport = (gpuvar.type == "nvidia" && gpuvar.tech != "nvk");}; 
                                                                                                           # eww overlay with nviia tempratures support
       over-btop = (import ./../overlays/btop.nix { inherit pkgs gpuvar cpuvar; });                        # btop overlay for gpu support

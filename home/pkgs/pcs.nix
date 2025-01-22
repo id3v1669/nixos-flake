@@ -100,7 +100,12 @@
 
     # libs
     gtk3                          #
-    gtk4                          #
+    #gtk4                          #
+    # (gtk4.overrideAttrs (oldAttrs: {
+    #   buildInputs = oldAttrs.buildInputs ++ (with pkgs; [
+    #     gst_all_1.gst-plugins-good
+    #   ]);
+    # }))
     libpng                        # png lib
     libnotify                     # for dunst or mako
     libheif                       # heif lib

@@ -7,7 +7,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     nur.url = "github:nix-community/NUR";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-    dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
+    #dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
     lan-mouse = {
       url = "github:feschber/lan-mouse";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,6 +59,35 @@
   in
   {
     nixosConfigurations = {
+      nuc10chgnome = mkSystem { 
+        hostname = "nuc10ch";
+        envir = "GNOME";
+        cpuvar = {
+          type = "intel";
+          hasIntegrated = false;
+        };
+        bootloader = {
+          type = "systemd";
+          defconf = false;
+          timeout = 10;
+        };
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          domain = "none";
+          wp = "default3.png";
+          owner = "id3v1669";
+          sleeptimeout = 1200;
+        };
+        brightnesctrl = {
+          up = "light -A 5";
+          down = "light -U 5";
+        };
+        gpuvar = {
+          type = "amd";
+          tech = "broken";
+        };
+      };
       nuc10chhypr = mkSystem { 
         hostname = "nuc10ch";
         envir = "Hyprland";

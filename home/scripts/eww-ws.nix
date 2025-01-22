@@ -17,7 +17,7 @@ writeShellApplication{
   text = let
   wsa = if envir == "Hyprland" then ''
 mapfile -t wsa < <(hyprctl workspaces | grep 'workspace ID .*(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }')
-  '' else '''';
+  '' else ''echo "none"'';
   in ''
 set +o errexit
 set +o nounset

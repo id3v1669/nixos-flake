@@ -28,6 +28,7 @@
     ./enviroment/eww
     ./enviroment/swaync
     ./enviroment/hyprlock
+    ./enviroment/GNOME # temp for gtk theme development
   ];
   home = {
     stateVersion = "${curversion}";
