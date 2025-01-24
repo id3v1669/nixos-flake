@@ -8,8 +8,7 @@
     curversion ? "25.05",
     desk ? "desktop",
     bootloader ? ({
-      type = "opencore";
-      defconf = true;
+      type = "systemd";
       timeout = 10;
       device = "nodev";
     }),

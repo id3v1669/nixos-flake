@@ -24,7 +24,6 @@ in
   programs = {
     steam = {                           # games...
       enable = true;
-      package = pkgs.over-steam;
       protontricks.enable = true;
     };
     gamescope = {                       # gamescope for games
@@ -59,7 +58,6 @@ in
     libinput.enable = true;             # 
     ratbagd = {                         # mouse settings daemon
       enable = true;
-      package = pkgs.over-libratbag;
     };
     hardware = {
       bolt.enable = true;               # thunderbolt support
@@ -127,7 +125,7 @@ in
       name = "0xProto 13";
     };
     iconTheme = {
-      package = pkgs.over-gruvbox-plus-icons;
+      package = pkgs.gruvbox-plus-icons;
       name = "Gruvbox-Plus-Dark";
     };
     settings = {

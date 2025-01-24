@@ -34,7 +34,7 @@ NixOS flake with home manager
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
 | notifications | swaync | gtk themeing needs to be done | - |
 | shell | fish | - | - |
-| bootloader | opencore(systemd mod) | extra folder OC reated, reads systemd entries | ToDo 9 |
+| bootloader | systemd | - | - |
 
 ## Notes
 

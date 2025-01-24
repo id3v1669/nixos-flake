@@ -399,7 +399,7 @@ in
     (button 
       :class "usageinfo"
       :timeout "''${ deftimeout}"
-      :onclick "${getExe pkgs.kitty} ${getExe pkgs.over-btop}"
+      :onclick "${getExe pkgs.kitty} ${getExe pkgs.btop}"
       (box 
         :space-evenly false
         :spacing 10

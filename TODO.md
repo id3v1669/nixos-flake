@@ -8,12 +8,6 @@
 
 4. **rewrite readme(in progress, fininsh after finishing gtk theme and base32 colors repo)**
 
-5. **find out why hm session vars don't pass with regreet**
+5. **fix sops**
 
-6. **fix sops**
-
-7. **find idler that works with gamepad**
-
-8. **add notification widget with notififcation history(eww?)**
-
-9. **opencre is broken after systemd-boot update relace with grub or fix**
+6. **find idler that works with gamepad**

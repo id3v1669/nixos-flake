@@ -49,7 +49,7 @@
 
     # games
     protonplus                    # proton and wine updater
-    over-lutris                   # game launcher
+    lutris                        # game launcher
     mangohud                      # overlay for games & apps
 
     # files

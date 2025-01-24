@@ -5,7 +5,6 @@
 {
   programs.btop = {
     enable = true;
-    package = pkgs.over-btop;
     settings = {
       color_theme = "dynamic-btop";
       theme_background = true;

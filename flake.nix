@@ -66,11 +66,6 @@
           type = "intel";
           hasIntegrated = false;
         };
-        bootloader = {
-          type = "systemd";
-          defconf = false;
-          timeout = 10;
-        };
         uservars = {
           name = "user";
           description = "id3v1669";
@@ -94,11 +89,6 @@
         cpuvar = {
           type = "intel";
           hasIntegrated = false;
-        };
-        bootloader = {
-          type = "systemd";
-          defconf = false;
-          timeout = 10;
         };
         uservars = {
           name = "user";
@@ -126,11 +116,6 @@
           integratedBroken = false;
         };
         desk = "laptop";
-        bootloader = {
-          type = "systemd";
-          defconf = false;
-          timeout = 10;
-        };
         uservars = {
           name = "user";
           description = "id3v1669";
@@ -156,11 +141,6 @@
           hasIntegrated = true;
         };
         desk = "laptop";
-        bootloader = {
-          type = "systemd";
-          defconf = false;
-          timeout = 10;
-        };
         uservars = {
           name = "user";
           description = "id3v1669";

@@ -1,8 +1,6 @@
-{ pkgs
-, ...
-}: 
-(pkgs.gruvbox-plus-icons.overrideAttrs (oldAttrs: rec {
-  installPhase = ''
+final: pkgs: {
+  gruvbox-plus-icons = pkgs.gruvbox-plus-icons.overrideAttrs (oldAttrs: rec {
+    installPhase = ''
     runHook preInstall
 
     mkdir -p $out/share/icons
@@ -19,5 +17,6 @@
     ln -sf $out/share/icons/Gruvbox-Plus-Dark/actions/symbolic/* $out/share/icons/Gruvbox-Plus-Dark/actions/32@2x
 
     runHook postInstall
-  '';
-}))
+    '';
+  });
+}
