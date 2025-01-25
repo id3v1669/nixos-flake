@@ -5,6 +5,9 @@
 , uservars
 , ... 
 }:
+let
+  srv = (desk != "server"); 
+in
 {
   boot = {
     kernelModules = [ "tcp_bbr" ];
@@ -69,20 +72,19 @@
     };
   };
 
-  services.clamav = let 
-    srv = false; # temporary disabled
-    #srv = (desk != "server"); 
-  in {
-    daemon.enable = srv;
-    fangfrisch.enable = srv;
-    scanner.enable = srv;
-    updater.enable = srv;
+  services.clamav = 
+  let x = false; in {
+    daemon.enable = x;
+    fangfrisch.enable = x;
+    scanner.enable = x;
+    updater.enable = x;
   };
   programs.wireshark = {            # wireshark for network analysis
-    enable = true;
+    enable = !srv;
     package = pkgs.wireshark;
   };
   users.users.${uservars.name}.extraGroups = [
+  ] ++ lib.lists.optionals !srv [
     "wireshark"
   ];
 }

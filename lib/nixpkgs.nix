@@ -14,6 +14,7 @@ with allSpecialArgs; {
     "veracrypt"
     "wpscan"
     "volatility3"
+    "teamspeak6-client"
   ];
   overlays = 
   [
@@ -29,5 +30,6 @@ with allSpecialArgs; {
     (import ./../overlays/gruvbox-plus-icons.nix)
     (import ./../overlays/btop.nix {cpuvar = cpuvar; gpuvar = gpuvar;})
     (import ./../overlays/eww.nix {gpuvar = gpuvar; inputs = inputs;})
+    (import ./../overlays/ts6.nix)
   ];
 }

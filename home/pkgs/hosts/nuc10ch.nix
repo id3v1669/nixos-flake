@@ -29,6 +29,6 @@
     #zettlr
     nur.repos.tarantoj.nudelta
 
-    #ts6
+    ts6
   ];
 }
