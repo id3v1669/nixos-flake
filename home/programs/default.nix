@@ -6,6 +6,7 @@
   imports = [
     ./fish
     ./btop
+    ./fastfetch
   ] ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
     ./alacritty
     ./vscode
@@ -16,7 +17,6 @@
     ./kitty
     ./joplin
     ./obs
-    ./fastfetch
     ./rider
     ./swappy
     ./chromium

@@ -30,7 +30,9 @@ in
         else "";
       moveprevworkspace = if envir=="Hyprland" then "${hyprctl} dispatch movetoworkspace e-1"
         else "";
-      fullscreen = if envir=="Hyprland" then "${hyprctl} dispatch fullscreen"
+      fullscreen = if envir=="Hyprland" then "${hyprctl} dispatch fullscreen 0"
+        else "";
+      maximize = if envir=="Hyprland" then "${hyprctl} dispatch fullscreen 1"
         else "";
       nextactivewindow = if envir=="Hyprland" then "${hyprctl} dispatch cyclenext"
         else "";
@@ -56,6 +58,9 @@ super + j
   ${togglefloating}
 
 super + g
+  ${maximize}
+
+super + shift + g
   ${fullscreen}
 
 super + p

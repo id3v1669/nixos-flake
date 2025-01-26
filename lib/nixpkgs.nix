@@ -15,6 +15,7 @@ with allSpecialArgs; {
     "wpscan"
     "volatility3"
     "teamspeak6-client"
+    "minecraft-server"
   ];
   overlays = 
   [

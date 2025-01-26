@@ -84,7 +84,7 @@ in
     package = pkgs.wireshark;
   };
   users.users.${uservars.name}.extraGroups = [
-  ] ++ lib.lists.optionals !srv [
+  ] ++ lib.lists.optionals (!srv) [
     "wireshark"
   ];
 }

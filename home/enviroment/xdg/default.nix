@@ -95,6 +95,7 @@
         "video/mp4" = "vlc.desktop";
         "video/mov" = "vlc.desktop";
         "video/x-ms-wmv" = "vlc.desktop";
+        "video/quicktime" = "vlc.desktop";
         #vscode for text etc
         "text/plain" = "code.desktop";
         "text/x-c" = "code.desktop";
@@ -144,6 +145,7 @@
         "video/mp4" = "vlc.desktop";
         "video/mov" = "vlc.desktop";
         "video/x-ms-wmv" = "vlc.desktop";
+        "video/quicktime" = "vlc.desktop";
         #vscode
         "text/plain" = "code.desktop";
         "text/x-c" = "code.desktop";

@@ -61,7 +61,7 @@
     unzip                         # unzip .zip arcs
     file                          # file type detection
     rar                           # unfree for rar archives
-    veracrypt                     # gui encryption
+    stable.veracrypt              # gui encryption
 
     # text & docs
     libreoffice                   # opensource office apps
