@@ -91,6 +91,7 @@
         "application/xhtml+xml" = "firefox.desktop";
         "application/x-extension-xhtml" = "firefox.desktop";
         "application/x-extension-xht" = "firefox.desktop";
+        "application/pdf" = "chromium-browser.desktop";
         #video
         "video/mp4" = "vlc.desktop";
         "video/mov" = "vlc.desktop";
@@ -117,6 +118,7 @@
         "text/css" = "code.desktop";
         "application/x-shellscript" = "code.desktop";
         
+        
       };
       defaultApplications = {
         #images
@@ -141,6 +143,7 @@
         "application/xhtml+xml" = "firefox.desktop";
         "application/x-extension-xhtml" = "firefox.desktop";
         "application/x-extension-xht" = "firefox.desktop";
+        "application/pdf" = "chromium-browser.desktop";
         #video
         "video/mp4" = "vlc.desktop";
         "video/mov" = "vlc.desktop";

@@ -16,6 +16,7 @@ with allSpecialArgs; {
     "volatility3"
     "teamspeak6-client"
     "minecraft-server"
+    "corefonts"
   ];
   overlays = 
   [

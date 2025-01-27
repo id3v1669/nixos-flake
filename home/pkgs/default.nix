@@ -27,5 +27,6 @@
     openssl                       # cert generation
     age                           # cli encryption
     sops                          # sops for secrets
+    git-agecrypt                  # git-agecrypt for git secrets
   ];
 }
