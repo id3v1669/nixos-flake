@@ -1,11 +1,7 @@
 keys:
-  - &testkeys age17jm37tskyl32d328yude9dz5l8te892d6df4hnchuknh2dn06glq2dfrss
-  - &nextcloud age1vd9szene8tx975ujck0fxmvycqaj5z3tslt94ukr0hc5v3latg8s4ehwaz
-  - &test2 age1vxvytx0lgd3ksmskvhnfgy4qgw66urkk65z3h4hdpaxlm4qt7gds05leay
+  - &nextcloud age1v26a3t560ay7l6us6ljm242hsasl2uzxxxck28p8kvw36cj8xejsddn8mm
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:
-      - *test2
-      - *testkeys
       - *nextcloud
