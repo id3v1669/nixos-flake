@@ -4,7 +4,7 @@
 }:
 {
   imports = [ 
-    ./net.nix
+    /etc/nixos/net.nix
     ./hardware-configuration.nix
     ./../configuration.nix
     ./../../modules/nextcloud.nix

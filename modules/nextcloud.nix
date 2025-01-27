@@ -6,13 +6,13 @@
 }:
 {
   sops.secrets."nextcloud-admin" = {
-    sopsFile = ./../secrets/nextcloud.enc.yaml;
+    sopsFile = ./../secrets/nextcloud.yaml;
     owner = "nextcloud";
   };
   services = {
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud29;
+      package = pkgs.nextcloud30;
       database.createLocally = true;
       https = true;
       nginx.hstsMaxAge = 31536000;
