@@ -22,7 +22,7 @@
         jvmOpts = "-Xmx6G";
         openFirewall = true;
         serverProperties = {
-          server-port = 21669;
+          server-port = 26916;
           gamemode = "survival";
           difficulty = "hard";
           max-players = 8;
@@ -55,6 +55,10 @@
             C2ME = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6065/638/c2me-fabric-mc1.21.4-0.3.1.1.0.jar";
               hash = "sha256-eeKOKJVyKMIbd12/vRItWNMluCws7/3TikGmUwfd2/A=";  
+            };
+            REI = pkgs.fetchurl {
+              url = "https://mediafilez.forgecdn.net/files/5987/571/RoughlyEnoughItems-18.0.796-server-only.jar";
+              hash = "sha256-92Hd360YAWGMrCBctDIg9IfXonUWKamsEmQ04mfdBqs=";
             };
           });
         };

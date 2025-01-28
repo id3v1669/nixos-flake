@@ -185,6 +185,33 @@
           locale = "en_AU.UTF-8";
         };
       };
+      srvcon400 = mkSystem {
+        hostname = "srvcon400";
+        envir = "none";
+        desk = "server";
+        bootloader = {
+          type = "grub";
+          timeout = 1;
+          device = "/dev/sda";
+        };
+        gpuvar = {
+          type = "none";
+          tech = "none";
+        };
+        uservars = {
+          name = "srvcon400user";
+          description = "SrvCon400";
+          domain = "id3v1669.com";
+          owner = "id3v1669";
+        };
+        deflocale = {
+          kblayout = "au";
+          kbvariant = "";
+          kboption = "";
+          timezone = "Australia/Perth";
+          locale = "en_AU.UTF-8";
+        };
+      };
     };
   };
 }
