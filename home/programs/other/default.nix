@@ -13,5 +13,6 @@
   programs = {
     direnv.enable = true;
     ncmpcpp.enable = true;
+    tmux.enable = true;
   };
 }
