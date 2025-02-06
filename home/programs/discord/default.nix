@@ -6,7 +6,8 @@
 }:
 {
   home.packages = (with pkgs;[
-    equibop                            # equibop(unofficial discord app)        
+    discord
+    equibop                            # equibop(unofficial discord app)
     arrpc                              # rpc for discord(equibop)
   ]);
   systemd.user.services = {} // lib.optionalAttrs (desk == "desktop") {

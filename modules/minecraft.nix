@@ -32,6 +32,14 @@
         };
         symlinks = {
           "mods" = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
+            ScalableLux = pkgs.fetchurl {
+              url = "https://mediafilez.forgecdn.net/files/6013/481/ScalableLux-0.1.2%2Bbeta.1%2Bfabric.6d46f24-all.jar";
+              hash = "sha256-hm+7IAq3IfrH3p6/+I37voL/T8gHMVydJRBPkFW8DtU=";
+            };
+            JorneyMap = pkgs.fetchurl {
+              url = "https://mediafilez.forgecdn.net/files/6114/468/journeymap-fabric-1.21.4-6.0.0-beta.36.jar";
+              hash = "sha256-Y2uYtjac/Vk+ENSjqPplp18w8QQDRefMOnl2aYLqm/g=";
+            };
             Fabric-API = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6110/930/fabric-api-0.115.0%2B1.21.4.jar";
               hash = "sha256-/dsJ0snp/1Bj0WkLqJogPlfplTV839PqCzw8EdrS6KQ=";

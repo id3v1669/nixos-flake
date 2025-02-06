@@ -13,13 +13,15 @@ with allSpecialArgs; {
     "steam-unwrapped"
     "veracrypt"
     "wpscan"
+    "discord"
     "volatility3"
     "teamspeak6-client"
-    "minecraft-server"
+    "minecraft-serve1r"
     "corefonts"
   ];
   overlays = 
   [
+    inputs.prism-launcher.overlays.default
     inputs.nur.overlays.default
     inputs.eww.overlays.default
     inputs.hyprpicker.overlays.default

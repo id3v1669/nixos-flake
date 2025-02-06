@@ -52,6 +52,10 @@
       url = "github:hyprwm/hyprpicker";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    prism-launcher = {
+      url = "github:PrismLauncher/PrismLauncher/release-9.x";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = { ... } @ inputs:
   let 

@@ -37,7 +37,7 @@
 #-----------------------------------------#
 #----------------Variables----------------#
 
-availible_resolutions=("qhd" "sqhd" "sfhd", "sv")
+availible_resolutions=("qhd" "sqhd" "sfhd" "sv")
 
 declare -A screen1_resolutions
 screen1_resolutions["qhd"]="monitor=DP-1,3440x1440@100,0x0,1"
