@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     sops-nix.url = "github:Mic92/sops-nix";
     nur.url = "github:nix-community/NUR";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
@@ -63,11 +63,11 @@
   in
   {
     nixosConfigurations = {
-      nuc10chgnome = mkSystem { 
-        hostname = "nuc10ch";
-        envir = "GNOME";
+      r7rx7900xtxhypr = mkSystem { 
+        hostname = "r7rx7900xtx";
+        envir = "Hyprland";
         cpuvar = {
-          type = "intel";
+          type = "amd";
           hasIntegrated = false;
         };
         uservars = {
@@ -84,7 +84,7 @@
         };
         gpuvar = {
           type = "amd";
-          tech = "broken";
+          tech = "desktop";
         };
       };
       nuc10chhypr = mkSystem { 

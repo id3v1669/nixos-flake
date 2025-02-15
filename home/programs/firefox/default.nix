@@ -94,10 +94,6 @@
           url = "https://yandex.com";
         }
         {
-          name = "kernel.org";
-          url = "https://www.kernel.org";
-        }
-        {
           name = "Arch sites";
           toolbar = true;
           bookmarks = [
@@ -112,7 +108,7 @@
           ];
         }
         {
-          name = "Nix sites";
+          name = "Nix";
           bookmarks = [
             {
               name = "Packages";

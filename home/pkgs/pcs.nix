@@ -15,12 +15,10 @@
     helvum                        # gui for pipewire
     qpwgraph                      # gui for pipewire graph
     mpc-cli                       # cli for mpd
-    qjackctl                      # gui for jack
 
     # vm, virt, emulators & remote
     distrobox
     remmina                       # remote desktop
-    stable.vagrant                # venv dev tool
     #packer                        
     minikube                      # kubernetes for local tests
     kubectl                       # kubernetes cli
@@ -28,7 +26,6 @@
     # web
     networkmanagerapplet          # network manager applet
     nm-tray                       # network manager tray
-    wireguard-tools               # wireguard tools for experiments with vpn
     tor-browser                   # tor browser for research
 
     # vid photo etc
@@ -40,8 +37,6 @@
     ffmpegthumbnailer             # thumbnails for video files
     lutgen                        # image with filter generator
     hyprpaper                     # wallpapers
-    imagemagickBig                # image manipulation(convert etc)
-    imv                           # wayland cli image viewer
     swappy                        # screenshot editor
 
     # chat
@@ -50,18 +45,17 @@
     # games
     protonplus                    # proton and wine updater
     lutris                        # game launcher
-    mangohud                      # overlay for games & apps
 
     # files
     filezilla                     # ftp client
     nautilus                      # file manager   
-    nemo-with-extensions          # file manager(backup as nautilus had some glitches in previous updates)
+    nemo-with-extensions          # file manager(backup fm)
     zip                           # create .zip arcs
     p7zip                         # .7z arcs
     unzip                         # unzip .zip arcs
     file                          # file type detection
     rar                           # unfree for rar archives
-    stable.veracrypt              # gui encryption
+    veracrypt                     # gui encryption
 
     # text & docs
     libreoffice                   # opensource office apps
@@ -71,10 +65,8 @@
     hunspellDicts.ru_RU           # needed for libreoffice
 
     # other gui tools
-    piper                         # gui for mouse settings daemon
     gnome-disk-utility            # disk manager(gparted is broken)
     qbittorrent                   # torrent client
-    isoimagewriter                # kde iso writer (as ventoy is bad for bios updated)
 
     # other cli utils
     ngrrram                       # practice fast typing
@@ -100,12 +92,7 @@
 
     # libs
     gtk3                          #
-    #gtk4                          #
-    # (gtk4.overrideAttrs (oldAttrs: {
-    #   buildInputs = oldAttrs.buildInputs ++ (with pkgs; [
-    #     gst_all_1.gst-plugins-good
-    #   ]);
-    # }))
+    gtk4                          #
     libpng                        # png lib
     libnotify                     # for dunst or mako
     libheif                       # heif lib

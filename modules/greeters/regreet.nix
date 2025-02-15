@@ -1,6 +1,8 @@
 { pkgs
 , lib
 , inputs
+, uservars
+, colorsvar
 , ...
 }:
 let 
@@ -38,5 +40,33 @@ in
     };
 
     restart = false;
+  };
+  programs.regreet = {
+    enable = true;
+    theme = {
+#      package = pkgs.dynamic-color-gtk-theme;
+      name = "Dynamic-Color-GTK-Theme";
+    };
+    cursorTheme = {
+      package = pkgs.capitaine-cursors-themed;
+      name = "Capitaine Cursors (Gruvbox)";
+    };
+    font = {
+      package = pkgs._0xproto;
+      name = "0xProto 13";
+    };
+    iconTheme = {
+      package = pkgs.gruvbox-plus-icons;
+      name = "Gruvbox-Plus-Dark";
+    };
+    settings = {
+      background = {
+        fit = "Cover";
+        path = "/etc/backgrounds/${colorsvar}/${uservars.wp}";
+      };
+      GTK = {
+        application_prefer_dark_theme = true;
+      };
+    };
   };
 }

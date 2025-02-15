@@ -3,8 +3,6 @@
 , pkgs
 , cpuvar
 , envir
-, uservars
-, colorsvar
 , ...
 }:
 let 
@@ -25,10 +23,6 @@ in
     steam = {                           # games...
       enable = true;
       protontricks.enable = true;
-    };
-    gamescope = {                       # gamescope for games
-      enable = true;
-      package = pkgs.gamescope;
     };
     kdeconnect = {
       enable = true;                    # kdeconnect for android integration
@@ -72,7 +66,6 @@ in
     sessionVariables.NIXOS_OZONE_WL = "1";
     etc."hypr/monitor-init.conf".text = mkDefault '''';
     systemPackages = with pkgs; [
-      tun2socks
       polkit_gnome                        # polkit agent
       xorg.xhost                          # xhost
       vulkan-headers
@@ -107,34 +100,6 @@ in
             TimeoutStopSec = 10;
           };
         };
-      };
-    };
-  };
-  programs.regreet = {
-    enable = true;
-    theme = {
-#      package = pkgs.dynamic-color-gtk-theme;
-      name = "Dynamic-Color-GTK-Theme";
-    };
-    cursorTheme = {
-      package = pkgs.capitaine-cursors-themed;
-      name = "Capitaine Cursors (Gruvbox)";
-    };
-    font = {
-      package = pkgs._0xproto;
-      name = "0xProto 13";
-    };
-    iconTheme = {
-      package = pkgs.gruvbox-plus-icons;
-      name = "Gruvbox-Plus-Dark";
-    };
-    settings = {
-      background = {
-        fit = "Cover";
-        path = "/etc/backgrounds/${colorsvar}/${uservars.wp}";
-      };
-      GTK = {
-        application_prefer_dark_theme = true;
       };
     };
   };

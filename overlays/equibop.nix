@@ -1,5 +1,5 @@
 final: pkgs: {
   equibop = pkgs.equibop.override {
-    electron = pkgs.electron;
+    electron = pkgs.electron_33;
   };
 }

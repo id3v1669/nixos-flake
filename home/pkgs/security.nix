@@ -6,22 +6,22 @@
   imports = [
     #./security-unfree.nix
   ];
-  home.packages = with pkgs; [
+  home.packages = with stable; [
     clamtk                        # frontend for clamav
     theharvester                  # emails, subdomains etc
     #autopsy                      # forensic tool                BROKEN
     adalanche                     # AD visualizer
     chkrootkit                    # rootkit checker
-    stable.dcfldd                 # dd for forensics
+    dcfldd                        # dd for forensics
     dc3dd                         # dd for forensics
     metasploit                    # tool
     nikto                         # tool
     john                          # password cracker
     hashcat                       # password cracker
     crunch                        # wordlist generator
-    stable.cewl                   # wordlist generator
+    cewl                          # wordlist generator
     thc-hydra                     # net login cracker
-    stable.medusa                 # net login cracker
+    medusa                        # net login cracker
     ophcrack                      # win pass cracker
     crowbar                       # brute force tool
     fcrackzip                     # zip pass cracker
@@ -49,7 +49,7 @@
 
 
     ent
-    stable.truecrack
+    truecrack
     pdfcrack
     cryptsetup
     foremost
@@ -61,8 +61,9 @@
     gdb                           # debugger
 
     retdec                        # decompiler
-    stable.ghidra                        # decompiler
+    ghidra                        # decompiler
     snowman                       # decompiler
+    wireguard-tools               # wireguard tools for experiments with vpn
     
 
     #rainbowcrack                 # rainbow tables gen Propritary and unsupported platform(mistake in nixpkgs)

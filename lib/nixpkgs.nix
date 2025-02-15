@@ -16,7 +16,7 @@ with allSpecialArgs; {
     "discord"
     "volatility3"
     "teamspeak6-client"
-    "minecraft-serve1r"
+    "minecraft-server"
     "corefonts"
   ];
   overlays = 
@@ -27,6 +27,7 @@ with allSpecialArgs; {
     inputs.hyprpicker.overlays.default
     inputs.nix-minecraft.overlay
     inputs.hyprland.overlays.default
+    (import ./../overlays/openlinkhub.nix)
     (import ./../overlays/steam.nix)
     (import ./../overlays/equibop.nix)
     (import ./../overlays/libratbag.nix)

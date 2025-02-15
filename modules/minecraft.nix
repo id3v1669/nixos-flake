@@ -19,14 +19,16 @@
         enable = true;
         autoStart = false;
         package = pkgs.fabricServers.fabric-1_21_4;
-        jvmOpts = "-Xmx6G";
+        jvmOpts = "-Xmx13G";
         openFirewall = true;
         serverProperties = {
+          sync-chunk-writes = false;
           server-port = 26916;
           gamemode = "survival";
           difficulty = "hard";
           max-players = 8;
-          simulationDistance = 10;
+          max-chained-neighbor-updates = 10000;
+          simulationDistance = 8;
           view-distance = 10;
           online-mode = false;
         };
