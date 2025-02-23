@@ -1,6 +1,5 @@
 { pkgs
 , lib
-, inputs
 , uservars
 , colorsvar
 , ...
@@ -26,14 +25,14 @@ in
     exec-once = ${getExe' dbus "dbus-update-activation-environment"} --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE
 
     exec-once = ${getExe greetd.regreet} && ${
-      getExe' hyprland-unwrapped "hyprctl"
+      getExe' hyprland "hyprctl"
     } exit
   '';
   in {
     settings = {
       default_session = {
         command = "${
-          getExe hyprland-unwrapped
+          getExe hyprland
         } --config ${greetdHyprlandConfig} > /tmp/hyprland-log-out.txt 2>&1";
         user = "greeter";
       };

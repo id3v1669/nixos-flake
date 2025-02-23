@@ -5,20 +5,18 @@
 , hostname
 , colorsvar
 , uservars
-, inputs
 , ...
 }:
 let
   clp = config.palette;
 in
 {
-  imports = [
-    inputs.hyprland.homeManagerModules.default
-  ] ++ lib.optional (builtins.pathExists (./. + "/hostsettings/${hostname}.nix")) (./. + "/hostsettings/${hostname}.nix");
+  imports = [] ++ lib.optional (
+    builtins.pathExists (./. + "/hostsettings/${hostname}.nix")
+    ) (./. + "/hostsettings/${hostname}.nix");
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland;
     systemd.enable = true;
     xwayland.enable = true;
     settings = {

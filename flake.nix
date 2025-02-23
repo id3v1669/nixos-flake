@@ -25,7 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
+      url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix = {
@@ -44,14 +44,6 @@
       url = "github:id3v1669/swhkd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprpicker = {
-      url = "github:hyprwm/hyprpicker";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     prism-launcher = {
       url = "github:PrismLauncher/PrismLauncher/release-9.x";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,6 +58,10 @@
       r7rx7900xtxhypr = mkSystem { 
         hostname = "r7rx7900xtx";
         envir = "Hyprland";
+        bootloader = {
+          type = "secureboot";
+          timeout = 10;
+        };
         cpuvar = {
           type = "amd";
           hasIntegrated = false;

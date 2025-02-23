@@ -12,7 +12,7 @@
 
   boot = {
     kernelModules = [ "kvm-amd" ];
-    kernelPackages = pkgs.linuxPackages_6_12;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernel.sysctl = {
       "kernel.unprivileged_userns_clone" = 1;
       "vm.max_map_count" = 2147483642;
@@ -24,7 +24,7 @@
       v4l2loopback
     ];
     initrd = {
-      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" "uas" ];
+      availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "uas" "sd_mod" ];
       kernelModules = [ "amdgpu" ];
     };
   };
