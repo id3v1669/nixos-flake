@@ -16,6 +16,8 @@
         "size 15% 50%,^(nm-connection-editor)$"
 			  "move 81.25% 4.25%, blueman-manager"
         "size 18.5% 55%, blueman-manager"
+        "move 81.25% 4.25%, .blueman-manager-wrapped"
+        "size 18.5% 55%, .blueman-manager-wrapped"
 		  ];
 		  source = [
         "${config.home.homeDirectory}/.config/hypr/test.conf"
@@ -27,6 +29,7 @@
       ];
       exec-once = [
         "xrandr --output DP-1 --primary"
+        "input-remapper-control --command autoload --config-dir /etc/input-remapper"
       ];
     };
   };

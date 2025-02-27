@@ -73,13 +73,10 @@ in
       ];
     };
     extraConfig = ''
-render:explicit_sync = 1 #required for proper screensharing
-
-cursor:use_cpu_buffer = false
-cursor:no_hardware_cursors = true
 #----------------startup commands-----------------
 exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30    # set cursor as hyprland doesn't respect gtk
 exec-once = swhks &                                               # used command as systemd service starts it in isolation
+exec-once = input-remapper-control --command autoload --config-dir /etc/input-remapper
 #-------------------------------------------------
 
 #-----------------startup scripts-----------------
@@ -105,14 +102,16 @@ windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 #--------------------------------------------------
 
 #--------------other windowrules-------------------
-windowrule=float,^(org.pulseaudio.pavucontrol)$                                  # sound controls
-windowrule = opacity 0.8,^(org.pulseaudio.pavucontrol)$                          # sound controls
+windowrule=float,^(org.pulseaudio.pavucontrol)$                   # sound controls
+windowrule = opacity 0.8,^(org.pulseaudio.pavucontrol)$           # sound controls
 
 windowrule = float,^(nm-connection-editor)$                       # network manager
 windowrule = opacity 0.8,^(nm-connection-editor)$                 # network manager
 
 windowrule = float, blueman-manager                               # bluetooth manager
 windowrule = opacity 0.8, blueman-manager                         # bluetooth manager
+windowrule = float, .blueman-manager-wrapped                      # bluetooth manager
+windowrule = opacity 0.8, .blueman-manager-wrapped                # bluetooth manager
 #--------------------------------------------------
 
 #--------------other windowrules2------------------

@@ -65,6 +65,7 @@
     hunspellDicts.ru_RU           # needed for libreoffice
 
     # other gui tools
+    piper                         # gui for libratbag
     gnome-disk-utility            # disk manager(gparted is broken)
     qbittorrent                   # torrent client
 

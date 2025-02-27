@@ -3,20 +3,22 @@
 }:
 {
   wayland.windowManager.hyprland.settings = {
-		windowrule = [
-			"move 69% 6%,^(nm-connection-editor)$"
+    windowrule = [
+      "move 69% 6%,^(nm-connection-editor)$"
       "size 30% 65%,^(nm-connection-editor)$"
-			"move 66.15% 6%, blueman-manager"
+		"move 66.15% 6%, blueman-manager"
       "size 37% 71.5%, blueman-manager"
-		];
+      "move 66.15% 6%, .blueman-manager-wrapped"
+      "size 37% 71.5%, .blueman-manager-wrapped"
+	 ];
     source = [
       #"${config.home.homeDirectory}/.config/hypr/test.conf"
-			"${config.home.homeDirectory}/.config/hypr/monitor.conf"
+      "${config.home.homeDirectory}/.config/hypr/monitor.conf"
     ];
-	};
- home.file.".scripts/screen.sh" = {
-   executable = true;
-   text = ''
+  };
+  home.file.".scripts/screen.sh" = {
+    executable = true;
+    text = ''
 #!/usr/bin/env bash
 
 #-----------------------------------------#

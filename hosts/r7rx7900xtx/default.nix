@@ -18,6 +18,7 @@
     ./../../modules/sops.nix
     ./../../modules/bluetooth.nix
     ./../../modules/greeters/regreet.nix
+    ./../../modules/input-remapper.nix
   ];
 
   networking = {
@@ -28,7 +29,6 @@
     enable = true;
     gpuOverclock.enable = true;
   };
-  
   users.users.${uservars.name}.extraGroups = [
     "users"
     "wheel"
