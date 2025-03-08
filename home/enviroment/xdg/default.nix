@@ -26,25 +26,13 @@
       };
     };
     desktopEntries = {
-      firefox = {
-        name = "Firefox";
+      floorp = {
+        name = "floorp";
         genericName = "Web Browser";
-        exec = "firefox %U";
+        exec = "floorp %U";
         terminal = false;
         categories = [ "Application" "Network" "WebBrowser" ];
-        mimeType = [ 
-          "text/html" 
-          "text/xml" 
-          "x-scheme-handler/http" 
-          "x-scheme-handler/https"
-          "x-scheme-handler/chrome"
-          "application/x-extension-htm"
-          "application/x-extension-html"
-          "application/x-extension-shtml"
-          "application/xhtml+xml"
-          "application/x-extension-xhtml"
-          "application/x-extension-xht"
-        ];
+        settings.Keywords = "firefox;froo";
       };
       eog = {
         name = "eog";
@@ -81,16 +69,16 @@
         "image/heic" = "eog.desktop";
         "image/heif" = "eog.desktop";
         #web
-        "text/html" = "firefox.desktop";
-        "x-scheme-handler/http" = "firefox.desktop";
-        "x-scheme-handler/https" = "firefox.desktop";
-        "x-scheme-handler/chrome" = "firefox.desktop";
-        "application/x-extension-htm" = "firefox.desktop";
-        "application/x-extension-html" = "firefox.desktop";
-        "application/x-extension-shtml" = "firefox.desktop";
-        "application/xhtml+xml" = "firefox.desktop";
-        "application/x-extension-xhtml" = "firefox.desktop";
-        "application/x-extension-xht" = "firefox.desktop";
+        "text/html" = "floorp.desktop";
+        "x-scheme-handler/http" = "floorp.desktop";
+        "x-scheme-handler/https" = "floorp.desktop";
+        "x-scheme-handler/chrome" = "floorp.desktop";
+        "application/x-extension-htm" = "floorp.desktop";
+        "application/x-extension-html" = "floorp.desktop";
+        "application/x-extension-shtml" = "floorp.desktop";
+        "application/xhtml+xml" = "floorp.desktop";
+        "application/x-extension-xhtml" = "floorp.desktop";
+        "application/x-extension-xht" = "floorp.desktop";
         "application/pdf" = "chromium-browser.desktop";
         #video
         "video/mp4" = "vlc.desktop";
@@ -135,16 +123,16 @@
         "image/heic" = "eog.desktop";
         "image/heif" = "eog.desktop";
         #web
-        "text/html" = "firefox.desktop";
-        "x-scheme-handler/http" = "firefox.desktop";
-        "x-scheme-handler/https" = "firefox.desktop";
-        "x-scheme-handler/chrome" = "firefox.desktop";
-        "application/x-extension-htm" = "firefox.desktop";
-        "application/x-extension-html" = "firefox.desktop";
-        "application/x-extension-shtml" = "firefox.desktop";
-        "application/xhtml+xml" = "firefox.desktop";
-        "application/x-extension-xhtml" = "firefox.desktop";
-        "application/x-extension-xht" = "firefox.desktop";
+        "text/html" = "floorp.desktop";
+        "x-scheme-handler/http" = "floorp.desktop";
+        "x-scheme-handler/https" = "floorp.desktop";
+        "x-scheme-handler/chrome" = "floorp.desktop";
+        "application/x-extension-htm" = "floorp.desktop";
+        "application/x-extension-html" = "floorp.desktop";
+        "application/x-extension-shtml" = "floorp.desktop";
+        "application/xhtml+xml" = "floorp.desktop";
+        "application/x-extension-xhtml" = "floorp.desktop";
+        "application/x-extension-xht" = "floorp.desktop";
         "application/pdf" = "chromium-browser.desktop";
         #video
         "video/mp4" = "vlc.desktop";

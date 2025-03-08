@@ -13,6 +13,7 @@
   boot = {
     kernelModules = [ "kvm-amd" ];
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [ "amd_iommu=on" "iommu=pt" ];
     kernel.sysctl = {
       "kernel.unprivileged_userns_clone" = 1;
       "vm.max_map_count" = 2147483642;

@@ -34,5 +34,6 @@ with allSpecialArgs; {
     (import ./../overlays/btop.nix {cpuvar = cpuvar; gpuvar = gpuvar;})
     (import ./../overlays/eww.nix {gpuvar = gpuvar; inputs = inputs;})
     (import ./../overlays/ts6.nix)
+    (import ./../overlays/adwaita-for-steam.nix)
   ];
 }

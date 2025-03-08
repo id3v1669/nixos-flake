@@ -3,9 +3,9 @@
 , ...
 }:
 {
-  programs.firefox = {
+  programs.floorp = {
     enable = true;
-    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+    package = pkgs.wrapFirefox pkgs.floorp-unwrapped {
       extraPolicies = {
         CaptivePortal = false;
         DisablePocket = true;
@@ -56,30 +56,39 @@
       settings = {
         "accessibility.typeaheadfind.autostart" = false;
         "accessibility.typeaheadfind.manual" = false;
-        "browser.startup.page" = 3; # Restore previous session
-        "browser.search.region" = "AU";
+        "browser.bookmarks.showMobileBookmarks" = true;
+        "browser.chrome.toolbar_tips" = false;
+        "browser.low_commit_space_threshold_percent" = 70;
+        "browser.safebrowsing.blockedURIs.enabled" = false;
         "browser.search.isUS" = false;
+        "browser.search.region" = "AU";
+        "browser.search.suggest.enabled" = false;
+        "browser.search.suggest.enabled.private" = false;
         "browser.sessionstore.restore_on_demand" = true;
         "browser.sessionstore.resume_from_crash" = true;
-        "browser.uiCustomization.state" = ''{"placements":{"widget-overflow-fixed-list":[],"unified-extensions-area":["ublock0_raymondhill_net-browser-action","_a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad_-browser-action","redirector_einaregilsson_com-browser-action","jid1-kkzogwgsw3ao4q_jetpack-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","_34daeb50-c2d2-4f14-886a-7160b24d66a4_-browser-action","addon_darkreader_org-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","urlbar-container","save-to-pocket-button","bookmarks-menu-button","downloads-button","unified-extensions-button"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["firefox-view-button","tabbrowser-tabs","new-tab-button","alltabs-button"],"PersonalToolbar":["personal-bookmarks"]},"seen":["_a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad_-browser-action","redirector_einaregilsson_com-browser-action","jid1-kkzogwgsw3ao4q_jetpack-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","_34daeb50-c2d2-4f14-886a-7160b24d66a4_-browser-action","addon_darkreader_org-browser-action","ublock0_raymondhill_net-browser-action","developer-button"],"dirtyAreaCache":["nav-bar","widget-overflow-fixed-list","toolbar-menubar","TabsToolbar","PersonalToolbar","unified-extensions-area"],"currentVersion":19,"newElementCount":14}'';
-        "browser.bookmarks.showMobileBookmarks" = true;
-        "browser.search.suggest.enabled" = false;
-        "browser.safebrowsing.downloads.enabled" = false;
-        "browser.safebrowsing.blockedURIs.enabled" = false;
-        "browser.low_commit_space_threshold_percent" = 70;
-        "distribution.searchplugins.defaultLocale" = "en-AU";
+        "browser.startup.page" = 3; # Restore previous session
+        "browser.toolbars.bookmarks.visibility" = "never";
+        "browser.uiCustomization.state" = ''{"placements":{"widget-overflow-fixed-list":[],"unified-extensions-area":["ublock0_raymondhill_net-browser-action","_a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad_-browser-action","redirector_einaregilsson_com-browser-action","jid1-kkzogwgsw3ao4q_jetpack-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","_34daeb50-c2d2-4f14-886a-7160b24d66a4_-browser-action","addon_darkreader_org-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","urlbar-container","save-to-pocket-button","bookmarks-menu-button","downloads-button","unified-extensions-button"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["firefox-view-button","tabbrowser-tabs","new-tab-button","alltabs-button"],"PersonalToolbar":["personal-bookmarks"]},"seen":["_a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad_-browser-action","redirector_einaregilsson_com-browser-action","jid1-kkzogwgsw3ao4q_jetpack-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","_34daeb50-c2d2-4f14-886a-7160b24d66a4_-browser-action","addon_darkreader_org-browser-action","ublock0_raymondhill_net-browser-action","developer-button"],"dirtyAreaCache":["nav-bar","widget-overflow-fixed-list","toolbar-menubar","TabsToolbar","PersonalToolbar","unified-extensions-area"],"currentVersion":19,"newElementCount":14}''; 
+        "browser.urlbar.suggest.bookmark" = false;
         "devtools.chrome.enabled" = true;
-        "general.useragent.locale" = "en-AU";
+        "distribution.searchplugins.defaultLocale" = "en-AU";
+        "extensions.autoDisableScopes" = 0;
+        "floorp.browser.sidebar.enable" = false;
         "general.smoothScroll" = true;
+        "general.useragent.locale" = "en-AU";
         "media.hardware-video-decoding.enabled" = true;
         "media.videocontrols.picture-in-picture.enabled" = true;
         "privacy.donottrackheader.enabled" = true;
+        "services.sync.prefs.sync.browser.safebrowsing.downloads.enabled" = false;
+        "services.sync.prefs.sync.general.smoothScroll" = true;
         "services.sync.prefs.sync.signon.management.page.breach-alerts.enabled" = false;
         "signon.management.page.breach-alerts.enabled" = false;
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
         # Disable crash reports
         "breakpad.reportURL" = "";
+        "browser.safebrowsing.provider.google.reportURL" = "";
+        "browser.safebrowsing.provider.google4.reportURL" = "";
         "browser.tabs.crashReporting.sendReport" = false;
         "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
       };

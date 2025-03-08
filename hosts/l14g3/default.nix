@@ -13,7 +13,7 @@
     ./../../modules/gpu.nix
     ./../../modules/security.nix
     ./../../modules/sudo.nix
-    ./../../modules/swhkd.nix
+    ./../../modules/swhkdp.nix
     ./../../modules/bluetooth.nix
     ./../../modules/greeters/regreet.nix
   ];

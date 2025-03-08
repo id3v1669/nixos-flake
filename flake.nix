@@ -40,8 +40,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    swhkd = {
-      url = "github:id3v1669/swhkd";
+    swhkdp = {
+      url = "github:id3v1669/swhkdp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     prism-launcher = {

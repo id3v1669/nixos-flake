@@ -22,7 +22,7 @@
     ./enviroment/gtk
     ./enviroment/anyrun
     ./enviroment/xdg
-    ./enviroment/lan-mouse
+    #./enviroment/lan-mouse
     ./enviroment/${envir}
   ] ++ lib.lists.optionals (envir == "Hyprland") [
     ./enviroment/eww

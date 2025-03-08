@@ -76,7 +76,6 @@ in
 #----------------startup commands-----------------
 exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30    # set cursor as hyprland doesn't respect gtk
 exec-once = swhks &                                               # used command as systemd service starts it in isolation
-exec-once = input-remapper-control --command autoload --config-dir /etc/input-remapper
 #-------------------------------------------------
 
 #-----------------startup scripts-----------------
@@ -116,7 +115,7 @@ windowrule = opacity 0.8, .blueman-manager-wrapped                # bluetooth ma
 
 #--------------other windowrules2------------------
 windowrulev2 = opacity 0.95 0.9,class:^(Spotify)$                 # spotify
-windowrulev2 = opacity 0.95 0.95,class:^(firefox)$                # firefox
+windowrulev2 = opacity 0.95 0.95,class:^(floorp)$                 # floorp
 windowrulev2 = opacity 0.95 0.85,class:^(Alacritty)$              # terminal
 #windowrulev2 = opacity 0.95 0.9,class:^(nemo)$                   # file manager
 windowrulev2 = opacity 0.95 0.9,class:^(code-url-handler)$        # vscode1

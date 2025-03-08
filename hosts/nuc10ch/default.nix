@@ -12,7 +12,7 @@
     ./../../modules/sound.nix
     ./../../modules/gpu.nix
     ./../../modules/security.nix
-    ./../../modules/swhkd.nix
+    ./../../modules/swhkdp.nix
     ./../../modules/sudo.nix
     ./../../modules/sops.nix
     ./../../modules/bluetooth.nix

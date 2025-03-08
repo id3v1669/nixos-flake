@@ -74,7 +74,7 @@
     modules = [
       (./.. + "/hosts/${hostname}")
       inputs.lanzaboote.nixosModules.lanzaboote
-      inputs.swhkd.nixosModules.default
+      inputs.swhkdp.nixosModules.default
       inputs.sops-nix.nixosModules.sops
       inputs.home-manager.nixosModules.home-manager
       {

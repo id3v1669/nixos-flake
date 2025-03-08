@@ -10,7 +10,7 @@
   ] ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
     ./alacritty
     ./vscode
-    ./firefox
+    ./floorp
     ./other
     ./discord
     ./telegram
@@ -21,6 +21,7 @@
     ./swappy
     ./chromium
     ./spicetify
+    ./steam
   ] ++ lib.lists.optionals (desk == "desktop") [
     ./mangohud
   ];
