@@ -1,14 +1,14 @@
-{ config
-, pkgs
-, uservars
-, ... 
-}:
 {
+  config,
+  pkgs,
+  uservars,
+  ...
+}: {
   services = {
     httpd = {
       virtualHosts.main = {
-      hostName = "${uservars.domain}";
-      documentRoot = "/var/www/${uservars.domain}";
+        hostName = "${uservars.domain}";
+        documentRoot = "/var/www/${uservars.domain}";
         listen = [
           {
             ip = "127.0.0.1";

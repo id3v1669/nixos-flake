@@ -1,23 +1,24 @@
-{ config
-, pkgs
-, writeShellApplication
-, ...
+{
+  config,
+  pkgs,
+  writeShellApplication,
+  ...
 }:
-writeShellApplication{
+writeShellApplication {
   name = "eww-move";
-  runtimeInputs = [ pkgs.eww ];
+  runtimeInputs = [pkgs.eww];
   text = ''
-set +o errexit
-set +o nounset
-set +o pipefail
+    set +o errexit
+    set +o nounset
+    set +o pipefail
 
-defaultscreen=$(eww get defaultscreen)
+    defaultscreen=$(eww get defaultscreen)
 
-eww update defaultscreen=$((!defaultscreen))
+    eww update defaultscreen=$((!defaultscreen))
 
-eww open popup-power-window --screen $((!defaultscreen))
-eww open calendar-popup-window --screen $((!defaultscreen))
-eww open bar --screen $((!defaultscreen))
+    eww open popup-power-window --screen $((!defaultscreen))
+    eww open calendar-popup-window --screen $((!defaultscreen))
+    eww open bar --screen $((!defaultscreen))
 
   '';
 }

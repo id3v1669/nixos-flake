@@ -1,19 +1,19 @@
-{ config
-, lib
-, pkgs
-, modulesPath
-, system
-, inputs
-, ...
-}:
 {
-  imports = [ 
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  system,
+  inputs,
+  ...
+}: {
+  imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     #inputs.nixos-hardware.nixosModules.apple-t2
   ];
 
   boot = {
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = ["kvm-intel"];
     kernelParams = [
       "i915.enable_fbc=1"
       "i915.enable_psr=2"
@@ -21,14 +21,14 @@
       "iommu=pt"
       "pcie_ports=compat"
     ];
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+    extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
     initrd = {
-      availableKernelModules = [ "nvme" "xhci_pci" "sd_mod" "uas" ];
-      kernelModules = [ "amdgpu" "i915" "applespi" "spi_pxa2xx_platform" "intel_lpss_pci" "applesmc" ];
+      availableKernelModules = ["nvme" "xhci_pci" "sd_mod" "uas"];
+      kernelModules = ["amdgpu" "i915" "applespi" "spi_pxa2xx_platform" "intel_lpss_pci" "applesmc"];
     };
   };
 
-  fileSystems."/" ={ 
+  fileSystems."/" = {
     device = "/dev/disk/by-uuid/64e48775-e27b-4450-bf4b-0f3e1205b5c7";
     fsType = "ext4";
   };
@@ -36,7 +36,7 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/C680-AD9B";
     fsType = "vfat";
-    options = [ "fmask=0022" "dmask=0022" ];
+    options = ["fmask=0022" "dmask=0022"];
   };
 
   environment.etc."libinput/local-overrides.quirks".text = ''
@@ -64,7 +64,7 @@
 
   hardware.enableRedistributableFirmware = true;
   hardware.apple-t2.enableAppleSetOsLoader = true;
-  swapDevices = [ ]; 
+  swapDevices = [];
 
   nixpkgs.hostPlatform = lib.mkDefault "${system}";
 }

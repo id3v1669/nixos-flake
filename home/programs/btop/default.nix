@@ -1,8 +1,8 @@
-{ config
-, pkgs
-, ...
-}:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.btop = {
     enable = true;
     settings = {
@@ -73,88 +73,88 @@
     };
   };
   home.file.".config/btop/themes/dynamic-btop.theme".text = with config.palette; ''
-# Main background, empty for terminal default, need to be empty if you want transparent background
-theme[main_bg]="${base06.hexT}"
+    # Main background, empty for terminal default, need to be empty if you want transparent background
+    theme[main_bg]="${base06.hexT}"
 
-# Main text color
-theme[main_fg]="${base00.hexT}"
+    # Main text color
+    theme[main_fg]="${base00.hexT}"
 
-# Title color for boxes
-theme[title]="${base00.hexT}"
+    # Title color for boxes
+    theme[title]="${base00.hexT}"
 
-# Highlight color for keyboard shortcuts
-theme[hi_fg]="${base17.hexT}"
+    # Highlight color for keyboard shortcuts
+    theme[hi_fg]="${base17.hexT}"
 
-# Background color of selected item in processes box
-theme[selected_bg]="${base05.hexT}"
+    # Background color of selected item in processes box
+    theme[selected_bg]="${base05.hexT}"
 
-# Foreground color of selected item in processes box
-theme[selected_fg]="${base17.hexT}"
+    # Foreground color of selected item in processes box
+    theme[selected_fg]="${base17.hexT}"
 
-# Color of inactive/disabled text
-theme[inactive_fg]="${base03.hexT}"
+    # Color of inactive/disabled text
+    theme[inactive_fg]="${base03.hexT}"
 
-# Color of text appearing on top of graphs, i.e uptime and current network graph scaling
-theme[graph_text]="${base02.hexT}"
+    # Color of text appearing on top of graphs, i.e uptime and current network graph scaling
+    theme[graph_text]="${base02.hexT}"
 
-# Background color of the percentage meters
-theme[meter_bg]="${base05.hexT}"
+    # Background color of the percentage meters
+    theme[meter_bg]="${base05.hexT}"
 
-# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
-theme[proc_misc]="${base02.hexT}"
+    # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+    theme[proc_misc]="${base02.hexT}"
 
-# CPU, Memory, Network, Proc box outline colors
-theme[cpu_box]="${base1A.hexT}"
-theme[mem_box]="${base11.hexT}"
-theme[net_box]="${base0B.hexT}"
-theme[proc_box]="${base17.hexT}"
+    # CPU, Memory, Network, Proc box outline colors
+    theme[cpu_box]="${base1A.hexT}"
+    theme[mem_box]="${base11.hexT}"
+    theme[net_box]="${base0B.hexT}"
+    theme[proc_box]="${base17.hexT}"
 
-# Box divider line and small boxes line color
-theme[div_line]="${base0B.hexT}"
+    # Box divider line and small boxes line color
+    theme[div_line]="${base0B.hexT}"
 
-# Temperature graph color (Green -> Yellow -> Red)
-theme[temp_start]="${base11.hexT}"
-theme[temp_mid]="${base0E.hexT}"
-theme[temp_end]="${base08.hexT}"
+    # Temperature graph color (Green -> Yellow -> Red)
+    theme[temp_start]="${base11.hexT}"
+    theme[temp_mid]="${base0E.hexT}"
+    theme[temp_end]="${base08.hexT}"
 
-# CPU graph colors (Teal -> Lavender)
-theme[cpu_start]="${base14.hexT}"
-theme[cpu_mid]="${base00.hexT}"
-theme[cpu_end]="${base01.hexT}"
+    # CPU graph colors (Teal -> Lavender)
+    theme[cpu_start]="${base14.hexT}"
+    theme[cpu_mid]="${base00.hexT}"
+    theme[cpu_end]="${base01.hexT}"
 
-# Mem/Disk free meter (Mauve -> Lavender -> Blue)
-theme[free_start]="${base1A.hexT}"
-theme[free_mid]="${base01.hexT}"
-theme[free_end]="${base17.hexT}"
+    # Mem/Disk free meter (Mauve -> Lavender -> Blue)
+    theme[free_start]="${base1A.hexT}"
+    theme[free_mid]="${base01.hexT}"
+    theme[free_end]="${base17.hexT}"
 
-# Mem/Disk cached meter (Sapphire -> Lavender)
-theme[cached_start]="${base00.hexT}"
-theme[cached_mid]="${base17.hexT}"
-theme[cached_end]="${base01.hexT}"
+    # Mem/Disk cached meter (Sapphire -> Lavender)
+    theme[cached_start]="${base00.hexT}"
+    theme[cached_mid]="${base17.hexT}"
+    theme[cached_end]="${base01.hexT}"
 
-# Mem/Disk available meter (Peach -> Red)
-theme[available_start]="${base0B.hexT}"
-theme[available_mid]="${base0B.hexT}"
-theme[available_end]="${base08.hexT}"
+    # Mem/Disk available meter (Peach -> Red)
+    theme[available_start]="${base0B.hexT}"
+    theme[available_mid]="${base0B.hexT}"
+    theme[available_end]="${base08.hexT}"
 
-# Mem/Disk used meter (Green -> Sky)
-theme[used_start]="${base11.hexT}"
-theme[used_mid]="${base14.hexT}"
-theme[used_end]="${base08.hexT}"
+    # Mem/Disk used meter (Green -> Sky)
+    theme[used_start]="${base11.hexT}"
+    theme[used_mid]="${base14.hexT}"
+    theme[used_end]="${base08.hexT}"
 
-# Download graph colors (Peach -> Red)
-theme[download_start]="${base0B.hexT}"
-theme[download_mid]="${base0B.hexT}"
-theme[download_end]="${base08.hexT}"
+    # Download graph colors (Peach -> Red)
+    theme[download_start]="${base0B.hexT}"
+    theme[download_mid]="${base0B.hexT}"
+    theme[download_end]="${base08.hexT}"
 
-# Upload graph colors (Green -> Sky)
-theme[upload_start]="${base11.hexT}"
-theme[upload_mid]="${base14.hexT}"
-theme[upload_end]="${base08.hexT}"
+    # Upload graph colors (Green -> Sky)
+    theme[upload_start]="${base11.hexT}"
+    theme[upload_mid]="${base14.hexT}"
+    theme[upload_end]="${base08.hexT}"
 
-# Process box color gradient for threads, mem and cpu usage (Sapphire -> Mauve)
-theme[process_start]="${base00.hexT}"
-theme[process_mid]="${base01.hexT}"
-theme[process_end]="${base1A.hexT}"
+    # Process box color gradient for threads, mem and cpu usage (Sapphire -> Mauve)
+    theme[process_start]="${base00.hexT}"
+    theme[process_mid]="${base01.hexT}"
+    theme[process_end]="${base1A.hexT}"
   '';
 }

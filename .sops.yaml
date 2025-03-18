@@ -1,5 +1,5 @@
 keys:
-  - &nextcloud age1v26a3t560ay7l6us6ljm242hsasl2uzxxxck28p8kvw36cj8xejsddn8mm
+  - &nextcloud age1j4lwwtw472552f0c90e0wutgyr44f538utw52yk4jmt8ewuzkalspqmr4f
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:

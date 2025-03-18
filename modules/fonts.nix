@@ -1,7 +1,4 @@
-{ pkgs
-, ...
-}: 
-{
+{pkgs, ...}: {
   fonts = {
     fontconfig.enable = true;
     enableDefaultPackages = true;
@@ -9,7 +6,7 @@
       enable = true;
       decompressFonts = true;
     };
-    packages = (with pkgs; [
+    packages = with pkgs; [
       nerd-fonts.terminess-ttf
       noto-fonts
       noto-fonts-cjk-sans
@@ -21,6 +18,6 @@
       mplus-outline-fonts.githubRelease
       dina-font
       proggyfonts
-    ]);
+    ];
   };
 }

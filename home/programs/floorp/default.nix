@@ -1,8 +1,8 @@
-{ pkgs
-, uservars
-, ...
-}:
 {
+  pkgs,
+  uservars,
+  ...
+}: {
   programs.floorp = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.floorp-unwrapped {
@@ -68,7 +68,7 @@
         "browser.sessionstore.resume_from_crash" = true;
         "browser.startup.page" = 3; # Restore previous session
         "browser.toolbars.bookmarks.visibility" = "never";
-        "browser.uiCustomization.state" = ''{"placements":{"widget-overflow-fixed-list":[],"unified-extensions-area":["ublock0_raymondhill_net-browser-action","_a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad_-browser-action","redirector_einaregilsson_com-browser-action","jid1-kkzogwgsw3ao4q_jetpack-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","_34daeb50-c2d2-4f14-886a-7160b24d66a4_-browser-action","addon_darkreader_org-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","urlbar-container","save-to-pocket-button","bookmarks-menu-button","downloads-button","unified-extensions-button"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["firefox-view-button","tabbrowser-tabs","new-tab-button","alltabs-button"],"PersonalToolbar":["personal-bookmarks"]},"seen":["_a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad_-browser-action","redirector_einaregilsson_com-browser-action","jid1-kkzogwgsw3ao4q_jetpack-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","_34daeb50-c2d2-4f14-886a-7160b24d66a4_-browser-action","addon_darkreader_org-browser-action","ublock0_raymondhill_net-browser-action","developer-button"],"dirtyAreaCache":["nav-bar","widget-overflow-fixed-list","toolbar-menubar","TabsToolbar","PersonalToolbar","unified-extensions-area"],"currentVersion":19,"newElementCount":14}''; 
+        "browser.uiCustomization.state" = ''{"placements":{"widget-overflow-fixed-list":[],"unified-extensions-area":["ublock0_raymondhill_net-browser-action","_a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad_-browser-action","redirector_einaregilsson_com-browser-action","jid1-kkzogwgsw3ao4q_jetpack-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","_34daeb50-c2d2-4f14-886a-7160b24d66a4_-browser-action","addon_darkreader_org-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","urlbar-container","save-to-pocket-button","bookmarks-menu-button","downloads-button","unified-extensions-button"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["firefox-view-button","tabbrowser-tabs","new-tab-button","alltabs-button"],"PersonalToolbar":["personal-bookmarks"]},"seen":["_a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad_-browser-action","redirector_einaregilsson_com-browser-action","jid1-kkzogwgsw3ao4q_jetpack-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","_34daeb50-c2d2-4f14-886a-7160b24d66a4_-browser-action","addon_darkreader_org-browser-action","ublock0_raymondhill_net-browser-action","developer-button"],"dirtyAreaCache":["nav-bar","widget-overflow-fixed-list","toolbar-menubar","TabsToolbar","PersonalToolbar","unified-extensions-area"],"currentVersion":19,"newElementCount":14}'';
         "browser.urlbar.suggest.bookmark" = false;
         "devtools.chrome.enabled" = true;
         "distribution.searchplugins.defaultLocale" = "en-AU";
@@ -94,11 +94,11 @@
       };
       extraConfig = ''
         user_pref("media.ffmpeg.vaapi.enabled", true);
-        '';
+      '';
       bookmarks = [
         {
           name = "Yandex";
-          tags = [ "yandex" ];
+          tags = ["yandex"];
           keyword = "yandex";
           url = "https://yandex.com";
         }
@@ -125,7 +125,7 @@
             }
             {
               name = "wiki";
-              tags = [ "wiki" "nix" ];
+              tags = ["wiki" "nix"];
               url = "https://nixos.wiki/";
             }
           ];

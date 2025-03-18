@@ -1,54 +1,85 @@
-{ pkgs
-, envir
-, config
-, brightnesctrl
-, uservars
-, lib
-, inputs
-, ...
-}:
-let
+{
+  pkgs,
+  envir,
+  config,
+  brightnesctrl,
+  uservars,
+  lib,
+  inputs,
+  ...
+}: let
   hyprctl = "${lib.getExe' pkgs.hyprland "hyprctl"}";
   playerctl = "${lib.getExe' pkgs.playerctl "playerctl"}";
-in
-{ 
+in {
   environment.systemPackages = [
     inputs.swhkdp.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
   services.swhkdp = {
     enable = true;
-    settings = let 
-      killactive = if envir=="Hyprland" then "${hyprctl} dispatch killactive"
+    settings = let
+      killactive =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch killactive"
         else "";
-      togglesplit = if envir=="Hyprland" then "${hyprctl} dispatch togglesplit"
+      togglesplit =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch togglesplit"
         else "echo 'no envir'";
-      togglefloating = if envir=="Hyprland" then "${hyprctl} dispatch togglefloating"
+      togglefloating =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch togglefloating"
         else "";
-      pseudo = if envir=="Hyprland" then "${hyprctl} dispatch pseudo"
+      pseudo =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch pseudo"
         else "";
-      nextworkspace = if envir=="Hyprland" then "${hyprctl} dispatch workspace e+1"
+      nextworkspace =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch workspace e+1"
         else "";
-      prevworkspace = if envir=="Hyprland" then "${hyprctl} dispatch workspace e-1"
+      prevworkspace =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch workspace e-1"
         else "";
-      movenextworkspace = if envir=="Hyprland" then "${hyprctl} dispatch movetoworkspace e+1"
+      movenextworkspace =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch movetoworkspace e+1"
         else "";
-      moveprevworkspace = if envir=="Hyprland" then "${hyprctl} dispatch movetoworkspace e-1"
+      moveprevworkspace =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch movetoworkspace e-1"
         else "";
-      fullscreen = if envir=="Hyprland" then "${hyprctl} dispatch fullscreen 0"
+      fullscreen =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch fullscreen 0"
         else "";
-      maximize = if envir=="Hyprland" then "${hyprctl} dispatch fullscreen 1"
+      maximize =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch fullscreen 1"
         else "";
-      nextactivewindow = if envir=="Hyprland" then "${hyprctl} dispatch cyclenext"
+      nextactivewindow =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch cyclenext"
         else "";
-      movetoworkspace = if envir=="Hyprland" then "${hyprctl} dispatch movetoworkspace"
+      movetoworkspace =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch movetoworkspace"
         else "";
-      workspace = if envir=="Hyprland" then "${hyprctl} dispatch workspace"
+      workspace =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch workspace"
         else "";
-      movefocus = if envir=="Hyprland" then "${hyprctl} dispatch movefocus "
+      movefocus =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch movefocus "
         else "";
-      exit = if envir=="Hyprland" then "${hyprctl} dispatch exit"
+      exit =
+        if envir == "Hyprland"
+        then "${hyprctl} dispatch exit"
         else "";
-      reload = if envir=="Hyprland" then "${hyprctl} reload"
+      reload =
+        if envir == "Hyprland"
+        then "${hyprctl} reload"
         else "";
     in {
       modes = {

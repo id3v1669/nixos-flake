@@ -1,9 +1,9 @@
-{ lib
-, config
-, pkgs
-, ...
-}:
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   programs.chromium = {
     enable = true;
     package = pkgs.ungoogled-chromium;
@@ -41,13 +41,13 @@
     # extensions = [
     #   {
     #     # << LibRedirect >>
-	  #     id = "oladmjdebphlnjjcnomfhhbfdldiimaf";
+    #     id = "oladmjdebphlnjjcnomfhhbfdldiimaf";
     #     updateUrl = "https://raw.githubusercontent.com/libredirect/browser_extension/master/src/updates/updates.xml";
     #   }
     #   {
     #     # << Chromium Web Store >>
-	  #     id = "ocaahdebbfolfmndjeplogmgcagdmblk";
-	  #     updateUrl = "https://raw.githubusercontent.com/NeverDecaf/chromium-web-store/master/updates.xml";
+    #     id = "ocaahdebbfolfmndjeplogmgcagdmblk";
+    #     updateUrl = "https://raw.githubusercontent.com/NeverDecaf/chromium-web-store/master/updates.xml";
     #   }
     #   # { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
     #   # { id = "pjbgfifennfhnbkhoidkdchbflppjncb"; } # dark reader

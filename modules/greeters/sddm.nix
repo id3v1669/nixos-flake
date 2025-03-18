@@ -1,8 +1,8 @@
-{ inputs
-, pkgs
-, ...
-}:
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   services.displayManager.sddm = {
     enable = true;
     wayland = {

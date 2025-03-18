@@ -1,22 +1,29 @@
-{ pkgs
-, config
-, stable
-, envir
-, colorsvar
-, uservars
-, ...
-}:
 {
+  pkgs,
+  config,
+  stable,
+  envir,
+  colorsvar,
+  uservars,
+  ...
+}: {
   imports = [
     ./dotnet.nix
     ./ss.nix
   ];
-  home.packages = let cp = pkgs.callPackage; in [
-    (cp ./distrobox.nix {config = config;})
-    (cp ./eww-launcher.nix {envir = envir;})
+  home.packages = let
+    cp = pkgs.callPackage;
+  in [
+    (cp ./distrobox.nix {inherit config;})
+    (cp ./eww-launcher.nix {inherit envir;})
     (cp ./eww-move.nix {})
-    (cp ./shadowplay.nix {envir = envir;})
-    (cp ./wallpaper.nix {envir = envir; config = config; colorsvar = colorsvar; uservars = uservars;})
+    (cp ./shadowplay.nix {inherit envir;})
+    (cp ./wallpaper.nix {
+      inherit envir;
+      inherit config;
+      inherit colorsvar;
+      inherit uservars;
+    })
     (cp ./microphone-toggle.nix {})
   ];
 }

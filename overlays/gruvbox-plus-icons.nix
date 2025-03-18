@@ -1,7 +1,7 @@
 final: pkgs: {
   gruvbox-plus-icons = pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
-  pname = "gruvbox-plus-icons";
-  version = "6.1.1";
+    pname = "gruvbox-plus-icons";
+    version = "6.1.1";
 
     src = pkgs.fetchFromGitHub {
       owner = "SylEleuth";
@@ -10,7 +10,7 @@ final: pkgs: {
       hash = "sha256-bDbOC9czQl95xoaAc2Wr1T6DZsnDEJtj2QbnUJfQ0i4=";
     };
 
-    nativeBuildInputs = [ pkgs.gtk3 ];
+    nativeBuildInputs = [pkgs.gtk3];
 
     propagatedBuildInputs = with pkgs; [
       plasma5Packages.breeze-icons

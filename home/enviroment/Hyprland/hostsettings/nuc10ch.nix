@@ -1,24 +1,24 @@
-{ config
-, lib
-, pkgs
-, gpuvar
-, inputs
-, ...
-}:
 {
+  config,
+  lib,
+  pkgs,
+  gpuvar,
+  inputs,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     settings = {
-		  windowrule = [
-			  "move 84.75% 4.25%,^(org.pulseaudio.pavucontrol)$"
+      windowrule = [
+        "move 84.75% 4.25%,^(org.pulseaudio.pavucontrol)$"
         "size 15% 50%,^(org.pulseaudio.pavucontrol)$"
-			  "move 84.75% 4.25%,^(nm-connection-editor)$"
+        "move 84.75% 4.25%,^(nm-connection-editor)$"
         "size 15% 50%,^(nm-connection-editor)$"
-			  "move 81.25% 4.25%, blueman-manager"
+        "move 81.25% 4.25%, blueman-manager"
         "size 18.5% 55%, blueman-manager"
-		  ];
-		  source = [
+      ];
+      source = [
         "${config.home.homeDirectory}/.config/hypr/test.conf"
-	  		"${config.home.homeDirectory}/.config/hypr/monitor.conf"
+        "${config.home.homeDirectory}/.config/hypr/monitor.conf"
       ];
       workspace = [
         "1, monitor:DP-1"
@@ -29,56 +29,56 @@
       ];
     };
   };
- home.file.".scripts/screen.sh" = {
-   executable = true;
-   text = ''
-#!/usr/bin/env bash
+  home.file.".scripts/screen.sh" = {
+    executable = true;
+    text = ''
+      #!/usr/bin/env bash
 
-#-----------------------------------------#
-#----------------Variables----------------#
+      #-----------------------------------------#
+      #----------------Variables----------------#
 
-availible_resolutions=("qhd" "sqhd" "sfhd" "sv")
+      availible_resolutions=("qhd" "sqhd" "sfhd" "sv")
 
-declare -A screen1_resolutions
-screen1_resolutions["qhd"]="monitor=DP-1,3440x1440@100,0x0,1"
-screen1_resolutions["sqhd"]="monitor=DP-1,3440x1440@100,0x0,1"
-screen1_resolutions["sfhd"]="monitor=DP-1,2560x1080@120,0x0,1"
-screen1_resolutions["sv"]="monitor=DP-1,disable"
+      declare -A screen1_resolutions
+      screen1_resolutions["qhd"]="monitor=DP-1,3440x1440@100,0x0,1"
+      screen1_resolutions["sqhd"]="monitor=DP-1,3440x1440@100,0x0,1"
+      screen1_resolutions["sfhd"]="monitor=DP-1,2560x1080@120,0x0,1"
+      screen1_resolutions["sv"]="monitor=DP-1,disable"
 
-declare -A screen2_resolutions
-screen2_resolutions["qhd"]="monitor=HDMI-A-2,1920x1080@100,3440x0,1,transform,1"
-screen2_resolutions["sqhd"]="monitor=HDMI-A-2,disable"
-screen2_resolutions["sfhd"]="monitor=HDMI-A-2,disable"
-screen2_resolutions["sv"]="monitor=HDMI-A-2,1920x1080@100,0x0,1,transform,1"
+      declare -A screen2_resolutions
+      screen2_resolutions["qhd"]="monitor=HDMI-A-2,1920x1080@100,3440x0,1,transform,1"
+      screen2_resolutions["sqhd"]="monitor=HDMI-A-2,disable"
+      screen2_resolutions["sfhd"]="monitor=HDMI-A-2,disable"
+      screen2_resolutions["sv"]="monitor=HDMI-A-2,1920x1080@100,0x0,1,transform,1"
 
-path="${config.home.homeDirectory}/.config/hypr/monitor.conf"
-resolution=$1
+      path="${config.home.homeDirectory}/.config/hypr/monitor.conf"
+      resolution=$1
 
-#-----------------------------------------#
+      #-----------------------------------------#
 
 
-#-----------------------------------------#
-#------------------Main-------------------#
+      #-----------------------------------------#
+      #------------------Main-------------------#
 
-if [ -z "$resolution" ]; then
-   resolution="qhd"
-fi
+      if [ -z "$resolution" ]; then
+         resolution="qhd"
+      fi
 
-if [[ ! " ''${availible_resolutions[@]} " =~ " ''${resolution} " ]]; then
-   echo "Invalid resolution"
-   exit 1
-fi
+      if [[ ! " ''${availible_resolutions[@]} " =~ " ''${resolution} " ]]; then
+         echo "Invalid resolution"
+         exit 1
+      fi
 
-rm -f $path
+      rm -f $path
 
-echo ''${screen1_resolutions[$resolution]} > $path
-echo ''${screen2_resolutions[$resolution]} >> $path
-echo "monitor=Unknown-1,disabled" >> $path
+      echo ''${screen1_resolutions[$resolution]} > $path
+      echo ''${screen2_resolutions[$resolution]} >> $path
+      echo "monitor=Unknown-1,disabled" >> $path
 
-hyprctl reload
+      hyprctl reload
 
-#-----------------------------------------#
+      #-----------------------------------------#
 
-		'';
-	};
+    '';
+  };
 }

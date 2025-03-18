@@ -1,19 +1,18 @@
-{ lib
-, desk
-, config
-, pkgs
-, uservars
-, ... 
-}:
-let
-  srv = (desk != "server"); 
-in
 {
+  lib,
+  desk,
+  config,
+  pkgs,
+  uservars,
+  ...
+}: let
+  srv = desk != "server";
+in {
   boot = {
-    kernelModules = [ "tcp_bbr" ];
+    kernelModules = ["tcp_bbr"];
     kernel.sysctl = {
       # Restrict loading TTY line disciplines to the CAP_SYS_MODULE capability
-      # to prevent unprivileged attackers from loading vulnerable line 
+      # to prevent unprivileged attackers from loading vulnerable line
       # disciplines with the TIOCSETD ioctl
       "dev.tty.ldisc_autoload" = 0;
 
@@ -72,19 +71,21 @@ in
     };
   };
 
-  services.clamav = 
-  let x = false; in {
+  services.clamav = let
+    x = false;
+  in {
     daemon.enable = x;
     fangfrisch.enable = x;
     scanner.enable = x;
     updater.enable = x;
   };
-  programs.wireshark = {            # wireshark for network analysis
+  programs.wireshark = {
+    # wireshark for network analysis
     enable = !srv;
     package = pkgs.wireshark;
   };
-  users.users.${uservars.name}.extraGroups = [
-  ] ++ lib.lists.optionals (!srv) [
-    "wireshark"
-  ];
+  users.users.${uservars.name}.extraGroups =
+    lib.lists.optionals (!srv) [
+      "wireshark"
+    ];
 }

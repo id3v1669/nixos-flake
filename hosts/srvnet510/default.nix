@@ -1,9 +1,9 @@
-{ pkgs
-, uservars
-, ...
-}:
 {
-  imports = [ 
+  pkgs,
+  uservars,
+  ...
+}: {
+  imports = [
     /etc/nixos/net.nix
     ./hardware-configuration.nix
     ./../configuration.nix
@@ -40,7 +40,7 @@
   };
   services.openssh = {
     enable = true;
-    
+
     settings = {
       PermitRootLogin = "no";
     };

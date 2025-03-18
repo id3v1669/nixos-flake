@@ -1,14 +1,14 @@
-{ pkgs
-, lib
-, uservars
-, inputs
-, ...
-}:
 {
-  imports = [ 
+  pkgs,
+  lib,
+  uservars,
+  inputs,
+  ...
+}: {
+  imports = [
     inputs.nix-minecraft.nixosModules.minecraft-servers
   ];
-  users.users.${uservars.name}.extraGroups = [ "minecraft" ];
+  users.users.${uservars.name}.extraGroups = ["minecraft"];
 
   services.minecraft-servers = {
     enable = true;
@@ -52,19 +52,19 @@
             };
             Lithium = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6108/92/lithium-fabric-0.14.7%2Bmc1.21.4.jar";
-              hash = "sha256-JdYfw/d/eY+TBnToy6xo8qAxhkpLztfVbce3P1JelGU=";  
+              hash = "sha256-JdYfw/d/eY+TBnToy6xo8qAxhkpLztfVbce3P1JelGU=";
             };
             FerriteCore = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/5973/419/ferritecore-7.1.1-fabric.jar";
-              hash = "sha256-DdXpIDVSAk445zoPW0aoLrZvAxiyMonGhCsmhmMnSnk=";  
+              hash = "sha256-DdXpIDVSAk445zoPW0aoLrZvAxiyMonGhCsmhmMnSnk=";
             };
             Krypton = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/5460/550/krypton-0.2.8.jar";
-              hash = "sha256-lPGVgZsk5dpk7/3J2hXN2Eg2zHXo/w/QmLq2vC9J4/4=";  
+              hash = "sha256-lPGVgZsk5dpk7/3J2hXN2Eg2zHXo/w/QmLq2vC9J4/4=";
             };
             C2ME = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6065/638/c2me-fabric-mc1.21.4-0.3.1.1.0.jar";
-              hash = "sha256-eeKOKJVyKMIbd12/vRItWNMluCws7/3TikGmUwfd2/A=";  
+              hash = "sha256-eeKOKJVyKMIbd12/vRItWNMluCws7/3TikGmUwfd2/A=";
             };
             REI = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/5987/571/RoughlyEnoughItems-18.0.796-server-only.jar";

@@ -1,7 +1,4 @@
-{ uservars
-, ...
-}: 
-{
+{uservars, ...}: {
   sops = {
     defaultSopsFile = ./../secrets/secret.enc.yaml;
     defaultSopsFormat = "yaml";

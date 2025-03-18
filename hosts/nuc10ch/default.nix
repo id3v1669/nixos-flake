@@ -1,9 +1,9 @@
-{ pkgs
-, uservars
-, ...
-}:
 {
-  imports = [ 
+  pkgs,
+  uservars,
+  ...
+}: {
+  imports = [
     ./hardware-configuration.nix
     ./../configuration.nix
     ./../pcsconf.nix
@@ -23,14 +23,14 @@
     firewall.enable = false;
     enableIPv6 = false;
   };
-  
+
   users.users.${uservars.name}.extraGroups = [
     "users"
     "wheel"
     "networkmanager"
     "rustdesk"
     "adbusers"
-    "input" 
+    "input"
     "disk"
     "i2c"
     "veracrypt"
@@ -40,8 +40,8 @@
     systemPackages = with pkgs; [
     ];
     etc."hypr/monitor-init.conf".text = ''
-monitor=DP-1,3440x1440@100,0x0,1
-monitor=HDMI-A-2,disable
+      monitor=DP-1,3440x1440@100,0x0,1
+      monitor=HDMI-A-2,disable
     '';
   };
   nix.settings = {

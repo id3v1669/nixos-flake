@@ -1,8 +1,8 @@
-{ pkgs
-, lib
-, ...
-}:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   services.blueman.enable = true;
   hardware.bluetooth = {
     enable = true;
@@ -21,8 +21,8 @@
   };
   systemd.user.services.mpris-proxy = {
     description = "Mpris proxy";
-    after = [ "network.target" "sound.target" ];
-    wantedBy = [ "default.target" ];
+    after = ["network.target" "sound.target"];
+    wantedBy = ["default.target"];
     serviceConfig.ExecStart = "${lib.getExe' pkgs.bluez "mpris-proxy"}";
   };
 }

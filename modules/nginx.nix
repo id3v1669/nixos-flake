@@ -1,7 +1,4 @@
-{ pkgs
-, ...
-}:
-{
+{pkgs, ...}: {
   security.acme = {
     defaults.email = "id3v1669@gmail.com";
     acceptTerms = true;

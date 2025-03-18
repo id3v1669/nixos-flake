@@ -1,18 +1,15 @@
-{ pkgs
-, ...
-}:
-{
+{pkgs, ...}: {
   users.users.openlinkhub = {
     isSystemUser = true;
     group = "openlinkhub";
   };
-  users.groups.openlinkhub = { };
+  users.groups.openlinkhub = {};
   systemd.services.OpenLinkHub = {
     description = "icue link service";
     enable = true;
-    wants = [ "network.target" ];
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
+    wants = ["network.target"];
+    after = ["network.target"];
+    wantedBy = ["multi-user.target"];
     serviceConfig = {
       User = "openlinkhub";
       Group = "openlinkhub";

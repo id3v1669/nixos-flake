@@ -1,8 +1,5 @@
-{ uservars
-, ...
-}:
-{
-  imports = [ 
+{uservars, ...}: {
+  imports = [
     ./hardware-configuration.nix
     ./../configuration.nix
     ./../pcsconf.nix
@@ -17,14 +14,14 @@
     ./../../modules/bluetooth.nix
     ./../../modules/greeters/regreet.nix
   ];
-  
+
   networking.firewall.enable = false;
   users.users.${uservars.name}.extraGroups = [
     "wheel"
     "networkmanager"
     "rustdesk"
     "adbusers"
-    "input" 
+    "input"
     "disk"
     "i2c"
     "veracrypt"

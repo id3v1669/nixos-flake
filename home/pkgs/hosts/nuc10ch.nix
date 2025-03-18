@@ -1,26 +1,26 @@
-{ pkgs
-, stable
-, inputs
-, ...
-}:
 {
+  pkgs,
+  stable,
+  inputs,
+  ...
+}: {
   imports = [
     ./../security.nix
   ];
   home.packages = with pkgs; [
     # gui
-    stable.gimp                          # image editing
+    stable.gimp # image editing
 
     # text & docs
-    joplin-desktop                       # note taking app
+    joplin-desktop # note taking app
 
     # games
     (prismlauncher.override {
       jdks = with pkgs; [jdk23 zulu];
     })
-    
+
     # vid photo etc
-    libsForQt5.kdenlive           # video editing
+    libsForQt5.kdenlive # video editing
 
     #testing
     sysbench

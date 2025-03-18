@@ -1,9 +1,9 @@
-{ lib
-, pkgs
-, envir
-, ...
-}: 
 {
+  lib,
+  pkgs,
+  envir,
+  ...
+}: {
   services = {
     playerctld.enable = true;
   };

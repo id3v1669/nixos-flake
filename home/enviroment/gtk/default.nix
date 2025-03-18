@@ -1,6 +1,11 @@
-{ config, lib, pkgs, hostname, ... }:
 {
-  imports = [ 
+  config,
+  lib,
+  pkgs,
+  hostname,
+  ...
+}: {
+  imports = [
   ];
   gtk = {
     enable = true;

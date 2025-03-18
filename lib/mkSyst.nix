@@ -1,8 +1,5 @@
-{ inputs
-, ...
-}:
-{
-  mkSyst = { 
+{inputs, ...}: {
+  mkSyst = {
     hostname,
     envir,
     curversion ? "25.05",
@@ -44,15 +41,14 @@
       kboption = "grp:win_space_toggle";
       timezone = "Australia/Perth";
       locale = "en_AU.UTF-8";
-    })
-  }:
-  let
+    }),
+  }: let
     stable = import inputs.nixpkgs-stable {
       inherit system;
       config.allowUnfree = true;
     };
     allSpecialArgs = {
-      inherit 
+      inherit
         inputs
         stable
         hostname
@@ -66,21 +62,23 @@
         colorsvar
         brightnesctrl
         uservars
-        deflocale;
+        deflocale
+        ;
     };
+    pkgs = import ./nixpkgs.nix {inherit inputs allSpecialArgs;};
   in
-  inputs.nixpkgs.lib.nixosSystem {
-    specialArgs = allSpecialArgs;
-    modules = [
-      (./.. + "/hosts/${hostname}")
-      inputs.lanzaboote.nixosModules.lanzaboote
-      inputs.swhkdp.nixosModules.default
-      inputs.sops-nix.nixosModules.sops
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = import ./home-manager.nix { inherit allSpecialArgs; };
-        nixpkgs = import ./nixpkgs.nix { inherit inputs allSpecialArgs; };
-      }
-    ];
-  };
+    inputs.nixpkgs.lib.nixosSystem {
+      #formatter.${pkgs.stdenv.hostPlatform.system} = pkgs.alejandra;
+      specialArgs = allSpecialArgs;
+      modules = [
+        (./.. + "/hosts/${hostname}")
+        inputs.swhkdp.nixosModules.default
+        inputs.sops-nix.nixosModules.sops
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager = import ./home-manager.nix {inherit allSpecialArgs;};
+          nixpkgs = pkgs;
+        }
+      ];
+    };
 }

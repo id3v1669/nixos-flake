@@ -1,6 +1,5 @@
 {
   description = "id3v1669 system flake";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
@@ -24,10 +23,6 @@
       url = "github:id3v1669/ndct-sddm-corners";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,18 +44,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { ... } @ inputs:
-  let 
-    mkSystem = (import ./lib/mkSyst.nix { inherit inputs; }).mkSyst;
-  in
-  {
+  outputs = inputs: let
+    mkSystem = (import ./lib/mkSyst.nix {inherit inputs;}).mkSyst;
+  in {
     nixosConfigurations = {
-      r7rx7900xtxhypr = mkSystem { 
+      r7rx7900xtxhypr = mkSystem {
         hostname = "r7rx7900xtx";
         envir = "Hyprland";
         bootloader = {
           type = "secureboot";
-          timeout = 10;
+          timeout = 7;
         };
         cpuvar = {
           type = "amd";
@@ -83,7 +76,7 @@
           tech = "desktop";
         };
       };
-      nuc10chhypr = mkSystem { 
+      nuc10chhypr = mkSystem {
         hostname = "nuc10ch";
         envir = "Hyprland";
         cpuvar = {
@@ -107,7 +100,7 @@
           tech = "broken";
         };
       };
-      l14g3hypr = mkSystem { 
+      l14g3hypr = mkSystem {
         hostname = "l14g3";
         envir = "Hyprland";
         cpuvar = {
@@ -133,7 +126,7 @@
           tech = "amd";
         };
       };
-      mbp14-3hypr = mkSystem { 
+      mbp14-3hypr = mkSystem {
         hostname = "mbp14-3";
         envir = "Hyprland";
         cpuvar = {

@@ -1,9 +1,6 @@
-{ bootloader
-, ...
-}:
-{
+{bootloader, ...}: {
   boot.loader = {
-    timeout = bootloader.timeout;
+    inherit (bootloader) timeout;
     systemd-boot.enable = false;
     efi.canTouchEfiVariables = true;
     grub = {

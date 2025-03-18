@@ -1,9 +1,9 @@
-{ pkgs
-, stable
-, uservars
-, ...
-}:
 {
+  pkgs,
+  stable,
+  uservars,
+  ...
+}: {
   programs.noisetorch.enable = true;
   services = {
     pipewire = {
@@ -20,8 +20,8 @@
             "bluez5.enable-sbc-xq" = true;
             "bluez5.enable-hw-volume" = true;
             "bluez5.enable-msbc" = false;
-            "bluez5.codecs" = [ "sbc_xq" "aac" ];
-            "bluez5.roles" = [ "a2dp_sink" ];
+            "bluez5.codecs" = ["sbc_xq" "aac"];
+            "bluez5.roles" = ["a2dp_sink"];
           };
         };
       };
@@ -38,6 +38,6 @@
       '';
     };
   };
-  systemd.services.mpd.serviceConfig.SupplementaryGroups = [ "pipewire" ];
-  users.users.${uservars.name}.extraGroups = [ "pipewire" ];
+  systemd.services.mpd.serviceConfig.SupplementaryGroups = ["pipewire"];
+  users.users.${uservars.name}.extraGroups = ["pipewire"];
 }

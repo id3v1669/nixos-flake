@@ -14,7 +14,7 @@ final: pkgs: {
 
     vendorHash = "sha256-nDE3GUZl5OBSlhRpJBixUbWhhFMeieidNrSIzOOB/9g=";
 
-    nativeBuildInputs = [ pkgs.makeWrapper ];
+    nativeBuildInputs = [pkgs.makeWrapper];
     buildInputs = with pkgs; [
       udev
       systemd
@@ -25,7 +25,7 @@ final: pkgs: {
       cp -rv database static web $out/share/OpenLinkHub
       wrapProgram $out/bin/OpenLinkHub \
         --chdir $out/share/OpenLinkHub \
-        --suffix PATH : ${pkgs.lib.makeBinPath [ pkgs.pciutils ]};
+        --suffix PATH : ${pkgs.lib.makeBinPath [pkgs.pciutils]};
     '';
   };
 }

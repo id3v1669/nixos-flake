@@ -1,8 +1,8 @@
-{ config
-, uservars
-, ...
-}:
 {
+  config,
+  uservars,
+  ...
+}: {
   services = {
     nginx.virtualHosts."vw.${uservars.domain}" = {
       enableACME = true;

@@ -1,6 +1,4 @@
-{ ...
-}:
-{
+_: {
   services = {
     nginx.virtualHosts."onlyoffice.id3v1669.com" = {
       enableACME = true;

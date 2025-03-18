@@ -1,18 +1,18 @@
-{ lib
-, config
-, pkgs
-, deflocale
-, hostname
-, colorsvar
-, uservars
-, ...
-}:
-let
-  clp = config.palette;
-in
 {
-  imports = [] ++ lib.optional (
-    builtins.pathExists (./. + "/hostsettings/${hostname}.nix")
+  lib,
+  config,
+  pkgs,
+  deflocale,
+  hostname,
+  colorsvar,
+  uservars,
+  ...
+}: let
+  clp = config.palette;
+in {
+  imports =
+    lib.optional (
+      builtins.pathExists (./. + "/hostsettings/${hostname}.nix")
     ) (./. + "/hostsettings/${hostname}.nix");
 
   wayland.windowManager.hyprland = {
@@ -47,7 +47,7 @@ in
         follow_mouse = 1;
         focus_on_close = 1;
         touchpad = {
-            natural_scroll = true;
+          natural_scroll = true;
         };
       };
       gestures = {
@@ -73,61 +73,47 @@ in
       ];
     };
     extraConfig = ''
-#----------------startup commands-----------------
-exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30    # set cursor as hyprland doesn't respect gtk
-exec-once = swhks &                                               # used command as systemd service starts it in isolation
-#-------------------------------------------------
+      #----------------startup commands-----------------
+      exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30    # set cursor as hyprland doesn't respect gtk
+      exec-once = swhks &                                               # used command as systemd service starts it in isolation
+      #-------------------------------------------------
 
-#-----------------startup scripts-----------------
-exec-once = eww-launcher                                          # eww launcher
-exec-once = wallpaper-autostart                                   # lutgen and wallpaper starter
-#------------------------------------------------- 
+      #-----------------startup scripts-----------------
+      exec-once = eww-launcher                                          # eww launcher
+      exec-once = wallpaper-autostart                                   # lutgen and wallpaper starter
+      #-------------------------------------------------
 
-#source = ${config.home.homeDirectory}/.config/hypr/colors
+      #source = ${config.home.homeDirectory}/.config/hypr/colors
 
-#------------------kitty for btop------------------
-windowrule = float,^(kitty)$
-windowrule = center,^(kitty)$
-windowrule = size 1040 670,^(kitty)$
-windowrule = opacity 0.8,^(kitty)$
-#--------------------------------------------------
+      #------------------screen sharing------------------
+      #exec-once = xwaylandvideobridge
+      windowrulev2 = opacity 0.0 override 0.0 override,class:(xwaylandvideobridge)
+      windowrulev2 = noanim,                class:(xwaylandvideobridge)
+      windowrulev2 = nofocus,               class:(xwaylandvideobridge)
+      windowrulev2 = noinitialfocus,        class:(xwaylandvideobridge)
+      #--------------------------------------------------
 
-#------------------screen sharing------------------
-#exec-once = xwaylandvideobridge
-windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
-windowrulev2 = noanim,class:^(xwaylandvideobridge)$
-windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
-windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
-#--------------------------------------------------
+      #-------------------file picker--------------------
+      windowrulev2 = tag +fileOperation,    title:((Choose (Files|an Image)|Open ([Ff]ile(s)?|[Ff]ile|Video|[Ff]older.*)|([Image|Video] File|Save (As|Image|Video|File)|Local File|File Upload))|New Archive)
+      windowrulev2 = float,                 tag:fileOperation
+      windowrulev2 = size 35% 70%,          tag:fileOperation
+      windowrulev2 = center,                tag:fileOperation
+      #--------------------------------------------------
 
-#--------------other windowrules-------------------
-windowrule=float,^(org.pulseaudio.pavucontrol)$                   # sound controls
-windowrule = opacity 0.8,^(org.pulseaudio.pavucontrol)$           # sound controls
+      #--------------other windowrules-------------------
+      windowrulev2 = tag +floatingCentered, class:(gnome-disks|GParted|[Kk]itty|[Vv]era[Cc]rypt|polkit-gnome-authentication-agent-1)
+      windowrulev2 = float,                 tag:floatingCentered
+      windowrulev2 = center,                tag:floatingCentered
 
-windowrule = float,^(nm-connection-editor)$                       # network manager
-windowrule = opacity 0.8,^(nm-connection-editor)$                 # network manager
+      windowrulev2 = opacity 0.95 0.9,      class:([Ss]potify|[Nn]emo|org.gnome.Nautilus|code-url-handler|[Cc]ode|org.telegram.desktop|[Ee]quibop|gnome-disks|GParted|Alacritty|[Kk]itty|[Dd]iscord|[Vv]esktop)
 
-windowrule = float, blueman-manager                               # bluetooth manager
-windowrule = opacity 0.8, blueman-manager                         # bluetooth manager
-windowrule = float, .blueman-manager-wrapped                      # bluetooth manager
-windowrule = opacity 0.8, .blueman-manager-wrapped                # bluetooth manager
-#--------------------------------------------------
+      windowrulev2 = tag +floatOp,          class:(blueman-manager|.blueman-manager-wrapped|nm-connection-editor|org.pulseaudio.pavucontrol)
+      windowrulev2 = float,                 tag:floatOp
+      windowrulev2 = opacity 0.8,           tag:floatOp
 
-#--------------other windowrules2------------------
-windowrulev2 = opacity 0.95 0.9,class:^(Spotify)$                 # spotify
-windowrulev2 = opacity 0.95 0.95,class:^(floorp)$                 # floorp
-windowrulev2 = opacity 0.95 0.85,class:^(Alacritty)$              # terminal
-#windowrulev2 = opacity 0.95 0.9,class:^(nemo)$                   # file manager
-windowrulev2 = opacity 0.95 0.9,class:^(code-url-handler)$        # vscode1
-windowrulev2 = opacity 0.95 0.9,class:^(Code)$                    # vscode2
-windowrulev2 = opacity 0.95 0.9,class:^(org.telegram.desktop)$    # telegram
-#Polkit
-windowrulev2 = float, class:(polkit-gnome-authentication-agent-1)
-windowrulev2 = center, class:(polkit-gnome-authentication-agent-1)
-#Discord client
-windowrulev2 = opacity 0.95 0.9,class:^(equibop)$
-windowrulev2 = workspace 2, class:(equibop)
-#--------------------------------------------------
+      windowrulev2 = opacity 0.95 0.95,     class:([Ff]loorp|[Ff]irefox)
+
+      windowrulev2 = workspace 2,           class:([Ee]quibop|[Dd]iscord|[Vv]esktop)
     '';
   };
 

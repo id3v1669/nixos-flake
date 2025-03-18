@@ -1,16 +1,16 @@
-{ lib
-, pkgs
-, deflocale
-, uservars
-, hostname
-, envir
-, curversion
-, bootloader
-, ...
-}: 
 {
-  imports = [ 
-    ./../modules/envspecials/${envir}.nix 
+  lib,
+  pkgs,
+  deflocale,
+  uservars,
+  hostname,
+  envir,
+  curversion,
+  bootloader,
+  ...
+}: {
+  imports = [
+    ./../modules/envspecials/${envir}.nix
     ./../modules/bootloaders/${bootloader.type}.nix
   ];
   networking = {
@@ -34,12 +34,12 @@
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
   };
-  environment.systemPackages = [ pkgs.fish ];
+  environment.systemPackages = [pkgs.fish];
   time.timeZone = "${deflocale.timezone}";
   i18n.defaultLocale = "${deflocale.locale}";
   nix = {
     settings = {
-      experimental-features = [ "flakes" "nix-command" ];
+      experimental-features = ["flakes" "nix-command"];
       warn-dirty = false;
       auto-optimise-store = true;
     };

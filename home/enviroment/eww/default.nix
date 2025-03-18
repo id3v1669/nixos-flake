@@ -1,12 +1,8 @@
-{ inputs
-, ...
-}:
-{
-	
+{inputs, ...}: {
   imports = [
     ./scss.nix
     ./yuck.nix
-		inputs.eww.homeManagerModules.default
+    inputs.eww.homeManagerModules.default
   ];
-	programs.eww.enable = true;
+  programs.eww.enable = true;
 }

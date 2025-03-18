@@ -1,26 +1,27 @@
-{ bootloader
-, lib
-, pkgs
-, config
-, ...
-}: 
 {
+  bootloader,
+  lib,
+  pkgs,
+  config,
+  ...
+}: {
   boot.loader = {
-    timeout = bootloader.timeout;
-    systemd-boot.enable = lib.mkForce false;
+    inherit (bootloader) timeout;
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 10;
+    };
     efi.canTouchEfiVariables = true;
     grub.enable = lib.mkForce false;
   };
-  boot.lanzaboote = {
-    enable = true;
-    configurationLimit = 15;
-    pkiBundle = "/var/lib/sbctl";
-    settings = {
-      timeout = 10;
-      console-mode = "auto";
-      editor = config.boot.loader.systemd-boot.editor;
-      default = "nixos-*";
-    };
+  system.activationScripts.signEfi = {
+    text = ''
+      for file in /boot/EFI/nixos/*bzImage.efi; do
+        if [ -e "$file" ]; then
+          ${pkgs.sbctl}/bin/sbctl sign "$file"
+        fi
+      done
+    '';
   };
   environment.systemPackages = [
     pkgs.sbctl

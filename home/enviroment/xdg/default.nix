@@ -1,7 +1,4 @@
-{ config
-, ...
-}:
-{
+{config, ...}: {
   xdg = {
     enable = true;
     mime.enable = true;
@@ -9,8 +6,8 @@
     configHome = "${config.home.homeDirectory}/.config";
     dataHome = "${config.home.homeDirectory}/.local/share";
     systemDirs = {
-      config = [ "${config.home.homeDirectory}/.config" ];
-      data = [ "${config.home.homeDirectory}/.local/share" "/usr/share" "/usr/share/applications/" "/usr/local/share/applications/" ];
+      config = ["${config.home.homeDirectory}/.config"];
+      data = ["${config.home.homeDirectory}/.local/share" "/usr/share" "/usr/share/applications/" "/usr/local/share/applications/"];
     };
     userDirs = {
       enable = true;
@@ -31,7 +28,7 @@
         genericName = "Web Browser";
         exec = "floorp %U";
         terminal = false;
-        categories = [ "Application" "Network" "WebBrowser" ];
+        categories = ["Application" "Network" "WebBrowser"];
         settings.Keywords = "firefox;froo";
       };
       eog = {
@@ -39,18 +36,18 @@
         genericName = "Image Viewer";
         exec = "eog %U";
         terminal = false;
-        categories = [ "Application" "Graphics" "Viewer" ];
-        mimeType = [ 
-          "image/png" 
+        categories = ["Application" "Graphics" "Viewer"];
+        mimeType = [
+          "image/png"
           "image/heic"
-          "image/heif"  
-          "image/jpeg" 
-          "image/gif" 
-          "image/bmp" 
-          "image/jpg" 
-          "image/tiff" 
-          "image/x-bmp" 
-          "image/x-ico" 
+          "image/heif"
+          "image/jpeg"
+          "image/gif"
+          "image/bmp"
+          "image/jpg"
+          "image/tiff"
+          "image/x-bmp"
+          "image/x-ico"
         ];
       };
     };
@@ -107,8 +104,7 @@
         "text/x-scheme" = "code.desktop";
         "text/css" = "code.desktop";
         "application/x-shellscript" = "code.desktop";
-        
-        
+        "application/xml" = "code.desktop";
       };
       defaultApplications = {
         #images
@@ -162,6 +158,7 @@
         "text/css" = "code.desktop";
         "text/x-shellscript" = "code.desktop";
         "application/x-shellscript" = "code.desktop";
+        "application/xml" = "code.desktop";
       };
     };
   };

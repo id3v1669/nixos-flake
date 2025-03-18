@@ -1,9 +1,9 @@
-{ pkgs
-, uservars
-, ...
-}:
 {
-  imports = [ 
+  pkgs,
+  uservars,
+  ...
+}: {
+  imports = [
     ./hardware-configuration.nix
     ./../configuration.nix
     ./../pcsconf.nix
@@ -26,7 +26,7 @@
   };
   programs.corectrl = {
     enable = true;
-    gpuOverclock.enable = true;
+    gpuOverclock.enable = false;
   };
   users.users.${uservars.name}.extraGroups = [
     "users"
@@ -34,7 +34,7 @@
     "networkmanager"
     "rustdesk"
     "adbusers"
-    "input" 
+    "input"
     "disk"
     "i2c"
     "veracrypt"
@@ -44,8 +44,8 @@
     systemPackages = with pkgs; [
     ];
     etc."hypr/monitor-init.conf".text = ''
-monitor=DP-1,3440x1440@144,0x0,1
-monitor=DP-2,disable
+      monitor=DP-1,3440x1440@144,0x0,1
+      monitor=DP-2,disable
     '';
   };
   nix.settings = {

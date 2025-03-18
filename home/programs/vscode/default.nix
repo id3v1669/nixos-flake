@@ -1,15 +1,15 @@
-{ config
-, pkgs
-, ...
-}:
 {
+  config,
+  pkgs,
+  ...
+}: {
   xdg.desktopEntries = {
     code8 = {
       name = "code8";
       genericName = "code8 IDE";
       exec = "nix-shell ${config.home.homeDirectory}/.scripts/dotnet8.nix --run code";
       terminal = false;
-      categories = [ "Development" "IDE" ];
+      categories = ["Development" "IDE"];
     };
   };
   programs.vscode = {
@@ -40,19 +40,52 @@
           "comments" = "${config.palette.base02.hexT}";
         };
         "workbench.colorCustomizations" = with config.palette; {
-            "activityBar.background" = "${base07.hexT}"; /* left bar */
-            "activityBar.foreground" = "${base00.hexT}"; /* left bar */
-            "activityBar.inactiveForeground" = "${base03.hexT}"; /* left bar */
+          "activityBar.background" = "${base07.hexT}";
+          /*
+          left bar
+          */
+          "activityBar.foreground" = "${base00.hexT}";
+          /*
+          left bar
+          */
+          "activityBar.inactiveForeground" = "${base03.hexT}";
+          /*
+          left bar
+          */
           "activityBarBadge.background" = "${base02.hexT}";
           "activityBarBadge.foreground" = "${base06.hexT}";
-            "badge.background" = "${base05.hexT}"; /* source control badge */
-            "badge.foreground" = "${base00.hexT}"; /* source control badge */
-            "button.background" = "${base04.hexT}"; /* button example popus git */
-            "button.foreground" = "${base00.hexT}"; /* button example popus git */
-            "button.hoverBackground" = "${base05.hexT}"; /* button example popus git */
-            "button.secondaryBackground" = "${base06.hexT}"; /* button example popus git */
-            "button.secondaryForeground" = "${base00.hexT}"; /* button example popus git */
-            "button.secondaryHoverBackground" = "${base05.hexT}"; /* button example popus git */
+          "badge.background" = "${base05.hexT}";
+          /*
+          source control badge
+          */
+          "badge.foreground" = "${base00.hexT}";
+          /*
+          source control badge
+          */
+          "button.background" = "${base04.hexT}";
+          /*
+          button example popus git
+          */
+          "button.foreground" = "${base00.hexT}";
+          /*
+          button example popus git
+          */
+          "button.hoverBackground" = "${base05.hexT}";
+          /*
+          button example popus git
+          */
+          "button.secondaryBackground" = "${base06.hexT}";
+          /*
+          button example popus git
+          */
+          "button.secondaryForeground" = "${base00.hexT}";
+          /*
+          button example popus git
+          */
+          "button.secondaryHoverBackground" = "${base05.hexT}";
+          /*
+          button example popus git
+          */
           "breadcrumb.activeSelectionForeground" = "${base00.hexT}";
           "breadcrumb.background" = "${base06.hexT}";
           "breadcrumb.focusForeground" = "${base00.hexT}";
@@ -68,42 +101,105 @@
           "diffEditor.insertedTextBackground" = "${base10.hexT}18";
           "diffEditor.removedTextBackground" = "${base09.hexT}1c";
           "disabledForeground" = "${base01.hexT}";
-            "dropdown.background" = "${base04.hexT}"; /* dropdown placeholder bottom output */
-            "dropdown.border" = "${base03.hexT}"; /* dropdown placeholder bottom output */
-            "dropdown.foreground" = "${base00.hexT}"; /* dropdown options in settings */
-            "dropdown.listBackground" = "${base04.hexT}"; /* dropdown options in settings */
-            "editor.background" = "${base07.hexT}"; /* editor area */
-            "editor.foreground" = "${base00.hexT}"; /* editor area */
+          "dropdown.background" = "${base04.hexT}";
+          /*
+          dropdown placeholder bottom output
+          */
+          "dropdown.border" = "${base03.hexT}";
+          /*
+          dropdown placeholder bottom output
+          */
+          "dropdown.foreground" = "${base00.hexT}";
+          /*
+          dropdown options in settings
+          */
+          "dropdown.listBackground" = "${base04.hexT}";
+          /*
+          dropdown options in settings
+          */
+          "editor.background" = "${base07.hexT}";
+          /*
+          editor area
+          */
+          "editor.foreground" = "${base00.hexT}";
+          /*
+          editor area
+          */
           "editor.findMatchBackground" = "${base03.hexT}";
           "editor.findMatchBorder" = "${base19.hexT}6a";
-            "editor.findMatchHighlightBackground" = "${base04.hexT}c1"; /* editor area find match */
+          "editor.findMatchHighlightBackground" = "${base04.hexT}c1";
+          /*
+          editor area find match
+          */
           "editor.findMatchHighlightBorder" = "${base01.hexT}00";
           "editor.findRangeHighlightBackground" = "${base03.hexT}48";
           "editor.findRangeHighlightBorder" = "${base01.hexT}00";
           "editor.foldBackground" = "${base18.hexT}42";
-            "editorHoverWidget.background" = "${base04.hexT}"; /* editor area popup on hover */
-            "editorHoverWidget.border" = "${base03.hexT}"; /* editor area popup on hover */
-            "editorIndentGuide.activeBackground1" = "${base03.hexT}cf"; /* editor area current scope */
-            "editorIndentGuide.background1" = "${base03.hexT}8f"; /* editor area scopes */
-            "editor.inactiveSelectionBackground" = "${base04.hexT}b8"; /* editor area selected text */
-            "editor.lineHighlightBackground" = "${base04.hexT}af";
-            "editorLineNumber.activeForeground" = "${base01.hexT}"; /* editor area numbers */
-            "editorLineNumber.foreground" = "${base03.hexT}8f"; /* editor area numbers */
+          "editorHoverWidget.background" = "${base04.hexT}";
+          /*
+          editor area popup on hover
+          */
+          "editorHoverWidget.border" = "${base03.hexT}";
+          /*
+          editor area popup on hover
+          */
+          "editorIndentGuide.activeBackground1" = "${base03.hexT}cf";
+          /*
+          editor area current scope
+          */
+          "editorIndentGuide.background1" = "${base03.hexT}8f";
+          /*
+          editor area scopes
+          */
+          "editor.inactiveSelectionBackground" = "${base04.hexT}b8";
+          /*
+          editor area selected text
+          */
+          "editor.lineHighlightBackground" = "${base04.hexT}af";
+          "editorLineNumber.activeForeground" = "${base01.hexT}";
+          /*
+          editor area numbers
+          */
+          "editorLineNumber.foreground" = "${base03.hexT}8f";
+          /*
+          editor area numbers
+          */
           "editor.lineHighlightBorder" = "${base06.hexT}";
           "editor.rangeHighlightBackground" = "${base04.hexT}c2";
           "editor.rangeHighlightBorder" = "${base01.hexT}00";
-            "editor.selectionBackground" = "${base04.hexT}dd"; /* editor area selected text */
-            "editor.selectionHighlightBackground" = "${base04.hexT}cf";
-            "editorWhitespace.foreground" = "${base00.hexT}5f";
+          "editor.selectionBackground" = "${base04.hexT}dd";
+          /*
+          editor area selected text
+          */
+          "editor.selectionHighlightBackground" = "${base04.hexT}cf";
+          "editorWhitespace.foreground" = "${base00.hexT}5f";
           "editor.selectionHighlightBorder" = "${base01.hexT}30";
           "editor.wordHighlightBackground" = "${base05.hexT}b8";
           "editor.wordHighlightStrongBackground" = "${base03.hexT}bb";
-            "editorBracketHighlight.foreground1" = "${base19.hexT}"; /* incode brackets */
-            "editorBracketHighlight.foreground2" = "${base15.hexT}"; /* incode brackets */
-            "editorBracketHighlight.foreground3" = "${base1B.hexT}"; /* incode brackets */
-            "editorBracketHighlight.foreground4" = "${base1F.hexT}"; /* incode brackets */
-            "editorBracketHighlight.foreground5" = "${base0F.hexT}"; /* incode brackets */
-            "editorBracketHighlight.foreground6" = "${base17.hexT}"; /* incode brackets */
+          "editorBracketHighlight.foreground1" = "${base19.hexT}";
+          /*
+          incode brackets
+          */
+          "editorBracketHighlight.foreground2" = "${base15.hexT}";
+          /*
+          incode brackets
+          */
+          "editorBracketHighlight.foreground3" = "${base1B.hexT}";
+          /*
+          incode brackets
+          */
+          "editorBracketHighlight.foreground4" = "${base1F.hexT}";
+          /*
+          incode brackets
+          */
+          "editorBracketHighlight.foreground5" = "${base0F.hexT}";
+          /*
+          incode brackets
+          */
+          "editorBracketHighlight.foreground6" = "${base17.hexT}";
+          /*
+          incode brackets
+          */
           "editorBracketHighlight.unexpectedBracket.foreground" = "${base0B.hexT}";
           "editorBracketMatch.background" = "${base00.hexT}14";
           "editorBracketMatch.border" = "${base00.hexT}";
@@ -145,10 +241,22 @@
           "editorWidget.background" = "${base06.hexT}";
           "editorWidget.foreground" = "${base00.hexT}";
           "editorWidget.resizeBorder" = "${base03.hexT}";
-            "extensionButton.prominentBackground" = "${base0E.hexT}"; /* extension stared flag */
-            "extensionButton.prominentForeground" = "${base00.hexT}"; /* extension stared flag */
-            "focusBorder" = "${base03.hexT}"; /* focused input field(settings) */
-            "foreground" = "${base00.hexT}"; /* some text color */
+          "extensionButton.prominentBackground" = "${base0E.hexT}";
+          /*
+          extension stared flag
+          */
+          "extensionButton.prominentForeground" = "${base00.hexT}";
+          /*
+          extension stared flag
+          */
+          "focusBorder" = "${base03.hexT}";
+          /*
+          focused input field(settings)
+          */
+          "foreground" = "${base00.hexT}";
+          /*
+          some text color
+          */
           "gitDecoration.addedResourceForeground" = "${base10.hexT}";
           "gitDecoration.conflictingResourceForeground" = "${base1D.hexT}";
           "gitDecoration.deletedResourceForeground" = "${base09.hexT}";
@@ -158,24 +266,66 @@
           "gitDecoration.stageModifiedResourceForeground" = "${base0D.hexT}";
           "gitDecoration.submoduleResourceForeground" = "${base18.hexT}";
           "gitDecoration.untrackedResourceForeground" = "${base10.hexT}";
-            "icon.foreground" = "${base00.hexT}"; /* arrows in explorer */
-            "input.background" = "${base07.hexT}"; /* search input field */
-            "input.border" = "${base03.hexT}"; /* search input field */
-            "input.foreground" = "${base03.hexT}"; /* search input field */
-            "input.placeholderForeground" = "${base03.hexT}"; /* search input field */
+          "icon.foreground" = "${base00.hexT}";
+          /*
+          arrows in explorer
+          */
+          "input.background" = "${base07.hexT}";
+          /*
+          search input field
+          */
+          "input.border" = "${base03.hexT}";
+          /*
+          search input field
+          */
+          "input.foreground" = "${base03.hexT}";
+          /*
+          search input field
+          */
+          "input.placeholderForeground" = "${base03.hexT}";
+          /*
+          search input field
+          */
           "inputOption.activeBackground" = "${base18.hexT}26";
           "inputOption.activeBorder" = "${base18.hexT}00";
           "inputOption.activeForeground" = "${base00.hexT}";
-            "list.activeSelectionBackground" = "${base05.hexT}"; /* dropdown options in settings */
-            "list.activeSelectionForeground" = "${base00.hexT}"; /* dropdown options in settings */
+          "list.activeSelectionBackground" = "${base05.hexT}";
+          /*
+          dropdown options in settings
+          */
+          "list.activeSelectionForeground" = "${base00.hexT}";
+          /*
+          dropdown options in settings
+          */
           "list.dropBackground" = "${base06.hexT}";
-            "list.focusBackground" = "${base05.hexT}"; /* tree area */
-            "list.focusForeground" = "${base00.hexT}"; /* tree area */
-            "list.highlightForeground" = "${base0D.hexT}"; /* autosuggestions first letter */
-            "list.hoverBackground" = "${base05.hexT}"; /* settings elements bg */
-            "list.hoverForeground" = "${base01.hexT}"; /* fg notification popup hover */
-            "list.inactiveSelectionBackground" = "${base05.hexT}cc"; /* tree area */
-            "list.inactiveSelectionForeground" = "${base02.hexT}"; /* tree area */
+          "list.focusBackground" = "${base05.hexT}";
+          /*
+          tree area
+          */
+          "list.focusForeground" = "${base00.hexT}";
+          /*
+          tree area
+          */
+          "list.highlightForeground" = "${base0D.hexT}";
+          /*
+          autosuggestions first letter
+          */
+          "list.hoverBackground" = "${base05.hexT}";
+          /*
+          settings elements bg
+          */
+          "list.hoverForeground" = "${base01.hexT}";
+          /*
+          fg notification popup hover
+          */
+          "list.inactiveSelectionBackground" = "${base05.hexT}cc";
+          /*
+          tree area
+          */
+          "list.inactiveSelectionForeground" = "${base02.hexT}";
+          /*
+          tree area
+          */
           "list.warningForeground" = "${base10.hexT}";
           "listFilterWidget.background" = "${base05.hexT}";
           "listFilterWidget.noMatchesOutline" = "${base09.hexT}";
@@ -235,21 +385,63 @@
           "peekViewTitleLabel.foreground" = "${base00.hexT}";
           "pickerGroup.border" = "${base18.hexT}";
           "pickerGroup.foreground" = "${base18.hexT}";
-            "progressBar.background" = "${base14.hexT}"; /* progress bar source control */
-            "scrollbar.shadow" = "${base0B.hexT}"; /* scrollbar & separator of first line of block */
-            "scrollbarSlider.activeBackground" = "${base0C.hexT}"; /* scrollbar */
-            "scrollbarSlider.background" = "${base0B.hexT}"; /* scrollbar */
-            "scrollbarSlider.hoverBackground" = "${base0D.hexT}"; /* scrollbar */
-            "selection.background" = "${base04.hexT}"; /* settings selected text */
-            "settings.headerForeground" = "${base01.hexT}"; /* fg of settings headers */
+          "progressBar.background" = "${base14.hexT}";
+          /*
+          progress bar source control
+          */
+          "scrollbar.shadow" = "${base0B.hexT}";
+          /*
+          scrollbar & separator of first line of block
+          */
+          "scrollbarSlider.activeBackground" = "${base0C.hexT}";
+          /*
+          scrollbar
+          */
+          "scrollbarSlider.background" = "${base0B.hexT}";
+          /*
+          scrollbar
+          */
+          "scrollbarSlider.hoverBackground" = "${base0D.hexT}";
+          /*
+          scrollbar
+          */
+          "selection.background" = "${base04.hexT}";
+          /*
+          settings selected text
+          */
+          "settings.headerForeground" = "${base01.hexT}";
+          /*
+          fg of settings headers
+          */
           "settings.focusedRowBackground" = "${base01.hexT}07";
-            "sideBar.background" = "${base04.hexT}"; /* tree area */
-            "sideBar.border" = "${base05.hexT}"; /* tree area */
-            "sideBar.foreground" = "${base00.hexT}"; /* tree area */
-            "sideBarSectionHeader.background" = "${base07.hexT}"; /* tree area */
-            "sideBarSectionHeader.border" = "${base03.hexT}"; /* tree area */
-            "sideBarSectionHeader.foreground" = "${base00.hexT}"; /* tree area */
-            "sideBarTitle.foreground" = "${base00.hexT}"; /* tree area */
+          "sideBar.background" = "${base04.hexT}";
+          /*
+          tree area
+          */
+          "sideBar.border" = "${base05.hexT}";
+          /*
+          tree area
+          */
+          "sideBar.foreground" = "${base00.hexT}";
+          /*
+          tree area
+          */
+          "sideBarSectionHeader.background" = "${base07.hexT}";
+          /*
+          tree area
+          */
+          "sideBarSectionHeader.border" = "${base03.hexT}";
+          /*
+          tree area
+          */
+          "sideBarSectionHeader.foreground" = "${base00.hexT}";
+          /*
+          tree area
+          */
+          "sideBarTitle.foreground" = "${base00.hexT}";
+          /*
+          tree area
+          */
           "sideBar.dropBackground" = "${base04.hexT}";
           "statusBar.background" = "${base05.hexT}";
           "statusBar.debuggingBackground" = "${base09.hexT}";
@@ -295,10 +487,22 @@
           "titleBar.border" = "${base07.hexT}00";
           "titleBar.inactiveBackground" = "${base06.hexT}91";
           "titleBar.inactiveForeground" = "${base00.hexT}80";
-            "toolbar.activeBackground" = "${base05.hexT}"; /* toolbar mini buttons */
-            "toolbar.hoverBackground" = "${base04.hexT}"; /* toolbar mini buttons */
-            "tree.indentGuidesStroke" = "${base05.hexT}"; /* tree area */
-            "widget.shadow" = "${base03.hexT}80"; /* shadow of settings dropdown */
+          "toolbar.activeBackground" = "${base05.hexT}";
+          /*
+          toolbar mini buttons
+          */
+          "toolbar.hoverBackground" = "${base04.hexT}";
+          /*
+          toolbar mini buttons
+          */
+          "tree.indentGuidesStroke" = "${base05.hexT}";
+          /*
+          tree area
+          */
+          "widget.shadow" = "${base03.hexT}80";
+          /*
+          shadow of settings dropdown
+          */
           "walkThrough.embeddedEditorBackground" = "${base07.hexT}50";
         };
       };

@@ -1,16 +1,16 @@
-{ pkgs
-, lib
-, config
-, desk
-, ...
-}: 
 {
+  pkgs,
+  lib,
+  config,
+  desk,
+  ...
+}: {
   security.sudo = {
     enable = true;
     execWheelOnly = true;
     extraRules = [
       {
-        groups = [ "wheel" ];
+        groups = ["wheel"];
         commands = [
           {
             command = "/run/current-system/sw/bin/nix-collect-garbage";

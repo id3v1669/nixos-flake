@@ -1,6 +1,4 @@
-{ lib
-, ...
-}:
+{lib, ...}:
 with lib; rec {
   # color-related functions
 
@@ -12,8 +10,7 @@ with lib; rec {
     r = toString (hexToDec (__substring 0 2 c));
     g = toString (hexToDec (__substring 2 2 c));
     b = toString (hexToDec (__substring 4 2 c));
-  in
-    "rgba(${r}, ${g}, ${b}, ${opacity})";
+  in "rgba(${r}, ${g}, ${b}, ${opacity})";
 
   # functions copied from https://gist.github.com/corpix/f761c82c9d6fdbc1b3846b37e1020e11
   # convert a hex value to an integer
@@ -68,4 +65,3 @@ with lib; rec {
   xcolors = colors: lib.mapAttrsRecursive (_: x) colors;
   rgbaColors = colors: lib.mapAttrsRecursive (_: rgba) colors;
 }
-

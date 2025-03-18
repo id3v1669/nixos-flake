@@ -1,10 +1,10 @@
-{ lib
-, config
-, pkgs
-, uservars
-, ...
-}:
 {
+  lib,
+  config,
+  pkgs,
+  uservars,
+  ...
+}: {
   sops.secrets."nextcloud-admin" = {
     sopsFile = ./../secrets/nextcloud.yaml;
     owner = "nextcloud";
@@ -12,7 +12,7 @@
   services = {
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud30;
+      package = pkgs.nextcloud31;
       database.createLocally = true;
       https = true;
       nginx.hstsMaxAge = 31536000;
@@ -49,7 +49,7 @@
         "opcache.max_accelerated_files" = "10000";
         "opcache.memory_consumption" = "128";
         "opcache.revalidate_freq" = "1";
-        
+
         "redis.session.locking_enabled" = "1";
         "redis.session.lock_retries" = "-1";
         "redis.session.lock_wait_time" = "10000";

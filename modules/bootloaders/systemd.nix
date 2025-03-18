@@ -1,10 +1,11 @@
-{ bootloader
-, lib
-, ...
-}: 
 {
+  bootloader,
+  lib,
+  pkgs,
+  ...
+}: {
   boot.loader = {
-    timeout = bootloader.timeout;
+    inherit (bootloader) timeout;
     systemd-boot = {
       enable = true;
       configurationLimit = 10;
