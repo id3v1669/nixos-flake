@@ -43,14 +43,22 @@
       ];
       search = {
         force = true;
-        default = "DuckDuckGo";
+        default = "ddg";
         engines = {
-          "Wikipedia (en)".metaData.alias = "@wiki";
-          "Google".metaData.hidden = true;
-          "Amazon.com".metaData.hidden = true;
-          "Amazon.com.au".metaData.hidden = true;
-          "Bing".metaData.hidden = true;
-          "eBay".metaData.hidden = true;
+          "ddg" = {
+            urls = [ { template = "https://duckduckgo.com/?q={searchTerms}"; } ];
+            definedAliases = [ "d" ];
+          };
+          "github" = {
+            urls = [ { template = "https://github.com/search?q={searchTerms}&type=code"; } ];
+            definedAliases = [ "gh" ];
+          };
+          "wikipedia".definedAliases = [ "wiki" ];
+          "google".metaData.hidden = true;
+          "amazondotcom-us".metaData.hidden = true;
+          "amazondotcom-au".metaData.hidden = true;
+          "bing".metaData.hidden = true;
+          "ebay".metaData.hidden = true;
         };
       };
       settings = {
@@ -95,42 +103,45 @@
       extraConfig = ''
         user_pref("media.ffmpeg.vaapi.enabled", true);
       '';
-      bookmarks = [
-        {
-          name = "Yandex";
-          tags = ["yandex"];
-          keyword = "yandex";
-          url = "https://yandex.com";
-        }
-        {
-          name = "Arch sites";
-          toolbar = true;
-          bookmarks = [
-            {
-              name = "Packages";
-              url = "https://archlinux.org/packages/";
-            }
-            {
-              name = "Aur";
-              url = "https://aur.archlinux.org/";
-            }
-          ];
-        }
-        {
-          name = "Nix";
-          bookmarks = [
-            {
-              name = "Packages";
-              url = "https://search.nixos.org/";
-            }
-            {
-              name = "wiki";
-              tags = ["wiki" "nix"];
-              url = "https://nixos.wiki/";
-            }
-          ];
-        }
-      ];
+      bookmarks = {
+        force = true;
+        settings = [
+          {
+            name = "Yandex";
+            tags = ["yandex"];
+            keyword = "yandex";
+            url = "https://yandex.com";
+          }
+          {
+            name = "Arch sites";
+            toolbar = true;
+            bookmarks = [
+              {
+                name = "Packages";
+                url = "https://archlinux.org/packages/";
+              }
+              {
+                name = "Aur";
+                url = "https://aur.archlinux.org/";
+              }
+            ];
+          }
+          {
+            name = "Nix";
+            bookmarks = [
+              {
+                name = "Packages";
+                url = "https://search.nixos.org/";
+              }
+              {
+                name = "wiki";
+                tags = ["wiki" "nix"];
+                url = "https://nixos.wiki/";
+              }
+            ];
+          }
+        ];
+      };
     };
   };
 }
