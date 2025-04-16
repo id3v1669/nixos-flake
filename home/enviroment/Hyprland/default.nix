@@ -87,33 +87,33 @@ in {
 
       #------------------screen sharing------------------
       #exec-once = xwaylandvideobridge
-      windowrulev2 = opacity 0.0 override 0.0 override,class:(xwaylandvideobridge)
-      windowrulev2 = noanim,                class:(xwaylandvideobridge)
-      windowrulev2 = nofocus,               class:(xwaylandvideobridge)
-      windowrulev2 = noinitialfocus,        class:(xwaylandvideobridge)
+      windowrule = opacity 0.0 override 0.0 override,class:(xwaylandvideobridge)
+      windowrule = noanim,                class:(xwaylandvideobridge)
+      windowrule = nofocus,               class:(xwaylandvideobridge)
+      windowrule = noinitialfocus,        class:(xwaylandvideobridge)
       #--------------------------------------------------
 
       #-------------------file picker--------------------
-      windowrulev2 = tag +fileOperation,    title:((Choose (Files|an Image)|Open ([Ff]ile(s)?|[Ff]ile|Video|[Ff]older.*)|([Image|Video] File|Save (As|Image|Video|File)|Local File|File Upload))|New Archive)
-      windowrulev2 = float,                 tag:fileOperation
-      windowrulev2 = size 35% 70%,          tag:fileOperation
-      windowrulev2 = center,                tag:fileOperation
+      windowrule = tag +fileOperation,    title:((Choose (Files|an Image)|Open ([Ff]ile(s)?|[Ff]ile|Video|[Ff]older.*)|([Image|Video] File|Save (As|Image|Video|File)|Local File|File Upload))|New Archive)
+      windowrule = float,                 tag:fileOperation
+      windowrule = size 35% 70%,          tag:fileOperation
+      windowrule = center,                tag:fileOperation
       #--------------------------------------------------
 
       #--------------other windowrules-------------------
-      windowrulev2 = tag +floatingCentered, class:(gnome-disks|GParted|[Kk]itty|[Vv]era[Cc]rypt|polkit-gnome-authentication-agent-1)
-      windowrulev2 = float,                 tag:floatingCentered
-      windowrulev2 = center,                tag:floatingCentered
+      windowrule = tag +floatingCentered, class:(gnome-disks|GParted|[Kk]itty|[Vv]era[Cc]rypt|polkit-gnome-authentication-agent-1)
+      windowrule = float,                 tag:floatingCentered
+      windowrule = center,                tag:floatingCentered
 
-      windowrulev2 = opacity 0.95 0.9,      class:([Ss]potify|[Nn]emo|org.gnome.Nautilus|code-url-handler|[Cc]ode|org.telegram.desktop|[Ee]quibop|gnome-disks|GParted|Alacritty|[Kk]itty|[Dd]iscord|[Vv]esktop)
+      windowrule = opacity 0.95 0.9,      class:([Ss]potify|[Nn]emo|org.gnome.Nautilus|code-url-handler|[Cc]ode|org.telegram.desktop|[Ee]quibop|gnome-disks|GParted|Alacritty|[Kk]itty|[Dd]iscord|[Vv]esktop)
 
-      windowrulev2 = tag +floatOp,          class:(blueman-manager|.blueman-manager-wrapped|nm-connection-editor|org.pulseaudio.pavucontrol)
-      windowrulev2 = float,                 tag:floatOp
-      windowrulev2 = opacity 0.8,           tag:floatOp
+      windowrule = tag +floatOp,          class:(blueman-manager|.blueman-manager-wrapped|nm-connection-editor|org.pulseaudio.pavucontrol)
+      windowrule = float,                 tag:floatOp
+      windowrule = opacity 0.8,           tag:floatOp
 
-      windowrulev2 = opacity 0.95 0.95,     class:([Ff]loorp|[Ff]irefox)
+      windowrule = opacity 0.95 0.95,     class:([Ff]loorp|[Ff]irefox)
 
-      windowrulev2 = workspace 2,           class:([Ee]quibop|[Dd]iscord|[Vv]esktop)
+      windowrule = workspace 2,           class:([Ee]quibop|[Dd]iscord|[Vv]esktop)
     '';
   };
 

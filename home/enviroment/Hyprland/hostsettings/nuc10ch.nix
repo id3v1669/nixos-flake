@@ -9,12 +9,12 @@
   wayland.windowManager.hyprland = {
     settings = {
       windowrule = [
-        "move 84.75% 4.25%,^(org.pulseaudio.pavucontrol)$"
-        "size 15% 50%,^(org.pulseaudio.pavucontrol)$"
-        "move 84.75% 4.25%,^(nm-connection-editor)$"
-        "size 15% 50%,^(nm-connection-editor)$"
-        "move 81.25% 4.25%, blueman-manager"
-        "size 18.5% 55%, blueman-manager"
+        "move 84.75% 4.25%, class:org.pulseaudio.pavucontrol"
+        "size 15% 50%,      class:org.pulseaudio.pavucontrol"
+        "move 84.75% 4.25%, class:nm-connection-editor"
+        "size 15% 50%,      class:nm-connection-editor"
+        "move 81.25% 4.25%, class:blueman-manager"
+        "size 18.5% 55%,    class:blueman-manager"
       ];
       source = [
         "${config.home.homeDirectory}/.config/hypr/test.conf"

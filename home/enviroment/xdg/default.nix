@@ -31,23 +31,15 @@
         categories = ["Application" "Network" "WebBrowser"];
         settings.Keywords = "firefox;froo";
       };
-      eog = {
-        name = "eog";
-        genericName = "Image Viewer";
-        exec = "eog %U";
-        terminal = false;
+      custom-url-handler = {
+        name = "custom-url-handler";
+        genericName = "Custom Url Handler";
+        exec = "custom-url-handler %U";
+        #terminal = false;
         categories = ["Application" "Graphics" "Viewer"];
         mimeType = [
-          "image/png"
-          "image/heic"
-          "image/heif"
-          "image/jpeg"
-          "image/gif"
-          "image/bmp"
-          "image/jpg"
-          "image/tiff"
-          "image/x-bmp"
-          "image/x-ico"
+          "x-scheme-handler/http"
+          "x-scheme-handler/https"
         ];
       };
     };
@@ -55,21 +47,24 @@
       enable = true;
       associations.added = {
         #images
-        "image/png" = "eog.desktop";
-        "image/jpeg" = "eog.desktop";
-        "image/gif" = "eog.desktop";
-        "image/bmp" = "eog.desktop";
-        "image/jpg" = "eog.desktop";
-        "image/tiff" = "eog.desktop";
-        "image/x-bmp" = "eog.desktop";
-        "image/x-ico" = "eog.desktop";
-        "image/heic" = "eog.desktop";
-        "image/heif" = "eog.desktop";
+        "image/png" = "org.gnome.eog.desktop";
+        "image/jpeg" = "org.gnome.eog.desktop";
+        "image/gif" = "org.gnome.eog.desktop";
+        "image/bmp" = "org.gnome.eog.desktop";
+        "image/jpg" = "org.gnome.eog.desktop";
+        "image/tiff" = "org.gnome.eog.desktop";
+        "image/x-bmp" = "org.gnome.eog.desktop";
+        "image/x-ico" = "org.gnome.eog.desktop";
+        "image/heic" = "org.gnome.eog.desktop";
+        "image/heif" = "org.gnome.eog.desktop";
+        "image/webp" = "org.gnome.eog.desktop";
         #web
         "text/html" = "floorp.desktop";
-        "x-scheme-handler/http" = "floorp.desktop";
-        "x-scheme-handler/https" = "floorp.desktop";
+        "x-scheme-handler/http" = "custom-url-handler.desktop";
+        "x-scheme-handler/https" = "custom-url-handler.desktop";
         "x-scheme-handler/chrome" = "floorp.desktop";
+        "x-scheme-handler/discord " = "equibop.desktop";
+        "x-scheme-handler/spotify" = "spotify.desktop";
         "application/x-extension-htm" = "floorp.desktop";
         "application/x-extension-html" = "floorp.desktop";
         "application/x-extension-shtml" = "floorp.desktop";
@@ -108,21 +103,24 @@
       };
       defaultApplications = {
         #images
-        "image/png" = "eog.desktop";
-        "image/jpeg" = "eog.desktop";
-        "image/gif" = "eog.desktop";
-        "image/bmp" = "eog.desktop";
-        "image/jpg" = "eog.desktop";
-        "image/tiff" = "eog.desktop";
-        "image/x-bmp" = "eog.desktop";
-        "image/x-ico" = "eog.desktop";
-        "image/heic" = "eog.desktop";
-        "image/heif" = "eog.desktop";
+        "image/png" = "org.gnome.eog.desktop";
+        "image/jpeg" = "org.gnome.eog.desktop";
+        "image/gif" = "org.gnome.eog.desktop";
+        "image/bmp" = "org.gnome.eog.desktop";
+        "image/jpg" = "org.gnome.eog.desktop";
+        "image/tiff" = "org.gnome.eog.desktop";
+        "image/x-bmp" = "org.gnome.eog.desktop";
+        "image/x-ico" = "org.gnome.eog.desktop";
+        "image/heic" = "org.gnome.eog.desktop";
+        "image/heif" = "org.gnome.eog.desktop";
+        "image/webp" = "org.gnome.eog.desktop";
         #web
         "text/html" = "floorp.desktop";
-        "x-scheme-handler/http" = "floorp.desktop";
-        "x-scheme-handler/https" = "floorp.desktop";
+        "x-scheme-handler/http" = "custom-url-handler.desktop";
+        "x-scheme-handler/https" = "custom-url-handler.desktop";
         "x-scheme-handler/chrome" = "floorp.desktop";
+        "x-scheme-handler/discord " = "equibop.desktop";
+        "x-scheme-handler/spotify" = "spotify.desktop";
         "application/x-extension-htm" = "floorp.desktop";
         "application/x-extension-html" = "floorp.desktop";
         "application/x-extension-shtml" = "floorp.desktop";

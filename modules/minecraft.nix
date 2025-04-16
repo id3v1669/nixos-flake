@@ -18,7 +18,7 @@
       primary = {
         enable = true;
         autoStart = false;
-        package = pkgs.fabricServers.fabric-1_21_4;
+        package = pkgs.fabricServers.fabric-1_21_5;
         jvmOpts = "-Xmx13G";
         openFirewall = true;
         serverProperties = {
@@ -35,40 +35,40 @@
         symlinks = {
           "mods" = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
             ScalableLux = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6013/481/ScalableLux-0.1.2%2Bbeta.1%2Bfabric.6d46f24-all.jar";
-              hash = "sha256-hm+7IAq3IfrH3p6/+I37voL/T8gHMVydJRBPkFW8DtU=";
+              url = "https://mediafilez.forgecdn.net/files/6345/713/ScalableLux-0.1.3%2Bbeta.1%2Bfabric.4039a8d-all.jar";
+              hash = "sha256-Vhu0ejRPdHvme5JlIoK5UaN0AClAfT5yv/pJhRshPN0=";
             };
             JorneyMap = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6114/468/journeymap-fabric-1.21.4-6.0.0-beta.36.jar";
-              hash = "sha256-Y2uYtjac/Vk+ENSjqPplp18w8QQDRefMOnl2aYLqm/g=";
+              url = "https://mediafilez.forgecdn.net/files/6383/895/journeymap-fabric-1.21.5-6.0.0-beta.44.jar";
+              hash = "sha256-dhVpX40xYZR/Y4+pYVo1xLsZHJu6UjimKNhwETkcczU=";
             };
             Fabric-API = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6110/930/fabric-api-0.115.0%2B1.21.4.jar";
-              hash = "sha256-/dsJ0snp/1Bj0WkLqJogPlfplTV839PqCzw8EdrS6KQ=";
+              url = "https://mediafilez.forgecdn.net/files/6384/903/fabric-api-0.119.9%2B1.21.5.jar";
+              hash = "sha256-Bo9zMisO6IKtyXsgzse4sqIvfA595bnxEyLRKJBhIqo=";
             };
             FallingTree = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/5969/318/FallingTree-1.21.4-1.21.4.2.jar";
-              hash = "sha256-/KXSYx/56PibXRdd9kHOu9vPYAxs7VoFw99O/8LBPAo=";
+              url = "https://mediafilez.forgecdn.net/files/6357/126/FallingTree-1.21.5-1.21.5.2.jar";
+              hash = "sha256-ngmrkHSQw7rZtJUd7BGQLxLUBLvmoGSUu8JYoeaYsYM=";
             };
             Lithium = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6108/92/lithium-fabric-0.14.7%2Bmc1.21.4.jar";
-              hash = "sha256-JdYfw/d/eY+TBnToy6xo8qAxhkpLztfVbce3P1JelGU=";
+              url = "https://mediafilez.forgecdn.net/files/6347/838/lithium-fabric-0.16.0%2Bmc1.21.5.jar";
+              hash = "sha256-cdTy8cyb9cYTObk5iXrmHmt0FxgtpedqbkDQ9b9ZnIg=";
             };
             FerriteCore = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/5973/419/ferritecore-7.1.1-fabric.jar";
-              hash = "sha256-DdXpIDVSAk445zoPW0aoLrZvAxiyMonGhCsmhmMnSnk=";
+              url = "https://mediafilez.forgecdn.net/files/6365/997/ferritecore-8.0.0-fabric.jar";
+              hash = "sha256-K5C/AMKlgIw8U5cSpVaRGR+HFtW/pu76ujXpxMWijuo=";
             };
             Krypton = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/5460/550/krypton-0.2.8.jar";
-              hash = "sha256-lPGVgZsk5dpk7/3J2hXN2Eg2zHXo/w/QmLq2vC9J4/4=";
+              url = "https://mediafilez.forgecdn.net/files/6364/768/krypton-0.2.9.jar";
+              hash = "sha256-uGYia+H2DPawZQxBuxk77PMKfsN8GEUZo3F1zZ3MY6o=";
             };
             C2ME = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6065/638/c2me-fabric-mc1.21.4-0.3.1.1.0.jar";
-              hash = "sha256-eeKOKJVyKMIbd12/vRItWNMluCws7/3TikGmUwfd2/A=";
+              url = "https://mediafilez.forgecdn.net/files/6369/961/c2me-fabric-mc1.21.5-0.3.2%2Bbeta.1.0.jar";
+              hash = "sha256-NyMNlpYgh6hWQfRpD8jUKRgGHQCSAmtnHJoioM9rUjQ=";
             };
             REI = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/5987/571/RoughlyEnoughItems-18.0.796-server-only.jar";
-              hash = "sha256-92Hd360YAWGMrCBctDIg9IfXonUWKamsEmQ04mfdBqs=";
+             url = "https://mediafilez.forgecdn.net/files/6414/280/RoughlyEnoughItems-19.0.806-fabric.jar";
+             hash = "sha256-NDswAi1IgKTFIKOZB98m4OLWzgvbEldnVWxECOY30rc=";
             };
           });
         };

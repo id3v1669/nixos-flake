@@ -1,12 +1,12 @@
 {config, ...}: {
   wayland.windowManager.hyprland.settings = {
     windowrule = [
-      "move 69% 6%,^(nm-connection-editor)$"
-      "size 30% 65%,^(nm-connection-editor)$"
-      "move 66.15% 6%, blueman-manager"
-      "size 37% 71.5%, blueman-manager"
-      "move 66.15% 6%, .blueman-manager-wrapped"
-      "size 37% 71.5%, .blueman-manager-wrapped"
+      "move 69% 6%,    class:nm-connection-editor"
+      "size 30% 65%,   class:nm-connection-editor"
+      "move 66.15% 6%, class:blueman-manager"
+      "size 37% 71.5%, class:blueman-manager"
+      "move 66.15% 6%, class:.blueman-manager-wrapped"
+      "size 37% 71.5%, class:.blueman-manager-wrapped"
     ];
     source = [
       #"${config.home.homeDirectory}/.config/hypr/test.conf"
