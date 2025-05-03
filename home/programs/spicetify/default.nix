@@ -14,12 +14,13 @@
     enabledExtensions = with spicePkgs.extensions; [
       adblock
       hidePodcasts
-      shuffle
+      #shuffle
       addToQueueTop
-      volumePercentage
-      copyToClipboard
+      #volumePercentage
+      #copyToClipboard
       trashbin
     ];
     theme = spicePkgs.themes.onepunch;
+    colorScheme = "dark";
   };
 }

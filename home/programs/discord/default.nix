@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     discord
     equibop # equibop(unofficial discord app)
+    vesktop
     arrpc # rpc for discord(equibop)
   ];
   systemd.user.services =

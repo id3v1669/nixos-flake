@@ -12,6 +12,26 @@
       categories = ["Development" "IDE"];
     };
   };
+
+  fonts.fontconfig.enable = true;
+  home.packages = with pkgs; [
+      nerd-fonts.terminess-ttf
+ #     nerd-fonts.cousine
+ #     nerd-fonts.iosevka
+      nerd-fonts.jetbrains-mono
+ #     nerd-fonts.im-writing
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      liberation_ttf
+      fira-code
+      _0xproto
+      fira-code-symbols
+#      mplus-outline-fonts.githubRelease
+#      dina-font
+      proggyfonts
+    ];
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;

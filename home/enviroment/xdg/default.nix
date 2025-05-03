@@ -35,7 +35,6 @@
         name = "custom-url-handler";
         genericName = "Custom Url Handler";
         exec = "custom-url-handler %U";
-        #terminal = false;
         categories = ["Application" "Graphics" "Viewer"];
         mimeType = [
           "x-scheme-handler/http"
@@ -79,6 +78,7 @@
         "video/quicktime" = "vlc.desktop";
         "video/vnd.avi" = "vlc.desktop";
         "video/webm" = "vlc.desktop";
+        "video/mpeg" = "vlc.desktop";
         #vscode for text etc
         "text/plain" = "code.desktop";
         "text/x-c" = "code.desktop";
@@ -135,6 +135,7 @@
         "video/quicktime" = "vlc.desktop";
         "video/vnd.avi" = "vlc.desktop";
         "video/webm" = "vlc.desktop";
+        "video/mpeg" = "vlc.desktop";
         #vscode
         "text/plain" = "code.desktop";
         "text/x-c" = "code.desktop";

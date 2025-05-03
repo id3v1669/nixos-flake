@@ -26,6 +26,7 @@
     #zettlr
     nur.repos.tarantoj.nudelta
 
+    stable.rustdesk
     ts6
   ];
 }

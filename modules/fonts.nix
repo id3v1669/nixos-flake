@@ -8,6 +8,10 @@
     };
     packages = with pkgs; [
       nerd-fonts.terminess-ttf
+      nerd-fonts.cousine
+      nerd-fonts.iosevka
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.im-writing
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-emoji

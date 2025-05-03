@@ -12,9 +12,10 @@
 
   boot = {
     kernelModules = ["kvm-amd"];
-    #kernelPackages = pkgs.linuxPackages_zen; //zen for acs patch
+    #kernelPackages = pkgs.linuxPackages_zen; #zen for acs patch
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
+      "psmouse.synaptics_intertouch=0"
       "amd_iommu=on"
       "iommu=pt"
       #"pcie_acs_override=downstream,multifunction"

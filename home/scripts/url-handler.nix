@@ -8,9 +8,10 @@ writeShellApplication {
   name = "custom-url-handler";
   runtimeInputs = with pkgs;
     [
-    ]
-    ++ lib.lists.optionals (config.programs.spicetify.enable) [
+    ] ++ lib.lists.optionals (config.programs.spicetify.enable) [
       config.programs.spicetify.spicedSpotify
+    ] ++ lib.lists.optionals (config.programs.floorp.enable) [
+      config.programs.floorp.package
     ];
   text = let 
   spotify = if config.programs.spicetify.enable then
@@ -29,8 +30,8 @@ fi ''
 
     ${spotify}
 
-    xdg-open "$url" || {
-      echo "xdg-open failed to open the URL: $url"
+    floorp "$url" || {
+      echo "failed to open the URL: $url"
       exit 1
     }
     

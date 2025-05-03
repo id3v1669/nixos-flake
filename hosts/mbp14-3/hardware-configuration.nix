@@ -55,6 +55,11 @@
     MatchVendor=0x05AC
     MatchProduct=0x8600
     AttrKeyboardIntegration=internal
+
+    [Touchpad touch override]
+    MatchUdevType=touchpad
+    MatchName=*Magic Trackpad*
+    AttrPressureRange=4:0
   '';
 
   services = {

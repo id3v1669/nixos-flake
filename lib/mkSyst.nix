@@ -32,7 +32,6 @@
       description = "id3v1669";
       owner = "id3v1669";
       domain = "none";
-      wp = "default3.png";
       sleeptimeout = 1200;
     }),
     deflocale ? ({
