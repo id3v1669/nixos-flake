@@ -15,22 +15,22 @@
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-      nerd-fonts.terminess-ttf
- #     nerd-fonts.cousine
- #     nerd-fonts.iosevka
-      nerd-fonts.jetbrains-mono
- #     nerd-fonts.im-writing
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-      liberation_ttf
-      fira-code
-      _0xproto
-      fira-code-symbols
-#      mplus-outline-fonts.githubRelease
-#      dina-font
-      proggyfonts
-    ];
+    nerd-fonts.terminess-ttf
+    #     nerd-fonts.cousine
+    #     nerd-fonts.iosevka
+    nerd-fonts.jetbrains-mono
+    #     nerd-fonts.im-writing
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    _0xproto
+    fira-code-symbols
+    #      mplus-outline-fonts.githubRelease
+    #      dina-font
+    proggyfonts
+  ];
 
   programs.vscode = {
     enable = true;
@@ -47,7 +47,7 @@
         dotjoshjohnson.xml
         davidanson.vscode-markdownlint
         ms-vscode.makefile-tools
-        #rust-lang.rust-analyzer
+        rust-lang.rust-analyzer
       ];
       userSettings = {
         "window.titleBarStyle" = "custom";

@@ -40,20 +40,21 @@
         duckduckgo-privacy-essentials
         darkreader
         stylus
+        return-youtube-dislikes
       ];
       search = {
         force = true;
         default = "ddg";
         engines = {
           "ddg" = {
-            urls = [ { template = "https://duckduckgo.com/?q={searchTerms}"; } ];
-            definedAliases = [ "d" ];
+            urls = [{template = "https://duckduckgo.com/?q={searchTerms}";}];
+            definedAliases = ["d"];
           };
           "github" = {
-            urls = [ { template = "https://github.com/search?q={searchTerms}&type=code"; } ];
-            definedAliases = [ "gh" ];
+            urls = [{template = "https://github.com/search?q={searchTerms}&type=code";}];
+            definedAliases = ["gh"];
           };
-          "wikipedia".definedAliases = [ "wiki" ];
+          "wikipedia".definedAliases = ["wiki"];
           "google".metaData.hidden = true;
           "amazondotcom-us".metaData.hidden = true;
           "amazondotcom-au".metaData.hidden = true;

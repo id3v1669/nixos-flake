@@ -14,7 +14,7 @@
         wlrobs
         obs-vkcapture
         obs-gstreamer
-        #droidcam-obs
+        droidcam-obs
       ]
       ++ lib.optional (gpuvar.tech == "nvidia") pkgs.obs-studio-plugins.obs-nvfbc;
   };

@@ -23,10 +23,9 @@
     libsForQt5.kdenlive # video editing
 
     #testing
-    #zettlr
     nur.repos.tarantoj.nudelta
 
     stable.rustdesk
-    ts6
+    teamspeak6-client
   ];
 }

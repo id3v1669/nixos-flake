@@ -1,5 +1,6 @@
 {
   pkgs,
+  stable,
   inputs,
   ...
 }: {
@@ -7,16 +8,19 @@
     inputs.spicetify-nix.homeManagerModules.default
   ];
 
+  #home.packages = [ pkgs.spotify ];
+
   programs.spicetify = let
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
   in {
     enable = true;
+    spotifyPackage = pkgs.spotify-custom;
     enabledExtensions = with spicePkgs.extensions; [
-      adblock
+      #adblock
       hidePodcasts
-      #shuffle
+      shuffle
       addToQueueTop
-      #volumePercentage
+      volumePercentage
       #copyToClipboard
       trashbin
     ];

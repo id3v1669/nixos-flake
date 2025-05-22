@@ -26,9 +26,6 @@
     sysbench
     phoronix-test-suite
     stress
-    #zettlr
     nur.repos.tarantoj.nudelta
-
-    ts6
   ];
 }

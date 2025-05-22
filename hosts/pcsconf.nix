@@ -22,7 +22,6 @@ in {
     };
   programs = {
     steam = {
-      # games...
       enable = true;
       protontricks.enable = true;
     };
@@ -46,16 +45,14 @@ in {
     ];
   };
   services = {
+    fstrim.enable = true; # trim for SSDs
     seatd.enable = true; #
     udev.enable = true; # udev for hardware
     gnome.sushi.enable = true; # file preview
     printing.enable = true; # needed for printing and pdf export
     gvfs.enable = true; # Mount, trash, etc
-    libinput.enable = true; #
-    ratbagd = {
-      # mouse settings daemon
-      enable = true;
-    };
+    libinput.enable = true;
+    ratbagd.enable = true; # mouse settings daemon
     hardware = {
       bolt.enable = true; # thunderbolt support
       openrgb = {

@@ -5,6 +5,7 @@
   envir,
   colorsvar,
   uservars,
+  inputs,
   ...
 }: {
   imports = [

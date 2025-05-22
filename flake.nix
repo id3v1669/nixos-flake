@@ -2,11 +2,16 @@
   description = "id3v1669 system flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     sops-nix.url = "github:Mic92/sops-nix";
     nur.url = "github:nix-community/NUR";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     #dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     lan-mouse = {
       url = "github:feschber/lan-mouse";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,6 +52,7 @@
   outputs = inputs: let
     mkSystem = (import ./lib/mkSyst.nix {inherit inputs;}).mkSyst;
   in {
+    formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.alejandra;
     nixosConfigurations = {
       r7rx7900xtxhypr = mkSystem {
         hostname = "r7rx7900xtx";

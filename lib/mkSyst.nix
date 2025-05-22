@@ -2,7 +2,7 @@
   mkSyst = {
     hostname,
     envir,
-    curversion ? "25.05",
+    curversion ? "25.11",
     desk ? "desktop",
     bootloader ? ({
       type = "systemd";
@@ -67,10 +67,10 @@
     pkgs = import ./nixpkgs.nix {inherit inputs allSpecialArgs;};
   in
     inputs.nixpkgs.lib.nixosSystem {
-      #formatter.${pkgs.stdenv.hostPlatform.system} = pkgs.alejandra;
       specialArgs = allSpecialArgs;
       modules = [
         (./.. + "/hosts/${hostname}")
+        inputs.chaotic.nixosModules.default
         inputs.swhkdp.nixosModules.default
         inputs.sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager

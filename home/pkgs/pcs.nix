@@ -40,6 +40,7 @@
     swappy # screenshot editor
 
     # chat
+    zoom-us
     whatsapp-for-linux # whatsapp client
 
     # games

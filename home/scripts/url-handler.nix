@@ -8,19 +8,16 @@ writeShellApplication {
   name = "custom-url-handler";
   runtimeInputs = with pkgs;
     [
-    ] ++ lib.lists.optionals (config.programs.spicetify.enable) [
-      config.programs.spicetify.spicedSpotify
-    ] ++ lib.lists.optionals (config.programs.floorp.enable) [
+    ]
+    ++ lib.lists.optionals (config.programs.floorp.enable) [
       config.programs.floorp.package
     ];
-  text = let 
-  spotify = if config.programs.spicetify.enable then
-    ''
-if [[ "$url" =~ ^https://open\.spotify\.com/ ]]; then
-    spotify "$url"
-    exit 0
-fi ''
-  else '''';
+  text = let
+    spotify = ''
+      if [[ "$url" =~ ^https://open\.spotify\.com/ ]]; then
+          spotify "$url"
+          exit 0
+      fi '';
   in ''
     set +o errexit
     set +o nounset
@@ -34,6 +31,6 @@ fi ''
       echo "failed to open the URL: $url"
       exit 1
     }
-    
+
   '';
 }

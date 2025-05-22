@@ -12,14 +12,21 @@
 
   boot = {
     kernelModules = ["kvm-amd"];
-    #kernelPackages = pkgs.linuxPackages_zen; #zen for acs patch
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = let
+      customKernel = pkgs.linuxPackages_cachyos.kernel.override {
+        config = lib.recursiveUpdate pkgs.linuxPackages_cachyos.kernel.config {
+          "CONFIG_MZEN3" = "y";
+          "CONFIG_GENERIC_CPU" = "n";
+        };
+      };
+    in
+      pkgs.linuxPackagesFor customKernel;
+
     kernelParams = [
-      "psmouse.synaptics_intertouch=0"
       "amd_iommu=on"
+      "pcie_aspm=off"
       "iommu=pt"
-      #"pcie_acs_override=downstream,multifunction"
-      #"vfio-pci.ids=1002:73ff,1002:ab28"
+      "quiet"
     ];
     kernel.sysctl = {
       "kernel.unprivileged_userns_clone" = 1;
@@ -40,22 +47,15 @@
         "uas"
         "usb_storage"
         "sd_mod"
-        #"vfio"
-        #"vfio_pci"
-        #"vfio_iommu_type1"
       ];
       kernelModules = [
-        #"vfio"
-        #"vfio_pci"
-        #"vfio_iommu_type1"
-
         "amdgpu"
       ];
     };
-    # extraModprobeConfig = ''
-    #  options vfio-pci ids=1002:73ff,1002:ab28
-    #  softdep amdgpu pre: vfio-pci
-    # '';
+    extraModprobeConfig = ''
+      options kvm_amd nested=1
+      options kvm ignore_msrs=1 report_ignored_msrs=0
+    '';
   };
 
   fileSystems."/" = {

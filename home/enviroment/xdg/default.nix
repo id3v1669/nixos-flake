@@ -100,6 +100,7 @@
         "text/css" = "code.desktop";
         "application/x-shellscript" = "code.desktop";
         "application/xml" = "code.desktop";
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop";
       };
       defaultApplications = {
         #images
@@ -158,6 +159,7 @@
         "text/x-shellscript" = "code.desktop";
         "application/x-shellscript" = "code.desktop";
         "application/xml" = "code.desktop";
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop";
       };
     };
   };

@@ -58,6 +58,7 @@ in {
       "kvm"
       "qemu-libvirtd"
       "libvirtd"
+      "input"
       "disk"
     ]
     ++ (
@@ -67,6 +68,7 @@ in {
     );
   environment = {
     systemPackages = with pkgs; [
+      qemu_full
       spice-gtk
       virt-viewer
       nur.repos.ataraxiasjel.waydroid-script

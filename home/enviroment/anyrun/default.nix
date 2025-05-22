@@ -8,7 +8,7 @@
   imports = [
     inputs.anyrun.homeManagerModules.default
   ];
-  disabledModules = [ "programs/anyrun.nix" ];
+  disabledModules = ["programs/anyrun.nix"];
   programs.anyrun = {
     enable = true;
     config = {

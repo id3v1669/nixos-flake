@@ -82,7 +82,7 @@
               hash = "sha256-dhVpX40xYZR/Y4+pYVo1xLsZHJu6UjimKNhwETkcczU=";
             };
             Fabric-API = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6384/903/fabric-api-0.119.9%2B1.21.5.jar";
+              url = "https://mediafilez.forgecdn.net/files/6443/810/fabric-api-0.121.0%2B1.21.5.jar";
               hash = "sha256-Bo9zMisO6IKtyXsgzse4sqIvfA595bnxEyLRKJBhIqo=";
             };
             FallingTree = pkgs.fetchurl {
@@ -105,9 +105,17 @@
               url = "https://mediafilez.forgecdn.net/files/6369/961/c2me-fabric-mc1.21.5-0.3.2%2Bbeta.1.0.jar";
               hash = "sha256-NyMNlpYgh6hWQfRpD8jUKRgGHQCSAmtnHJoioM9rUjQ=";
             };
+            Architectury = pkgs.fetchurl {
+              url = "https://mediafilez.forgecdn.net/files/6406/227/architectury-16.1.4-fabric.jar";
+              hash = "sha256-qdU8fE9qozKcJ/K4grnK6eOHBv1rYcySLkuFKeirAxs=";
+            };
+            Cloth-Config = pkgs.fetchurl {
+              url = "https://mediafilez.forgecdn.net/files/6351/756/cloth-config-18.0.145-fabric.jar";
+              hash = "sha256-7GcBJ2Gu6GwUCpEDWMSd28JLhS6YBweUBwVyHhv/Xn8=";
+            };
             REI = pkgs.fetchurl {
-             url = "https://mediafilez.forgecdn.net/files/6414/280/RoughlyEnoughItems-19.0.806-fabric.jar";
-             hash = "sha256-NDswAi1IgKTFIKOZB98m4OLWzgvbEldnVWxECOY30rc=";
+              url = "https://mediafilez.forgecdn.net/files/6414/280/RoughlyEnoughItems-19.0.806-fabric.jar";
+              hash = "sha256-NDswAi1IgKTFIKOZB98m4OLWzgvbEldnVWxECOY30rc=";
             };
           });
         };

@@ -10,10 +10,9 @@
 }: let
   clp = config.palette;
 in {
-  imports =
-    lib.optional (
-      builtins.pathExists (./. + "/hostsettings/${hostname}.nix")
-    ) (./. + "/hostsettings/${hostname}.nix");
+  imports = lib.optional (
+    builtins.pathExists (./. + "/hostsettings/${hostname}.nix")
+  ) (./. + "/hostsettings/${hostname}.nix");
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -105,7 +104,7 @@ in {
       windowrule = float,                 tag:floatingCentered
       windowrule = center,                tag:floatingCentered
 
-      windowrule = opacity 0.95 0.9,      class:([Ss]potify|[Nn]emo|org.gnome.Nautilus|code-url-handler|[Cc]ode|org.telegram.desktop|[Ee]quibop|gnome-disks|GParted|Alacritty|[Kk]itty|[Dd]iscord|[Vv]esktop)
+      windowrule = opacity 0.95 0.9,      class:([Ss]potify|[Nn]emo|org.gnome.Nautilus|code-url-handler|[Cc]ode|org.telegram.desktop|gnome-disks|GParted|Alacritty|[Kk]itty)
 
       windowrule = tag +floatOp,          class:(blueman-manager|.blueman-manager-wrapped|nm-connection-editor|org.pulseaudio.pavucontrol)
       windowrule = float,                 tag:floatOp

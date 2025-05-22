@@ -3,25 +3,26 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }: {
-  boot.loader = {
-    inherit (bootloader) timeout;
-    systemd-boot = {
-      enable = true;
-      configurationLimit = 10;
+  imports = [
+    inputs.lanzaboote.nixosModules.lanzaboote
+  ];
+  boot = {
+    loader = {
+      inherit (bootloader) timeout;
+      systemd-boot = {
+        enable = lib.mkForce false;
+        configurationLimit = 10;
+      };
+      efi.canTouchEfiVariables = true;
+      grub.enable = lib.mkForce false;
     };
-    efi.canTouchEfiVariables = true;
-    grub.enable = lib.mkForce false;
-  };
-  system.activationScripts.signEfi = {
-    text = ''
-      for file in /boot/EFI/nixos/*bzImage.efi; do
-        if [ -e "$file" ]; then
-          ${pkgs.sbctl}/bin/sbctl sign "$file"
-        fi
-      done
-    '';
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+    };
   };
   environment.systemPackages = [
     pkgs.sbctl

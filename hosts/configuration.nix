@@ -21,6 +21,7 @@
     enableIPv6 = lib.mkDefault true;
   };
   programs = {
+    direnv.enable = true;
     fish.enable = true;
     gnupg.agent = {
       enable = true;
@@ -34,7 +35,12 @@
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
   };
-  environment.systemPackages = [pkgs.fish];
+  environment.systemPackages = with pkgs; [
+    pkgs.fish
+    (lib.hiPrio (uutils-coreutils-noprefix.overrideAttrs (old: {
+      name = pkgs.coreutils.name;
+    })))
+  ];
   time.timeZone = "${deflocale.timezone}";
   i18n.defaultLocale = "${deflocale.locale}";
   nix = {
@@ -50,6 +56,11 @@
     };
   };
   services = {
+    scx = {
+      enable = true;
+      package = pkgs.scx_git.full;
+      scheduler = "scx_rusty";
+    };
     xserver = {
       enable = true;
       xkb = {
@@ -60,4 +71,12 @@
     };
   };
   system.stateVersion = "${curversion}";
+  # system.replaceDependencies.replacements = [
+  #   {
+  #     oldDependency = pkgs.coreutils;
+  #     newDependency = pkgs.uutils-coreutils-noprefix.overrideAttrs (old: {
+  #       name = pkgs.coreutils.name;
+  #     });
+  #   }
+  # ];
 }

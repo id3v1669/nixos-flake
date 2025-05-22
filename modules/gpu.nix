@@ -80,11 +80,10 @@
     ]
     ++ lib.lists.optionals (gpuvar.type == "amd" || (cpuvar.type == "amd" && cpuvar.hasIntegrated)) ["amdgpu" "radeon"];
   environment = {
-    systemPackages =
-      lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") (with pkgs; [
-        egl-wayland
-        nvidia-system-monitor-qt
-      ]);
+    systemPackages = lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") (with pkgs; [
+      egl-wayland
+      nvidia-system-monitor-qt
+    ]);
     variables =
       {
       }
