@@ -20,9 +20,11 @@
     ./../../modules/greeters/regreet.nix
     #./../../modules/greeters/sddm.nix
   ];
-  hardware.enableAllFirmware = true;
+  hardware = {
+    enableAllFirmware = true;
+    amdgpu.overdrive.enable = true;
+  };
   services = {
-    touchegg.enable = true;
     searx = {
       enable = true;
       settings = {
@@ -45,7 +47,6 @@
     adb.enable = true;
     corectrl = {
       enable = true;
-      gpuOverclock.enable = false;
     };
   };
   users.users.${uservars.name}.extraGroups = [

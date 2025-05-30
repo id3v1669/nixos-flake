@@ -47,6 +47,8 @@ in {
         focus_on_close = 1;
         touchpad = {
           natural_scroll = true;
+          scroll_factor = 0.4;
+          clickfinger_behavior = true;
         };
       };
       gestures = {
@@ -113,6 +115,11 @@ in {
       windowrule = opacity 0.95 0.95,     class:([Ff]loorp|[Ff]irefox)
 
       windowrule = workspace 2,           class:([Ee]quibop|[Dd]iscord|[Vv]esktop)
+
+      device {
+        name = apple-inc.-magic-trackpad-1
+        sensitivity = 0.3
+      }
     '';
   };
 

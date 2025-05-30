@@ -88,6 +88,7 @@
         "general.useragent.locale" = "en-AU";
         "media.hardware-video-decoding.enabled" = true;
         "media.videocontrols.picture-in-picture.enabled" = true;
+        "mousewheel.default.delta_multiplier_y" = 80;
         "privacy.donottrackheader.enabled" = true;
         "services.sync.prefs.sync.browser.safebrowsing.downloads.enabled" = false;
         "services.sync.prefs.sync.general.smoothScroll" = true;

@@ -27,5 +27,6 @@
 
     stable.rustdesk
     teamspeak6-client
+    (pkgs.clementine.override { config.clementine.ipod = true;})
   ];
 }

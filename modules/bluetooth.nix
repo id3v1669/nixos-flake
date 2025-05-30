@@ -14,8 +14,7 @@
         AutoEnable = true;
         FastConnectable = true;
         Experimental = true;
-        Enable = "Sink,Media,Socket";
-        ControllerMode = "bredr";
+        Enable = "Source,Sink,Media,Socket";
       };
     };
   };

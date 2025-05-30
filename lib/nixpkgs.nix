@@ -17,6 +17,7 @@ with allSpecialArgs; {
     (import ./../overlays/lutris.nix)
     (import ./../overlays/gruvbox-plus-icons.nix)
     (import ./../overlays/spotify.nix)
+    (import ./../overlays/joplin.nix)
     (import ./../overlays/btop.nix {
       inherit cpuvar;
       inherit gpuvar;

@@ -56,6 +56,14 @@
         "editor.fontFamily" = "JetBrainsMono Nerd Font";
         "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
         "explorer.confirmDelete" = false;
+        "editor.smoothScrolling" = true;
+        "workbench.list.smoothScrolling" = true;
+        "editor.cursorSmoothCaretAnimation" = "on";
+        "terminal.integrated.smoothScrolling" = true;
+        "terminal.integrated.scrollback" = 3000;
+        "editor.stickyScroll.enabled" = false;
+        "workbench.tree.enableStickyScroll" = false;
+        
         "editor.tokenColorCustomizations" = {
           "comments" = "${config.palette.base02.hexT}";
         };

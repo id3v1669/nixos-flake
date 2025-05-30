@@ -64,7 +64,6 @@
 
   services = {
     fstrim.enable = true;
-    libinput.enable = true;
   };
 
   hardware.enableRedistributableFirmware = true;
