@@ -14,6 +14,10 @@ in {
     builtins.pathExists (./. + "/hostsettings/${hostname}.nix")
   ) (./. + "/hostsettings/${hostname}.nix");
 
+  home.packages = with pkgs; [
+    hyprland-qt-support
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -54,10 +58,21 @@ in {
       gestures = {
         workspace_swipe = true;
         workspace_swipe_fingers = 3;
+        workspace_swipe_forever = true;
+        workspace_swipe_distance = 500;
+        workspace_swipe_min_speed_to_force = 100;
       };
       misc = {
-        disable_hyprland_logo = false;
+        disable_hyprland_logo = true;
+        font_family = "0xProto";
+        render_ahead_of_time = false;
+        background_color = "0x282828";
+        enable_anr_dialog = false;
         vrr = 0;
+      };
+      ecosystem = {
+        no_update_news = true;
+        no_donation_nag = true;
       };
       dwindle = {
         pseudotile = true;
