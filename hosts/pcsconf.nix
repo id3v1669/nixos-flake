@@ -25,10 +25,6 @@ in {
       enable = true;
       protontricks.enable = true;
     };
-    kdeconnect = {
-      enable = true; # kdeconnect for android integration
-      package = mkDefault pkgs.kdePackages.kdeconnect-kde;
-    };
     gpu-screen-recorder.enable = true; # gpu screen recorder
     light.enable = true; # laptop brightness control and fix for openrgb
     traceroute.enable = true; # traceroute

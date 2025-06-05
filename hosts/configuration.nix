@@ -21,7 +21,12 @@
     enableIPv6 = lib.mkDefault true;
   };
   programs = {
-    direnv.enable = true;
+    nano.enable = false;
+    direnv = {
+      enable = true;
+      loadInNixShell = false;
+      nix-direnv.enable = true;
+    };
     fish.enable = true;
     gnupg.agent = {
       enable = true;
@@ -36,10 +41,12 @@
     ignoreShellProgramCheck = true;
   };
   environment.systemPackages = with pkgs; [
-    pkgs.fish
+    fish
+    ox
     (lib.hiPrio (uutils-coreutils-noprefix.overrideAttrs (old: {
       name = pkgs.coreutils.name;
     })))
+    (lib.hiPrio pkgs.uutils-findutils)
   ];
   time.timeZone = "${deflocale.timezone}";
   i18n.defaultLocale = "${deflocale.locale}";

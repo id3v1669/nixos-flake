@@ -21,7 +21,6 @@
       };
     in
       pkgs.linuxPackagesFor customKernel;
-    #kernelPackages = pkgs.linuxPackages_latest;
 
     kernelParams = [
       "amd_iommu=on"
@@ -37,7 +36,7 @@
       "kernel.sched_cfs_bandwidth_slice_us" = 3000;
     };
     extraModulePackages = with config.boot.kernelPackages; [
-      #v4l2loopback
+      v4l2loopback
     ];
     initrd = {
       availableKernelModules = [

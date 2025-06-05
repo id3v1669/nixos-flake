@@ -72,6 +72,15 @@
       '';
     };
   };
+  #system.replaceRuntimeDependencies = [
+    #Broken due to uutils issue #6351
+    # {
+    #   original = pkgs.coreutils;
+    #   replacement = pkgs.uutils-coreutils-noprefix.overrideAttrs (old: {
+    #     name = pkgs.coreutils.name;
+    #   });
+    # }
+  #];
   nix.settings = {
     auto-optimise-store = true;
     cores = 8;

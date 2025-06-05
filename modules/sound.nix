@@ -4,7 +4,6 @@
   uservars,
   ...
 }: {
-  programs.noisetorch.enable = true;
   services = {
     pipewire = {
       enable = true;
