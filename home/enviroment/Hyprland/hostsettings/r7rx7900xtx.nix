@@ -61,7 +61,7 @@
       screen3_resolutions["sqhd"]="monitor=HDMI-A-2,disable"
       screen3_resolutions["sfhd"]="monitor=HDMI-A-2,disable"
       screen3_resolutions["sv"]="monitor=HDMI-A-2,disable"
-      
+
       declare -A screen3_subsettings
       screen3_subsettings["qhd"]="input:touchdevice:output = HDMI-A-2"
       screen3_subsettings["sqhd"]=""

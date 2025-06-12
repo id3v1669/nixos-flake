@@ -4,7 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    telegram-desktop
+    ayugram-desktop
   ];
 
   home.file.".config/telegram/colors.tdesktop-theme".text = with config.palette; ''

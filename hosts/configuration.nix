@@ -12,6 +12,7 @@
   imports = [
     ./../modules/envspecials/${envir}.nix
     ./../modules/bootloaders/${bootloader.type}.nix
+    ./../modules/fish.nix
   ];
   networking = {
     hostName = "${hostname}${envir}";
@@ -27,7 +28,6 @@
       loadInNixShell = false;
       nix-direnv.enable = true;
     };
-    fish.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -41,8 +41,8 @@
     ignoreShellProgramCheck = true;
   };
   environment.systemPackages = with pkgs; [
-    fish
     ox
+    eza
     (lib.hiPrio (uutils-coreutils-noprefix.overrideAttrs (old: {
       name = pkgs.coreutils.name;
     })))
@@ -78,12 +78,13 @@
     };
   };
   system.stateVersion = "${curversion}";
-  # system.replaceDependencies.replacements = [
-  #   {
-  #     oldDependency = pkgs.coreutils;
-  #     newDependency = pkgs.uutils-coreutils-noprefix.overrideAttrs (old: {
-  #       name = pkgs.coreutils.name;
-  #     });
-  #   }
-  # ];
+  #system.replaceRuntimeDependencies = [
+  #Broken due to uutils issue #6351
+  # {
+  #   original = pkgs.coreutils;
+  #   replacement = pkgs.uutils-coreutils-noprefix.overrideAttrs (old: {
+  #     name = pkgs.coreutils.name;
+  #   });
+  # }
+  #];
 }

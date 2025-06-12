@@ -5,7 +5,6 @@
 }: {
   imports =
     [
-      ./fish
       ./btop
       ./fastfetch
     ]

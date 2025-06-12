@@ -63,7 +63,7 @@
         "terminal.integrated.scrollback" = 3000;
         "editor.stickyScroll.enabled" = false;
         "workbench.tree.enableStickyScroll" = false;
-        
+
         "editor.tokenColorCustomizations" = {
           "comments" = "${config.palette.base02.hexT}";
         };

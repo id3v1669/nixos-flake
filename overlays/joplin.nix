@@ -6,15 +6,14 @@ final: pkgs: {
       url = "https://github.com/laurent22/joplin/releases/download/v${version}/Joplin-${version}.AppImage";
       sha256 = "1fjrblmlpm6sf4jdvifmyxic0rw2bs1f4sbw3nz4xy7wlsab5f62";
     };
-    
 
-    nativeBuildInputs = [ pkgs.makeWrapper ];
+    nativeBuildInputs = [pkgs.makeWrapper];
 
     profile = ''
       export LC_ALL=C.UTF-8
     '';
 
-    extraInstallCommands = let 
+    extraInstallCommands = let
       appimageContents = pkgs.appimageTools.extractType2 {
         inherit pname version src;
       };

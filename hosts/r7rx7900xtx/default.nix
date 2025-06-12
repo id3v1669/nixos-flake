@@ -25,16 +25,6 @@
     amdgpu.overdrive.enable = true;
   };
   services = {
-    searx = {
-      enable = true;
-      settings = {
-        server = {
-          port = 8801;
-          bind_address = "127.0.0.1";
-          secret_key = "64ZapANvagul";
-        };
-      };
-    };
     udev.packages = [
       pkgs.android-udev-rules
     ];
@@ -63,7 +53,6 @@
   ];
   environment = {
     systemPackages = with pkgs; [
-      searxng
     ];
     etc = {
       "hypr/monitor-init.conf".text = ''
@@ -72,15 +61,6 @@
       '';
     };
   };
-  #system.replaceRuntimeDependencies = [
-    #Broken due to uutils issue #6351
-    # {
-    #   original = pkgs.coreutils;
-    #   replacement = pkgs.uutils-coreutils-noprefix.overrideAttrs (old: {
-    #     name = pkgs.coreutils.name;
-    #   });
-    # }
-  #];
   nix.settings = {
     auto-optimise-store = true;
     cores = 8;
