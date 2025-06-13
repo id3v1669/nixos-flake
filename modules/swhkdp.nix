@@ -127,6 +127,17 @@ in {
               action_type = "singlecommand";
               action = "${brightnesctrl.up}";
             };
+            #------
+            # special for macbook, other devices don't have software-controled backlight, so keep it global for now(no harm)
+            "KEY_KBDILLUMDOWN" = {
+              action_type = "singlecommand";
+              action = "light -s sysfs/leds/spi::kbd_backlight -U 10";
+            };
+            "KEY_KBDILLUMUP" = {
+              action_type = "singlecommand";
+              action = "light -s sysfs/leds/spi::kbd_backlight -A 10";
+            };
+            #------
             "KEY_PLAYPAUSE" = {
               action_type = "singlecommand";
               action = "${playerctl} play-pause";

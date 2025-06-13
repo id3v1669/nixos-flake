@@ -14,7 +14,16 @@
     ./../../modules/bluetooth.nix
   ];
 
-  networking.firewall.enable = false;
+  environment.systemPackages = [
+    pkgs.wirelesstools
+  ];
+
+  networking = {
+    firewall.enable = false;
+    localCommands = ''
+      ${pkgs.wirelesstools}/bin/iwconfig wlp3s0 txpower 10dBm
+    '';
+  };
   users.users.${uservars.name}.extraGroups = [
     "wheel"
     "networkmanager"
@@ -26,8 +35,4 @@
     "veracrypt"
     "usbmux"
   ];
-  environment.variables = {
-    #system vars
-    EDITOR = "nano";
-  };
 }
