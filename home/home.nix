@@ -15,7 +15,6 @@
       ./programs
       ./pkgs
       ./enviroment/systemd
-      inputs.base16x2.homeManagerModules.default
     ]
     ++ lib.lists.optionals (envir != "none") [
       ./scripts
@@ -50,5 +49,4 @@
       NIXOS_OZONE_WL = "1";
     };
   };
-  palette = "${colorsvar}";
 }

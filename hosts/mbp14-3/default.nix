@@ -1,4 +1,8 @@
-{uservars, ...}: {
+{
+  uservars,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./../configuration.nix
@@ -12,6 +16,7 @@
     ./../../modules/sudo.nix
     ./../../modules/swhkdp.nix
     ./../../modules/bluetooth.nix
+    ./../../modules/greeters/regreet.nix
   ];
 
   environment.systemPackages = [

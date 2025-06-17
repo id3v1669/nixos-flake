@@ -81,6 +81,10 @@ in {
         if envir == "Hyprland"
         then "${hyprctl} reload"
         else "";
+      lockscreen =
+        if envir == "Hyprland"
+        then "hyprlock"
+        else "";
     in {
       modes = {
         normal = {
@@ -114,7 +118,7 @@ in {
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_Y".action = "eww reload";
             "KEY_LEFTMETA+KEY_R".action = "anyrun";
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_C".action = "cliphist list | anyrun --show-results-immediately true | cliphist decode | wl-copy";
-            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_L".action = "hyprlock";
+            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_L".action = lockscreen;
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_SLASH".action = reload;
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_3".action = "wayshot -s \"$(slurp)\" --stdout | swappy -f -";
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_4".action = "wayshot -s \"$(slurp)\" -f $HOME/Pictures/Screenshots/shot_$(date '+%Y-%m-%d_%H:%M:%S').png";

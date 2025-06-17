@@ -73,9 +73,10 @@
         inputs.chaotic.nixosModules.default
         inputs.swhkdp.nixosModules.default
         inputs.sops-nix.nixosModules.sops
+        inputs.base16x2.nixosModules.default
         inputs.home-manager.nixosModules.home-manager
         {
-          home-manager = import ./home-manager.nix {inherit allSpecialArgs;};
+          home-manager = import ./home-manager.nix {inherit inputs allSpecialArgs;};
           nixpkgs = pkgs;
         }
       ];

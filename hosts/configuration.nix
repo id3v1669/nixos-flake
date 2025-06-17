@@ -7,13 +7,16 @@
   envir,
   curversion,
   bootloader,
+  colorsvar,
   ...
 }: {
   imports = [
     ./../modules/envspecials/${envir}.nix
     ./../modules/bootloaders/${bootloader.type}.nix
     ./../modules/fish.nix
+    ./../modules/ox.nix
   ];
+  palette = "${colorsvar}";
   networking = {
     hostName = "${hostname}${envir}";
     networkmanager.enable = true;
