@@ -59,7 +59,7 @@ in {
     };
   };
   environment = {
-    sessionVariables.NIXOS_OZONE_WL = "1";
+    variables.NIXOS_OZONE_WL = "1";
     etc."hypr/monitor-init.conf".text = mkDefault '''';
     systemPackages = with pkgs; [
       polkit_gnome # polkit agent

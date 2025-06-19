@@ -24,7 +24,7 @@
       availible_resolutions=("single")
 
       declare -A screen1_resolutions
-      screen1_resolutions["single"]="monitor=eDP-1,2880x1800@60,0x0,1.5"
+      screen1_resolutions["single"]="monitor=eDP-1,1920x1200@60,0x0,1"
 
       path="${config.home.homeDirectory}/.config/hypr/monitor.conf"
       resolution=$1

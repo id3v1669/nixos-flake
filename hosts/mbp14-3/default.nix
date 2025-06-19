@@ -19,9 +19,15 @@
     ./../../modules/greeters/regreet.nix
   ];
 
-  environment.systemPackages = [
-    pkgs.wirelesstools
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      wirelesstools
+    ];
+    etc."hypr/monitor-init.conf".text = ''
+      monitor=eDP-1,1920x1200@60,0x0,1.5
+    '';
+    variables.NIXOS_OZONE_WL = lib.mkForce ""; # workaround for mbp14-3 due to igpu issue
+  };
 
   networking = {
     firewall.enable = false;

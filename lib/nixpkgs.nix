@@ -11,6 +11,7 @@ with allSpecialArgs; {
     inputs.nur.overlays.default
     inputs.eww.overlays.default
     inputs.nix-minecraft.overlay
+    (import ./../overlays/millennium.nix)
     (import ./../overlays/steam.nix)
     (import ./../overlays/equibop.nix)
     (import ./../overlays/libratbag.nix)

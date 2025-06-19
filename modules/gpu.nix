@@ -21,12 +21,12 @@
           ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") (with pkgs; [
             nvidia-vaapi-driver
           ])
-          ++ lib.lists.optionals ((cpuvar.type == "intel" && cpuvar.hasIntegrated) || gpuvar.type == "intel") (with pkgs; [
+          ++ lib.lists.optionals (gpuvar.type == "intel" || (cpuvar.type == "intel" && cpuvar.hasIntegrated && !cpuvar.integratedBroken)) (with pkgs; [
             intel-media-driver
             vaapi-intel-hybrid
             intel-vaapi-driver
           ])
-          ++ lib.lists.optionals (gpuvar.type == "amd" || (cpuvar.type == "amd" && cpuvar.hasIntegrated)) (with pkgs; [
+          ++ lib.lists.optionals (gpuvar.type == "amd" || (cpuvar.type == "amd" && cpuvar.hasIntegrated && !cpuvar.integratedBroken)) (with pkgs; [
             #amdvlk
           ]);
         extraPackages32 =
@@ -37,12 +37,12 @@
           ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") (with pkgs.pkgsi686Linux; [
             nvidia-vaapi-driver
           ])
-          ++ lib.lists.optionals ((cpuvar.type == "intel" && cpuvar.hasIntegrated) || gpuvar == "intel") (with pkgs.pkgsi686Linux; [
+          ++ lib.lists.optionals (gpuvar.type == "intel" || (cpuvar.type == "intel" && cpuvar.hasIntegrated && !cpuvar.integratedBroken)) (with pkgs.pkgsi686Linux; [
             intel-media-driver
             vaapi-intel-hybrid
             intel-vaapi-driver
           ])
-          ++ lib.lists.optionals (gpuvar.type == "amd" || (cpuvar.type == "amd" && cpuvar.hasIntegrated)) (with pkgs; [
+          ++ lib.lists.optionals (gpuvar.type == "amd" || (cpuvar.type == "amd" && cpuvar.hasIntegrated && !cpuvar.integratedBroken)) (with pkgs; [
             #driversi686Linux.amdvlk
           ]);
       };

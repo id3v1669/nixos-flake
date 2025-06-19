@@ -27,5 +27,7 @@
 
     stable.rustdesk
     teamspeak6-client
+
+    millennium
   ];
 }
