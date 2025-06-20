@@ -27,6 +27,5 @@ with allSpecialArgs; {
       inherit gpuvar;
       inherit inputs;
     })
-    (import ./../overlays/adwaita-for-steam.nix)
   ];
 }

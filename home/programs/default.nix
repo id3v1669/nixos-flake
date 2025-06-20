@@ -22,7 +22,6 @@
       ./swappy
       ./chromium
       ./spicetify
-      ./steam
     ]
     ++ lib.lists.optionals (desk == "desktop") [
       ./mangohud
