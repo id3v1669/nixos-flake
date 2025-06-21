@@ -14,7 +14,6 @@ with allSpecialArgs; {
     (import ./../overlays/millennium.nix)
     (import ./../overlays/steam.nix)
     (import ./../overlays/equibop.nix)
-    (import ./../overlays/libratbag.nix)
     (import ./../overlays/lutris.nix)
     (import ./../overlays/gruvbox-plus-icons.nix)
     (import ./../overlays/spotify.nix)

@@ -7,13 +7,13 @@
     # screenshots
     wayshot # cli screenshot
     slurp # select area for screenshot
+    swappy # screenshot editor
 
     # sound
     pamixer # cli mixer
     pavucontrol # gui mixer
     pulseaudio # just lib to use pactl, pipewire is in use
     helvum # gui for pipewire
-    qpwgraph # gui for pipewire graph
     mpc-cli # cli for mpd
 
     # vm, virt, emulators & remote
@@ -25,7 +25,6 @@
 
     # web
     networkmanagerapplet # network manager applet
-    nm-tray # network manager tray
     tor-browser # tor browser for research
 
     # vid photo etc
@@ -37,7 +36,6 @@
     ffmpegthumbnailer # thumbnails for video files
     lutgen # image with filter generator
     hyprpaper # wallpapers
-    swappy # screenshot editor
 
     # chat
     zoom-us
@@ -48,7 +46,6 @@
     lutris # game launcher
 
     # files
-    filezilla # ftp client
     nautilus # file manager
     nemo-with-extensions # file manager(backup fm)
     zip # create .zip arcs
@@ -66,12 +63,10 @@
     hunspellDicts.ru_RU # needed for libreoffice
 
     # other gui tools
-    piper # gui for libratbag
     gnome-disk-utility # disk manager(gparted is broken)
     qbittorrent # torrent client
 
     # other cli utils
-    ngrrram # practice fast typing
     hyprpicker # color picker
     onefetch # fetch for git repos
     pciutils # lspci
