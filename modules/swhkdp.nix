@@ -106,7 +106,7 @@ in {
             "KEY_LEFTMETA+{KEY_1-KEY_9, KEY_0}".action = "${workspace} {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}";
             "KEY_LEFTCTRL+KEY_LEFTSHIFT+{KEY_1-KEY_9, KEY_0}".action = "${movetoworkspace} {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}";
             "KEY_LEFTMETA+{KEY_RIGHT, KEY_LEFT, KEY_DOWN, KEY_UP}".action = "${movefocus} {r, l, d, u}";
-            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_T".action = "alacritty";
+            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_T".action = "wezterm";
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_K".action = "kitty";
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_B".action = "floorp";
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_F".action = "nautilus";

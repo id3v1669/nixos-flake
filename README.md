@@ -34,8 +34,8 @@ NixOS flake with home manager
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
 | notifications | swaync | gtk themeing needs to be done | - |
 | shell | fish | - | - |
-| bootloader | systemd | - | - |
+| bootloader | limine | - | - |
 
 ## Notes
 
-plasma is just for testing
+--

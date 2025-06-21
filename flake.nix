@@ -58,35 +58,7 @@
         hostname = "r7rx7900xtx";
         envir = "Hyprland";
         bootloader = {
-          type = "secureboot";
-          timeout = 7;
-        };
-        cpuvar = {
-          type = "amd";
-          hasIntegrated = false;
-        };
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          domain = "none";
-          wp = "default3.png";
-          owner = "id3v1669";
-          sleeptimeout = 1200;
-        };
-        brightnesctrl = {
-          up = "light -A 5";
-          down = "light -U 5";
-        };
-        gpuvar = {
-          type = "amd";
-          tech = "desktop";
-        };
-      };
-      r7rx7900xtxkde = mkSystem {
-        hostname = "r7rx7900xtx";
-        envir = "KDE";
-        bootloader = {
-          type = "secureboot";
+          type = "limine";
           timeout = 7;
         };
         cpuvar = {

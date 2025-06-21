@@ -9,7 +9,6 @@
       ./fastfetch
     ]
     ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
-      ./alacritty
       ./vscode
       ./floorp
       ./other
@@ -22,6 +21,7 @@
       ./swappy
       ./chromium
       ./spicetify
+      ./wezterm
     ]
     ++ lib.lists.optionals (desk == "desktop") [
       ./mangohud

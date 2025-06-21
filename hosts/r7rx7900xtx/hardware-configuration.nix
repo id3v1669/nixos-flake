@@ -26,7 +26,6 @@
       "amd_iommu=on"
       "pcie_aspm=off"
       "iommu=pt"
-      "quiet"
     ];
     kernel.sysctl = {
       "kernel.unprivileged_userns_clone" = 1;

@@ -8,10 +8,24 @@
 }: let
   inherit (lib) getExe getExe' mkDefault optionalAttrs;
 in {
-  boot.extraModprobeConfig = ''
-    # fix the F* keys on nuphy air 75 win mode
-    options hid_apple fnmode=0
-  '';
+  boot = {
+    plymouth.enable = true;
+    kernelParams = [
+      "quiet"
+      "systemd.show_status=auto"
+      "rd.udev.log_level=3"
+      "rd.systemd.show_status=auto"
+      "udev.log_level=3"
+      "loglevel=3"
+      "usbcore.autosuspend=-1"
+      "plymouth.use-simpledrm"
+      "fbcon=nodefer"
+    ];
+    extraModprobeConfig = ''
+      # fix the F* keys on nuphy air 75 win mode
+      options hid_apple fnmode=0
+    '';
+  };
   security =
     {
       rtkit.enable = true;
