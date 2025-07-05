@@ -12,10 +12,16 @@
 
   boot = {
     kernelModules = ["kvm-intel"];
-    kernelPackages = pkgs.linuxPackages_latest;
-    kernel.sysctl."kernel.unprivileged_userns_clone" = 1;
+    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernel.sysctl = {
+      "kernel.unprivileged_userns_clone" = 1;
+      "vm.max_map_count" = 2147483642;
+      "kernel.split_lock_mitigate" = 0;
+      "net.ipv4.tcp_fin_timeout" = 5;
+      "kernel.sched_cfs_bandwidth_slice_us" = 3000;
+    };
     extraModulePackages = with config.boot.kernelPackages; [
-      v4l2loopback
+     v4l2loopback
     ];
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "usbhid"];
@@ -23,13 +29,13 @@
     };
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/9e67ad3a-3900-4855-92c4-828a53d4d8f2";
-    fsType = "xfs";
+ fileSystems."/" = {
+    device = "/dev/disk/by-uuid/fddd6838-2b28-411e-bb4c-94d6b16f8f5f";
+    fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/E611-6933";
+    device = "/dev/disk/by-uuid/E554-A623";
     fsType = "vfat";
     options = ["fmask=0022" "dmask=0022"];
   };

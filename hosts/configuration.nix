@@ -25,7 +25,7 @@
     enableIPv6 = lib.mkDefault true;
   };
   programs = {
-    nano.enable = false;
+    nano.enable = true;
     direnv = {
       enable = true;
       loadInNixShell = false;

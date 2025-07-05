@@ -79,6 +79,7 @@
         "video/vnd.avi" = "vlc.desktop";
         "video/webm" = "vlc.desktop";
         "video/mpeg" = "vlc.desktop";
+        "video/x-matroska" = "vlc.desktop";
         #vscode for text etc
         "text/plain" = "code.desktop";
         "text/x-c" = "code.desktop";
@@ -185,6 +186,7 @@
         "video/vnd.avi" = "vlc.desktop";
         "video/webm" = "vlc.desktop";
         "video/mpeg" = "vlc.desktop";
+        "video/x-matroska" = "vlc.desktop";
         #vscode
         "text/plain" = "code.desktop";
         "text/x-c" = "code.desktop";

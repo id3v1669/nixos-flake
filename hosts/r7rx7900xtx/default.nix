@@ -2,6 +2,7 @@
   pkgs,
   uservars,
   lib,
+  config,
   ...
 }: {
   imports = [
@@ -53,6 +54,7 @@
   ];
   environment = {
     systemPackages = with pkgs; [
+      config.boot.kernelPackages.perf
     ];
     etc = {
       "hypr/monitor-init.conf".text = ''

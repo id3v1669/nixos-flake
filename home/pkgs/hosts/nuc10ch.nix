@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./../security.nix
+    #./../security.nix
   ];
   home.packages = with pkgs; [
     # gui
@@ -27,5 +27,8 @@
     phoronix-test-suite
     stress
     nur.repos.tarantoj.nudelta
+
+    osu-lazer-bin
+    inputs.waysip.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

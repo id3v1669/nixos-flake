@@ -41,6 +41,7 @@
         font_size = 11,
         window_background_opacity = 0.95,
         enable_tab_bar = false,
+        window_close_confirmation = 'NeverPrompt',
       }
     '';
   };

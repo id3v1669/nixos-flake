@@ -29,5 +29,8 @@
     teamspeak6-client
 
     millennium
+
+    osu-lazer-bin
+    inputs.waysip.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

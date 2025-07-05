@@ -44,6 +44,10 @@
       url = "github:id3v1669/swhkdp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    waysip = {
+      url = "github:waycrate/waysip";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     prism-launcher = {
       url = "github:PrismLauncher/PrismLauncher/release-9.x";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -85,6 +89,10 @@
       nuc10chhypr = mkSystem {
         hostname = "nuc10ch";
         envir = "Hyprland";
+        bootloader = {
+          type = "limine";
+          timeout = 7;
+        };
         cpuvar = {
           type = "intel";
           hasIntegrated = false;
