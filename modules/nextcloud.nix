@@ -86,3 +86,23 @@
     nodejs
   ];
 }
+
+# Migration commands:
+# 1) maintainance mode
+# sudo -i nextcloud-occ maintenance:mode --on
+# 2) backup database
+# sudo runuser -u nextcloud -- mysqldump -u nextcloud nextcloud > nc.bak
+# 3) backup data
+# backup /var/lib/nextcloud/data
+# 4) setup nextcloud on new server and enter maintenance mode
+# 5) restore data files
+# 6) restore database
+# sudo runuser -u nextcloud -- mysql -u nextcloud  nextcloud < ~/nc.bak
+# 7) run fixes in case version mismatch
+# sudo -i nextcloud-occ db:add-missing-columns
+# sudo -i nextcloud-occ db:add-missing-indices
+# sudo -i nextcloud-occ db:add-missing-primary-keys
+# 8) run upgrade
+# sudo -i nextcloud-occ upgrade
+# 9) disable maintenance mode
+# sudo -i nextcloud-occ maintenance:mode --off

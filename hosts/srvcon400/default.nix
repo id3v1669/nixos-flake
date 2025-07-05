@@ -7,6 +7,12 @@
     /etc/nixos/net.nix
     ./hardware-configuration.nix
     ./../configuration.nix
+    ./../../modules/nextcloud.nix
+    ./../../modules/nginx.nix
+    ./../../modules/httpd.nix
+    ./../../modules/web.nix
+    ./../../modules/sops.nix
+    ./../../modules/vaultwarden.nix
     ./../../modules/virtualisation.nix
     ./../../modules/fonts.nix
     ./../../modules/security.nix
