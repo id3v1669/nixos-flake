@@ -23,6 +23,7 @@
     libsForQt5.kdenlive # video editing
 
     #testing
+    #jetbrains.rust-rover
     nur.repos.tarantoj.nudelta
 
     stable.rustdesk

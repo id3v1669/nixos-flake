@@ -13,27 +13,26 @@ in {
   programs.virt-manager = {
     # gui for managing vms
     enable = true;
-    package = pkgs.virt-manager;
+    package = stable.virt-manager;
   };
   hardware.nvidia-container-toolkit = {
     # nvidia container toolkit
     enable = gpuvar.type == "nvidia" && gpuvar.tech != "nvk";
   };
   virtualisation = {
-    waydroid.enable = notsrv; # waydroid for android apps
     spiceUSBRedirection.enable = notsrv; # USB redirection to vm
     libvirtd = {
       enable = notsrv; # libvirtd for virt-manager
       onBoot = "ignore";
       onShutdown = "shutdown";
       qemu = {
-        package = pkgs.qemu_kvm;
+        package = stable.qemu_kvm;
         swtpm.enable = notsrv;
         ovmf = {
           enable = notsrv;
-          packages = [pkgs.OVMFFull.fd];
+          packages = [stable.OVMFFull.fd];
         };
-        vhostUserPackages = with pkgs; [
+        vhostUserPackages = with stable; [
           spice
           spice-gtk
           spice-protocol
@@ -46,11 +45,11 @@ in {
     };
     podman = {
       enable = !notsrv; # podman for containers on vps
-      extraPackages = [pkgs.podman-compose];
+      extraPackages = [stable.podman-compose];
     };
     docker = {
       enable = notsrv; # docker for containers on local pc
-      extraPackages = [pkgs.docker-compose];
+      extraPackages = [stable.docker-compose];
     };
   };
   users.users.${uservars.name}.extraGroups =
@@ -67,11 +66,10 @@ in {
       else ["podman"]
     );
   environment = {
-    systemPackages = with pkgs; [
+    systemPackages = with stable; [
       qemu_full
       spice-gtk
       virt-viewer
-      nur.repos.ataraxiasjel.waydroid-script
     ];
   };
 }

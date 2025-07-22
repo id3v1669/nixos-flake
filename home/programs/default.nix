@@ -9,6 +9,7 @@
       ./fastfetch
     ]
     ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
+      ./aplin
       ./vscode
       ./floorp
       ./other

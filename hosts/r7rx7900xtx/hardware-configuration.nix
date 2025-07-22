@@ -12,6 +12,7 @@
 
   boot = {
     kernelModules = ["kvm-amd"];
+    #kernelPackages = pkgs.linuxPackages_latest;
     kernelPackages = let
       customKernel = pkgs.linuxPackages_cachyos.kernel.override {
         config = lib.recursiveUpdate pkgs.linuxPackages_cachyos.kernel.config {

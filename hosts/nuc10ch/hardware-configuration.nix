@@ -21,7 +21,7 @@
       "kernel.sched_cfs_bandwidth_slice_us" = 3000;
     };
     extraModulePackages = with config.boot.kernelPackages; [
-     v4l2loopback
+      v4l2loopback
     ];
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "usbhid"];
@@ -29,7 +29,7 @@
     };
   };
 
- fileSystems."/" = {
+  fileSystems."/" = {
     device = "/dev/disk/by-uuid/fddd6838-2b28-411e-bb4c-94d6b16f8f5f";
     fsType = "ext4";
   };

@@ -15,7 +15,6 @@
       package = pkgs.nextcloud31;
       database.createLocally = true;
       https = true;
-      nginx.hstsMaxAge = 31536000;
       configureRedis = true;
       webfinger = true;
       maxUploadSize = "20G";
@@ -34,8 +33,12 @@
       };
       config = {
         dbtype = "mysql";
-        adminuser = "${uservars.name}";
+        adminuser = "id3v1669_admin";
         adminpassFile = "${config.sops.secrets."nextcloud-admin".path}";
+      };
+      nginx = {
+        hstsMaxAge = 31536000;
+        recommendedHttpHeaders = true;
       };
       phpOptions = {
         catch_workers_output = "yes";
@@ -57,6 +60,7 @@
       settings = {
         overwriteProtocol = "https";
         defaultPhoneRegion = "AU";
+        maintenance_window_start = 1;
         trusted_domains = [
           "nextcloud.${uservars.domain}"
         ];
@@ -86,7 +90,6 @@
     nodejs
   ];
 }
-
 # Migration commands:
 # 1) maintainance mode
 # sudo -i nextcloud-occ maintenance:mode --on
@@ -106,3 +109,6 @@
 # sudo -i nextcloud-occ upgrade
 # 9) disable maintenance mode
 # sudo -i nextcloud-occ maintenance:mode --off
+# 10) fix warnings
+# sudo -i nextcloud-occ maintenance:repair --include-expensive
+

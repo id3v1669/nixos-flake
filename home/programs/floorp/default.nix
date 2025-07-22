@@ -5,7 +5,7 @@
 }: {
   programs.floorp = {
     enable = true;
-    package = pkgs.wrapFirefox pkgs.floorp-unwrapped {
+    package = pkgs.wrapFirefox (pkgs.floorp-unwrapped.override {ltoSupport = false;}) {
       extraPolicies = {
         CaptivePortal = false;
         DisablePocket = true;

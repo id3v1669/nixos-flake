@@ -57,13 +57,13 @@
       screen2_resolutions["sv"]="monitor=DP-2,1920x1080@100,0x0,1,transform,1"
 
       declare -A screen3_resolutions
-      screen3_resolutions["qhd"]="monitor=HDMI-A-2,1920x1080@60,-1920x0,1"
-      screen3_resolutions["sqhd"]="monitor=HDMI-A-2,disable"
-      screen3_resolutions["sfhd"]="monitor=HDMI-A-2,disable"
-      screen3_resolutions["sv"]="monitor=HDMI-A-2,disable"
+      screen3_resolutions["qhd"]="monitor=HDMI-A-1,1920x1080@60,-1920x0,1"
+      screen3_resolutions["sqhd"]="monitor=HDMI-A-1,disable"
+      screen3_resolutions["sfhd"]="monitor=HDMI-A-1,disable"
+      screen3_resolutions["sv"]="monitor=HDMI-A-1,disable"
 
       declare -A screen3_subsettings
-      screen3_subsettings["qhd"]="input:touchdevice:output = HDMI-A-2"
+      screen3_subsettings["qhd"]="input:touchdevice:output = HDMI-A-1"
       screen3_subsettings["sqhd"]=""
       screen3_subsettings["sfhd"]=""
       screen3_subsettings["sv"]=""

@@ -25,8 +25,8 @@ in {
     settings = {
       decoration.rounding = 5;
       general = {
-        gaps_in = 5;
-        gaps_out = 10;
+        gaps_in = 4;
+        gaps_out = 8;
         border_size = 2;
         "col.active_border" = "rgb(${clp.base16.hex}) rgb(${clp.base12.hex}) 45deg";
         "col.inactive_border" = "rgb(${clp.base04.hex})";
@@ -65,7 +65,6 @@ in {
       misc = {
         disable_hyprland_logo = true;
         font_family = "0xProto";
-        render_ahead_of_time = false;
         background_color = "0x282828";
         enable_anr_dialog = false;
         vrr = 0;

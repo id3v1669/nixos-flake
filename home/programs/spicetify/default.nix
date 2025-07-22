@@ -8,8 +8,6 @@
     inputs.spicetify-nix.homeManagerModules.default
   ];
 
-  #home.packages = [ pkgs.spotify ];
-
   programs.spicetify = let
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
   in {
@@ -21,7 +19,7 @@
       shuffle
       addToQueueTop
       volumePercentage
-      #copyToClipboard
+      copyToClipboard
       trashbin
     ];
     theme = spicePkgs.themes.onepunch;

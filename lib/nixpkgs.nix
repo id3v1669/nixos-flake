@@ -7,6 +7,7 @@ with allSpecialArgs; {
   inherit system;
   config.allowUnfree = true;
   overlays = [
+    inputs.aplin.overlays.default
     inputs.prism-launcher.overlays.default
     inputs.nur.overlays.default
     inputs.eww.overlays.default
@@ -17,7 +18,6 @@ with allSpecialArgs; {
     (import ./../overlays/lutris.nix)
     (import ./../overlays/gruvbox-plus-icons.nix)
     (import ./../overlays/spotify.nix)
-    (import ./../overlays/joplin.nix)
     (import ./../overlays/btop.nix {
       inherit cpuvar;
       inherit gpuvar;
