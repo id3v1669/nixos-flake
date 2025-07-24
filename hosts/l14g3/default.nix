@@ -1,4 +1,9 @@
-{uservars, ...}: {
+{
+  uservars,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./../configuration.nix
@@ -15,7 +20,25 @@
     ./../../modules/greeters/regreet.nix
   ];
 
-  networking.firewall.enable = false;
+  hardware = {
+    enableAllFirmware = true;
+    amdgpu.overdrive.enable = true;
+  };
+  services = {
+    udev.packages = [
+      pkgs.android-udev-rules
+    ];
+  };
+  networking = {
+    firewall.enable = false;
+    enableIPv6 = false;
+  };
+  programs = {
+    adb.enable = true;
+    corectrl = {
+      enable = true;
+    };
+  };
   users.users.${uservars.name}.extraGroups = [
     "wheel"
     "networkmanager"
@@ -28,8 +51,21 @@
     "usbmux"
   ];
   environment = {
+    systemPackages = [
+      config.boot.kernelPackages.perf
+    ];
     etc."hypr/monitor-init.conf".text = ''
       monitor=eDP-1,1920x1080@60,0x0,1
     '';
+  };
+  nix.settings = {
+    auto-optimise-store = true;
+    cores = 8;
+    substituters = [
+      "https://chaotic-nyx.cachix.org/"
+    ];
+    trusted-public-keys = [
+      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+    ];
   };
 }

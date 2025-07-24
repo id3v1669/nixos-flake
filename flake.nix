@@ -62,34 +62,6 @@
   in {
     formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.alejandra;
     nixosConfigurations = {
-      r7rx7900xtxhypr = mkSystem {
-        hostname = "r7rx7900xtx";
-        envir = "Hyprland";
-        bootloader = {
-          type = "limine";
-          timeout = 7;
-        };
-        cpuvar = {
-          type = "amd";
-          hasIntegrated = false;
-        };
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          domain = "none";
-          wp = "default3.png";
-          owner = "id3v1669";
-          sleeptimeout = 1200;
-        };
-        brightnesctrl = {
-          up = "light -A 5";
-          down = "light -U 5";
-        };
-        gpuvar = {
-          type = "amd";
-          tech = "desktop";
-        };
-      };
       nuc10chhypr = mkSystem {
         hostname = "nuc10ch";
         envir = "Hyprland";
@@ -167,33 +139,6 @@
         gpuvar = {
           type = "amd";
           tech = "amd";
-        };
-      };
-      srvnet510 = mkSystem {
-        hostname = "srvnet510";
-        envir = "none";
-        desk = "server";
-        bootloader = {
-          type = "grub";
-          timeout = 1;
-          device = "/dev/vda";
-        };
-        gpuvar = {
-          type = "none";
-          tech = "none";
-        };
-        uservars = {
-          name = "srvnet510pq";
-          description = "serverUser510";
-          domain = "id3v1669.com";
-          owner = "id3v1669";
-        };
-        deflocale = {
-          kblayout = "au";
-          kbvariant = "";
-          kboption = "";
-          timezone = "Australia/Perth";
-          locale = "en_AU.UTF-8";
         };
       };
       srvcon400 = mkSystem {

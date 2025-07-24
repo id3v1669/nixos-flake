@@ -38,25 +38,27 @@
     profiles.default = {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = true;
-      extensions = with pkgs.vscode-extensions; [
-        github.copilot
-        mads-hartmann.bash-ide-vscode
-        bbenoist.nix
-        jnoortheen.nix-ide
-        skyapps.fish-vscode
-        dotjoshjohnson.xml
-        davidanson.vscode-markdownlint
-        ms-vscode.makefile-tools
-        rust-lang.rust-analyzer
-        fill-labs.dependi
-     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      {
-        name = "rust-syntax";
-        publisher = "dustypomerleau";
-        version = "0.6.1";
-        hash = "sha256-o9iXPhwkimxoJc1dLdaJ8nByLIaJSpGX/nKELC26jGU=";
-      }
-    ];
+      extensions = with pkgs.vscode-extensions;
+        [
+          github.copilot
+          mads-hartmann.bash-ide-vscode
+          bbenoist.nix
+          jnoortheen.nix-ide
+          skyapps.fish-vscode
+          dotjoshjohnson.xml
+          davidanson.vscode-markdownlint
+          ms-vscode.makefile-tools
+          rust-lang.rust-analyzer
+          fill-labs.dependi
+        ]
+        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "rust-syntax";
+            publisher = "dustypomerleau";
+            version = "0.6.1";
+            hash = "sha256-o9iXPhwkimxoJc1dLdaJ8nByLIaJSpGX/nKELC26jGU=";
+          }
+        ];
       userSettings = {
         "[rust]" = {
           "editor.semanticHighlighting.enabled" = false;

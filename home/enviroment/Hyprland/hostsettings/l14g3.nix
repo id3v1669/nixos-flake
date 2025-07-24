@@ -33,7 +33,7 @@
 
       declare -A screen3_resolutions
       screen3_resolutions["single"]="monitor=DP-2,disable"
-      screen3_resolutions["triple"]="monitor=DP-2,1920x1080@100,0x0,1,transform,1"
+      screen3_resolutions["triple"]="monitor=DP-2,1920x1080@100,0x-320,1,transform,1"
 
       path="${config.home.homeDirectory}/.config/hypr/monitor.conf"
       resolution=$1

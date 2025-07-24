@@ -20,8 +20,8 @@
     distrobox
     remmina # remote desktop
     #packer
-    minikube # kubernetes for local tests
-    kubectl # kubernetes cli
+    #minikube # kubernetes for local tests
+    #kubectl # kubernetes cli
 
     # web
     networkmanagerapplet # network manager applet
