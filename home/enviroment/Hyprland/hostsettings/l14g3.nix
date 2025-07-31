@@ -9,7 +9,7 @@
       "size 37% 71.5%, class:.blueman-manager-wrapped"
     ];
     source = [
-      #"${config.home.homeDirectory}/.config/hypr/test.conf"
+      "${config.home.homeDirectory}/.config/hypr/test.conf"
       "${config.home.homeDirectory}/.config/hypr/monitor.conf"
     ];
   };
@@ -67,6 +67,13 @@
 
       if [ "$resolution" == "triple" ]; then
          echo "workspace=1, monitor:HDMI-A-1" >> $path
+         echo "workspace=3, monitor:HDMI-A-1" >> $path
+         echo "workspace=4, monitor:HDMI-A-1" >> $path
+         echo "workspace=5, monitor:HDMI-A-1" >> $path
+         echo "workspace=6, monitor:HDMI-A-1" >> $path
+         echo "workspace=7, monitor:HDMI-A-1" >> $path
+         echo "workspace=8, monitor:HDMI-A-1" >> $path
+         echo "workspace=9, monitor:HDMI-A-1" >> $path
          echo "workspace=2, monitor:DP-2" >> $path
          echo "workspace=10, monitor:eDP-1" >> $path
       fi

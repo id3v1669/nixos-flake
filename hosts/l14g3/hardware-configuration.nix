@@ -32,23 +32,25 @@
       "net.ipv4.tcp_fin_timeout" = 5;
       "kernel.sched_cfs_bandwidth_slice_us" = 3000;
     };
-    extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
+    extraModulePackages = with config.boot.kernelPackages; [
+      #v4l2loopback
+    ];
     initrd = {
-      availableKernelModules = ["nvme" "xhci_pci" "uas" "sd_mod" "sdhci_pci"];
+      availableKernelModules = ["nvme" "xhci_pci" "uas" "sd_mod" "usbhid"];
       kernelModules = ["amdgpu"];
-      luks.devices."luks-6050a80c-f2a4-4040-83a9-792e091aade6".device = "/dev/disk/by-uuid/6050a80c-f2a4-4040-83a9-792e091aade6";
+      luks.devices."luks-7f87ff35-9b2a-4f9e-b679-17055fff4604".device = "/dev/disk/by-uuid/7f87ff35-9b2a-4f9e-b679-17055fff4604";
     };
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/6d31cfe4-4971-4bb4-9103-3b148f9c27c5";
-    fsType = "xfs";
+    device = "/dev/disk/by-label/nixos";
+    fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/C8AA-8835";
+    device = "/dev/disk/by-label/EFI";
     fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
+    options = ["fmask=0077" "dmask=0077"];
   };
 
   swapDevices = [];

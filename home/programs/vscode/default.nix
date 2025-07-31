@@ -73,7 +73,7 @@
         "workbench.list.smoothScrolling" = true;
         "editor.cursorSmoothCaretAnimation" = "on";
         "terminal.integrated.smoothScrolling" = true;
-        "terminal.integrated.scrollback" = 3000;
+        "terminal.integrated.scrollback" = 30000;
         "editor.stickyScroll.enabled" = false;
         "workbench.tree.enableStickyScroll" = false;
 

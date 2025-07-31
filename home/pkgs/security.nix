@@ -41,7 +41,7 @@
     netcat-gnu # network tool
     pdf-parser
     regripper
-    binwalk
+    binwalk # analyze binary blobs and executables
     bulk_extractor
     capstone
     stegseek
@@ -63,6 +63,26 @@
     ghidra # decompiler
     snowman # decompiler
     wireguard-tools # wireguard tools for experiments with vpn
+
+    aircrack-ng # wifi tool
+    arping # arp tool
+    bettercap # mitm tool
+    certgraph # ssl certificate graph crawler
+    deepsecrets # find secrets in code
+    dnsenum # dns enumeration
+    enum4linux-ng # enumerate info from windows/samba
+    ghorg # mass clone git repos
+    hcxtools # wifi capture and convert to hashcat/john
+    hcxdumptool # capture packets from wifi
+    ldapnomnom # ldap user brute force
+    msldapdump # ldap enumeration
+    onesixtyone # snmp scanner
+    p0f # passive os fingerprinting
+    iaito # gui for radare2
+    radare2 # reverse engineering framework
+    testssl # ssl checker
+    wifite2 # wifi network auditor
+    zap # web app penetration testing
 
     #rainbowcrack                 # rainbow tables gen Propritary and unsupported platform(mistake in nixpkgs)
 

@@ -12,6 +12,9 @@ with allSpecialArgs; {
     inputs.nur.overlays.default
     inputs.eww.overlays.default
     inputs.nix-minecraft.overlay
+    (import ./../overlays/fht-compositor.nix {
+      inherit inputs;
+    })
     (import ./../overlays/millennium.nix)
     (import ./../overlays/steam.nix)
     (import ./../overlays/equibop.nix)

@@ -8,6 +8,16 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     #dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
+    fht-compositor = {
+      url = "github:nferhat/fht-compositor";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "";
+    };
+    fht-share-picker = {
+      url = "github:nferhat/fht-share-picker/gtk-rewrite";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "";
+    };
     aplin = {
       url = "github:id3v1669/aplin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -90,13 +100,17 @@
           tech = "broken";
         };
       };
-      l14g3hypr = mkSystem {
+      l14g3fht = mkSystem {
         hostname = "l14g3";
-        envir = "Hyprland";
+        envir = "fht-compositor";
         cpuvar = {
           type = "amd";
           hasIntegrated = true;
           integratedBroken = false;
+        };
+        bootloader = {
+          type = "limine";
+          timeout = 7;
         };
         desk = "laptop";
         uservars = {
@@ -116,12 +130,17 @@
           tech = "amd";
         };
       };
-      mbp14-3hypr = mkSystem {
-        hostname = "mbp14-3";
+      l14g3hypr = mkSystem {
+        hostname = "l14g3";
         envir = "Hyprland";
         cpuvar = {
-          type = "intel";
+          type = "amd";
           hasIntegrated = true;
+          integratedBroken = false;
+        };
+        bootloader = {
+          type = "limine";
+          timeout = 7;
         };
         desk = "laptop";
         uservars = {

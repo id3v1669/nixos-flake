@@ -11,7 +11,7 @@
       secureBoot.enable = true;
       maxGenerations = 10;
     };
-    efi.canTouchEfiVariables = true;
+    efi.canTouchEfiVariables = false;
     systemd-boot.enable = false;
     grub.enable = lib.mkForce false;
   };

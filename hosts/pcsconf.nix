@@ -28,6 +28,7 @@ in {
   };
   security =
     {
+      soteria.enable = true; # soteria polkit
       rtkit.enable = true;
       chromiumSuidSandbox.enable = true;
     }
@@ -76,7 +77,6 @@ in {
     variables.NIXOS_OZONE_WL = "1";
     etc."hypr/monitor-init.conf".text = mkDefault '''';
     systemPackages = with pkgs; [
-      polkit_gnome # polkit agent
       xorg.xhost # xhost
       vulkan-headers
       vulkan-tools
@@ -94,23 +94,5 @@ in {
     tmpfiles.rules = [
       "d /etc/backgrounds 0755 user users - -"
     ];
-    user = {
-      inherit extraConfig;
-      services = {
-        polkit-gnome-authentication-agent-1 = {
-          description = "polkit-gnome-authentication-agent-1";
-          wantedBy = ["graphical-session.target"];
-          wants = ["graphical-session.target"];
-          after = ["graphical-session.target"];
-          serviceConfig = {
-            Type = "simple";
-            ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-            Restart = "on-failure";
-            RestartSec = 1;
-            TimeoutStopSec = 10;
-          };
-        };
-      };
-    };
   };
 }

@@ -9,6 +9,7 @@
   ...
 }: let
   hyprctl = "${lib.getExe' pkgs.hyprland "hyprctl"}";
+  fhtipc = "${lib.getExe' pkgs.fht-compositor "fht-compositor"} ipc action";
   playerctl = "${lib.getExe' pkgs.playerctl "playerctl"}";
 in {
   environment.systemPackages = [
@@ -20,6 +21,8 @@ in {
       killactive =
         if envir == "Hyprland"
         then "${hyprctl} dispatch killactive"
+        else if envir == "fht-compositor"
+        then "${fhtipc} close-window"
         else "";
       togglesplit =
         if envir == "Hyprland"
@@ -28,6 +31,8 @@ in {
       togglefloating =
         if envir == "Hyprland"
         then "${hyprctl} dispatch togglefloating"
+        else if envir == "fht-compositor"
+        then "${fhtipc} float-window"
         else "";
       pseudo =
         if envir == "Hyprland"
@@ -52,10 +57,14 @@ in {
       fullscreen =
         if envir == "Hyprland"
         then "${hyprctl} dispatch fullscreen 0"
+        else if envir == "fht-compositor"
+        then "${fhtipc} fullscreen-window"
         else "";
       maximize =
         if envir == "Hyprland"
         then "${hyprctl} dispatch fullscreen 1"
+        else if envir == "fht-compositor"
+        then "${fhtipc} maximize-window"
         else "";
       nextactivewindow =
         if envir == "Hyprland"
@@ -64,10 +73,14 @@ in {
       movetoworkspace =
         if envir == "Hyprland"
         then "${hyprctl} dispatch movetoworkspace"
+        else if envir == "fht-compositor"
+        then "${fhtipc} send-window-to-workspace"
         else "";
       workspace =
         if envir == "Hyprland"
         then "${hyprctl} dispatch workspace"
+        else if envir == "fht-compositor"
+        then "${fhtipc} focus-workspace"
         else "";
       movefocus =
         if envir == "Hyprland"
@@ -76,10 +89,14 @@ in {
       exit =
         if envir == "Hyprland"
         then "${hyprctl} dispatch exit"
+        else if envir == "fht-compositor"
+        then "${fhtipc} quit"
         else "";
       reload =
         if envir == "Hyprland"
         then "${hyprctl} reload"
+        else if envir == "fht-compositor"
+        then "${fhtipc} reload-config"
         else "";
       lockscreen =
         if envir == "Hyprland"
