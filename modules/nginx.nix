@@ -12,7 +12,6 @@
     recommendedProxySettings = true;
     recommendedGzipSettings = true;
     recommendedBrotliSettings = true;
-    recommendedZstdSettings = true;
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
   };
 }
