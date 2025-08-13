@@ -84,6 +84,12 @@
     wifite2 # wifi network auditor
     zap # web app penetration testing
 
+    ddrescue
+    ddrescueview
+    extundelete
+    ext4magic
+    testdisk-qt
+
     #rainbowcrack                 # rainbow tables gen Propritary and unsupported platform(mistake in nixpkgs)
 
     # (pkgs.python312Packages.python.withPackages (python-pkgs: with python-pkgs; [

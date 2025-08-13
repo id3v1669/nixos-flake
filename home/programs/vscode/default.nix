@@ -16,10 +16,11 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     nerd-fonts.terminess-ttf
-    #     nerd-fonts.cousine
-    #     nerd-fonts.iosevka
+    nerd-fonts.symbols-only
+        nerd-fonts.cousine
+        nerd-fonts.iosevka
     nerd-fonts.jetbrains-mono
-    #     nerd-fonts.im-writing
+    nerd-fonts.im-writing
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
@@ -27,8 +28,8 @@
     fira-code
     _0xproto
     fira-code-symbols
-    #      mplus-outline-fonts.githubRelease
-    #      dina-font
+         mplus-outline-fonts.githubRelease
+         #dina-font
     proggyfonts
   ];
 

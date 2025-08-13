@@ -17,8 +17,8 @@
     ./../../modules/sudo.nix
     ./../../modules/swhkdp.nix
     ./../../modules/bluetooth.nix
-    #./../../modules/greeters/regreet.nix
-    ./../../modules/greeters/sddm.nix
+    ./../../modules/greeters/regreet.nix
+    #./../../modules/greeters/sddm.nix
   ];
 
   hardware = {

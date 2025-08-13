@@ -8,5 +8,9 @@
 
     # games
     prismlauncher
+
+    iwwc
+    czkawka-full
+    dupeguru
   ];
 }

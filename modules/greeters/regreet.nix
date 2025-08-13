@@ -21,9 +21,9 @@ in {
       }
 
       exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30
-      exec-once = ${getExe' dbus "dbus-update-activation-environment"} --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE
+      exec-once = ${getExe' dbus "dbus-update-activation-environment"} --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE XDG_SESSION_ID
 
-      exec-once = ${getExe greetd.regreet} && ${
+      exec-once = ${getExe regreet} && ${
         getExe' hyprland "hyprctl"
       } exit
     '';

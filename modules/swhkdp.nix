@@ -41,10 +41,14 @@ in {
       nextworkspace =
         if envir == "Hyprland"
         then "${hyprctl} dispatch workspace e+1"
+        else if envir == "fht-compositor"
+        then "${fhtipc} focus-next-workspace"
         else "";
       prevworkspace =
         if envir == "Hyprland"
         then "${hyprctl} dispatch workspace e-1"
+        else if envir == "fht-compositor"
+        then "${fhtipc} focus-previous-workspace"
         else "";
       movenextworkspace =
         if envir == "Hyprland"
@@ -69,6 +73,8 @@ in {
       nextactivewindow =
         if envir == "Hyprland"
         then "${hyprctl} dispatch cyclenext"
+        else if envir == "fht-compositor"
+        then "${fhtipc} focus-next-window"
         else "";
       movetoworkspace =
         if envir == "Hyprland"

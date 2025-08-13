@@ -8,6 +8,7 @@
     };
     packages = with pkgs; [
       nerd-fonts.terminess-ttf
+      nerd-fonts.symbols-only
       nerd-fonts.cousine
       nerd-fonts.iosevka
       nerd-fonts.jetbrains-mono
