@@ -58,8 +58,8 @@
         symlinks = {
           "mods" = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
             SkinRestorer = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6734/117/skinrestorer-2.4.0%2B1.21.6-fabric.jar";
-              hash = "sha256-wTcr85XaGZXf8+8lPCsdx8cXtQpwzKxh+Z29QS0dlHg=";
+              url = "https://mediafilez.forgecdn.net/files/6765/195/skinrestorer-2.4.2%2B1.21.6-fabric.jar";
+              hash = "sha256-f9C0cmuvT8kWICnGl8G56OWU4HTKzlEIcQvSD4/Fy3Q=";
             };
             ScalableLux = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6694/999/ScalableLux-0.1.5%2Bfabric.e4acdcb-all.jar";
@@ -82,12 +82,12 @@
               hash = "sha256-CoLJxvv1U20CmUm9kOfE3P8AJK4XduYrQLAv2Xqrsvg=";
             };
             Fabric-API = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6720/833/fabric-api-0.128.2%2B1.21.7.jar";
-              hash = "sha256-YVCRbpbouYCX+k7BYhgparrE6N4Jcwfq1q2e/GfKTQ4=";
+              url = "https://mediafilez.forgecdn.net/files/6749/190/fabric-api-0.129.0%2B1.21.7.jar";
+              hash = "sha256-218W/hqld/RtNjv416lwVCSfCWLYLQ7xjRnKTV4WJ2g=";
             };
             FallingTree = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6715/970/FallingTree-1.21.7-1.21.7.2.jar";
-              hash = "sha256-o6cEDEZhpzgmRM7uMJLiEc+JZm2wBFnnIPDGe2IMkKY=";
+              url = "https://mediafilez.forgecdn.net/files/6835/301/FallingTree-1.21.7-1.21.7.3.jar";
+              hash = "sha256-Xu02uPhCjjFEh623Qq9cQGC511b+kSEJt+LO1Rl2fZw=";
             };
             Lithium = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6713/689/lithium-fabric-0.18.0%2Bmc1.21.7.jar";
@@ -97,19 +97,25 @@
               url = "https://mediafilez.forgecdn.net/files/6365/997/ferritecore-8.0.0-fabric.jar";
               hash = "sha256-K5C/AMKlgIw8U5cSpVaRGR+HFtW/pu76ujXpxMWijuo=";
             };
-            #C2ME = lib.cleanSource (/home + "/${uservars.name}/mods/c2me-0.3.4+alpha.0.45.jar");
+            C2ME = pkgs.fetchurl {
+              url = "https://mediafilez.forgecdn.net/files/6825/631/c2me-fabric-mc1.21.8-0.3.4.0.0.jar";
+              hash = "sha256-MkYZOI9AL7yswqEfSp8/Njs4z7xFRItuvLu96znO/v4=";
+            };
             Architectury = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6673/326/architectury-17.0.6-fabric.jar";
-              hash = "sha256-hehXimYp+95F8jFfn8PMP/IbPiKrKfsHoIWMUqk6k6I=";
+              url = "https://mediafilez.forgecdn.net/files/6803/290/architectury-17.0.8-fabric.jar";
+              hash = "sha256-tdBR+O/+j5R2+TdeEeSN+vuCF5FDW4/jaIaZADl/BdU=";
             };
             Cloth-Config = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6669/836/cloth-config-19.0.147-fabric.jar";
               hash = "sha256-2KbcqdDa0f5EYio8agNIZBk045Q8jUJaJvESvObev6I=";
             };
-            Other = lib.cleanSource (/home + "/${uservars.name}/mods");
             Krypton = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6364/768/krypton-0.2.9.jar";
               hash = "sha256-uGYia+H2DPawZQxBuxk77PMKfsN8GEUZo3F1zZ3MY6o=";
+            };
+            REI = pkgs.fetchurl {
+              url = "https://mediafilez.forgecdn.net/files/6833/148/RoughlyEnoughItems-20.0.811-fabric.jar";
+              hash = "sha256-e2t1DkKcRCCF+gdFsDwnOyQiTxzngF2DnrUqmfKwJTo=";
             };
           });
         };

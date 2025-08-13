@@ -17,8 +17,8 @@
   home.packages = with pkgs; [
     nerd-fonts.terminess-ttf
     nerd-fonts.symbols-only
-        nerd-fonts.cousine
-        nerd-fonts.iosevka
+    nerd-fonts.cousine
+    nerd-fonts.iosevka
     nerd-fonts.jetbrains-mono
     nerd-fonts.im-writing
     noto-fonts
@@ -28,8 +28,8 @@
     fira-code
     _0xproto
     fira-code-symbols
-         mplus-outline-fonts.githubRelease
-         #dina-font
+    mplus-outline-fonts.githubRelease
+    #dina-font
     proggyfonts
   ];
 
