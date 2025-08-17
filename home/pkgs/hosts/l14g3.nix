@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  imports = [
+    ./../security.nix
+  ];
   home.packages = with pkgs; [
     # gui
     gimp # image editing

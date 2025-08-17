@@ -4,9 +4,9 @@
   ...
 }: {
   imports = [
-    #./security-unfree.nix
+    ./security-unfree.nix
   ];
-  home.packages = with stable; [
+  home.packages = with pkgs; [
     clamtk # frontend for clamav
     theharvester # emails, subdomains etc
     #autopsy                      # forensic tool                BROKEN
@@ -68,10 +68,11 @@
     arping # arp tool
     bettercap # mitm tool
     certgraph # ssl certificate graph crawler
-    deepsecrets # find secrets in code
+    #deepsecrets # find secrets in code
     dnsenum # dns enumeration
     enum4linux-ng # enumerate info from windows/samba
     ghorg # mass clone git repos
+
     hcxtools # wifi capture and convert to hashcat/john
     hcxdumptool # capture packets from wifi
     ldapnomnom # ldap user brute force
@@ -89,6 +90,8 @@
     extundelete
     ext4magic
     testdisk-qt
+
+
 
     #rainbowcrack                 # rainbow tables gen Propritary and unsupported platform(mistake in nixpkgs)
 
