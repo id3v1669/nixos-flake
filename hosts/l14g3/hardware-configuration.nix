@@ -22,6 +22,8 @@
         "pci=pcie_bus_perf" # sets pcie in performance mode, potentialy can help with egpu
         "pci=big_root_window" # re-bar??
 
+        "pcie_aspm=off" # Disable ASPM: potentialy helps to avoid issues with egpu pci power management
+
         "pci=realloc" # Force PCIe resource reallocation: required for egpu detection
         "pci=assign-busses" # Let kernel assign bus numbers: required for egpu detection
         "pci=nocrs" # Ignore ACPI resource conflicts: required to avoid xhci_hcd error

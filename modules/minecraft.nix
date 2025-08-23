@@ -18,7 +18,7 @@
       primary = {
         enable = true;
         autoStart = false;
-        package = pkgs.fabricServers.fabric-1_21_7.override {
+        package = pkgs.fabricServers.fabric-1_21_8.override {
           jre_headless = pkgs.zulu;
         };
         jvmOpts = lib.concatStringsSep " " [
@@ -58,8 +58,8 @@
         symlinks = {
           "mods" = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
             SkinRestorer = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6765/195/skinrestorer-2.4.2%2B1.21.6-fabric.jar";
-              hash = "sha256-f9C0cmuvT8kWICnGl8G56OWU4HTKzlEIcQvSD4/Fy3Q=";
+              url = "https://mediafilez.forgecdn.net/files/6897/77/skinrestorer-2.4.3%2B1.21.6-fabric.jar";
+              hash = "sha256-a1KsNKP6QlAkr1kuJOIia4yPPGfkYznyo6Scxc+4BiY=";
             };
             ScalableLux = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6694/999/ScalableLux-0.1.5%2Bfabric.e4acdcb-all.jar";
@@ -74,24 +74,24 @@
               hash = "sha256-UJF2d2G3ACETfEihf8+moRtuHl0vxr8Jp6WK6LAx1Ws=";
             };
             Clumps = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6728/478/Clumps-fabric-1.21.7-25.0.0.1.jar";
-              hash = "sha256-fB5m22Y2VQNIwjQvwRP0Y/G2Tubylz1hObiFx9LJx7I=";
+              url = "https://mediafilez.forgecdn.net/files/6805/185/Clumps-fabric-1.21.8-26.0.0.1.jar";
+              hash = "sha256-vuTtxMHU5EaKup3lb3BiVmDmmW1k2nx5swj9oxjTWFA=";
             };
             JorneyMap = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6730/472/journeymap-fabric-1.21.7-6.0.0-beta.53.jar";
               hash = "sha256-CoLJxvv1U20CmUm9kOfE3P8AJK4XduYrQLAv2Xqrsvg=";
             };
             Fabric-API = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6749/190/fabric-api-0.129.0%2B1.21.7.jar";
-              hash = "sha256-218W/hqld/RtNjv416lwVCSfCWLYLQ7xjRnKTV4WJ2g=";
+              url = "https://mediafilez.forgecdn.net/files/6896/324/fabric-api-0.132.0%2B1.21.8.jar";
+              hash = "sha256-t2MBX17VRswnCzHspYKty6JkzWKJ5FFF2fU0jGD9olk=";
             };
             FallingTree = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6835/301/FallingTree-1.21.7-1.21.7.3.jar";
-              hash = "sha256-Xu02uPhCjjFEh623Qq9cQGC511b+kSEJt+LO1Rl2fZw=";
+              url = "https://mediafilez.forgecdn.net/files/6835/320/FallingTree-1.21.8-1.21.8.2.jar";
+              hash = "sha256-OOF2XcKKuLGqhp/J0Ht5qcWhTXT7nirvZUBTCYpsPCg=";
             };
             Lithium = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6713/689/lithium-fabric-0.18.0%2Bmc1.21.7.jar";
-              hash = "sha256-uUwXEFqZaZvikSv2LbfjT+LwJjJH1JguRAzwpmEwJqE=";
+              url = "https://mediafilez.forgecdn.net/files/6779/976/lithium-fabric-0.18.0%2Bmc1.21.8.jar";
+              hash = "sha256-kBPy+N/t6v20OBddTHZvW0E95WLc0RlaUAIwxVFxeH4=";
             };
             FerriteCore = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6365/997/ferritecore-8.0.0-fabric.jar";
