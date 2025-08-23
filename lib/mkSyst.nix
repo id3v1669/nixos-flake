@@ -70,6 +70,7 @@
       specialArgs = allSpecialArgs;
       modules = [
         (./.. + "/hosts/${hostname}")
+        inputs.lsfg-vk.nixosModules.default
         inputs.chaotic.nixosModules.default
         inputs.swhkdp.nixosModules.default
         inputs.sops-nix.nixosModules.sops

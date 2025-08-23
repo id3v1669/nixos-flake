@@ -15,5 +15,7 @@
     iwwc
     czkawka-full
     dupeguru
+    flexbv
+    yt-dlp
   ];
 }

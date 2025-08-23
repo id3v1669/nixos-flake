@@ -23,8 +23,8 @@
       ./chromium
       ./spicetify
       ./wezterm
+      ./mangohud
     ]
     ++ lib.lists.optionals (desk == "desktop") [
-      ./mangohud
     ];
 }

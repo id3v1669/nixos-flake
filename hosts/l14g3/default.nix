@@ -2,6 +2,7 @@
   uservars,
   config,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -23,7 +24,6 @@
 
   hardware = {
     enableAllFirmware = true;
-    amdgpu.overdrive.enable = true;
   };
   services = {
     udev.packages = [
@@ -57,6 +57,11 @@
     ];
     etc."hypr/monitor-init.conf".text = ''
       monitor=eDP-1,1920x1080@60,0x0,1
+    '';
+  };
+  specialisation.egpu.configuration = {
+    environment.etc."hypr/monitor-init.conf".text = lib.mkForce ''
+      monitor=DP-1,3440x1440@144,0x0,1
     '';
   };
   nix.settings = {

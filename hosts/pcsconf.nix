@@ -64,6 +64,10 @@ in {
     gvfs.enable = true; # Mount, trash, etc
     libinput.enable = true;
     ratbagd.enable = true; # mouse settings daemon
+    lsfg-vk = {
+      enable = true;
+      ui.enable = true;
+    };
     hardware = {
       bolt.enable = true; # thunderbolt support
       openrgb = {

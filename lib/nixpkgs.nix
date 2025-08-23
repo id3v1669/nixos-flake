@@ -16,6 +16,7 @@ with allSpecialArgs; {
     (import ./../overlays/fht-compositor.nix {
       inherit inputs;
     })
+    (import ./../overlays/flexbv.nix)
     (import ./../overlays/millennium.nix)
     (import ./../overlays/steam.nix)
     (import ./../overlays/equibop.nix)

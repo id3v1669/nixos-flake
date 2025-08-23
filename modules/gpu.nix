@@ -78,7 +78,7 @@
     ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") [
       "nvidia"
     ]
-    ++ lib.lists.optionals (gpuvar.type == "amd" || (cpuvar.type == "amd" && cpuvar.hasIntegrated)) ["amdgpu" "radeon"];
+    ++ lib.lists.optionals (gpuvar.type == "amd" || (cpuvar.type == "amd" && cpuvar.hasIntegrated)) ["amdgpu" "radeon" "amd"];
   environment = {
     systemPackages = lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") (with pkgs; [
       egl-wayland

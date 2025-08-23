@@ -8,6 +8,10 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     #dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
+    lsfg-vk = {
+      url = "github:pabloaul/lsfg-vk-flake/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     iwwc = {
       url = "github:id3v1669/iwwc";
       inputs.nixpkgs.follows = "nixpkgs";

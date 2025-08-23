@@ -91,8 +91,6 @@
     ext4magic
     testdisk-qt
 
-
-
     #rainbowcrack                 # rainbow tables gen Propritary and unsupported platform(mistake in nixpkgs)
 
     # (pkgs.python312Packages.python.withPackages (python-pkgs: with python-pkgs; [
