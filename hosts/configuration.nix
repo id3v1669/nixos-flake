@@ -46,9 +46,7 @@
   environment.systemPackages = with pkgs; [
     ox
     eza
-    (lib.hiPrio (uutils-coreutils-noprefix.overrideAttrs (old: {
-      name = pkgs.coreutils.name;
-    })))
+    (lib.hiPrio (uutils-coreutils-noprefix))
     (lib.hiPrio pkgs.uutils-findutils)
   ];
   time.timeZone = "${deflocale.timezone}";
@@ -68,7 +66,7 @@
   services = {
     scx = {
       enable = true;
-      package = pkgs.scx_git.full;
+      package = pkgs.scx.rustscheds;
       scheduler = "scx_rusty";
     };
     xserver = {
@@ -81,13 +79,10 @@
     };
   };
   system.stateVersion = "${curversion}";
-  #system.replaceRuntimeDependencies = [
-  #Broken due to uutils issue #6351
-  # {
-  #   original = pkgs.coreutils;
-  #   replacement = pkgs.uutils-coreutils-noprefix.overrideAttrs (old: {
-  #     name = pkgs.coreutils.name;
-  #   });
-  # }
-  #];
+  system.replaceRuntimeDependencies = [
+    {
+      original = pkgs.coreutils;
+      replacement = pkgs.uutils-coreutils-noprefix;
+    }
+  ];
 }

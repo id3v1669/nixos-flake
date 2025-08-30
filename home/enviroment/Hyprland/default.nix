@@ -92,6 +92,12 @@ in {
       bind = [
         "$mainMod, R, exec, anyrun"
       ];
+      debug = {
+        full_cm_proto = true;
+      };
+      experimental = {
+        xx_color_management_v4 = true;
+      };
     };
     extraConfig = ''
       #----------------startup commands-----------------

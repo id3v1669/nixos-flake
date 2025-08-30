@@ -46,7 +46,7 @@
         openFirewall = true;
         serverProperties = {
           sync-chunk-writes = false;
-          server-port = 26916;
+          server-port = 26917;
           gamemode = "survival";
           difficulty = "hard";
           max-players = 8;

@@ -17,7 +17,7 @@
 
   fileSystems."/" = {
     device = "/dev/mapper/pool-root";
-    fsType = "xfs";
+    fsType = "ext4";
   };
   nixpkgs.hostPlatform = lib.mkDefault "${system}";
 }

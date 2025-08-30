@@ -2,6 +2,7 @@
   uservars,
   config,
   pkgs,
+  inputs,
   lib,
   ...
 }: {
@@ -40,6 +41,14 @@
       enable = true;
     };
   };
+  security.wrappers = {
+      gamescope = {
+        owner = "root";
+        group = "root";
+        source = "${inputs.chaotic.packages.${pkgs.system}.gamescope_git}/bin/gamescope";
+        capabilities = "cap_sys_nice+eip";
+      };
+    };
   users.users.${uservars.name}.extraGroups = [
     "wheel"
     "networkmanager"

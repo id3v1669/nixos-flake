@@ -77,7 +77,6 @@
     ddcutil # brightness control
     appimage-run # appimage runner
     vulkan-tools # vulkan utils
-    cargo-binutils # rust tools
     xdg-utils # xdg-open and other xdg utils
     wl-clipboard # wayland clipboard
     wl-clipboard-x11 # xwayland clipboard
