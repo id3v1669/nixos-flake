@@ -1,5 +1,8 @@
-{pkgs, ...}: 
 {
+  pkgs,
+  stable,
+  ...
+}: {
   imports = [
     ./../security.nix
   ];
@@ -18,6 +21,6 @@
     dupeguru
     flexbv
     yt-dlp
-    megasync
+    stable.megasync
   ];
 }

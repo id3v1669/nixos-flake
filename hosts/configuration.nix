@@ -46,8 +46,8 @@
   environment.systemPackages = with pkgs; [
     ox
     eza
-    (lib.hiPrio (uutils-coreutils-noprefix))
-    (lib.hiPrio pkgs.uutils-findutils)
+    (lib.hiPrio uutils-coreutils-noprefix)
+    (lib.hiPrio uutils-findutils)
   ];
   time.timeZone = "${deflocale.timezone}";
   i18n.defaultLocale = "${deflocale.locale}";
@@ -79,7 +79,7 @@
     };
   };
   system.stateVersion = "${curversion}";
-  system.replaceRuntimeDependencies = [
+  system.replaceDependencies.replacements = [
     {
       original = pkgs.coreutils;
       replacement = pkgs.uutils-coreutils-noprefix;

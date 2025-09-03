@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  inputs,
   pkgs,
   cpuvar,
   envir,
@@ -66,7 +67,16 @@ in {
     ratbagd.enable = true; # mouse settings daemon
     lsfg-vk = {
       enable = true;
-      ui.enable = true;
+      package = inputs.lsfg-vk.packages.${pkgs.system}.lsfg-vk.overrideAttrs (old: rec {
+        src = pkgs.fetchFromGitHub {
+          owner = "PancakeTAS";
+          repo = "lsfg-vk";
+          rev = "0048283a8a35e6c2f30043983bdb4ea51fac1b3e";
+          hash = "sha256-95/r7XtVQ+7GhM8NzBzbAuOX6cxvo06DM4GbpdqEJS0=";
+          fetchSubmodules = true;
+        };
+      });
+      ui.enable = false;
     };
     hardware = {
       bolt.enable = true; # thunderbolt support
@@ -81,6 +91,16 @@ in {
     variables.NIXOS_OZONE_WL = "1";
     etc."hypr/monitor-init.conf".text = mkDefault '''';
     systemPackages = with pkgs; [
+      # (inputs.lsfg-vk.packages.${pkgs.system}.lsfg-vk-ui.overrideAttrs (old: rec {
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "PancakeTAS";
+      #     repo = "lsfg-vk";
+      #     rev = "0048283a8a35e6c2f30043983bdb4ea51fac1b3e";
+      #     hash = "sha256-95/r7XtVQ+7GhM8NzBzbAuOX6cxvo06DM4GbpdqEJS0=";
+      #   };
+
+      #   cargoHash = "sha256-Eiij48QeA0WEH0f1CwVu4zyjbR8VHKNbh8a6IBZjr4U=";
+      # }))
       polkit_gnome
       xorg.xhost # xhost
       vulkan-headers

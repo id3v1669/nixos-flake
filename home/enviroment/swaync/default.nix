@@ -75,7 +75,7 @@
       }
 
       .notification-row:focus, .notification-row:hover {
-        background: #ff0003;
+        background: transparent;
       }
 
       .notification-row .notification-background {

@@ -61,7 +61,8 @@
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "uas" "sd_mod" "usbhid"];
       kernelModules = ["amdgpu"];
-      luks.devices."luks-65d01851-7624-4d40-b352-9d169df438f1".device = "/dev/disk/by-uuid/65d01851-7624-4d40-b352-9d169df438f1";
+      # cryptsetup config /dev/disk/by-uuid/xx --label luks_primary
+      luks.devices.primary.device = "/dev/disk/by-label/luks_primary";
     };
   };
 

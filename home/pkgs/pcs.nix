@@ -1,8 +1,4 @@
-{
-  pkgs,
-  stable,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # screenshots
     wayshot # cli screenshot
