@@ -333,8 +333,7 @@ in {
         :orientation "h"
         (button
           :class "mic"
-          :onclick "microphone-toggle false"
-          :onrightclick "microphone-toggle true"
+          :onclick "${getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
           (box
             "󰍬"
           )

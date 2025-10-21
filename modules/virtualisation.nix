@@ -13,7 +13,7 @@ in {
   programs.virt-manager = {
     # gui for managing vms
     enable = true;
-    package = stable.virt-manager;
+    package = pkgs.virt-manager;
   };
   hardware.nvidia-container-toolkit = {
     # nvidia container toolkit
@@ -26,13 +26,9 @@ in {
       onBoot = "ignore";
       onShutdown = "shutdown";
       qemu = {
-        package = stable.qemu_kvm;
+        package = pkgs.qemu_kvm;
         swtpm.enable = notsrv;
-        ovmf = {
-          enable = notsrv;
-          packages = [stable.OVMFFull.fd];
-        };
-        vhostUserPackages = with stable; [
+        vhostUserPackages = with pkgs; [
           spice
           spice-gtk
           spice-protocol
@@ -54,6 +50,8 @@ in {
   };
   users.users.${uservars.name}.extraGroups =
     [
+      "video"
+      "render"
       "kvm"
       "qemu-libvirtd"
       "libvirtd"
@@ -66,10 +64,17 @@ in {
       else ["podman"]
     );
   environment = {
-    systemPackages = with stable; [
-      qemu_full
+    systemPackages = with pkgs; [
+      virglrenderer
+      libGL
+      spice
       spice-gtk
+      spice-protocol
       virt-viewer
+      virtio-win
+      virtiofsd
+      spice-vdagent
+      spice-autorandr
     ];
   };
 }

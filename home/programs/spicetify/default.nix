@@ -13,7 +13,7 @@
     enable = true;
     spotifyPackage = pkgs.spotify-custom;
     enabledExtensions = with spicePkgs.extensions; [
-      #adblock
+      adblock
       hidePodcasts
       shuffle
       addToQueueTop

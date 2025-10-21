@@ -54,6 +54,7 @@
           simulationDistance = 8;
           view-distance = 10;
           online-mode = false;
+          allow-flight = true;
         };
         symlinks = {
           "mods" = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
@@ -66,12 +67,12 @@
               hash = "sha256-HjpUuUjbr7yPGsCM0IfZXZOfuva7G7dS5KSiGTBhMcY=";
             };
             Sleeper = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/w4ONshdx/sleep-v4.1.4.jar";
-              hash = "sha256-NzBIuRuzH5yzldE3eB+p5fv4b8mfoDq5KjKPqWo4uws=";
+              url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/zIrLsHqN/sleep-v4.1.5.jar";
+              hash = "sha256-r3rJJgJOyiRaG+FVFhjf1veRXCkrjIDlYoVi2vxm4lU=";
             };
             EasyAuth = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6701/356/easyauth-mc1.21.6-3.3.5.jar";
-              hash = "sha256-UJF2d2G3ACETfEihf8+moRtuHl0vxr8Jp6WK6LAx1Ws=";
+              url = "https://mediafilez.forgecdn.net/files/6908/895/easyauth-mc1.21.6-3.3.6.jar";
+              hash = "sha256-rwjzgmaHe4L2ooHLcsMncLNuRu7tEC80rr3oxzcNI0Q=";
             };
             Clumps = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6805/185/Clumps-fabric-1.21.8-26.0.0.1.jar";
@@ -82,12 +83,12 @@
               hash = "sha256-CoLJxvv1U20CmUm9kOfE3P8AJK4XduYrQLAv2Xqrsvg=";
             };
             Fabric-API = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6896/324/fabric-api-0.132.0%2B1.21.8.jar";
-              hash = "sha256-t2MBX17VRswnCzHspYKty6JkzWKJ5FFF2fU0jGD9olk=";
+              url = "https://mediafilez.forgecdn.net/files/6972/705/fabric-api-0.133.4%2B1.21.8.jar";
+              hash = "sha256-aG8XESXoFNxYC6amH2Hs3oUamBcw5Dtwjwdz1iNWwJk=";
             };
             FallingTree = pkgs.fetchurl {
-              url = "https://mediafilez.forgecdn.net/files/6835/320/FallingTree-1.21.8-1.21.8.2.jar";
-              hash = "sha256-OOF2XcKKuLGqhp/J0Ht5qcWhTXT7nirvZUBTCYpsPCg=";
+              url = "https://mediafilez.forgecdn.net/files/6973/682/FallingTree-1.21.8-1.21.8.3.jar";
+              hash = "sha256-0/noEJwJAFw2G84/pt9Sq9O9OKGydhF/xsHsBNKY5QY=";
             };
             Lithium = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6779/976/lithium-fabric-0.18.0%2Bmc1.21.8.jar";
@@ -116,6 +117,10 @@
             REI = pkgs.fetchurl {
               url = "https://mediafilez.forgecdn.net/files/6833/148/RoughlyEnoughItems-20.0.811-fabric.jar";
               hash = "sha256-e2t1DkKcRCCF+gdFsDwnOyQiTxzngF2DnrUqmfKwJTo=";
+            };
+            Anvil = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/LrtCyjyV/versions/5GBPmaGe/too-expensive-removed-v1.2.3.jar";
+              hash = "sha256-wvBwS1VjpQ+iRqQA+eV49P569n7jqmTrXQXalQfrdjw=";
             };
           });
         };

@@ -6,7 +6,6 @@
     swappy # screenshot editor
 
     # sound
-    pamixer # cli mixer
     pavucontrol # gui mixer
     pulseaudio # just lib to use pactl, pipewire is in use
     helvum # gui for pipewire
@@ -15,9 +14,9 @@
     # vm, virt, emulators & remote
     distrobox
     remmina # remote desktop
-    #packer
-    #minikube # kubernetes for local tests
-    #kubectl # kubernetes cli
+    packer
+    minikube # kubernetes for local tests
+    kubectl # kubernetes cli
 
     # web
     networkmanagerapplet # network manager applet

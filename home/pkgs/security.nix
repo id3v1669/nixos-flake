@@ -1,13 +1,13 @@
-{pkgs, ...}: {
+{pkgs, stable, ...}: {
   imports = [
     ./security-unfree.nix
   ];
   home.packages = with pkgs; [
     clamtk # frontend for clamav
     theharvester # emails, subdomains etc
-    #autopsy                      # forensic tool                BROKEN
+    autopsy # forensic tool
+    sleuthkit
     adalanche # AD visualizer
-    chkrootkit # rootkit checker
     dcfldd # dd for forensics
     dc3dd # dd for forensics
     metasploit # tool
@@ -22,7 +22,7 @@
     crowbar # brute force tool
     fcrackzip # zip pass cracker
     johnny # tool
-    openvas-scanner # tool
+    stable.openvas-scanner # tool
     tcpdump # tool
     dhcpdump # tool
     nmap # network scanner
@@ -49,22 +49,21 @@
     cryptsetup
     foremost
     scalpel
-    sleuthkit
 
     gobuster # scanner web
     dirb # scanner web
     gdb # debugger
 
-    retdec # decompiler
+    stable.retdec # decompiler
     ghidra # decompiler
-    snowman # decompiler
+    stable.snowman # decompiler
     wireguard-tools # wireguard tools for experiments with vpn
 
     aircrack-ng # wifi tool
     arping # arp tool
     bettercap # mitm tool
     certgraph # ssl certificate graph crawler
-    #deepsecrets # find secrets in code
+    deepsecrets # find secrets in code
     dnsenum # dns enumeration
     enum4linux-ng # enumerate info from windows/samba
     ghorg # mass clone git repos
@@ -81,13 +80,17 @@
     wifite2 # wifi network auditor
     zap # web app penetration testing
 
+    evtx # windows event log parser
+    jq # useful to parse json
+    bc # GNU calculator
+    parallel-full # run tasks in parallel for cli
+
+    multipath-tools #Tools for the Linux multipathing storage driver
     ddrescue
     ddrescueview
     extundelete
     ext4magic
     testdisk-qt
-
-    #rainbowcrack                 # rainbow tables gen Propritary and unsupported platform(mistake in nixpkgs)
 
     # (pkgs.python312Packages.python.withPackages (python-pkgs: with python-pkgs; [
     #   markdown
@@ -100,7 +103,7 @@
   #TODO:
   # package metagoofil
   # fix rainbowcrack unsupported platform
-  # declare service for cloudfoxable
+  # declare service for cloudfoxableе
   # declare service for metasploitable
   # declare service for faction
   # to check https://github.com/NixOS/nixpkgs/issues/81418

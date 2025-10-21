@@ -37,8 +37,26 @@
   };
   programs = {
     adb.enable = true;
-    corectrl = {
+    corectrl.enable = true;
+    gamemode = {
       enable = true;
+      settings = {
+        general = {
+          reaper_freq = 5;
+          desiredgov = "performance";
+          softrealtime = "auto";
+          ioprio = 0;
+        };
+        cpu = {
+          park_cores = "yes";
+          pin_cores = "yes";
+        };
+        custom = {
+          start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
+          end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+          script_timeout = 10;
+        };
+      };
     };
   };
   security.wrappers = {
@@ -50,6 +68,7 @@
     };
   };
   users.users.${uservars.name}.extraGroups = [
+    "gamemode"
     "wheel"
     "networkmanager"
     "rustdesk"
@@ -61,9 +80,7 @@
     "usbmux"
   ];
   environment = {
-    systemPackages = [
-      config.boot.kernelPackages.perf
-    ];
+    systemPackages = [];
     etc."hypr/monitor-init.conf".text = ''
       monitor=eDP-1,1920x1080@60,0x0,1
     '';

@@ -59,13 +59,7 @@ in {
           clickfinger_behavior = true;
         };
       };
-      gestures = {
-        workspace_swipe = true;
-        workspace_swipe_fingers = 3;
-        workspace_swipe_forever = true;
-        workspace_swipe_distance = 500;
-        workspace_swipe_min_speed_to_force = 100;
-      };
+      # TODO: fix gestures for new hyprland version
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
@@ -92,12 +86,6 @@ in {
       bind = [
         "$mainMod, R, exec, anyrun"
       ];
-      debug = {
-        full_cm_proto = true;
-      };
-      experimental = {
-        xx_color_management_v4 = true;
-      };
     };
     extraConfig = ''
       #----------------startup commands-----------------

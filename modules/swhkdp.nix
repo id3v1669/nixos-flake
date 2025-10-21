@@ -179,19 +179,19 @@ in {
             };
             "KEY_VOLUMEDOWN" = {
               action_type = "singlecommand";
-              action = "pamixer -d 5";
+              action = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
             };
             "KEY_VOLUMEUP" = {
               action_type = "singlecommand";
-              action = "pamixer -i 5";
+              action = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
             };
             "KEY_MUTE" = {
               action_type = "singlecommand";
-              action = "pamixer -t";
+              action = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
             };
             "KEY_MICMUTE" = {
               action_type = "singlecommand";
-              action = "pamixer --default-source -t";
+              action = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
             };
           };
         };

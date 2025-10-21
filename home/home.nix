@@ -49,9 +49,6 @@
         XDG_SESSION_TYPE = "wayland";
         XDG_CURRENT_DESKTOP = "${envir}";
         NIXOS_OZONE_WL = "1";
-      }
-      // lib.optionalAttrs (hostname == "mbp14-3") {
-        NIXOS_OZONE_WL = lib.mkForce ""; # workaround for mbp14-3 due to igpu issue
       };
   };
 }

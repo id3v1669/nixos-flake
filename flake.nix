@@ -84,7 +84,7 @@
         hostname = "nuc10ch";
         envir = "Hyprland";
         bootloader = {
-          type = "limine";
+          type = "opencore";
           timeout = 7;
         };
         cpuvar = {
@@ -117,7 +117,7 @@
           integratedBroken = false;
         };
         bootloader = {
-          type = "limine";
+          type = "opencore";
           timeout = 7;
         };
         desk = "laptop";
@@ -147,7 +147,7 @@
           integratedBroken = false;
         };
         bootloader = {
-          type = "limine";
+          type = "opencore";
           timeout = 7;
         };
         desk = "laptop";

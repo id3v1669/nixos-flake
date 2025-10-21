@@ -14,13 +14,39 @@
     joplin-desktop # note taking app
 
     # games
-    prismlauncher
+    (prismlauncher.override {
+      jdks = with pkgs; [jdk23 zulu];
+    })
 
+    qxmledit
     iwwc
     czkawka-full
     dupeguru
-    flexbv
     yt-dlp
     stable.megasync
+
+    librepods
+    wxedid
   ];
+
+  # temp until I fix aplin project
+  systemd.user.services.librepods = {
+        Unit = {
+          Description = "librepods";
+          After = ["graphical-session.target"];
+          PartOf = ["graphical-session.target"];
+          ConditionEnvironment = "WAYLAND_DISPLAY";
+        };
+
+        Service = {
+          Type = "simple";
+          ExecStart = "${pkgs.lib.getExe pkgs.librepods} --hide";
+          Restart = "always";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+          Environment = "PHONE_MAC_ADDRESS=28:2D:7F:DF:BC:76";
+        };
+
+        Install.WantedBy = ["graphical-session.target"];
+      };
 }

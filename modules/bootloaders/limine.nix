@@ -1,7 +1,6 @@
 {
   bootloader,
   lib,
-  pkgs,
   ...
 }: {
   boot.loader = {

@@ -13,7 +13,6 @@ in {
 
       animations {
         enabled=false
-        first_launch_animation=false
       }
       misc {
         disable_hyprland_logo=true

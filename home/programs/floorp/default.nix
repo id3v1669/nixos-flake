@@ -5,7 +5,7 @@
 }: {
   programs.floorp = {
     enable = true;
-    package = pkgs.wrapFirefox pkgs.floorp-unwrapped {
+    package = pkgs.wrapFirefox pkgs.floorp-bin-unwrapped {
       extraPolicies = {
         CaptivePortal = false;
         DisablePocket = true;
@@ -83,9 +83,14 @@
         "devtools.chrome.enabled" = true;
         "distribution.searchplugins.defaultLocale" = "en-AU";
         "extensions.autoDisableScopes" = 0;
+        "browser.sidebar.enable" = false;
         "floorp.browser.sidebar.enable" = false;
+        "floorp.panelSidebar.enabled" = false;
         "general.smoothScroll" = true;
         "general.useragent.locale" = "en-AU";
+        "media.ffmpeg.enabled" = true;
+        "media.ffmpeg.vaapi.enabled" = true;
+        "media.ffmpeg.encoder.enabled" = true;
         "media.hardware-video-decoding.enabled" = true;
         "media.videocontrols.picture-in-picture.enabled" = true;
         "mousewheel.default.delta_multiplier_y" = 80;
@@ -103,9 +108,6 @@
         "browser.tabs.crashReporting.sendReport" = false;
         "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
       };
-      extraConfig = ''
-        user_pref("media.ffmpeg.vaapi.enabled", true);
-      '';
       bookmarks = {
         force = true;
         settings = [

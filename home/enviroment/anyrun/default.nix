@@ -1,5 +1,4 @@
 {
-  lib,
   config,
   pkgs,
   inputs,
@@ -11,17 +10,20 @@
   disabledModules = ["programs/anyrun.nix"];
   programs.anyrun = {
     enable = true;
+    package = inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins;
     config = {
-      plugins = with inputs.anyrun.packages.${pkgs.system}; [
-        applications
-        rink
-        shell
-        stdin
-        symbols
+      plugins = [
+        "${config.programs.anyrun.package}/lib/libapplications.so"
+        "${config.programs.anyrun.package}/lib/librink.so"
+        "${config.programs.anyrun.package}/lib/libshell.so"
+        "${config.programs.anyrun.package}/lib/libstdin.so"
+        "${config.programs.anyrun.package}/lib/libsymbols.so"
+        "${config.programs.anyrun.package}/lib/libnix_run.so"
       ];
 
-      width.fraction = 0.25;
-      y.fraction = 0.3;
+      width.absolute = 500;
+      y.fraction = 0.2;
+      x.fraction = 0.5;
       hidePluginInfo = true;
       closeOnClick = true;
       maxEntries = 8;
@@ -32,7 +34,10 @@
         Config(
           desktop_actions: false,
           max_entries: 5,
-          terminal: Some("wezterm"),
+          terminal: Some(Terminal(
+            command: "wezterm",
+            args: "-e {}",
+          )),
         )
       '';
 
@@ -41,61 +46,14 @@
           prefix: ">"
         )
       '';
+      "nix_run.ron".text = ''
+        Config(
+          prefix: ">nr ",
+          allow_unfree: true,
+          channel: "nixpkgs-unstable",
+          max_entries: 3,
+        )
+      '';
     };
-
-    extraCss = with config.palette; ''
-      * {
-        all: unset;
-        font-family: "0xProto";
-        font-size: 15px;
-      }
-
-      box#main {
-        background: ${base06.rgba "0.6"};
-        border-radius: 20px;
-        padding: 10px 8px;
-        color: ${base01.hexT};
-      }
-
-      #entry {
-        background: ${base04.rgba "0.8"};
-        border: 2px solid ${base0B.hexT};
-        border-radius: 16px;
-        padding: 10px;
-      }
-
-      #entry selection {
-        background: ${base05.rgba "0.8"};
-      }
-
-      list#main{
-        padding: 10px 0px;
-      }
-
-      list#main > row {
-        margin: 5px 0px;
-      }
-
-      #match.activatable {
-        background: ${base05.rgba "0.8"};
-        padding: 6px 3px;
-      }
-
-      #match.activatable:first-child {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        margin: 10px 0px 0px 0px;
-      }
-
-      #match.activatable:last-child {
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-      }
-
-      #match:selected, #match:hover {
-        background: ${base04.rgba "0.8"};
-        color: ${base0B.hexT};
-      }
-    '';
   };
 }

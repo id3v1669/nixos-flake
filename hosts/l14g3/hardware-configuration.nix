@@ -29,17 +29,23 @@
         "pci=nocrs" # Ignore ACPI resource conflicts: required to avoid xhci_hcd error
         "video=efifb:off" # Disable EFI framebuffer: required to show luks on egpu
         "pci-stub.ids=1002:15e7"
+        
       ];
+      extraModprobeConfig = ''
+        options kvm_amd nested=1
+        options kvm ignore_msrs=1 report_ignored_msrs=0
+      '';
     };
   };
 
   boot = {
+    supportedFilesystems = ["ntfs" "ntfs3" "exfat" "vfat" "ext4"];
     kernelModules = [
       "kvm-amd"
     ];
     kernelPackages = let
-      customKernel = pkgs.linuxPackages_cachyos.kernel.override {
-        config = lib.recursiveUpdate pkgs.linuxPackages_cachyos.kernel.config {
+      customKernel = pkgs.linuxPackages_cachyos-gcc.kernel.override {
+        config = lib.recursiveUpdate pkgs.linuxPackages_cachyos-gcc.kernel.config {
           "CONFIG_MZEN3" = "y";
           "CONFIG_GENERIC_CPU" = "n";
         };
@@ -47,7 +53,11 @@
     in
       pkgs.linuxPackagesFor customKernel;
 
-    kernelParams = [];
+    kernelParams = [
+      "preempt=full"
+      "random.trust_cpu=off"
+      "random.trust_bootloader=off"
+    ];
     kernel.sysctl = {
       "kernel.unprivileged_userns_clone" = 1;
       "vm.max_map_count" = 2147483642;
@@ -59,6 +69,7 @@
       v4l2loopback
     ];
     initrd = {
+      supportedFilesystems = ["ntfs" "ntfs3" "exfat" "vfat" "ext4"];
       availableKernelModules = ["nvme" "xhci_pci" "uas" "sd_mod" "usbhid"];
       kernelModules = ["amdgpu"];
       # cryptsetup config /dev/disk/by-uuid/xx --label luks_primary

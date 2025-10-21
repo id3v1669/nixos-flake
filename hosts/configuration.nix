@@ -48,6 +48,7 @@
     eza
     (lib.hiPrio uutils-coreutils-noprefix)
     (lib.hiPrio uutils-findutils)
+    (lib.hiPrio uutils-diffutils)
   ];
   time.timeZone = "${deflocale.timezone}";
   i18n.defaultLocale = "${deflocale.locale}";
@@ -66,8 +67,7 @@
   services = {
     scx = {
       enable = true;
-      package = pkgs.scx.rustscheds;
-      scheduler = "scx_rusty";
+      scheduler = "scx_bpfland";
     };
     xserver = {
       enable = true;

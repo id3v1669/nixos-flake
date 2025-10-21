@@ -24,7 +24,6 @@
       inherit colorsvar;
       inherit uservars;
     })
-    (cp ./microphone-toggle.nix {})
     (cp ./url-handler.nix {
       inherit config;
     })

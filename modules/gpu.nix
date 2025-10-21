@@ -27,8 +27,7 @@
             intel-vaapi-driver
           ])
           ++ lib.lists.optionals (gpuvar.type == "amd" || (cpuvar.type == "amd" && cpuvar.hasIntegrated && !cpuvar.integratedBroken)) (with pkgs; [
-            #amdvlk
-          ]);
+            ]);
         extraPackages32 =
           (with pkgs.pkgsi686Linux; [
             vaapiVdpau
@@ -43,8 +42,7 @@
             intel-vaapi-driver
           ])
           ++ lib.lists.optionals (gpuvar.type == "amd" || (cpuvar.type == "amd" && cpuvar.hasIntegrated && !cpuvar.integratedBroken)) (with pkgs; [
-            #driversi686Linux.amdvlk
-          ]);
+            ]);
       };
     }
     // lib.optionalAttrs (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") {
@@ -80,10 +78,14 @@
     ]
     ++ lib.lists.optionals (gpuvar.type == "amd" || (cpuvar.type == "amd" && cpuvar.hasIntegrated)) ["amdgpu" "radeon" "amd"];
   environment = {
-    systemPackages = lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") (with pkgs; [
-      egl-wayland
-      nvidia-system-monitor-qt
-    ]);
+    systemPackages =
+      [
+        pkgs.ffmpeg-full
+      ]
+      ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") (with pkgs; [
+        egl-wayland
+        nvidia-system-monitor-qt
+      ]);
     variables =
       {
       }

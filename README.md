@@ -34,7 +34,7 @@ NixOS flake with home manager
 | brightness | light and ddcutil | Cable and monior must support DDC | ToDo 1+2 |
 | notifications | swaync | gtk themeing needs to be done | - |
 | shell | fish | - | - |
-| bootloader | limine | - | - |
+| bootloader | opencore | Right now requires manual installation, only entries are generated | Packaging & secure-boot |
 
 ## Notes
 

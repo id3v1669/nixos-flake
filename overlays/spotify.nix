@@ -109,8 +109,8 @@ final: pkgs: {
       ln -s ${nspr.out}/lib/libnspr4.so $libdir/libnspr4.so
       ln -s ${nspr.out}/lib/libplc4.so $libdir/libplc4.so
 
-      ln -s ${ffmpeg_4.lib}/lib/libavcodec.so* $libdir
-      ln -s ${ffmpeg_4.lib}/lib/libavformat.so* $libdir
+      ln -s ${ffmpeg.lib}/lib/libavcodec.so* $libdir
+      ln -s ${ffmpeg.lib}/lib/libavformat.so* $libdir
 
       rpath="$out/share/spotify:$libdir"
 
