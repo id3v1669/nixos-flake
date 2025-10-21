@@ -12,7 +12,7 @@
   services = {
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud31;
+      package = pkgs.nextcloud32;
       database.createLocally = true;
       https = true;
       configureRedis = true;
@@ -36,10 +36,7 @@
         adminuser = "id3v1669_admin";
         adminpassFile = "${config.sops.secrets."nextcloud-admin".path}";
       };
-      nginx = {
-        hstsMaxAge = 31536000;
-        recommendedHttpHeaders = true;
-      };
+      nginx.hstsMaxAge = 31536000;
       phpOptions = {
         catch_workers_output = "yes";
         display_errors = "stderr";
