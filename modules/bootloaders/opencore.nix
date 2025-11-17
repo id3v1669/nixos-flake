@@ -4,8 +4,7 @@
   pkgs,
   ...
 }: {
-
-  disabledModules = [ "system/boot/loader/systemd-boot/systemd-boot.nix" ];
+  disabledModules = ["system/boot/loader/systemd-boot/systemd-boot.nix"];
 
   imports = [
     ./systemd-boot-bls-only.nix

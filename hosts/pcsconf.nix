@@ -67,7 +67,7 @@ in {
     ratbagd.enable = true; # mouse settings daemon
     lsfg-vk = {
       enable = true;
-      package = inputs.lsfg-vk.packages.${pkgs.system}.lsfg-vk.overrideAttrs (old: rec {
+      package = inputs.lsfg-vk.packages.${pkgs.stdenv.hostPlatform.system}.lsfg-vk.overrideAttrs (old: rec {
         src = pkgs.fetchFromGitHub {
           owner = "PancakeTAS";
           repo = "lsfg-vk";

@@ -6,8 +6,6 @@ _: {
       neofetch = "fastfetch";
       ls = "eza -a";
       scr = "bash ~/.scripts/screen.sh";
-      ox = "ox --config /etc/ox/oxrc";
-      sox = "sudo ox --config /etc/ox/oxrc";
     };
     interactiveShellInit = ''
       function fish_greeting

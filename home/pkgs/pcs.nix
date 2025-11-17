@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  stable,
+  ...
+}: {
   home.packages = with pkgs; [
     # screenshots
     wayshot # cli screenshot
@@ -8,8 +12,8 @@
     # sound
     pavucontrol # gui mixer
     pulseaudio # just lib to use pactl, pipewire is in use
-    helvum # gui for pipewire
-    mpc-cli # cli for mpd
+    coppwr # gui for pipewire
+    mpc # cli for mpd
 
     # vm, virt, emulators & remote
     distrobox
@@ -34,7 +38,7 @@
 
     # chat
     zoom-us
-    whatsapp-for-linux # whatsapp client
+    wasistlos # whatsapp client
 
     # games
     protonplus # proton and wine updater
@@ -52,7 +56,7 @@
 
     # text & docs
     libreoffice # opensource office apps
-    calibre # ebook reader
+    stable.calibre # ebook reader
     hunspell # needed for libreoffice
     hunspellDicts.en_US-large # needed for libreoffice
     hunspellDicts.ru_RU # needed for libreoffice

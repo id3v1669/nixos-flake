@@ -10,7 +10,7 @@
   disabledModules = ["programs/anyrun.nix"];
   programs.anyrun = {
     enable = true;
-    package = inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins;
+    package = inputs.anyrun.packages.${pkgs.stdenv.hostPlatform.system}.anyrun-with-all-plugins;
     config = {
       plugins = [
         "${config.programs.anyrun.package}/lib/libapplications.so"

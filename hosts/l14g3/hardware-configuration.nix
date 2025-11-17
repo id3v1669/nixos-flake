@@ -13,6 +13,8 @@
     system.nixos.tags = ["egpu"];
     services.udev.extraRules = ''
       ACTION=="add", KERNEL=="0000:06:00.0", SUBSYSTEM=="pci", RUN="/bin/sh -c 'echo 1 > /sys/bus/pci/devices/0000:06:00.0/remove'"
+      ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="5986", ATTR{idProduct}=="2142", RUN+="/bin/sh -c 'echo 1 > /sys$devpath/remove'"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", TAG+="uaccess"
     '';
     boot = {
       kernelModules = [
@@ -23,13 +25,13 @@
         "pci=big_root_window" # re-bar??
 
         "pcie_aspm=off" # Disable ASPM: potentialy helps to avoid issues with egpu pci power management
+        "amd_pstate=guided"
 
         "pci=realloc" # Force PCIe resource reallocation: required for egpu detection
         "pci=assign-busses" # Let kernel assign bus numbers: required for egpu detection
         "pci=nocrs" # Ignore ACPI resource conflicts: required to avoid xhci_hcd error
         "video=efifb:off" # Disable EFI framebuffer: required to show luks on egpu
         "pci-stub.ids=1002:15e7"
-        
       ];
       extraModprobeConfig = ''
         options kvm_amd nested=1

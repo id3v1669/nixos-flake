@@ -44,7 +44,6 @@
     ignoreShellProgramCheck = true;
   };
   environment.systemPackages = with pkgs; [
-    ox
     eza
     (lib.hiPrio uutils-coreutils-noprefix)
     (lib.hiPrio uutils-findutils)

@@ -16,7 +16,7 @@
 
     # games
     (prismlauncher.override {
-      jdks = with pkgs; [jdk23 zulu];
+      jdks = with pkgs; [jdk25 zulu];
     })
 
     # vid photo etc

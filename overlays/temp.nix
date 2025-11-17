@@ -16,8 +16,8 @@ final: pkgs: {
       runHook postPatch
     '';
 
-    nativeBuildInputs = [ pkgs.autoreconfHook pkgs.wrapGAppsHook ];
-    buildInputs = [ pkgs.wxGTK32 ];
+    nativeBuildInputs = [pkgs.autoreconfHook pkgs.wrapGAppsHook3];
+    buildInputs = [pkgs.wxGTK32];
   };
   librepods = pkgs.stdenv.mkDerivation rec {
     pname = "librepods";

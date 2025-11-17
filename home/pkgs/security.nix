@@ -1,4 +1,8 @@
-{pkgs, stable, ...}: {
+{
+  pkgs,
+  stable,
+  ...
+}: {
   imports = [
     ./security-unfree.nix
   ];

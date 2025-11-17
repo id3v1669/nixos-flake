@@ -15,7 +15,7 @@
         extraPackages =
           (with pkgs; [
             libva
-            vaapiVdpau
+            libva-vdpau-driver
             libvdpau-va-gl
           ])
           ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") (with pkgs; [
@@ -30,7 +30,7 @@
             ]);
         extraPackages32 =
           (with pkgs.pkgsi686Linux; [
-            vaapiVdpau
+            libva-vdpau-driver
             libvdpau-va-gl
           ])
           ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") (with pkgs.pkgsi686Linux; [

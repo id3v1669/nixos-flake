@@ -12,6 +12,6 @@
     theme = "ndct";
   };
   environment.systemPackages = [
-    inputs.ndct-sddm.packages.${pkgs.system}.ndct-sddm-corners
+    inputs.ndct-sddm.packages.${pkgs.stdenv.hostPlatform.system}.ndct-sddm-corners
   ];
 }

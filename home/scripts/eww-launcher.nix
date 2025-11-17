@@ -10,6 +10,7 @@ writeShellApplication {
   runtimeInputs = with pkgs; [
     eww
     gnugrep
+    killall
     alsa-utils
     (callPackage ./eww-ws.nix {inherit envir;})
     (callPackage ./eww-lang.nix {})
@@ -22,7 +23,7 @@ writeShellApplication {
     set +o pipefail
 
     if [ "$(pidof eww)" ]; then
-      pidof eww | xargs kill
+      killall -r "eww*"
     fi
 
     sleep 2
@@ -30,7 +31,7 @@ writeShellApplication {
     sleep 2
     eww open-many popup-power-window calendar-popup-window bar
     sleep 2
-    systemctl --user restart blueman-applet
+    #systemctl --user restart blueman-applet
     eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)"
     eww-ws &
     eww-volume &

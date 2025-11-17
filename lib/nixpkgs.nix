@@ -12,7 +12,7 @@ with allSpecialArgs; {
     inputs.nur.overlays.default
     inputs.eww.overlays.default
     inputs.nix-minecraft.overlay
-    inputs.iwwc.overlays.default
+    #inputs.iwwc.overlays.default
     (import ./../overlays/fht-compositor.nix {
       inherit inputs;
     })

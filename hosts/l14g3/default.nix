@@ -26,11 +26,6 @@
   hardware = {
     enableAllFirmware = true;
   };
-  services = {
-    udev.packages = [
-      pkgs.android-udev-rules
-    ];
-  };
   networking = {
     firewall.enable = false;
     enableIPv6 = false;
@@ -63,7 +58,7 @@
     gamescope = {
       owner = "root";
       group = "root";
-      source = "${inputs.chaotic.packages.${pkgs.system}.gamescope_git}/bin/gamescope";
+      source = "${inputs.chaotic.packages.${pkgs.stdenv.hostPlatform.system}.gamescope_git}/bin/gamescope";
       capabilities = "cap_sys_nice+eip";
     };
   };
