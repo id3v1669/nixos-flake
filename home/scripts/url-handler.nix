@@ -9,8 +9,8 @@ writeShellApplication {
   runtimeInputs = with pkgs;
     [
     ]
-    ++ lib.lists.optionals (config.programs.floorp.enable) [
-      config.programs.floorp.package
+    ++ lib.lists.optionals (config.programs.firefox.enable) [
+      config.programs.firefox.package
     ];
   text = let
     spotify = ''
@@ -27,7 +27,7 @@ writeShellApplication {
 
     ${spotify}
 
-    floorp "$url" || {
+    firefox "$url" || {
       echo "failed to open the URL: $url"
       exit 1
     }

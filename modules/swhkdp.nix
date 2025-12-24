@@ -17,6 +17,12 @@ in {
   ];
   services.swhkdp = {
     enable = true;
+    ignore = [
+      "Sony Interactive Entertainment DualSense Wireless Controller"
+      "Sony Interactive Entertainment DualSense Wireless Controller Motion Sensors"
+      "Sony Interactive Entertainment DualSense Wireless Controller Touchpad"
+      "Apple Inc. Magic Trackpad"
+    ];
     settings = let
       killactive =
         if envir == "Hyprland"
@@ -131,8 +137,8 @@ in {
             "KEY_LEFTMETA+{KEY_RIGHT, KEY_LEFT, KEY_DOWN, KEY_UP}".action = "${movefocus} {r, l, d, u}";
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_T".action = "wezterm";
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_K".action = "kitty";
-            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_B".action = "floorp";
-            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_F".action = "nautilus";
+            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_B".action = "firefox";
+            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_F".action = "cosmic-files";
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_P".action = "hyprpicker -a";
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_E".action = "eww-move";
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_N".action = "swaync-client -t";

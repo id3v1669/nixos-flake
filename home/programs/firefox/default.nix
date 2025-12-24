@@ -1,11 +1,12 @@
 {
   pkgs,
+  stable,
   uservars,
   ...
 }: {
-  programs.floorp = {
+  programs.firefox = {
     enable = true;
-    package = pkgs.wrapFirefox pkgs.floorp-bin-unwrapped {
+    package = stable.wrapFirefox stable.firefox-unwrapped {
       extraPolicies = {
         CaptivePortal = false;
         DisablePocket = true;
@@ -84,8 +85,6 @@
         "distribution.searchplugins.defaultLocale" = "en-AU";
         "extensions.autoDisableScopes" = 0;
         "browser.sidebar.enable" = false;
-        "floorp.browser.sidebar.enable" = false;
-        "floorp.panelSidebar.enabled" = false;
         "general.smoothScroll" = true;
         "general.useragent.locale" = "en-AU";
         "media.ffmpeg.enabled" = true;

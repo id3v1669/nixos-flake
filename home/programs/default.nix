@@ -11,7 +11,7 @@
     ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
       #./aplin
       ./vscode
-      ./floorp
+      ./firefox
       ./other
       ./discord
       ./telegram

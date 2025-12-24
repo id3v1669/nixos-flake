@@ -17,6 +17,12 @@
         ControllerMode = "bredr";
         Enable = "Source,Sink,Media,Socket";
       };
+      Input = {
+        ClassicBondedOnly = false;
+      };
+      Policy = {
+        AutoEnable = true;
+      };
     };
   };
   systemd.user.services.mpris-proxy = {

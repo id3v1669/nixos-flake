@@ -45,6 +45,7 @@
   };
   environment.systemPackages = with pkgs; [
     eza
+    killall
     (lib.hiPrio uutils-coreutils-noprefix)
     (lib.hiPrio uutils-findutils)
     (lib.hiPrio uutils-diffutils)

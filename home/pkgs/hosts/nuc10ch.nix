@@ -1,6 +1,5 @@
 {
   pkgs,
-  stable,
   inputs,
   ...
 }: {
@@ -9,7 +8,7 @@
   ];
   home.packages = with pkgs; [
     # gui
-    stable.gimp # image editing
+    gimp # image editing
 
     # text & docs
     joplin-desktop # note taking app

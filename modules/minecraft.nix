@@ -15,7 +15,7 @@
     eula = true;
     user = "${uservars.name}";
     servers = {
-      primary = {
+      master = {
         enable = true;
         autoStart = false;
         package = pkgs.fabricServers.fabric-1_21_10.override {
@@ -58,6 +58,26 @@
         };
         symlinks = {
           "mods" = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
+            tt20 = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/YS3ZignI/versions/Htc1MpMN/tt20-0.7.2%2Bmc1.21.9.jar";
+              hash = "sha256-zjiYTOb0gGXQJ4elnhxwsx/STq+0Cmz/xwdnx/Du5Uc=";
+            };
+            Async = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/vEC2jm6I/versions/jW2W1uoQ/async-fabric-0.1.8%2Balpha.1-1.21.10.jar";
+              hash = "sha256-Up88/NMQBXU2tZZVoKTCNQItyxO7xALTBx1c0XgLI9Q=";
+            };
+            Terralith = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/JKg71Gq0/Terralith_1.21.x_v2.5.13.jar";
+              hash = "sha256-lI2ZmwJuNE/XIBUHeJrrKCL0eKUtxE2r4evMFJVIx1I=";
+            };
+            Quartz = pkgs.fetchurl {
+              url = "https://id3v1669.com/craftable_quartz-1.0.17.jar";
+              hash = "sha256-/X4XsnSaU0NqdOMFsoy+wGG9wFlTO4TZZ9DxZUez6I0=";
+            };
+            Coal = pkgs.fetchurl {
+              url = "https://id3v1669.com/craftable_charcoal_block-1.0.17.jar";
+              hash = "sha256-YbzZ4JRz0ewX5zpX1h4JRbYfGwaaZ1HUGJn9GPo37Rc=";
+            };
             GApple = pkgs.fetchurl {
               url = "https://cdn.modrinth.com/data/4CVPn6z8/versions/1EsDlHHp/craftable_enchanted_golden_apple-1.0.17.jar";
               hash = "sha256-y2Fqo2X5np+X7Ttpzpy6oRDBtW83y9I+wRIFF9N2knM=";

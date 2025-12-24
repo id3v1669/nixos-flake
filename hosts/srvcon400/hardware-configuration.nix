@@ -14,6 +14,7 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = [];
   boot.extraModulePackages = [];
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   fileSystems."/" = {
     device = "/dev/mapper/pool-root";

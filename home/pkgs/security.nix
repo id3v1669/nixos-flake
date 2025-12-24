@@ -26,7 +26,7 @@
     crowbar # brute force tool
     fcrackzip # zip pass cracker
     johnny # tool
-    stable.openvas-scanner # tool
+    openvas-scanner # tool
     tcpdump # tool
     dhcpdump # tool
     nmap # network scanner

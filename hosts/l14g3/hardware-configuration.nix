@@ -14,7 +14,7 @@
     services.udev.extraRules = ''
       ACTION=="add", KERNEL=="0000:06:00.0", SUBSYSTEM=="pci", RUN="/bin/sh -c 'echo 1 > /sys/bus/pci/devices/0000:06:00.0/remove'"
       ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="5986", ATTR{idProduct}=="2142", RUN+="/bin/sh -c 'echo 1 > /sys$devpath/remove'"
-      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", TAG+="uaccess"
+      #KERNEL=="hidraw*", SUBSYSTEM=="hidraw", TAG+="uaccess"
     '';
     boot = {
       kernelModules = [
@@ -25,7 +25,8 @@
         "pci=big_root_window" # re-bar??
 
         "pcie_aspm=off" # Disable ASPM: potentialy helps to avoid issues with egpu pci power management
-        "amd_pstate=guided"
+        "amd_pstate=active"
+        "amd_pstate.shared_mem=0"
 
         "pci=realloc" # Force PCIe resource reallocation: required for egpu detection
         "pci=assign-busses" # Let kernel assign bus numbers: required for egpu detection
@@ -45,34 +46,26 @@
     kernelModules = [
       "kvm-amd"
     ];
-    kernelPackages = let
-      customKernel = pkgs.linuxPackages_cachyos-gcc.kernel.override {
-        config = lib.recursiveUpdate pkgs.linuxPackages_cachyos-gcc.kernel.config {
-          "CONFIG_MZEN3" = "y";
-          "CONFIG_GENERIC_CPU" = "n";
-        };
-      };
-    in
-      pkgs.linuxPackagesFor customKernel;
+    kernelPackages = pkgs.linuxPackages_zen;
 
     kernelParams = [
-      "preempt=full"
-      "random.trust_cpu=off"
-      "random.trust_bootloader=off"
+      "amd_iommu=on"
     ];
     kernel.sysctl = {
       "kernel.unprivileged_userns_clone" = 1;
       "vm.max_map_count" = 2147483642;
+      "vm.mmap_min_addr" = 0;
       "kernel.split_lock_mitigate" = 0;
       "net.ipv4.tcp_fin_timeout" = 5;
       "kernel.sched_cfs_bandwidth_slice_us" = 3000;
     };
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
+      ryzen-smu
     ];
     initrd = {
       supportedFilesystems = ["ntfs" "ntfs3" "exfat" "vfat" "ext4"];
-      availableKernelModules = ["nvme" "xhci_pci" "uas" "sd_mod" "usbhid"];
+      availableKernelModules = ["nvme" "xhci_pci" "ahci" "uas" "sd_mod" "usbhid" "usb_storage"];
       kernelModules = ["amdgpu"];
       # cryptsetup config /dev/disk/by-uuid/xx --label luks_primary
       luks.devices.primary.device = "/dev/disk/by-label/luks_primary";

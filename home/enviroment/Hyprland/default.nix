@@ -120,7 +120,7 @@ in {
       windowrule = float,                 tag:floatingCentered
       windowrule = center,                tag:floatingCentered
 
-      windowrule = opacity 0.95 0.9,      class:([Ss]potify|[Nn]emo|org.gnome.Nautilus|code-url-handler|[Cc]ode|org.telegram.desktop|gnome-disks|GParted|Alacritty|[Kk]itty)
+      windowrule = opacity 0.95 0.9,      class:([Ss]potify|[Nn]emo|com.system76.CosmicFiles|code-url-handler|[Cc]ode|org.telegram.desktop|gnome-disks|GParted|Alacritty|[Kk]itty)
 
       windowrule = tag +floatOp,          class:(blueman-manager|.blueman-manager-wrapped|nm-connection-editor|org.pulseaudio.pavucontrol)
       windowrule = float,                 tag:floatOp

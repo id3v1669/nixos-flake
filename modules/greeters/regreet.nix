@@ -16,7 +16,6 @@ in {
       }
       misc {
         disable_hyprland_logo=true
-        disable_hyprland_qtutils_check=true
       }
 
       exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30

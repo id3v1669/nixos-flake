@@ -8,7 +8,7 @@
   ];
   home.packages = with pkgs; [
     # gui
-    gimp # image editing
+    #gimp # image editing
 
     # text & docs
     joplin-desktop # note taking app
@@ -17,6 +17,14 @@
     (prismlauncher.override {
       jdks = with pkgs; [jdk25 zulu];
     })
+
+    #tmp for testing themes
+    cosmic-settings
+    cosmic-edit
+    cosmic-reader
+    cosmic-player
+    cosmic-launcher
+    cosmic-term
 
     qxmledit
     #iwwc

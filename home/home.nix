@@ -9,6 +9,7 @@
   gpuvar,
   config,
   hostname,
+  pkgs,
   ...
 }: {
   imports =
@@ -24,12 +25,13 @@
       ./enviroment/gtk
       ./enviroment/anyrun
       ./enviroment/xdg
+      ./enviroment/cosmic
       #./enviroment/lan-mouse
       ./enviroment/${envir}
     ]
     ++ lib.lists.optionals (envir == "Hyprland") [
       ./enviroment/eww
-      #./enviroment/swaync
+      ./enviroment/swaync
       ./enviroment/hyprlock
     ];
   home = {

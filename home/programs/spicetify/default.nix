@@ -11,7 +11,7 @@
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   in {
     enable = true;
-    spotifyPackage = pkgs.spotify-custom;
+    spotifyPackage = pkgs.spotify;
     enabledExtensions = with spicePkgs.extensions; [
       adblock
       hidePodcasts

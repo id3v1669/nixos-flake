@@ -2,11 +2,10 @@
   description = "id3v1669 system flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     sops-nix.url = "github:Mic92/sops-nix";
     nur.url = "github:nix-community/NUR";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     #dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
     lsfg-vk = {
       url = "github:pabloaul/lsfg-vk-flake/main";
@@ -56,6 +55,10 @@
     };
     eww = {
       url = "github:id3v1669/eww";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    cti = {
+      url = "github:id3v1669/cosmic-theme-import";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {

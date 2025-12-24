@@ -24,13 +24,13 @@
       };
     };
     desktopEntries = {
-      floorp = {
-        name = "floorp";
+      firefox = {
+        name = "firefox";
         genericName = "Web Browser";
-        exec = "floorp %U";
+        exec = "firefox %U";
         terminal = false;
         categories = ["Application" "Network" "WebBrowser"];
-        settings.Keywords = "firefox;froo";
+        settings.Keywords = "firefox;fir;web";
       };
       custom-url-handler = {
         name = "custom-url-handler";
@@ -45,64 +45,70 @@
     };
     mimeApps = {
       enable = true;
-      associations.added = {
-        #images
-        "image/png" = "org.gnome.eog.desktop";
-        "image/jpeg" = "org.gnome.eog.desktop";
-        "image/gif" = "org.gnome.eog.desktop";
-        "image/bmp" = "org.gnome.eog.desktop";
-        "image/jpg" = "org.gnome.eog.desktop";
-        "image/tiff" = "org.gnome.eog.desktop";
-        "image/x-bmp" = "org.gnome.eog.desktop";
-        "image/x-ico" = "org.gnome.eog.desktop";
-        "image/heic" = "org.gnome.eog.desktop";
-        "image/heif" = "org.gnome.eog.desktop";
-        "image/webp" = "org.gnome.eog.desktop";
-        #web
-        "text/html" = "floorp.desktop";
-        "x-scheme-handler/http" = "custom-url-handler.desktop";
-        "x-scheme-handler/https" = "custom-url-handler.desktop";
-        "x-scheme-handler/chrome" = "floorp.desktop";
-        "x-scheme-handler/discord " = "equibop.desktop";
-        "x-scheme-handler/spotify" = "spotify.desktop";
-        "application/x-extension-htm" = "floorp.desktop";
-        "application/x-extension-html" = "floorp.desktop";
-        "application/x-extension-shtml" = "floorp.desktop";
-        "application/xhtml+xml" = "floorp.desktop";
-        "application/x-extension-xhtml" = "floorp.desktop";
-        "application/x-extension-xht" = "floorp.desktop";
-        "application/pdf" = "chromium-browser.desktop";
-        #video
-        "video/mp4" = "vlc.desktop";
-        "video/mov" = "vlc.desktop";
-        "video/x-ms-wmv" = "vlc.desktop";
-        "video/quicktime" = "vlc.desktop";
-        "video/vnd.avi" = "vlc.desktop";
-        "video/webm" = "vlc.desktop";
-        "video/mpeg" = "vlc.desktop";
-        "video/x-matroska" = "vlc.desktop";
-        #vscode for text etc
-        "text/plain" = "code.desktop";
-        "text/x-c" = "code.desktop";
-        "text/x-c++" = "code.desktop";
-        "text/x-c++src" = "code.desktop";
-        "text/x-chdr" = "code.desktop";
-        "text/x-csrc" = "code.desktop";
-        "text/x-diff" = "code.desktop";
-        "text/x-dsrc" = "code.desktop";
-        "text/x-haskell" = "code.desktop";
-        "text/x-java" = "code.desktop";
-        "text/x-makefile" = "code.desktop";
-        "text/x-moc" = "code.desktop";
-        "text/x-pcs-gcd" = "code.desktop";
-        "text/x-perl" = "code.desktop";
-        "text/x-python" = "code.desktop";
-        "text/x-scala" = "code.desktop";
-        "text/x-scheme" = "code.desktop";
-        "text/css" = "code.desktop";
-        "application/x-shellscript" = "code.desktop";
-        "application/xml" = "code.desktop";
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop";
+      associations = {
+        added = {
+          #images
+          "image/png" = "org.gnome.eog.desktop";
+          "image/jpeg" = "org.gnome.eog.desktop";
+          "image/gif" = "org.gnome.eog.desktop";
+          "image/bmp" = "org.gnome.eog.desktop";
+          "image/jpg" = "org.gnome.eog.desktop";
+          "image/tiff" = "org.gnome.eog.desktop";
+          "image/x-bmp" = "org.gnome.eog.desktop";
+          "image/x-ico" = "org.gnome.eog.desktop";
+          "image/heic" = "org.gnome.eog.desktop";
+          "image/heif" = "org.gnome.eog.desktop";
+          "image/webp" = "org.gnome.eog.desktop";
+          #web
+          "text/html" = "firefox.desktop";
+          "x-scheme-handler/http" = "custom-url-handler.desktop";
+          "x-scheme-handler/https" = "custom-url-handler.desktop";
+          "x-scheme-handler/chrome" = "firefox.desktop";
+          "x-scheme-handler/discord " = "equibop.desktop";
+          "x-scheme-handler/spotify" = "spotify.desktop";
+          "application/x-extension-htm" = "firefox.desktop";
+          "application/x-extension-html" = "firefox.desktop";
+          "application/x-extension-shtml" = "firefox.desktop";
+          "application/xhtml+xml" = "firefox.desktop";
+          "application/x-extension-xhtml" = "firefox.desktop";
+          "application/x-extension-xht" = "firefox.desktop";
+          "application/pdf" = "chromium-browser.desktop";
+          #video
+          "video/mp4" = "vlc.desktop";
+          "video/mov" = "vlc.desktop";
+          "video/x-ms-wmv" = "vlc.desktop";
+          "video/quicktime" = "vlc.desktop";
+          "video/vnd.avi" = "vlc.desktop";
+          "video/webm" = "vlc.desktop";
+          "video/mpeg" = "vlc.desktop";
+          "video/x-matroska" = "vlc.desktop";
+          #vscode for text etc
+          "text/plain" = "code.desktop";
+          "text/x-c" = "code.desktop";
+          "text/x-c++" = "code.desktop";
+          "text/x-c++src" = "code.desktop";
+          "text/x-chdr" = "code.desktop";
+          "text/x-csrc" = "code.desktop";
+          "text/x-diff" = "code.desktop";
+          "text/x-dsrc" = "code.desktop";
+          "text/x-haskell" = "code.desktop";
+          "text/x-java" = "code.desktop";
+          "text/x-makefile" = "code.desktop";
+          "text/x-moc" = "code.desktop";
+          "text/x-pcs-gcd" = "code.desktop";
+          "text/x-perl" = "code.desktop";
+          "text/x-python" = "code.desktop";
+          "text/x-scala" = "code.desktop";
+          "text/x-scheme" = "code.desktop";
+          "text/css" = "code.desktop";
+          "application/x-shellscript" = "code.desktop";
+          "application/xml" = "code.desktop";
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop";
+        };
+        removed = {
+          #workaround for cosmic files bug #1416
+          mimetype1 = "foo5.desktop";
+        };
       };
       defaultApplications = {
         #images
@@ -118,18 +124,18 @@
         "image/heif" = "org.gnome.eog.desktop";
         "image/webp" = "org.gnome.eog.desktop";
         #web
-        "text/html" = "floorp.desktop";
+        "text/html" = "firefox.desktop";
         "x-scheme-handler/http" = "custom-url-handler.desktop";
         "x-scheme-handler/https" = "custom-url-handler.desktop";
-        "x-scheme-handler/chrome" = "floorp.desktop";
+        "x-scheme-handler/chrome" = "firefox.desktop";
         "x-scheme-handler/discord " = "equibop.desktop";
         "x-scheme-handler/spotify" = "spotify.desktop";
-        "application/x-extension-htm" = "floorp.desktop";
-        "application/x-extension-html" = "floorp.desktop";
-        "application/x-extension-shtml" = "floorp.desktop";
-        "application/xhtml+xml" = "floorp.desktop";
-        "application/x-extension-xhtml" = "floorp.desktop";
-        "application/x-extension-xht" = "floorp.desktop";
+        "application/x-extension-htm" = "firefox.desktop";
+        "application/x-extension-html" = "firefox.desktop";
+        "application/x-extension-shtml" = "firefox.desktop";
+        "application/xhtml+xml" = "firefox.desktop";
+        "application/x-extension-xhtml" = "firefox.desktop";
+        "application/x-extension-xht" = "firefox.desktop";
         "application/pdf" = "chromium-browser.desktop";
         "application/arj" = "org.gnome.FileRoller.desktop";
         "application/gzip" = "org.gnome.FileRoller.desktop";

@@ -1,11 +1,10 @@
 {
   config,
   pkgs,
-  stable,
   ...
 }: {
   home.packages = with pkgs; [
-    stable.ayugram-desktop
+    ayugram-desktop
   ];
 
   home.file.".config/telegram/colors.tdesktop-theme".text = with config.palette; ''

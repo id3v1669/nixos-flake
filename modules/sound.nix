@@ -26,14 +26,15 @@
     };
     mpd = {
       enable = true;
-      musicDirectory = "/mnt/share/Music";
-      network.listenAddress = "any";
-      extraConfig = ''
-        audio_output {
-          type "pipewire"
-          name "PipeWire Sound Server"
-        }
-      '';
+      openFirewall = true;
+      settings = {
+        music_directory = "/mnt/share/Music";
+        bind_to_address = "any";
+        audio_output = [{
+          type = "pipewire";
+          name = "PipeWire Sound Server";
+        }];
+      };
     };
   };
   systemd.services.mpd.serviceConfig.SupplementaryGroups = ["pipewire"];

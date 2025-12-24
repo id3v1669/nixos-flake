@@ -21,17 +21,18 @@ final: pkgs: {
   };
   librepods = pkgs.stdenv.mkDerivation rec {
     pname = "librepods";
-    version = "0.1.0-96ee241";
+    version = "0.1.0-fa30d3c";
 
     src = pkgs.fetchFromGitHub {
       owner = "kavishdevar";
       repo = "librepods";
-      rev = "784b7a2cfa5e061b5a1bac9a02803503b0ff92ac";
-      hash = "sha256-izCiSaYD1KCLe18jrFjMOF0QOo0kxsXMcJBjcBhHD9M=";
+      rev = "fa30d3c09aa8be1737988b8b0259e1710bd3a125";
+      hash = "sha256-wKXST93GXGhlFSB7vbxbDduiF37f5wIcUxsz7M2tGJk=";
     };
 
     nativeBuildInputs = with pkgs; [
       cmake
+      pkg-config
       qt6.wrapQtAppsHook
     ];
 
@@ -40,6 +41,7 @@ final: pkgs: {
       qt6.qtdeclarative
       qt6.qtconnectivity
       qt6.qtmultimedia
+      libpulseaudio
     ];
 
     configurePhase = ''

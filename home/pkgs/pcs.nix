@@ -1,8 +1,4 @@
-{
-  pkgs,
-  stable,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # screenshots
     wayshot # cli screenshot
@@ -45,8 +41,7 @@
     lutris # game launcher
 
     # files
-    nautilus # file manager
-    nemo-with-extensions # file manager(backup fm)
+    cosmic-files # file manager
     zip # create .zip arcs
     p7zip # .7z arcs
     unzip # unzip .zip arcs
@@ -56,7 +51,7 @@
 
     # text & docs
     libreoffice # opensource office apps
-    stable.calibre # ebook reader
+    calibre # ebook reader
     hunspell # needed for libreoffice
     hunspellDicts.en_US-large # needed for libreoffice
     hunspellDicts.ru_RU # needed for libreoffice

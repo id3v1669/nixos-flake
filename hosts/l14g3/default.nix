@@ -2,6 +2,7 @@
   uservars,
   config,
   pkgs,
+  stable,
   inputs,
   lib,
   ...
@@ -19,12 +20,17 @@
     ./../../modules/sudo.nix
     ./../../modules/swhkdp.nix
     ./../../modules/bluetooth.nix
+    ./../../modules/odoo.nix
     ./../../modules/greeters/regreet.nix
     #./../../modules/greeters/sddm.nix
   ];
 
+  #services.power-profiles-daemon.enable = true;
+
   hardware = {
     enableAllFirmware = true;
+    uinput.enable = true;
+    steam-hardware.enable = true;
   };
   networking = {
     firewall.enable = false;
@@ -58,7 +64,7 @@
     gamescope = {
       owner = "root";
       group = "root";
-      source = "${inputs.chaotic.packages.${pkgs.stdenv.hostPlatform.system}.gamescope_git}/bin/gamescope";
+      source = "${pkgs.gamescope}/bin/gamescope";
       capabilities = "cap_sys_nice+eip";
     };
   };
@@ -75,7 +81,10 @@
     "usbmux"
   ];
   environment = {
-    systemPackages = [];
+    systemPackages = with pkgs; [
+      ryzenadj
+      s-tui
+    ];
     etc."hypr/monitor-init.conf".text = ''
       monitor=eDP-1,1920x1080@60,0x0,1
     '';
@@ -87,12 +96,43 @@
   };
   nix.settings = {
     auto-optimise-store = true;
-    cores = 8;
-    substituters = [
-      "https://chaotic-nyx.cachix.org/"
-    ];
-    trusted-public-keys = [
-      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+    max-jobs = "auto";
+    cores = 0;
+    keep-derivations = true;
+    keep-outputs = true;
+    system-features = [ 
+      "nixos-test"
+      "benchmark"
+      "big-parallel"
+      "kvm"
     ];
   };
+  nixpkgs.overlays = let
+    cFlags = ["-O3" "-pipe" "-march=znver3" "-mtune=znver3"];
+
+    optimizeC = pkg:
+      pkg.overrideAttrs (old: {
+        env =
+          (old.env or {})
+          // {
+            NIX_CFLAGS_COMPILE = (old.env.NIX_CFLAGS_COMPILE or "") + " " + toString cFlags;
+          };
+      });
+    optimizeRust = pkg:
+      pkg.overrideAttrs (old: {
+        env =
+          (old.env or {})
+          // {
+            RUSTFLAGS = (old.env.RUSTFLAGS or "") + " -C target-cpu=native -C opt-level=3";
+            CARGO_PROFILE_RELEASE_LTO = "true";
+            CARGO_PROFILE_RELEASE_CODEGEN_UNITS = "1";
+            CARGO_PROFILE_RELEASE_STRIP = "symbols";
+          };
+      });
+  in [
+    (final: prev: {
+      hyprland = optimizeC prev.hyprland;
+      mesa = optimizeC prev.mesa;
+    })
+  ];
 }

@@ -2,7 +2,7 @@
   mkSyst = {
     hostname,
     envir,
-    curversion ? "25.11",
+    curversion ? "26.05",
     desk ? "desktop",
     bootloader ? ({
       type = "systemd";
@@ -71,7 +71,6 @@
       modules = [
         (./.. + "/hosts/${hostname}")
         inputs.lsfg-vk.nixosModules.default
-        inputs.chaotic.nixosModules.default
         inputs.swhkdp.nixosModules.default
         inputs.sops-nix.nixosModules.sops
         inputs.base16x2.nixosModules.default
