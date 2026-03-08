@@ -89,6 +89,7 @@ in {
     };
     extraConfig = ''
       #----------------startup commands-----------------
+      exec-once = hyprpaper                                             # hyprpaper start
       exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30    # set cursor as hyprland doesn't respect gtk
       exec-once = swhks &                                               # used command as systemd service starts it in isolation
       #-------------------------------------------------
@@ -102,33 +103,33 @@ in {
 
       #------------------screen sharing------------------
       #exec-once = xwaylandvideobridge
-      windowrule = opacity 0.0 override 0.0 override,class:(xwaylandvideobridge)
-      windowrule = noanim,                class:(xwaylandvideobridge)
-      windowrule = nofocus,               class:(xwaylandvideobridge)
-      windowrule = noinitialfocus,        class:(xwaylandvideobridge)
+      windowrule = opacity 0.0 override 0.0 override, match:class (xwaylandvideobridge)
+      windowrule = no_anim on,                        match:class (xwaylandvideobridge)
+      windowrule = no_focus on,                       match:class (xwaylandvideobridge)
+      windowrule = no_initial_focus on,               match:class (xwaylandvideobridge)
       #--------------------------------------------------
 
       #-------------------file picker--------------------
-      windowrule = tag +fileOperation,    title:((Choose (Files|an Image)|Open ([Ff]ile(s)?|[Ff]ile|Video|[Ff]older.*)|([Image|Video] File|Save (As|Image|Video|File)|Local File|File Upload))|New Archive)
-      windowrule = float,                 tag:fileOperation
-      windowrule = size 35% 70%,          tag:fileOperation
-      windowrule = center,                tag:fileOperation
+      windowrule = tag +fileOperation,                match:title ((Choose (Files|an Image)|Open ([Ff]ile(s)?|[Ff]ile|Video|[Ff]older.*)|([Image|Video] File|Save (As|Image|Video|File)|Local File|File Upload))|New Archive)
+      windowrule = float on,                          match:tag fileOperation
+      windowrule = size 35% 70%,                      match:tag fileOperation
+      windowrule = center on,                         match:tag fileOperation
       #--------------------------------------------------
 
       #--------------other windowrules-------------------
-      windowrule = tag +floatingCentered, class:(gnome-disks|GParted|[Kk]itty|[Vv]era[Cc]rypt|polkit-gnome-authentication-agent-1)
-      windowrule = float,                 tag:floatingCentered
-      windowrule = center,                tag:floatingCentered
+      windowrule = tag +floatingCentered,             match:class (gnome-disks|GParted|[Kk]itty|[Vv]era[Cc]rypt|polkit-gnome-authentication-agent-1)
+      windowrule = float on,                          match:tag floatingCentered
+      windowrule = center on,                         match:tag floatingCentered
 
-      windowrule = opacity 0.95 0.9,      class:([Ss]potify|[Nn]emo|com.system76.CosmicFiles|code-url-handler|[Cc]ode|org.telegram.desktop|gnome-disks|GParted|Alacritty|[Kk]itty)
+      windowrule = opacity 0.95 0.9,                  match:class ([Ss]potify|[Nn]emo|com.system76.CosmicFiles|code-url-handler|[Cc]ode|org.telegram.desktop|gnome-disks|GParted|Alacritty|[Kk]itty)
 
-      windowrule = tag +floatOp,          class:(blueman-manager|.blueman-manager-wrapped|nm-connection-editor|org.pulseaudio.pavucontrol)
-      windowrule = float,                 tag:floatOp
-      windowrule = opacity 0.8,           tag:floatOp
+      windowrule = tag +floatOp,                      match:class (blueman-manager|.blueman-manager-wrapped|nm-connection-editor|org.pulseaudio.pavucontrol)
+      windowrule = float on,                          match:tag floatOp
+      windowrule = opacity 0.8,                       match:tag floatOp
 
-      windowrule = opacity 0.95 0.95,     class:([Ff]loorp|[Ff]irefox)
+      windowrule = opacity 0.95 0.95,                 match:class ([Ff]loorp|[Ff]irefox)
 
-      windowrule = workspace 2,           class:([Ee]quibop|[Dd]iscord|[Vv]esktop)
+      windowrule = workspace 2,                       match:class ([Ee]quibop|[Dd]iscord|[Vv]esktop)
 
       device {
         name = apple-inc.-magic-trackpad-1
@@ -138,7 +139,10 @@ in {
   };
 
   home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = /etc/backgrounds/${colorsvar}/${uservars.wp}
-    wallpaper = , /etc/backgrounds/${colorsvar}/${uservars.wp}
+    wallpaper {
+      monitor =
+      path = /etc/backgrounds/${colorsvar}/${uservars.wp}
+      fit_mode = cover
+    }
   '';
 }

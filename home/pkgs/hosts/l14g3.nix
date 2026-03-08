@@ -15,7 +15,7 @@
 
     # games
     (prismlauncher.override {
-      jdks = with pkgs; [jdk25 zulu];
+      jdks = with pkgs; [jdk25 zulu zulu17];
     })
 
     #tmp for testing themes
@@ -27,34 +27,10 @@
     cosmic-term
 
     qxmledit
-    #iwwc
     czkawka-full
-    dupeguru
+    q
     yt-dlp
     stable.megasync
-
-    librepods
     wxedid
   ];
-
-  # temp until I fix aplin project
-  systemd.user.services.librepods = {
-    Unit = {
-      Description = "librepods";
-      After = ["graphical-session.target"];
-      PartOf = ["graphical-session.target"];
-      ConditionEnvironment = "WAYLAND_DISPLAY";
-    };
-
-    Service = {
-      Type = "simple";
-      ExecStart = "${pkgs.lib.getExe pkgs.librepods} --hide";
-      Restart = "always";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
-      Environment = "PHONE_MAC_ADDRESS=28:2D:7F:DF:BC:76";
-    };
-
-    Install.WantedBy = ["graphical-session.target"];
-  };
 }

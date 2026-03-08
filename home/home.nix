@@ -26,7 +26,6 @@
       ./enviroment/anyrun
       ./enviroment/xdg
       ./enviroment/cosmic
-      #./enviroment/lan-mouse
       ./enviroment/${envir}
     ]
     ++ lib.lists.optionals (envir == "Hyprland") [

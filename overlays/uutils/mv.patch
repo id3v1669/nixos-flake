@@ -1,0 +1,20 @@
+--- a/src/uu/mv/src/mv.rs	2026-03-06 21:02:32.396866056 +0800
++++ b/src/uu/mv/src/mv.rs	2026-03-06 22:04:05.653500923 +0800
+@@ -112,7 +112,7 @@
+ impl Default for Options {
+     fn default() -> Self {
+         Self {
+-            overwrite: OverwriteMode::default(),
++            overwrite: OverwriteMode::Force,
+             backup: BackupMode::default(),
+             suffix: backup_control::DEFAULT_BACKUP_SUFFIX.to_owned(),
+             update: UpdateMode::default(),
+@@ -348,7 +348,7 @@
+     } else if matches.get_flag(OPT_FORCE) {
+         OverwriteMode::Force
+     } else {
+-        OverwriteMode::Default
++        OverwriteMode::Force
+     }
+ }
+ 

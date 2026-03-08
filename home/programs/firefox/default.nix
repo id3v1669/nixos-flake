@@ -42,6 +42,7 @@
         darkreader
         stylus
         return-youtube-dislikes
+        privacy-badger
       ];
       search = {
         force = true;

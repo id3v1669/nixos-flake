@@ -1,46 +1,21 @@
 final: pkgs: {
+  lutris-unwrapped = pkgs.lutris-unwrapped.overrideAttrs {
+    version = "0.5.20";
+    src = pkgs.fetchFromGitHub {
+      owner = "lutris";
+      repo = "lutris";
+      rev = "232c9d8cec74ee7a4d21ce6cb624aa8a14f3e18b";
+      hash = "sha256-3t+x3gMuPah7FPYv9J73N7OPgXhWQ2K7vmGn8USLXzQ=";
+    };
+  };
   lutris = pkgs.lutris.override {
     extraPkgs = pkgs:
       with pkgs; [
         speex
         speexdsp
         SDL2_sound
-        wineasio
-
-        (wine-staging.override {
-          wineBuild = "wine64";
-          alsaSupport = true;
-          cairoSupport = true;
-          cupsSupport = true;
-          cursesSupport = true;
-          dbusSupport = true;
-          embedInstallers = true;
-          fontconfigSupport = true;
-          gettextSupport = true;
-          gphoto2Support = true;
-          gstreamerSupport = true;
-          gtkSupport = true;
-          krb5Support = true;
-          mingwSupport = true;
-          netapiSupport = true;
-          odbcSupport = true;
-          openclSupport = true;
-          openglSupport = true;
-          pcapSupport = true;
-          pulseaudioSupport = true;
-          saneSupport = true;
-          sdlSupport = true;
-          tlsSupport = true;
-          udevSupport = true;
-          usbSupport = true;
-          v4lSupport = true;
-          vaSupport = true;
-          vulkanSupport = true;
-          waylandSupport = true;
-          x11Support = true;
-          xineramaSupport = true;
-        })
-        wineWowPackages.stagingFull
+        winetricks
+        wineWow64Packages.unstableFull
         v4l-utils
       ];
   };

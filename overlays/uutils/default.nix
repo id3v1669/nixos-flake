@@ -1,5 +1,9 @@
 final: pkgs: {
   uutils-coreutils-noprefix = pkgs.uutils-coreutils-noprefix.overrideAttrs (old: rec {
-    name = pkgs.coreutils.name;
+    patches =
+      (old.patches or [])
+      ++ [
+        ./mv.patch
+      ];
   });
 }

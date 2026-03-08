@@ -32,7 +32,7 @@ in {
         else "";
       togglesplit =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch togglesplit"
+        then "${hyprctl} dispatch layoutmsg togglesplit"
         else "echo 'no envir'";
       togglefloating =
         if envir == "Hyprland"
@@ -149,9 +149,9 @@ in {
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_C".action = "cliphist list | anyrun --show-results-immediately true | cliphist decode | wl-copy";
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_L".action = lockscreen;
             "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_SLASH".action = reload;
-            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_3".action = "wayshot -s \"$(slurp)\" --stdout | swappy -f -";
-            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_4".action = "wayshot -s \"$(slurp)\" -f $HOME/Pictures/Screenshots/shot_$(date '+%Y-%m-%d_%H:%M:%S').png";
-            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_5".action = "wayshot -s \"$(slurp)\" --stdout | wl-copy";
+            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_3".action = "wayshot -g - | swappy -f -";
+            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_4".action = "wayshot -g --file-name-format 'shot-%Y-%m-%d_%H:%M:%S' $HOME/Pictures/Screenshots/";
+            "KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_5".action = "wayshot -g --clipboard";
             "KEY_BRIGHTNESSDOWN" = {
               action_type = "singlecommand";
               action = "${brightnesctrl.down}";
@@ -160,17 +160,6 @@ in {
               action_type = "singlecommand";
               action = "${brightnesctrl.up}";
             };
-            #------
-            # special for macbook, other devices don't have software-controled backlight, so keep it global for now(no harm)
-            "KEY_KBDILLUMDOWN" = {
-              action_type = "singlecommand";
-              action = "light -s sysfs/leds/spi::kbd_backlight -U 10";
-            };
-            "KEY_KBDILLUMUP" = {
-              action_type = "singlecommand";
-              action = "light -s sysfs/leds/spi::kbd_backlight -A 10";
-            };
-            #------
             "KEY_PLAYPAUSE" = {
               action_type = "singlecommand";
               action = "${playerctl} play-pause";

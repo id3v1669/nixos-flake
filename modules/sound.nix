@@ -30,10 +30,12 @@
       settings = {
         music_directory = "/mnt/share/Music";
         bind_to_address = "any";
-        audio_output = [{
-          type = "pipewire";
-          name = "PipeWire Sound Server";
-        }];
+        audio_output = [
+          {
+            type = "pipewire";
+            name = "PipeWire Sound Server";
+          }
+        ];
       };
     };
   };

@@ -46,9 +46,6 @@
   environment.systemPackages = with pkgs; [
     eza
     killall
-    (lib.hiPrio uutils-coreutils-noprefix)
-    (lib.hiPrio uutils-findutils)
-    (lib.hiPrio uutils-diffutils)
   ];
   time.timeZone = "${deflocale.timezone}";
   i18n.defaultLocale = "${deflocale.locale}";
@@ -79,10 +76,58 @@
     };
   };
   system.stateVersion = "${curversion}";
-  system.replaceDependencies.replacements = [
+  systemd.services.mandb.enable = false;
+  system.replaceDependencies.replacements = let
+    coreutils-full-name =
+      "coreuutils-full"
+      + builtins.concatStringsSep ""
+      (builtins.genList (_: "_") (builtins.stringLength pkgs.coreutils-full.version));
+
+    coreutils-name =
+      "coreuutils"
+      + builtins.concatStringsSep ""
+      (builtins.genList (_: "_") (builtins.stringLength pkgs.coreutils.version));
+
+    findutils-name =
+      "finduutils"
+      + builtins.concatStringsSep ""
+      (builtins.genList (_: "_") (builtins.stringLength pkgs.findutils.version));
+
+    diffutils-name =
+      "diffuutils"
+      + builtins.concatStringsSep ""
+      (builtins.genList (_: "_") (builtins.stringLength pkgs.diffutils.version));
+  in [
     {
-      original = pkgs.coreutils;
-      replacement = pkgs.uutils-coreutils-noprefix;
+      oldDependency = pkgs.coreutils-full;
+      newDependency = pkgs.symlinkJoin {
+        name = coreutils-full-name;
+        paths = [pkgs.uutils-coreutils-noprefix];
+      };
+    }
+    # bug, triggers reach rebuild and boot following:
+    # mv: replace '/bin/sh', overriding mode 0555 (r-xr-xr-x)?
+    # right now rough patch to make Force the default option
+    {
+      oldDependency = pkgs.coreutils;
+      newDependency = pkgs.symlinkJoin {
+        name = coreutils-name;
+        paths = [pkgs.uutils-coreutils-noprefix];
+      };
+    }
+    {
+      oldDependency = pkgs.findutils;
+      newDependency = pkgs.symlinkJoin {
+        name = findutils-name;
+        paths = [pkgs.uutils-findutils];
+      };
+    }
+    {
+      oldDependency = pkgs.diffutils;
+      newDependency = pkgs.symlinkJoin {
+        name = diffutils-name;
+        paths = [pkgs.uutils-diffutils];
+      };
     }
   ];
 }

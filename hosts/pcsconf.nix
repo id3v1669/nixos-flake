@@ -22,10 +22,6 @@ in {
       "plymouth.use-simpledrm"
       "fbcon=nodefer"
     ];
-    extraModprobeConfig = ''
-      # fix the F* keys on nuphy air 75 win mode
-      options hid_apple fnmode=0
-    '';
   };
   security =
     {
@@ -43,9 +39,7 @@ in {
       extest.enable = true;
     };
     gpu-screen-recorder.enable = true; # gpu screen recorder
-    light.enable = true; # laptop brightness control and fix for openrgb
     traceroute.enable = true; # traceroute
-    adb.enable = true; # android debug bridge
     xwayland.enable = true; # xwayland for x11 apps
   };
   hardware = {
@@ -61,47 +55,38 @@ in {
   services = {
     fstrim.enable = true; # trim for SSDs
     seatd.enable = true; #
-    udev.enable = true; # udev for hardware
-    gnome.sushi.enable = false; # file preview
+    udev = {
+      enable = true; # udev for hardware
+      packages = [pkgs.game-devices-udev-rules];
+    };
+
+    gnome.sushi.enable = true; # file preview
+
     printing.enable = true; # needed for printing and pdf export
     gvfs.enable = true; # Mount, trash, etc
     libinput.enable = true;
-    ratbagd.enable = false; # mouse settings daemon
     lsfg-vk = {
       enable = true;
-      package = inputs.lsfg-vk.packages.${pkgs.stdenv.hostPlatform.system}.lsfg-vk.overrideAttrs (old: rec {
-        src = pkgs.fetchFromGitHub {
-          owner = "PancakeTAS";
-          repo = "lsfg-vk";
-          rev = "ff1a0f72a7d6d08b84d58b7b4dc5f05c9f904f98";
-          hash = "sha256-d1x90BUgQAHPn0yK8K833lvmeleQyTi2MmWy3vKW+v4=";
-          fetchSubmodules = true;
-        };
-      });
+      package = pkgs.lsfg-vk;
       ui.enable = false;
-    };
-    hardware = {
-      bolt.enable = false; # thunderbolt support
-      openrgb = {
-        enable = false; # rgb control
-        package = pkgs.openrgb-with-all-plugins;
-        motherboard = "${cpuvar.type}";
-      };
     };
   };
   environment = {
     variables.NIXOS_OZONE_WL = "1";
     etc."hypr/monitor-init.conf".text = mkDefault '''';
     systemPackages = with pkgs; [
+      bash
       ntfs3g
       exfatprogs
       exfat
 
       polkit_gnome
-      xorg.xhost # xhost
+      xhost
       vulkan-headers
       vulkan-tools
       vulkan-loader
+      vulkan-validation-layers
+      mesa
 
       libva-utils # vaapi test
     ];

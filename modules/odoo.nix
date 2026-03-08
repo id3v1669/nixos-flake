@@ -5,8 +5,7 @@
 }: {
   services = {
     odoo = {
-      enable = true;
-      #domain = "odoo.id3v1669.com";
+      enable = false;
       package = pkgs.odoo;
       autoInit = true;
       settings = {

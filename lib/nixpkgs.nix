@@ -13,14 +13,10 @@ with allSpecialArgs; {
     inputs.eww.overlays.default
     inputs.nix-minecraft.overlay
     inputs.cti.overlays.default
-    #inputs.iwwc.overlays.default
-    (import ./../overlays/fht-compositor.nix {
-      inherit inputs;
-    })
-    (import ./../overlays/temp.nix)
     (import ./../overlays/uutils)
+    (import ./../overlays/temp.nix)
     (import ./../overlays/steam.nix)
-    (import ./../overlays/equibop)
+    (import ./../overlays/equibop.nix)
     (import ./../overlays/lutris.nix)
     (import ./../overlays/gruvbox-plus-icons.nix)
     (import ./../overlays/btop.nix {

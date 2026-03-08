@@ -6,24 +6,10 @@
     sops-nix.url = "github:Mic92/sops-nix";
     nur.url = "github:nix-community/NUR";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-    #dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
+    dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
     lsfg-vk = {
       url = "github:pabloaul/lsfg-vk-flake/main";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    iwwc = {
-      url = "github:id3v1669/iwwc";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    fht-compositor = {
-      url = "github:nferhat/fht-compositor";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "";
-    };
-    fht-share-picker = {
-      url = "github:nferhat/fht-share-picker/gtk-rewrite";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "";
     };
     aplin = {
       url = "github:id3v1669/aplin";
@@ -109,36 +95,6 @@
         gpuvar = {
           type = "amd";
           tech = "broken";
-        };
-      };
-      l14g3fht = mkSystem {
-        hostname = "l14g3";
-        envir = "fht-compositor";
-        cpuvar = {
-          type = "amd";
-          hasIntegrated = true;
-          integratedBroken = false;
-        };
-        bootloader = {
-          type = "opencore";
-          timeout = 7;
-        };
-        desk = "laptop";
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          domain = "none";
-          wp = "default3.png";
-          owner = "id3v1669";
-          sleeptimeout = 1200;
-        };
-        brightnesctrl = {
-          up = "light -A 5";
-          down = "light -U 5";
-        };
-        gpuvar = {
-          type = "amd";
-          tech = "amd";
         };
       };
       l14g3hypr = mkSystem {

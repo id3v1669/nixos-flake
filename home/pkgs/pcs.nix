@@ -10,6 +10,7 @@
     pulseaudio # just lib to use pactl, pipewire is in use
     coppwr # gui for pipewire
     mpc # cli for mpd
+    amberol # muscic player
 
     # vm, virt, emulators & remote
     distrobox
@@ -42,6 +43,7 @@
 
     # files
     cosmic-files # file manager
+    nautilus # backup file manager
     zip # create .zip arcs
     p7zip # .7z arcs
     unzip # unzip .zip arcs
@@ -81,13 +83,13 @@
     nixpkgs-review # review utility for nixpkgs
 
     # libs
+    qgnomeplatform # qt gtk theme integration
     gtk3 #
     gtk4 #
     libpng # png lib
     libnotify # for dunst or mako
     libheif # heif lib
     vulkan-headers # vulkan lib
-    vulkan-loader # vulkan lib
 
     # other
     dconf # settings for gnome apps

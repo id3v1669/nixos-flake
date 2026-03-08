@@ -1,67 +1,54 @@
 final: pkgs: {
-  wxedid = pkgs.stdenv.mkDerivation rec {
-    pname = "wxedid";
-    version = "0.0.32";
-
-    src = pkgs.fetchurl {
-      url = "https://downloads.sourceforge.net/${pname}/${pname}-${version}.tar.gz";
-      hash = "sha256-XYbRNuQ+ha05gJgs7P+HzxdRksFRJHxLiWDfnF5GHMI=";
-    };
-
-    patchPhase = ''
-      runHook prePatch
-
-      patchShebangs ./src/rcode/rcd_autogen
-
-      runHook postPatch
-    '';
-
-    nativeBuildInputs = [pkgs.autoreconfHook pkgs.wrapGAppsHook3];
-    buildInputs = [pkgs.wxGTK32];
-  };
-  librepods = pkgs.stdenv.mkDerivation rec {
-    pname = "librepods";
-    version = "0.1.0-fa30d3c";
+  lsfg-vk = pkgs.llvmPackages.stdenv.mkDerivation rec {
+    pname = "lsfg-vk";
+    version = "1.0.0-git";
 
     src = pkgs.fetchFromGitHub {
-      owner = "kavishdevar";
-      repo = "librepods";
-      rev = "fa30d3c09aa8be1737988b8b0259e1710bd3a125";
-      hash = "sha256-wKXST93GXGhlFSB7vbxbDduiF37f5wIcUxsz7M2tGJk=";
+      owner = "PancakeTAS";
+      repo = "lsfg-vk";
+      rev = "f17e9ce746ba3fe2dc46e5a22145af6fb389c615";
+      hash = "sha256-ygNmidny1n+M54aJ36wsYbgpaO/+I0mbZ8jaCESo2rM=";
+      fetchSubmodules = true;
     };
 
+    postInstall = ''
+      substituteInPlace $out/share/vulkan/implicit_layer.d/VkLayer_LSFGVK_frame_generation.json \
+        --replace-fail "liblsfg-vk-layer.so" "$out/lib/liblsfg-vk-layer.so"
+    '';
+
     nativeBuildInputs = with pkgs; [
+      llvmPackages.clang-tools
+      llvmPackages.libllvm
       cmake
+    ];
+
+    buildInputs = [
+      pkgs.vulkan-headers
+    ];
+  };
+  wayshot = pkgs.rustPlatform.buildRustPackage (finalAttrs: {
+    pname = "wayshot";
+    version = "1.4.5";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "waycrate";
+      repo = "wayshot";
+      rev = "v${finalAttrs.version}";
+      hash = "sha256-Xw3UN0linKp0jcAYYE0eX7x/bQ97gIQPDCIY9tlEhN4=";
+    };
+
+    cargoHash = "sha256-z5cqpC+Yt0PsEj9iab+7buO+OudbtzNYJulEUE10eZY=";
+
+    nativeBuildInputs = with pkgs; [
       pkg-config
-      qt6.wrapQtAppsHook
     ];
 
     buildInputs = with pkgs; [
-      qt6.qtbase
-      qt6.qtdeclarative
-      qt6.qtconnectivity
-      qt6.qtmultimedia
-      libpulseaudio
+      pango
+      libgbm
+      libjxl
+      libGL
+      wayland
     ];
-
-    configurePhase = ''
-      cmake ./linux
-    '';
-
-    buildPhase = ''
-      make
-    '';
-
-    installPhase = ''
-      mkdir -p $out/bin
-      mv librepods $out/bin/${pname}
-    '';
-    meta = {
-      description = "AirPods libreated from Apple's ecosystem.";
-      homepage = "https://github.com/kavishdevar/librepods";
-      mainProgram = "librepods";
-      license = pkgs.lib.licenses.agpl3Only;
-      platforms = pkgs.lib.platforms.linux;
-    };
-  };
+  });
 }

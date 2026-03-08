@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   uservars,
   colorsvar,
   ...
@@ -21,16 +22,12 @@ in {
       exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30
       exec-once = ${getExe' dbus "dbus-update-activation-environment"} --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE XDG_SESSION_ID
 
-      exec-once = ${getExe regreet} && ${
-        getExe' hyprland "hyprctl"
-      } exit
+      exec-once = ${getExe regreet} -l debug && ${getExe' hyprland "hyprctl"} exit
     '';
   in {
     settings = {
       default_session = {
-        command = "${
-          getExe hyprland
-        } --config ${greetdHyprlandConfig} > /tmp/hyprland-log-out.txt 2>&1";
+        command = "${getExe pkgs.hyprland} --config ${greetdHyprlandConfig} > /tmp/hyprland-log-out.txt 2>&1";
         user = "greeter";
       };
     };
@@ -40,7 +37,7 @@ in {
   programs.regreet = {
     enable = true;
     theme = {
-      #      package = pkgs.dynamic-color-gtk-theme;
+      package = inputs.dcgt.packages.${pkgs.stdenv.hostPlatform.system}.default;
       name = "Dynamic-Color-GTK-Theme";
     };
     cursorTheme = {

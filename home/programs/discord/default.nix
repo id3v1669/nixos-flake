@@ -6,7 +6,10 @@
   ...
 }: {
   home.packages = with pkgs; [
-    discord
+    #discord
+    (discord.override {
+      withEquicord = true;
+    })
     equibop # equibop(unofficial discord app)
     vesktop
     arrpc # rpc for discord(equibop)

@@ -1,12 +1,12 @@
 {config, ...}: {
   wayland.windowManager.hyprland.settings = {
     windowrule = [
-      "move 69% 6%,    class:nm-connection-editor"
-      "size 30% 65%,   class:nm-connection-editor"
-      "move 66.15% 6%, class:blueman-manager"
-      "size 37% 71.5%, class:blueman-manager"
-      "move 66.15% 6%, class:.blueman-manager-wrapped"
-      "size 37% 71.5%, class:.blueman-manager-wrapped"
+      "move 69% 6%,    match:class  nm-connection-editor"
+      "size 30% 65%,   match:class  nm-connection-editor"
+      "move 66.15% 6%, match:class  blueman-manager"
+      "size 37% 71.5%, match:class  blueman-manager"
+      "move 66.15% 6%, match:class  .blueman-manager-wrapped"
+      "size 37% 71.5%, match:class  .blueman-manager-wrapped"
     ];
     source = [
       "${config.home.homeDirectory}/.config/hypr/test.conf"
@@ -61,8 +61,8 @@
       echo "monitor=Unknown-1,disabled" >> $path
 
       if [ "$resolution" == "igpu" ]; then
-         echo "windowrule=move 69% 6%, class:org.pulseaudio.pavucontrol" >> $path
-         echo "windowrule=size 30% 65%, class:org.pulseaudio.pavucontrol" >> $path
+         echo "windowrule=move 69% 6%, match:class  org.pulseaudio.pavucontrol" >> $path
+         echo "windowrule=size 30% 65%, match:class  org.pulseaudio.pavucontrol" >> $path
       fi
 
       if [ "$resolution" == "egpu" ]; then

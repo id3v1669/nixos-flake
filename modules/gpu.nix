@@ -76,7 +76,7 @@
     ++ lib.lists.optionals (gpuvar.type == "nvidia" && gpuvar.tech != "nvk") [
       "nvidia"
     ]
-    ++ lib.lists.optionals (gpuvar.type == "amd" || (cpuvar.type == "amd" && cpuvar.hasIntegrated)) ["amdgpu" "radeon" "amd"];
+    ++ lib.lists.optionals (gpuvar.type == "amd" || (cpuvar.type == "amd" && cpuvar.hasIntegrated)) ["amdgpu" "radeon"];
   environment = {
     systemPackages =
       [
