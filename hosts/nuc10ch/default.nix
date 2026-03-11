@@ -12,10 +12,10 @@
     ./../../modules/sound.nix
     ./../../modules/gpu.nix
     ./../../modules/security.nix
-    ./../../modules/swhkdp.nix
     ./../../modules/sudo.nix
-    ./../../modules/sops.nix
+    ./../../modules/swhkdp.nix
     ./../../modules/bluetooth.nix
+    #./../../modules/odoo.nix
     ./../../modules/greeters/regreet.nix
   ];
 
@@ -40,13 +40,13 @@
     systemPackages = with pkgs; [
     ];
     etc."hypr/monitor-init.conf".text = ''
-      monitor=DP-1,3440x1440@100,0x0,1
-      monitor=HDMI-A-2,disable
+      #monitor=DP-1,3440x1440@100,0x0,1
+      #monitor=HDMI-A-2,disable
     '';
   };
   nix.settings = {
     cores = 8;
-    substituters = ["https://nix-gaming.cachix.org"];
-    trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
+    #substituters = ["https://nix-gaming.cachix.org"];
+    #trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
   };
 }

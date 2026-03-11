@@ -31,7 +31,6 @@
     eog # image viewer
     ffmpegthumbnailer # thumbnails for video files
     lutgen # image with filter generator
-    hyprpaper # wallpapers
 
     # chat
     zoom-us

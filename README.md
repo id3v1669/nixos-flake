@@ -27,7 +27,7 @@ NixOS flake with home manager
 | WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel), nvidia native | - |
 | launcher | anyrun | - | - |
 | bar | eww | fork of eww | - |
-| background | hyprpaper | - | - |
+| background | awww | - | - |
 | portals | gtk and hyprland | - | - |
 | login manager | regreet | - | - |
 | lockscreen | hyprlock | - | - |

@@ -7,27 +7,12 @@
     #./../security.nix
   ];
   home.packages = with pkgs; [
-    # gui
-    gimp # image editing
-
     # text & docs
     joplin-desktop # note taking app
 
     # games
     (prismlauncher.override {
-      jdks = with pkgs; [jdk25 zulu];
+      jdks = with pkgs; [jdk25 zulu zulu17];
     })
-
-    # vid photo etc
-    libsForQt5.kdenlive # video editing
-
-    #testing
-    sysbench
-    phoronix-test-suite
-    stress
-    nur.repos.tarantoj.nudelta
-
-    osu-lazer-bin
-    inputs.waysip.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

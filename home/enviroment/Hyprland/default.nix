@@ -89,14 +89,13 @@ in {
     };
     extraConfig = ''
       #----------------startup commands-----------------
-      exec-once = hyprpaper                                             # hyprpaper start
       exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30    # set cursor as hyprland doesn't respect gtk
       exec-once = swhks &                                               # used command as systemd service starts it in isolation
       #-------------------------------------------------
 
       #-----------------startup scripts-----------------
+      exec-once = wallpaper-autostart
       exec-once = eww-launcher                                          # eww launcher
-      exec-once = wallpaper-autostart                                   # lutgen and wallpaper starter
       #-------------------------------------------------
 
       #source = ${config.home.homeDirectory}/.config/hypr/colors
@@ -137,12 +136,4 @@ in {
       }
     '';
   };
-
-  home.file.".config/hypr/hyprpaper.conf".text = ''
-    wallpaper {
-      monitor =
-      path = /etc/backgrounds/${colorsvar}/${uservars.wp}
-      fit_mode = cover
-    }
-  '';
 }

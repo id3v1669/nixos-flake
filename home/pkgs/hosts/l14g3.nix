@@ -7,11 +7,9 @@
     #./../security.nix
   ];
   home.packages = with pkgs; [
-    # gui
-    #gimp # image editing
-
     # text & docs
     joplin-desktop # note taking app
+    waysip
 
     # games
     (prismlauncher.override {
@@ -28,9 +26,8 @@
 
     qxmledit
     czkawka-full
-    q
     yt-dlp
-    stable.megasync
+    megasync
     wxedid
   ];
 }

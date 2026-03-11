@@ -12,7 +12,7 @@
 
   boot = {
     kernelModules = ["kvm-intel"];
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernelPackages = pkgs.linuxPackages_zen;
     kernel.sysctl = {
       "kernel.unprivileged_userns_clone" = 1;
       "vm.max_map_count" = 2147483642;
@@ -24,20 +24,20 @@
       v4l2loopback
     ];
     initrd = {
-      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "usbhid"];
+      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "uas" "sd_mod" "usbhid"];
       kernelModules = ["amdgpu"];
+      luks.devices.primary.device = "/dev/disk/by-label/luks_primary";
     };
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/fddd6838-2b28-411e-bb4c-94d6b16f8f5f";
+    device = "/dev/disk/by-label/nixos";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/E554-A623";
+    device = "/dev/disk/by-uuid/364C-9E75";
     fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
   };
 
   swapDevices = [];

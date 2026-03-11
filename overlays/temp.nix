@@ -1,4 +1,26 @@
 final: pkgs: {
+  waysip = pkgs.rustPlatform.buildRustPackage rec {
+      pname = "waysip";
+      version = "0.6.0";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "waycrate";
+        repo = "waysip";
+        rev = "2e53cff144d4ca0484b05aa1a8baa8475c31def6";
+        hash = "sha256-46MJRWZFFaHU/y1hOK5ji6PvpdiqYhf5A4G/RTcg2o4=";
+      };
+
+      cargoHash = "sha256-uFBXJdknDjrqeE3nAiRTavykPgqzOxR/nK40rnbSGb8=";
+
+      nativeBuildInputs = with pkgs; [
+        pkg-config
+      ];
+
+      buildInputs = with pkgs; [
+        glib
+        pango
+      ];
+    };
   lsfg-vk = pkgs.llvmPackages.stdenv.mkDerivation rec {
     pname = "lsfg-vk";
     version = "1.0.0-git";
@@ -26,7 +48,35 @@ final: pkgs: {
       pkgs.vulkan-headers
     ];
   };
-  wayshot = pkgs.rustPlatform.buildRustPackage (finalAttrs: {
+  wayshot = let 
+    waysip = pkgs.rustPlatform.buildRustPackage rec {
+      pname = "waysip";
+      version = "0.6.0";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "waycrate";
+        repo = "waysip";
+        rev = "2e53cff144d4ca0484b05aa1a8baa8475c31def6";
+        hash = "sha256-46MJRWZFFaHU/y1hOK5ji6PvpdiqYhf5A4G/RTcg2o4=";
+      };
+
+      cargoHash = "sha256-uFBXJdknDjrqeE3nAiRTavykPgqzOxR/nK40rnbSGb8=";
+
+      nativeBuildInputs = with pkgs; [
+        pkg-config
+      ];
+
+      buildInputs = with pkgs; [
+        glib
+        pango
+        #cairo
+      ];
+      # postFixup = ''
+      #   patchelf $out/bin/waysip \
+      #     --add-rpath ${lib.makeLibraryPath buildInputs}
+      # '';
+    };
+  in pkgs.rustPlatform.buildRustPackage (finalAttrs: {
     pname = "wayshot";
     version = "1.4.5";
 
@@ -41,6 +91,7 @@ final: pkgs: {
 
     nativeBuildInputs = with pkgs; [
       pkg-config
+      waysip
     ];
 
     buildInputs = with pkgs; [

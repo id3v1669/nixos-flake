@@ -27,7 +27,7 @@ in {
   in {
     settings = {
       default_session = {
-        command = "${getExe pkgs.hyprland} --config ${greetdHyprlandConfig} > /tmp/hyprland-log-out.txt 2>&1";
+        command = "${getExe' pkgs.hyprland "start-hyprland"} -- --config ${greetdHyprlandConfig} > /tmp/hyprland-log-out.txt 2>&1";
         user = "greeter";
       };
     };

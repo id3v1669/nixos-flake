@@ -7,6 +7,14 @@
     nur.url = "github:nix-community/NUR";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
+    hyprland = {
+      url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    awww = {
+      url = "git+https://codeberg.org/LGFae/awww";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     lsfg-vk = {
       url = "github:pabloaul/lsfg-vk-flake/main";
       inputs.nixpkgs.follows = "nixpkgs";

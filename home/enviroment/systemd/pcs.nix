@@ -41,4 +41,17 @@ in {
     };
     Install = {WantedBy = ["graphical-session.target"];};
   };
+  # wallpaper-autostart script fails with daemon, so we need to start from DE/WM autostart
+  systemd.user.services.awww-daemon = {
+    Unit = {
+      Description = "awww daemon";
+      After = [ "graphical-session-pre.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.awww}/bin/awww-daemon";
+      Restart = "on-failure";
+    };
+    Install = {WantedBy = ["graphical-session.target"];};
+  };
 }

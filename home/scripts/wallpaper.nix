@@ -12,20 +12,11 @@ writeShellApplication {
   runtimeInputs = with pkgs;
     [
       lutgen
-    ]
-    ++ lib.lists.optionals (envir == "Hyprland") [
-      hyprpaper
+      awww
     ];
   text = let
     imageFile = ./../../assets/wallpapers/${uservars.wp};
     clp = config.palette;
-    launch =
-      if envir == "Hyprland"
-      then ''
-        kill "$(pidof hyprpaper)"
-        hyprpaper &
-      ''
-      else '''';
   in ''
     set +o errexit
     set +o nounset
@@ -45,6 +36,6 @@ writeShellApplication {
       mv /etc/backgrounds/${colorsvar}/*$_image /etc/backgrounds/${colorsvar}/$_image
     fi
 
-    ${launch}
+    awww img -t 'fade' /etc/backgrounds/${colorsvar}/$_image
   '';
 }
