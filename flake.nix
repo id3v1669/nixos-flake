@@ -7,10 +7,6 @@
     nur.url = "github:nix-community/NUR";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
-    hyprland = {
-      url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     awww = {
       url = "git+https://codeberg.org/LGFae/awww";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -108,6 +104,36 @@
       l14g3hypr = mkSystem {
         hostname = "l14g3";
         envir = "Hyprland";
+        cpuvar = {
+          type = "amd";
+          hasIntegrated = true;
+          integratedBroken = false;
+        };
+        bootloader = {
+          type = "opencore";
+          timeout = 7;
+        };
+        desk = "laptop";
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          domain = "none";
+          wp = "default3.png";
+          owner = "id3v1669";
+          sleeptimeout = 1200;
+        };
+        brightnesctrl = {
+          up = "light -A 5";
+          down = "light -U 5";
+        };
+        gpuvar = {
+          type = "amd";
+          tech = "amd";
+        };
+      };
+      l14g3kde = mkSystem {
+        hostname = "l14g3";
+        envir = "KDE";
         cpuvar = {
           type = "amd";
           hasIntegrated = true;

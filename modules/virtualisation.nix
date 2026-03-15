@@ -40,12 +40,8 @@ in {
       };
     };
     podman = {
-      enable = !notsrv; # podman for containers on vps
+      enable = true;
       extraPackages = [stable.podman-compose];
-    };
-    docker = {
-      enable = notsrv; # docker for containers on local pc
-      extraPackages = [stable.docker-compose];
     };
   };
   users.users.${uservars.name}.extraGroups =

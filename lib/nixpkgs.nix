@@ -14,7 +14,6 @@ with allSpecialArgs; {
     inputs.nix-minecraft.overlay
     inputs.cti.overlays.default
     inputs.awww.overlays.default
-    inputs.hyprland.overlays.default
     (import ./../overlays/uutils)
     (import ./../overlays/temp.nix)
     (import ./../overlays/steam.nix)

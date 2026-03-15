@@ -23,10 +23,19 @@
     #./../../modules/odoo.nix
     ./../../modules/greeters/regreet.nix
   ];
-
   hardware = {
     enableAllFirmware = true;
     uinput.enable = true;
+    amdgpu.opencl.enable = true;
+    graphics.extraPackages = with pkgs; [
+      rocmPackages.clr.icd
+    ];
+  };
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-rocm;
+    rocmOverrideGfx = "10.3.0";
+    # loadModels = [ "qwen3:14b" ];
   };
   networking = {
     firewall.enable = false;

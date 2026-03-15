@@ -8,15 +8,14 @@
   inputs,
   ...
 }: let
-  hyprctl = "${lib.getExe' pkgs.hyprland "hyprctl"}";
   fhtipc = "${lib.getExe' pkgs.fht-compositor "fht-compositor"} ipc action";
-  playerctl = "${lib.getExe' pkgs.playerctl "playerctl"}";
 in {
   environment.systemPackages = [
     inputs.swhkdp.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
   services.swhkdp = {
     enable = true;
+    username = uservars.name;
     ignore = [
       "Sony Interactive Entertainment DualSense Wireless Controller"
       "Sony Interactive Entertainment DualSense Wireless Controller Motion Sensors"
@@ -26,87 +25,87 @@ in {
     settings = let
       killactive =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch killactive"
+        then "hyprctl dispatch killactive"
         else if envir == "fht-compositor"
         then "${fhtipc} close-window"
         else "";
       togglesplit =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch layoutmsg togglesplit"
+        then "hyprctl dispatch layoutmsg togglesplit"
         else "echo 'no envir'";
       togglefloating =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch togglefloating"
+        then "hyprctl dispatch togglefloating"
         else if envir == "fht-compositor"
         then "${fhtipc} float-window"
         else "";
       pseudo =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch pseudo"
+        then "hyprctl dispatch pseudo"
         else "";
       nextworkspace =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch workspace e+1"
+        then "hyprctl dispatch workspace e+1"
         else if envir == "fht-compositor"
         then "${fhtipc} focus-next-workspace"
         else "";
       prevworkspace =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch workspace e-1"
+        then "hyprctl dispatch workspace e-1"
         else if envir == "fht-compositor"
         then "${fhtipc} focus-previous-workspace"
         else "";
       movenextworkspace =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch movetoworkspace e+1"
+        then "hyprctl dispatch movetoworkspace e+1"
         else "";
       moveprevworkspace =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch movetoworkspace e-1"
+        then "hyprctl dispatch movetoworkspace e-1"
         else "";
       fullscreen =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch fullscreen 0"
+        then "hyprctl dispatch fullscreen 0"
         else if envir == "fht-compositor"
         then "${fhtipc} fullscreen-window"
         else "";
       maximize =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch fullscreen 1"
+        then "hyprctl dispatch fullscreen 1"
         else if envir == "fht-compositor"
         then "${fhtipc} maximize-window"
         else "";
       nextactivewindow =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch cyclenext"
+        then "hyprctl dispatch cyclenext"
         else if envir == "fht-compositor"
         then "${fhtipc} focus-next-window"
         else "";
       movetoworkspace =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch movetoworkspace"
+        then "hyprctl dispatch movetoworkspace"
         else if envir == "fht-compositor"
         then "${fhtipc} send-window-to-workspace"
         else "";
       workspace =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch workspace"
+        then "hyprctl dispatch workspace"
         else if envir == "fht-compositor"
         then "${fhtipc} focus-workspace"
         else "";
       movefocus =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch movefocus "
+        then "hyprctl dispatch movefocus "
         else "";
       exit =
         if envir == "Hyprland"
-        then "${hyprctl} dispatch exit"
+        then "hyprctl dispatch exit"
         else if envir == "fht-compositor"
         then "${fhtipc} quit"
         else "";
       reload =
         if envir == "Hyprland"
-        then "${hyprctl} reload"
+        then "hyprctl reload"
         else if envir == "fht-compositor"
         then "${fhtipc} reload-config"
         else "";
@@ -162,15 +161,15 @@ in {
             };
             "KEY_PLAYPAUSE" = {
               action_type = "singlecommand";
-              action = "${playerctl} play-pause";
+              action = "playerctl play-pause";
             };
             "KEY_PREVIOUSSONG" = {
               action_type = "singlecommand";
-              action = "${playerctl} previous";
+              action = "playerctl previous";
             };
             "KEY_NEXTSONG" = {
               action_type = "singlecommand";
-              action = "${playerctl} next";
+              action = "playerctl next";
             };
             "KEY_VOLUMEDOWN" = {
               action_type = "singlecommand";
