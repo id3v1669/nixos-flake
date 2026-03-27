@@ -48,58 +48,30 @@ final: pkgs: {
       pkgs.vulkan-headers
     ];
   };
-  wayshot = let 
-    waysip = pkgs.rustPlatform.buildRustPackage rec {
-      pname = "waysip";
-      version = "0.6.0";
+  # wayshot = pkgs.rustPlatform.buildRustPackage (finalAttrs: {
+  #   pname = "wayshot";
+  #   version = "1.4.6";
 
-      src = pkgs.fetchFromGitHub {
-        owner = "waycrate";
-        repo = "waysip";
-        rev = "2e53cff144d4ca0484b05aa1a8baa8475c31def6";
-        hash = "sha256-46MJRWZFFaHU/y1hOK5ji6PvpdiqYhf5A4G/RTcg2o4=";
-      };
+  #   src = /home/user/tmpmy/wayshot;
+  #   #   pkgs.fetchFromGitHub {
+  #   #   owner = "waycrate";
+  #   #   repo = "wayshot";
+  #   #   rev = "e6719d8e714303b1fdfb34b74ac3372a64d91a51";
+  #   #   hash = "sha256-tCte42jcpU/E7965Tqw7in9nytk76WcW1OVJVhiCRk8=";
+  #   # };
 
-      cargoHash = "sha256-uFBXJdknDjrqeE3nAiRTavykPgqzOxR/nK40rnbSGb8=";
+  #   cargoHash = "sha256-/nT8omcAh47e2jV4fGwk0p9nJSwdFzH9FciTcItzY7E=";
 
-      nativeBuildInputs = with pkgs; [
-        pkg-config
-      ];
+  #   nativeBuildInputs = with pkgs; [
+  #     pkg-config
+  #   ];
 
-      buildInputs = with pkgs; [
-        glib
-        pango
-        #cairo
-      ];
-      # postFixup = ''
-      #   patchelf $out/bin/waysip \
-      #     --add-rpath ${lib.makeLibraryPath buildInputs}
-      # '';
-    };
-  in pkgs.rustPlatform.buildRustPackage (finalAttrs: {
-    pname = "wayshot";
-    version = "1.4.5";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "waycrate";
-      repo = "wayshot";
-      rev = "v${finalAttrs.version}";
-      hash = "sha256-Xw3UN0linKp0jcAYYE0eX7x/bQ97gIQPDCIY9tlEhN4=";
-    };
-
-    cargoHash = "sha256-z5cqpC+Yt0PsEj9iab+7buO+OudbtzNYJulEUE10eZY=";
-
-    nativeBuildInputs = with pkgs; [
-      pkg-config
-      waysip
-    ];
-
-    buildInputs = with pkgs; [
-      pango
-      libgbm
-      libjxl
-      libGL
-      wayland
-    ];
-  });
+  #   buildInputs = with pkgs; [
+  #     pango
+  #     libgbm
+  #     libjxl
+  #     libGL
+  #     wayland
+  #   ];
+  # });
 }

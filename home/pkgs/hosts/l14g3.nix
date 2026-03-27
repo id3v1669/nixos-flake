@@ -11,6 +11,8 @@
     joplin-desktop # note taking app
     waysip
 
+    gimp
+
     # games
     (prismlauncher.override {
       jdks = with pkgs; [jdk25 zulu zulu17];

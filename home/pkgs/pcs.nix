@@ -24,6 +24,7 @@
     tor-browser # tor browser for research
 
     # vid photo etc
+    awww # wallpaper daemon
     cameractrls-gtk4 # camera controls
     vlc # video player
     mpv # video player
@@ -41,7 +42,7 @@
     lutris # game launcher
 
     # files
-    cosmic-files # file manager
+    #cosmic-files # file manager
     nautilus # backup file manager
     zip # create .zip arcs
     p7zip # .7z arcs

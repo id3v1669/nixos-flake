@@ -38,6 +38,10 @@ in {
       protontricks.enable = true;
       extest.enable = true;
     };
+    nautilus-open-any-terminal = {
+      enable = true;
+      terminal = "wezterm";
+    };
     gpu-screen-recorder.enable = true; # gpu screen recorder
     traceroute.enable = true; # traceroute
     xwayland.enable = true; # xwayland for x11 apps

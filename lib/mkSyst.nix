@@ -71,7 +71,6 @@
       modules = [
         (./.. + "/hosts/${hostname}")
         inputs.lsfg-vk.nixosModules.default
-        inputs.swhkdp.nixosModules.default
         inputs.sops-nix.nixosModules.sops
         inputs.base16x2.nixosModules.default
         inputs.home-manager.nixosModules.home-manager
