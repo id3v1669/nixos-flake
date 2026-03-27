@@ -28,7 +28,6 @@
 
         "pci=nocrs" # Ignore ACPI resource conflicts: required to avoid xhci_hcd error
 
-
         # temporary returned back as egpu-init.efi overflows nvram and needs to be fixed
         #"pci=realloc"
         #"pci=assign-busses"

@@ -8,6 +8,7 @@ with allSpecialArgs; {
   config.allowUnfree = true;
   overlays = [
     inputs.aplin.overlays.default
+    inputs.claude-code.overlays.default
     inputs.prism-launcher.overlays.default
     inputs.nur.overlays.default
     inputs.eww.overlays.default

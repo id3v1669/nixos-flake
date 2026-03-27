@@ -11,6 +11,10 @@
       url = "git+https://codeberg.org/LGFae/awww";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    claude-code = {
+      url = "github:sadjow/claude-code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     lsfg-vk = {
       url = "github:pabloaul/lsfg-vk-flake/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,10 +61,6 @@
     };
     swhkdp = {
       url = "github:id3v1669/swhkdp";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    waysip = {
-      url = "github:waycrate/waysip";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     prism-launcher = {

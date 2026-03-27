@@ -9,7 +9,8 @@
   home.packages = with pkgs; [
     # text & docs
     joplin-desktop # note taking app
-    waysip
+
+    gimp
 
     # games
     (prismlauncher.override {

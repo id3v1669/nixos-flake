@@ -64,6 +64,9 @@
         "[rust]" = {
           "editor.semanticHighlighting.enabled" = false;
         };
+        "claudeCode.claudeProcessWrapper" = "${pkgs.claude-code}/bin/claude";
+        "claudeCode.selectedModel" = "opus";
+        "claudeCode.preferredLocation" = "panel";
         "window.titleBarStyle" = "custom";
         "telemetry.telemetryLevel" = "off";
         "window.autoDetectColorScheme" = false;

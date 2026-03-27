@@ -45,8 +45,8 @@ in {
   systemd.user.services.awww-daemon = {
     Unit = {
       Description = "awww daemon";
-      After = [ "graphical-session-pre.target" ];
-      PartOf = [ "graphical-session.target" ];
+      After = ["graphical-session-pre.target"];
+      PartOf = ["graphical-session.target"];
     };
     Service = {
       ExecStart = "${pkgs.awww}/bin/awww-daemon";

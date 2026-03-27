@@ -9,11 +9,10 @@
 }:
 writeShellApplication {
   name = "wallpaper-autostart";
-  runtimeInputs = with pkgs;
-    [
-      lutgen
-      awww
-    ];
+  runtimeInputs = with pkgs; [
+    lutgen
+    awww
+  ];
   text = let
     imageFile = ./../../assets/wallpapers/${uservars.wp};
     clp = config.palette;

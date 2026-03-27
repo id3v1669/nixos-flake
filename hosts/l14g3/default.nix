@@ -79,7 +79,8 @@
   environment = {
     systemPackages = with pkgs; [
       ryzenadj
-      protonvpn-gui
+      proton-vpn
+      claude-code
     ];
     etc."hypr/monitor-init.conf".text = ''
       monitor=eDP-1,1920x1080@60,0x0,1
