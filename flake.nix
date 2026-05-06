@@ -188,7 +188,7 @@
         envir = "none";
         desk = "server";
         bootloader = {
-          type = "grub";
+          type = "systemd";
           timeout = 1;
           device = "/dev/sda";
         };

@@ -18,8 +18,15 @@
       master = {
         enable = true;
         autoStart = false;
-        package = pkgs.fabricServers.fabric-1_21_10.override {
+        package = pkgs.fabricServers.fabric-1_21_11.override {
           jre_headless = pkgs.zulu;
+        };
+        operators = {
+          id3v1669 = {
+            uuid = "adfca07e-7c7a-3565-b70f-831f2bb095fd";
+            level = 4;
+    				bypassesPlayerLimit = true;
+          };
         };
         jvmOpts = lib.concatStringsSep " " [
           "-Xms12G"
@@ -55,92 +62,77 @@
           view-distance = 10;
           online-mode = false;
           allow-flight = true;
+          spawn-protection = 0;
         };
         symlinks = {
           "mods" = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
             tt20 = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/YS3ZignI/versions/Htc1MpMN/tt20-0.7.2%2Bmc1.21.9.jar";
-              hash = "sha256-zjiYTOb0gGXQJ4elnhxwsx/STq+0Cmz/xwdnx/Du5Uc=";
-            };
-            Async = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/vEC2jm6I/versions/jW2W1uoQ/async-fabric-0.1.8%2Balpha.1-1.21.10.jar";
-              hash = "sha256-Up88/NMQBXU2tZZVoKTCNQItyxO7xALTBx1c0XgLI9Q=";
+             url = "https://cdn.modrinth.com/data/YS3ZignI/versions/rnlrw482/tt20-0.8.0%2Bmc1.21.11-fabric.jar";
+             hash = "sha256-sjl//IUe2b8hTnYGAH594qL+diKXaedkHuRTdxirSSc=";
             };
             Terralith = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/JKg71Gq0/Terralith_1.21.x_v2.5.13.jar";
-              hash = "sha256-lI2ZmwJuNE/XIBUHeJrrKCL0eKUtxE2r4evMFJVIx1I=";
+              url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/TFW9ZxPQ/Terralith_1.21.x_v2.5.14.jar";
+              hash = "sha256-3mLFiOb5f+KgkjyQVBuRYv7MoPX9h6uusJpevlQg238=";
             };
-            Quartz = pkgs.fetchurl {
-              url = "https://id3v1669.com/craftable_quartz-1.0.17.jar";
-              hash = "sha256-/X4XsnSaU0NqdOMFsoy+wGG9wFlTO4TZZ9DxZUez6I0=";
-            };
-            Coal = pkgs.fetchurl {
-              url = "https://id3v1669.com/craftable_charcoal_block-1.0.17.jar";
-              hash = "sha256-YbzZ4JRz0ewX5zpX1h4JRbYfGwaaZ1HUGJn9GPo37Rc=";
-            };
-            GApple = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/4CVPn6z8/versions/1EsDlHHp/craftable_enchanted_golden_apple-1.0.17.jar";
-              hash = "sha256-y2Fqo2X5np+X7Ttpzpy6oRDBtW83y9I+wRIFF9N2knM=";
+            Crafts = pkgs.fetchurl {
+              url = "https://id3v1669.com/craftable_my-1.0.19.jar";
+              hash = "sha256-U6xmumTcX6NyFYPnm3e0XcJGNFJQO/kSSsxH/aAur8o=";
             };
             SkinRestorer = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/ghrZDhGW/versions/MKWfnXfO/skinrestorer-2.4.3%2B1.21.9-fabric.jar";
-              hash = "sha256-ypyDuX94HyUPlUI4CrFc0Pc01lUQXgYPqP/axaCi6Hc=";
+              url = "https://cdn.modrinth.com/data/ghrZDhGW/versions/leBCMyEe/skinrestorer-2.6.0%2B1.21.11-fabric.jar";
+              hash = "sha256-GK87u4W6ffJPNPH1/Icwx6EwC2mCJrzUslSVnLh8G+0=";
             };
             ScalableLux = pkgs.fetchurl {
               url = "https://cdn.modrinth.com/data/Ps1zyz6x/versions/PV9KcrYQ/ScalableLux-0.1.6%2Bfabric.c25518a-all.jar";
               hash = "sha256-ekpzcThhg8dVUjtWtVolHXWsLCP0Cvik8PijNbBdT8I=";
             };
             Sleeper = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/msWvQlVW/sleep-v4.2.6.jar";
-              hash = "sha256-x6ongiWpOrIWf/q4AdHVgSgcAbpcwdE8OZj5yQG+U04=";
+              url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/fUtpj4ud/sleep-v4.3.13-mc1.21.6%2B.jar";
+              hash = "sha256-QCphU5O/EX53T6erJEOKbIVNTmDwXsJVqssR/q1/NYM=";
             };
             EasyAuth = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/aZj58GfX/versions/4ymSCTJS/easyauth-mc1.21.9-3.4.0.jar";
-              hash = "sha256-/QbS8YOdfdNsmJiPYtlsClBEWDAbl6DNtQTez/6nQDc=";
+              url = "https://cdn.modrinth.com/data/aZj58GfX/versions/ZhMilNYO/easyauth-mc1.21.11-3.4.2.jar";
+              hash = "sha256-4dk3jY0gBF7mFW8snUSChtDa69TqnBYSLzePTt9vW4c=";
             };
             Clumps = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/Wnxd13zP/versions/8BikzIOh/Clumps-fabric-1.21.10-28.0.0.1.jar";
-              hash = "sha256-CwjQ3RQWUOtrO4Bg4gNkKiKWqwDElMvwPItgbZLBFdI=";
+              url = "https://cdn.modrinth.com/data/Wnxd13zP/versions/OgBE8Rz4/Clumps-fabric-1.21.11-29.0.0.1.jar";
+              hash = "sha256-4yESCFKYF+XvzQ4u6W+cjFFui7reWihs1rii9OcPYWM=";
             };
             JorneyMap = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/lfHFW1mp/versions/ZVnVNvom/journeymap-fabric-1.21.10-6.0.0-beta.53.jar";
-              hash = "sha256-pqgZ6L+RFSZ8wT8j13e5U0xn/h775T1dgZ8yqddzdDg=";
+              url = "https://cdn.modrinth.com/data/lfHFW1mp/versions/VX8GZXvv/journeymap-fabric-1.21.11-6.0.0-beta.68.jar";
+              hash = "sha256-mub/xOUWLTRuqNLYCqURTSFamj0XnOL+CPoqhi6jqHw=";
             };
             Fabric-API = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/dQ3p80zK/fabric-api-0.138.3%2B1.21.10.jar";
-              hash = "sha256-rCB1kEGet1BZqpn+FjliQEHB1v0Ii6Fudi5dfs9jOVM=";
+              url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar";
+              hash = "sha256-hsRTqGE5Zi53VpfQOwynhn9Uc3SGjAyz49wG+Y2/7vU=";
             };
             FallingTree = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/Fb4jn8m6/versions/hDjB8uAg/FallingTree-1.21.10-1.21.10.1.jar";
-              hash = "sha256-REGT6S7u38WU4xzIEKWrVIitTj5Nic5fYrjOh08ho4c=";
+              url = "https://cdn.modrinth.com/data/Fb4jn8m6/versions/Hnj3s9Ez/FallingTree-1.21.11-1.21.11.3.jar";
+              hash = "sha256-ioo8qJVyaL91RtXmptwY8wIU4JonZdagpzUFAfSGqJc=";
             };
             Lithium = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/oGKQMdyZ/lithium-fabric-0.20.0%2Bmc1.21.10.jar";
-              hash = "sha256-567yN1D2eJgsAMQhjWIFljqZRVRFfCoWvZgY41IQAEs=";
+              url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/Ow7wA0kG/lithium-fabric-0.21.4%2Bmc1.21.11.jar";
+              hash = "sha256-UTXEHaW0PL3LKUJL3mUZUUOsQITiODTI6sBllCIBx4s=";
             };
             FerriteCore = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/uXXizFIs/versions/MGoveONm/ferritecore-8.0.2-fabric.jar";
-              hash = "sha256-LGn9gXMEu2l1zUti/TK/IaXVyPDDUj6sxzTAwlB+2nc=";
+              url = "https://cdn.modrinth.com/data/uXXizFIs/versions/Ii0gP3D8/ferritecore-8.2.0-fabric.jar";
+              hash = "sha256-92vXYMv0goDMfEMYD1CJpGI1+iTZNKis89oEpmTCxxU=";
             };
             C2ME = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/VSNURh3q/versions/uNick7oj/c2me-fabric-mc1.21.10-0.3.5.1.0.jar";
-              hash = "sha256-pqUSN/OqZOF7p3g/iKO71c2830/eDg7OsFkhZ0AR9GQ=";
+              url = "https://cdn.modrinth.com/data/VSNURh3q/versions/olrVZpJd/c2me-fabric-mc1.21.11-0.3.6.0.0.jar";
+              hash = "sha256-DwWNNWBfzM3xl+WpB3QDSubs3yc/NMMV3c1I9QYx3f8=";
             };
             Architectury = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/lhGA9TYQ/versions/8Ing3Dbx/architectury-18.0.6-fabric.jar";
-              hash = "sha256-UHu/MENJbwxEBorlvTEEJ3X5UmJOs5iOPImQZ+3X3FU=";
+              url = "https://cdn.modrinth.com/data/lhGA9TYQ/versions/uNdfrcQ8/architectury-19.0.1-fabric.jar";
+              hash = "sha256-ZhOV1vC+8NOnlOLbdN9WAMc4e6b7lGsXIxWXcgGmZ8c=";
             };
             Cloth-Config = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/9s6osm5g/versions/qMxkrrmq/cloth-config-20.0.149-fabric.jar";
-              hash = "sha256-BmpEfjQjoYLayMSyWmk8cmMIo9PLPfMW1ViAmbR1F4c=";
-            };
-            Krypton = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/O9LmWYR7/krypton-0.2.10.jar";
-              hash = "sha256-lCkdVpCgztf+fafzgP29y+A82sitQiegN4Zrp0Ve/4s=";
+              url = "https://cdn.modrinth.com/data/9s6osm5g/versions/xuX40TN5/cloth-config-21.11.153-fabric.jar";
+              hash = "sha256-ikDITl7N5SWs+2xOE7gALaz8o++VNNf69ugEllb0I8g=";
             };
             JEI = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/u6dRKJwZ/versions/pu0hh0wd/jei-1.21.10-fabric-26.1.0.16.jar";
-              hash = "sha256-yHvAvRbAz7G8/NzwQO3vTKNi9LSg7Sh24TsR7nA4+2M=";
+              url = "https://cdn.modrinth.com/data/u6dRKJwZ/versions/N7YozqFm/jei-1.21.11-fabric-27.4.0.15.jar";
+              hash = "sha256-hfgfqATZOGg9gWklQ5wtCCq3wZXmWBnWbPmx/EgRrIA=";
             };
             Anvil = pkgs.fetchurl {
               url = "https://cdn.modrinth.com/data/LrtCyjyV/versions/sRRYKoj0/too-expensive-removed-v1.2.5.jar";
