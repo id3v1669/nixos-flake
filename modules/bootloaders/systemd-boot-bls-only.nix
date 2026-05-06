@@ -34,14 +34,13 @@ with lib; let
     replacements = rec {
       inherit (builtins) storeDir;
       inherit (pkgs) python3;
-      systemd = config.systemd.package;
       bootspecTools = config.boot.bootspec.package;
       nix = config.nix.package.out;
       configurationLimit =
         if cfg.configurationLimit == null
         then 0
         else cfg.configurationLimit;
-      inherit (efi) efiSysMountPoint canTouchEfiVariables;
+      inherit (efi) efiSysMountPoint;
       bootMountPoint =
         if cfg.xbootldrMountPoint != null
         then cfg.xbootldrMountPoint

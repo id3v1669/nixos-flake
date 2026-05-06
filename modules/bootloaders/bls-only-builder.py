@@ -1,5 +1,5 @@
 #! @python3@/bin/python3 -B
-    
+
 import argparse
 import ctypes
 import datetime
@@ -10,7 +10,6 @@ import shutil
 import subprocess
 import sys
 import tempfile
-import warnings
 import json
 from typing import NamedTuple, Any, Sequence
 from dataclasses import dataclass
@@ -25,9 +24,7 @@ NIXOS_DIR = Path("@nixosDir@".strip("/")) # Path relative to the XBOOTLDR or ESP
 BOOTSPEC_TOOLS = "@bootspecTools@"
 DISTRO_NAME = "@distroName@"
 NIX = "@nix@"
-SYSTEMD = "@systemd@"
 CONFIGURATION_LIMIT = int("@configurationLimit@")
-CAN_TOUCH_EFI_VARIABLES = "@canTouchEfiVariables@"
 COPY_EXTRA_FILES = "@copyExtraFiles@"
 CHECK_MOUNTPOINTS = "@checkMountpoints@"
 STORE_DIR = "@storeDir@"
@@ -229,19 +226,15 @@ def get_generations(profile: str | None = None) -> list[SystemIdentifier]:
         ],
         stdout=subprocess.PIPE,
     ).stdout
-    gen_lines = gen_list.split("\n")
-    gen_lines.pop()
-
-    configurationLimit = CONFIGURATION_LIMIT
     configurations = [
         SystemIdentifier(
             profile=profile,
             generation=int(line.split()[0]),
             specialisation=None
         )
-        for line in gen_lines
+        for line in gen_list.splitlines()
     ]
-    return configurations[-configurationLimit:]
+    return configurations[-CONFIGURATION_LIMIT:]
 
 
 def remove_old_entries(gens: list[SystemIdentifier]) -> None:
@@ -295,10 +288,6 @@ def install_bootloader(args: argparse.Namespace) -> None:
         if e.errno != errno.ENOENT:
             raise
         machine_id = None
-
-    if os.getenv("NIXOS_INSTALL_GRUB") == "1":
-        warnings.warn("NIXOS_INSTALL_GRUB env var deprecated, NIXOS_INSTALL_BOOTLOADER", DeprecationWarning)
-        os.environ["NIXOS_INSTALL_BOOTLOADER"] = "1"
 
     (BOOT_MOUNT_POINT / NIXOS_DIR).mkdir(parents=True, exist_ok=True)
     (BOOT_MOUNT_POINT / "loader/entries").mkdir(parents=True, exist_ok=True)
