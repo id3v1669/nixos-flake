@@ -1,12 +1,16 @@
 {
   pkgs,
+  stable,
   lib,
   ...
 }: {
-  services.blueman.enable = true;
+  services.blueman = {
+    enable = true;
+    withApplet = true;
+  };
   hardware.bluetooth = {
     enable = true;
-    package = pkgs.bluez.override {
+    package = stable.bluez.override {
       enableExperimental = true;
     };
     settings = {

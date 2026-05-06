@@ -21,6 +21,9 @@
             "bluez5.codecs" = ["sbc_xq" "aac"];
             "bluez5.roles" = ["a2dp_sink"];
           };
+          "wireplumber.settings" = {
+            "bluetooth.autoswitch-to-headset-profile" = false;
+          };
         };
       };
     };

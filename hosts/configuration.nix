@@ -77,6 +77,7 @@
   };
   system.stateVersion = "${curversion}";
   systemd.services.mandb.enable = false;
+
   system.replaceDependencies.replacements = let
     coreutils-full-name =
       "coreuutils-full"

@@ -31,7 +31,6 @@ writeShellApplication {
     sleep 2
     eww open-many popup-power-window calendar-popup-window bar
     sleep 2
-    #systemctl --user restart blueman-applet
     eww update soundvol="$(amixer sget Master | grep -o "[0-9]*%" | head -1)"
     eww-ws &
     eww-volume &

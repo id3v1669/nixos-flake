@@ -7,7 +7,6 @@ with allSpecialArgs; {
   inherit system;
   config.allowUnfree = true;
   overlays = [
-    inputs.aplin.overlays.default
     inputs.claude-code.overlays.default
     inputs.prism-launcher.overlays.default
     inputs.nur.overlays.default

@@ -28,9 +28,11 @@
       ./enviroment/cosmic
       ./enviroment/${envir}
     ]
-    ++ lib.lists.optionals (envir == "Hyprland") [
+    ++ lib.lists.optionals (envir == "Hyprland" || envir == "sway") [
       ./enviroment/eww
       ./enviroment/swaync
+    ]
+    ++ lib.lists.optionals (envir == "Hyprland") [
       ./enviroment/hyprlock
     ];
   home = {

@@ -60,7 +60,7 @@
 
     stable.retdec # decompiler
     ghidra # decompiler
-    stable.snowman # decompiler
+    #stable.snowman # decompiler DEPRECATED
     wireguard-tools # wireguard tools for experiments with vpn
 
     aircrack-ng # wifi tool

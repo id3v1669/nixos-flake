@@ -4,7 +4,6 @@
   pkgs,
   modulesPath,
   system,
-  gpuvar,
   ...
 }: {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
@@ -25,6 +24,8 @@
 
         "amd_pstate=active"
         "amd_pstate.shared_mem=0"
+
+        #"iomem=relaxed" #TEMP for data collection
 
         "pci=nocrs" # Ignore ACPI resource conflicts: required to avoid xhci_hcd error
 
@@ -50,7 +51,9 @@
 
     kernelParams = [
       "amd_iommu=on"
+      #"iomem=relaxed"#TEMP
       "iommu=pt"
+      "amd_pstate=active"
     ];
     kernel.sysctl = {
       "kernel.unprivileged_userns_clone" = 1;

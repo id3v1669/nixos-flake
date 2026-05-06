@@ -6,7 +6,7 @@
 }: {
   programs.chromium = {
     enable = true;
-    package = pkgs.ungoogled-chromium;
+    package = pkgs.chromium;
     commandLineArgs = [
       "--force-dark-mode"
       "--disable-search-engine-collection"
@@ -37,31 +37,5 @@
     dictionaries = with pkgs; [
       hunspellDictsChromium.en_US
     ];
-    # extencions are broken for ungoogled-chromium
-    # extensions = [
-    #   {
-    #     # << LibRedirect >>
-    #     id = "oladmjdebphlnjjcnomfhhbfdldiimaf";
-    #     updateUrl = "https://raw.githubusercontent.com/libredirect/browser_extension/master/src/updates/updates.xml";
-    #   }
-    #   {
-    #     # << Chromium Web Store >>
-    #     id = "ocaahdebbfolfmndjeplogmgcagdmblk";
-    #     updateUrl = "https://raw.githubusercontent.com/NeverDecaf/chromium-web-store/master/updates.xml";
-    #   }
-    #   # { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-    #   # { id = "pjbgfifennfhnbkhoidkdchbflppjncb"; } # dark reader
-    #   # { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
-    #   # { id = "bgnkhhnnamicmpeenaelnjfhikgbkllg"; } # adguard
-    #   # { id = "bkdgflcldnnnapblkhphbgpggdiikppg"; } # duckduckgo
-    #   # { id = "clngdbkpkpeebahjckkjfobafhncgmne"; } # Stylus
-    #   # { id = "ikclbgejgcbdlhjmckecmdljlpbhmbmf"; } # HTTPS Everywhere
-    #   # { id = "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"; } # Privacy Badger
-    #   # { id = "njdfdhgcmkocbgbhcioffdbicglldapd"; } # LocalCDN
-    #   {
-    #     id = "dcpihecpambacapedldabdbpakmachpb";
-    #     updateUrl = "https://raw.githubusercontent.com/iamadamdev/bypass-paywalls-chrome/master/src/updates/updates.xml";
-    #   }
-    # ];
   };
 }

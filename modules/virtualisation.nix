@@ -41,24 +41,19 @@ in {
     };
     podman = {
       enable = true;
-      extraPackages = [stable.podman-compose];
+      extraPackages = [pkgs.podman-compose];
     };
   };
-  users.users.${uservars.name}.extraGroups =
-    [
-      "video"
-      "render"
-      "kvm"
-      "qemu-libvirtd"
-      "libvirtd"
-      "input"
-      "disk"
-    ]
-    ++ (
-      if notsrv
-      then ["docker"]
-      else ["podman"]
-    );
+  users.users.${uservars.name}.extraGroups = [
+    "video"
+    "render"
+    "kvm"
+    "qemu-libvirtd"
+    "libvirtd"
+    "input"
+    "disk"
+    "podman"
+  ];
   environment = {
     systemPackages = with pkgs; [
       virglrenderer

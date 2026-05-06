@@ -15,6 +15,7 @@
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
+    bash-language-server
     nerd-fonts.terminess-ttf
     nerd-fonts.symbols-only
     nerd-fonts.cousine
@@ -29,21 +30,19 @@
     _0xproto
     fira-code-symbols
     mplus-outline-fonts.githubRelease
-    #dina-font
     proggyfonts
   ];
-
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
+    mutableExtensionsDir = true;
+
     profiles.default = {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = true;
       extensions = with pkgs.vscode-extensions;
         [
-          github.copilot
           mads-hartmann.bash-ide-vscode
-          bbenoist.nix
           jnoortheen.nix-ide
           skyapps.fish-vscode
           dotjoshjohnson.xml
@@ -61,14 +60,15 @@
           }
         ];
       userSettings = {
+        "telemetry.editStats.enabled" = false;
+        "telemetry.telemetryLevel" = "off";
+        "telemetry.feedback.enabled" = false;
+
         "[rust]" = {
           "editor.semanticHighlighting.enabled" = false;
         };
-        "claudeCode.claudeProcessWrapper" = "${pkgs.claude-code}/bin/claude";
-        "claudeCode.selectedModel" = "opus";
-        "claudeCode.preferredLocation" = "panel";
+        "workbench.colorTheme" = "Dark Modern";
         "window.titleBarStyle" = "custom";
-        "telemetry.telemetryLevel" = "off";
         "window.autoDetectColorScheme" = false;
         "editor.fontFamily" = "JetBrainsMono Nerd Font";
         "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
@@ -134,7 +134,7 @@
           "breadcrumb.activeSelectionForeground" = "${base00.hexT}";
           "breadcrumb.background" = "${base06.hexT}";
           "breadcrumb.focusForeground" = "${base00.hexT}";
-          "breadcrumb.foreground" = "${base00.hexT}cd";
+          "breadcrumb.foreground" = "${base00.hexT}";
           "checkbox.background" = "${base05.hexT}";
           "checkbox.border" = "${base07.hexT}00";
           "checkbox.foreground" = "${base00.hexT}";

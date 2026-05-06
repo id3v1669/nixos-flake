@@ -14,10 +14,11 @@ in {
     inputs.swhkdp.nixosModules.default
   ];
   environment.systemPackages = [
-    inputs.swhkdp.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.swhkdp.packages.${pkgs.stdenv.hostPlatform.system}.swhkdp-macro
   ];
   services.swhkdp = {
     enable = true;
+    package = inputs.swhkdp.packages.${pkgs.stdenv.hostPlatform.system}.swhkdp-macro;
     username = uservars.name;
     ignore = [
       "Sony Interactive Entertainment DualSense Wireless Controller"
@@ -31,16 +32,22 @@ in {
         then "hyprctl dispatch killactive"
         else if envir == "fht-compositor"
         then "${fhtipc} close-window"
+        else if envir == "sway"
+        then "swaymsg kill"
         else "";
       togglesplit =
         if envir == "Hyprland"
         then "hyprctl dispatch layoutmsg togglesplit"
+        else if envir == "sway"
+        then "swaymsg layout toggle split"
         else "echo 'no envir'";
       togglefloating =
         if envir == "Hyprland"
         then "hyprctl dispatch togglefloating"
         else if envir == "fht-compositor"
         then "${fhtipc} float-window"
+        else if envir == "sway"
+        then "swaymsg floating toggle"
         else "";
       pseudo =
         if envir == "Hyprland"
@@ -51,70 +58,96 @@ in {
         then "hyprctl dispatch workspace e+1"
         else if envir == "fht-compositor"
         then "${fhtipc} focus-next-workspace"
+        else if envir == "sway"
+        then "swaymsg workspace next"
         else "";
       prevworkspace =
         if envir == "Hyprland"
         then "hyprctl dispatch workspace e-1"
         else if envir == "fht-compositor"
         then "${fhtipc} focus-previous-workspace"
+        else if envir == "sway"
+        then "swaymsg workspace prev"
         else "";
       movenextworkspace =
         if envir == "Hyprland"
         then "hyprctl dispatch movetoworkspace e+1"
+        else if envir == "sway"
+        then "swaymsg move container to workspace next"
         else "";
       moveprevworkspace =
         if envir == "Hyprland"
         then "hyprctl dispatch movetoworkspace e-1"
+        else if envir == "sway"
+        then "swaymsg move container to workspace prev"
         else "";
       fullscreen =
         if envir == "Hyprland"
         then "hyprctl dispatch fullscreen 0"
         else if envir == "fht-compositor"
         then "${fhtipc} fullscreen-window"
+        else if envir == "sway"
+        then "swaymsg fullscreen toggle"
         else "";
       maximize =
         if envir == "Hyprland"
         then "hyprctl dispatch fullscreen 1"
         else if envir == "fht-compositor"
         then "${fhtipc} maximize-window"
+        else if envir == "sway"
+        then "swaymsg fullscreen enable"
         else "";
       nextactivewindow =
         if envir == "Hyprland"
         then "hyprctl dispatch cyclenext"
         else if envir == "fht-compositor"
         then "${fhtipc} focus-next-window"
+        else if envir == "sway"
+        then "swaymsg focus next"
         else "";
       movetoworkspace =
         if envir == "Hyprland"
         then "hyprctl dispatch movetoworkspace"
         else if envir == "fht-compositor"
         then "${fhtipc} send-window-to-workspace"
+        else if envir == "sway"
+        then "swaymsg move container to workspace"
         else "";
       workspace =
         if envir == "Hyprland"
         then "hyprctl dispatch workspace"
         else if envir == "fht-compositor"
         then "${fhtipc} focus-workspace"
+        else if envir == "sway"
+        then "swaymsg workspace"
         else "";
       movefocus =
         if envir == "Hyprland"
         then "hyprctl dispatch movefocus "
+        else if envir == "sway"
+        then "sway-focus "
         else "";
       exit =
         if envir == "Hyprland"
         then "hyprctl dispatch exit"
         else if envir == "fht-compositor"
         then "${fhtipc} quit"
+        else if envir == "sway"
+        then "swaymsg exit"
         else "";
       reload =
         if envir == "Hyprland"
         then "hyprctl reload"
         else if envir == "fht-compositor"
         then "${fhtipc} reload-config"
+        else if envir == "sway"
+        then "swaymsg reload"
         else "";
       lockscreen =
         if envir == "Hyprland"
         then "hyprlock"
+        else if envir == "sway"
+        then "swaylock"
         else "";
     in ''
       master {
@@ -149,17 +182,37 @@ in {
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_C "cliphist list | anyrun --show-results-immediately true | cliphist decode | wl-copy"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_E eww-move
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_F nautilus
+        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_Z "killall -SIGUSR1 gpu-screen-recorder && sleep 0.5 && notify-send -t 3500 -u low -- 'GPU Screen Recorder' 'Replay saved'"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_G "${fullscreen}"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_K kitty
-        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_L hyprlock
+        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_L "${lockscreen}"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_N "swaync-client -t"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_P "hyprpicker -a"
-        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_Q ${killactive}
+        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_Q "${killactive}"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_R eww-launcher
-        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_SLASH ${reload}
+        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_SLASH "${reload}"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_T wezterm
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_Y "eww reload"
         KEY_RIGHTMETA+KEY_2 "@enter secondary"
+        KEY_RIGHTMETA+KEY_D @macro simple {
+          KEY_ENTER click
+          move x=5 y=0 duration=1000
+          BTN_LEFT down
+          repeat 5 {
+            move x=0 y=400 duration=1500 type="constant" path="arc" direction="cw"
+            move x=0 y=-400 duration=1500 type="constant" path="arc" direction="cw"
+          }
+          BTN_LEFT up
+        }
+        KEY_RIGHTMETA+KEY_O @macro simple {
+          KEY_ENTER click
+          move x=5 y=0 duration=1000
+          repeat 5 {
+            move x=0 y=400 duration=1500 type="constant" path="arc" direction="cw"
+            move x=0 y=-400 duration=1500 type="constant" path="arc" direction="cw"
+          }
+          BTN_LEFT click
+        }
       }
       secondary {
         KEY_RIGHTMETA+KEY_1 "@enter master"

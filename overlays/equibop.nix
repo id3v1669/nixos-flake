@@ -1,6 +1,6 @@
 final: pkgs: {
   equibop = let
-    version = "3.1.9";
+    version = "3.2.0";
 
     node-modules = pkgs.stdenvNoCC.mkDerivation {
       pname = "equibop-modules";
@@ -9,7 +9,7 @@ final: pkgs: {
         owner = "Equicord";
         repo = "Equibop";
         tag = "v${version}";
-        hash = "sha256-4v0NKGmdbEdHyjz35l+QUnXvnVfLzIe1vLxOSmdgbYQ=";
+        hash = "sha256-CPRn1F15N4Rjry91Gu+ZXWpKVTOEnHI3TmZn8502QB4=";
       };
 
       impureEnvVars =
@@ -51,7 +51,7 @@ final: pkgs: {
         runHook postInstall
       '';
 
-      outputHash = "sha256-pJp4l0QJAg42gj/R4bq4P1iVtMehkvNs7hv9/3RmNsI=";
+      outputHash = "sha256-p8jx9HDYG2q2nhBiBK8XDTYm9O0ptTqv8L+PrQ8oiy8=";
       outputHashAlgo = "sha256";
       outputHashMode = "recursive";
     };
@@ -63,7 +63,7 @@ final: pkgs: {
         owner = "Equicord";
         repo = "Equibop";
         tag = "v${version}";
-        hash = "sha256-4v0NKGmdbEdHyjz35l+QUnXvnVfLzIe1vLxOSmdgbYQ=";
+        hash = "sha256-CPRn1F15N4Rjry91Gu+ZXWpKVTOEnHI3TmZn8502QB4=";
       };
 
       postPatch = ''
@@ -83,6 +83,7 @@ final: pkgs: {
       ];
 
       buildInputs = with pkgs; [
+        arrpc
         libpulseaudio
         pipewire
         (pkgs.lib.getLib stdenv.cc.cc)
@@ -102,16 +103,14 @@ final: pkgs: {
 
         bun run build
 
-        bun run compileArrpc
-
         export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 
-        chmod -R u+w ${pkgs.electron_40.dist} 2>/dev/null || cp -r ${pkgs.electron_40.dist} electron-dist && chmod -R u+w electron-dist && export ELECTRON_DIST=$PWD/electron-dist
+        chmod -R u+w ${pkgs.electron.dist} 2>/dev/null || cp -r ${pkgs.electron.dist} electron-dist && chmod -R u+w electron-dist && export ELECTRON_DIST=$PWD/electron-dist
 
         node node_modules/electron-builder/out/cli/cli.js \
           --dir \
-          -c.electronDist=''${ELECTRON_DIST:-${pkgs.electron_40.dist}} \
-          -c.electronVersion=${pkgs.electron_40.version} \
+          -c.electronDist=''${ELECTRON_DIST:-${pkgs.electron.dist}} \
+          -c.electronVersion=${pkgs.electron.version} \
           -c.npmRebuild=false
 
         runHook postBuild
@@ -137,7 +136,10 @@ final: pkgs: {
       '';
 
       postFixup = ''
-        makeWrapper ${pkgs.electron_40}/bin/electron $out/bin/equibop \
+        mkdir -p $out/opt/Equibop/resources/static/dist
+        ln -sf ${pkgs.arrpc}/bin/arrpc $out/opt/Equibop/resources/static/dist/arrpc-linux-x64
+        
+        makeWrapper ${pkgs.electron}/bin/electron $out/bin/equibop \
           --add-flags $out/opt/Equibop/resources/app.asar \
           --add-flags "--enable-gpu-rasterization" \
           --add-flags "--enable-zero-copy" \
@@ -175,6 +177,7 @@ final: pkgs: {
 
       meta = {
         mainProgram = "equibop";
+        description = "equibop";
       };
     });
 }

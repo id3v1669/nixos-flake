@@ -45,6 +45,7 @@ in {
     gpu-screen-recorder.enable = true; # gpu screen recorder
     traceroute.enable = true; # traceroute
     xwayland.enable = true; # xwayland for x11 apps
+    nm-applet.enable = true;
   };
   hardware = {
     cpu.${cpuvar.type}.updateMicrocode = mkDefault config.hardware.enableRedistributableFirmware;
@@ -52,8 +53,21 @@ in {
   };
   xdg.portal = {
     extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk # for gtk apps
+      xdg-desktop-portal-gtk
     ];
+    config = {
+      common = {
+        default = ["gtk"];
+      };
+      Hyprland = {
+        default = ["hyprland" "gtk"];
+        "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
+        "org.freedesktop.impl.portal.Settings" = ["gtk"];
+        "org.freedesktop.impl.portal.Notification" = ["gtk"];
+        "org.freedesktop.impl.portal.Inhibit" = ["gtk"];
+        "org.freedesktop.impl.portal.Access" = ["gtk"];
+      };
+    };
   };
 
   services = {
@@ -69,11 +83,6 @@ in {
     printing.enable = true; # needed for printing and pdf export
     gvfs.enable = true; # Mount, trash, etc
     libinput.enable = true;
-    lsfg-vk = {
-      enable = true;
-      package = pkgs.lsfg-vk;
-      ui.enable = false;
-    };
   };
   environment = {
     variables.NIXOS_OZONE_WL = "1";

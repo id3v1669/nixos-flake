@@ -15,14 +15,6 @@
       url = "github:sadjow/claude-code-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lsfg-vk = {
-      url = "github:pabloaul/lsfg-vk-flake/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    aplin = {
-      url = "github:id3v1669/aplin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -64,7 +56,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     prism-launcher = {
-      url = "github:PrismLauncher/PrismLauncher/release-9.x";
+      url = "github:PrismLauncher/PrismLauncher/release-11.x";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -104,6 +96,36 @@
       l14g3hypr = mkSystem {
         hostname = "l14g3";
         envir = "Hyprland";
+        cpuvar = {
+          type = "amd";
+          hasIntegrated = true;
+          integratedBroken = false;
+        };
+        bootloader = {
+          type = "opencore";
+          timeout = 7;
+        };
+        desk = "laptop";
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          domain = "none";
+          wp = "default3.png";
+          owner = "id3v1669";
+          sleeptimeout = 1200;
+        };
+        brightnesctrl = {
+          up = "light -A 5";
+          down = "light -U 5";
+        };
+        gpuvar = {
+          type = "amd";
+          tech = "amd";
+        };
+      };
+      l14g3sway = mkSystem {
+        hostname = "l14g3";
+        envir = "sway";
         cpuvar = {
           type = "amd";
           hasIntegrated = true;

@@ -2,7 +2,6 @@
   home.packages = with pkgs; [
     # screenshots
     wayshot # cli screenshot
-    slurp # select area for screenshot
     swappy # screenshot editor
 
     # sound
@@ -13,14 +12,12 @@
     amberol # muscic player
 
     # vm, virt, emulators & remote
-    distrobox
     remmina # remote desktop
     packer
     minikube # kubernetes for local tests
     kubectl # kubernetes cli
 
     # web
-    networkmanagerapplet # network manager applet
     tor-browser # tor browser for research
 
     # vid photo etc
@@ -35,14 +32,14 @@
 
     # chat
     zoom-us
-    wasistlos # whatsapp client
+    karere # whatsapp client
 
     # games
     protonplus # proton and wine updater
     lutris # game launcher
 
     # files
-    #cosmic-files # file manager
+    cosmic-files # file manager
     nautilus # backup file manager
     zip # create .zip arcs
     p7zip # .7z arcs
