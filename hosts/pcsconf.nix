@@ -23,15 +23,12 @@ in {
       "fbcon=nodefer"
     ];
   };
-  security =
-    {
-      polkit.enable = true;
-      rtkit.enable = true;
-      chromiumSuidSandbox.enable = true;
-    }
-    // optionalAttrs (envir == "Hyprland") {
-      pam.services.hyprlock = {};
-    };
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
+    chromiumSuidSandbox.enable = true;
+    pam.services.coldlock = {};
+  };
   programs = {
     steam = {
       enable = true;

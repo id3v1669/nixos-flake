@@ -28,14 +28,9 @@ final: pkgs: {
     pname = "coldlock";
     version = "0.1.0";
 
-    src = pkgs.fetchFromGitHub {
-      owner = "waycrate";
-      repo = "ColdLock";
-      rev = "1b27f2debd10157cb6fee6e7e5cea3cb81e71ce6";
-      hash = "sha256-kxtnCIOuQTpViTGAEB3wI4eikwlNIR8l4nS4EaVINR0=";
-    };
+    src = pkgs.lib.cleanSource /home/user/tmpmy/ColdLock;
 
-    cargoHash = "sha256-cdhUnkPLfKo6fqaivB0c+lccHFWUFKA5mQOYBfyMHpc=";
+    cargoLock.lockFile = "${src}/Cargo.lock";
 
     nativeBuildInputs = with pkgs; [
       pkg-config
