@@ -7,10 +7,6 @@
   inputs,
   ...
 }: {
-  imports = [
-    ./dotnet.nix
-    ./ss.nix
-  ];
   home.packages = let
     cp = pkgs.callPackage;
   in [

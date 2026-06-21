@@ -12,11 +12,6 @@
 
     gimp
 
-    # games
-    (prismlauncher.override {
-      jdks = with pkgs; [jdk25 zulu zulu17];
-    })
-
     #tmp for testing themes
     cosmic-settings
     cosmic-edit

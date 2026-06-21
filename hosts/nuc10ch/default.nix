@@ -16,7 +16,6 @@
     ./../../modules/swhkdp.nix
     ./../../modules/bluetooth.nix
     #./../../modules/odoo.nix
-    ./../../modules/greeters/regreet.nix
   ];
 
   networking = {
@@ -29,7 +28,6 @@
     "wheel"
     "networkmanager"
     "rustdesk"
-    "adbusers"
     "input"
     "disk"
     "i2c"
@@ -44,9 +42,19 @@
       #monitor=HDMI-A-2,disable
     '';
   };
+  nix.package = pkgs.nixVersions.latest;
   nix.settings = {
-    cores = 8;
-    #substituters = ["https://nix-gaming.cachix.org"];
-    #trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
+    auto-optimise-store = true;
+    max-jobs = 2;
+    cores = 3;
+    keep-derivations = true;
+    keep-outputs = true;
+    system-features = [
+      "nixos-test"
+      "benchmark"
+      "big-parallel"
+      "kvm"
+    ];
   };
+  systemd.services.nix-daemon.serviceConfig.AllowedCPUs = "0-5";
 }

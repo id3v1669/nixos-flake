@@ -1,0 +1,17 @@
+--- a/src/pipewire_video.c
++++ b/src/pipewire_video.c
+@@ -529,11 +529,10 @@ static size_t gsr_pipewire_video_format_remove_modifier(gsr_pipewire_video *self
+ static void gsr_pipewire_video_init_modifiers(gsr_pipewire_video *self) {
+     for(size_t i = 0; i < GSR_PIPEWIRE_VIDEO_NUM_VIDEO_FORMATS; i++) {
+         self->supported_video_formats[i].format = video_formats[i];
+-        int32_t num_modifiers_video_format = 0;
+-        spa_video_format_get_modifiers(self, self->supported_video_formats[i].format, self->modifiers + self->num_modifiers, GSR_PIPEWIRE_VIDEO_MAX_MODIFIERS - self->num_modifiers, &num_modifiers_video_format);
++        self->modifiers[self->num_modifiers] = DRM_FORMAT_MOD_INVALID;
+         self->supported_video_formats[i].modifiers_index = self->num_modifiers;
+-        self->supported_video_formats[i].modifiers_size = num_modifiers_video_format;
+-        self->num_modifiers += num_modifiers_video_format;
++        self->supported_video_formats[i].modifiers_size = 1;
++        self->num_modifiers += 1;
+     }
+ }
+

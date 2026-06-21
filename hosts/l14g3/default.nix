@@ -21,7 +21,7 @@
     ./../../modules/swhkdp.nix
     ./../../modules/bluetooth.nix
     #./../../modules/odoo.nix
-    ./../../modules/greeters/regreet.nix
+    ./../../modules/greeters/sddm.nix
   ];
   hardware = {
     enableAllFirmware = true;
@@ -31,12 +31,8 @@
       rocmPackages.clr.icd
     ];
   };
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-rocm;
-    rocmOverrideGfx = "10.3.0";
-    # loadModels = [ "qwen3:14b" ];
-  };
+  services.xserver.videoDrivers = ["displaylink"];
+
   networking = {
     firewall.enable = false;
     enableIPv6 = false;
@@ -68,7 +64,6 @@
     "wheel"
     "networkmanager"
     "rustdesk"
-    "adbusers"
     "input"
     "disk"
     "i2c"
@@ -76,29 +71,40 @@
     "usbmux"
   ];
   services.ddccontrol.enable = true;
-  environment = {
-    systemPackages = with pkgs; [
-      wlrctl
-      wtype
-      ryzenadj
-      proton-vpn
-      claude-code
-      coldlock
-    ];
-    etc."hypr/monitor-init.conf".text = ''
-      monitor=eDP-1,1920x1080@60,0x0,1
-    '';
+  systemd.services.surrealdb.serviceConfig.ProcSubset = lib.mkForce "all";
+  systemd.services.surrealdb.environment.SURREAL_BUCKET_FOLDER_ALLOWLIST = "/var/lib/surrealdb/buckets";
+  systemd.services.surrealdb.serviceConfig.StateDirectory = [
+    "surrealdb"
+    "surrealdb/buckets"
+  ];
+  services.surrealdb = {
+    enable = true;
+    package = pkgs.surrealdbx;
+    dbPath = "surrealkv:///var/lib/surrealdb";
+    port = 8000;
+    extraFlags = ["--allow-all" "--user" "root" "--pass" "root" "--allow-experimental" "files"];
   };
-  specialisation.egpu.configuration = {
-    environment.etc."hypr/monitor-init.conf".text = lib.mkForce ''
-      monitor=DP-1,3440x1440@144,0x0,1
-    '';
-  };
+  environment.systemPackages = with pkgs; [
+    displaylink
+    apfs-fuse
+    fuse
+    android-tools
+    android-mic
+    #rustdesk
+    surrealistx
+    wlrctl
+    wtype
+    ryzenadj
+    proton-vpn
+    claude-code
+    opencode
+    graphify
+  ];
   nix.package = pkgs.nixVersions.latest;
   nix.settings = {
     auto-optimise-store = true;
-    max-jobs = "auto";
-    cores = 0;
+    max-jobs = 2;
+    cores = 5;
     keep-derivations = true;
     keep-outputs = true;
     system-features = [
@@ -108,6 +114,7 @@
       "kvm"
     ];
   };
+  systemd.services.nix-daemon.serviceConfig.AllowedCPUs = "0-9";
   nixpkgs.overlays = let
     cFlags = ["-O3" "-pipe" "-march=znver3" "-mtune=znver3"];
 

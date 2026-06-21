@@ -16,7 +16,6 @@
     ./../../modules/virtualisation.nix
     ./../../modules/fonts.nix
     ./../../modules/security.nix
-    ./../../modules/minecraft.nix
   ];
 
   networking = {

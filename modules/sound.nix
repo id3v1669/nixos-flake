@@ -24,7 +24,40 @@
           "wireplumber.settings" = {
             "bluetooth.autoswitch-to-headset-profile" = false;
           };
+          "99-disable-libcamera" = {
+            "wireplumber.profiles" = {
+              main = {
+                "monitor.libcamera" = "disabled";
+              };
+            };
+          };
+          "51-android-mic-route" = {
+            "node.rules" = [
+              {
+                matches = [
+                  {"node.name" = "alsa_playback..android-mic-wrapped";}
+                ];
+                actions = {
+                  update-props = {
+                    "target.object" = "amic";
+                  };
+                };
+              }
+            ];
+          };
         };
+      };
+      extraConfig.pipewire-pulse."92-android-mic" = {
+        "pulse.cmd" = [
+          {
+            cmd = "load-module";
+            args = "module-null-sink sink_name=amic sink_properties=device.description=AndroidMic";
+          }
+          {
+            cmd = "load-module";
+            args = "module-remap-source master=amic.monitor source_name=amic_source source_properties=device.description=AndroidMic";
+          }
+        ];
       };
     };
     mpd = {

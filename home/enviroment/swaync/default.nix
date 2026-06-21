@@ -62,9 +62,9 @@
         };
       };
     };
-    style = ''
+    style = with config.palette; ''
       .widget-backlight, .widget-menubar > box > revealer > box, .widget-menubar > box > .menu-button-bar, .widget-buttons-grid, .widget-dnd, .widget-title, .notification-group {
-        background-color: #3c3836;
+        background-color: ${base04.hexT};
         padding: 8px;
         margin: 8px;
         border-radius: 12px;
@@ -85,8 +85,8 @@
 
       .notification-row .notification-background .close-button {
         /* The notification Close Button */
-        background: #3c3836;
-        color: #ebdbb2;
+        background: ${base04.hexT};
+        color: ${base01.hexT};
         text-shadow: none;
         padding: 0;
         border-radius: 100%;
@@ -108,10 +108,10 @@
       .notification-row .notification-background .notification {
         /* The actual notification */
         border-radius: 12px;
-        border: 1px solid #d5c4a1;
+        border: 1px solid ${base02.hexT};
         padding: 0;
         transition: background 0.15s ease-in-out;
-        background: #3c3836;
+        background: ${base04.hexT};
       }
 
       .notification-row .notification-background .notification.low {
@@ -132,13 +132,13 @@
         box-shadow: none;
         background: transparent;
         border: none;
-        color: #ebdbb2;
+        color: ${base01.hexT};
         transition: background 0.15s ease-in-out;
       }
 
       .notification-row .notification-background .notification .notification-action:hover, .notification-row .notification-background .notification .notification-default-action:hover {
         -gtk-icon-effect: none;
-        background: #504945;
+        background: ${base05.hexT};
       }
 
       .notification-row .notification-background .notification .notification-default-action {
@@ -178,7 +178,7 @@
         font-size: 16px;
         font-weight: bold;
         background: transparent;
-        color: #ebdbb2;
+        color: ${base01.hexT};
         text-shadow: none;
       }
 
@@ -187,7 +187,7 @@
         font-size: 16px;
         font-weight: bold;
         background: transparent;
-        color: #ebdbb2;
+        color: ${base01.hexT};
         text-shadow: none;
         margin-right: 30px;
       }
@@ -197,7 +197,7 @@
         font-size: 15px;
         font-weight: normal;
         background: transparent;
-        color: #ebdbb2;
+        color: ${base01.hexT};
         text-shadow: none;
       }
 
@@ -220,37 +220,37 @@
       }
 
       .notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-entry {
-        background: #ff0001;
-        color: #ebdbb2;
-        caret-color: #ebdbb2;
-        border: 1px solid #d5c4a1;
+        background: ${base05.hexT}; /* accent */
+        color: ${base01.hexT};
+        caret-color: ${base01.hexT};
+        border: 1px solid ${base02.hexT};
         border-radius: 12px;
       }
 
       .notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button {
         margin-left: 4px;
-        background: #bdae93;
-        border: 1px solid #d5c4a1;
+        background: ${base03.hexT};
+        border: 1px solid ${base02.hexT};
         border-radius: 12px;
-        color: #ebdbb2;
+        color: ${base01.hexT};
       }
 
       .notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button:disabled {
         background: initial;
-        color: #bdae93;
-        border: 1px solid #d5c4a1;
+        color: ${base03.hexT};
+        border: 1px solid ${base02.hexT};
         border-color: transparent;
       }
 
       .notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button:hover {
-        background: #504945;
+        background: ${base05.hexT};
       }
 
       .notification-row .notification-background .notification .notification-action {
         /* The alternative actions below the default action */
-        border-top: 1px solid #d5c4a1;
+        border-top: 1px solid ${base02.hexT};
         border-radius: 0px;
-        border-right: 1px solid #d5c4a1;
+        border-right: 1px solid ${base02.hexT};
       }
 
       .notification-row .notification-background .notification .notification-action:first-child {
@@ -281,7 +281,7 @@
 
       .notification-group .notification-group-buttons, .notification-group .notification-group-headers {
         margin: 0 16px;
-        color: #ebdbb2;
+        color: ${base01.hexT};
       }
 
       .notification-group .notification-group-headers {
@@ -289,11 +289,11 @@
       }
 
       .notification-group .notification-group-headers .notification-group-icon {
-        color: #ebdbb2;
+        color: ${base01.hexT};
       }
 
       .notification-group .notification-group-headers .notification-group-header {
-        color: #ebdbb2;
+        color: ${base01.hexT};
       }
 
       .notification-group .notification-group-buttons {
@@ -301,7 +301,7 @@
       }
 
       .notification-group.collapsed .notification-row .notification {
-        background-color: #3c3836;
+        background-color: ${base04.hexT};
       }
 
       .notification-group.collapsed .notification-row:not(:last-child) {
@@ -315,15 +315,15 @@
       }
 
       .notification-group.collapsed:hover .notification-row:not(:only-child) .notification {
-        background-color: #504945;
+        background-color: ${base05.hexT};
       }
 
       .control-center {
         /* The Control Center which contains the old notifications + widgets */
-        background: rgba(40, 40, 40, 0.9);
-        color: #ebdbb2;
+        background: ${base07.rgba "0.9"};
+        color: ${base01.hexT};
         border-radius: 10px;
-        border: 1px solid #d5c4a1;
+        border: 1px solid ${base02.hexT};
       }
 
       .control-center .control-center-list-placeholder {
@@ -336,7 +336,7 @@
       }
 
       .control-center .control-center-list .notification {
-        background: #504945;
+        background: ${base05.hexT};
       }
 
       .blank-window {
@@ -361,38 +361,38 @@
 
       .widget-title > button {
         font-size: initial;
-        color: #ebdbb2;
+        color: ${base01.hexT};
         text-shadow: none;
-        background: #3c3836;
-        border: 1px solid #d5c4a1;
+        background: ${base04.hexT};
+        border: 1px solid ${base02.hexT};
         box-shadow: none;
         border-radius: 12px;
       }
 
       .widget-title > button:hover {
-        background: #504945;
+        background: ${base05.hexT};
       }
 
       /* DND widget */
       .widget-dnd {
-        color: #ebdbb2;
+        color: ${base01.hexT};
         font-size: 1.1rem;
       }
 
       .widget-dnd > switch {
         font-size: initial;
         border-radius: 12px;
-        background: #bdae93;
-        border: 1px solid #d5c4a1;
+        background: ${base03.hexT};
+        border: 1px solid ${base02.hexT};
         box-shadow: none;
       }
 
       .widget-dnd > switch:checked {
-        background: #fe8019;
+        background: ${base0B.hexT}; /* accent */
       }
 
       .widget-dnd > switch slider {
-        background: #282828;
+        background: ${base06.hexT};
         border-radius: 12px;
       }
 
@@ -410,18 +410,18 @@
         padding: 8px;
         padding: 16px;
         margin: 16px 20px;
-        background-color: rgba(40, 40, 40, 0.55);
+        background-color: ${base05.rgba "0.5"};
         border-radius: 12px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
       }
 
       .widget-mpris .widget-mpris-player button:hover {
-        background: #504945;
+        background: ${base05.hexT};
       }
 
       .widget-mpris .widget-mpris-player .widget-mpris-album-art {
         border-radius: 12px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 10px ${base07.rgba "0.75"};
       }
 
       .widget-mpris .widget-mpris-player .widget-mpris-title {
@@ -434,7 +434,7 @@
       }
 
       .widget-mpris .widget-mpris-player > box > button:hover {
-        background-color: rgba(40, 40, 40, 0.5);
+        background-color: ${base06.rgba "0.5"};
       }
 
       .widget-mpris > box > button {
@@ -443,8 +443,8 @@
       }
 
       .widget-mpris > box > button:hover {
-        color: #ebdbb2;
-        background: rgba(40, 40, 40, 0.5);
+        color: ${base01.hexT};
+        background: ${base06.rgba "0.5"};
       }
 
       .widget-mpris > box > button:disabled {
@@ -454,7 +454,7 @@
 
       /* Buttons widget */
       .widget-buttons-grid > flowbox > flowboxchild > button {
-        background: #504945;
+        background: ${base05.hexT};
         border-radius: 12px;
       }
 
@@ -465,12 +465,12 @@
       /* Menubar widget */
       .widget-menubar > box > .menu-button-bar > button {
         border: none;
-        background: #504945;
+        background: ${base05.hexT};
       }
 
       .widget-menubar > box > revealer > box > button {
         margin: 3px;
-        background: #504945;
+        background: ${base05.hexT};
         border: none;
       }
 
@@ -481,7 +481,7 @@
 
       /* Volume widget */
       .widget-volume {
-        background-color: #3c3836;
+        background-color: ${base04.hexT};
         padding: 8px;
         margin: 8px;
         border-radius: 12px;
@@ -493,7 +493,7 @@
       }
 
       .per-app-volume {
-        background-color: #504945;
+        background-color: ${base05.hexT};
         padding: 4px 8px 8px 8px;
         margin: 8px;
         border-radius: 12px;
@@ -515,16 +515,16 @@
 
       .widget-inhibitors > button {
         font-size: initial;
-        color: #ebdbb2;
+        color: ${base01.hexT};
         text-shadow: none;
-        background: #bdae93;
-        border: 1px solid #d5c4a1;
+        background: ${base03.hexT};
+        border: 1px solid ${base02.hexT};
         box-shadow: none;
         border-radius: 12px;
       }
 
       .widget-inhibitors > button:hover {
-        background: #504945;
+        background: ${base05.hexT};
       }
 
     '';

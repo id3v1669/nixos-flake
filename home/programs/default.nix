@@ -9,7 +9,8 @@
       ./fastfetch
     ]
     ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
-      ./vscode
+      ./claude-code
+      ./vscodium
       ./firefox
       ./other
       ./discord
@@ -17,7 +18,7 @@
       ./kitty
       ./joplin
       ./obs
-      ./swappy
+      ./satty
       ./chromium
       ./spicetify
       ./wezterm

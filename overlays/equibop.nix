@@ -1,6 +1,6 @@
 final: pkgs: {
   equibop = let
-    version = "3.2.0";
+    version = "3.2.1";
 
     node-modules = pkgs.stdenvNoCC.mkDerivation {
       pname = "equibop-modules";
@@ -9,7 +9,7 @@ final: pkgs: {
         owner = "Equicord";
         repo = "Equibop";
         tag = "v${version}";
-        hash = "sha256-CPRn1F15N4Rjry91Gu+ZXWpKVTOEnHI3TmZn8502QB4=";
+        hash = "sha256-WqfxrVAJvD6Y6ZjkhbvibL6Bps7PL2lx3JBY94Yd6kk=";
       };
 
       impureEnvVars =
@@ -51,7 +51,7 @@ final: pkgs: {
         runHook postInstall
       '';
 
-      outputHash = "sha256-p8jx9HDYG2q2nhBiBK8XDTYm9O0ptTqv8L+PrQ8oiy8=";
+      outputHash = "sha256-dLATw5Mb9grQnI/JTdlRdNP2JETELeqY8aXqb5dCXOA=";
       outputHashAlgo = "sha256";
       outputHashMode = "recursive";
     };
@@ -63,7 +63,7 @@ final: pkgs: {
         owner = "Equicord";
         repo = "Equibop";
         tag = "v${version}";
-        hash = "sha256-CPRn1F15N4Rjry91Gu+ZXWpKVTOEnHI3TmZn8502QB4=";
+        hash = "sha256-WqfxrVAJvD6Y6ZjkhbvibL6Bps7PL2lx3JBY94Yd6kk=";
       };
 
       postPatch = ''
@@ -138,7 +138,7 @@ final: pkgs: {
       postFixup = ''
         mkdir -p $out/opt/Equibop/resources/static/dist
         ln -sf ${pkgs.arrpc}/bin/arrpc $out/opt/Equibop/resources/static/dist/arrpc-linux-x64
-        
+
         makeWrapper ${pkgs.electron}/bin/electron $out/bin/equibop \
           --add-flags $out/opt/Equibop/resources/app.asar \
           --add-flags "--enable-gpu-rasterization" \

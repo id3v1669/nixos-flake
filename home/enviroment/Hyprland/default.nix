@@ -18,121 +18,220 @@ in {
     hyprland-qt-support
   ];
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    systemd.enable = true;
-    xwayland.enable = true;
-    settings = {
-      decoration = {
-        rounding = 4;
-        blur.enabled = true;
-        shadow.enabled = false;
-      };
-      general = {
-        gaps_in = 3;
-        gaps_out = 6;
-        border_size = 2;
-        "col.active_border" = "rgb(${clp.base16.hex}) rgb(${clp.base12.hex}) 45deg";
-        "col.inactive_border" = "rgb(${clp.base04.hex})";
-        layout = "dwindle";
-      };
-      animations = {
-        enabled = true;
-        bezier = "ease,0.4,0.02,0.21,1";
-        animation = [
-          "windows, 1, 1.5, ease, slide"
-          "windowsOut, 1, 1.5, ease, slide"
-          "border, 1, 6, default"
-          "fade, 1, 3, ease"
-          "workspaces, 1, 1.5, ease"
-        ];
-      };
-      input = {
-        kb_layout = "${deflocale.kblayout}";
-        kb_variant = "${deflocale.kbvariant}";
-        kb_options = "${deflocale.kboption}";
-        follow_mouse = 1;
-        focus_on_close = 1;
-        touchpad = {
-          natural_scroll = true;
-          scroll_factor = 0.4;
-          clickfinger_behavior = true;
-        };
-      };
-      # TODO: fix gestures for new hyprland version
-      misc = {
-        disable_hyprland_logo = true;
-        disable_splash_rendering = true;
-        vfr = true;
-        vrr = 0;
-        font_family = "0xProto";
-        background_color = "0x282828";
-        enable_anr_dialog = false;
-      };
-      ecosystem = {
-        no_update_news = true;
-        no_donation_nag = true;
-      };
-      dwindle = {
-        pseudotile = true;
-        preserve_split = true;
-      };
-      "$mainMod" = "SUPER";
-      bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
-        "ALT, mouse:272, resizewindow"
-      ];
-      bind = [
-        "$mainMod, R, exec, anyrun"
-      ];
-    };
-    extraConfig = ''
-      #----------------startup commands-----------------
-      exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30    # set cursor as hyprland doesn't respect gtk
-      #-------------------------------------------------
+  home.file.".config/hypr/hyprland.lua".text = ''
+    require("monitor")
+    local mainMod = "SUPER"
 
-      #-----------------startup scripts-----------------
-      exec-once = wallpaper-autostart
-      exec-once = eww-launcher                                          # eww launcher
-      #-------------------------------------------------
+    ----------------------------------------------------------------------
+    -- Autostart.
+    ----------------------------------------------------------------------
+    hl.on("hyprland.start", function()
 
-      #source = ${config.home.homeDirectory}/.config/hypr/colors
+        -- Set cursor as hyprland doesn't respect gtk.
+        hl.exec_cmd('hyprctl setcursor "Capitaine Cursors (Gruvbox)" 30')
 
-      #------------------screen sharing------------------
-      #exec-once = xwaylandvideobridge
-      windowrule = opacity 0.0 override 0.0 override, match:class (xwaylandvideobridge)
-      windowrule = no_anim on,                        match:class (xwaylandvideobridge)
-      windowrule = no_focus on,                       match:class (xwaylandvideobridge)
-      windowrule = no_initial_focus on,               match:class (xwaylandvideobridge)
-      #--------------------------------------------------
+        -- Startup scripts.
+        hl.exec_cmd("wallpaper-autostart")
+        hl.exec_cmd("eww-launcher")
+    end)
 
-      #-------------------file picker--------------------
-      windowrule = tag +fileOperation,                match:title ((Choose (Files|an Image)|Open ([Ff]ile(s)?|[Ff]ile|Video|[Ff]older.*)|([Image|Video] File|Save (As|Image|Video|File)|Local File|File Upload))|New Archive)
-      windowrule = float on,                          match:tag fileOperation
-      windowrule = size 35% 70%,                      match:tag fileOperation
-      windowrule = center on,                         match:tag fileOperation
-      #--------------------------------------------------
+    ----------------------------------------------------------------------
+    -- Settings.
+    ----------------------------------------------------------------------
+    hl.config({
+        general = {
+            border_size = 2,
+            col = {
+                active_border   = { colors = { "rgb(427b58)", "rgb(b8bb26)" }, angle = 45 },
+                inactive_border = "rgb(3c3836)",
+            },
+            gaps_in  = 3,
+            gaps_out = 6,
+            layout   = "dwindle",
+        },
 
-      #--------------other windowrules-------------------
-      windowrule = tag +floatingCentered,             match:class (gnome-disks|GParted|[Kk]itty|[Vv]era[Cc]rypt|polkit-gnome-authentication-agent-1)
-      windowrule = float on,                          match:tag floatingCentered
-      windowrule = center on,                         match:tag floatingCentered
+        decoration = {
+            rounding = 4,
+            blur = {
+                enabled = true,
+            },
+            shadow = {
+                enabled = false,
+            },
+        },
 
-      windowrule = opacity 0.95 0.9,                  match:class ([Ss]potify|[Nn]emo|com.system76.CosmicFiles|code-url-handler|[Cc]ode|org.telegram.desktop|gnome-disks|GParted|Alacritty|[Kk]itty)
+        dwindle = {
+            preserve_split = true,
+        },
 
-      windowrule = tag +floatOp,                      match:class (blueman-manager|.blueman-manager-wrapped|nm-connection-editor|org.pulseaudio.pavucontrol)
-      windowrule = float on,                          match:tag floatOp
-      windowrule = opacity 0.8,                       match:tag floatOp
+        ecosystem = {
+            no_donation_nag = true,
+            no_update_news  = true,
+        },
 
-      windowrule = opacity 0.95 0.95,                 match:class ([Ff]loorp|[Ff]irefox)
+        misc = {
+            background_color        = "0x282828",
+            disable_hyprland_logo   = true,
+            disable_splash_rendering = true,
+            enable_anr_dialog       = false,
+            font_family             = "0xProto",
+            vrr                     = 0,
+            initial_workspace_tracking = 0 -- TODO rm when fixed: https://github.com/hyprwm/Hyprland/discussions/14840
+        },
 
-      windowrule = workspace 2,                       match:class ([Ee]quibop|[Dd]iscord|[Vv]esktop)
+        input = {
+            focus_on_close = 1,
+            follow_mouse   = 1,
+            kb_layout      = "us,ru",
+            kb_options     = "grp:win_space_toggle",
+            kb_variant     = ",",
+            touchpad = {
+                clickfinger_behavior = true,
+                natural_scroll       = true,
+                scroll_factor        = 0.4,
+            },
+        },
 
-      device {
-        name = apple-inc.-magic-trackpad-1
-        sensitivity = 0.3
-      }
-    '';
-  };
+        animations = {
+            enabled = true,
+        },
+    })
+
+    ----------------------------------------------------------------------
+    -- Animations.
+    ----------------------------------------------------------------------
+    hl.curve("ease", { type = "bezier", points = { { 0.4, 0.02 }, { 0.21, 1 } } })
+
+    hl.animation({ leaf = "windows",    enabled = true, speed = 1.5, bezier = "ease",    style = "slide" })
+    hl.animation({ leaf = "windowsOut", enabled = true, speed = 1.5, bezier = "ease",    style = "slide" })
+    hl.animation({ leaf = "border",     enabled = true, speed = 6,   bezier = "default" })
+    hl.animation({ leaf = "fade",       enabled = true, speed = 3,   bezier = "ease" })
+    hl.animation({ leaf = "workspaces", enabled = true, speed = 1.5, bezier = "ease" })
+
+    ----------------------------------------------------------------------
+    -- Trackpad gestures.
+    ----------------------------------------------------------------------
+    hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+
+    ----------------------------------------------------------------------
+    -- Per-device input config.
+    ----------------------------------------------------------------------
+    hl.device({
+        name        = "apple-inc.-magic-trackpad-1",
+        sensitivity = 0.3,
+    })
+
+    hl.device({
+        name          = "apple-inc.-magic-trackpad",
+        sensitivity   = 0.3,
+        accel_profile = "adaptive",
+    })
+
+    ----------------------------------------------------------------------
+    -- Keybinds.
+    ----------------------------------------------------------------------
+    -- Backup
+    hl.bind(mainMod .. "+R", hl.dsp.exec_cmd("anyrun"))
+
+    -- Drag can't be ported to swhkdp yet
+    hl.bind(mainMod .. "+mouse:272", hl.dsp.window.drag())
+    hl.bind(mainMod .. "+mouse:273", hl.dsp.window.resize())
+    hl.bind("ALT+mouse:272",         hl.dsp.window.resize())
+
+    -----------------------------------------------------------------------
+    -- Popup settings.
+    -----------------------------------------------------------------------
+    hl.window_rule({
+        match = { class = "nm-connection-editor" },
+        size  = "monitor_w*0.3 monitor_h*0.65",
+        move  = "monitor_w-monitor_w*0.3-20 60",
+    })
+
+    hl.window_rule({
+        match = { class = "(?i)(blueman-manager|.blueman-manager-wrapped|com.saivert.pwvucontrol)" },
+        size  = "monitor_w*0.37 monitor_h*0.71",
+        move  = "monitor_w-monitor_w*0.37-20 60",
+    })
+
+    ----------------------------------------------------------------------
+    -- File picker.
+    ----------------------------------------------------------------------
+    hl.window_rule({
+        match = {
+            title = "(?i)((choose (files|an image)|open (file(s)?|video|folder)|"
+                .. "([image|video] file|save (as|image|video|file)|local file|file upload))|new archive)",
+        },
+        tag = "+fileOperation",
+    })
+    hl.window_rule({
+        match = { tag = "fileOperation" },
+        float  = true,
+        size   = "monitor_w*0.35 monitor_h*0.7",
+        center = true,
+    })
+
+    ----------------------------------------------------------------------
+    -- Other window rules.
+    ----------------------------------------------------------------------
+
+    -- Floating + centered for assorted tools.
+    hl.window_rule({
+        -- TODO: add minecraft
+        match = { class = "(?i)(gnome-disks|gparted|kitty|veracrypt|polkit-gnome-authentication-agent-1)" },
+        tag = "+floatingCentered",
+    })
+    hl.window_rule({
+        match = { tag = "floatingCentered" },
+        float  = true,
+        center = true,
+    })
+
+    -- Translucency for various apps. Two values = active, inactive (see WindowRuleApplicator opacity handling).
+    hl.window_rule({
+        match   = { class = "(?i)(spotify|nemo|org.gnome.nautilus|com.system76.cosmicfiles|code-url-handler|"
+        .. "code|org.telegram.desktop|gnome-disks|gparted|alacritty|kitty)" },
+        opacity = "0.95 0.9",
+    })
+
+    -- Floating + dimmed for system control panels.
+    hl.window_rule({
+        match = { class = "(?i)(blueman-manager|.blueman-manager-wrapped|nm-connection-editor|com.saivert.pwvucontrol)" },
+        tag = "+floatOp",
+    })
+    hl.window_rule({
+        match   = { tag = "floatOp" },
+        float   = true,
+        opacity = "0.8",
+    })
+
+    hl.window_rule({
+        match = { class = "(?i)(wlroots)" },
+        float = true,
+    })
+
+    -- Browsers.
+    hl.window_rule({
+        match   = { class = "(?i)(floorp|firefox)" },
+        opacity = "0.95 0.95",
+    })
+
+    -- Pin discord-likes to workspace 2.
+    hl.window_rule({
+        match     = { class = "(?i)(equibop|discord|vesktop)" },
+        workspace = "2",
+    })
+
+    -- Hide
+
+    hl.window_rule({ match = { class = "(?i)(io.github.tobagin.karere|com.ayugram.desktop)" }, no_screen_share=true})
+    hl.window_rule({ match = { title = "(?i)(✳ Claude Code)" }, no_screen_share=true })
+
+    -- Deadlocked: no blur, fully opaque.
+    hl.window_rule({
+        match   = { class = "deadlocked" },
+        no_blur = true,
+        opaque  = true,
+    })
+
+  '';
 }

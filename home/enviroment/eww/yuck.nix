@@ -363,7 +363,7 @@ in {
           (button
             :class "sound"
             :timeout "''${deftimeout}"
-            :onclick "${getExe pkgs.pavucontrol}"
+            :onclick "${getExe pkgs.pwvucontrol}"
             (box
               (box
                 :class "soundsymb"

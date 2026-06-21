@@ -1,55 +1,20 @@
-final: pkgs: {
-  wayshot = pkgs.rustPlatform.buildRustPackage (finalAttrs: {
-    pname = "wayshot";
-    version = "1.4.6";
+{
+  system,
+  inputs,
+}: final: pkgs: {
+  gpu-screen-recorder = pkgs.gpu-screen-recorder.overrideAttrs (finalAttrs: prev: {
+    version = "5.13.8-git";
 
-    src = pkgs.fetchFromGitHub {
-      owner = "waycrate";
-      repo = "wayshot";
-      rev = "a3d22fc315d9236828a556cb661959c00e4076c6";
-      hash = "sha256-G94GpvIwfuGU/BorJkgoCNgLa1FJ3P2RDnOlENv7Kk0=";
+    src = pkgs.fetchgit {
+      url = "https://repo.dec05eba.com/gpu-screen-recorder";
+      rev = "60f0459f840f568159a320f58d56063ba02e52c4";
+      hash = "sha256-Nm4LshXtJ41SxYdxUZiOmEyF0JLeRGVbmP7v/ZJikCY=";
     };
 
-    cargoHash = "sha256-nVgLQawBdjrkAK/cZA0dMbLPvFsXXJOZBe2Uwh+G1dM=";
-
-    nativeBuildInputs = with pkgs; [
-      pkg-config
-    ];
-
-    buildInputs = with pkgs; [
-      pango
-      libgbm
-      libjxl
-      libGL
-      wayland
-    ];
+    patches =
+      (prev.patches or [])
+      ++ [
+        ./gpu-screen-recorder-force-invalid-modifier.patch
+      ];
   });
-  coldlock = pkgs.rustPlatform.buildRustPackage rec {
-    pname = "coldlock";
-    version = "0.1.0";
-
-    src = pkgs.lib.cleanSource /home/user/tmpmy/ColdLock;
-
-    cargoLock.lockFile = "${src}/Cargo.lock";
-
-    nativeBuildInputs = with pkgs; [
-      pkg-config
-      autoPatchelfHook
-      rustPlatform.bindgenHook
-    ];
-
-    runtimeDependencies = with pkgs; [
-      wayland
-      libxkbcommon
-      libGL
-      vulkan-loader
-    ];
-
-    buildInputs = with pkgs;
-      [
-        linux-pam
-        libclang
-      ]
-      ++ runtimeDependencies;
-  };
 }

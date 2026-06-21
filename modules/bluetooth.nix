@@ -4,21 +4,28 @@
   lib,
   ...
 }: {
-  services.blueman = {
-    enable = true;
-    withApplet = true;
-  };
+  services.blueman.enable = true;
   hardware.bluetooth = {
     enable = true;
-    package = stable.bluez.override {
-      enableExperimental = true;
-    };
+    package =
+      (pkgs.bluez.override {
+        enableExperimental = true;
+      }).overrideAttrs (old: {
+        version = "5.86-unstable-2026-05-29";
+        src = pkgs.fetchFromGitHub {
+          owner = "bluez";
+          repo = "bluez";
+          rev = "17fbb48d8f7c22d0702b3b9daf69f9c06231d774";
+          hash = "sha256-9pyd0DvKInlgntAUtSJ6Qy+o+K7uesrgmb86Qcy+7K0=";
+        };
+        patches = [];
+      });
     settings = {
       General = {
         AutoEnable = true;
         FastConnectable = true;
         Experimental = true;
-        ControllerMode = "bredr";
+        ControllerMode = "dual";
         Enable = "Source,Sink,Media,Socket";
       };
       Input = {

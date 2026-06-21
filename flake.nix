@@ -2,11 +2,20 @@
   description = "id3v1669 system flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
-    sops-nix.url = "github:Mic92/sops-nix";
-    nur.url = "github:nix-community/NUR";
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-    dcgt.url = "github:id3v1669/Dynamic-Color-GTK-Theme";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
+    prism-launcher.url = "github:PrismLauncher/PrismLauncher/release-11.x";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dcgt = {
+      url = "github:id3v1669/Dynamic-Color-GTK-Theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     awww = {
       url = "git+https://codeberg.org/LGFae/awww";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,6 +23,29 @@
     claude-code = {
       url = "github:sadjow/claude-code-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pyproject-nix = {
+      url = "github:pyproject-nix/pyproject.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    uv2nix = {
+      url = "github:pyproject-nix/uv2nix";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pyproject-build-systems = {
+      url = "github:pyproject-nix/build-system-pkgs";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.uv2nix.follows = "uv2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    graphify-src = {
+      url = "github:safishamsi/graphify";
+      flake = false;
+    };
+    caveman-src = {
+      url = "github:jwiegley/claude-prompts";
+      flake = false;
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
@@ -55,8 +87,8 @@
       url = "github:id3v1669/swhkdp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    prism-launcher = {
-      url = "github:PrismLauncher/PrismLauncher/release-11.x";
+    coldlock = {
+      url = "github:waycrate/coldlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

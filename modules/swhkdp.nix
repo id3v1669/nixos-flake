@@ -7,9 +7,7 @@
   lib,
   inputs,
   ...
-}: let
-  fhtipc = "${lib.getExe' pkgs.fht-compositor "fht-compositor"} ipc action";
-in {
+}: {
   imports = [
     inputs.swhkdp.nixosModules.default
   ];
@@ -29,125 +27,103 @@ in {
     settings = let
       killactive =
         if envir == "Hyprland"
-        then "hyprctl dispatch killactive"
-        else if envir == "fht-compositor"
-        then "${fhtipc} close-window"
+        then "hyprctl dispatch 'hl.dsp.window.close()'"
         else if envir == "sway"
         then "swaymsg kill"
         else "";
       togglesplit =
         if envir == "Hyprland"
-        then "hyprctl dispatch layoutmsg togglesplit"
+        then "hyprctl dispatch 'hl.dsp.layout(\\\"togglesplit\\\")'"
         else if envir == "sway"
         then "swaymsg layout toggle split"
         else "echo 'no envir'";
       togglefloating =
         if envir == "Hyprland"
-        then "hyprctl dispatch togglefloating"
-        else if envir == "fht-compositor"
-        then "${fhtipc} float-window"
+        then "hyprctl dispatch 'hl.dsp.window.float({action = \\\"toggle\\\"})'"
         else if envir == "sway"
         then "swaymsg floating toggle"
         else "";
       pseudo =
         if envir == "Hyprland"
-        then "hyprctl dispatch pseudo"
+        then "hyprctl dispatch 'hl.dsp.window.pseudo()'"
         else "";
       nextworkspace =
         if envir == "Hyprland"
-        then "hyprctl dispatch workspace e+1"
-        else if envir == "fht-compositor"
-        then "${fhtipc} focus-next-workspace"
+        then "hyprctl dispatch 'hl.dsp.focus({workspace = \\\"e+1\\\"})'"
         else if envir == "sway"
         then "swaymsg workspace next"
         else "";
       prevworkspace =
         if envir == "Hyprland"
-        then "hyprctl dispatch workspace e-1"
-        else if envir == "fht-compositor"
-        then "${fhtipc} focus-previous-workspace"
+        then "hyprctl dispatch 'hl.dsp.focus({workspace = \\\"e-1\\\"})'"
         else if envir == "sway"
         then "swaymsg workspace prev"
         else "";
       movenextworkspace =
         if envir == "Hyprland"
-        then "hyprctl dispatch movetoworkspace e+1"
+        then "hyprctl dispatch 'hl.dsp.window.move({workspace = \\\"e+1\\\"})'"
         else if envir == "sway"
         then "swaymsg move container to workspace next"
         else "";
       moveprevworkspace =
         if envir == "Hyprland"
-        then "hyprctl dispatch movetoworkspace e-1"
+        then "hyprctl dispatch 'hl.dsp.window.move({workspace = \\\"e-1\\\"})'"
         else if envir == "sway"
         then "swaymsg move container to workspace prev"
         else "";
       fullscreen =
         if envir == "Hyprland"
-        then "hyprctl dispatch fullscreen 0"
-        else if envir == "fht-compositor"
-        then "${fhtipc} fullscreen-window"
+        then "hyprctl dispatch 'hl.dsp.window.fullscreen({mode = \\\"fullscreen\\\", action = \\\"toggle\\\"})'"
         else if envir == "sway"
         then "swaymsg fullscreen toggle"
         else "";
       maximize =
         if envir == "Hyprland"
-        then "hyprctl dispatch fullscreen 1"
-        else if envir == "fht-compositor"
-        then "${fhtipc} maximize-window"
+        then "hyprctl dispatch 'hl.dsp.window.fullscreen({mode = \\\"maximized\\\", action = \\\"toggle\\\"})'"
         else if envir == "sway"
         then "swaymsg fullscreen enable"
         else "";
       nextactivewindow =
         if envir == "Hyprland"
-        then "hyprctl dispatch cyclenext"
-        else if envir == "fht-compositor"
-        then "${fhtipc} focus-next-window"
+        then "hyprctl dispatch 'hl.dsp.window.cycle_next()'"
         else if envir == "sway"
         then "swaymsg focus next"
         else "";
       movetoworkspace =
         if envir == "Hyprland"
-        then "hyprctl dispatch movetoworkspace"
-        else if envir == "fht-compositor"
-        then "${fhtipc} send-window-to-workspace"
+        then "hyprctl dispatch 'hl.dsp.window.move({workspace = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}})'"
         else if envir == "sway"
-        then "swaymsg move container to workspace"
+        then "swaymsg move container to workspace {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}"
         else "";
       workspace =
         if envir == "Hyprland"
-        then "hyprctl dispatch workspace"
-        else if envir == "fht-compositor"
-        then "${fhtipc} focus-workspace"
+        then "hyprctl dispatch 'hl.dsp.focus({workspace = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}})'"
         else if envir == "sway"
-        then "swaymsg workspace"
+        then "swaymsg workspace {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}"
         else "";
       movefocus =
         if envir == "Hyprland"
-        then "hyprctl dispatch movefocus "
+        then "hyprctl dispatch 'hl.dsp.focus({direction = \\\"{right, left, down, up}\\\"})'"
         else if envir == "sway"
-        then "sway-focus "
+        then "sway-focus {r, l, d, u}"
         else "";
       exit =
         if envir == "Hyprland"
-        then "hyprctl dispatch exit"
-        else if envir == "fht-compositor"
-        then "${fhtipc} quit"
+        then "hyprctl dispatch 'hl.dsp.exit()'"
         else if envir == "sway"
         then "swaymsg exit"
         else "";
       reload =
         if envir == "Hyprland"
         then "hyprctl reload"
-        else if envir == "fht-compositor"
-        then "${fhtipc} reload-config"
         else if envir == "sway"
         then "swaymsg reload"
         else "";
       lockscreen =
         if envir == "Hyprland"
-        then "hyprlock"
+        then "coldlock"
         else if envir == "sway"
-        then "swaylock"
+        then "coldlock"
         else "";
     in ''
       master {
@@ -165,7 +141,7 @@ in {
         KEY_LEFTCTRL+KEY_RIGHT "${nextworkspace}"
         KEY_LEFTCTRL+KEY_LEFTSHIFT+KEY_LEFT "${moveprevworkspace}"
         KEY_LEFTCTRL+KEY_LEFTSHIFT+KEY_RIGHT "${movenextworkspace}"
-        KEY_LEFTCTRL+KEY_LEFTSHIFT+<KEY_1-KEY_9,KEY_0> "${movetoworkspace} {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}"
+        KEY_LEFTCTRL+KEY_LEFTSHIFT+<KEY_1-KEY_9,KEY_0> "${movetoworkspace}"
         KEY_LEFTMETA+KEY_R anyrun
         KEY_LEFTMETA+KEY_TAB "${nextactivewindow}"
         KEY_LEFTMETA+KEY_G "${maximize}"
@@ -173,9 +149,9 @@ in {
         KEY_LEFTMETA+KEY_M "${exit}"
         KEY_LEFTMETA+KEY_P "${pseudo}"
         KEY_LEFTMETA+KEY_S "${togglesplit}"
-        KEY_LEFTMETA+<KEY_1-KEY_9,KEY_0> "${workspace} {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}"
-        KEY_LEFTMETA+<KEY_RIGHT,KEY_LEFT,KEY_DOWN,KEY_UP> "${movefocus} {r,l,d,u}"
-        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_3 "wayshot -g --no-freeze - | swappy -f -"
+        KEY_LEFTMETA+<KEY_1-KEY_9,KEY_0> "${workspace}"
+        KEY_LEFTMETA+<KEY_RIGHT,KEY_LEFT,KEY_DOWN,KEY_UP> "${movefocus}"
+        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_3 "wayshot -g --no-freeze - | satty -f -"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_4 "wayshot -g --no-freeze --file-name-format 'shot-%Y-%m-%d_%H:%M:%S' $HOME/Pictures/Screenshots/"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_5 "wayshot -g --no-freeze --clipboard"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_B firefox
@@ -193,18 +169,28 @@ in {
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_SLASH "${reload}"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_T wezterm
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_Y "eww reload"
-        KEY_RIGHTMETA+KEY_2 "@enter secondary"
-        KEY_RIGHTMETA+KEY_D @macro simple {
+        KEY_RIGHTCTRL+KEY_2 "@enter secondary"
+        KEY_RIGHTCTRL+KEY_D @macro simple {
           KEY_ENTER click
           move x=5 y=0 duration=1000
           BTN_LEFT down
-          repeat 5 {
-            move x=0 y=400 duration=1500 type="constant" path="arc" direction="cw"
-            move x=0 y=-400 duration=1500 type="constant" path="arc" direction="cw"
+          repeat 30 {
+            move x=0 y=400 duration=600 type="constant" path="arc" direction="cw"
+            move x=0 y=-400 duration=600 type="constant" path="arc" direction="cw"
           }
           BTN_LEFT up
         }
-        KEY_RIGHTMETA+KEY_O @macro simple {
+        KEY_RIGHTCTRL+KEY_E @macro simple {
+          KEY_ENTER click
+          move x=5 y=0 duration=1000
+          BTN_LEFT down
+          repeat 300 {
+            move x=0 y=400 duration=600 type="constant" path="arc" direction="cw"
+            move x=0 y=-400 duration=600 type="constant" path="arc" direction="cw"
+          }
+          BTN_LEFT up
+        }
+        KEY_RIGHTCTRL+KEY_O @macro simple {
           KEY_ENTER click
           move x=5 y=0 duration=1000
           repeat 5 {
@@ -215,7 +201,7 @@ in {
         }
       }
       secondary {
-        KEY_RIGHTMETA+KEY_1 "@enter master"
+        KEY_RIGHTCTRL+KEY_1 "@enter master"
         KEY_LEFTMETA+KEY_R "notify-send --icon=spotify 'GameMode started'"
       }
       general {

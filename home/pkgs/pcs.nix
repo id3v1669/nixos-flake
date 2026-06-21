@@ -2,10 +2,10 @@
   home.packages = with pkgs; [
     # screenshots
     wayshot # cli screenshot
-    swappy # screenshot editor
+    satty # screenshot editor
 
     # sound
-    pavucontrol # gui mixer
+    pwvucontrol # gui mixer
     pulseaudio # just lib to use pactl, pipewire is in use
     coppwr # gui for pipewire
     mpc # cli for mpd
@@ -36,7 +36,6 @@
 
     # games
     protonplus # proton and wine updater
-    lutris # game launcher
 
     # files
     cosmic-files # file manager

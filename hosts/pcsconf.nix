@@ -27,9 +27,9 @@ in {
     polkit.enable = true;
     rtkit.enable = true;
     chromiumSuidSandbox.enable = true;
-    pam.services.coldlock = {};
   };
   programs = {
+    coldlock.enable = true;
     steam = {
       enable = true;
       protontricks.enable = true;
@@ -69,7 +69,6 @@ in {
 
   services = {
     fstrim.enable = true; # trim for SSDs
-    seatd.enable = true; #
     udev = {
       enable = true; # udev for hardware
       packages = [pkgs.game-devices-udev-rules];

@@ -2,7 +2,7 @@
   mkSyst = {
     hostname,
     envir,
-    curversion ? "26.05",
+    curversion ? "26.11",
     desk ? "desktop",
     bootloader ? ({
       type = "systemd";
@@ -23,6 +23,7 @@
       integratedBroken = false;
     }),
     colorsvar ? "gruvbox-dark",
+    scheme ? "dark",
     brightnesctrl ? ({
       up = "ddcutil setvcp 10 + 5";
       down = "ddcutil setvcp 10 - 5";
@@ -72,6 +73,7 @@
         (./.. + "/hosts/${hostname}")
         inputs.sops-nix.nixosModules.sops
         inputs.base16x2.nixosModules.default
+        inputs.coldlock.nixosModules.default
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = import ./home-manager.nix {inherit inputs allSpecialArgs;};

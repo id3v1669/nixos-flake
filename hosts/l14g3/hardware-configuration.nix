@@ -7,51 +7,17 @@
   ...
 }: {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
-
-  specialisation.egpu.configuration = {
-    system.nixos.tags = ["egpu"];
-    services.udev.extraRules = ''
-      ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="5986", ATTR{idProduct}=="2142", RUN+="/bin/sh -c 'echo 1 > /sys$devpath/remove'"
-    '';
-    boot = {
-      kernelModules = [
-        "pci-stub"
-      ];
-      kernelParams = [
-        "vfio-pci.ids=1002:15e7"
-        "pci=pcie_bus_perf" # sets pcie in performance mode, potentialy can help with egpu
-        "pci=big_root_window" # re-bar??
-
-        "amd_pstate=active"
-        "amd_pstate.shared_mem=0"
-
-        #"iomem=relaxed" #TEMP for data collection
-
-        "pci=nocrs" # Ignore ACPI resource conflicts: required to avoid xhci_hcd error
-
-        # temporary returned back as egpu-init.efi overflows nvram and needs to be fixed
-        #"pci=realloc"
-        #"pci=assign-busses"
-      ];
-      extraModprobeConfig = ''
-        softdep amdgpu pre: vfio-pci
-        options kvm_amd nested=1
-        options kvm ignore_msrs=1 report_ignored_msrs=0
-      '';
-    };
-  };
-
   boot = {
     supportedFilesystems = ["ntfs" "ntfs3" "exfat" "vfat" "ext4"];
     kernelModules = [
       "ryzen-smu"
       "kvm-amd"
+      "acpi-call"
     ];
     kernelPackages = pkgs.linuxPackages_zen;
 
     kernelParams = [
       "amd_iommu=on"
-      #"iomem=relaxed"#TEMP
       "iommu=pt"
       "amd_pstate=active"
     ];
@@ -65,6 +31,7 @@
     };
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
+      acpi_call
       ryzen-smu
     ];
     initrd = {

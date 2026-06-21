@@ -6,13 +6,17 @@ _: {
       settings = {
         charger = {
           governor = "performance";
+          scaling_min_freq = 2000000;
           turbo = "auto";
         };
 
         battery = {
           governor = "powersave";
-          scaling_min_freq = 400000;
-          scaling_max_freq = 1300000;
+          #scaling_min_freq = 400000;
+          #scaling_max_freq = 1300000;
+          # temp for waysip testing
+          scaling_min_freq = 410959;
+          scaling_max_freq = 410959;
           turbo = "never";
         };
       };

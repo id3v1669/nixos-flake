@@ -11,14 +11,15 @@ with allSpecialArgs; {
     inputs.prism-launcher.overlays.default
     inputs.nur.overlays.default
     inputs.eww.overlays.default
-    inputs.nix-minecraft.overlay
     inputs.cti.overlays.default
     inputs.awww.overlays.default
     (import ./../overlays/uutils)
-    (import ./../overlays/temp.nix)
+    (import ./../overlays/surreal.nix)
+    (import ./../overlays/temp.nix {inherit inputs system;})
+    (import ./../overlays/graphify.nix {inherit inputs system;})
     (import ./../overlays/steam.nix)
     (import ./../overlays/equibop.nix)
-    (import ./../overlays/lutris.nix)
+    (import ./../overlays/android-mic.nix)
     (import ./../overlays/gruvbox-plus-icons.nix)
     (import ./../overlays/btop.nix {
       inherit cpuvar;
