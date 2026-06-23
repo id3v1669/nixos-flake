@@ -1,5 +1,4 @@
 {
-  config,
   uservars,
   ...
 }: {
@@ -8,27 +7,21 @@
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:1669";
+        proxyPass = "http://127.0.0.1:8222";
       };
     };
-  };
-  virtualisation.oci-containers = {
-    backend = "podman";
-    containers."vaultwarden" = {
-      autoStart = true;
-      image = "vaultwarden/server:latest";
-      ports = [
-        "1669:80"
-      ];
-      volumes = [
-        "/home/${uservars.name}/vaultwarden/vw-data/:/data/"
-      ];
-      environment = {
-        EMERGENCY_ACCESS_ALLOWED = "false";
-        SIGNUPS_ALLOWED = "false";
-        DISABLE_ADMIN_TOKEN = "true";
-        PASSWORD_HINTS_ALLOWED = "false";
-        SHOW_PASSWORD_HINT = "false";
+    vaultwarden = {
+      enable = true;
+      dbBackend = "postgresql";
+      configurePostgres = true;
+      config = {
+        DOMAIN = "https://vw.${uservars.domain}";
+        ROCKET_ADDRESS = "127.0.0.1";
+        ROCKET_PORT = 8222;
+        SIGNUPS_ALLOWED = false;
+        EMERGENCY_ACCESS_ALLOWED = false;
+        PASSWORD_HINTS_ALLOWED = false;
+        SHOW_PASSWORD_HINT = false;
       };
     };
   };
