@@ -1,6 +1,10 @@
 {
-  pkgs,
   uservars,
+  config,
+  pkgs,
+  stable,
+  inputs,
+  lib,
   ...
 }: {
   imports = [
@@ -15,16 +19,42 @@
     ./../../modules/sudo.nix
     ./../../modules/swhkdp.nix
     ./../../modules/bluetooth.nix
-    #./../../modules/odoo.nix
+    ./../../modules/greeters/sddm.nix
   ];
+  hardware = {
+    enableAllFirmware = true;
+    uinput.enable = true;
+    amdgpu.opencl.enable = true;
+  };
 
   networking = {
     firewall.enable = false;
     enableIPv6 = false;
   };
-
+  programs = {
+    gamemode = {
+      enable = true;
+      settings = {
+        general = {
+          reaper_freq = 5;
+          desiredgov = "performance";
+          softrealtime = "auto";
+          ioprio = 0;
+        };
+        cpu = {
+          park_cores = "yes";
+          pin_cores = "yes";
+        };
+        custom = {
+          start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
+          end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+          script_timeout = 10;
+        };
+      };
+    };
+  };
   users.users.${uservars.name}.extraGroups = [
-    "users"
+    "gamemode"
     "wheel"
     "networkmanager"
     "rustdesk"
@@ -34,18 +64,40 @@
     "veracrypt"
     "usbmux"
   ];
-  environment = {
-    systemPackages = with pkgs; [
-    ];
-    etc."hypr/monitor-init.conf".text = ''
-      #monitor=DP-1,3440x1440@100,0x0,1
-      #monitor=HDMI-A-2,disable
-    '';
+  services.ddccontrol.enable = true;
+  
+  systemd.services.surrealdb.serviceConfig.ProcSubset = lib.mkForce "all";
+  systemd.services.surrealdb.environment.SURREAL_BUCKET_FOLDER_ALLOWLIST = "/var/lib/surrealdb/buckets";
+  systemd.services.surrealdb.serviceConfig.StateDirectory = [
+    "surrealdb"
+    "surrealdb/buckets"
+  ];
+  services.surrealdb = {
+    enable = true;
+    package = pkgs.surrealdbx;
+    dbPath = "surrealkv:///var/lib/surrealdb";
+    port = 8000;
+    extraFlags = ["--allow-all" "--user" "root" "--pass" "root" "--allow-experimental" "files"];
   };
+  environment.systemPackages = with pkgs; [
+    obsidian
+    apfs-fuse
+    fuse
+    android-tools
+    android-mic
+    surrealistx
+    wlrctl
+    wtype
+    ryzenadj
+    proton-vpn
+    claude-code
+    opencode
+    graphify
+  ];
   nix.package = pkgs.nixVersions.latest;
   nix.settings = {
     auto-optimise-store = true;
-    max-jobs = 2;
+    max-jobs = 1;
     cores = 3;
     keep-derivations = true;
     keep-outputs = true;
@@ -56,5 +108,22 @@
       "kvm"
     ];
   };
-  systemd.services.nix-daemon.serviceConfig.AllowedCPUs = "0-5";
+  systemd.services.nix-daemon.serviceConfig.AllowedCPUs = "0-3";
+  nixpkgs.overlays = let
+    cFlags = ["-O3" "-pipe" "-march=znver3" "-mtune=znver3"];
+
+    optimizeC = pkg:
+      pkg.overrideAttrs (old: {
+        env =
+          (old.env or {})
+          // {
+            NIX_CFLAGS_COMPILE = (old.env.NIX_CFLAGS_COMPILE or "") + " " + toString cFlags;
+          };
+      });
+  in [
+    (final: prev: {
+      #hyprland = optimizeC prev.hyprland;
+      #mesa = optimizeC prev.mesa;
+    })
+  ];
 }

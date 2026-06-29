@@ -9,10 +9,18 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
-
+  # disable bluetooth until propper antennas bought as usb is faster
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="8087", ATTR{idProduct}=="0a2a", ATTR{authorized}="0"
+  '';
   boot = {
     kernelModules = ["kvm-intel"];
-    kernelPackages = pkgs.linuxPackages_zen;
+
+		kernelPackages = pkgs.linuxPackages_latest;
+
+    # disable wifi until propper antennas bought as usb is faster
+    kernelParams = ["pci-stub.ids=8086:095a"];
+
     kernel.sysctl = {
       "kernel.unprivileged_userns_clone" = 1;
       "vm.max_map_count" = 2147483642;
@@ -25,7 +33,7 @@
     ];
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "uas" "sd_mod" "usbhid"];
-      kernelModules = ["amdgpu"];
+      kernelModules = ["amdgpu" "pci-stub"];
       luks.devices.primary.device = "/dev/disk/by-label/luks_primary";
     };
   };
@@ -36,7 +44,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/364C-9E75";
+    device = "/dev/disk/by-label/EFI";
     fsType = "vfat";
   };
 

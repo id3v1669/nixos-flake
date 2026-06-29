@@ -7,7 +7,7 @@ final: pkgs: {
       owner = "teamclouday";
       repo = "AndroidMic";
       rev = "3db80c53f67803f2064a868dcdb63de4a86cce8c";
-      hash = "sha256-y+Flj4JkPPVGq57AA8Bs6SzOSBeh5SmEKlMUxM2F3Jk=";
+      hash = "sha256-Z3BB3l4zH2nTyGUnOn/VuVCHHajLI8wxrOhji4rWhGg=";
     };
 
     cargoRoot = "RustApp";
