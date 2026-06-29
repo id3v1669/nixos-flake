@@ -101,7 +101,7 @@
         hostname = "nuc10ch";
         envir = "Hyprland";
         bootloader = {
-          type = "opencore";
+          type = "systemd";
           timeout = 7;
         };
         cpuvar = {

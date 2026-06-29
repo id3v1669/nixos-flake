@@ -7,6 +7,10 @@
   ...
 }: {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+  # android mic perms
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="2d0[0-5]", TAG+="uaccess", MODE="0660", GROUP="users"
+  '';
   boot = {
     supportedFilesystems = ["ntfs" "ntfs3" "exfat" "vfat" "ext4"];
     kernelModules = [

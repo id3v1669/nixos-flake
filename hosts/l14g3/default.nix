@@ -85,6 +85,7 @@
     extraFlags = ["--allow-all" "--user" "root" "--pass" "root" "--allow-experimental" "files"];
   };
   environment.systemPackages = with pkgs; [
+    obsidian
     displaylink
     apfs-fuse
     fuse
@@ -128,7 +129,7 @@
       });
   in [
     (final: prev: {
-      hyprland = optimizeC prev.hyprland;
+      #hyprland = optimizeC prev.hyprland;
       #mesa = optimizeC prev.mesa;
     })
   ];
