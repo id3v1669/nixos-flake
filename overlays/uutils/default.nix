@@ -1,16 +1,16 @@
 final: pkgs: {
   uutils-coreutils-noprefix = pkgs.uutils-coreutils-noprefix.overrideAttrs (old: rec {
     pname = "uutils-coreutils-noprefix";
-    version = "0.8.0";
+    version = "0.9.0";
     src = pkgs.fetchFromGitHub {
       owner = "uutils";
       repo = "coreutils";
-      rev = "a1599dfad40be97e471f9644dcc41b5c5a41265a";
-      hash = "sha256-WM0usHF8zzpXWlfmKA//AscI4KBgTSY7TIMzo6JUTAY=";
+      rev = "4bc3b683d856b14005f76f66a3270b698d0ee10b";
+      hash = "sha256-UGuaq+qjW+6ZyFnk/FOQA1uUGti5zYJqGUShwJF+Wl0=";
     };
     cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
       inherit pname src version;
-      hash = "sha256-oFai+JRE7n9epv4d3V3D4EUcUd2sH6QudVbLWRnXdpw=";
+      hash = "sha256-sTI2PxwdXAurIZu6aYhgy5Okk6NyHaM3jsz9sFCcgBs=";
     };
     patches =
       (old.patches or [])
