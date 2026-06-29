@@ -5,7 +5,7 @@
 }: {
   services.displayManager.sddm = {
     enable = true;
-    package = pkgs.qt6Packages.sddm;
+    package = pkgs.lib.mkForce pkgs.qt6Packages.sddm;
     wayland = {
       enable = true;
       compositor = "weston";

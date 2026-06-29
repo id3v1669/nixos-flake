@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   envir,
   colorsvar,
@@ -10,8 +11,6 @@
   home.packages = let
     cp = pkgs.callPackage;
   in [
-    (cp ./eww-launcher.nix {inherit envir;})
-    (cp ./eww-move.nix {})
     (cp ./shadowplay.nix {inherit envir;})
     (cp ./wallpaper.nix {
       inherit envir;
@@ -22,5 +21,9 @@
     (cp ./url-handler.nix {
       inherit config;
     })
+
+  ] ++ lib.lists.optionals (envir == "Hyprland") [
+    (cp ./eww-launcher.nix {inherit envir;})
+    (cp ./eww-move.nix {})
   ];
 }
