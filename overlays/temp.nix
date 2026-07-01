@@ -17,4 +17,5 @@
         ./gpu-screen-recorder-force-invalid-modifier.patch
       ];
   });
+  pnpm_10_29_2 = pkgs.pnpm_10;
 }
