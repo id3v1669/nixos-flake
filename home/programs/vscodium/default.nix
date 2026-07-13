@@ -26,6 +26,7 @@
     fira-code-symbols
     mplus-outline-fonts.githubRelease
     proggyfonts
+    rust-analyzer
   ];
   programs.vscodium = {
     enable = true;

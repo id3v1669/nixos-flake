@@ -20,6 +20,7 @@ with allSpecialArgs; {
     (import ./../overlays/steam.nix)
     (import ./../overlays/equibop.nix)
     (import ./../overlays/android-mic.nix)
+    (import ./../overlays/android-tools.nix)
     (import ./../overlays/gruvbox-plus-icons.nix)
     (import ./../overlays/btop.nix {
       inherit cpuvar;

@@ -14,8 +14,6 @@
     # vm, virt, emulators & remote
     remmina # remote desktop
     packer
-    minikube # kubernetes for local tests
-    kubectl # kubernetes cli
 
     # web
     tor-browser # tor browser for research
