@@ -12,6 +12,7 @@
     ./../../modules/web.nix
     ./../../modules/sops.nix
     ./../../modules/vaultwarden.nix
+    ./../../modules/postgresql-backup.nix
     ./../../modules/dufs.nix
     ./../../modules/wireguard.nix
     ./../../modules/virtualisation.nix
