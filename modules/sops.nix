@@ -1,7 +1,7 @@
-{uservars, ...}: {
+{...}: {
   sops = {
-    defaultSopsFile = ./../secrets/secret.enc.yaml;
+    defaultSopsFile = ./../secrets/system/dufs.enc.yaml;
     defaultSopsFormat = "yaml";
-    age.keyFile = "/home/${uservars.name}/.config/sops/age/keys.txt";
+    age.sshKeyPaths = ["/etc/ssh/system"];
   };
 }

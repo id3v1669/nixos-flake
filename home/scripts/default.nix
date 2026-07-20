@@ -23,7 +23,6 @@
     })
 
   ] ++ lib.lists.optionals (envir == "Hyprland") [
-    (cp ./eww-launcher.nix {inherit envir;})
-    (cp ./eww-move.nix {})
+    (cp ./iwwc-launcher.nix {inherit envir;})
   ];
 }

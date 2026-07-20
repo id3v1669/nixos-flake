@@ -26,7 +26,7 @@ NixOS flake with home manager
 |-----|-----|-----|-----|
 | WM | Hyprland | tested on igpu, amd apu, amd dgpu, nvidia optimus(with intel), nvidia native | - |
 | launcher | anyrun | - | - |
-| bar | eww | fork of eww | - |
+| bar | iwwc | [Iced Wayland Widget Center](https://github.com/id3v1669/iwwc) | - |
 | background | awww | - | - |
 | portals | gtk and hyprland | - | - |
 | login manager | sddm | - | - |

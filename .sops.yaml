@@ -1,6 +1,8 @@
 keys:
-  - &nextcloud age1j4lwwtw472552f0c90e0wutgyr44f538utw52yk4jmt8ewuzkalspqmr4f
+  - &system age1tn3wry8jhufnu5gzmq4t899qvwapey8he3s99paxr3y4gl25qvpqal8un6
+  - &master age1lmxjht53gluwujnl02j7z9zzwnqvjuxuxnl3umuhgt0rjpu58a7se0uhhe
 creation_rules:
-  - path_regex: secrets/nextcloud\.(yaml|json|env|ini)$
-    age:
-      - *nextcloud
+  - path_regex: secrets/system/.*\.enc\.yaml$
+    age: *system
+  - path_regex: secrets/user/.*\.enc\.yaml$
+    age: *master

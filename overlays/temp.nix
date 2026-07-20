@@ -18,4 +18,5 @@
       ];
   });
   pnpm_10_29_2 = pkgs.pnpm_10;
+  electron_40 = pkgs.electron;
 }

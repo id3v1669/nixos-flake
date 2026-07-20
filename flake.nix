@@ -71,10 +71,6 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    eww = {
-      url = "github:id3v1669/eww";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     cti = {
       url = "github:id3v1669/cosmic-theme-import";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -96,7 +92,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     iwwc = {
-      url = "path:/home/user/myrepos/iwwc";
+      url = "github:id3v1669/iwwc";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -230,7 +226,7 @@
         envir = "none";
         desk = "server";
         bootloader = {
-          type = "systemd";
+          type = "grub";
           timeout = 1;
           device = "/dev/sda";
         };

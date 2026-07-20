@@ -17,6 +17,7 @@
       ./programs
       ./pkgs
       ./enviroment/systemd
+      ./sops.nix
     ]
     ++ lib.lists.optionals (envir != "none") [
       ./scripts

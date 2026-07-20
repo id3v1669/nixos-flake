@@ -25,6 +25,19 @@
     enableIPv6 = lib.mkDefault true;
   };
   programs = {
+    git = {
+      enable = true;
+      config = {
+        core.quotepath = false;
+        init.defaultBranch = "master";
+      };
+    };
+    ssh = {
+      knownHosts.github = {
+        hostNames = ["github.com"];
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
+      };
+    };
     nano.enable = true;
     direnv = {
       enable = true;

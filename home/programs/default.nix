@@ -7,6 +7,8 @@
     [
       ./btop
       ./fastfetch
+      ./git
+      ./ssh
     ]
     ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
       ./claude-code

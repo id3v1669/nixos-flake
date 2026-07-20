@@ -156,7 +156,6 @@
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_5 "wayshot -g --no-freeze --clipboard"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_B firefox
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_C "cliphist list | anyrun --show-results-immediately true | cliphist decode | wl-copy"
-        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_E eww-move
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_F nautilus
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_Z "killall -SIGUSR1 gpu-screen-recorder && sleep 0.5 && notify-send -t 3500 -u low -- 'GPU Screen Recorder' 'Replay saved'"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_G "${fullscreen}"
@@ -165,10 +164,10 @@
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_N "swaync-client -t"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_P "hyprpicker -a"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_Q "${killactive}"
-        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_R eww-launcher
+        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_R iwwc-launcher
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_SLASH "${reload}"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_T wezterm
-        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_Y "eww reload"
+        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_Y "iwwc reload"
         KEY_RIGHTCTRL+KEY_2 "@enter secondary"
         KEY_RIGHTCTRL+KEY_D @macro simple {
           KEY_ENTER click

@@ -6,13 +6,16 @@
   ...
 }:
 writeShellApplication {
-  name = "eww-ws";
+  name = "iwwc-ws";
+  # awk field refs ($2/$3) must stay single-quoted so bash leaves them alone.
+  excludeShellChecks = ["SC2016"];
   runtimeInputs = with pkgs;
     [
-      eww
+      iwwc
       gnugrep
       socat
       gawk
+      coreutils
     ]
     ++ lib.lists.optionals (envir == "Hyprland") [
       hyprland
@@ -24,6 +27,12 @@ writeShellApplication {
         mapfile -t wsa < <(hyprctl workspaces | grep 'workspace ID .*(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }')
       ''
       else ''echo "none"'';
+    # Seed the first render with the workspace that is actually focused;
+    # calling wss with no argument leaves curindex empty and corrupts ws[-1].
+    initws =
+      if envir == "Hyprland"
+      then ''$(hyprctl activeworkspace | awk 'NR==1 { gsub(/[()]/, "", $3); print $3 }')''
+      else "1";
   in ''
     set +o errexit
     set +o nounset
@@ -42,13 +51,13 @@ writeShellApplication {
         ws[index2-1]=""
       done
       ws[curindex-1]=""
-      eww update wss="''${ws[*]}"
+      iwwc update wss "''${ws[*]}"
     }
 
-    wss
+    wss "${initws}"
 
-    socat -u UNIX-CONNECT:/run/user/1000/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock - | \
-    stdbuf -o0 awk -F '>>|,' -e "/^workspace>>/ {print $2}" -e "/^focusedmon>>/ {print $3}" | \
+    socat -u UNIX-CONNECT:"$XDG_RUNTIME_DIR"/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock - | \
+    stdbuf -o0 awk -F '>>|,' -e '/^workspace>>/ {print $2}' -e '/^focusedmon>>/ {print $3}' | \
     while IFS= read -r line; do
         wss "$line"
     done

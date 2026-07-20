@@ -32,7 +32,7 @@ in {
 
         -- Startup scripts.
         hl.exec_cmd("wallpaper-autostart")
-        hl.exec_cmd("eww-launcher")
+        hl.exec_cmd("iwwc-launcher")
     end)
 
     ----------------------------------------------------------------------

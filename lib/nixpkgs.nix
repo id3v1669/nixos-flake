@@ -10,9 +10,9 @@ with allSpecialArgs; {
     inputs.claude-code.overlays.default
     inputs.prism-launcher.overlays.default
     inputs.nur.overlays.default
-    inputs.eww.overlays.default
     inputs.cti.overlays.default
     inputs.awww.overlays.default
+    inputs.iwwc.overlays.default
     (import ./../overlays/uutils)
     (import ./../overlays/surreal.nix)
     (import ./../overlays/temp.nix {inherit inputs system;})
@@ -25,10 +25,6 @@ with allSpecialArgs; {
     (import ./../overlays/btop.nix {
       inherit cpuvar;
       inherit gpuvar;
-    })
-    (import ./../overlays/eww.nix {
-      inherit gpuvar;
-      inherit inputs;
     })
   ];
 }
