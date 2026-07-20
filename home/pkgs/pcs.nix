@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     # screenshots
-    wayshot # cli screenshot
     satty # screenshot editor
 
     # sound

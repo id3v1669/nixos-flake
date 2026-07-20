@@ -32,7 +32,7 @@
       name = "user";
       description = "id3v1669";
       owner = "id3v1669";
-      domain = "none";
+      domain = "id3v1669.com";
       sleeptimeout = 1200;
     }),
     deflocale ? ({

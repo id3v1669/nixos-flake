@@ -92,7 +92,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wayshot = {
-      url = "github:id3v1669/wayshot/nix_module";
+      url = "github:waycrate/wayshot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     iwwc = {

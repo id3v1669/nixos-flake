@@ -9,7 +9,14 @@
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
   # android mic perms
   services.udev.extraRules = ''
+     # Pixel as microphone (AOA accessory mode)
     SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="2d0[0-5]", TAG+="uaccess", MODE="0660", GROUP="users"
+    # Mi Mix 3: adb/fastboot/recovery
+    SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0660", TAG+="uaccess", GROUP="users"
+    # Mi Mix 3: Xiaomi MTP/PTP modes
+    SUBSYSTEM=="usb", ATTR{idVendor}=="2717", MODE="0660", TAG+="uaccess", GROUP="users"
+    # Qualcomm EDL mode (unbrick/flash)
+    SUBSYSTEM=="usb", ATTR{idVendor}=="05c6", ATTR{idProduct}=="9008", MODE="0660", TAG+="uaccess", GROUP="users"
   '';
   boot = {
     supportedFilesystems = ["ntfs" "ntfs3" "exfat" "vfat" "ext4"];
@@ -18,12 +25,15 @@
       "kvm-amd"
       "acpi-call"
     ];
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
+    # aarch64 emulation for building Mi Mix 3 (perseus)
+    binfmt.emulatedSystems = ["aarch64-linux"];
 
     kernelParams = [
       "amd_iommu=on"
       "iommu=pt"
       "amd_pstate=active"
+      "usbcore.quirks=18d1:d00d:k"
     ];
     kernel.sysctl = {
       "kernel.unprivileged_userns_clone" = 1;

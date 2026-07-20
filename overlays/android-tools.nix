@@ -10,6 +10,7 @@ final: pkgs: let
     };
   };
 in {
+  #don't want to wait for build, adb 33 to make it work with mi mix 3
   android-tools = pkgs.stdenv.mkDerivation {
     pname = "android-tools";
     version = "33.0.3";

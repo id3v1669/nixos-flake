@@ -9,6 +9,7 @@
     imports = [
       ../home/home.nix
       inputs.base16x2.homeManagerModules.default
+      inputs.sops-nix.homeManagerModules.sops
     ];
     palette = "${allSpecialArgs.colorsvar}";
   };
