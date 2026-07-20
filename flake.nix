@@ -91,15 +91,24 @@
       url = "github:waycrate/coldlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wayshot = {
+      url = "github:id3v1669/wayshot/nix_module";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    iwwc = {
+      url = "path:/home/user/myrepos/iwwc";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs: let
     mkSystem = (import ./lib/mkSyst.nix {inherit inputs;}).mkSyst;
   in {
     formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.alejandra;
     nixosConfigurations = {
-      nuc10chhypr = mkSystem {
+      nuc10chsrv = mkSystem {
         hostname = "nuc10ch";
-        envir = "Hyprland";
+        envir = "none";
+        desk = "server";
         bootloader = {
           type = "systemd";
           timeout = 7;
@@ -108,21 +117,22 @@
           type = "intel";
           hasIntegrated = false;
         };
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          domain = "none";
-          wp = "default3.png";
-          owner = "id3v1669";
-          sleeptimeout = 1200;
-        };
-        brightnesctrl = {
-          up = "light -A 5";
-          down = "light -U 5";
-        };
         gpuvar = {
-          type = "amd";
-          tech = "broken";
+          type = "none";
+          tech = "none";
+        };
+        uservars = {
+          name = "nuc10chsrvuser";
+          description = "Nuc10chSrv";
+          domain = "id3v1669.com";
+          owner = "id3v1669";
+        };
+        deflocale = {
+          kblayout = "au";
+          kbvariant = "";
+          kboption = "";
+          timezone = "Australia/Perth";
+          locale = "en_AU.UTF-8";
         };
       };
       l14g3hypr = mkSystem {
@@ -141,9 +151,9 @@
         uservars = {
           name = "user";
           description = "id3v1669";
-          domain = "none";
-          wp = "default3.png";
           owner = "id3v1669";
+          domain = "id3v1669.com";
+          wp = "default3.png";
           sleeptimeout = 1200;
         };
         brightnesctrl = {
@@ -171,9 +181,9 @@
         uservars = {
           name = "user";
           description = "id3v1669";
-          domain = "none";
-          wp = "default3.png";
           owner = "id3v1669";
+          domain = "id3v1669.com";
+          wp = "default3.png";
           sleeptimeout = 1200;
         };
         brightnesctrl = {
@@ -201,9 +211,9 @@
         uservars = {
           name = "user";
           description = "id3v1669";
-          domain = "none";
-          wp = "default3.png";
           owner = "id3v1669";
+          domain = "id3v1669.com";
+          wp = "default3.png";
           sleeptimeout = 1200;
         };
         brightnesctrl = {
@@ -231,8 +241,8 @@
         uservars = {
           name = "srvcon400user";
           description = "SrvCon400";
-          domain = "id3v1669.com";
           owner = "id3v1669";
+          domain = "id3v1669.com";
         };
         deflocale = {
           kblayout = "au";

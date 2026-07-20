@@ -23,6 +23,7 @@
       ./spicetify
       ./wezterm
       ./mangohud
+      ./wayshot
     ]
     ++ lib.lists.optionals (desk == "desktop") [
     ];

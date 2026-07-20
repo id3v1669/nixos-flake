@@ -29,7 +29,7 @@
       ./enviroment/${envir}
     ]
     ++ lib.lists.optionals (envir == "Hyprland" || envir == "sway") [
-      ./enviroment/eww
+      #./enviroment/iwwc
     ];
   home = {
     stateVersion = "${curversion}";
