@@ -12,7 +12,7 @@ writeShellApplication {
     procps
     coreutils
     (callPackage ./iwwc-ws.nix {inherit envir;})
-    (callPackage ./iwwc-lang.nix {})
+    (callPackage ./iwwc-lang.nix {inherit envir;})
   ];
   text = ''
     set +o errexit
@@ -21,7 +21,6 @@ writeShellApplication {
 
     sock="''${XDG_RUNTIME_DIR:-/tmp}/iwwc.sock"
 
-    # Exact-match pkill so this script (iwwc-launcher) never kills itself.
     pkill -x iwwc
     pkill -x iwwc-ws
     pkill -x iwwc-lang
@@ -29,7 +28,6 @@ writeShellApplication {
 
     iwwc daemon &
 
-    # Wait for the daemon to bind its IPC socket instead of guessing with sleep.
     for _ in $(seq 100); do
       [ -S "$sock" ] && break
       sleep 0.1

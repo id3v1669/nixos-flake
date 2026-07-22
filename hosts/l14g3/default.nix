@@ -77,6 +77,27 @@
     "surrealdb"
     "surrealdb/buckets"
   ];
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_18;
+    settings.port = 5432;
+    authentication = lib.mkBefore ''
+      host all all 127.0.0.1/32 trust
+      host all all ::1/128      trust
+    '';
+    ensureDatabases = ["devdb"];
+    ensureUsers = [
+      {
+        name = uservars.name;
+        ensureClauses = {
+          login = true;
+          superuser = true;
+          createdb = true;
+          createrole = true;
+        };
+      }
+    ];
+  };
   services.surrealdb = {
     enable = true;
     package = pkgs.surrealdbx;
@@ -93,6 +114,7 @@
     android-mic
     #rustdesk
     surrealistx
+    dbeaver-bin
     wlrctl
     wtype
     ryzenadj

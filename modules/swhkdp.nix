@@ -81,7 +81,7 @@
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.window.fullscreen({mode = \\\"maximized\\\", action = \\\"toggle\\\"})'"
         else if envir == "sway"
-        then "swaymsg fullscreen enable"
+        then "swaymsg fullscreen toggle"
         else "";
       nextactivewindow =
         if envir == "Hyprland"
@@ -105,7 +105,7 @@
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.focus({direction = \\\"{right, left, down, up}\\\"})'"
         else if envir == "sway"
-        then "sway-focus {r, l, d, u}"
+        then "swaymsg focus {right, left, down, up}"
         else "";
       exit =
         if envir == "Hyprland"

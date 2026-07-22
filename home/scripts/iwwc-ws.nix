@@ -7,7 +7,6 @@
 }:
 writeShellApplication {
   name = "iwwc-ws";
-  # awk field refs ($2/$3) must stay single-quoted so bash leaves them alone.
   excludeShellChecks = ["SC2016"];
   runtimeInputs = with pkgs;
     [
@@ -19,6 +18,10 @@ writeShellApplication {
     ]
     ++ lib.lists.optionals (envir == "Hyprland") [
       hyprland
+    ]
+    ++ lib.lists.optionals (envir == "sway") [
+      sway
+      jq
     ];
   text = let
     wsa =
@@ -26,13 +29,31 @@ writeShellApplication {
       then ''
         mapfile -t wsa < <(hyprctl workspaces | grep 'workspace ID .*(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }')
       ''
+      else if envir == "sway"
+      then ''
+        mapfile -t wsa < <(swaymsg -t get_workspaces | jq -r '.[].num')
+      ''
       else ''echo "none"'';
-    # Seed the first render with the workspace that is actually focused;
-    # calling wss with no argument leaves curindex empty and corrupts ws[-1].
     initws =
       if envir == "Hyprland"
       then ''$(hyprctl activeworkspace | awk 'NR==1 { gsub(/[()]/, "", $3); print $3 }')''
+      else if envir == "sway"
+      then ''$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused).num')''
       else "1";
+    listen =
+      if envir == "Hyprland"
+      then ''
+        socat -u UNIX-CONNECT:"$XDG_RUNTIME_DIR"/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock - | \
+        stdbuf -o0 awk -F '>>|,' -e '/^workspace>>/ {print $2}' -e '/^focusedmon>>/ {print $3}' | \
+      ''
+      else if envir == "sway"
+      then ''
+        swaymsg -t subscribe -m '["workspace"]' | \
+        jq --unbuffered -r 'select(.change == "focus") | .current.num' | \
+      ''
+      else ''
+        tail -f /dev/null | \
+      '';
   in ''
     set +o errexit
     set +o nounset
@@ -40,7 +61,7 @@ writeShellApplication {
 
     wss() {
 
-      ws=("")
+      ws=("")
       ${wsa}
       curindex="$1"
       max=$(printf "%s\n" "''${wsa[@]}" | sort -n | tail -n 1)
@@ -56,9 +77,7 @@ writeShellApplication {
 
     wss "${initws}"
 
-    socat -u UNIX-CONNECT:"$XDG_RUNTIME_DIR"/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock - | \
-    stdbuf -o0 awk -F '>>|,' -e '/^workspace>>/ {print $2}' -e '/^focusedmon>>/ {print $3}' | \
-    while IFS= read -r line; do
+    ${listen}while IFS= read -r line; do
         wss "$line"
     done
   '';
