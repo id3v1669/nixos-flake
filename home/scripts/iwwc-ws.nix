@@ -22,6 +22,10 @@ writeShellApplication {
     ++ lib.lists.optionals (envir == "sway") [
       sway
       jq
+    ]
+    ++ lib.lists.optionals (envir == "mango") [
+      mango
+      jq
     ];
   text = let
     wsa =
@@ -33,12 +37,18 @@ writeShellApplication {
       then ''
         mapfile -t wsa < <(swaymsg -t get_workspaces | jq -r '.[].num')
       ''
-      else ''echo "none"'';
+      else if envir == "mango"
+      then ''
+        mapfile -t wsa < <(mmsg get all-tags | jq -r '[.all_tags[].tags[] | select(.client_count > 0).index] | unique | .[]')
+      ''
+      else ''wsa=()'';
     initws =
       if envir == "Hyprland"
       then ''$(hyprctl activeworkspace | awk 'NR==1 { gsub(/[()]/, "", $3); print $3 }')''
       else if envir == "sway"
       then ''$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused).num')''
+      else if envir == "mango"
+      then ''$(mmsg get all-tags | jq -r 'first(.all_tags[].tags[] | select(.is_active).index)')''
       else "1";
     listen =
       if envir == "Hyprland"
@@ -50,6 +60,11 @@ writeShellApplication {
       then ''
         swaymsg -t subscribe -m '["workspace"]' | \
         jq --unbuffered -r 'select(.change == "focus") | .current.num' | \
+      ''
+      else if envir == "mango"
+      then ''
+        mmsg watch all-tags | \
+        jq --unbuffered -r 'first(.all_tags[].tags[] | select(.is_active).index)' | \
       ''
       else ''
         tail -f /dev/null | \

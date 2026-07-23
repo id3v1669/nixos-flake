@@ -27,6 +27,7 @@
       ./enviroment/anyrun
       ./enviroment/xdg
       ./enviroment/cosmic
+      ./enviroment/kanshi
       ./enviroment/${envir}
     ]
     ++ lib.lists.optionals (envir == "Hyprland" || envir == "sway") [
@@ -46,8 +47,9 @@
       GDK_BACKEND = "wayland";
       QT_QPA_PLATFORM = "wayland";
       XDG_SESSION_TYPE = "wayland";
-      XDG_CURRENT_DESKTOP = "${envir}";
       NIXOS_OZONE_WL = "1";
+    } // lib.optionalAttrs (envir != "mango") {
+      XDG_CURRENT_DESKTOP = "${envir}";
     };
   };
 }

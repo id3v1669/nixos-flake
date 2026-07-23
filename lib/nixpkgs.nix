@@ -13,8 +13,10 @@ with allSpecialArgs; {
     inputs.cti.overlays.default
     inputs.awww.overlays.default
     inputs.iwwc.overlays.default
+    inputs.mango.overlays.default
     (import ./../overlays/uutils)
     (import ./../overlays/surreal.nix)
+    (import ./../overlays/xdg-desktop-portal-luminous.nix)
     (import ./../overlays/temp.nix {inherit inputs system;})
     (import ./../overlays/graphify.nix {inherit inputs system;})
     (import ./../overlays/steam.nix)

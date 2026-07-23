@@ -18,6 +18,10 @@ writeShellApplication {
     ++ lib.lists.optionals (envir == "sway") [
       sway
       jq
+    ]
+    ++ lib.lists.optionals (envir == "mango") [
+      mango
+      jq
     ];
   text = let
     listen =
@@ -25,6 +29,11 @@ writeShellApplication {
       then ''
         swaymsg -t subscribe -m '["input"]' | \
         jq --unbuffered -r 'select(.change == "xkb_layout") | .input.xkb_active_layout_name[0:2] | ascii_downcase' | \
+      ''
+      else if envir == "mango"
+      then ''
+        mmsg watch keyboardlayout | \
+        jq --unbuffered -r '.layout[0:2] | ascii_downcase' | \
       ''
       else ''
         socat -u UNIX-CONNECT:"$XDG_RUNTIME_DIR"/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock - | \

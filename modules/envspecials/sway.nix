@@ -11,10 +11,13 @@
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
+      xdg-desktop-portal-luminous
     ];
     config.sway = lib.mkForce {
-      default = ["wlr" "gtk"];
+      default = ["gtk"];
+      "org.freedesktop.impl.portal.ScreenCast" = ["luminous"];
+      "org.freedesktop.impl.portal.Screenshot" = ["luminous"];
+      "org.freedesktop.impl.portal.RemoteDesktop" = ["luminous"];
       "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
       "org.freedesktop.impl.portal.Settings" = ["gtk"];
       "org.freedesktop.impl.portal.Notification" = ["gtk"];

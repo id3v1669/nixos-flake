@@ -30,18 +30,24 @@
         then "hyprctl dispatch 'hl.dsp.window.close()'"
         else if envir == "sway"
         then "swaymsg kill"
+        else if envir == "mango"
+        then "mmsg dispatch killclient"
         else "";
       togglesplit =
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.layout(\\\"togglesplit\\\")'"
         else if envir == "sway"
         then "swaymsg layout toggle split"
+        else if envir == "mango"
+        then "mmsg dispatch dwindle_toggle_split_direction"
         else "echo 'no envir'";
       togglefloating =
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.window.float({action = \\\"toggle\\\"})'"
         else if envir == "sway"
         then "swaymsg floating toggle"
+        else if envir == "mango"
+        then "mmsg dispatch togglefloating"
         else "";
       pseudo =
         if envir == "Hyprland"
@@ -52,79 +58,105 @@
         then "hyprctl dispatch 'hl.dsp.focus({workspace = \\\"e+1\\\"})'"
         else if envir == "sway"
         then "swaymsg workspace next"
+        else if envir == "mango"
+        then "mmsg dispatch viewtoright"
         else "";
       prevworkspace =
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.focus({workspace = \\\"e-1\\\"})'"
         else if envir == "sway"
         then "swaymsg workspace prev"
+        else if envir == "mango"
+        then "mmsg dispatch viewtoleft"
         else "";
       movenextworkspace =
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.window.move({workspace = \\\"e+1\\\"})'"
         else if envir == "sway"
         then "swaymsg move container to workspace next"
+        else if envir == "mango"
+        then "mmsg dispatch tagtoright"
         else "";
       moveprevworkspace =
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.window.move({workspace = \\\"e-1\\\"})'"
         else if envir == "sway"
         then "swaymsg move container to workspace prev"
+        else if envir == "mango"
+        then "mmsg dispatch tagtoleft"
         else "";
       fullscreen =
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.window.fullscreen({mode = \\\"fullscreen\\\", action = \\\"toggle\\\"})'"
         else if envir == "sway"
         then "swaymsg fullscreen toggle"
+        else if envir == "mango"
+        then "mmsg dispatch togglefullscreen"
         else "";
       maximize =
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.window.fullscreen({mode = \\\"maximized\\\", action = \\\"toggle\\\"})'"
         else if envir == "sway"
         then "swaymsg fullscreen toggle"
+        else if envir == "mango"
+        then "mmsg dispatch togglemaximizescreen"
         else "";
       nextactivewindow =
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.window.cycle_next()'"
         else if envir == "sway"
         then "swaymsg focus next"
+        else if envir == "mango"
+        then "mmsg dispatch focusstack,next"
         else "";
       movetoworkspace =
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.window.move({workspace = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}})'"
         else if envir == "sway"
         then "swaymsg move container to workspace {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}"
+        else if envir == "mango"
+        then "mmsg dispatch tag,{1, 2, 3, 4, 5, 6, 7, 8, 9}"
         else "";
       workspace =
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.focus({workspace = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}})'"
         else if envir == "sway"
         then "swaymsg workspace {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}"
+        else if envir == "mango"
+        then "mmsg dispatch view,{1, 2, 3, 4, 5, 6, 7, 8, 9}"
         else "";
       movefocus =
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.focus({direction = \\\"{right, left, down, up}\\\"})'"
         else if envir == "sway"
         then "swaymsg focus {right, left, down, up}"
+        else if envir == "mango"
+        then "mmsg dispatch focusdir,{right, left, down, up}"
         else "";
       exit =
         if envir == "Hyprland"
         then "hyprctl dispatch 'hl.dsp.exit()'"
         else if envir == "sway"
         then "swaymsg exit"
+        else if envir == "mango"
+        then "mmsg dispatch quit"
         else "";
       reload =
         if envir == "Hyprland"
         then "hyprctl reload"
         else if envir == "sway"
         then "swaymsg reload"
+        else if envir == "mango"
+        then "mmsg dispatch reload_config"
         else "";
       lockscreen =
-        if envir == "Hyprland"
-        then "coldlock"
-        else if envir == "sway"
+        if envir == "Hyprland" || envir == "sway" || envir == "mango"
         then "coldlock"
         else "";
+      wsdigits =
+        if envir == "mango"
+        then "<KEY_1-KEY_9>"
+        else "<KEY_1-KEY_9,KEY_0>";
     in ''
       master {
         KEY_BRIGHTNESSDOWN "light -U 5"
@@ -141,7 +173,7 @@
         KEY_LEFTCTRL+KEY_RIGHT "${nextworkspace}"
         KEY_LEFTCTRL+KEY_LEFTSHIFT+KEY_LEFT "${moveprevworkspace}"
         KEY_LEFTCTRL+KEY_LEFTSHIFT+KEY_RIGHT "${movenextworkspace}"
-        KEY_LEFTCTRL+KEY_LEFTSHIFT+<KEY_1-KEY_9,KEY_0> "${movetoworkspace}"
+        KEY_LEFTCTRL+KEY_LEFTSHIFT+${wsdigits} "${movetoworkspace}"
         KEY_LEFTMETA+KEY_R anyrun
         KEY_LEFTMETA+KEY_TAB "${nextactivewindow}"
         KEY_LEFTMETA+KEY_G "${maximize}"
@@ -149,7 +181,7 @@
         KEY_LEFTMETA+KEY_M "${exit}"
         KEY_LEFTMETA+KEY_P "${pseudo}"
         KEY_LEFTMETA+KEY_S "${togglesplit}"
-        KEY_LEFTMETA+<KEY_1-KEY_9,KEY_0> "${workspace}"
+        KEY_LEFTMETA+${wsdigits} "${workspace}"
         KEY_LEFTMETA+<KEY_RIGHT,KEY_LEFT,KEY_DOWN,KEY_UP> "${movefocus}"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_3 "wayshot -g --no-freeze - | satty -f -"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_4 "wayshot -g --no-freeze --file-name-format 'shot-%Y-%m-%d_%H:%M:%S' $HOME/Pictures/Screenshots/"

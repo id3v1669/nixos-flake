@@ -22,7 +22,7 @@
       inherit config;
     })
 
-  ] ++ lib.lists.optionals (envir == "Hyprland" || envir == "sway") [
+  ] ++ lib.lists.optionals (envir == "Hyprland" || envir == "sway" || envir == "mango") [
     (cp ./iwwc-launcher.nix {inherit envir;})
   ];
 }
