@@ -8,18 +8,20 @@ _:{
             {
               criteria = "eDP-1";
               mode = "1920x1080@60Hz";
-              position = "0,320";
+              position = "-1920,0";
+              scale = 1.0;
             }
             {
               criteria = "DP-1";
               mode = "3440x1440@120Hz";
-              position = "1920,320";
+              position = "0,0";
             }
             {
               criteria = "DP-2";
               mode = "1920x1080@100Hz";
-              position = "5360,0";
+              position = "3440,-320";
               transform = "90";
+              scale = 1.0;
             }
           ];
         };
@@ -30,12 +32,16 @@ _:{
           outputs = [
             {
               criteria = "HDMI-A-1";
-              mode = "1920x1080@74.906Hz";
+              #TODO: figure out same layout with diff screens
+              #mode = "1920x1080@74.906Hz";
+              mode = "1920x1080@60Hz";
               position = "0,0";
+              scale = 1.0;
             }
             {
               criteria = "eDP-1";
               position = "0,1080";
+              scale = 1.0;
             }
           ];
         };
@@ -63,6 +69,7 @@ _:{
             {
               criteria = "eDP-1";
               position = "0,0";
+              scale = 1.0;
             }
           ];
         };
