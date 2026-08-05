@@ -183,9 +183,9 @@
         KEY_LEFTMETA+KEY_S "${togglesplit}"
         KEY_LEFTMETA+${wsdigits} "${workspace}"
         KEY_LEFTMETA+<KEY_RIGHT,KEY_LEFT,KEY_DOWN,KEY_UP> "${movefocus}"
-        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_3 "wayshot -g --no-freeze - | satty -f -"
-        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_4 "wayshot -g --no-freeze --file-name-format 'shot-%Y-%m-%d_%H:%M:%S' $HOME/Pictures/Screenshots/"
-        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_5 "wayshot -g --no-freeze --clipboard"
+        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_3 "wayshot --no-freeze - -g | satty -f -"
+        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_4 "wayshot --no-freeze --file-name-format 'shot-%Y-%m-%d_%H:%M:%S' $HOME/Pictures/Screenshots/ -g"
+        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_5 "wayshot --no-freeze --clipboard -g"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_B firefox
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_C "cliphist list | anyrun --show-results-immediately true | cliphist decode | wl-copy"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_F nautilus

@@ -1,6 +1,6 @@
 --- a/src/pipewire_video.c
 +++ b/src/pipewire_video.c
-@@ -529,11 +529,10 @@ static size_t gsr_pipewire_video_format_remove_modifier(gsr_pipewire_video *self
+@@ -581,11 +581,10 @@ static void gsr_pipewire_video_init_modifiers(gsr_pipewire_video *self) {
  static void gsr_pipewire_video_init_modifiers(gsr_pipewire_video *self) {
      for(size_t i = 0; i < GSR_PIPEWIRE_VIDEO_NUM_VIDEO_FORMATS; i++) {
          self->supported_video_formats[i].format = video_formats[i];
