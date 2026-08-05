@@ -3,14 +3,13 @@
   inputs,
 }: final: pkgs: {
   gpu-screen-recorder = pkgs.gpu-screen-recorder.overrideAttrs (finalAttrs: prev: {
-    version = "5.13.8-git";
+    version = "5.15.3";
 
     src = pkgs.fetchgit {
       url = "https://repo.dec05eba.com/gpu-screen-recorder";
-      rev = "60f0459f840f568159a320f58d56063ba02e52c4";
-      hash = "sha256-Nm4LshXtJ41SxYdxUZiOmEyF0JLeRGVbmP7v/ZJikCY=";
+      rev = "aa69bdee8d3baf6819598304bb9e9a5a0c1a945c";
+      hash = "sha256-QLQ14eYJm+Ayqtgw+M+M6/+D4nLmoK/9fzP8rBqwrRg=";
     };
-
     patches =
       (prev.patches or [])
       ++ [
@@ -18,5 +17,8 @@
       ];
   });
   pnpm_10_29_2 = pkgs.pnpm_10;
-  electron_40 = pkgs.electron;
+  electron_40 = pkgs.electron_43;
+  electron_41 = pkgs.electron_43;
+  electron_42 = pkgs.electron_43;
+  electron = pkgs.electron_43;
 }
