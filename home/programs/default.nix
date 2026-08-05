@@ -11,6 +11,7 @@
       ./ssh
     ]
     ++ lib.lists.optionals (desk == "desktop" || desk == "laptop") [
+      ./aplin
       ./claude-code
       ./vscodium
       ./firefox

@@ -34,6 +34,7 @@
       "iommu=pt"
       "amd_pstate=active"
       "usbcore.quirks=18d1:d00d:k"
+      #"amdgpu.dc_feature_mask=0x400" when 7.2 lands for hdmi
     ];
     kernel.sysctl = {
       "kernel.unprivileged_userns_clone" = 1;

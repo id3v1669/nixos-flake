@@ -92,11 +92,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     iwwc = {
-      url = "github:id3v1669/iwwc";
+      #url = "github:id3v1669/iwwc";
+      url = "git+file:///home/user/myrepos/iwwc";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    aplin = {
+      url = "github:id3v1669/aplin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mango = {
       url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
