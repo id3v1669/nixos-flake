@@ -105,12 +105,12 @@ final: pkgs: {
 
         export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 
-        chmod -R u+w ${pkgs.electron.dist} 2>/dev/null || cp -r ${pkgs.electron.dist} electron-dist && chmod -R u+w electron-dist && export ELECTRON_DIST=$PWD/electron-dist
+        chmod -R u+w ${pkgs.electron_43.dist} 2>/dev/null || cp -r ${pkgs.electron_43.dist} electron-dist && chmod -R u+w electron-dist && export ELECTRON_DIST=$PWD/electron-dist
 
         node node_modules/electron-builder/out/cli/cli.js \
           --dir \
-          -c.electronDist=''${ELECTRON_DIST:-${pkgs.electron.dist}} \
-          -c.electronVersion=${pkgs.electron.version} \
+          -c.electronDist=''${ELECTRON_DIST:-${pkgs.electron_43.dist}} \
+          -c.electronVersion=${pkgs.electron_43.version} \
           -c.npmRebuild=false
 
         runHook postBuild
@@ -139,12 +139,13 @@ final: pkgs: {
         mkdir -p $out/opt/Equibop/resources/static/dist
         ln -sf ${pkgs.arrpc}/bin/arrpc $out/opt/Equibop/resources/static/dist/arrpc-linux-x64
 
-        makeWrapper ${pkgs.electron}/bin/electron $out/bin/equibop \
+        makeWrapper ${pkgs.electron_43}/bin/electron $out/bin/equibop \
           --add-flags $out/opt/Equibop/resources/app.asar \
           --add-flags "--enable-gpu-rasterization" \
           --add-flags "--enable-zero-copy" \
           --add-flags "--ignore-gpu-blocklist" \
           --add-flags "--enable-hardware-overlays" \
+          --add-flags "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder" \
           --add-flags "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,CanvasOopRasterization" \
           --add-flags "--disable-features=UseChromeOSDirectVideoDecoder" \
           --add-flags "--enable-accelerated-2d-canvas" \
