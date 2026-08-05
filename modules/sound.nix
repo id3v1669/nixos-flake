@@ -59,6 +59,17 @@
           }
         ];
       };
+      # ban electron&chrome from changing volume
+      extraConfig.pipewire-pulse."93-block-mic-volume" = {
+        "pulse.rules" = [
+          {
+            matches = [
+              {"application.name" = "Chromium input";}
+            ];
+            actions = {quirks = ["block-source-volume"];};
+          }
+        ];
+      };
     };
     mpd = {
       enable = true;
