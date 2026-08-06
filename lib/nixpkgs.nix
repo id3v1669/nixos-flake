@@ -13,6 +13,7 @@ with allSpecialArgs; {
     inputs.cti.overlays.default
     inputs.awww.overlays.default
     inputs.iwwc.overlays.default
+    inputs.ttykeyboardrs.overlays.default
     inputs.mango.overlays.default
     inputs.hyprland.overlays.hyprland-packages
     inputs.hyprland.overlays.hyprland-extras

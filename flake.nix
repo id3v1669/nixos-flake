@@ -96,6 +96,10 @@
       url = "git+file:///home/user/myrepos/iwwc";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ttykeyboardrs = {
+      url = "path:/home/user/myrepos/ttykeyboardrs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     aplin = {
       url = "github:id3v1669/aplin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -280,6 +284,37 @@
         uservars = {
           name = "srvcon400user";
           description = "SrvCon400";
+          owner = "id3v1669";
+          domain = "id3v1669.com";
+        };
+        deflocale = {
+          kblayout = "au";
+          kbvariant = "";
+          kboption = "";
+          timezone = "Australia/Perth";
+          locale = "en_AU.UTF-8";
+        };
+      };
+      perseus = mkSystem {
+        hostname = "perseus";
+        system = "aarch64-linux";
+        envir = "none";
+        desk = "phone";
+        bootloader = {
+          type = "perseus";
+          timeout = 5;
+        };
+        cpuvar = {
+          type = "none";
+          hasIntegrated = false;
+        };
+        gpuvar = {
+          type = "none";
+          tech = "none";
+        };
+        uservars = {
+          name = "user";
+          description = "perseus";
           owner = "id3v1669";
           domain = "id3v1669.com";
         };

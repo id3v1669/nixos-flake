@@ -69,16 +69,18 @@
   in
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = allSpecialArgs;
-      modules = [
-        (./.. + "/hosts/${hostname}")
-        inputs.sops-nix.nixosModules.sops
-        inputs.base16x2.nixosModules.default
-        inputs.coldlock.nixosModules.default
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager = import ./home-manager.nix {inherit inputs allSpecialArgs;};
-          nixpkgs = pkgs;
-        }
-      ];
+      modules =
+        [
+          (./.. + "/hosts/${hostname}")
+          inputs.sops-nix.nixosModules.sops
+          inputs.base16x2.nixosModules.default
+          inputs.coldlock.nixosModules.default
+          {nixpkgs = pkgs;}
+        ]
+        #temp untill phone better configured
+        ++ inputs.nixpkgs.lib.optionals (desk != "phone") [
+          inputs.home-manager.nixosModules.home-manager
+          {home-manager = import ./home-manager.nix {inherit inputs allSpecialArgs;};}
+        ];
     };
 }

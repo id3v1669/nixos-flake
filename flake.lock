@@ -450,11 +450,11 @@
     "graphify-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1785890472,
-        "narHash": "sha256-LYWxRSG22WqF1QMjqEBMH2nGWqcoatl3l8Du+OoSDJo=",
+        "lastModified": 1785964109,
+        "narHash": "sha256-fi6K/nCyAsj56dlcrVOIHJLJ8TsurULSWr89EkiiExU=",
         "owner": "safishamsi",
         "repo": "graphify",
-        "rev": "4e7e6b1f7e0df10ed07d5f28f9189bbde42940f1",
+        "rev": "07b9143d4b90b1e1cb88dc71423f742a501efd29",
         "type": "github"
       },
       "original": {
@@ -470,11 +470,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785531816,
-        "narHash": "sha256-vkMnV0JIyw+g/NmcfoajlGaAO+9a0ezia+FZohQJrik=",
+        "lastModified": 1785958398,
+        "narHash": "sha256-5r/JgsoNMTx+qIh83WkxpujEKBR7PF5ssnh5vYCuSAw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bf9ce9fec78f95f374e8dd3b503863a3ec128ebe",
+        "rev": "a7c70cc290290f373f50cd820403833d250459ac",
         "type": "github"
       },
       "original": {
@@ -560,11 +560,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1785885008,
-        "narHash": "sha256-0106k5WJEakA/CyRCBa5NbYPVMtYhXANxyEV6rOCE40=",
+        "lastModified": 1785955091,
+        "narHash": "sha256-82sWLjuvdWEP8u2mrgM0eM+fFExoEE87k72cl+XuOBQ=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "91f29f23bb691462f8aa6171b964069aebc37910",
+        "rev": "64962f89e48a1b50214dd3eeb001aa1cc010ff25",
         "type": "github"
       },
       "original": {
@@ -897,11 +897,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1785837256,
-        "narHash": "sha256-A+PWEr0qIWywkGbiOaZGwe+Od4dhgRiGvlBE+hjM2P0=",
+        "lastModified": 1785911037,
+        "narHash": "sha256-b3/UuGXW8XN3jOaCKF6Ks7ANOjuLzEwjGgHZrglFQ6s=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "82806f7e9739512247090c69dbb67224db12767e",
+        "rev": "8fed0fa962479a23d0670a20c63dd4a20e106f5c",
         "type": "github"
       },
       "original": {
@@ -1015,11 +1015,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785896921,
-        "narHash": "sha256-UIon2pjAP2Oc1HsuPSaGIzINybqs1JK45og2dkpePzc=",
+        "lastModified": 1785976005,
+        "narHash": "sha256-8mRAFom/WB3uHhNlC26OUPpm5qiS5Mci/eTv1EUTiBI=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "a60455f05c85cc9ed70426cf74eb3e82b1a3a9ac",
+        "rev": "a4feebd8489c080eb0b66789b9fefff47f808965",
         "type": "github"
       },
       "original": {
@@ -1171,6 +1171,7 @@
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
         "swhkdp": "swhkdp",
+        "ttykeyboardrs": "ttykeyboardrs",
         "uv2nix": "uv2nix",
         "wayshot": "wayshot"
       }
@@ -1398,6 +1399,21 @@
         "type": "github"
       }
     },
+    "systems_14": {
+      "locked": {
+        "lastModified": 1689347949,
+        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "type": "github"
+      }
+    },
     "systems_2": {
       "locked": {
         "lastModified": 1689347949,
@@ -1516,6 +1532,24 @@
         "owner": "nix-systems",
         "repo": "default-linux",
         "type": "github"
+      }
+    },
+    "ttykeyboardrs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems_14"
+      },
+      "locked": {
+        "lastModified": 1785930787,
+        "narHash": "sha256-v2SGhd+/VQufEHmsOkty8JBYqILZCrvO2xru4Rj78/M=",
+        "path": "/home/user/myrepos/ttykeyboardrs",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/user/myrepos/ttykeyboardrs",
+        "type": "path"
       }
     },
     "uv2nix": {

@@ -27,8 +27,10 @@
       ./enviroment/anyrun
       ./enviroment/xdg
       ./enviroment/cosmic
-      ./enviroment/kanshi
       ./enviroment/${envir}
+    ]
+    ++ lib.lists.optionals (envir == "Hyprland" || envir == "sway" || envir == "mango") [
+      ./enviroment/shikane
     ]
     ++ lib.lists.optionals (envir == "Hyprland" || envir == "sway") [
       #./enviroment/iwwc
