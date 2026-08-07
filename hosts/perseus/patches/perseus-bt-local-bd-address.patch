@@ -1,0 +1,11 @@
+--- a/arch/arm64/boot/dts/qcom/sdm845-xiaomi-perseus.dts
++++ b/arch/arm64/boot/dts/qcom/sdm845-xiaomi-perseus.dts
+@@ -819,6 +819,8 @@
+ 		compatible = "qcom,wcn3990-bt";
+ 
+ 		firmware-name = "sdm845/Xiaomi/perseus/crnv21.bin";
++
++		local-bd-address = [ 00 07 74 21 90 02 ];
+ 
+ 		vddio-supply = <&vreg_s4a_1p8>;
+ 		vddxo-supply = <&vreg_l7a_1p8>;

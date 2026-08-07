@@ -24,10 +24,17 @@ pkgs.runCommand "firmware-xiaomi-perseus"
   if [ -d $q/Xiaomi/perseus ] && [ ! -e $q/perseus ]; then
     ln -s Xiaomi/perseus $q/perseus
   fi
-  # crnv21.bin is referenced as sdm845/Xiaomi/perseus/crnv21.bin (no qcom/)
-  if [ -e $q/Xiaomi/perseus/crnv21.bin ] && [ ! -e $out/lib/firmware/sdm845 ]; then
-    mkdir -p $out/lib/firmware/sdm845/Xiaomi
-    ln -s ../../qcom/sdm845/Xiaomi/perseus $out/lib/firmware/sdm845/Xiaomi/perseus
+
+  if [ -e $out/lib/firmware/postmarketos/qca/crbtfw21.tlv ]; then
+    mkdir -p $out/lib/firmware/qca
+    cp -f $out/lib/firmware/postmarketos/qca/crbtfw21.tlv \
+          $out/lib/firmware/qca/crbtfw21.tlv
+  fi
+
+  if [ -e $out/lib/firmware/qca/perseus/crnv21.bin ] \
+     && [ ! -e $out/lib/firmware/qca/sdm845/Xiaomi/perseus ]; then
+    mkdir -p $out/lib/firmware/qca/sdm845/Xiaomi
+    ln -s ../../perseus $out/lib/firmware/qca/sdm845/Xiaomi/perseus
   fi
   ls $out/lib/firmware/qcom/sdm845/ > $out/layout.txt 2>&1 || true
 ''

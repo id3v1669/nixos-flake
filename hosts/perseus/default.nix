@@ -220,6 +220,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    file
     kmod
     usbutils
     pciutils

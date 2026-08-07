@@ -19,5 +19,6 @@ in
   patches = (old.patches or [ ]) ++ [
     ./patches/perseus-dts-otg.patch
     ./patches/pmi8998-usbpd.patch
+    ./patches/perseus-bt-local-bd-address.patch
   ];
 })
