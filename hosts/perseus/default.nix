@@ -13,41 +13,35 @@ let
     postPatch = "";
   }));
   
-  usbHost = pkgs.writeShellScriptBin "usb-host" ''
-    set -e
-    systemctl stop usb-gadget.service || true
+  portType = "/sys/class/typec/port0/port_type";
+  usbHostStep = pkgs.writeShellScript "usb-host-step" ''
+    ${pkgs.systemd}/bin/systemctl stop usb-gadget.service || true
     if [ -e /sys/kernel/config/usb_gadget/g1/UDC ]; then
       echo "" > /sys/kernel/config/usb_gadget/g1/UDC 2>/dev/null || true
     fi
-    rs=$(ls -d /sys/class/usb_role/*-role-switch 2>/dev/null | head -1)
-    if [ -n "$rs" ]; then
-      echo host > "$rs/role"
-    else
-      echo host > /sys/kernel/debug/usb/a600000.dwc3/mode
-    fi
-    vbus=$(find /sys/devices -name otg_vbus 2>/dev/null | head -1)
-    if [ -n "$vbus" ]; then echo 1 > "$vbus"; echo "VBUS on"; else echo "no otg_vbus knob (phase-1 kernel): peripheral needs external power"; fi
-    echo "USB is now HOST. ssh-over-USB is offline until 'usb-gadget' or reboot."
+    echo source > ${portType}
+  '';
+  usbGadgetStep = pkgs.writeShellScript "usb-gadget-step" ''
+    echo sink > ${portType}
+    ${pkgs.coreutils}/bin/sleep 1
+    ${pkgs.systemd}/bin/systemctl restart usb-gadget.service
+  '';
+  usbHost = pkgs.writeShellScriptBin "usb-host" ''
+    exec ${pkgs.systemd}/bin/systemd-run --collect --quiet --unit=usb-role-host ${usbHostStep}
   '';
   usbGadget = pkgs.writeShellScriptBin "usb-gadget" ''
-    set -e
-    vbus=$(find /sys/devices -name otg_vbus 2>/dev/null | head -1)
-    if [ -n "$vbus" ]; then echo 0 > "$vbus" || true; fi
-    rs=$(ls -d /sys/class/usb_role/*-role-switch 2>/dev/null | head -1)
-    if [ -n "$rs" ]; then
-      echo device > "$rs/role"
-    else
-      echo device > /sys/kernel/debug/usb/a600000.dwc3/mode
-    fi
-    sleep 1
-    systemctl restart usb-gadget.service
-    echo "USB is back in GADGET mode (ssh)."
+    exec ${pkgs.systemd}/bin/systemd-run --collect --quiet --unit=usb-role-gadget ${usbGadgetStep}
   '';
 in
 {
   imports = [
     ./hardware-configuration.nix
     ./../configuration.nix
+    ./../../modules/fonts.nix
+    ./../../modules/sound.nix
+    ./../../modules/gpu.nix
+    ./../../modules/bluetooth.nix
+    ./../../modules/sudo.nix
   ];
 
   #system.replaceDependencies.replacements = lib.mkForce [ ];  # when don't have time to wait for build
@@ -98,6 +92,9 @@ in
   };
 
   services = {
+    udev.extraRules = ''
+      ACTION=="add", SUBSYSTEM=="typec", KERNEL=="port0", ATTR{port_type}="sink"
+    '';
     getty.autologinUser = "root"; #TEMP until fully configured
     xserver.enable = lib.mkForce false; #TEMP for now disabled
     scx.enable = lib.mkForce false; #no scx in kernel

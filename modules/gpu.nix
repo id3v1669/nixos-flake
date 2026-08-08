@@ -11,7 +11,7 @@
     {
       graphics = {
         enable = true;
-        enable32Bit = true;
+        enable32Bit = (gpuvar.type != "Adreno");
         extraPackages =
           (with pkgs; [
             libva

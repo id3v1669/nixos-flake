@@ -1,14 +1,14 @@
 diff -ruN a/drivers/usb/typec/tcpm/qcom/Makefile b/drivers/usb/typec/tcpm/qcom/Makefile
---- a/drivers/usb/typec/tcpm/qcom/Makefile	2026-07-12 11:22:23.760409821 +0800
-+++ b/drivers/usb/typec/tcpm/qcom/Makefile	2026-07-12 11:28:17.369803095 +0800
+--- a/drivers/usb/typec/tcpm/qcom/Makefile	2026-08-08 12:45:02.437280822 +0800
++++ b/drivers/usb/typec/tcpm/qcom/Makefile	2026-08-08 12:45:14.262524394 +0800
 @@ -5,3 +5,4 @@
  					   qcom_pmic_typec_port.o \
  					   qcom_pmic_typec_pdphy.o \
  					   qcom_pmic_typec_pdphy_stub.o \
 +					   qcom_pmic_typec_port_pmi8998.o \
 diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec.c b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec.c
---- a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec.c	2026-07-12 11:22:20.250207042 +0800
-+++ b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec.c	2026-07-12 17:58:27.822512468 +0800
+--- a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec.c	2026-08-08 12:45:03.051396820 +0800
++++ b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec.c	2026-08-08 12:45:14.263166591 +0800
 @@ -27,6 +27,9 @@
  struct pmic_typec_resources {
  	const struct pmic_typec_pdphy_resources	*pdphy_res;
@@ -68,26 +68,9 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec.c b/drivers/usb/typec/tc
  };
  MODULE_DEVICE_TABLE(of, qcom_pmic_typec_table);
 diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.c b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.c
---- a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.c	2026-07-12 11:22:22.244221575 +0800
-+++ b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.c	2026-07-13 19:48:30.836923409 +0800
-@@ -3,6 +3,7 @@
-  * Copyright (c) 2023, Linaro Ltd. All rights reserved.
-  */
- 
-+#include <linux/debugfs.h>
- #include <linux/err.h>
- #include <linux/interrupt.h>
- #include <linux/kernel.h>
-@@ -10,6 +11,8 @@
- #include <linux/module.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-+#include <linux/seq_file.h>
-+#include <linux/uaccess.h>
- #include <linux/regulator/consumer.h>
- #include <linux/slab.h>
- #include <linux/string_choices.h>
-@@ -60,6 +63,12 @@
+--- a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.c	2026-08-08 12:45:03.671597556 +0800
++++ b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.c	2026-08-08 15:11:08.382083640 +0800
+@@ -60,6 +60,12 @@
  
  #define USB_PDPHY_RX_BUFFER_REG		0x80
  
@@ -100,63 +83,36 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.c b/drivers/usb/ty
  /* VDD regulator */
  #define VDD_PDPHY_VOL_MIN		2800000	/* uV */
  #define VDD_PDPHY_VOL_MAX		3300000	/* uV */
-@@ -102,6 +111,20 @@
+@@ -82,7 +88,6 @@
+ #define PMIC_PDPHY_MSG_RX_DISCARD_IRQ	0x6
+ #define PMIC_PDPHY_FR_SWAP_IRQ		0x7
+ 
+-
+ struct pmic_typec_pdphy_irq_data {
+ 	int				virq;
+ 	int				irq;
+@@ -102,6 +107,7 @@
  	struct work_struct		receive_work;
  	struct regulator		*vdd_pdphy;
  	spinlock_t			lock;		/* Register atomicity */
 +	bool				needs_trim;	/* PMI8998 BMC trim */
-+
-+	/*
-+	 * Runtime BMC-trim poke harness (debugfs /sys/kernel/debug/pmic_pdphy_trims).
-+	 * An experiment knob to hunt the missing PMI8998 RX/BMC calibration: a list
-+	 * of {reg,val} written (each behind a SEC_ACCESS unlock) at every enable,
-+	 * while EN_CONTROL is still 0, so analog trims latch on the following enable.
-+	 * Write-only path (reading these secured regs faults the SPMI bus); observe
-+	 * the effect via RX_SIZE / msg-rx in the tcpm trace, not by reading back.
-+	 */
-+#define PMIC_PDPHY_POKE_MAX	16
-+	u8				poke_reg[PMIC_PDPHY_POKE_MAX];
-+	u8				poke_val[PMIC_PDPHY_POKE_MAX];
-+	int				poke_count;
  };
  
  static void qcom_pmic_typec_pdphy_reset_on(struct pmic_typec_pdphy *pmic_typec_pdphy)
-@@ -342,6 +365,14 @@
+@@ -342,6 +348,9 @@
  	/* Hardware requires +1 of the real read value to be passed */
  	if (size < 1 || size > sizeof(msg.payload) + 1) {
  		dev_dbg(dev, "pd_receive: invalid size %d\n", size);
-+		/*
-+		 * PMI8998 can raise an RX event with RX_SIZE==0 / a spurious
-+		 * RX_BUFFER_TOKEN. Return the buffer to hardware anyway, else
-+		 * RX_ACKNOWLEDGE stays set and blocks every subsequent TX.
-+		 */
 +		regmap_write(pmic_typec_pdphy->regmap,
 +			     pmic_typec_pdphy->base + USB_PDPHY_RX_ACKNOWLEDGE_REG,
 +			     0);
  		goto done;
  	}
  
-@@ -454,7 +485,7 @@
- static int qcom_pmic_typec_pdphy_enable(struct pmic_typec_pdphy *pmic_typec_pdphy)
- {
- 	struct device *dev = pmic_typec_pdphy->dev;
--	int ret;
-+	int ret, i;
- 
- 	/* PD 2.0, DR=TYPEC_DEVICE, PR=TYPEC_SINK */
- 	ret = regmap_update_bits(pmic_typec_pdphy->regmap,
-@@ -468,6 +499,45 @@
+@@ -468,6 +477,20 @@
  	if (ret)
  		goto done;
  
-+	/*
-+	 * PMI8998 needs a secured BMC trim for the PD-PHY to transmit/receive
-+	 * cleanly; without it RX fails CRC (msg-rx-discard) and TX gets no
-+	 * GoodCRC. pm8150b does not need or expose this (needs_trim stays false).
-+	 * The downstream applies it once at probe, before the PHY is enabled, so
-+	 * write it here while EN_CONTROL is still 0 (the analog trim latches on
-+	 * enable).
-+	 */
 +	if (pmic_typec_pdphy->needs_trim) {
 +		ret = regmap_write(pmic_typec_pdphy->regmap,
 +				   pmic_typec_pdphy->base + USB_PDPHY_SEC_ACCESS_REG,
@@ -170,102 +126,11 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.c b/drivers/usb/ty
 +			goto done;
 +	}
 +
-+	/*
-+	 * Experiment knob: apply any debugfs-set BMC trims, each behind its own
-+	 * SEC_ACCESS unlock, still before EN_CONTROL=ENABLE so they latch. Lets us
-+	 * sweep candidate RX calibration values live without a rebuild per value.
-+	 */
-+	for (i = 0; i < pmic_typec_pdphy->poke_count; i++) {
-+		ret = regmap_write(pmic_typec_pdphy->regmap,
-+				   pmic_typec_pdphy->base + USB_PDPHY_SEC_ACCESS_REG,
-+				   SEC_ACCESS_UNLOCK);
-+		if (ret)
-+			goto done;
-+		ret = regmap_write(pmic_typec_pdphy->regmap,
-+				   pmic_typec_pdphy->base + pmic_typec_pdphy->poke_reg[i],
-+				   pmic_typec_pdphy->poke_val[i]);
-+		if (ret)
-+			goto done;
-+	}
 +
  	ret = regmap_write(pmic_typec_pdphy->regmap,
  			   pmic_typec_pdphy->base + USB_PDPHY_EN_CONTROL_REG,
  			   CONTROL_ENABLE);
-@@ -549,6 +619,73 @@
- 	regulator_disable(pmic_typec_pdphy->vdd_pdphy);
- }
- 
-+/*
-+ * Debugfs poke harness (single pdphy instance). Write a space/comma separated
-+ * list of hex "reg:val" trim pairs (offsets within the pdphy peripheral, e.g.
-+ * "f3:02 f0:05"); they are applied behind SEC_ACCESS on every subsequent enable.
-+ * Empty write clears the list. Read shows the pending list (not the hardware).
-+ */
-+static struct pmic_typec_pdphy *g_poke_pdphy;
-+
-+static ssize_t pmic_pdphy_trims_write(struct file *file, const char __user *ubuf,
-+				      size_t len, loff_t *ppos)
-+{
-+	struct pmic_typec_pdphy *p = g_poke_pdphy;
-+	char buf[256], *s, *tok;
-+	unsigned int reg, val;
-+	int n = 0;
-+
-+	if (!p)
-+		return -ENODEV;
-+	if (len >= sizeof(buf))
-+		return -EINVAL;
-+	if (copy_from_user(buf, ubuf, len))
-+		return -EFAULT;
-+	buf[len] = '\0';
-+
-+	s = buf;
-+	while ((tok = strsep(&s, " ,\n\t")) != NULL) {
-+		if (*tok == '\0')
-+			continue;
-+		if (sscanf(tok, "%x:%x", &reg, &val) != 2 || reg > 0xff || val > 0xff)
-+			return -EINVAL;
-+		if (n >= PMIC_PDPHY_POKE_MAX)
-+			return -E2BIG;
-+		p->poke_reg[n] = reg;
-+		p->poke_val[n] = val;
-+		n++;
-+	}
-+	p->poke_count = n;
-+	return len;
-+}
-+
-+static int pmic_pdphy_trims_show(struct seq_file *s, void *unused)
-+{
-+	struct pmic_typec_pdphy *p = g_poke_pdphy;
-+	int i;
-+
-+	if (!p)
-+		return -ENODEV;
-+	for (i = 0; i < p->poke_count; i++)
-+		seq_printf(s, "%02x:%02x ", p->poke_reg[i], p->poke_val[i]);
-+	seq_putc(s, '\n');
-+	return 0;
-+}
-+
-+static int pmic_pdphy_trims_open(struct inode *inode, struct file *file)
-+{
-+	return single_open(file, pmic_pdphy_trims_show, NULL);
-+}
-+
-+static const struct file_operations pmic_pdphy_trims_fops = {
-+	.owner = THIS_MODULE,
-+	.open = pmic_pdphy_trims_open,
-+	.read = seq_read,
-+	.write = pmic_pdphy_trims_write,
-+	.llseek = seq_lseek,
-+	.release = single_release,
-+};
-+
- int qcom_pmic_typec_pdphy_probe(struct platform_device *pdev,
- 				struct pmic_typec *tcpm,
- 				const struct pmic_typec_pdphy_resources *res,
-@@ -581,6 +718,7 @@
+@@ -581,6 +604,7 @@
  	pmic_typec_pdphy->regmap = regmap;
  	pmic_typec_pdphy->nr_irqs = res->nr_irqs;
  	pmic_typec_pdphy->irq_data = irq_data;
@@ -273,21 +138,15 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.c b/drivers/usb/ty
  	spin_lock_init(&pmic_typec_pdphy->lock);
  	INIT_WORK(&pmic_typec_pdphy->reset_work, qcom_pmic_typec_pdphy_sig_reset_work);
  
-@@ -611,6 +749,13 @@
+@@ -611,6 +635,7 @@
  	tcpm->pdphy_start = qcom_pmic_typec_pdphy_start;
  	tcpm->pdphy_stop = qcom_pmic_typec_pdphy_stop;
  
-+	/* Poke harness: only meaningful on the chip that needs the BMC trim. */
-+	if (pmic_typec_pdphy->needs_trim) {
-+		g_poke_pdphy = pmic_typec_pdphy;
-+		debugfs_create_file("pmic_pdphy_trims", 0644, NULL, NULL,
-+				    &pmic_pdphy_trims_fops);
-+	}
 +
  	return 0;
  }
  
-@@ -647,3 +792,17 @@
+@@ -647,3 +672,38 @@
  	},
  	.nr_irqs = 7,
  };
@@ -296,18 +155,39 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.c b/drivers/usb/ty
 +	.nr_irqs = 7,
 +	.needs_trim = true,
 +	.irq_params = {
-+		{ .irq_name = "sig-tx" },
-+		{ .irq_name = "sig-rx" },
-+		{ .irq_name = "msg-tx" },
-+		{ .irq_name = "msg-rx" },
-+		{ .irq_name = "msg-tx-fail" },
-+		{ .irq_name = "msg-tx-discard" },
-+		{ .irq_name = "msg-rx-discard" },
++		{
++			.virq = PMIC_PDPHY_SIG_TX_IRQ,
++			.irq_name = "sig-tx",
++		},
++		{
++			.virq = PMIC_PDPHY_SIG_RX_IRQ,
++			.irq_name = "sig-rx",
++		},
++		{
++			.virq = PMIC_PDPHY_MSG_TX_IRQ,
++			.irq_name = "msg-tx",
++		},
++		{
++			.virq = PMIC_PDPHY_MSG_RX_IRQ,
++			.irq_name = "msg-rx",
++		},
++		{
++			.virq = PMIC_PDPHY_MSG_TX_FAIL_IRQ,
++			.irq_name = "msg-tx-fail",
++		},
++		{
++			.virq = PMIC_PDPHY_MSG_TX_DISCARD_IRQ,
++			.irq_name = "msg-tx-discard",
++		},
++		{
++			.virq = PMIC_PDPHY_MSG_RX_DISCARD_IRQ,
++			.irq_name = "msg-rx-discard",
++		},
 +	},
 +};
 diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.h b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.h
---- a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.h	2026-07-12 11:22:22.731520680 +0800
-+++ b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.h	2026-07-12 17:17:17.244632191 +0800
+--- a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.h	2026-08-08 12:45:04.180145285 +0800
++++ b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.h	2026-08-08 12:45:14.264147517 +0800
 @@ -19,6 +19,7 @@
  
  struct pmic_typec_pdphy_resources {
@@ -325,8 +205,8 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_pdphy.h b/drivers/usb/ty
  				struct pmic_typec *tcpm,
  				const struct pmic_typec_pdphy_resources *res,
 diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port.h b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port.h
---- a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port.h	2026-07-12 11:22:21.735213551 +0800
-+++ b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port.h	2026-07-12 11:28:17.367359701 +0800
+--- a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port.h	2026-08-08 12:45:04.689656737 +0800
++++ b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port.h	2026-08-08 12:45:14.264451479 +0800
 @@ -9,6 +9,8 @@
  #include <linux/platform_device.h>
  #include <linux/usb/tcpm.h>
@@ -351,8 +231,8 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port.h b/drivers/usb/typ
  #endif /* __QCOM_PMIC_TYPE_C_PORT_H__ */
 diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port_pmi8998.c b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port_pmi8998.c
 --- a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port_pmi8998.c	1970-01-01 08:00:00.000000000 +0800
-+++ b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port_pmi8998.c	2026-07-12 15:40:34.120752410 +0800
-@@ -0,0 +1,447 @@
++++ b/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port_pmi8998.c	2026-08-08 15:10:51.922795947 +0800
+@@ -0,0 +1,476 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
 + * PMI8998 Type-C CC/port backend for qcom_pmic_typec.
@@ -418,8 +298,12 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port_pmi8998.c b/drivers
 +#define  OTG_EN				BIT(0)
 +#define OTG_CURRENT_LIMIT		0x52
 +#define  OTG_CURRENT_LIMIT_MASK		GENMASK(2, 0)
++#define  OTG_CURRENT_LIMIT_MIN		0x0
++#define  OTG_CURRENT_LIMIT_OPER		0x5
 +#define OTG_STATUS			0x09
 +#define  BOOST_SOFTSTART_DONE		BIT(3)
++#define OTG_ENG_CFG			0xc0
++#define  ENG_BUCKBOOST_HALT1_8_MODE	BIT(0)
 +
 +struct pmic_typec_port_irq_data {
 +	int				virq;
@@ -441,12 +325,17 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port_pmi8998.c b/drivers
 +	struct delayed_work		attach_sync_work; /* already-attached CC sync */
 +};
 +
-+/* Enable the OTG boost for source VBUS (current-stepping soft-start). */
 +static int pmi_enable_otg(struct pmic_typec_port *p)
 +{
 +	static const u8 cl_steps[] = { 0x0, 0x1, 0x3, 0x5 };
 +	unsigned int stat;
 +	int i, retry, ret;
++
++	ret = regmap_update_bits(p->regmap, p->otg_base + OTG_ENG_CFG,
++				 ENG_BUCKBOOST_HALT1_8_MODE,
++				 ENG_BUCKBOOST_HALT1_8_MODE);
++	if (ret)
++		return ret;
 +
 +	for (i = 0; i < ARRAY_SIZE(cl_steps); i++) {
 +		regmap_update_bits(p->regmap, p->otg_base + OTG_CURRENT_LIMIT,
@@ -456,14 +345,38 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port_pmi8998.c b/drivers
 +			usleep_range(2000, 2100);
 +			ret = regmap_read(p->regmap, p->otg_base + OTG_STATUS, &stat);
 +			if (ret)
-+				return ret;
-+			if (stat & BOOST_SOFTSTART_DONE)
++				goto fail;
++			if (stat & BOOST_SOFTSTART_DONE) {
++				ret = regmap_update_bits(p->regmap,
++						p->otg_base + OTG_CURRENT_LIMIT,
++						OTG_CURRENT_LIMIT_MASK,
++						OTG_CURRENT_LIMIT_OPER);
++				if (ret)
++					goto fail;
 +				return 0;
++			}
 +		}
 +		regmap_update_bits(p->regmap, p->otg_base + OTG_CMD, OTG_EN, 0);
 +	}
 +	dev_warn(p->dev, "OTG boost soft-start failed\n");
-+	return -EIO;
++	ret = -EIO;
++fail:
++	regmap_update_bits(p->regmap, p->otg_base + OTG_CMD, OTG_EN, 0);
++	regmap_update_bits(p->regmap, p->otg_base + OTG_ENG_CFG,
++			   ENG_BUCKBOOST_HALT1_8_MODE, 0);
++	return ret;
++}
++
++static int pmi_disable_otg(struct pmic_typec_port *p)
++{
++	int ret;
++
++	regmap_update_bits(p->regmap, p->otg_base + OTG_CURRENT_LIMIT,
++			   OTG_CURRENT_LIMIT_MASK, OTG_CURRENT_LIMIT_MIN);
++	ret = regmap_update_bits(p->regmap, p->otg_base + OTG_CMD, OTG_EN, 0);
++	regmap_update_bits(p->regmap, p->otg_base + OTG_ENG_CFG,
++			   ENG_BUCKBOOST_HALT1_8_MODE, 0);
++	return ret;
 +}
 +
 +static int pmi_typec_get_cc(struct tcpc_dev *tcpc,
@@ -482,6 +395,7 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port_pmi8998.c b/drivers
 +	ret = regmap_read(p->regmap, p->base + PMI_MISC_STATUS, &misc);
 +	if (ret)
 +		return ret;
++
 +	if (!(misc & CC_ATTACHED))
 +		return 0;
 +
@@ -551,6 +465,8 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port_pmi8998.c b/drivers
 +	ret = regmap_update_bits(p->regmap, p->base + PMI_PWR_ROLE_CTRL,
 +				 TYPEC_PWR_ROLE_MASK, role);
 +	spin_unlock_irqrestore(&p->lock, flags);
++
++	dev_dbg(p->dev, "set_cc: cc=%d -> role=%02x\n", cc, role);
 +	return ret;
 +}
 +
@@ -620,7 +536,7 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port_pmi8998.c b/drivers
 +	if (on)
 +		ret = pmi_enable_otg(p);
 +	else
-+		ret = regmap_update_bits(p->regmap, p->otg_base + OTG_CMD, OTG_EN, 0);
++		ret = pmi_disable_otg(p);
 +	if (ret)
 +		goto done;
 +	p->vbus_enabled = on;
@@ -630,13 +546,6 @@ diff -ruN a/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec_port_pmi8998.c b/drivers
 +	return ret;
 +}
 +
-+/*
-+ * If a cable is already attached when toggling starts (e.g. the dock is
-+ * connected across a reboot), no CC edge occurs, so the edge-triggered
-+ * type-c-change IRQ never fires and tcpm would stay in TOGGLING forever.
-+ * After start_toggling, sync the current attach state to tcpm out of line
-+ * (process context, no locks held).
-+ */
 +static void pmi_typec_attach_sync_work(struct work_struct *work)
 +{
 +	struct pmic_typec_port *p =

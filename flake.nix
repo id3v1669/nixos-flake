@@ -309,7 +309,7 @@
           hasIntegrated = false;
         };
         gpuvar = {
-          type = "none";
+          type = "Adreno";
           tech = "none";
         };
         uservars = {
