@@ -24,6 +24,7 @@ in
       "earlycon=efifb,mem"
       "console=tty0"
       "panic=30"
+      "firmware_class.path=/firmware"
     ];
     kernel.sysctl."kernel.printk" = "3 4 1 3";
     initrd = {
@@ -32,6 +33,14 @@ in
       #Keep minimal so NixOS doesn't try to bundle modules the phone kernel doesn't build
       availableKernelModules = [ ];
       includeDefaultModules = false;
+      systemd.contents = {
+        "/firmware/qcom/a630_sqe.fw".source =
+          "${firmwareEnv}/lib/firmware/qcom/a630_sqe.fw";
+        "/firmware/qcom/a630_gmu.bin".source =
+          "${firmwareEnv}/lib/firmware/qcom/a630_gmu.bin";
+        "/firmware/qcom/sdm845/Xiaomi/perseus/a630_zap.mbn".source =
+          "${firmwareEnv}/lib/firmware/qcom/sdm845/Xiaomi/perseus/a630_zap.mbn";
+      };
     };
   };
   # out-of-tree ftm5 touchscreen driver at boot

@@ -15,8 +15,6 @@ with allSpecialArgs; {
     inputs.iwwc.overlays.default
     inputs.ttykeyboardrs.overlays.default
     inputs.mango.overlays.default
-    inputs.hyprland.overlays.hyprland-packages
-    inputs.hyprland.overlays.hyprland-extras
     (import ./../overlays/uutils)
     (import ./../overlays/surreal.nix)
     (import ./../overlays/xdg-desktop-portal-luminous.nix)

@@ -217,6 +217,8 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    hyprland
+    tmate
     file
     kmod
     usbutils
@@ -225,5 +227,7 @@ in
     htop
     evtest
     iw
+    mesa-demos
+    vulkan-tools
   ] ++ [ usbHost usbGadget pkgs.ttykeyboardrs ];
 }

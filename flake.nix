@@ -108,10 +108,6 @@
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs = inputs: let
     mkSystem = (import ./lib/mkSyst.nix {inherit inputs;}).mkSyst;
