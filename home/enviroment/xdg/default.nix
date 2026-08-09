@@ -82,7 +82,7 @@
           "x-scheme-handler/http" = "custom-url-handler.desktop";
           "x-scheme-handler/https" = "custom-url-handler.desktop";
           "x-scheme-handler/chrome" = "firefox.desktop";
-          "x-scheme-handler/discord " = "equibop.desktop";
+          "x-scheme-handler/discord" = "equibop.desktop";
           "x-scheme-handler/spotify" = "spotify.desktop";
           "application/x-extension-htm" = "firefox.desktop";
           "application/x-extension-html" = "firefox.desktop";
@@ -146,7 +146,7 @@
         "x-scheme-handler/http" = "custom-url-handler.desktop";
         "x-scheme-handler/https" = "custom-url-handler.desktop";
         "x-scheme-handler/chrome" = "firefox.desktop";
-        "x-scheme-handler/discord " = "equibop.desktop";
+        "x-scheme-handler/discord" = "equibop.desktop";
         "x-scheme-handler/spotify" = "spotify.desktop";
         "application/x-extension-htm" = "firefox.desktop";
         "application/x-extension-html" = "firefox.desktop";

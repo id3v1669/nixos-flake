@@ -65,7 +65,7 @@
     "usbmux"
   ];
   services.ddccontrol.enable = true;
-  
+
   systemd.services.surrealdb.serviceConfig.ProcSubset = lib.mkForce "all";
   systemd.services.surrealdb.environment.SURREAL_BUCKET_FOLDER_ALLOWLIST = "/var/lib/surrealdb/buckets";
   systemd.services.surrealdb.serviceConfig.StateDirectory = [

@@ -97,7 +97,7 @@ in {
         "isfloating:1,appid:(?i)(wlroots)"
         "isfloating:1,width:0.3,height:0.65,offsetx:95,offsety:-70,focused_opacity:0.8,unfocused_opacity:0.8,appid:nm-connection-editor"
         "isfloating:1,width:0.37,height:0.71,offsetx:95,offsety:-70,focused_opacity:0.8,unfocused_opacity:0.8,appid:(?i)(blueman-manager|.blueman-manager-wrapped|com.saivert.pwvucontrol)"
-        "isfloating:1,width:0.35,height:0.7,title:(?i)((choose (files|an image)|open (file(s)?|video|folder)|([image|video] file|save (as|image|video|file)|local file|file upload))|new archive)"
+        "isfloating:1,width:0.35,height:0.7,title:(?i)((choose (files|an image)|open (file(s)?|video|folder)|((image|video) file|save (as|image|video|file)|local file|file upload))|new archive)"
         "focused_opacity:0.95,unfocused_opacity:0.9,appid:(?i)(spotify|nemo|org.gnome.nautilus|com.system76.cosmicfiles|code-url-handler|code|org.telegram.desktop|gnome-disks|gparted|alacritty|kitty)"
         "focused_opacity:0.95,unfocused_opacity:0.95,appid:(?i)(floorp|firefox)"
         "tags:2,appid:(?i)(equibop|discord|vesktop)"

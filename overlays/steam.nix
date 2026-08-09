@@ -1,6 +1,6 @@
 final: pkgs: {
   steam = pkgs.steam.override {
-    extraPkgs = pkgs:
+    extraLibraries = pkgs:
       with pkgs; [
         libxcursor
         libxi

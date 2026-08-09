@@ -5,10 +5,9 @@
   hostname,
   ...
 }: {
-  imports =
-    lib.optional (
-      builtins.pathExists (./. + "/hostsettings/${hostname}.nix")
-    ) (./. + "/hostsettings/${hostname}.nix");
+  imports = lib.optional (
+    builtins.pathExists (./. + "/hostsettings/${hostname}.nix")
+  ) (./. + "/hostsettings/${hostname}.nix");
 
   services.shikane.enable = true;
   systemd.user.services.shikane = {

@@ -1,22 +1,32 @@
-{ config, pkgs, lib, inputs, ... }: 
-let
-  kernel = import ./kernel.nix { nixpkgs = inputs.nixpkgs; };
-  ftm5Module = import ./ftm5.nix { nixpkgs = inputs.nixpkgs; inherit kernel; };
-  perseusKernelPackages = import ./kernel-package.nix { nixpkgs = inputs.nixpkgs; inherit kernel; };
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: let
+  kernel = import ./kernel.nix {nixpkgs = inputs.nixpkgs;};
+  ftm5Module = import ./ftm5.nix {
+    nixpkgs = inputs.nixpkgs;
+    inherit kernel;
+  };
+  perseusKernelPackages = import ./kernel-package.nix {
+    nixpkgs = inputs.nixpkgs;
+    inherit kernel;
+  };
 
-  perseusFirmware = import ./firmware.nix { inherit pkgs; };
+  perseusFirmware = import ./firmware.nix {inherit pkgs;};
   firmwareEnv = pkgs.buildEnv {
     name = "perseus-firmware-env";
-    paths = [ perseusFirmware pkgs.linux-firmware pkgs.wireless-regdb ];
-    pathsToLink = [ "/lib/firmware" ];
+    paths = [perseusFirmware pkgs.linux-firmware pkgs.wireless-regdb];
+    pathsToLink = ["/lib/firmware"];
     ignoreCollisions = true;
   };
-in
-{
+in {
   boot = {
     kernelPackages = perseusKernelPackages;
-    kernelModules = [ "qrtr" "qcom_pd_mapper" "reset_qcom_pdc" "qcom_q6v5_mss" "ath10k_snoc" ];
-    blacklistedKernelModules = [ "qcom_q6v5_pas" "stmfts" ];
+    kernelModules = ["qrtr" "qcom_pd_mapper" "reset_qcom_pdc" "qcom_q6v5_mss" "ath10k_snoc"];
+    blacklistedKernelModules = ["qcom_q6v5_pas" "stmfts"];
     kernelParams = [
       "pd_ignore_unused"
       "clk_ignore_unused"
@@ -31,15 +41,12 @@ in
       enable = true;
       systemd.tpm2.enable = false;
       #Keep minimal so NixOS doesn't try to bundle modules the phone kernel doesn't build
-      availableKernelModules = [ ];
+      availableKernelModules = [];
       includeDefaultModules = false;
       systemd.contents = {
-        "/firmware/qcom/a630_sqe.fw".source =
-          "${firmwareEnv}/lib/firmware/qcom/a630_sqe.fw";
-        "/firmware/qcom/a630_gmu.bin".source =
-          "${firmwareEnv}/lib/firmware/qcom/a630_gmu.bin";
-        "/firmware/qcom/sdm845/Xiaomi/perseus/a630_zap.mbn".source =
-          "${firmwareEnv}/lib/firmware/qcom/sdm845/Xiaomi/perseus/a630_zap.mbn";
+        "/firmware/qcom/a630_sqe.fw".source = "${firmwareEnv}/lib/firmware/qcom/a630_sqe.fw";
+        "/firmware/qcom/a630_gmu.bin".source = "${firmwareEnv}/lib/firmware/qcom/a630_gmu.bin";
+        "/firmware/qcom/sdm845/Xiaomi/perseus/a630_zap.mbn".source = "${firmwareEnv}/lib/firmware/qcom/sdm845/Xiaomi/perseus/a630_zap.mbn";
       };
     };
   };
@@ -49,16 +56,16 @@ in
       "L+ /lib/firmware - - - - ${firmwareEnv}/lib/firmware"
     ];
     services.ftm5 = {
-        description = "Load ftm5 touchscreen driver";
-        wantedBy = [ "multi-user.target" ];
-        before = [ "ttykeyboardrs.service" ];
-        serviceConfig = {
-          Type = "oneshot";
-          RemainAfterExit = true;
-          ExecStart = "${pkgs.kmod}/bin/insmod ${ftm5Module}/ftm5.ko";
-          ExecStop = "-${pkgs.kmod}/bin/rmmod ftm5";
-        };
+      description = "Load ftm5 touchscreen driver";
+      wantedBy = ["multi-user.target"];
+      before = ["ttykeyboardrs.service"];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        ExecStart = "${pkgs.kmod}/bin/insmod ${ftm5Module}/ftm5.ko";
+        ExecStop = "-${pkgs.kmod}/bin/rmmod ftm5";
       };
+    };
   };
 
   fileSystems."/" = {
@@ -68,13 +75,13 @@ in
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/ESP";
     fsType = "vfat";
-    options = [ "nofail" ];
+    options = ["nofail"];
   };
 
   hardware = {
     enableRedistributableFirmware = false;
     wirelessRegulatoryDatabase = true;
-    firmware = [ perseusFirmware pkgs.linux-firmware ];
+    firmware = [perseusFirmware pkgs.linux-firmware];
     deviceTree = {
       enable = true;
       name = "qcom/sdm845-xiaomi-perseus.dtb";

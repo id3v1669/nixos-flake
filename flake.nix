@@ -92,8 +92,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     iwwc = {
-      #url = "github:id3v1669/iwwc";
-      url = "git+file:///home/user/myrepos/iwwc";
+      url = "github:id3v1669/iwwc";
+      #url = "git+file:///home/user/myrepos/iwwc";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ttykeyboardrs = {

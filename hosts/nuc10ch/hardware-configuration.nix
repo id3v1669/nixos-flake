@@ -16,7 +16,7 @@
   boot = {
     kernelModules = ["kvm-intel"];
 
-		kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     # disable wifi until propper antennas bought as usb is faster
     kernelParams = ["pci-stub.ids=8086:095a"];

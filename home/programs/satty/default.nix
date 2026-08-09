@@ -1,14 +1,11 @@
 {config, ...}: {
-  home.file.".config/swappy/config".text = ''
-    [Default]
-    save_dir=$HOME/Pictures/Screenshots
-    save_filename_format=shot_%Y-%m-%d_%H:%M:%S.png
-    show_panel=true
-    line_size=1
-    text_size=12
-    text_font=0xProto-Nerd-Font
-    paint_mode=brush
-    early_exit=false
-    fill_shape=false
+  home.file.".config/satty/config.toml".text = ''
+    [general]
+    fullscreen = false
+    resize = { mode="smart" }
+    floating-hack = true
+    corner-roundness = 12
+    output-filename = "$HOME/Pictures/Screenshots/shot_%Y-%m-%d_%H:%M:%S.png"
+    save-after-copy = false
   '';
 }

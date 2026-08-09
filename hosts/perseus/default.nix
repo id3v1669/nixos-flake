@@ -1,18 +1,22 @@
-{ inputs, pkgs, lib, config, ... }:
-
-let
+{
+  inputs,
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   secrets = import ./secrets.nix;
 
-  tqftpservMaster = (pkgs.tqftpserv.overrideAttrs (old: {
+  tqftpservMaster = pkgs.tqftpserv.overrideAttrs (old: {
     version = "unstable-2026-master";
     src = pkgs.fetchzip {
       url = "https://github.com/linux-msm/tqftpserv/archive/b6bb92d40cfffe28621abcf7bfaa6d99beea46cb.tar.gz";
       sha256 = "0kfi2vlkwxdmr6p8m4xaqyn1kqdw2w1slbcfjbf62vjcf2x64z5m";
     };
-    buildInputs = (old.buildInputs or [ ]) ++ [ pkgs.zstd ];
+    buildInputs = (old.buildInputs or []) ++ [pkgs.zstd];
     postPatch = "";
-  }));
-  
+  });
+
   portType = "/sys/class/typec/port0/port_type";
   usbHostStep = pkgs.writeShellScript "usb-host-step" ''
     ${pkgs.systemd}/bin/systemctl stop usb-gadget.service || true
@@ -32,8 +36,7 @@ let
   usbGadget = pkgs.writeShellScriptBin "usb-gadget" ''
     exec ${pkgs.systemd}/bin/systemd-run --collect --quiet --unit=usb-role-gadget ${usbGadgetStep}
   '';
-in
-{
+in {
   imports = [
     ./hardware-configuration.nix
     ./../configuration.nix
@@ -49,17 +52,17 @@ in
   sops = {
     defaultSopsFile = ./../../secrets/user/wifi.enc.yaml;
     defaultSopsFormat = "yaml";
-    age.sshKeyPaths = [ "/etc/ssh/master" ];
+    age.sshKeyPaths = ["/etc/ssh/master"];
     secrets = {
-      wifi_ssid = { };
-      wifi_psk = { };
-      wifi_enterprise_ssid = { };
-      wifi_enterprise_identity = { };
-      wifi_enterprise_password = { };
+      wifi_ssid = {};
+      wifi_psk = {};
+      wifi_enterprise_ssid = {};
+      wifi_enterprise_identity = {};
+      wifi_enterprise_password = {};
     };
     templates."wireless-networks.conf" = {
       owner = "wpa_supplicant";
-      restartUnits = [ "wpa_supplicant.service" ];
+      restartUnits = ["wpa_supplicant.service"];
       content = ''
         network={
           ssid="${config.sops.placeholder.wifi_ssid}"
@@ -87,7 +90,7 @@ in
     wireless = {
       enable = true;
       extraConfig = "country=AU";
-      extraConfigFiles = [ config.sops.templates."wireless-networks.conf".path ];
+      extraConfigFiles = [config.sops.templates."wireless-networks.conf".path];
     };
   };
 
@@ -114,8 +117,8 @@ in
     services = {
       rmtfs = {
         description = "Qualcomm remote filesystem service (modem EFS)";
-        wantedBy = [ "multi-user.target" ];
-        after = [ "systemd-udev-settle.service" ];
+        wantedBy = ["multi-user.target"];
+        after = ["systemd-udev-settle.service"];
         serviceConfig = {
           ExecStart = "${pkgs.rmtfs}/bin/rmtfs -r -P -s";
           Restart = "always";
@@ -124,7 +127,7 @@ in
       };
       tqftpserv = {
         description = "Qualcomm TQFTP server (serves wlanmdsp over QRTR)";
-        wantedBy = [ "multi-user.target" ];
+        wantedBy = ["multi-user.target"];
         serviceConfig = {
           ExecStart = "${tqftpservMaster}/bin/tqftpserv";
           Restart = "always";
@@ -133,9 +136,12 @@ in
       };
       modem-rproc = {
         description = "Start modem remoteproc (required for wcn3990 wifi)";
-        wantedBy = [ "multi-user.target" ];
-        after = [ "rmtfs.service" "tqftpserv.service" ];
-        serviceConfig = { Type = "oneshot"; RemainAfterExit = true; };
+        wantedBy = ["multi-user.target"];
+        after = ["rmtfs.service" "tqftpserv.service"];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+        };
         script = ''
           for i in $(seq 1 60); do
             for r in /sys/class/remoteproc/remoteproc*; do
@@ -157,12 +163,12 @@ in
       # USB gadget: NCM ethernet at 172.16.42.1 (same convention as pmOS initramfs).
       usb-gadget = {
         description = "USB NCM gadget + static IP";
-        wantedBy = [ "multi-user.target" ];
-        after = [ "systemd-tmpfiles-setup.service" "sys-kernel-config.mount" ];
-        requires = [ "sys-kernel-config.mount" ];
+        wantedBy = ["multi-user.target"];
+        after = ["systemd-tmpfiles-setup.service" "sys-kernel-config.mount"];
+        requires = ["sys-kernel-config.mount"];
         serviceConfig.Type = "oneshot";
         serviceConfig.RemainAfterExit = true;
-        path = [ pkgs.kmod pkgs.iproute2 ];
+        path = [pkgs.kmod pkgs.iproute2];
         script = ''
           modprobe libcomposite
           modprobe usb_f_ncm
@@ -186,8 +192,8 @@ in
       };
       # wcn3990 wlan0 only appears once the modem DSP has served its firmware
       wpa_supplicant = {
-        after = [ "modem-rproc.service" ];
-        wants = [ "modem-rproc.service" ];
+        after = ["modem-rproc.service"];
+        wants = ["modem-rproc.service"];
         serviceConfig = {
           Restart = "always";
           RestartSec = "5";
@@ -195,9 +201,9 @@ in
       };
       ttykeyboardrs = {
         description = "On-screen keyboard (Rust) on the framebuffer console";
-        wantedBy = [ "multi-user.target" ];
-        after = [ "getty@tty1.service" "ftm5.service" ];
-        requires = [ "ftm5.service" ];
+        wantedBy = ["multi-user.target"];
+        after = ["getty@tty1.service" "ftm5.service"];
+        requires = ["ftm5.service"];
         unitConfig.ConditionPathExists = "/dev/tty0";
         serviceConfig = {
           Type = "exec";
@@ -216,18 +222,20 @@ in
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    hyprland
-    tmate
-    file
-    kmod
-    usbutils
-    pciutils
-    iproute2
-    htop
-    evtest
-    iw
-    mesa-demos
-    vulkan-tools
-  ] ++ [ usbHost usbGadget pkgs.ttykeyboardrs ];
+  environment.systemPackages = with pkgs;
+    [
+      hyprland
+      tmate
+      file
+      kmod
+      usbutils
+      pciutils
+      iproute2
+      htop
+      evtest
+      iw
+      mesa-demos
+      vulkan-tools
+    ]
+    ++ [usbHost usbGadget pkgs.ttykeyboardrs];
 }

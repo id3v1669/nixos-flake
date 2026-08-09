@@ -6,8 +6,8 @@
   programs.git = {
     enable = true;
     settings.user = {
-        name = "${uservars.owner}";
-        email = "git@${uservars.domain}";
+      name = "${uservars.owner}";
+      email = "git@${uservars.domain}";
     };
     signing = {
       format = "ssh";

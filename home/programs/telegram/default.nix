@@ -290,7 +290,7 @@
     historyScrollBarBgOver: ${base02.hexT};
     historyScrollBg: ${base07.hexT};
     historyScrollBgOver: ${base07.hexT};
-    scrollBgOvermsgInBg: windowBg;
+    msgInBg: windowBg;
     msgInBgSelected: surface1;
     msgOutBg: mantle;
     msgOutBgSelected: msgInBgSelected;

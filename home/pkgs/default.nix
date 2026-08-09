@@ -9,7 +9,7 @@
     lib.lists.optionals (desk == "desktop" || desk == "laptop") [
       ./pcs.nix
     ]
-    ++ lib.lists.optionals (desk == "srv") [
+    ++ lib.lists.optionals (desk == "server") [
       ./srvs.nix
     ]
     ++ lib.optional (builtins.pathExists ./hosts/${hostname}.nix) (./. + "/hosts/${hostname}.nix");

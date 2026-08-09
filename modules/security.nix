@@ -79,11 +79,6 @@ in {
     scanner.enable = x;
     updater.enable = x;
   };
-  programs.wireshark = {
-    # wireshark for network analysis
-    enable = !srv;
-    package = pkgs.wireshark;
-  };
   users.users.${uservars.name}.extraGroups = lib.lists.optionals (!srv) [
     "wireshark"
   ];

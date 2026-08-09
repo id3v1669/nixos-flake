@@ -159,7 +159,7 @@ in {
     hl.window_rule({
         match = {
             title = "(?i)((choose (files|an image)|open (file(s)?|video|folder)|"
-                .. "([image|video] file|save (as|image|video|file)|local file|file upload))|new archive)",
+                .. "((image|video) file|save (as|image|video|file)|local file|file upload))|new archive)",
         },
         tag = "+fileOperation",
     })

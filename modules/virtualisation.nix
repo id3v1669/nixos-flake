@@ -44,8 +44,8 @@ in {
       extraPackages = [pkgs.podman-compose];
     };
     containers.registries.settings = {
-      unqualified-search-registries = [ "docker.io" ];
-      registry = [ { location = "docker.io"; } { location = "quay.io"; } ];
+      unqualified-search-registries = ["docker.io"];
+      registry = [{location = "docker.io";} {location = "quay.io";}];
     };
   };
   users.users.${uservars.name}.extraGroups = [
