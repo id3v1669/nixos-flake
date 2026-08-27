@@ -1,13 +1,13 @@
 final: pkgs: {
   surrealdbx = pkgs.stdenv.mkDerivation rec {
     pname = "surrealdb";
-    version = "3.1.5";
+    version = "3.2.0";
 
     dontUnpack = true;
 
     src = pkgs.fetchurl {
       url = "https://github.com/surrealdb/surrealdb/releases/download/v${version}/surreal-v${version}.linux-amd64.tgz";
-      hash = "sha256-99UVIDugAQveP8alcGznMn01asopP7uoQk1EL13LUAI=";
+      hash = "sha256-nAqa4pRE87FEoSYfySMRaw4Qo8utxHjKvJAJs765uzo=";
     };
 
     nativeBuildInputs = [pkgs.autoPatchelfHook];
@@ -27,13 +27,13 @@ final: pkgs: {
     };
   };
   surrealistx = pkgs.surrealist.overrideAttrs (finalAttrs: prev: {
-    version = "3.9.1";
+    version = "3.9.12";
 
     src = pkgs.fetchFromGitHub {
       owner = "surrealdb";
       repo = "surrealist";
       rev = "surrealist-v${finalAttrs.version}";
-      hash = "sha256-sxI+zndT62E9BWW7CQsnhMBZ3/cPbWTofPmtLujw7j4=";
+      hash = "sha256-l4b3Xuj9AH87HhaKr1XgBAZWZBbX01/I3r5v7s2BkIM=";
     };
 
     cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
@@ -51,7 +51,7 @@ final: pkgs: {
     node_modules = prev.node_modules.overrideAttrs (_: {
       inherit (finalAttrs) src version;
       dontPatchShebangs = true;
-      outputHash = "sha256-e79+cZfQlPqMtWxLBdc44szTbi4vXDifgydbtGo7FIw=";
+      outputHash = "sha256-d85dbGr0r1dVr9cOmBzVmq4Qs3qQopV6NA4RuinhRsM=";
     });
 
     postFixup = ''
