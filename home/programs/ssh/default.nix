@@ -34,6 +34,12 @@
         Port = 26713;
         IdentityFile = "~/.ssh/master";
       };
+      nuc = {
+        HostName = "10.100.0.3";
+        User = "user";
+        ProxyJump = "srvcon400";
+        IdentityFile = "~/.ssh/master";
+      };
       github-bot = {
         HostName = "github.com";
         IdentityFile = "~/.ssh/id_rsa_git_read_bot";

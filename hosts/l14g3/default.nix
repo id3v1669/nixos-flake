@@ -22,7 +22,9 @@
     ./../../modules/bluetooth.nix
     #./../../modules/odoo.nix
     ./../../modules/greeters/sddm.nix
+    inputs.dbr-rs.nixosModules.default
   ];
+  services.dbr-rs.enable = false;
   hardware = {
     enableAllFirmware = true;
     uinput.enable = true;
@@ -106,13 +108,17 @@
     extraFlags = ["--allow-all" "--user" "root" "--pass" "root" "--allow-experimental" "files"];
   };
   environment.systemPackages = with pkgs; [
+    uv
+    awscli2
     obsidian
     displaylink
+    camunda-modeler
     apfs-fuse
     fuse
     android-tools
     android-mic
     #rustdesk
+    rustdesk-flutter
     surrealistx
     dbeaver-bin
     wlrctl

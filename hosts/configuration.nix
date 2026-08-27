@@ -77,7 +77,7 @@
   services = {
     scx = {
       enable = true;
-      scheduler = "scx_lavd";
+      #scheduler = "scx_lavd"; #TEMP broken
     };
     xserver = {
       enable = true;

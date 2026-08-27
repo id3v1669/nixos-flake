@@ -1,7 +1,7 @@
 final: pkgs: let
   installerVersion = "0.11.2";
 
-  installer = pkgs.appimageTools.extractType2 {
+  installer = pkgs.appimageTools.extract {
     pname = "ubports-installer";
     version = installerVersion;
     src = pkgs.fetchurl {

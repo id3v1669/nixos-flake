@@ -15,6 +15,7 @@
     ./../../modules/postgresql-backup.nix
     ./../../modules/dufs.nix
     ./../../modules/wireguard.nix
+    ./../../modules/rustdesk-server.nix
     ./../../modules/virtualisation.nix
     ./../../modules/fonts.nix
     ./../../modules/security.nix

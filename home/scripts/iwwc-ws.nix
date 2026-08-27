@@ -11,13 +11,12 @@ writeShellApplication {
   runtimeInputs = with pkgs;
     [
       iwwc
-      gnugrep
-      socat
-      gawk
       coreutils
     ]
     ++ lib.lists.optionals (envir == "Hyprland") [
       hyprland
+      socat
+      gawk
     ]
     ++ lib.lists.optionals (envir == "sway") [
       sway
@@ -28,20 +27,6 @@ writeShellApplication {
       jq
     ];
   text = let
-    wsa =
-      if envir == "Hyprland"
-      then ''
-        mapfile -t wsa < <(hyprctl workspaces | grep 'workspace ID .*(*)' | awk '{ gsub(/[()]/, "", $3); print $3 }')
-      ''
-      else if envir == "sway"
-      then ''
-        mapfile -t wsa < <(swaymsg -t get_workspaces | jq -r '.[].num')
-      ''
-      else if envir == "mango"
-      then ''
-        mapfile -t wsa < <(mmsg get all-tags | jq -r '[.all_tags[].tags[] | select(.client_count > 0).index] | unique | .[]')
-      ''
-      else ''wsa=()'';
     initws =
       if envir == "Hyprland"
       then ''$(hyprctl activeworkspace | awk 'NR==1 { gsub(/[()]/, "", $3); print $3 }')''
@@ -74,26 +59,14 @@ writeShellApplication {
     set +o nounset
     set +o pipefail
 
-    wss() {
-
-      ws=("")
-      ${wsa}
-      curindex="$1"
-      max=$(printf "%s\n" "''${wsa[@]}" | sort -n | tail -n 1)
-      for (( counter=0; counter<max; counter++ )); do
-        ws[counter]=""
-      done
-      for index2 in "''${wsa[@]}"; do
-        ws[index2-1]=""
-      done
-      ws[curindex-1]=""
-      iwwc update wss "''${ws[*]}"
+    focus() {
+      iwwc update wsfocus "$1"
     }
 
-    wss "${initws}"
+    focus "${initws}"
 
     ${listen}while IFS= read -r line; do
-        wss "$line"
+        focus "$line"
     done
   '';
 }

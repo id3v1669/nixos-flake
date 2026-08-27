@@ -20,6 +20,10 @@
         publicKey = "cmevZuH/wI10atM25ptaCxirNulb/oygP/b3AaeD6xg=";
         allowedIPs = ["10.100.0.2/32"];
       }
+      {
+        publicKey = "TDkFHso6IRfWqLgSEEmB3DlwxEX+WZzhoX6YCEhCaUo=";
+        allowedIPs = ["10.100.0.3/32"];
+      }
     ];
   };
 }

@@ -25,7 +25,7 @@
       "kvm-amd"
       "acpi-call"
     ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen; # modules not updated for latest yet
     # aarch64 emulation for building Mi Mix 3 (perseus)
     binfmt.emulatedSystems = ["aarch64-linux"];
 
