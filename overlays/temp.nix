@@ -3,12 +3,12 @@
   inputs,
 }: final: pkgs: {
   gpu-screen-recorder = pkgs.gpu-screen-recorder.overrideAttrs (finalAttrs: prev: {
-    version = "5.15.3";
+    version = "6.0.1";
 
     src = pkgs.fetchgit {
       url = "https://repo.dec05eba.com/gpu-screen-recorder";
-      rev = "aa69bdee8d3baf6819598304bb9e9a5a0c1a945c";
-      hash = "sha256-QLQ14eYJm+Ayqtgw+M+M6/+D4nLmoK/9fzP8rBqwrRg=";
+      rev = "7bba0f0f1f698b574096f135fa7d5a761264b26f";
+      hash = "sha256-+W1C0sP6ltkfCP9To7NdHRM/5oUqKn3b/uDkhZJGWG0=";
     };
     patches =
       (prev.patches or [])
