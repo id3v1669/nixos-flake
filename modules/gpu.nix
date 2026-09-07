@@ -53,12 +53,13 @@
           modesetting.enable = true;
           powerManagement.enable = true;
           forceFullCompositionPipeline = true;
-          package = config.boot.kernelPackages.nvidiaPackages.latest;
+          branch = "latest";
         }
-        // lib.optionalAttrs (gpuvar.tech == "prime") {
+        // lib.optionalAttrs (gpuvar.tech == "sync" || gpuvar.tech == "offload") {
           prime =
             {
-              sync.enable = true;
+              sync.enable = gpuvar.tech == "sync";
+              offload.enable = gpuvar.tech == "offload";
               nvidiaBusId = "${gpuvar.busd}";
             }
             // lib.optionalAttrs (cpuvar.type == "intel") {

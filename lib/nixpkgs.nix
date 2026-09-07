@@ -8,7 +8,8 @@ with allSpecialArgs; {
   config.allowUnfree = true;
   overlays = [
     inputs.claude-code.overlays.default
-    inputs.prism-launcher.overlays.default
+    inputs.ox.overlays.default
+    inputs.dcgt.overlays.default
     inputs.nur.overlays.default
     inputs.cti.overlays.default
     inputs.awww.overlays.default
@@ -16,6 +17,8 @@ with allSpecialArgs; {
     inputs.ttykeyboardrs.overlays.default
     inputs.mango.overlays.default
     (import ./../overlays/uutils)
+    (import ./../overlays/claude-desktop)
+    (import ./../overlays/codex.nix {inherit inputs;})
     (import ./../overlays/surreal.nix)
     (import ./../overlays/xdg-desktop-portal-luminous.nix)
     (import ./../overlays/temp.nix {inherit inputs system;})

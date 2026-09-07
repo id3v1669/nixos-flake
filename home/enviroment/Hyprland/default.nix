@@ -40,6 +40,7 @@ in {
     ----------------------------------------------------------------------
     hl.config({
         general = {
+            allow_tearing = true,
             border_size = 2,
             col = {
                 active_border   = { colors = { "rgb(427b58)", "rgb(b8bb26)" }, angle = 45 },
@@ -48,6 +49,10 @@ in {
             gaps_in  = 3,
             gaps_out = 6,
             layout   = "dwindle",
+        },
+
+        render = {
+            direct_scanout = 1,
         },
 
         decoration = {
@@ -231,6 +236,13 @@ in {
         match   = { class = "deadlocked" },
         no_blur = true,
         opaque  = true,
+    })
+
+    -- Games: allow tearing so fullscreen frames are not held to the compositor's
+    -- present cycle. Requires general.allow_tearing above.
+    hl.window_rule({
+        match     = { class = "(?i)(cs2|deadlocked)" },
+        immediate = true,
     })
 
   '';

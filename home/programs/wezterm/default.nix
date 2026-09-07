@@ -42,6 +42,9 @@
         window_background_opacity = 0.95,
         enable_tab_bar = false,
         window_close_confirmation = 'NeverPrompt',
+        keys = {
+          { key = 'Enter', mods = 'SHIFT', action = wezterm.action.SendString '\x1b[13;2u' },
+        },
       }
     '';
   };

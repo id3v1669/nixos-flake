@@ -13,37 +13,16 @@
   };
 
   profiles = {
-    home_triple = {
+    home_double = {
       main = {
         search = ["m=U34G2G4R3"];
         mode = "3440x1440@99.98Hz";
         position = "0,0";
-      };
-      side = {
-        search = ["n=DP-2"];
-        mode = "1920x1080@100Hz";
-        position = "3440,-320";
-        transform = "90";
-        scale = 1.0;
       };
       laptop = {
         search = ["n=eDP-1"];
-        mode = "1920x1080@60Hz";
-        position = "-1920,0";
-        scale = 1.0;
-      };
-    };
-    home_duo = {
-      main = {
-        search = ["m=U34G2G4R3"];
-        mode = "3440x1440@99.98Hz";
-        position = "0,0";
-      };
-      side = {
-        search = ["n=DP-2"];
-        mode = "1920x1080@100Hz";
-        position = "3440,-320";
-        transform = "90";
+        mode = "1920x1080@144.15Hz";
+        position = "3440,0";
         scale = 1.0;
       };
     };
@@ -51,12 +30,13 @@
     work_hdmi = {
       main = {
         search = ["s=LALMQS096920"];
-        mode = "1920x1080";
+        mode = "1920x1080@74.91Hz";
         position = "0,0";
         scale = 1.0;
       };
       laptop = {
         search = ["n=eDP-1"];
+        mode = "1920x1080@144.15Hz";
         position = "0,1080";
         scale = 1.0;
       };
@@ -71,6 +51,7 @@
       };
       laptop = {
         search = ["n=eDP-1"];
+        mode = "1920x1080@144.15Hz";
         position = "-1920,320";
         scale = 1.0;
       };
@@ -79,6 +60,7 @@
     laptop_only = {
       laptop = {
         search = ["n=eDP-1"];
+        mode = "1920x1080@144.15Hz";
         position = "0,0";
         scale = 1.0;
       };

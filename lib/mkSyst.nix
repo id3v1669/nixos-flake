@@ -11,7 +11,7 @@
     }),
     gpuvar ? ({
       type = "nvidia";
-      tech = "prime";
+      tech = "offload";
       busd = "PCI:01:00:0"; # lspci -nn | grep VGA
       busi = "PCI:00:02:0";
       port = "tbqhd";

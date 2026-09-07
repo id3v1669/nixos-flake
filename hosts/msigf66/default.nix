@@ -20,7 +20,6 @@
     ./../../modules/sudo.nix
     ./../../modules/swhkdp.nix
     ./../../modules/bluetooth.nix
-    #./../../modules/odoo.nix
     ./../../modules/greeters/sddm.nix
     inputs.dbr-rs.nixosModules.default
   ];
@@ -28,12 +27,7 @@
   hardware = {
     enableAllFirmware = true;
     uinput.enable = true;
-    amdgpu.opencl.enable = true;
-    graphics.extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-    ];
   };
-  services.xserver.videoDrivers = ["displaylink"];
 
   networking = {
     firewall.enable = false;
@@ -111,10 +105,6 @@
     auto-cpufreq.settings = {
       charger = {
         governor = "performance";
-        scaling_min_freq = 2000000;
-        #l14g3 is half-dead, guard to prevent crashes
-        scaling_max_freq = 3600000;
-        turbo = "never";
       };
     };
   };
@@ -122,21 +112,20 @@
     uv
     awscli2
     obsidian
-    displaylink
     camunda-modeler
     apfs-fuse
     fuse
     android-tools
     android-mic
-    #rustdesk
-    rustdesk-flutter
+    rustdesk-flutter # works with wayland
     surrealistx
     dbeaver-bin
     wlrctl
     wtype
-    ryzenadj
     proton-vpn
     claude-code
+    claude-desktop
+    codex
     opencode
     graphify
   ];
@@ -156,7 +145,7 @@
   };
   systemd.services.nix-daemon.serviceConfig.AllowedCPUs = "0-9";
   nixpkgs.overlays = let
-    cFlags = ["-O3" "-pipe" "-march=znver3" "-mtune=znver3"];
+    cFlags = ["-O3" "-pipe" "-march=alderlake" "-mtune=alderlake"];
 
     optimizeC = pkg:
       pkg.overrideAttrs (old: {

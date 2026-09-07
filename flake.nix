@@ -3,7 +3,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
-    prism-launcher.url = "github:PrismLauncher/PrismLauncher/release-11.x";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,6 +46,10 @@
       url = "github:jwiegley/claude-prompts";
       flake = false;
     };
+    codex-src = {
+      url = "github:openai/codex/86b1b359cf89b65c136eda8c84e5ee544a6c2cf2"; # after that commit broken build
+      flake = false;
+    };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -83,8 +86,12 @@
       url = "github:id3v1669/swhkdp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ox = {
+      url = "github:id3v1669/ox";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     coldlock = {
-      url = "github:waycrate/coldlock";
+      url = "github:waycrate/ColdLock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wayshot = {
@@ -266,6 +273,39 @@
         gpuvar = {
           type = "amd";
           tech = "amd";
+        };
+      };
+      msigf66hypr = mkSystem {
+        hostname = "msigf66";
+        envir = "Hyprland";
+        cpuvar = {
+          type = "intel";
+          hasIntegrated = true;
+          integratedBroken = false;
+        };
+        bootloader = {
+          type = "systemd";
+          timeout = 7;
+        };
+        desk = "laptop";
+        uservars = {
+          name = "user";
+          description = "id3v1669";
+          owner = "id3v1669";
+          domain = "id3v1669.com";
+          wp = "default3.png";
+          sleeptimeout = 1200;
+        };
+        brightnesctrl = {
+          up = "light -A 5";
+          down = "light -U 5";
+        };
+        gpuvar = {
+          type = "nvidia";
+          tech = "offload";
+          # lspci -nn | grep -E "VGA|3D"
+          busd = "PCI:1:0:0";
+          busi = "PCI:0:2:0";
         };
       };
       srvcon400 = mkSystem {
