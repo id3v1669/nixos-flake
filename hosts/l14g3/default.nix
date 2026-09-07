@@ -22,9 +22,7 @@
     ./../../modules/bluetooth.nix
     #./../../modules/odoo.nix
     ./../../modules/greeters/sddm.nix
-    inputs.dbr-rs.nixosModules.default
   ];
-  services.dbr-rs.enable = false;
   hardware = {
     enableAllFirmware = true;
     uinput.enable = true;

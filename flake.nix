@@ -98,17 +98,9 @@
       url = "github:waycrate/wayshot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dbr-rs = {
-      url = "git+file:///home/user/myrepos/dbr-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     iwwc = {
       url = "github:id3v1669/iwwc";
       #url = "git+file:///home/user/myrepos/iwwc";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    ttykeyboardrs = {
-      url = "path:/home/user/myrepos/ttykeyboardrs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     aplin = {

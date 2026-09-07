@@ -47,6 +47,19 @@ in {
     ./../../modules/sudo.nix
   ];
 
+  #temp untill ready
+  nixpkgs.overlays = [
+    (final: prev: {
+      ttykeyboardrs = final.rustPlatform.buildRustPackage {
+        pname = "ttykeyboardrs";
+        version = "0.2.0";
+        src = final.lib.cleanSource /home/user/myrepos/ttykeyboardrs;
+        cargoLock.lockFile = /home/user/myrepos/ttykeyboardrs/Cargo.lock;
+        doCheck = false;
+      };
+    })
+  ];
+
   #system.replaceDependencies.replacements = lib.mkForce [ ];  # when don't have time to wait for build
 
   sops = {

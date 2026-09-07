@@ -14,7 +14,6 @@ with allSpecialArgs; {
     inputs.cti.overlays.default
     inputs.awww.overlays.default
     inputs.iwwc.overlays.default
-    inputs.ttykeyboardrs.overlays.default
     inputs.mango.overlays.default
     (import ./../overlays/uutils)
     (import ./../overlays/claude-desktop)
