@@ -692,17 +692,17 @@
         "systems": "systems_12"
       },
       "locked": {
-        "lastModified": 1788710850,
-        "narHash": "sha256-qwRAwT81TQl1/HaL5xp7lDoClS1LZeMaJ59yAKPVUrw=",
-        "ref": "refs/heads/master",
-        "rev": "8aea08b626e8758cde27515c0cefa4df93a6d223",
-        "revCount": 955,
-        "type": "git",
-        "url": "file:///home/user/myrepos/ox"
+        "lastModified": 1788742709,
+        "narHash": "sha256-zodp6vkhUfyaS/RvNkU/SKHUUJGjYwSgwy+gTykr7vI=",
+        "owner": "id3v1669",
+        "repo": "ox",
+        "rev": "b369b7d9bd778cef86dc5fa62138be42795a966b",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/user/myrepos/ox"
+        "owner": "id3v1669",
+        "repo": "ox",
+        "type": "github"
       }
     },
     "pre-commit-hooks-nix": {
