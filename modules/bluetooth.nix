@@ -7,10 +7,9 @@
   services.blueman.enable = true;
   hardware.bluetooth = {
     enable = true;
-    package =
-      (pkgs.bluez.override {
-        enableExperimental = true;
-      });
+    package = pkgs.bluez.override {
+      enableExperimental = true;
+    };
     settings = {
       General = {
         AutoEnable = true;
