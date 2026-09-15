@@ -31,7 +31,6 @@
       rocmPackages.clr.icd
     ];
   };
-  services.xserver.videoDrivers = ["displaylink"];
 
   networking = {
     firewall.enable = false;
@@ -120,7 +119,6 @@
     uv
     awscli2
     obsidian
-    displaylink
     camunda-modeler
     apfs-fuse
     fuse

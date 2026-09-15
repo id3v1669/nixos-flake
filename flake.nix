@@ -7,6 +7,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    drawdb = {
+      url = "github:K3-Team/drawdb";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,7 +51,7 @@
       flake = false;
     };
     codex-src = {
-      url = "github:openai/codex/86b1b359cf89b65c136eda8c84e5ee544a6c2cf2"; # after that commit broken build
+      url = "github:openai/codex";
       flake = false;
     };
     lanzaboote = {

@@ -12,24 +12,19 @@
     };
     settings = {
       General = {
-        AutoEnable = true;
         FastConnectable = true;
         Experimental = true;
         ControllerMode = "dual";
-        Enable = "Source,Sink,Media,Socket";
-      };
-      Input = {
-        ClassicBondedOnly = false;
       };
       Policy = {
         AutoEnable = true;
       };
     };
+    input = {
+      General = {
+        ClassicBondedOnly = false;
+      };
+    };
   };
-  systemd.user.services.mpris-proxy = {
-    description = "Mpris proxy";
-    after = ["network.target" "sound.target"];
-    wantedBy = ["default.target"];
-    serviceConfig.ExecStart = "${lib.getExe' pkgs.bluez "mpris-proxy"}";
-  };
+  systemd.user.services.mpris-proxy.wantedBy = ["default.target"];
 }

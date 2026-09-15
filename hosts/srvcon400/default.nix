@@ -8,12 +8,14 @@
     ./hardware-configuration.nix
     ./../configuration.nix
     ./../../modules/nginx.nix
+    ./../../modules/odoo
     ./../../modules/httpd.nix
     ./../../modules/web.nix
     ./../../modules/sops.nix
     ./../../modules/vaultwarden.nix
     ./../../modules/postgresql-backup.nix
     ./../../modules/dufs.nix
+    ./../../modules/drawdb.nix
     ./../../modules/wireguard.nix
     ./../../modules/rustdesk-server.nix
     ./../../modules/virtualisation.nix
@@ -26,10 +28,13 @@
     firewall.enable = true;
   };
   users.users = {
-    ${uservars.name}.extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
+    ${uservars.name} = {
+      linger = true;
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+      ];
+    };
   };
   services.openssh = {
     enable = true;
