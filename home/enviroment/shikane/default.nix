@@ -56,13 +56,12 @@
         search = ["s=62H0D23"];
         mode = "1920x1080@60.00Hz";
         position = "0,0";
-        transform = "270";
         scale = 1.0;
       };
       laptop = {
         search = ["m=0xAF90"];
         mode = "1920x1080@144.15Hz";
-        position = "-1920,0";
+        position = "0,1080";
         scale = 1.0;
       };
     };

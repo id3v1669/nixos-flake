@@ -123,7 +123,6 @@
     apfs-fuse
     fuse
     android-tools
-    android-mic
     #rustdesk
     rustdesk-flutter
     surrealistx

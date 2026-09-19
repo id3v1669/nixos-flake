@@ -107,6 +107,7 @@
     };
   };
   environment.systemPackages = with pkgs; [
+    lutris
     uv
     awscli2
     obsidian
@@ -114,7 +115,6 @@
     apfs-fuse
     fuse
     android-tools
-    android-mic
     rustdesk-flutter # works with wayland
     surrealistx
     dbeaver-bin

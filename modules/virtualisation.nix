@@ -60,6 +60,7 @@ in {
   ];
   environment = {
     systemPackages = with pkgs; [
+      podman-compose
       virglrenderer
       libGL
       spice

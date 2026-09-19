@@ -245,5 +245,12 @@ in {
         immediate = true,
     })
 
+    -- Wargaming.net Game Center (Wine/XWayland): fixed-size CEF window, tiling
+    -- leaves the extra area black. Keep it floating.
+    hl.window_rule({
+        match = { class = "(?i)wgc\\.exe" },
+        float = true,
+    })
+
   '';
 }

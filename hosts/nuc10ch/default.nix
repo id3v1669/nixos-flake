@@ -84,7 +84,6 @@
     apfs-fuse
     fuse
     android-tools
-    android-mic
     surrealistx
     wlrctl
     wtype

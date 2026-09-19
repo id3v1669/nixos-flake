@@ -35,7 +35,7 @@
     protonplus # proton and wine updater
 
     # files
-    cosmic-files # file manager
+    #cosmic-files # file manager
     nautilus # backup file manager
     zip # create .zip arcs
     p7zip # .7z arcs
