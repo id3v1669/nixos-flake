@@ -3,5 +3,7 @@
 backup
 net.nix
 result
-NOTES*vault
+NOTES*
+vault
 modules/odoo/db-password
+/docs/
