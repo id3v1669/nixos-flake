@@ -8,6 +8,9 @@
     Host srvcon400
       HostName ${config.sops.placeholder.srvcon400_ip}
 
+    Host con400
+      HostName ${config.sops.placeholder.srvcon400_ip}
+
     Host k3vpn
       HostName ${config.sops.placeholder.k3vpn_ip}
   '';
@@ -33,6 +36,12 @@
         User = "srvcon400user";
         Port = 26713;
         IdentityFile = "~/.ssh/master";
+      };
+      con400 = {
+        User = "srvcon400user";
+        Port = 26713;
+        IdentityFile = "~/.ssh/id_ed_srvcon400";
+        IdentitiesOnly = true;
       };
       nuc = {
         HostName = "10.100.0.3";
