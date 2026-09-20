@@ -17,6 +17,7 @@
     ./../../modules/dufs.nix
     ./../../modules/drawdb.nix
     ./../../modules/matteo.nix
+    ./../../modules/stalwart.nix
     ./../../modules/wireguard.nix
     ./../../modules/rustdesk-server.nix
     ./../../modules/virtualisation.nix
