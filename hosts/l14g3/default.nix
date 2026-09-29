@@ -22,6 +22,8 @@
     ./../../modules/bluetooth.nix
     #./../../modules/odoo.nix
     ./../../modules/greeters/sddm.nix
+    ./../../modules/dock/link-sink.nix
+    ./../../modules/dock/sink.nix
   ];
   hardware = {
     enableAllFirmware = true;
@@ -35,6 +37,16 @@
   networking = {
     firewall.enable = false;
     enableIPv6 = false;
+  };
+  # remote access from msigf66 for the network-dock work
+  services.openssh = {
+    enable = true;
+    settings.PermitRootLogin = "prohibit-password";
+  };
+  services.avahi = {
+    enable = true;
+    publish.enable = true;
+    publish.addresses = true;
   };
   programs = {
     gamemode = {
@@ -58,17 +70,23 @@
       };
     };
   };
-  users.users.${uservars.name}.extraGroups = [
-    "gamemode"
-    "wheel"
-    "networkmanager"
-    "rustdesk"
-    "input"
-    "disk"
-    "i2c"
-    "veracrypt"
-    "usbmux"
-  ];
+  users.users.${uservars.name} = {
+    extraGroups = [
+      "gamemode"
+      "wheel"
+      "networkmanager"
+      "rustdesk"
+      "input"
+      "disk"
+      "i2c"
+      "veracrypt"
+      "usbmux"
+    ];
+    # remote access from msigf66 for the network-dock work
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILRrL2yHDWPbnnpMTKGJ7Ww8LIHHCveyUg1EXq877hGf user@l14g3Hyprland"
+    ];
+  };
   services.ddccontrol.enable = true;
   systemd.services.surrealdb.serviceConfig.ProcSubset = lib.mkForce "all";
   systemd.services.surrealdb.environment.SURREAL_BUCKET_FOLDER_ALLOWLIST = "/var/lib/surrealdb/buckets";

@@ -35,7 +35,6 @@
     protonplus # proton and wine updater
 
     # files
-    nautilus # backup file manager
     zip # create .zip arcs
     p7zip # .7z arcs
     unzip # unzip .zip arcs

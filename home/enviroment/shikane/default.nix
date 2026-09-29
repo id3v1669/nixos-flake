@@ -36,6 +36,31 @@
       };
     };
 
+    home_dock = {
+      main = {
+        search = ["m=U34G2G4R3"];
+        mode = "3440x1440@99.982Hz";
+        position = "0,0";
+      };
+      vertical = {
+        search = ["n=HEADLESS-1"];
+        mode = "1920x1080";
+        position = "-1080,-320";
+        transform = "90";
+      };
+      dockpanel = {
+        search = ["n=HEADLESS-2"];
+        mode = "1920x1080";
+        position = "-3000,0";
+      };
+      laptop = {
+        search = ["m=0xAF90"];
+        mode = "1920x1080@144.149Hz";
+        position = "3440,0";
+        scale = 1.0;
+      };
+    };
+
     work_hdmi1 = {
       main = {
         search = ["s=LALMQS096920"];
