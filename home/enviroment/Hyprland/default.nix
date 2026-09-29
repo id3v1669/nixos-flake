@@ -169,6 +169,10 @@ in {
         tag = "+fileOperation",
     })
     hl.window_rule({
+        match = { class = "com.owlm.EarthFilesPortal" },
+        tag   = "+fileOperation",
+    })
+    hl.window_rule({
         match = { tag = "fileOperation" },
         float  = true,
         size   = "monitor_w*0.35 monitor_h*0.7",
@@ -193,7 +197,7 @@ in {
 
     -- Translucency for various apps. Two values = active, inactive (see WindowRuleApplicator opacity handling).
     hl.window_rule({
-        match   = { class = "(?i)(spotify|nemo|org.gnome.nautilus|com.system76.cosmicfiles|code-url-handler|"
+        match   = { class = "(?i)(spotify|nemo|org.gnome.nautilus|com.owlm.EarthFiles|code-url-handler|"
         .. "code|org.telegram.desktop|gnome-disks|gparted|alacritty|kitty)" },
         opacity = "0.95 0.9",
     })

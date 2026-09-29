@@ -2,19 +2,15 @@
   system,
   inputs,
 }: final: pkgs: {
-  gpu-screen-recorder = pkgs.gpu-screen-recorder.overrideAttrs (finalAttrs: prev: {
-    version = "6.0.1";
-
-    src = pkgs.fetchgit {
-      url = "https://repo.dec05eba.com/gpu-screen-recorder";
-      rev = "7bba0f0f1f698b574096f135fa7d5a761264b26f";
-      hash = "sha256-+W1C0sP6ltkfCP9To7NdHRM/5oUqKn3b/uDkhZJGWG0=";
+  # Drop once nixpkgs ships a release newer than 1.4.1.
+  xdg-desktop-portal-hyprland = pkgs.xdg-desktop-portal-hyprland.overrideAttrs (finalAttrs: prev: {
+    version = "1.4.1-unstable-2026-08-29";
+    src = pkgs.fetchFromGitHub {
+      owner = "hyprwm";
+      repo = "xdg-desktop-portal-hyprland";
+      rev = "ba31964ee42b56bcb0d3b78a64ead5d8a1c3c6f6";
+      hash = "sha256-TBqronrrc/F2Ry/E37d/1TLldDLJDFNSwvJjgk+cXzU=";
     };
-    patches =
-      (prev.patches or [])
-      ++ [
-        ./gpu-screen-recorder-force-invalid-modifier.patch
-      ];
   });
   pnpm_10_29_2 = pkgs.pnpm_10;
   electron_40 = pkgs.electron_44;

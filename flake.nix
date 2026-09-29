@@ -102,6 +102,11 @@
       url = "github:waycrate/wayshot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    earth-files = {
+      #url = "github:owl-m/earth-files";
+      url = "git+file:///home/user/myrepos/earth-files";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     iwwc = {
       url = "github:id3v1669/iwwc";
       #url = "git+file:///home/user/myrepos/iwwc";

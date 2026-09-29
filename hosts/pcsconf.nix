@@ -9,6 +9,9 @@
 }: let
   inherit (lib) getExe getExe' mkDefault optionalAttrs;
 in {
+  imports = [
+    inputs.earth-files.nixosModules.default
+  ];
   boot = {
     plymouth.enable = true;
     kernelParams = [
@@ -30,6 +33,10 @@ in {
   };
   programs = {
     coldlock.enable = true;
+    earth-files = {
+      enable = true;
+      portal.enable = true;
+    };
     steam = {
       enable = true;
       protontricks.enable = true;

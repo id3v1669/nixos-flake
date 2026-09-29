@@ -188,7 +188,7 @@
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_5 "wayshot --no-freeze --clipboard -g"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_B firefox
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_C "cliphist list | anyrun --show-results-immediately true | cliphist decode | wl-copy"
-        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_F nautilus
+        KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_F earth-files
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_Z "killall -SIGUSR1 gpu-screen-recorder && sleep 0.5 && notify-send -t 3500 -u low -- 'GPU Screen Recorder' 'Replay saved'"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_G "${fullscreen}"
         KEY_LEFTMETA+KEY_LEFTSHIFT+KEY_K kitty

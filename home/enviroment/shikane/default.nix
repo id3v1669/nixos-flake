@@ -82,15 +82,15 @@
 
     work_dvi = {
       main = {
-        search = ["n=DVI-I-1"];
-        mode = "2560x1440";
+        search = ["s=UT3340R4"];
+        mode = "2560x1440@99.95Hz";
         position = "0,0";
         scale = 1.0;
       };
       laptop = {
         search = ["m=0xAF90"];
         mode = "1920x1080@144.15Hz";
-        position = "-1920,320";
+        position = "0,1440";
         scale = 1.0;
       };
     };
