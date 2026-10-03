@@ -29,14 +29,35 @@
       # dock-head up|down|status
       # Creates/destroys the dock outputs; positions/modes are applied by
       # the monitor.lua home_dock preset reacting to monitor.added.
-      if [ -z "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
-        # shellcheck disable=SC2012
-        sig=$(ls -1 "''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/hypr" 2>/dev/null | head -1)
-        [ -n "$sig" ] && export HYPRLAND_INSTANCE_SIGNATURE="$sig"
-      fi
+      # NB: writeShellApplication runs this under `set -euo pipefail`, so
+      # every signature probe must tolerate a missing hypr dir / empty match
+      # (at boot the graphical session doesn't exist yet) — hence `|| true`.
+
+      # Discover the running Hyprland instance signature, set-e safe.
+      find_sig() {
+        if [ -z "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
+          local sig
+          # shellcheck disable=SC2012
+          sig=$(ls -1 "''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/hypr" 2>/dev/null | head -1 || true)
+          [ -n "$sig" ] && export HYPRLAND_INSTANCE_SIGNATURE="$sig" || true
+        fi
+      }
+
+      find_sig
       cmd="''${1:-status}"
       case "$cmd" in
         up)
+          # Wait for Hyprland to be ready: on a msigf66 boot with the cable
+          # already attached, the NM dispatcher fires this before the
+          # graphical session exists. Poll up to ~90s.
+          for _ in $(seq 1 90); do
+            find_sig
+            if hyprctl monitors >/dev/null 2>&1; then
+              break
+            fi
+            sleep 1
+          done
+          hyprctl monitors >/dev/null 2>&1 || { echo "Hyprland not ready" >&2; exit 1; }
           hyprctl output create headless dock-1
           hyprctl output create headless dock-2
           ;;
@@ -94,7 +115,9 @@ in {
         [ "$1" = "enp5s0" ] || exit 0
         case "$2" in
           up)
-            systemctl --user -M user@.host start dock-head.service || true
+            # --no-block: dock-head may wait up to 90s for Hyprland (boot
+            # with cable attached); don't hang the dispatcher on it
+            systemctl --user -M user@.host start --no-block dock-head.service || true
             ;;
           down)
             systemctl --user -M user@.host stop dock-head.service \

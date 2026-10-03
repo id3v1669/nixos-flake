@@ -11,7 +11,6 @@ with allSpecialArgs; {
     inputs.ox.overlays.default
     inputs.dcgt.overlays.default
     inputs.nur.overlays.default
-    inputs.cti.overlays.default
     inputs.awww.overlays.default
     inputs.iwwc.overlays.default
     inputs.earth-files.overlays.default

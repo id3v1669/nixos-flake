@@ -26,7 +26,6 @@
       ./enviroment/gtk
       ./enviroment/anyrun
       ./enviroment/xdg
-      ./enviroment/cosmic
       ./enviroment/${envir}
     ]
     ++ lib.lists.optionals (envir == "Hyprland" || envir == "sway" || envir == "mango") [

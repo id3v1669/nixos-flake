@@ -31,6 +31,7 @@
     kernelParams = [
       "intel_iommu=on"
       "iommu=pt"
+      "ipv6.disable=1"
     ];
     kernel.sysctl = {
       "kernel.unprivileged_userns_clone" = 1;

@@ -104,6 +104,20 @@
         scale = 1.0;
       };
     };
+    work_hdmi4 = {
+      main = {
+        search = ["s=H4LR501912"];
+        mode = "1920x1080@71.91Hz";
+        position = "0,0";
+        scale = 1.0;
+      };
+      laptop = {
+        search = ["m=0xAF90"];
+        mode = "1920x1080@144.15Hz";
+        position = "0,1080";
+        scale = 1.0;
+      };
+    };
 
     work_dvi = {
       main = {

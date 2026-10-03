@@ -12,14 +12,6 @@
 
     gimp
 
-    #tmp for testing themes
-    cosmic-settings
-    cosmic-edit
-    cosmic-reader
-    cosmic-player
-    cosmic-launcher
-    cosmic-term
-
     qxmledit
     czkawka-full
     yt-dlp
