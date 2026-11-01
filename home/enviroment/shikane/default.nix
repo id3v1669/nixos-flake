@@ -22,114 +22,17 @@
   };
 
   profiles = {
-    home_double = {
+    home_hdmi = {
       main = {
-        search = ["m=U34G2G4R3"];
-        mode = "3440x1440@99.982Hz";
-        position = "0,0";
-      };
-      laptop = {
-        search = ["m=0xAF90"];
-        mode = "1920x1080@144.149Hz";
-        position = "3440,0";
-        scale = 1.0;
-      };
-    };
-
-    home_dock = {
-      main = {
-        search = ["m=U34G2G4R3"];
-        mode = "3440x1440@99.982Hz";
-        position = "0,0";
-      };
-      vertical = {
-        search = ["n=HEADLESS-1"];
-        mode = "1920x1080";
-        position = "-1080,-320";
-        transform = "90";
-      };
-      dockpanel = {
-        search = ["n=HEADLESS-2"];
-        mode = "1920x1080";
-        position = "-3000,0";
-      };
-      laptop = {
-        search = ["m=0xAF90"];
-        mode = "1920x1080@144.149Hz";
-        position = "3440,0";
-        scale = 1.0;
-      };
-    };
-
-    work_hdmi1 = {
-      main = {
-        search = ["s=LALMQS096920"];
-        mode = "1920x1080@74.91Hz";
-        position = "0,0";
-        scale = 1.0;
+        search = ["m=SAMSUNG" "s=0x01000E00" "v=Samsung Electric Company"];
+        mode = "3840x2160@60.00Hz";
+        position = "1920,0";
+        scale = 1.5;
       };
       laptop = {
         search = ["m=0xAF90"];
         mode = "1920x1080@144.15Hz";
-        position = "0,1080";
-        scale = 1.0;
-      };
-    };
-
-    work_hdmi2 = {
-      main = {
-        search = ["s=62H0D23"];
-        mode = "1920x1080@60.00Hz";
         position = "0,0";
-        scale = 1.0;
-      };
-      laptop = {
-        search = ["m=0xAF90"];
-        mode = "1920x1080@144.15Hz";
-        position = "0,1080";
-        scale = 1.0;
-      };
-    };
-    work_hdmi3 = {
-      main = {
-        search = ["s=UHB1843022743"];
-        mode = "1920x1080@60.00Hz";
-        position = "0,0";
-        scale = 1.0;
-      };
-      laptop = {
-        search = ["m=0xAF90"];
-        mode = "1920x1080@144.15Hz";
-        position = "0,1080";
-        scale = 1.0;
-      };
-    };
-    work_hdmi4 = {
-      main = {
-        search = ["s=H4LR501912"];
-        mode = "1920x1080@71.91Hz";
-        position = "0,0";
-        scale = 1.0;
-      };
-      laptop = {
-        search = ["m=0xAF90"];
-        mode = "1920x1080@144.15Hz";
-        position = "0,1080";
-        scale = 1.0;
-      };
-    };
-
-    work_dvi = {
-      main = {
-        search = ["s=UT3340R4"];
-        mode = "2560x1440@99.95Hz";
-        position = "0,0";
-        scale = 1.0;
-      };
-      laptop = {
-        search = ["m=0xAF90"];
-        mode = "1920x1080@144.15Hz";
-        position = "0,1440";
         scale = 1.0;
       };
     };
@@ -140,18 +43,6 @@
         mode = "1920x1080@144.15Hz";
         position = "0,0";
         scale = 1.0;
-      };
-    };
-
-    zgamemode = {
-      main = {
-        search = ["m=U34G2G4R3"];
-        mode = "2560x1080@120.00Hz";
-        position = "0,0";
-      };
-      laptop = {
-        search = ["m=0xAF90"];
-        enable = false;
       };
     };
   };

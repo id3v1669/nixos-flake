@@ -1,6 +1,6 @@
 final: pkgs: {
   equibop = let
-    version = "3.2.2";
+    version = "3.3.1";
 
     node-modules = pkgs.stdenvNoCC.mkDerivation {
       pname = "equibop-modules";
@@ -9,7 +9,7 @@ final: pkgs: {
         owner = "Equicord";
         repo = "Equibop";
         tag = "v${version}";
-        hash = "sha256-foKgtyN1jr4+PHwJHTVXrYzWNVYtR1Sq8rLG4VEnujs=";
+        hash = "sha256-cwRwVdrd91JsOw/WVhPdIJYDwWWhpjlHVhowFlfvoCo=";
       };
 
       impureEnvVars =
@@ -51,7 +51,7 @@ final: pkgs: {
         runHook postInstall
       '';
 
-      outputHash = "sha256-TKFL47b+Xh8ChlSyXdhRY+zmPAnkHJss2vNblBvOSmw=";
+      outputHash = "sha256-odQOJOv3qBYJte5RNF14o33Duxxvm0n5Fy6jfVeCg3I=";
       outputHashAlgo = "sha256";
       outputHashMode = "recursive";
     };
@@ -63,7 +63,7 @@ final: pkgs: {
         owner = "Equicord";
         repo = "Equibop";
         tag = "v${version}";
-        hash = "sha256-foKgtyN1jr4+PHwJHTVXrYzWNVYtR1Sq8rLG4VEnujs=";
+        hash = "sha256-cwRwVdrd91JsOw/WVhPdIJYDwWWhpjlHVhowFlfvoCo=";
       };
 
       postPatch = ''

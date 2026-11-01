@@ -21,8 +21,6 @@
     ./../../modules/swhkdp.nix
     ./../../modules/bluetooth.nix
     ./../../modules/greeters/sddm.nix
-    ./../../modules/dock/link-head.nix
-    ./../../modules/dock/head.nix
   ];
   hardware = {
     enableAllFirmware = true;

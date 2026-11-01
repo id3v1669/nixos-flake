@@ -39,7 +39,7 @@
       kblayout = "us,ru";
       kbvariant = ",";
       kboption = "grp:win_space_toggle";
-      timezone = "Australia/Perth";
+      timezone = "Asia/Almaty";
       locale = "en_AU.UTF-8";
     }),
   }: let

@@ -26,6 +26,7 @@ with allSpecialArgs; {
     (import ./../overlays/equibop.nix)
     (import ./../overlays/android-tools.nix)
     (import ./../overlays/gruvbox-plus-icons.nix)
+    (import ./../overlays/hyprland)
     (import ./../overlays/btop.nix {
       inherit cpuvar;
       inherit gpuvar;

@@ -15,7 +15,7 @@
       jdks = with pkgs; [jdk25 zulu];
     })
 
-    qxmledit
+    #qxmledit
     czkawka-full
     yt-dlp
     megasync

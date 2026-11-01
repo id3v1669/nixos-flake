@@ -99,8 +99,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     earth-files = {
-      #url = "github:owl-m/earth-files";
-      url = "git+file:///home/user/myrepos/earth-files";
+      url = "github:owl-m/earth-files";
+      #url = "git+file:///home/user/myrepos/earth-files";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     iwwc = {
@@ -148,128 +148,8 @@
           kblayout = "au";
           kbvariant = "";
           kboption = "";
-          timezone = "Australia/Perth";
+          timezone = "Asia/Almaty";
           locale = "en_AU.UTF-8";
-        };
-      };
-      l14g3hypr = mkSystem {
-        hostname = "l14g3";
-        envir = "Hyprland";
-        cpuvar = {
-          type = "amd";
-          hasIntegrated = true;
-          integratedBroken = false;
-        };
-        bootloader = {
-          type = "opencore";
-          timeout = 7;
-        };
-        desk = "laptop";
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          owner = "id3v1669";
-          domain = "id3v1669.com";
-          wp = "default3.png";
-          sleeptimeout = 1200;
-        };
-        brightnesctrl = {
-          up = "light -A 5";
-          down = "light -U 5";
-        };
-        gpuvar = {
-          type = "amd";
-          tech = "amd";
-        };
-      };
-      l14g3sway = mkSystem {
-        hostname = "l14g3";
-        envir = "sway";
-        cpuvar = {
-          type = "amd";
-          hasIntegrated = true;
-          integratedBroken = false;
-        };
-        bootloader = {
-          type = "opencore";
-          timeout = 7;
-        };
-        desk = "laptop";
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          owner = "id3v1669";
-          domain = "id3v1669.com";
-          wp = "default3.png";
-          sleeptimeout = 1200;
-        };
-        brightnesctrl = {
-          up = "light -A 5";
-          down = "light -U 5";
-        };
-        gpuvar = {
-          type = "amd";
-          tech = "amd";
-        };
-      };
-      l14g3mango = mkSystem {
-        hostname = "l14g3";
-        envir = "mango";
-        cpuvar = {
-          type = "amd";
-          hasIntegrated = true;
-          integratedBroken = false;
-        };
-        bootloader = {
-          type = "opencore";
-          timeout = 7;
-        };
-        desk = "laptop";
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          owner = "id3v1669";
-          domain = "id3v1669.com";
-          wp = "default3.png";
-          sleeptimeout = 1200;
-        };
-        brightnesctrl = {
-          up = "light -A 5";
-          down = "light -U 5";
-        };
-        gpuvar = {
-          type = "amd";
-          tech = "amd";
-        };
-      };
-      l14g3kde = mkSystem {
-        hostname = "l14g3";
-        envir = "KDE";
-        cpuvar = {
-          type = "amd";
-          hasIntegrated = true;
-          integratedBroken = false;
-        };
-        bootloader = {
-          type = "opencore";
-          timeout = 7;
-        };
-        desk = "laptop";
-        uservars = {
-          name = "user";
-          description = "id3v1669";
-          owner = "id3v1669";
-          domain = "id3v1669.com";
-          wp = "default3.png";
-          sleeptimeout = 1200;
-        };
-        brightnesctrl = {
-          up = "light -A 5";
-          down = "light -U 5";
-        };
-        gpuvar = {
-          type = "amd";
-          tech = "amd";
         };
       };
       msigf66hypr = mkSystem {
@@ -328,7 +208,7 @@
           kblayout = "au";
           kbvariant = "";
           kboption = "";
-          timezone = "Australia/Perth";
+          timezone = "Asia/Almaty";
           locale = "en_AU.UTF-8";
         };
       };
@@ -359,7 +239,7 @@
           kblayout = "au";
           kbvariant = "";
           kboption = "";
-          timezone = "Australia/Perth";
+          timezone = "Asia/Almaty";
           locale = "en_AU.UTF-8";
         };
       };

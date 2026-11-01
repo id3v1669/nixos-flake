@@ -24,7 +24,33 @@
       "kvm-intel"
       "acpi-call"
     ];
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_zen.extend (kfinal: kprev: let
+      # nixpkgs merges a signing certificate (<module>.ko.cer) from every external
+      # module into modules.cer. These packages install their .ko files without
+      # Kbuild's signing step, so sign them the way Kbuild does, after fixup (any
+      # later strip would break the signature).
+      signed = drv:
+        drv.overrideAttrs (old: {
+          postFixup =
+            (old.postFixup or "")
+            + ''
+              find "$out/lib/modules" -name '*.ko' -exec ${lib.getExe pkgs.buildPackages.kmodigest} {} \;
+            '';
+        });
+    in {
+      acpi_call = signed kprev.acpi_call;
+      ddcci-driver = signed kprev.ddcci-driver;
+      # Its install runs depmod and ships the modules.* indexes, which collide
+      # with the kernel's own when the module tree is merged; those indexes are
+      # regenerated for the whole tree anyway
+      v4l2loopback = kprev.v4l2loopback.overrideAttrs (old: {
+        postInstall =
+          (old.postInstall or "")
+          + ''
+            rm -f "$out"/lib/modules/*/modules.*
+          '';
+      });
+    });
     # aarch64 emulation for building Mi Mix 3 (perseus)
     binfmt.emulatedSystems = ["aarch64-linux"];
 

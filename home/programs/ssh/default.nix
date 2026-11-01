@@ -62,6 +62,13 @@
         Port = 1432;
         IdentityFile = "~/.ssh/id_rsa_k3_team";
       };
+      dbr-pi = {
+        HostName = "10.110.0.2";
+        User = "user";
+        ProxyJump = "k3vpn";
+        IdentityFile = "~/Documents/dbr/pi/id_ed25519_dbr_pi";
+        IdentitiesOnly = true;
+      };
       "github.com" = {
         User = "git";
         IdentityFile = "~/.ssh/master";
