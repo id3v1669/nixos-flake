@@ -24,9 +24,9 @@ with allSpecialArgs; {
     (import ./../overlays/graphify.nix {inherit inputs system;})
     (import ./../overlays/steam.nix)
     (import ./../overlays/equibop.nix)
-    (import ./../overlays/android-tools.nix)
     (import ./../overlays/gruvbox-plus-icons.nix)
     (import ./../overlays/hyprland)
+    (import ./../overlays/wezterm)
     (import ./../overlays/btop.nix {
       inherit cpuvar;
       inherit gpuvar;

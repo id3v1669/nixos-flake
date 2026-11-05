@@ -1,15 +1,12 @@
 {config, ...}: {
   sops.secrets = {
-    srvcon400_ip = {};
+    srvcon300_ip = {};
     k3vpn_ip = {};
   };
 
   sops.templates."ssh-hosts".content = ''
-    Host srvcon400
-      HostName ${config.sops.placeholder.srvcon400_ip}
-
-    Host con400
-      HostName ${config.sops.placeholder.srvcon400_ip}
+    Host srvcon300
+      HostName ${config.sops.placeholder.srvcon300_ip}
 
     Host k3vpn
       HostName ${config.sops.placeholder.k3vpn_ip}
@@ -32,21 +29,21 @@
         ControlPath = "~/.ssh/master-%r@%n:%p";
         ControlPersist = "no";
       };
-      srvcon400 = {
-        User = "srvcon400user";
+      srvcon300 = {
+        User = "srvcon300user";
         Port = 26713;
         IdentityFile = "~/.ssh/master";
       };
       con400 = {
-        User = "srvcon400user";
+        User = "srvcon300user";
         Port = 26713;
-        IdentityFile = "~/.ssh/id_ed_srvcon400";
+        IdentityFile = "~/.ssh/id_ed_srvcon300";
         IdentitiesOnly = true;
       };
       nuc = {
-        HostName = "10.100.0.3";
+        # direct LAN; name resolved by the router's DHCP DNS (IP is dynamic)
+        HostName = "nuc10ch";
         User = "user";
-        ProxyJump = "srvcon400";
         IdentityFile = "~/.ssh/master";
       };
       github-bot = {

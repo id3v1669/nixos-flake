@@ -185,8 +185,8 @@
           busi = "PCI:0:2:0";
         };
       };
-      srvcon400 = mkSystem {
-        hostname = "srvcon400";
+      srvcon300 = mkSystem {
+        hostname = "srvcon300";
         envir = "none";
         desk = "server";
         bootloader = {
@@ -199,8 +199,8 @@
           tech = "none";
         };
         uservars = {
-          name = "srvcon400user";
-          description = "SrvCon400";
+          name = "srvcon300user";
+          description = "SrvCon300";
           owner = "id3v1669";
           domain = "id3v1669.com";
         };

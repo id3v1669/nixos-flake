@@ -8,18 +8,12 @@
     ./hardware-configuration.nix
     ./../configuration.nix
     ./../../modules/nginx.nix
-    ./../../modules/odoo
     ./../../modules/httpd.nix
     ./../../modules/web.nix
     ./../../modules/sops.nix
     ./../../modules/vaultwarden.nix
     ./../../modules/postgresql-backup.nix
     ./../../modules/dufs.nix
-    ./../../modules/drawdb.nix
-    ./../../modules/matteo.nix
-    ./../../modules/stalwart.nix
-    ./../../modules/wireguard.nix
-    ./../../modules/rustdesk-server.nix
     ./../../modules/virtualisation.nix
     ./../../modules/fonts.nix
     ./../../modules/security.nix

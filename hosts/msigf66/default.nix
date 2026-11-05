@@ -116,7 +116,7 @@
     fuse
     android-tools
     rustdesk-flutter # works with wayland
-    surrealistx
+    #surrealistx
     dbeaver-bin
     wlrctl
     wtype
@@ -124,7 +124,7 @@
     claude-code
     claude-desktop
     codex
-    opencode
+    #opencode
     graphify
   ];
   nix.package = pkgs.nixVersions.latest;
