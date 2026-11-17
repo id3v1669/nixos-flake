@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   uservars,
   ...
 }: {
@@ -14,10 +15,14 @@
     ./../../modules/vaultwarden.nix
     ./../../modules/postgresql-backup.nix
     ./../../modules/dufs.nix
+    ./../../modules/minecraft.nix
     ./../../modules/virtualisation.nix
     ./../../modules/fonts.nix
     ./../../modules/security.nix
   ];
+
+  zramSwap.enable = true;
+  services.scx-loader.config.default_mode = lib.mkForce "Server";
 
   networking = {
     useDHCP = false;
