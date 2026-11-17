@@ -103,7 +103,10 @@ in {
       libva-utils # vaapi test
     ];
   };
-
+  nix = {
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedClass = "idle";
+  };
   systemd = {
     settings.Manager = {
       DefaultTimeoutStopSec = "10s";
@@ -112,6 +115,10 @@ in {
       "d /etc/backgrounds 0755 user users - -"
     ];
     user = {
+      slices.work = {
+        description = "Low-priority work";
+        sliceConfig.CPUWeight = "idle";
+      };
       services = {
         polkit-gnome-authentication-agent-1 = {
           description = "polkit-gnome-authentication-agent-1";

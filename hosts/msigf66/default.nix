@@ -19,9 +19,15 @@
     ./../../modules/security.nix
     ./../../modules/sudo.nix
     ./../../modules/swhkdp.nix
+    ./../../modules/game-isolate.nix
     ./../../modules/bluetooth.nix
     ./../../modules/greeters/sddm.nix
   ];
+  services.gameIsolate = {
+    enable = true;
+    gameCpus = "4-9";
+    otherCpus = "0-3,10-19";
+  };
   hardware = {
     enableAllFirmware = true;
     uinput.enable = true;
@@ -42,8 +48,8 @@
           ioprio = 0;
         };
         cpu = {
-          park_cores = "yes";
-          pin_cores = "yes";
+          park_cores = "no";
+          pin_cores = "no";
         };
         custom = {
           start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";

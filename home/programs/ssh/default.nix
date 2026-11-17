@@ -33,11 +33,6 @@
         User = "srvcon300user";
         Port = 26713;
         IdentityFile = "~/.ssh/master";
-      };
-      con400 = {
-        User = "srvcon300user";
-        Port = 26713;
-        IdentityFile = "~/.ssh/id_ed_srvcon300";
         IdentitiesOnly = true;
       };
       nuc = {

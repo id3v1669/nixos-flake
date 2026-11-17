@@ -10,6 +10,8 @@
       allowBuiltinFetchGit = true;
     };
 
+    buildInputs = (prevAttrs.buildInputs or []) ++ (with final; [aws-lc zstd sqlite oniguruma]);
+
     # mxc-sdk's build script checks its generated Windows bindings against the
     # `windows` version in the nearest Cargo.lock: its crate root, else one
     # directory up. Vendored, one directory up is codex's lock (first `windows`

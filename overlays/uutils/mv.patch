@@ -1,6 +1,8 @@
---- a/src/uu/mv/src/mv.rs	2026-06-27 23:42:40.973211345 +0800
-+++ b/src/uu/mv/src/mv.rs	2026-06-27 23:42:40.982990875 +0800
-@@ -111,7 +111,7 @@
+diff --git a/src/uu/mv/src/mv.rs b/src/uu/mv/src/mv.rs
+index f17a06c..6aad260 100644
+--- a/src/uu/mv/src/mv.rs
++++ b/src/uu/mv/src/mv.rs
+@@ -113,7 +113,7 @@ pub struct Options {
  impl Default for Options {
      fn default() -> Self {
          Self {
@@ -9,7 +11,7 @@
              backup: BackupMode::default(),
              suffix: backup_control::DEFAULT_BACKUP_SUFFIX.to_owned(),
              update: UpdateMode::default(),
-@@ -347,7 +347,7 @@
+@@ -359,7 +359,7 @@ fn determine_overwrite_mode(matches: &ArgMatches) -> OverwriteMode {
      } else if matches.get_flag(OPT_FORCE) {
          OverwriteMode::Force
      } else {

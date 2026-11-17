@@ -75,9 +75,12 @@
     };
   };
   services = {
-    scx = {
+    scx-loader = {
       enable = true;
-      #scheduler = "scx_lavd"; #TEMP broken
+      config = {
+        default_sched = "scx_lavd";
+        default_mode = "Auto";
+      };
     };
     xserver = {
       enable = true;

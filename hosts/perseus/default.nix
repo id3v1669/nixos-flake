@@ -113,7 +113,7 @@ in {
     '';
     getty.autologinUser = "root"; #TEMP until fully configured
     xserver.enable = lib.mkForce false; #TEMP for now disabled
-    scx.enable = lib.mkForce false; #no scx in kernel
+    scx-loader.enable = lib.mkForce false; #no scx in kernel
     openssh = {
       enable = true;
       settings.PermitRootLogin = "prohibit-password";

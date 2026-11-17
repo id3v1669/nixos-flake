@@ -1,4 +1,15 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: let
+  workRun = pkgs.writeShellScript "work-run" ''
+    if [ -S "''${XDG_RUNTIME_DIR:-/nonexistent}/systemd/private" ]; then
+      exec systemd-run --user --scope --quiet --collect --slice=work.slice --nice=19 -- "$@"
+    fi
+    exec nice -n 19 "$@"
+  '';
+in {
   programs.wezterm = {
     enable = true;
     colorSchemes = with config.palette; {
@@ -36,6 +47,7 @@
       return {
         color_scheme = "mainTheme",
         check_for_updates = false,
+        default_prog = { '${workRun}', os.getenv('SHELL') or 'fish', '-l' },
         enable_wayland = true,
         font = wezterm.font("0xProto"),
         font_size = 11,
