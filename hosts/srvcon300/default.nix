@@ -42,6 +42,8 @@
 
     settings = {
       PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
     };
   };
   environment.variables = {

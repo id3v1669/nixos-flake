@@ -53,6 +53,8 @@
           view-distance = 10;
           online-mode = false;
           allow-flight = true;
+          white-list = false;
+          enforce-whitelist = false;
         };
       };
     };

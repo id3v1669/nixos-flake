@@ -12,7 +12,7 @@
 
     gimp
     (prismlauncher.override {
-      jdks = with pkgs; [jdk25 zulu];
+      jdks = with pkgs; [ zulu27 temurin-jre-bin-27 ];
     })
 
     #qxmledit

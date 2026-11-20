@@ -71,6 +71,7 @@ in {
   };
 
   services = {
+    scx-loader.config.default_sched = lib.mkForce null;
     fstrim.enable = true; # trim for SSDs
     udev = {
       enable = true; # udev for hardware
@@ -86,6 +87,10 @@ in {
   environment = {
     variables.NIXOS_OZONE_WL = "1";
     etc."hypr/monitor-init.conf".text = mkDefault '''';
+    etc."systemd/user/run-.scope.d/50-low-priority.conf".text = ''
+      [Scope]
+      CPUWeight=idle
+    '';
     systemPackages = with pkgs; [
       bash
       ntfs3g

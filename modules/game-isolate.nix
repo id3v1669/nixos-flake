@@ -7,7 +7,8 @@
 # GAME_RUN_MODE=confined (default): the game runs only on `gameCpus`.
 # GAME_RUN_MODE=reserved: the game may also use the shared CPUs.
 #
-# If the reservation is ever left behind: `systemctl stop game-isolate`.
+# The reservation is released by a separate watcher unit once no game scope
+# is left, so killing the wrapper or the launcher cannot leave it behind.
 {
   config,
   lib,
@@ -18,38 +19,46 @@
   cfg = config.services.gameIsolate;
   systemctl = "${config.systemd.package}/bin/systemctl";
   userSlices = "app.slice session.slice background.slice work.slice";
+  # Runs as its own transient user unit, so the reservation is released even
+  # if the launcher kills the wrapper. Waits until no game scope is left
+  # (covers processes a game leaves behind and several games at once).
+  gameRelease = pkgs.writeShellScript "game-release" ''
+    active() {
+      ${systemctl} --user list-units 'game-*.scope' --state=active --no-legend \
+        | ${pkgs.gnugrep}/bin/grep -q .
+    }
+    # give the game scope up to 30s to appear
+    for _ in $(${pkgs.coreutils}/bin/seq 30); do
+      active && break
+      ${pkgs.coreutils}/bin/sleep 1
+    done
+    while active; do
+      ${pkgs.coreutils}/bin/sleep 2
+    done
+    for s in ${userSlices}; do
+      ${systemctl} --user set-property --runtime "$s" AllowedCPUs=
+    done
+    ${systemctl} stop game-isolate.service
+  '';
   gameRun = pkgs.writeShellScriptBin "game-run" ''
     if [ $# -eq 0 ]; then
       echo "usage: game-run <command> [args...]" >&2
       exit 2
     fi
-    unit="game-$$.scope"
     props=()
     if [ "''${GAME_RUN_MODE:-confined}" = confined ]; then
       props+=(-p "AllowedCPUs=${cfg.gameCpus}")
     fi
 
-    release() {
-      for s in ${userSlices}; do
-        systemctl --user set-property --runtime "$s" AllowedCPUs=
-      done
-      systemctl stop game-isolate.service
-    }
-    trap release EXIT
-
     systemctl start game-isolate.service
     for s in ${userSlices}; do
       systemctl --user set-property --runtime "$s" "AllowedCPUs=${cfg.otherCpus}"
     done
+    systemd-run --user --quiet --collect --unit="game-release-$$" \
+      --slice=background.slice ${gameRelease}
 
-    systemd-run --user --scope --quiet --collect --unit="$unit" \
+    exec systemd-run --user --scope --quiet --collect --unit="game-$$.scope" \
       --slice=game.slice "''${props[@]}" -- "$@"
-    rc=$?
-    # the scope stays active until the last process in it (wineserver etc.) exits
-    while systemctl --user is-active --quiet "$unit"; do
-      sleep 2
-    done
-    exit $rc
   '';
 in {
   options.services.gameIsolate = {

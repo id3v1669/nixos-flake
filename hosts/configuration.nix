@@ -75,6 +75,7 @@
     };
   };
   services = {
+    flatpak.enable = lib.mkForce false;
     scx-loader = {
       enable = true;
       config = {

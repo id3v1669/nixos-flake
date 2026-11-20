@@ -72,7 +72,7 @@
         "browser.low_commit_space_threshold_percent" = 70;
         "browser.safebrowsing.blockedURIs.enabled" = false;
         "browser.search.isUS" = false;
-        "browser.search.region" = "AU";
+        "browser.search.region" = "KZ";
         "browser.search.suggest.enabled" = false;
         "browser.search.suggest.enabled.private" = false;
         "browser.sessionstore.restore_on_demand" = true;
@@ -110,42 +110,7 @@
       };
       bookmarks = {
         force = true;
-        settings = [
-          {
-            name = "Yandex";
-            tags = ["yandex"];
-            keyword = "yandex";
-            url = "https://yandex.com";
-          }
-          {
-            name = "Arch sites";
-            toolbar = true;
-            bookmarks = [
-              {
-                name = "Packages";
-                url = "https://archlinux.org/packages/";
-              }
-              {
-                name = "Aur";
-                url = "https://aur.archlinux.org/";
-              }
-            ];
-          }
-          {
-            name = "Nix";
-            bookmarks = [
-              {
-                name = "Packages";
-                url = "https://search.nixos.org/";
-              }
-              {
-                name = "wiki";
-                tags = ["wiki" "nix"];
-                url = "https://nixos.wiki/";
-              }
-            ];
-          }
-        ];
+        settings = [];
       };
     };
   };

@@ -1,6 +1,15 @@
-final: pkgs: {
+{gpuvar, ...}: final: pkgs: {
   equibop = let
-    version = "3.3.1";
+    nvidiaOffload = gpuvar.type == "nvidia" && gpuvar.tech == "offload";
+    nvidiaOffloadFlags = pkgs.lib.optionalString nvidiaOffload ''
+      --set __NV_PRIME_RENDER_OFFLOAD 1 \
+      --set __NV_PRIME_RENDER_OFFLOAD_PROVIDER NVIDIA-G0 \
+      --set __GLX_VENDOR_LIBRARY_NAME nvidia \
+      --set __VK_LAYER_NV_optimus NVIDIA_only \
+      --set LIBVA_DRIVER_NAME nvidia \
+      --set NVD_BACKEND direct \
+    '';
+    version = "3.3.4";
 
     node-modules = pkgs.stdenvNoCC.mkDerivation {
       pname = "equibop-modules";
@@ -9,7 +18,7 @@ final: pkgs: {
         owner = "Equicord";
         repo = "Equibop";
         tag = "v${version}";
-        hash = "sha256-cwRwVdrd91JsOw/WVhPdIJYDwWWhpjlHVhowFlfvoCo=";
+        hash = "sha256-wsaVqBYETYFTsG78UInY5Z6VvUr8RLWMC8/eW8lTldY=";
       };
 
       impureEnvVars =
@@ -51,7 +60,7 @@ final: pkgs: {
         runHook postInstall
       '';
 
-      outputHash = "sha256-odQOJOv3qBYJte5RNF14o33Duxxvm0n5Fy6jfVeCg3I=";
+      outputHash = "sha256-Gtsy22jI9y6a8NB/bRR4j1z1PwFlfJPzIPznr7fLb8M=";
       outputHashAlgo = "sha256";
       outputHashMode = "recursive";
     };
@@ -63,7 +72,7 @@ final: pkgs: {
         owner = "Equicord";
         repo = "Equibop";
         tag = "v${version}";
-        hash = "sha256-cwRwVdrd91JsOw/WVhPdIJYDwWWhpjlHVhowFlfvoCo=";
+        hash = "sha256-wsaVqBYETYFTsG78UInY5Z6VvUr8RLWMC8/eW8lTldY=";
       };
 
       postPatch = ''
@@ -105,12 +114,12 @@ final: pkgs: {
 
         export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 
-        chmod -R u+w ${pkgs.electron_43.dist} 2>/dev/null || cp -r ${pkgs.electron_43.dist} electron-dist && chmod -R u+w electron-dist && export ELECTRON_DIST=$PWD/electron-dist
+        chmod -R u+w ${pkgs.electron_45.dist} 2>/dev/null || cp -r ${pkgs.electron_45.dist} electron-dist && chmod -R u+w electron-dist && export ELECTRON_DIST=$PWD/electron-dist
 
         node node_modules/electron-builder/out/cli/cli.js \
           --dir \
-          -c.electronDist=''${ELECTRON_DIST:-${pkgs.electron_43.dist}} \
-          -c.electronVersion=${pkgs.electron_43.version} \
+          -c.electronDist=''${ELECTRON_DIST:-${pkgs.electron_45.dist}} \
+          -c.electronVersion=${pkgs.electron_45.version} \
           -c.npmRebuild=false
 
         runHook postBuild
@@ -139,17 +148,18 @@ final: pkgs: {
         mkdir -p $out/opt/Equibop/resources/static/dist
         ln -sf ${pkgs.arrpc}/bin/arrpc $out/opt/Equibop/resources/static/dist/arrpc-linux-x64
 
-        makeWrapper ${pkgs.electron_43}/bin/electron $out/bin/equibop \
+        makeWrapper ${pkgs.electron_45}/bin/electron $out/bin/equibop \
+          ${nvidiaOffloadFlags}\
+          --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath [pkgs.libva]} \
           --add-flags $out/opt/Equibop/resources/app.asar \
           --add-flags "--enable-gpu-rasterization" \
           --add-flags "--enable-zero-copy" \
           --add-flags "--ignore-gpu-blocklist" \
           --add-flags "--enable-hardware-overlays" \
-          --add-flags "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder" \
-          --add-flags "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,CanvasOopRasterization" \
+          --add-flags "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,VaapiVideoDecoder${pkgs.lib.optionalString nvidiaOffload ",VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks"}" \
           --add-flags "--disable-features=UseChromeOSDirectVideoDecoder" \
           --add-flags "--enable-accelerated-2d-canvas" \
-          --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true}}"
+          --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-wayland-ime=true}}"
       '';
 
       desktopItems = pkgs.makeDesktopItem {
